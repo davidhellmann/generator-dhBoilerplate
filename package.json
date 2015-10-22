@@ -6,7 +6,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "soon"
+    "url": "https://github.com/davidhellmann/generator-dhBoilerplate"
   },
   "author": {
     "name": "David Hellmann",
@@ -28,6 +28,11 @@
     "bower"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.20.3"
-  }
+    "chalk": "^0.5.1",
+    "yeoman-generator": "^0.20.3",
+    "yosay": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
 }
