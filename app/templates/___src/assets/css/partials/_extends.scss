@@ -1,0 +1,24 @@
+/**
+ * Extends
+ */
+
+%uppercase {
+  text-transform: uppercase;
+  font-size: 90%;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.uppercase {
+  @extend %uppercase;
+}
+
+
+
+%indent {
+  text-indent: vr(1);
+}
+
+.indent {
+  @extend %indent;
+}

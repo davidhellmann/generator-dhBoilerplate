@@ -1,0 +1,327 @@
+/**
+ * Base
+ */
+
+html {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $base_font_family;
+  font-size: $base_font_size * 0.9;
+  line-height: $base_line_height;
+  font-weight: 400;
+  color: lighten(color('black'), 10%);
+  background: color('white');
+  hyphens: auto;
+
+  @include breakpoint('s') {
+    font-size: $base_font_size;
+  }
+}
+
+a {
+  &:hover {
+
+  }
+}
+
+::-moz-selection {
+  background: #ff0;
+  text-shadow: none;
+}
+
+::selection {
+  background: #ff0;
+  text-shadow: none;
+}
+
+
+
+/**
+ * Headlines
+ */
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: fontFamily('headline');
+  font-size: fontSize('base');
+  font-weight: 700;
+  margin: vr(2) 0 vr(1) 0;
+  word-wrap: break-word;
+}
+
+h1, .h1 {
+  font-size: fontSize('xl') * 0.7;
+  line-height: vr(3) * 0.7;
+  font-weight: 900;
+
+  @include breakpoint('s') {
+    font-size: fontSize('xl');
+    line-height: vr(3);
+  }
+}
+
+h2, .h2 {
+  font-size: fontSize('l') * 0.7;
+  line-height: vr(2) * 0.7;
+
+  @include breakpoint('s') {
+    font-size: fontSize('l');
+    line-height: vr(2);
+  }
+}
+
+h3, .h3 {
+  font-size: fontSize('m') * 0.7;
+  line-height: vr(1) * 0.7;
+
+  @include breakpoint('s') {
+    font-size: fontSize('m');
+    line-height: vr(1);
+  }
+}
+
+h4, .h4 {
+  font-size: fontSize('base');
+}
+
+
+
+/**
+ * Text
+ */
+
+p,
+ul,
+ol,
+dl,
+pre,
+table,
+blockquote {
+  margin: 0 0 vr(1) 0;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+  margin: vr(2) 0;
+
+  p {
+    font-family: fontFamily('headline');
+    font-size: fontSize('l') * 0.7;
+    line-height: vr(2) * 0.7;
+    font-weight: 900;
+    font-style: italic;
+
+    @include breakpoint('s') {
+      font-size: fontSize('l');
+      line-height: vr(2);
+    }
+  }
+
+  footer {
+
+    cite {
+
+    }
+  }
+}
+
+ul {
+  list-style: disc outside;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
+}
+
+ol {
+  list-style: decimal outside;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
+}
+
+dt {
+  font-weight: 700;
+  margin: vr(1) 0;
+}
+
+dd {
+  margin: 0;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
+}
+
+hr {
+  border: none;
+  margin: vr(2)-1px 0;
+  height: 1px;
+  background: color('black');
+}
+
+
+abbr {
+  @extend %uppercase;
+  cursor: help;
+  font-weight: 400;
+  padding-bottom: 1px;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    background: color('black');
+    transition: all .25s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+
+
+/**
+ * Links
+ */
+
+a {
+  color: color('red');
+  transition: all .25s;
+
+  &:hover {
+    color: color('black');
+  }
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+
+
+
+/**
+ * Figures / Images
+ */
+
+figure {
+  margin: vr(1) 0 vr(2) 0;
+  @include clearfix();
+
+  .imageWrapper {
+    overflow: hidden;
+
+    @include breakpoint('m') {
+      @include col(9, no);
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &.b-lazy {
+      background-color: #ddd;
+      background-size: 100% 100%;
+    }
+
+    .blurredImage {
+      opacity: 1;
+      transition: all 1s;
+    }
+
+    &.b-loaded {
+      .blurredImage {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.noCaption .imageWrapper {
+    @include col(12, no);
+  }
+}
+
+figcaption {
+  font-size: 15px;
+  padding: 10px 0 0 0;
+  color: lighten(color('black'), 50%);
+
+  @include breakpoint('m') {
+    @include col(2.5, no);
+    padding: vr(1) 0 0 0;
+    float: right;
+    text-align: left;
+    border-top: 2px solid #ccc;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+
+
+/**
+ * Video
+ */
+
+.videoWrapper {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  margin: vr(1) 0 vr(2) 0;
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+/**
+ * Gist
+ */
+
+.gist {
+  margin: vr(1) 0 vr(2) 0;
+}

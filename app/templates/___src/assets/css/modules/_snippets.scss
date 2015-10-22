@@ -1,0 +1,20 @@
+/*------------------------------------*\
+
+  #Snippets
+
+\*------------------------------------*/
+
+.websiteWrapper {
+  padding: vr(2) 20px;
+  max-width: 1200px;
+  opacity: 0;
+  transition: all .25s;
+
+  @include breakpoint('s') {
+    padding: vr(4) 100px;
+  }
+}
+
+.is_ready .websiteWrapper {
+  opacity: 1;
+}

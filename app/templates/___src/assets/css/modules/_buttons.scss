@@ -1,0 +1,41 @@
+/*------------------------------------*\
+
+  #Buttons
+
+\*------------------------------------*/
+
+.button {
+  background: color('red');
+  font-weight: 700;
+  color: color('white');
+  font-size: fontSize('m');
+  border: none;
+  padding: 20px;
+  display: inline-block;
+  margin: 20px 0;
+  cursor: pointer;
+  text-align: center;
+  transition: all .5s;
+
+  &:hover {
+    color: color('white');
+    background: darken(color('red'), 5%);
+  }
+}
+
+.button.button--blue {
+  background: color('blue');
+
+  &:hover {
+    color: color('white');
+    background: darken(color('blue'), 5%);
+  }
+}
+
+.button.button--center {
+  @include center();
+}
+
+.button.button--full {
+  width: 100%;
+}

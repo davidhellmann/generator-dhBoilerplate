@@ -1,0 +1,38 @@
+{
+  "name": "boilerplate.dev",
+  "version": "1.0.0",
+  "description": "My personal Boilerplate with Gulp",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "bs-html-injector": "^2.0.4",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-modernizr": "0.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://davidhellmann@github.com/davidhellmann/boilerplate.dev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhellmann/boilerplate.dev/issues"
+  },
+  "homepage": "https://github.com/davidhellmann/boilerplate.dev#readme",
+  "dependencies": {}
+}

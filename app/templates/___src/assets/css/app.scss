@@ -1,0 +1,22 @@
+/**
+ * Settings & Basic Stuff
+ */
+
+@import 'partials/settings';
+@import 'partials/functions';
+@import 'partials/mixins';
+@import 'partials/extends';
+@import 'partials/normalize';
+@import 'partials/base';
+
+
+/**
+ * All the Sass Partials
+ */
+
+@import 'modules/fonts';
+@import 'modules/header';
+@import 'modules/footer';
+@import 'modules/snippets';
+@import 'modules/buttons';
+@import 'modules/form';

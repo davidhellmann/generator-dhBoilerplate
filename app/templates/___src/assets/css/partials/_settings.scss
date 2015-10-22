@@ -1,0 +1,126 @@
+/**
+ * Grid
+ */
+
+$column__width:         120px;
+$gutter__width:         20px;
+$columns:               12;
+
+
+
+/**
+ * Colors
+ */
+
+$colors: (
+  // Basic Colors
+  'white':              #fff,
+  'black':              #000,
+
+  // CI Colors
+  'red':                #f00,
+  'green':              #0f0,
+  'blue':               #00f,
+);
+
+
+// Color Vars
+$_white:                map-get($colors, 'white');
+$_black:                map-get($colors, 'black');
+$_red:                  map-get($colors, 'red');
+$_green:                map-get($colors, 'green');
+$_blue:                 map-get($colors, 'blue');
+
+
+
+/**
+ * Box Shadow
+ */
+
+$boxshadows: (
+  'layer--01':          (0 0 10px 0 rgba(0,0,0,.15)),
+);
+
+
+
+/**
+ * Borders
+ */
+
+$borders: (
+
+  'white':              1px solid $_white,
+  'white--2':           2px solid $_white,
+  'white--2--dotted':   2px dotted $_white,
+
+  'trans':              1px solid transparent,
+);
+
+
+
+/**
+ * Font Stuff
+ */
+
+$fonts: (
+  'basic':              ('Vollkorn', Georgia, "Times New Roman", Times, serif),
+  'headline':           ('Lato', Helvetica, Arial, sans-serif),
+);
+
+$fontSizes: (
+  's':                  11px, // 18 / 1.6
+  'base':               18px,
+  'm':                  29px, // 18 * 1.6
+  'l':                  46px, // 29 * 1.6
+  'xl':                 74px, // 46 * 1.6
+);
+
+$base_font_family:      map-get($fonts, 'basic');
+$base_font_size:        map-get($fontSizes, 'base');
+$base_font_scale:       1.6;
+$base_line_height:      1.5;
+
+
+
+/**
+ * Horizontal Breakpoints
+ * Add more if you need
+ */
+
+$breakpoints: (
+  'default':            '',
+  'xs':                 480px,
+  's':                  667px,
+  'm':                  1024px,
+  'l':                  1280px,
+  'xl':                 1680px,
+);
+
+
+
+/**
+ * Vertical Breakpoints
+ * Add more if you need
+ */
+
+$breakpoints-v: (
+  's':                  600px,
+  'm':                  800px,
+  'l':                  1000px,
+);
+
+
+
+/**
+ * Horizontal
+ */
+
+$media-direction:       min;
+
+
+
+/**
+ * Vertical
+ */
+
+$media-direction-v:      max;
