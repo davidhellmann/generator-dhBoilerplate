@@ -44,31 +44,15 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectProxy',
                 message: 'Enter the vhost for your Project'
-            },{
+            }, {
                 type: 'list',
                 name: 'projectUsage',
                 message: 'Which purpose does this Project have? Choose the appropriate option',
                 choices: [
-                    "HTML Protoypes",
-                    "Wordpress",
-                    "Craft"
+                    "Just Prototyping",
+                    "Use with Wordpress",
+                    "Use with Craft CMS"
                 ]
-            },{
-                when: function(response) {
-                    return response.projectUsage === 'Wordpress';
-                },
-                type: 'confirm',
-                name: 'projectInstallWordpress',
-                message: 'Do yo want to install Wordpress?',
-                default: false
-            },{
-                when: function(response) {
-                    return response.projectUsage === 'Craft';
-                },
-                type: 'confirm',
-                name: 'projectInstallCraftCMS',
-                message: 'Do you want to install Craft CMS?',
-                default: false
             },{
                 type: 'input',
                 name: 'projectVersion',
@@ -102,8 +86,6 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.projectDescription = props.projectDescription;
             this.projectProxy = props.projectProxy;
             this.projectUsage = props.projectUsage;
-            this.projectInstallWordpress = props.projectInstallWordpress;
-            this.projectInstallCraftCMS = props.projectInstallCraftCMS;
             this.projectVersion = props.projectVersion;
             this.projectAuthor = props.projectAuthor;
             this.projectMail = props.projectMail;
