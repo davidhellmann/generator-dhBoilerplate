@@ -50,7 +50,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 message: 'Which purpose does this Project have? Choose the appropriate option',
                 choices: [
                     "Just Prototyping",
-                    "Use with Wordpress",
+                    "Use with WordPress",
                     "Use with Craft CMS"
                 ]
             },{

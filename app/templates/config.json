@@ -1,0 +1,25 @@
+{
+  <% if (projectProxy != '') { %>
+  "proxy": "<%= projectProxy %>",
+  <% } %>
+  "projectType": "<%= projectUsage %>",
+
+  "src": {
+    
+  },
+
+  "dist": {
+    <% i (projectUsage == 'Just Prototyping') { %>
+
+    <% } %>
+
+    <% i (projectUsage == 'Use with WordPress') { %>
+
+    <% } %>
+
+    <% i (projectUsage == 'Use with Craft CMS') { %>
+
+    <% } %>
+
+  }
+}
