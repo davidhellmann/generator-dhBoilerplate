@@ -1,0 +1,33 @@
+{
+  "name": "generator-dhBoilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate made by David Hellmann",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "soon"
+  },
+  "author": {
+    "name": "David Hellmann",
+    "email": "davidhellmann.com@gmail.com",
+    "url": "http://davidhellmann.com"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "boilerplate",
+    "gulp",
+    "yeoman",
+    "sass",
+    "bower"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.20.3"
+  }
+}
