@@ -16,7 +16,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the impressive ' + chalk.red('mh-boilerplate') + ' generator!'
+            'Welcome to the impressive ' + chalk.red('dhBoilerplate') + ' generator!'
         ));
 
         var warning =
@@ -63,7 +63,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 default: false
             },{
                 when: function(response) {
-                    return response.projectUsage === 'laravel';
+                    return response.projectUsage === 'Craft';
                 },
                 type: 'confirm',
                 name: 'projectInstallCraftCMS',
@@ -103,8 +103,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.projectProxy = props.projectProxy;
             this.projectUsage = props.projectUsage;
             this.projectInstallWordpress = props.projectInstallWordpress;
-            this.projectInstallLaravel = props.projectInstallLaravel;
-            this.projectInstallLaravelFormBoilerplate = props.projectInstallLaravelFormBoilerplate;
+            this.projectInstallCraftCMS = props.projectInstallCraftCMS;
             this.projectVersion = props.projectVersion;
             this.projectAuthor = props.projectAuthor;
             this.projectMail = props.projectMail;
