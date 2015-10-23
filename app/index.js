@@ -23,7 +23,6 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     var welcome =
       '\n ————————————————————————————————————————————————————————————————————————————————— '+
       '\n                                                                                   '+
-      '\n                                                                                   '+
       '\n               dddddddd                                                            '+
       '\n               d::::::dhhhhhhh                                                     '+
       '\n               d::::::dh:::::h                                                     '+
@@ -43,10 +42,8 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       '\n      ddddddddd   ddddd hhhhhhh     hhhhhhh                                        '+
       '\n                                                                                   '+
       '\n                                                                                   '+
-      '\n ————————————————————————————————————————————————————————————————————————————————— '+
-      '\n                                                                                   '+
       '\n    dhBoilerplate made with love & help.                                           '+
-      '\n    ------------------------------------                                           '+
+      '\n    ---------------------------------------                                        '+
       '\n    Author   :   David Hellmann                                                    '+
       '\n    Website  :   http://davidhellmann.com                                          '+
       '\n    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate          '+
