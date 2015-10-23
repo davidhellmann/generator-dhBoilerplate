@@ -1,6 +1,6 @@
 // Module
 var gulp            = require('gulp'),
-    browserSync     = require('browser-sync'),
+    browserSync     = require('browser-sync').create(),
     plumber         = require('gulp-plumber'),
     notify          = require('gulp-notify'),
     sass            = require('gulp-sass'),
@@ -14,6 +14,7 @@ var gulp            = require('gulp'),
     modernizr       = require('gulp-modernizr'),
     rename          = require('gulp-rename'),
     changed         = require('gulp-changed'),
+    dh              = require('./config.json'), // Get the Config Data
     del             = require('del');
 
 
@@ -28,21 +29,7 @@ var src             = '___src/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
     srcSystem       = src + '_system/',
-
     dist            = '___dist/',
-
-    <% if (projectUsage == 'Just Prototyping') { %>
-    dist            = '___dist/',
-    <% } %>
-
-/*    <% if (projectUsage == 'Use with WordPress') { %>
-
-    <% } %>
-
-    <% if (projectUsage == 'Use with Craft CMS') { %>
-
-    <% } %>*/
-
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
@@ -338,8 +325,7 @@ gulp.task('init', [
  * Watch Task
  */
 
-gulp.task('watch', ['browser-sync'], function(){
-
+gulp.task('watch', function() {
   // Watch Sass Files
   gulp.watch([srcCSS + '**/*.scss'], ['sass']);
 
@@ -360,4 +346,4 @@ gulp.task('watch', ['browser-sync'], function(){
  * Default Task
  */
 
-gulp.task('default', ['watch', 'browser-sync']);
+gulp.task('default', ['browser-sync', 'watch']);

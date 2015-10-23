@@ -1,25 +1,133 @@
-{
-  <% if (projectProxy != '') { %>
-  "proxy": "<%= projectProxy %>",
-  <% } %>
-  "projectType": "<%= projectUsage %>",
-
+{{
   "src": {
-
+    "assets":     "___src/assets/",
+    "js":         "___src/assets/js/",
+    "css":        "___src/assets/css/",
+    "fonts":      "___src/assets/fonts/",
+    "images":     "___src/assets/images/",
+    "templates":  "___src/templates/",
+    "bower":      "___src/bower/",
+    "system":     "___src/_system/"
   },
 
   "dist": {
-    <% if (projectUsage == 'Just Prototyping') { %>
-
+    <% if (projectUsage == 'Just Prototyping' ) { %>
+    "base":       "___dist/",
+    "markup":     "___dist/",
+    "assets":     "___dist/assets/",
+    "js":         "___dist/assets/js/",
+    "css":        "___dist/assets/css/",
+    "fonts":      "___dist/assets/fonts/",
+    "images":     "___dist/assets/images/",
+    <% } if (projectUsage == 'Use with WordPresss' ) { %>
+    "base":       "___dist/wp-content/themes/<%= projectName %>/",
+    "markup":     "___dist/wp-content/themes/<%= projectName %>/",
+    "assets":     "___dist/assets/",
+    "js":         "___dist/assets/js/",
+    "css":        "___dist/assets/css/",
+    "fonts":      "___dist/assets/fonts/",
+    "images":     "___dist/assets/images/",
+    <% } if (projectUsage == 'Use with Craft CMS' ) { %>
+    "base":       "___dist/public/",
+    "markup":     "___dist/craft/templates/",
+    "assets":     "___dist/public/assets/",
+    "js":         "___dist/public/assets/js/",
+    "css":        "___dist/public/assets/css/",
+    "fonts":      "___dist/public/assets/fonts/",
+    "images":     "___dist/public/assets/images/",
     <% } %>
+  },
 
-    <% if (projectUsage == 'Use with WordPress') { %>
+  "css": {
+    "sourcemap": true,
+    "prefix": [
+      "last 2 version",
+      "> 1%",<% if (projectIECompatible == true ) { %>
+      "ie 8",<% } else { %>
+      "ie 9",<% } %>
+      "chrome 30",
+      "firefox 30"
+    ]
+  },
+    "browsersync": {
+    "openbrowser": true,
+    "proxy": false
+  },
+  "files": {
+    "jsCombine" : [
+      "src/bower/jquery/dist/jquery.js"
+    ],
+    "jsCombineFilename": "scripts.js",
+    "fonts": [
 
-    <% } %>
-
-    <% if (projectUsage == 'Use with Craft CMS') { %>
-
-    <% } %>
-
+    ],
+  },
+  "modernizr": {
+    "options": [
+      "setClasses",
+      "addTest",
+      "html5printshiv",
+      "testAllProps",
+      "fnBind"
+    ],
+    "tests": [
+    "cssanimations",
+    "csstransforms",
+    "csstransforms3d",
+    "csstransitions",
+    "backgroundblendmode",
+    "bgsizecover",
+    "preserve3d",
+    "flexbox",
+    "touch",
+    "svg",
+    "inlinesvg",
+    "respond",
+    "hsla",
+    "rgba",
+    "webgl"
+    ]
+  },
+  "minify": {
+    "automatic": {
+      "jsFiles": true,
+      "jsCombine": true,
+      "jsCopy": true,
+      "jsModernizr": true,
+      "jsConditionizr": true,
+      "css": true,
+      "vector": true,
+      "bitmaps": true,
+      "vectorSprite": true,
+      "bitmapSprite": true
+    },
+    "images": {
+      "optimizationLevel": 3,
+      "pngquant": {
+      "quality": "75-88",
+      "speed": 4
+    },
+    "svgoPlugins": [
+      {"cleanupIDs": false},
+      {"removeComments": true},
+      {"removeViewBox": false},
+      {"removeDesc": true},
+      {"removeUselessDefs": false},
+      {"removeDoctype": true},
+      {"removeEmptyText": true},
+      {"removeUnknownsAndDefaults": true},
+      {"removeEmptyContainers": true},
+      {"collapseGroups": true},
+      {"removeUselessStrokeAndFill": true},
+      {"convertStyleToAttrs": true}
+    ],
+    "progressive": true,
+    "interlaced": true
+  },
+  "javascript": {
+    "options": {
+      "mangle": false
+      }
+    }
   }
 }

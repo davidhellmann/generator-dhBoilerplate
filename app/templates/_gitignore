@@ -60,7 +60,6 @@ ___dist/craft/storage/*
 !___dist/craft/storage/logo/*
 ___dist/craft/app
 ___dist/craft/storage
-___dist/.htaccess
 
 
 <% } %>
