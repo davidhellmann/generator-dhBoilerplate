@@ -1,8 +1,15 @@
 {
-  "name": "boilerplate.dev",
-  "version": "1.0.0",
-  "description": "My personal Boilerplate with Gulp",
-  "main": "gulpfile.js",
+  "title": "<%= projectName %>",
+  "name": "<%= projectName %>",
+  "description": "<%= projectDescription %>",
+  "version": "<%= projectVersion %>",
+  "license": "MIT",
+  "repository": "<%= projectRepo %>",
+  "author": {
+    "name": "<%= projectAuthor %>",
+    "email": "<%= projectMail %>",
+    "url": "<%= projectUrl %>"
+  },
   "devDependencies": {
     "browser-sync": "^2.9.11",
     "bs-html-injector": "^2.0.4",
@@ -21,18 +28,12 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://davidhellmann@github.com/davidhellmann/boilerplate.dev.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/davidhellmann/boilerplate.dev/issues"
-  },
-  "homepage": "https://github.com/davidhellmann/boilerplate.dev#readme",
-  "dependencies": {}
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "dependencies": {
+
+  }
 }

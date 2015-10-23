@@ -33,5 +33,34 @@ Thumbs.db
 # Ignore project specifics #
 bower/
 node_modules/
-___dist/
 .tmp
+
+
+# Just Prototyping
+<% if (projectUsage == 'Just Prototyping' ) { %>
+
+___dist/
+
+
+# Use with WordPress
+<% } if (projectUsage == 'Use with WordPresss' ) { %>
+
+___dist/*
+!___dist/wp-content/
+
+___dist/wp-content/*
+!___dist/wp-content/themes/
+!___dist/wp-content/plugins/
+
+
+# Use with Craft CMS
+<% } if (projectUsage == 'Use with Craft CMS' ) { %>
+
+___dist/craft/storage/*
+!___dist/craft/storage/logo/*
+___dist/craft/app
+___dist/craft/storage
+___dist/.htaccess
+
+
+<% } %>
