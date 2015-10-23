@@ -1,4 +1,8 @@
-// Module
+/**
+ * Gulpfile
+ */
+
+// Task Vars
 var gulp            = require('gulp'),
     browserSync     = require('browser-sync').create(),
     plumber         = require('gulp-plumber'),

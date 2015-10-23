@@ -74,21 +74,21 @@
       "fnBind"
     ],
     "tests": [
-    "cssanimations",
-    "csstransforms",
-    "csstransforms3d",
-    "csstransitions",
-    "backgroundblendmode",
-    "bgsizecover",
-    "preserve3d",
-    "flexbox",
-    "touch",
-    "svg",
-    "inlinesvg",
-    "respond",
-    "hsla",
-    "rgba",
-    "webgl"
+      "cssanimations",
+      "csstransforms",
+      "csstransforms3d",
+      "csstransitions",
+      "backgroundblendmode",
+      "bgsizecover",
+      "preserve3d",
+      "flexbox",
+      "touch",
+      "svg",
+      "inlinesvg",
+      "respond",
+      "hsla",
+      "rgba",
+      "webgl"
     ]
   },
 
@@ -108,30 +108,30 @@
     "images": {
       "optimizationLevel": 3,
       "pngquant": {
-      "quality": "75-88",
-      "speed": 4
+        "quality": "75-88",
+        "speed": 4
+      },
+      "svgoPlugins": [
+        {"cleanupIDs": false},
+        {"removeComments": true},
+        {"removeViewBox": false},
+        {"removeDesc": true},
+        {"removeUselessDefs": false},
+        {"removeDoctype": true},
+        {"removeEmptyText": true},
+        {"removeUnknownsAndDefaults": true},
+        {"removeEmptyContainers": true},
+        {"collapseGroups": true},
+        {"removeUselessStrokeAndFill": true},
+        {"convertStyleToAttrs": true}
+      ],
+      "progressive": true,
+      "interlaced": true
     },
-    "svgoPlugins": [
-      {"cleanupIDs": false},
-      {"removeComments": true},
-      {"removeViewBox": false},
-      {"removeDesc": true},
-      {"removeUselessDefs": false},
-      {"removeDoctype": true},
-      {"removeEmptyText": true},
-      {"removeUnknownsAndDefaults": true},
-      {"removeEmptyContainers": true},
-      {"collapseGroups": true},
-      {"removeUselessStrokeAndFill": true},
-      {"convertStyleToAttrs": true}
-    ],
-    "progressive": true,
-    "interlaced": true
-  },
 
-  "javascript": {
-    "options": {
-      "mangle": false
+    "javascript": {
+      "options": {
+        "mangle": false
       }
     }
   }
