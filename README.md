@@ -43,10 +43,14 @@ yo dhBoilerplate
 
 
 ## Commands
-**```gulp init``**
+```
+gulp init
+```
 Intialize your Project
 
-**```gulp```**
+```
+**gulp**
+```
 Default Task with BrowserSync (CSS and HTML Injection)
 
 
