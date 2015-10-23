@@ -42,7 +42,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       }, {
         type:    'input',
         name:    'projectDescription',
-        message: 'Short description of the Project`',
+        message: 'Short description of the Project',
         default: 'undefined'
       }, {
         type:    'input',
