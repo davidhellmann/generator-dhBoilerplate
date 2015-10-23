@@ -1,8 +1,6 @@
 # Generator dhBoilerplate
 
 ```
-—————————————————————————————————————————————————————————————————————————————————
-                                                                                 
               dddddddd                                                           
               d::::::dhhhhhhh                                                    
               d::::::dh:::::h                                                    
@@ -27,8 +25,6 @@
    Author   :   David Hellmann                                                   
    Website  :   http://davidhellmann.com                                         
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate         
-                                                                                 
-—————————————————————————————————————————————————————————————————————————————————
 ```
 
 ## Install
