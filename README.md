@@ -27,10 +27,12 @@
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate         
 ```
 
+
 ## Install
 ```
 $ npm install -g generator-dhBoilerplate
 ```
+
 
 ## Usage
 Jump in your Working Directory and type: 
@@ -39,7 +41,14 @@ Jump in your Working Directory and type:
 yo dhBoilerplate
 ```
 
+
 ## Commands
+**`gulp init`**
+Intialize your Project
+
+**`gulp`**
+Default Task with BrowserSync (CSS and HTML Injection)
+
 
 ## Dependencies
 - Node
@@ -47,12 +56,15 @@ yo dhBoilerplate
 - Bower
 - Yeoman
 
+
 ## Thanks to
 - Sascha Fuchs @gisugosu
 - Martin Herweg @martinherweg
 
+
 ## Author
 David Hellmann @davidhellmann
+
 
 ## Licence
 MIT
