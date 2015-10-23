@@ -1,8 +1,31 @@
-# YO
+# Generator dhBoilerplate
 
-## Start
+## Install
+```
+$ npm install -g generator-dhBoilerplate
+```
 
-`npm link`
-`npm unlink`
-`npm publish`
-`yo`
+## Usage
+Jump in your Working Directory and type: 
+
+```
+yo dhBoilerplate
+```
+
+## Commands
+
+## Dependencies
+- Node
+- Gulp
+- Bower
+- Yeoman
+
+## Thanks to
+- Sascha Fuchs @gisugosu
+- Martin Herweg @martinherweg
+
+## Author
+David Hellmann @davidhellmann
+
+## Licence
+MIT
