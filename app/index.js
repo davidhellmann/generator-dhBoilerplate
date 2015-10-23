@@ -21,25 +21,37 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     ));
 
     var welcome =
+      '\n ————————————————————————————————————————————————————————————————————————————————— '+
       '\n                                                                                   '+
-      '\n ================================================================================= '+
       '\n                                                                                   '+
-      '\n      _  _      ___              _                        _           _            '+
-      '\n     ( )( )    (  _ \         _ (_ )                     (_ )        ( )_          '+
-      '\n    _| || |__  | (_) )   _   (_) | |    __   _ __  _ _    | |    _ _ | ,_)   __    '+
-      '\n  / _  ||  _  \|  _ <  / _ \ | | | |  / __ \(  __)(  _ \  | |  / _  )| |   / __ \  '+
-      '\n ( (_| || | | || (_) )( (_) )| | | | (  ___/| |   | (_) ) | | ( (_| || |_ (  ___/  '+
-      '\n  \__ _)(_) (_)(____/  \___/ (_)(___) \____)(_)   |  __/ (___) \__ _) \__) \____)  '+
-      '\n                                                  | |                              '+
-      '\n                                                  (_)                              '+
+      '\n               dddddddd                                                            '+
+      '\n               d::::::dhhhhhhh                                                     '+
+      '\n               d::::::dh:::::h                                                     '+
+      '\n               d::::::dh:::::h                                                     '+
+      '\n               d:::::d h:::::h                                                     '+
+      '\n       ddddddddd:::::d  h::::h hhhhh                                               '+
+      '\n     dd::::::::::::::d  h::::hh:::::hhh                                            '+
+      '\n    d::::::::::::::::d  h::::::::::::::hh                                          '+
+      '\n   d:::::::ddddd:::::d  h:::::::hhh::::::h                                         '+
+      '\n   d::::::d    d:::::d  h::::::h   h::::::h                                        '+
+      '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+      '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+      '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+      '\n   d::::::ddddd::::::dd h:::::h     h:::::h                                        '+
+      '\n    d:::::::::::::::::d h:::::h     h:::::h                                        '+
+      '\n     d:::::::::ddd::::d h:::::h     h:::::h                                        '+
+      '\n      ddddddddd   ddddd hhhhhhh     hhhhhhh                                        '+
       '\n                                                                                   '+
-      '\n ================================================================================= '+
       '\n                                                                                   '+
-      '\n Welcome! Nice that you found and use me now. Have Fun!                            '+
-      '\n Author:  David Hellmann                                                           '+
-      '\n Website: http://davidhellmann.com                                                 '+
-      '\n Github:  https://github.com/davidhellmann/generator-dhBoilerplate                 '+
-      '\n                                                                                   ';
+      '\n ————————————————————————————————————————————————————————————————————————————————— '+
+      '\n                                                                                   '+
+      '\n    dhBoilerplate made with love & help.                                           '+
+      '\n    ------------------------------------                                           '+
+      '\n    Author   :   David Hellmann                                                    '+
+      '\n    Website  :   http://davidhellmann.com                                          '+
+      '\n    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate          '+
+      '\n                                                                                   '+
+      '\n ————————————————————————————————————————————————————————————————————————————————— ';
 
     console.log(welcome);
 
