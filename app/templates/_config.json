@@ -49,10 +49,12 @@
       "firefox 30"
     ]
   },
-    "browsersync": {
+
+  "browsersync": {
     "openbrowser": true,
     "proxy": false
   },
+
   "files": {
     "jsCombine" : [
       "src/bower/jquery/dist/jquery.js"
@@ -62,6 +64,7 @@
 
     ],
   },
+
   "modernizr": {
     "options": [
       "setClasses",
@@ -88,6 +91,7 @@
     "webgl"
     ]
   },
+
   "minify": {
     "automatic": {
       "jsFiles": true,
@@ -124,6 +128,7 @@
     "progressive": true,
     "interlaced": true
   },
+
   "javascript": {
     "options": {
       "mangle": false
