@@ -47,7 +47,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       {
         type:    'input',
         name:    'projectName',
-        message: 'Name the project (name of the theme folder in WordPress)',
+        message: 'Please give your project a name (without Spaces)',
         default: 'dhBoilerplate'
       }, {
         type:    'input',
@@ -130,7 +130,8 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    //this.installDependencies();
+    console.log('Install NPM Modules and Bower Modules.');
+    this.installDependencies();
   }
 
 });
