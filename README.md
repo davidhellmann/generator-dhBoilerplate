@@ -38,7 +38,7 @@ $ npm install -g generator-dhboilerplate
 Jump in your Working Directory and type: 
 
 ```
-yo dhBoilerplate
+yo dhboilerplate
 ```
 
 
