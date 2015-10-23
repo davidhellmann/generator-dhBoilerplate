@@ -4,6 +4,7 @@ var path   = require('path');
 var yeoman = require('yeoman-generator');
 var yosay  = require('yosay');
 var chalk  = require('chalk');
+var mkdirp = require('mkdirp');
 
 var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
@@ -20,7 +21,9 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     ));
 
     var welcome =
-      '\n '+
+      '\n                                                                                   '+
+      '\n ================================================================================= '+
+      '\n                                                                                   '+
       '\n      _  _      ___              _                        _           _            '+
       '\n     ( )( )    (  _ \         _ (_ )                     (_ )        ( )_          '+
       '\n    _| || |__  | (_) )   _   (_) | |    __   _ __  _ _    | |    _ _ | ,_)   __    '+
@@ -29,7 +32,14 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       '\n  \__ _)(_) (_)(____/  \___/ (_)(___) \____)(_)   |  __/ (___) \__ _) \__) \____)  '+
       '\n                                                  | |                              '+
       '\n                                                  (_)                              '+
-      '\n ';
+      '\n                                                                                   '+
+      '\n ================================================================================= '+
+      '\n                                                                                   '+
+      '\n Welcome! Nice that you found and use me now. Have Fun!                            '+
+      '\n Author:  David Hellmann                                                           '+
+      '\n Website: http://davidhellmann.com                                                 '+
+      '\n Github:  https://github.com/davidhellmann/generator-dhBoilerplate                 '+
+      '\n                                                                                   ';
 
     console.log(welcome);
 
