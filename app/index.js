@@ -37,7 +37,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       {
         type:    'input',
         name:    'projectName',
-        message: 'Name the project (name of the theme folder in Wordpress)',
+        message: 'Name the project (name of the theme folder in WordPress)',
         default: 'dhBoilerplate'
       }, {
         type:    'input',
@@ -108,15 +108,15 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
   },
 
   projectfiles: function () {
-    this.copy('_package.json', 'package.json');
-    this.copy('_config.json', 'config.json');
-    this.copy('_bower.json', 'bower.json');
-    this.copy('_gulpfile.js', 'gulpfile.js');
-    this.copy('_readme.md', 'readme.md');
-    this.copy('_gitignore', '.gitignore');
-    this.copy('bowerrc', '.bowerrc');
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('jshintrc', '.jshintrc');
+    this.copy('_package.json',          'package.json');
+    this.copy('_config.json',           'config.json');
+    this.copy('_bower.json',            'bower.json');
+    this.copy('_gulpfile.js',           'gulpfile.js');
+    this.copy('_readme.md',             'readme.md');
+    this.copy('_gitignore',             '.gitignore');
+    this.copy('bowerrc',                '.bowerrc');
+    this.copy('editorconfig',           '.editorconfig');
+    this.copy('jshintrc',               '.jshintrc');
   },
 
   install: function () {
