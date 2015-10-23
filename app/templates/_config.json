@@ -19,16 +19,16 @@
     "js":         "___dist/assets/js/",
     "css":        "___dist/assets/css/",
     "fonts":      "___dist/assets/fonts/",
-    "images":     "___dist/assets/images/",
+    "images":     "___dist/assets/images/"
     <% } if (projectUsage == 'Use with WordPress' ) { %>
     "base":       "___dist/wp-content/themes/<%= projectName %>/",
     "markup":     "___dist/wp-content/themes/<%= projectName %>/",
     "browserSyncDir": "___dist/wp-content/themes/<%= projectName %>/",
-    "assets":     "___dist/assets/",
-    "js":         "___dist/assets/js/",
-    "css":        "___dist/assets/css/",
-    "fonts":      "___dist/assets/fonts/",
-    "images":     "___dist/assets/images/",
+    "assets":     "___dist/wp-content/themes/<%= projectName %>/assets/",
+    "js":         "___dist/wp-content/themes/<%= projectName %>/assets/js/",
+    "css":        "___dist/wp-content/themes/<%= projectName %>/assets/css/",
+    "fonts":      "___dist/wp-content/themes/<%= projectName %>/assets/fonts/",
+    "images":     "___dist/wp-content/themes/<%= projectName %>/assets/images/"
     <% } if (projectUsage == 'Use with Craft CMS' ) { %>
     "base":       "___dist/public/",
     "markup":     "___dist/craft/templates/",
@@ -37,7 +37,7 @@
     "js":         "___dist/public/assets/js/",
     "css":        "___dist/public/assets/css/",
     "fonts":      "___dist/public/assets/fonts/",
-    "images":     "___dist/public/assets/images/",
+    "images":     "___dist/public/assets/images/"
     <% } %>
   },
 
@@ -69,16 +69,15 @@
       "___src/assets/js/scripts/bodyclass.js",
       "___src/assets/js/scripts/blazy.js"
     ],
-    "jsCombineScriptsFilename": "scripts.min.js",
+    "jsCombineScriptsFilename": "app.min.js",
     "jsCopyThisPlugins": [
-      //"___src/bower/bLazy/blazy.js"
+
     ],
-    "jsCombinePluginsFilename": "plugins.min.js",
     "copySystemFiles": [
       "___src/_system/.htaccess",
       "___src/_system/humans.txt",
       "___src/_system/robots.txt"
-    ],
+    ]
   },
 
   "modernizr": {
