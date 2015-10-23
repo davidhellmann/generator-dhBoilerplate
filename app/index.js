@@ -131,6 +131,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
   install: function () {
     console.log('Install NPM Modules and Bower Modules.');
+    console.log('Give me a moment to do that…');
     this.installDependencies();
   }
 
