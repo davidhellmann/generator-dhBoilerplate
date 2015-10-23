@@ -20,10 +20,10 @@
     "css":        "___dist/assets/css/",
     "fonts":      "___dist/assets/fonts/",
     "images":     "___dist/assets/images/",
-    <% } if (projectUsage == 'Use with WordPresss' ) { %>
+    <% } if (projectUsage == 'Use with WordPress' ) { %>
     "base":       "___dist/wp-content/themes/<%= projectName %>/",
     "markup":     "___dist/wp-content/themes/<%= projectName %>/",
-    "browserSyncDir": "___dist/wp-content/themes/<%= projectname %>/",
+    "browserSyncDir": "___dist/wp-content/themes/<%= projectName %>/",
     "assets":     "___dist/assets/",
     "js":         "___dist/assets/js/",
     "css":        "___dist/assets/css/",
@@ -59,12 +59,25 @@
   },
 
   "files": {
-    "jsCombine" : [
-      "src/bower/jquery/dist/jquery.js"
+    "jsCombinePlugins": [
+      "___src/bower/jquery/dist/jquery.js",
+      "___src/bower/bLazy/blazy.js"
     ],
-    "jsCombineFilename": "scripts.js",
-    "fonts": [
-
+    "jsCombinePluginsFilename": "plugins.min.js",
+    "jsCombineScripts": [
+      "___src/assets/js/scripts/example.js",
+      "___src/assets/js/scripts/bodyclass.js",
+      "___src/assets/js/scripts/blazy.js"
+    ],
+    "jsCombineScriptsFilename": "scripts.min.js",
+    "jsCopyThisPlugins": [
+      //"___src/bower/bLazy/blazy.js"
+    ],
+    "jsCombinePluginsFilename": "plugins.min.js",
+    "copySystemFiles": [
+      "___src/_system/.htaccess",
+      "___src/_system/humans.txt",
+      "___src/_system/robots.txt"
     ],
   },
 
@@ -96,18 +109,6 @@
   },
 
   "minify": {
-    "automatic": {
-      "jsFiles": true,
-      "jsCombine": true,
-      "jsCopy": true,
-      "jsModernizr": true,
-      "jsConditionizr": true,
-      "css": true,
-      "vector": true,
-      "bitmaps": true,
-      "vectorSprite": true,
-      "bitmapSprite": true
-    },
     "images": {
       "optimizationLevel": 3,
       "pngquant": {
@@ -130,12 +131,6 @@
       ],
       "progressive": true,
       "interlaced": true
-    },
-
-    "javascript": {
-      "options": {
-        "mangle": false
-      }
     }
   }
 }

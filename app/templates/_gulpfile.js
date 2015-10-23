@@ -18,6 +18,7 @@ var gulp            = require('gulp'),
     autoprefixer    = require('gulp-autoprefixer'),
     sourcemaps      = require('gulp-sourcemaps'),
     imagemin        = require('gulp-imagemin'),
+    pngquant        = require('imagemin-pngquant'),
     htmlinject      = require('bs-html-injector'),
     jshint          = require('gulp-jshint'),
     modernizr       = require('gulp-modernizr'),
@@ -57,8 +58,8 @@ gulp.task('browser-sync', function(){
 
   browserSync.init([
     // Files to watch
-    dh.dist.base    + '**/*.{html,php}',
-    dh.dist.images  + '**/*.{jpg,gif,png,svg}',
+    dh.dist.base    + '**/*.{html,php,twig}',
+    dh.dist.images  + '**/*.{jpg,jpeg,webp,gif,png,svg}',
     dh.dist.css     + '**/*.css',
     dh.dist.js      + '**/*.js'],
   { options: {
@@ -83,9 +84,9 @@ gulp.task('browser-sync', function(){
  * Copy Fonts
  */
 
-gulp.task('copy:fonts', function() {
-  gulp.src(srcFonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
-    .pipe(gulp.dest(distFonts))
+gulp.task('fonts', function() {
+  gulp.src(dh.src.fonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
+    .pipe(gulp.dest(dh.dist.fonts))
     .pipe(notify({ message: 'Yo, Fonts task complete.' }));
 });
 
@@ -96,16 +97,20 @@ gulp.task('copy:fonts', function() {
  */
 
 gulp.task('images', function() {
-  gulp.src(srcImages + '**/*')
+  gulp.src(dh.src.images + '**/*')
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(changed(distImages, {hasChanged: changed.compareSha1Digest}))
+    .pipe(changed(dh.dist.images))
     .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}]
+      optimizationLevel: dh.minify.images.optimizationLevel,
+      use: [
+        pngquant(dh.minify.images.pngquant)],
+      progressive:  dh.minify.images.progressive,
+      svgoPlugins:  dh.minify.images.svgoPlugins,
+      interlaced:   dh.minify.images.interlaced
     }))
-    .pipe(gulp.dest(distImages))
+    .pipe(gulp.dest(dh.dist.images))
     .pipe(notify({ message: 'Yo, Images task complete.' }));
 });
 
@@ -115,9 +120,9 @@ gulp.task('images', function() {
  */
 
 gulp.task('templates', function(){
-  gulp.src(srcTemplates + '**/*.php')
-    .pipe(changed(dist, {hasChanged: changed.compareSha1Digest}))
-    .pipe(gulp.dest(dist))
+  gulp.src(dh.src.templates + '**/*.php')
+    .pipe(changed(dh.dist.markup))
+    .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
 });
 
@@ -128,7 +133,7 @@ gulp.task('templates', function(){
  */
 
 gulp.task('sass', function(){
-  gulp.src(srcCSS + '*.scss')
+  gulp.src(dh.src.css + '*.scss')
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -142,7 +147,7 @@ gulp.task('sass', function(){
         browsers: dh.css.prefix
       }))
     .pipe(sourcemaps.write('./maps/'))
-    .pipe(gulp.dest(distCSS))
+    .pipe(gulp.dest(dh.dist.css))
     .pipe(notify({ message: 'Yo, Sass task complete.' }));
 });
 
@@ -152,55 +157,39 @@ gulp.task('sass', function(){
  * JS Task
  */
 
-var combineJSPlugins = [
-  srcBower  + 'jquery/dist/jquery.js',
-  srcBower  + 'bLazy/blazy.js',
-];
-
 gulp.task('plugins', function() {
-  gulp.src(combineJSPlugins)
-    .pipe(concat('plugins.min.js'))
+  gulp.src(dh.files.jsCombinePlugins)
+    .pipe(concat(dh.files.jsCombinePluginsFilename))
     .pipe(jshint())
     .pipe(uglify())
-    .pipe(gulp.dest(distJS))
+    .pipe(gulp.dest(dh.dist.js))
     .pipe(notify({ message: 'Yo, Plugins task complete.' }));
 });
 
-var combineJSScripts = [
-  srcJS     + 'scripts/bodyclass.js',
-  srcJS     + 'scripts/blazy.js',
-];
-
 gulp.task('scripts', function() {
-  gulp.src(combineJSScripts)
+  gulp.src(dh.files.jsCombineScripts)
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(concat('app.min.js'))
+    .pipe(concat(dh.files.jsCombineScriptsFilename))
     .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps/'))
-    .pipe(gulp.dest(distJS))
+    .pipe(gulp.dest(dh.dist.js))
     .pipe(notify({ message: 'Yo, Scripts task complete.' }));
 });
-
 
 
 /**
  * Copy Scripts
  */
 
-var copyThisScripts = [
-  // Example
-  // srcBower  + 'modernizr/modernizr.js',
-];
-
 gulp.task('copy:scripts', function() {
-  gulp.src(copyThisScripts)
+  gulp.src(dh.files.jsCopyThisPlugins)
     .pipe(uglify())
     .pipe(rename({ suffix: '.min'}))
-    .pipe(gulp.dest(distJS + 'vendor/'))
+    .pipe(gulp.dest(dh.dist.js + 'vendor/'))
     .pipe(notify({ message: 'Yo, Copyscripts task complete.' }));
 });
 
@@ -210,16 +199,9 @@ gulp.task('copy:scripts', function() {
  * Copy System Files
  */
 
-var copySystemFiles = [
-  // List the Files here
-  srcSystem  + '.htaccess',
-  srcSystem  + 'humans.txt',
-  srcSystem  + 'robots.txt',
-];
-
 gulp.task('copy:systemFiles', function() {
-  gulp.src(copySystemFiles)
-    .pipe(gulp.dest(distSystem))
+  gulp.src(dh.files.copySystemFiles)
+    .pipe(gulp.dest(dh.dist.base))
     .pipe(notify({ message: 'Yo, System files task complete.' }));
 });
 
@@ -229,70 +211,19 @@ gulp.task('copy:systemFiles', function() {
  * Modernizr
  */
 
-var modernizrTests = [
-  'cssanimations',
-  'csstransforms',
-  'csstransforms3d',
-  'csstransitions',
-  'backgroundblendmode',
-  'bgsizecover',
-  'preserve3d',
-  'flexbox',
-  'touch',
-  'svg',
-  'inlinesvg',
-  'respond',
-  'hsla',
-  'rgba',
-  'webgl'
-];
-
 gulp.task('modernizr', function() {
-  gulp.src([srcCSS + '**/*.scss', srcJS + '**/*.js'])
+  gulp.src([dh.src.css + '**/*.scss', dh.src.js + '**/*.js'])
     .pipe(modernizr({
-      crawl: false,
-      options : [
-        'setClasses',
-        'addTest',
-        'html5printshiv',
-        'testAllProps',
-        'fnBind'
-      ],
-      tests: modernizrTests
+      crawl:    false,
+      options:  dh.modernizr.options,
+      tests:    dh.modernizr.tests
     }))
     .pipe(uglify())
     .pipe(rename({ suffix: '-custom.min'}))
-    .pipe(gulp.dest(distJS + 'vendor/'))
+    .pipe(gulp.dest(dh.dist.js + 'vendor/'))
     .pipe(notify({ message: 'Yo, Modernizr task complete.' }));
 });
 
-
-
-/**
- * Cleaning Tasks
- */
-
-// Images
-gulp.task('clean:images', function(cb) {
-  del([
-    distImages
-  ], cb);
-});
-
-
-// Templates
-gulp.task('clean:templates', function(cb) {
-  del([
-    dist + '**/*.php'
-  ], cb);
-});
-
-// Fonts
-gulp.task('clean:fonts', function(cb) {
-  del([
-    distFonts
-  ], cb);
-});
 
 
 /**
@@ -300,14 +231,14 @@ gulp.task('clean:fonts', function(cb) {
  */
 
 gulp.task('init', [
-  'sass',
-  'scripts',
-  'plugins',
-  'templates',
   'copy:scripts',
-  'modernizr',
   'copy:systemFiles',
-  'copy:fonts',
+  'sass',
+  'plugins',
+  'scripts',
+  'templates',
+  'modernizr',
+  'fonts',
   'images'
 ]);
 
@@ -319,16 +250,16 @@ gulp.task('init', [
 
 gulp.task('watch', function() {
   // Watch Sass Files
-  gulp.watch([srcCSS + '**/*.scss'], ['sass']);
+  gulp.watch([dh.src.css + '**/*.scss'], ['sass']);
 
   // Watch JS Files
-  gulp.watch([srcJS + '**/*.js'], ['scripts']);
+  gulp.watch([dh.src.js + '**/*.js'], ['scripts']);
 
   // Watch Template Files
-  gulp.watch([srcTemplates + '**/*.php'], ['templates']);
+  gulp.watch([dh.src.templates + '**/*.{html,php,twig}'], ['templates']);
 
   // If an image is modified, run our images task to compress images
-  gulp.watch([srcImages + '**/*'], ['images']);
+  gulp.watch([dh.src.images + '**/*'], ['images']);
 
 });
 

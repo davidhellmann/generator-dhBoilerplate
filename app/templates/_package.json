@@ -19,6 +19,8 @@
     "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.3.0",
+    "imagemin-pngquant": "^4.2.0",
+    "imagemin-svgo": "^4.1.2",
     "gulp-jshint": "^1.11.2",
     "gulp-modernizr": "0.0.0",
     "gulp-notify": "^2.2.0",
