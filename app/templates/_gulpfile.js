@@ -2,7 +2,12 @@
  * Gulpfile
  */
 
-// Task Vars
+
+
+/**
+ * Task Vars
+ */
+
 var gulp            = require('gulp'),
     browserSync     = require('browser-sync').create(),
     plumber         = require('gulp-plumber'),
@@ -23,37 +28,6 @@ var gulp            = require('gulp'),
 
 
 
-// Paths
-var src             = '___src/',
-    srcAssets       = src + 'assets/',
-    srcJS           = srcAssets + 'js/',
-    srcCSS          = srcAssets + 'css/',
-    srcFonts        = srcAssets + 'fonts/',
-    srcImages       = srcAssets + 'images/',
-    srcTemplates    = src + 'templates/',
-    srcBower        = src + 'bower/',
-    srcSystem       = src + '_system/',
-    dist            = '___dist/',
-    distAssets      = dist + 'assets/',
-    distJS          = distAssets + 'js/',
-    distCSS         = distAssets + 'css/',
-    distFonts       = distAssets + 'fonts/',
-    distImages      = distAssets + 'images/',
-    distSystem      = '___dist/';
-
-
-// Options
-var autoprefixerOptions = ['last 2 version', '> 1%'];
-
-
-
-/*------------------------------------*\
-
-  #NOTHING TO CHANGE HERE DUDE
-
-\*------------------------------------*/
-
-
 /**
  * Error Handling
  */
@@ -69,23 +43,37 @@ var onError = function(err) {
  */
 
 gulp.task('browser-sync', function(){
+  // Build a condition when Proxy is active
+  var bsProxy, bsServer;
+
+  // Condition for Proxy
+  if(dh.browsersync.proxy) {
+    bsProxy = dh.browsersync.proxy;
+    bsServer = false;
+  } else {
+    bsProxy = false;
+    bsServer = { baseDir : dh.dist.browserSyncDir};
+  }
+
   browserSync.init([
     // Files to watch
-    dist        + '**/*.{html,php}',
-    distImages  + '**/*',
-    distCSS     + '**/*.css',
-    distJS      + '**/*.js'],
+    dh.dist.base    + '**/*.{html,php}',
+    dh.dist.images  + '**/*.{jpg,gif,png,svg}',
+    dh.dist.css     + '**/*.css',
+    dh.dist.js      + '**/*.js'],
   { options: {
       debugInfo: true,
       watchTask: true,
-      proxy: 'boilerplate.dev',
+      proxy: bsProxy,
       ghostMode: {
         clicks : true,
         scroll : true,
         links  : true,
         forms  : true
       }
-    }
+    },
+    server: bsServer,
+    open: dh.browsersync.openbrowser
   });
 });
 
@@ -151,7 +139,7 @@ gulp.task('sass', function(){
         precision: 10
       }))
       .pipe(autoprefixer({
-        browsers: autoprefixerOptions
+        browsers: dh.css.prefix
       }))
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distCSS))

@@ -60,10 +60,6 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         message: 'IE8 compatibility needed?',
         default: false
       },{
-        type:    'input',
-        name:    'projectProxy',
-        message: 'Enter the vhost for your Project'
-      }, {
         type:    'list',
         name:    'projectUsage',
         message: 'Which purpose does this Project have? Choose the appropriate option',
@@ -104,7 +100,6 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       this.projectName          = props.projectName;
       this.projectDescription   = props.projectDescription;
       this.projectIECompatible  = props.projectIECompatible;
-      this.projectProxy         = props.projectProxy;
       this.projectUsage         = props.projectUsage;
       this.projectVersion       = props.projectVersion;
       this.projectAuthor        = props.projectAuthor;
