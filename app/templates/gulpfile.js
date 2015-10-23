@@ -35,13 +35,13 @@ var src             = '___src/',
     dist            = '___dist/',
     <% } %>
 
-    //<% if (projectUsage == 'Use with WordPress') { %>
-    //
-    //<% } %>
-    //
-    //<% if (projectUsage == 'Use with Craft CMS') { %>
-    //
-    //<% } %>
+/*    <% if (projectUsage == 'Use with WordPress') { %>
+
+    <% } %>
+
+    <% if (projectUsage == 'Use with Craft CMS') { %>
+
+    <% } %>*/
 
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',

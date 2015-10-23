@@ -34,7 +34,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectName',
                 message: 'Name the project (name of the theme folder in Wordpress)',
-                default: 'mh-boilerplate'
+                default: 'dhBoilerplate'
             },{
                 type: 'input',
                 name: 'projectDescription',
@@ -94,6 +94,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             done();
         }.bind(this));
 
+    },
+
+    app: function() {
+        // move src folder
+        this.directory('templates/', 'templates/');
     },
 
 });
