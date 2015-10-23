@@ -102,8 +102,26 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
   app: function () {
     // move src folder
-    this.directory('*/**', 'templates/');
+    this.directory('___src/_system/',   '___src/_system/');
+    this.directory('___src/assets/',    '___src/assets/');
+    this.directory('___src/templates/', '___src/templates/');
   },
+
+  projectfiles: function () {
+    this.copy('_package.json', 'package.json');
+    this.copy('_config.json', 'config.json');
+    this.copy('_bower.json', 'bower.json');
+    this.copy('_gulpfile.js', 'gulpfile.js');
+    this.copy('_readme.md', 'readme.md');
+    this.copy('_gitignore', '.gitignore');
+    this.copy('bowerrc', '.bowerrc');
+    this.copy('editorconfig', '.editorconfig');
+    this.copy('jshintrc', '.jshintrc');
+  },
+
+  install: function () {
+    //this.installDependencies();
+  }
 
 });
 
