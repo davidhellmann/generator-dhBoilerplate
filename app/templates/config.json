@@ -5,19 +5,19 @@
   "projectType": "<%= projectUsage %>",
 
   "src": {
-    
+
   },
 
   "dist": {
-    <% i (projectUsage == 'Just Prototyping') { %>
+    <% if (projectUsage == 'Just Prototyping') { %>
 
     <% } %>
 
-    <% i (projectUsage == 'Use with WordPress') { %>
+    <% if (projectUsage == 'Use with WordPress') { %>
 
     <% } %>
 
-    <% i (projectUsage == 'Use with Craft CMS') { %>
+    <% if (projectUsage == 'Use with Craft CMS') { %>
 
     <% } %>
 

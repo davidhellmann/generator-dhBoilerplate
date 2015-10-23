@@ -28,12 +28,27 @@ var src             = '___src/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
     srcSystem       = src + '_system/',
+
     dist            = '___dist/',
+
+    <% if (projectUsage == 'Just Prototyping') { %>
+    dist            = '___dist/',
+    <% } %>
+
+    //<% if (projectUsage == 'Use with WordPress') { %>
+    //
+    //<% } %>
+    //
+    //<% if (projectUsage == 'Use with Craft CMS') { %>
+    //
+    //<% } %>
+
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
     distFonts       = distAssets + 'fonts/',
-    distImages      = distAssets + 'images/';
+    distImages      = distAssets + 'images/',
+    distSystem      = '___dist/';
 
 
 // Options
@@ -217,16 +232,15 @@ gulp.task('copy:scripts', function() {
  */
 
 var copySystemFiles = [
-  // Example
+  // List the Files here
   srcSystem  + '.htaccess',
   srcSystem  + 'humans.txt',
   srcSystem  + 'robots.txt',
-  srcSystem  + '404.html',
 ];
 
 gulp.task('copy:systemFiles', function() {
   gulp.src(copySystemFiles)
-    .pipe(gulp.dest(dist))
+    .pipe(gulp.dest(distSystem))
     .pipe(notify({ message: 'Yo, System files task complete.' }));
 });
 
