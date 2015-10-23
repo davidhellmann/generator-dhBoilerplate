@@ -30,7 +30,7 @@
 
 ## Install
 ```
-$ npm install -g generator-dhBoilerplate
+$ npm install -g generator-dhboilerplate
 ```
 
 
