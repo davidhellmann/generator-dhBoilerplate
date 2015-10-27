@@ -14,7 +14,7 @@
   "dependencies": {
     "bLazy": "blazy#~1.4.1",
     "gsap": "~1.18.0",
-    <% if (projectIECompatible == true ) { %>
+    <% if (projectjQuery == false ) { %>
     "jquery": "1.11.3",
     <% } else { %>
     "jquery": "~2.1.4",
