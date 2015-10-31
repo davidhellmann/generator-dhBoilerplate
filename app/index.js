@@ -78,6 +78,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
           "Use with Craft CMS"
         ]
       }, {
+        type: 'confirm',
+        name: 'projectjQuery',
+        message: 'Include new (2.1.4 => y) or Old (1.11.3 => n) jQuery Version?',
+        default: true
+      }, {
         type:    'input',
         name:    'projectVersion',
         message: 'Project Version Number',
@@ -109,6 +114,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       this.projectName          = props.projectName;
       this.projectDescription   = props.projectDescription;
       this.projectIECompatible  = props.projectIECompatible;
+      this.projectjQuery        = props.projectjQuery;
       this.projectUsage         = props.projectUsage;
       this.projectVersion       = props.projectVersion;
       this.projectAuthor        = props.projectAuthor;

@@ -14,7 +14,11 @@
   "dependencies": {
     "bLazy": "blazy#~1.4.1",
     "gsap": "~1.18.0",
+    <% if (projectjQuery == false ) { %>
+    "jquery": "1.11.3",
+    <% } else { %>
     "jquery": "~2.1.4",
+    <% } %>
     "PACE": "pace#~1.0.2",
     "slick-carousel": "slick.js#~1.5.8",
     "svg-injector": "~1.1.3"
