@@ -96,11 +96,11 @@ gulp.task('fonts', function() {
  */
 
 gulp.task('images', function() {
-  gulp.src(dh.src.images + '**/*')
+  gulp.src(dh.src.images + '**/*.{png,jpeg,jpg,gif,webp,svg}')
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(changed(dh.dist.images))
+    .pipe(changed(dh.src.images + '**/*.{png,jpeg,jpg,gif,webp,svg}'))
     .pipe(imagemin({
       optimizationLevel: dh.minify.images.optimizationLevel,
       use: [
