@@ -57,7 +57,7 @@ gulp.task('browser-sync', function(){
 
   browserSync.init([
     // Files to watch
-    dh.dist.base    + '**/*.{html,php,twig}',
+    dh.dist.markup    + '**/*.{html,php,twig}',
     dh.dist.images  + '**/*.{jpg,jpeg,webp,gif,png,svg}',
     dh.dist.css     + '**/*.css',
     dh.dist.js      + '**/*.js'],
