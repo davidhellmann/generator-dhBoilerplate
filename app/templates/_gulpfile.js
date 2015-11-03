@@ -119,7 +119,7 @@ gulp.task('images', function() {
  */
 
 gulp.task('templates', function(){
-  gulp.src(dh.src.templates + '**/*.php')
+  gulp.src(dh.src.templates + '**/*.{html,php,twig}')
     .pipe(changed(dh.dist.markup))
     .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
