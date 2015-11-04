@@ -10,6 +10,7 @@
 
 var gulp            = require('gulp'),
     browserSync     = require('browser-sync').create(),
+    runSequence     = require('run-sequence'),
     plumber         = require('gulp-plumber'),
     notify          = require('gulp-notify'),
     sass            = require('gulp-sass'),
@@ -84,7 +85,7 @@ gulp.task('browser-sync', function(){
  */
 
 gulp.task('fonts', function() {
-  gulp.src(dh.src.fonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
+  return gulp.src(dh.src.fonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
     .pipe(gulp.dest(dh.dist.fonts))
     .pipe(notify({ message: 'Yo, Fonts task complete.' }));
 });
@@ -96,7 +97,7 @@ gulp.task('fonts', function() {
  */
 
 gulp.task('images', function() {
-  gulp.src(dh.src.images + '**/*.{png,jpeg,jpg,gif,webp,svg}')
+  return gulp.src(dh.src.images + '**/*.{png,jpeg,jpg,gif,webp,svg}')
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -119,7 +120,7 @@ gulp.task('images', function() {
  */
 
 gulp.task('templates', function(){
-  gulp.src(dh.src.templates + '**/*.{html,php,twig}')
+  return gulp.src(dh.src.templates + '**/*.{html,php,twig}')
     .pipe(changed(dh.dist.markup))
     .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
@@ -132,7 +133,7 @@ gulp.task('templates', function(){
  */
 
 gulp.task('sass', function(){
-  gulp.src(dh.src.css + '*.scss')
+  return gulp.src(dh.src.css + '*.scss')
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -157,7 +158,7 @@ gulp.task('sass', function(){
  */
 
 gulp.task('plugins', function() {
-  gulp.src(dh.files.jsCombinePlugins)
+  return gulp.src(dh.files.jsCombinePlugins)
     .pipe(concat(dh.files.jsCombinePluginsFilename))
     .pipe(jshint())
     .pipe(uglify())
@@ -166,7 +167,7 @@ gulp.task('plugins', function() {
 });
 
 gulp.task('scripts', function() {
-  gulp.src(dh.files.jsCombineScripts)
+  return gulp.src(dh.files.jsCombineScripts)
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -185,7 +186,7 @@ gulp.task('scripts', function() {
  */
 
 gulp.task('copy:scripts', function() {
-  gulp.src(dh.files.jsCopyThisPlugins)
+  return gulp.src(dh.files.jsCopyThisPlugins)
     .pipe(uglify())
     .pipe(rename({ suffix: '.min'}))
     .pipe(gulp.dest(dh.dist.js + 'vendor/'))
@@ -199,7 +200,7 @@ gulp.task('copy:scripts', function() {
  */
 
 gulp.task('copy:systemFiles', function() {
-  gulp.src(dh.files.copySystemFiles)
+  return gulp.src(dh.files.copySystemFiles)
     .pipe(gulp.dest(dh.dist.base))
     .pipe(notify({ message: 'Yo, System files task complete.' }));
 });
@@ -211,7 +212,7 @@ gulp.task('copy:systemFiles', function() {
  */
 
 gulp.task('modernizr', function() {
-  gulp.src([dh.src.css + '**/*.scss', dh.src.js + '**/*.js'])
+  return gulp.src([dh.src.css + '**/*.scss', dh.src.js + '**/*.js'])
     .pipe(modernizr({
       crawl:    false,
       options:  dh.modernizr.options,
@@ -269,3 +270,51 @@ gulp.task('watch', function() {
  */
 
 gulp.task('default', ['browser-sync', 'watch']);
+
+
+/**
+ * Cleaning Tasks
+ */
+
+// Images
+gulp.task('clean:images', function() {
+  return del([
+    dh.dist.images  + '**/*.{jpg,jpeg,webp,gif,png,svg}'
+  ]);
+});
+
+
+// Templates
+gulp.task('clean:templates', function() {
+  return del([
+    dh.dist.markup + '**/*.{html,php,twig}'
+  ]);
+});
+
+
+// Fonts
+gulp.task('clean:fonts', function() {
+  return del([
+    dh.dist.fonts + '**/*.{ttf,woff,eof,svg,eot,woff2}'
+  ]);
+});
+
+
+
+/**
+ * Rebuild Task
+ */
+
+gulp.task('rebuild', function(callback) {
+  runSequence(
+    [
+      'clean:images',
+      'clean:templates',
+      'clean:fonts'
+    ],
+    [
+      'images',
+      'templates',
+      'fonts'
+    ], callback);
+});
