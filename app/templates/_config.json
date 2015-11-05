@@ -5,7 +5,13 @@
     "css":        "___src/assets/css/",
     "fonts":      "___src/assets/fonts/",
     "images":     "___src/assets/images/",
+    <% if (projectUsage == 'Just Prototyping' ) { %>
+    "templates":  "___src/twig/",
+    <% } if (projectUsage == 'Use with WordPress' ) { %>
     "templates":  "___src/templates/",
+    <% } if (projectUsage == 'Use with Craft CMS' ) { %>
+    "templates":  "___src/twig/",
+    <% } %>
     "bower":      "___src/bower/",
     "system":     "___src/_system/"
   },

@@ -11,6 +11,8 @@
 var gulp            = require('gulp'),
     browserSync     = require('browser-sync').create(),
     runSequence     = require('run-sequence'),
+    twig            = require('gulp-twig'),
+    prettify        = require('gulp-prettify'),
     plumber         = require('gulp-plumber'),
     notify          = require('gulp-notify'),
     sass            = require('gulp-sass'),
@@ -119,13 +121,35 @@ gulp.task('images', function() {
  * Move Templates Files
  */
 
+
 gulp.task('templates', function(){
-  return gulp.src(dh.src.templates + '**/*.{html,php,twig}')
+
+  <% if (projectUsage == 'Just Prototyping' || projectUsage == 'Use with Craft CMS') { %>
+
+  return dh.src.templates + '**/*.twig')
+    .pipe(plumber())
+    .pipe(twig())
+    .on('error', notify.onError(function (error) {
+      return 'Twig Compile Error!!';
+    }))
+    .on('error', function(err) {
+      console.log(err.message);
+    })
+    .pipe(prettify({
+      'indent_size': 2
+    }))
+    .pipe(gulp.dest(dh.dist.markup))
+
+  <% } if (projectUsage == 'Use with WordPress' ) { %>
+
+  return dh.src.templates + '**/*.{html,php,twig}')return gulp.src(
+
     .pipe(changed(dh.dist.markup))
     .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
-});
 
+  <% } %>
+});
 
 
 /**
