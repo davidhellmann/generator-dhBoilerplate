@@ -131,6 +131,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     this.directory('___src/_system/',   '___src/_system/');
     this.directory('___src/assets/',    '___src/assets/');
     this.directory('___src/templates/', '___src/templates/');
+    this.directory('___src/twig/',      '___src/twig/');
   },
 
   projectfiles: function () {
