@@ -143,7 +143,6 @@ gulp.task('templates', function(){
   <% } if (projectUsage == 'Use with WordPress' ) { %>
 
   return dh.src.templates + '**/*.{html,php,twig}')return gulp.src(
-
     .pipe(changed(dh.dist.markup))
     .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
