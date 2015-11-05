@@ -125,7 +125,7 @@ gulp.task('images', function() {
 gulp.task('templates', function(){
 
   <% if (projectUsage == 'Just Prototyping' || projectUsage == 'Use with Craft CMS') { %>
-  return gulp.src(dh.src.templates + '**/*.twig')
+  return gulp.src(dh.src.templates + '*.twig')
     .pipe(plumber())
     .pipe(twig())
     .on('error', notify.onError(function (error) {
