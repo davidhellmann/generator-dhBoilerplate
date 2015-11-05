@@ -125,8 +125,7 @@ gulp.task('images', function() {
 gulp.task('templates', function(){
 
   <% if (projectUsage == 'Just Prototyping' || projectUsage == 'Use with Craft CMS') { %>
-
-  return dh.src.templates + '**/*.twig')
+  return gulp.src(dh.src.templates + '**/*.twig')
     .pipe(plumber())
     .pipe(twig())
     .on('error', notify.onError(function (error) {
@@ -141,8 +140,7 @@ gulp.task('templates', function(){
     .pipe(gulp.dest(dh.dist.markup))
 
   <% } if (projectUsage == 'Use with WordPress' ) { %>
-
-  return dh.src.templates + '**/*.{html,php,twig}')return gulp.src(
+  return gulp.src(dh.src.templates + '**/*.{html,php,twig}')
     .pipe(changed(dh.dist.markup))
     .pipe(gulp.dest(dh.dist.markup))
     .pipe(notify({ message: 'Yo, Templates task complete.' }));
