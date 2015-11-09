@@ -103,7 +103,7 @@ gulp.task('images', function() {
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(changed(dh.dist.images + '**/*.{png,jpeg,jpg,gif,webp,svg}'))
+    .pipe(changed(dh.dist.images))
     .pipe(imagemin({
       optimizationLevel: dh.minify.images.optimizationLevel,
       use: [
