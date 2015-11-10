@@ -155,18 +155,17 @@ gulp.task('templates', function(){
 
 gulp.task('sass', function(){
   return gulp.src(dh.src.css + '*.scss')
-    .pipe(plumber({
-      errorHandler: onError
-    }))
-    .pipe(rename({ suffix: '.min'}))
     .pipe(sourcemaps.init())
-      .pipe(sass({
-        outputStyle: 'compressed',
-        precision: 10
-      }))
-      .pipe(autoprefixer({
-        browsers: dh.css.prefix
-      }))
+    .pipe(rename({ suffix: '.min'}))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      precision: 10
+    })
+      .on('error', sass.logError)
+      .on('error', notify.onError('Sass Compile Error!')))
+    .pipe(autoprefixer({
+    browsers: dh.css.prefix
+    }))
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(dh.dist.css))
     .pipe(notify({ message: 'Yo, Sass task complete.' }));
