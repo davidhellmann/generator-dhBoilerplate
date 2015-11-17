@@ -27,7 +27,7 @@
     "fonts":      "___dist/assets/fonts/",
     "images":     "___dist/assets/images/"
     <% } if (projectUsage == 'Use with WordPress' ) { %>
-    "base":       "___dist/wp-content/themes/<%= projectName %>/",
+    "base":       "___dist/",
     "markup":     "___dist/wp-content/themes/<%= projectName %>/",
     "browserSyncDir": "___dist/wp-content/themes/<%= projectName %>/",
     "assets":     "___dist/wp-content/themes/<%= projectName %>/assets/",
