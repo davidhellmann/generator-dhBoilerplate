@@ -67,13 +67,23 @@
   "files": {
     "jsCombinePlugins": [
       "___src/bower/jquery/dist/jquery.js",
-      "___src/bower/bLazy/blazy.js"
+      "___src/bower/picturefill/dist/picturefill.js",
+      "___src/bower/lazysizes/lazysizes.js",
+      "___src/bower/slick-carousel/slick/slick.js",
+      "___src/bower/waypoints/lib/jquery.waypoints.js",
+      "___src/bower/matchHeight/jquery.matchHeight.js",
+      "___src/bower/svg-injector/svg-injector.js",
+      "___src/bower/js-cookie/src/js.cookie.js",
+      "___src/bower/magnific-popup/dist/jquery.magnific-popup.js"
     ],
     "jsCombinePluginsFilename": "plugins.min.js",
     "jsCombineScripts": [
       "___src/assets/js/scripts/example.js",
       "___src/assets/js/scripts/bodyclass.js",
-      "___src/assets/js/scripts/blazy.js"
+      "___src/assets/js/scripts/lazyloading.js",
+      "___src/assets/js/scripts/slick.js",
+      "___src/assets/js/scripts/scrollto.js",
+      "___src/assets/js/scripts/waypoints.js"
     ],
     "jsCombineScriptsFilename": "app.min.js",
     "jsCopyThisPlugins": [
