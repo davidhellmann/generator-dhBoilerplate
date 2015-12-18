@@ -103,7 +103,7 @@
       "bgsizecover",
       "preserve3d",
       "flexbox",
-      "touch",
+      "touchevents",
       "svg",
       "inlinesvg",
       "respond",
