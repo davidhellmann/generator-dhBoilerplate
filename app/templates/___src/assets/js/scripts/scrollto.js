@@ -19,15 +19,19 @@
 
         setTimeout(function(){
           _viewport.animate({
-            scrollTop: _target.offset().top
-          }, 250);
+            scrollTop: _target.offset().top - dh_headerHeight()
+          }, 250, function () {
+            window.location.hash = _target.selector;
+          });
         }, _delay);
 
       } else {
 
         _viewport.animate({
-          scrollTop: _target.offset().top
-        }, 250);
+          scrollTop: _target.offset().top - dh_headerHeight()
+        }, 250, function () {
+          window.location.hash = _target.selector;
+        });
 
       }
     }
@@ -36,7 +40,6 @@
   _viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup touchmove", function(){
     _viewport.stop();
   });
-
 }(jQuery));
 
 
