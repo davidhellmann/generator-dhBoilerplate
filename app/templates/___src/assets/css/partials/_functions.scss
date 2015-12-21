@@ -74,3 +74,13 @@
 @function vr($key) {
   @return (($base_font_size * $base_line_height) * $key) + 0px;
 }
+
+
+
+/**
+ * Line Height
+ */
+
+@function lh($key) {
+  @return ($base_line_height * $key);
+}

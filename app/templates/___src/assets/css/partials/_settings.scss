@@ -68,11 +68,11 @@ $fonts: (
 );
 
 $fontSizes: (
-  's':                  11px, // 18 / 1.6
+  's':                  12px, // 18 / 1.5
   'base':               18px,
-  'm':                  29px, // 18 * 1.6
-  'l':                  46px, // 29 * 1.6
-  'xl':                 74px, // 46 * 1.6
+  'm':                  27px, // 18 * 1.5
+  'l':                  40px, // 27 * 1.5
+  'xl':                 60px, // 40 * 1.5
 );
 
 $base_font_family:      map-get($fonts, 'basic');

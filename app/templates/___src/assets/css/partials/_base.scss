@@ -63,36 +63,31 @@ h6, .h6 {
   font-weight: 700;
   margin: vr(2) 0 vr(1) 0;
   word-wrap: break-word;
+  line-height: lh(.7);
 }
 
 h1, .h1 {
   font-size: fontSize('xl') * 0.7;
-  line-height: vr(3) * 0.7;
   font-weight: 900;
 
   @include breakpoint('s') {
     font-size: fontSize('xl');
-    line-height: vr(3);
   }
 }
 
 h2, .h2 {
   font-size: fontSize('l') * 0.7;
-  line-height: vr(2) * 0.7;
 
   @include breakpoint('s') {
     font-size: fontSize('l');
-    line-height: vr(2);
   }
 }
 
 h3, .h3 {
   font-size: fontSize('m') * 0.7;
-  line-height: vr(1) * 0.7;
 
   @include breakpoint('s') {
     font-size: fontSize('m');
-    line-height: vr(1);
   }
 }
 
@@ -130,13 +125,13 @@ blockquote {
   p {
     font-family: fontFamily('headline');
     font-size: fontSize('l') * 0.7;
-    line-height: vr(2) * 0.7;
+    line-height: lh(.7);
     font-weight: 900;
     font-style: italic;
 
     @include breakpoint('s') {
       font-size: fontSize('l');
-      line-height: vr(2);
+      line-height: lh(1);
     }
   }
 
