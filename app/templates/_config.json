@@ -75,7 +75,8 @@
       "___src/bower/svg-injector/svg-injector.js",
       "___src/bower/js-cookie/src/js.cookie.js",
       "___src/bower/magnific-popup/dist/jquery.magnific-popup.js",
-      "___src/bower/cq-prolyfill/cq-prolyfill.js"
+      "___src/bower/css-element-queries/src/ResizeSensor.js",
+      "___src/bower/css-element-queries/src/ElementQueries.js"
     ],
     "jsCombinePluginsFilename": "plugins.min.js",
     "jsCombineScripts": [
