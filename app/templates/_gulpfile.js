@@ -124,7 +124,7 @@ gulp.task('images', function() {
 
 gulp.task('templates', function(){
 
-  <% if (projectUsage == 'Just Prototyping' || projectUsage == 'Use with Craft CMS') { %>
+  <% if (projectUsage == 'Just Prototyping' ) { %>
   return gulp.src(dh.src.templates + '**/*.{html,twig}')
     .pipe(plumber())
     .pipe(twig())
@@ -138,6 +138,15 @@ gulp.task('templates', function(){
       'indent_size': 2
     }))
     .pipe(gulp.dest(dh.dist.markup))
+
+
+  <% } if (projectUsage == 'Use with Craft CMS') { %>
+  return gulp.src(dh.src.templates + '**/*.{html,twig}')
+    .pipe(changed(dh.dist.markup))
+    .pipe(gulp.dest(dh.dist.markup))
+    .pipe(notify({ message: 'Yo, Templates task complete.' }));
+
+  <% } %>
 
   <% } if (projectUsage == 'Use with WordPress' ) { %>
   return gulp.src(dh.src.templates + '**/*.{html,php,twig,png,css,md}')
