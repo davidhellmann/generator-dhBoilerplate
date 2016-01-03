@@ -4,6 +4,10 @@
 
 \*------------------------------------*/
 
+/*
+  pageWrapper
+*/
+
 .pageWrapper {
   padding: vr(2) 20px;
   max-width: 1200px;
@@ -17,4 +21,14 @@
 
 .is_ready .pageWrapper {
   opacity: 1;
+}
+
+
+
+/*
+  page Content
+*/
+
+.pageContent {
+
 }
