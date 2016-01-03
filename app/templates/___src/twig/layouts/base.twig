@@ -61,20 +61,26 @@
 </head>
 <body>
 
-<!-- WebsiteWrapper -->
-<div class="websiteWrapper">
+<!-- pageWrapper -->
+<div class="pageWrapper">
 
+  <header class="pageHeader">
   {% block pageHeader %}
     Header
   {% endblock %}
+  </header>
 
+  <div class="pageContent">
   {% block pageContent %}
     Content
   {% endblock %}
+  </div>
 
+  <footer class="pageFooter">
   {% block pageFooter %}
     Footer
   {% endblock %}
+  </footer>
 
 </div>
 

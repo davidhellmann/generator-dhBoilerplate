@@ -195,7 +195,7 @@ abbr {
     transition: all .25s;
   }
 
-  &:hover {
+  .no-touchevents &:hover {
     &::after {
       width: 100%;
     }
@@ -212,11 +212,11 @@ a {
   color: color('red');
   transition: all .25s;
 
-  &:hover {
+  .no-touchevents &:hover {
     color: color('black');
   }
 
-  &:hover,
+  .no-touchevents &:hover,
   &:focus {
     outline: 0;
   }
@@ -245,7 +245,7 @@ figure {
     }
 
     &.b-lazy {
-      background-color: #ddd;
+      background-color: darken(color('white'), 10%);
       background-size: 100% 100%;
     }
 
