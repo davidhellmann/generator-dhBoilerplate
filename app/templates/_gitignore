@@ -48,7 +48,7 @@ ___dist/wp-content/*
 <% } %>
 
 <% if (projectUsage == 'Use with Craft CMS' ) { %>
-___dist/craft/app
-___dist/craft/storage/*
-!___dist/craft/storage/logo
+___dist/config/config.local.php
+___dist/config/license.key
+___dist/craft
 <% } %>
