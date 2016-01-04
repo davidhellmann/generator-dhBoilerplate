@@ -37,7 +37,7 @@
     "images":     "___dist/wp-content/themes/<%= projectName %>/assets/images/"
     <% } if (projectUsage == 'Use with Craft CMS' ) { %>
     "base":       "___dist/public/",
-    "markup":     "___dist/craft/templates/",
+    "markup":     "___dist/templates/",
     "browserSyncDir": "___dist/public/",
     "assets":     "___dist/public/assets/",
     "js":         "___dist/public/assets/js/",
