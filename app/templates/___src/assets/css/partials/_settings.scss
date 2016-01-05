@@ -1,6 +1,7 @@
-/**
- * Grid
- */
+/* --------------------------------------------------
+
+   Grid
+   -------------------------------------------------- */
 
 $column__width:         120px;
 $gutter__width:         20px;
@@ -8,9 +9,10 @@ $columns:               12;
 
 
 
-/**
- * Colors
- */
+/* --------------------------------------------------
+
+   Colors
+   -------------------------------------------------- */
 
 $colors: (
   // Basic Colors
@@ -33,9 +35,10 @@ $_blue:                 map-get($colors, 'blue');
 
 
 
-/**
- * Box Shadow
- */
+/* --------------------------------------------------
+
+   Box Shadows
+   -------------------------------------------------- */
 
 $boxshadows: (
   'layer--01':          (0 0 10px 0 rgba(0,0,0,.15)),
@@ -43,9 +46,10 @@ $boxshadows: (
 
 
 
-/**
- * Borders
- */
+/* --------------------------------------------------
+
+   Borders
+   -------------------------------------------------- */
 
 $borders: (
 
@@ -58,9 +62,10 @@ $borders: (
 
 
 
-/**
- * Font Stuff
- */
+/* --------------------------------------------------
+
+   Font Stuff
+   -------------------------------------------------- */
 
 $fonts: (
   'basic':              ('Vollkorn', Georgia, "Times New Roman", Times, serif),
@@ -82,11 +87,16 @@ $base_line_height:      1.5;
 
 
 
-/**
- * Horizontal Breakpoints
- * Add more if you need
- */
+/* --------------------------------------------------
 
+   Horizontal Breakpoints
+   Add more if you need
+   -------------------------------------------------- */
+
+// min or max
+$media-direction:       min;
+
+// Breakpoints
 $breakpoints: (
   'default':            '',
   'xs':                 480px,
@@ -98,29 +108,18 @@ $breakpoints: (
 
 
 
-/**
- * Vertical Breakpoints
- * Add more if you need
- */
+/* --------------------------------------------------
 
+   Vertical Breakpoints
+   Add more if you need
+   -------------------------------------------------- */
+
+// min or max
+$media-direction-v:     max;
+
+// Breakpoints
 $breakpoints-v: (
   's':                  600px,
   'm':                  800px,
   'l':                  1000px,
 );
-
-
-
-/**
- * Horizontal
- */
-
-$media-direction:       min;
-
-
-
-/**
- * Vertical
- */
-
-$media-direction-v:      max;

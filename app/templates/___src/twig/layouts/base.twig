@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block pageTitle %}Boilerplate{% endblock %}</title>
+  <title>{% block appTitle %}Boilerplate{% endblock %}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
@@ -61,23 +61,23 @@
 </head>
 <body>
 
-<!-- pageWrapper -->
-<div class="pageWrapper">
+<!-- appWrapper -->
+<div class="appWrapper">
 
-  <header class="pageHeader">
-  {% block pageHeader %}
+  <header class="appHeader">
+  {% block appHeader %}
     Header
   {% endblock %}
   </header>
 
-  <div class="pageContent">
-  {% block pageContent %}
+  <div class="appContent">
+  {% block appContent %}
     Content
   {% endblock %}
   </div>
 
-  <footer class="pageFooter">
-  {% block pageFooter %}
+  <footer class="appFooter">
+  {% block appFooter %}
     Footer
   {% endblock %}
   </footer>

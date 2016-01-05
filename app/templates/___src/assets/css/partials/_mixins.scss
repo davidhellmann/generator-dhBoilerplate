@@ -1,15 +1,17 @@
-/**
- * DO NOT EDIT!
- * Calc the max-width
- */
+/* --------------------------------------------------
+
+   DO NOT EDIT
+   Calc max-width
+   -------------------------------------------------- */
 
 $max__width: $column__width*$columns;
 
 
 
-/**
- * Gutter
- */
+/* --------------------------------------------------
+
+   Gutter
+   -------------------------------------------------- */
 
 @mixin gutter() {
   padding-left: $gutter__width;
@@ -18,9 +20,11 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Row
- */
+/* --------------------------------------------------
+
+   Row
+   -------------------------------------------------- */
+
 
 @mixin row() {
   width: 100%;
@@ -30,10 +34,12 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Cols
- * Optional Setting to remove default gutter @include col(x, no)
- */
+/* --------------------------------------------------
+
+   Cols
+   Optional Setting to remove default gutter 
+   @include col(x, no)
+   -------------------------------------------------- */
 
 @mixin col($i, $gutter: yes, $fw: no) {
   @if $i <= $columns {
@@ -69,9 +75,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Push the container by x cols
- */
+/* --------------------------------------------------
+
+   Push the container by x cols
+   -------------------------------------------------- */
 
 @mixin push($i) {
   @if $i > 0 {
@@ -84,9 +91,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Pull the container by x cols
- */
+/* --------------------------------------------------
+
+   Pull the container by x cols
+   -------------------------------------------------- */
 
 @mixin pull($i) {
   @if $i > 0 {
@@ -99,9 +107,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * ltr / rtl support
- */
+/* --------------------------------------------------
+
+   ltr / rtl support
+   -------------------------------------------------- */
 
 @mixin ltr() {
   float: left;
@@ -113,9 +122,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Center Container
- */
+/* --------------------------------------------------
+
+   Center Container
+   -------------------------------------------------- */
 
 @mixin center() {
   margin-left: auto;
@@ -127,9 +137,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Breakpoints
- */
+/* --------------------------------------------------
+
+   Breakpoints
+   -------------------------------------------------- */
 
 @mixin breakpoint($breakpoint,$direction: $media-direction) {
 
@@ -167,9 +178,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Clearfix
- */
+/* --------------------------------------------------
+
+   Clearfix
+   -------------------------------------------------- */
 
 @mixin clearfix() {
   &:before,
@@ -184,18 +196,20 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Filter
- * https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
- * grayscale      ex: filter: grayscale(100%);
- * sepia          ex: filter: sepia(100%);
- * saturate       ex: filter: saturate(0%);
- * hue-rotate     ex: filter: hue-rotate(45deg);
- * invert         ex: filter: invert(100%);
- * brightness     ex: filter: brightness(15%);
- * contrast       ex: filter: contrast(200%);
- * blur           ex: filter: blur(2px);
- */
+/* --------------------------------------------------
+
+   Filter
+   https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
+   grayscale      ex: filter: grayscale(100%);
+   sepia          ex: filter: sepia(100%);
+   saturate       ex: filter: saturate(0%);
+   hue-rotate     ex: filter: hue-rotate(45deg);
+   invert         ex: filter: invert(100%);
+   brightness     ex: filter: brightness(15%);
+   contrast       ex: filter: contrast(200%);
+   blur           ex: filter: blur(2px);
+   -------------------------------------------------- */
+
 
 @mixin filter($filter-type,$filter-amount) {
   filter: $filter-type+unquote('(#{$filter-amount})');
@@ -203,9 +217,10 @@ $max__width: $column__width*$columns;
 
 
 
-/**
- * Vertical Align
- */
+/* --------------------------------------------------
+
+   Vertical Align
+   -------------------------------------------------- */
 
 @mixin valign {
   position: relative;

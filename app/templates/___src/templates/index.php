@@ -60,13 +60,13 @@
 </head>
 <body>
 
-  <!-- pageWrapper -->
-  <div class="pageWrapper">
+  <!-- appWrapper -->
+  <div class="appWrapper">
 
     <?php include('modules/base/header.php'); ?>
 
-    <!-- pageContent -->
-    <div class="pageContent">
+    <!-- appContent -->
+    <div class="appContent">
       <h1>Kitsch retro ipsum<br>dolores internationale</h1>
       <h2>Typewriter delectus cred<br>Lorem ipsum asdsadasd</h2>
 

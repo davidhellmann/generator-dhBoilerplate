@@ -1,4 +1,4 @@
- <!-- websiteFooter -->
-<footer class="pageFooter">
-  This is the Website Footer
+<!-- appFooter -->
+<footer class="appFooter">
+  This is the App Footer
 </footer>

@@ -1,4 +1,4 @@
-<!-- websiteHeader -->
-<header class="pageHeader">
+<!-- appHeader -->
+<header class="appHeader">
   This is the Website Header
 </header>

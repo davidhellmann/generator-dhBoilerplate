@@ -1,8 +1,7 @@
-/*------------------------------------*\
+/* --------------------------------------------------
 
-  #Buttons
-
-\*------------------------------------*/
+   Buttons
+   -------------------------------------------------- */
 
 .button {
   background: color('red');
@@ -17,7 +16,7 @@
   text-align: center;
   transition: all .5s;
 
-  .no-touchevents &:hover {
+  &:hover {
     color: color('white');
     background: darken(color('red'), 5%);
   }
@@ -26,7 +25,7 @@
 .button.button--blue {
   background: color('blue');
 
-  .no-touchevents &:hover {
+  &:hover {
     color: color('white');
     background: darken(color('blue'), 5%);
   }
