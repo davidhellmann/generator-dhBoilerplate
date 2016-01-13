@@ -200,7 +200,7 @@ abbr {
     transition: all .25s;
   }
 
-  &:hover {
+  .no-touchevents &:hover {
     &::after {
       width: 100%;
     }
@@ -218,11 +218,11 @@ a {
   color: color('red');
   transition: all .25s;
 
-  &:hover {
+  .no-touchevents &:hover {
     color: color('black');
   }
 
-  &:hover,
+  .no-touchevents &:hover,
   &:focus {
     outline: 0;
   }
@@ -235,61 +235,24 @@ a {
    Figures (Images)
    -------------------------------------------------- */
 
-figure {
-  margin: vr(1) 0 vr(2) 0;
-  @include clearfix();
-
-  .imageWrapper {
-    overflow: hidden;
-
-    @include breakpoint('m') {
-      @include col(9, no);
-    }
-
-    img {
-      width: 100%;
-    }
-
-    &.b-lazy {
-      background-color: #ddd;
-      background-size: 100% 100%;
-    }
-
-    .blurredImage {
-      opacity: 1;
-      transition: all 1s;
-    }
-
-    &.b-loaded {
-      .blurredImage {
-        opacity: 0;
-      }
-    }
-  }
-
-  &.noCaption .imageWrapper {
-    @include col(12, no);
-  }
-}
-
-figcaption {
-  font-size: 15px;
-  padding: 10px 0 0 0;
-  color: lighten(color('black'), 50%);
-
-  @include breakpoint('m') {
-    @include col(2.5, no);
-    padding: vr(1) 0 0 0;
-    float: right;
-    text-align: left;
-    border-top: 2px solid #ccc;
-  }
-}
-
 img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+figure {
+  margin: vr(1) 0 vr(2) 0;
+
+  img {
+    width: 100%;
+  }
+}
+
+figcaption {
+  text-align: center;
+  padding: vr(1) 0 0 0;
+  font-size: fontSize('s');
 }
 
 
