@@ -79,7 +79,7 @@
       "node_modules/skrollr/src/skrollr.js",
       "node_modules/slick-carousel/slick/slick.js",
       "node_modules/svg-injector/svg-injector.js",
-      "node_modules/waypoints/lib/jquery.waypoints.js",
+      "node_modules/waypoints/lib/jquery.waypoints.js"
     ],
     "jsCombinePluginsFilename": "plugins.min.js",
     "jsCombineScripts": [
