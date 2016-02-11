@@ -66,17 +66,20 @@
 
   "files": {
     "jsCombinePlugins": [
-      "___src/bower/jquery/dist/jquery.js",
-      "___src/bower/picturefill/dist/picturefill.js",
-      "___src/bower/lazysizes/lazysizes.js",
-      "___src/bower/slick-carousel/slick/slick.js",
-      "___src/bower/waypoints/lib/jquery.waypoints.js",
-      "___src/bower/matchHeight/jquery.matchHeight.js",
-      "___src/bower/svg-injector/svg-injector.js",
-      "___src/bower/js-cookie/src/js.cookie.js",
-      "___src/bower/magnific-popup/dist/jquery.magnific-popup.js",
-      "___src/bower/css-element-queries/src/ResizeSensor.js",
-      "___src/bower/css-element-queries/src/ElementQueries.js"
+      "node_modules/css-element-queries/src/ResizeSensor.js",
+      "node_modules/css-element-queries/src/ElementQueries.js",
+      "node_modules/gsap/src/uncompressed/TweenMax.js",
+      "node_modules/jquery/dist/jquery.js",
+      "node_modules/jquery-match-height/dist/jquery.matchHeight.js",
+      "node_modules/js-cookie/src/js.cookie.js",
+      "node_modules/lazysizes/lazysizes.js",
+      "node_modules/magnific-popup/dist/jquery.magnific-popup.js",
+      "node_modules/pace-progress/pace.js",
+      "node_modules/picturefill/dist/picturefill.js",
+      "node_modules/skrollr/src/skrollr.js",
+      "node_modules/slick-carousel/slick/slick.js",
+      "node_modules/svg-injector/svg-injector.js",
+      "node_modules/waypoints/lib/jquery.waypoints.js",
     ],
     "jsCombinePluginsFilename": "plugins.min.js",
     "jsCombineScripts": [

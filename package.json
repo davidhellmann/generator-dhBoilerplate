@@ -1,6 +1,6 @@
 {
   "name": "generator-dhboilerplate",
-  "version": "1.0.34",
+  "version": "1.1.0",
   "description": "Boilerplate made by David Hellmann",
   "license": "MIT",
   "main": "app/index.js",
@@ -24,8 +24,7 @@
     "boilerplate",
     "gulp",
     "yeoman",
-    "sass",
-    "bower"
+    "sass"
   ],
   "dependencies": {
     "chalk": "^0.5.1",
