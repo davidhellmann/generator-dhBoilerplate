@@ -73,26 +73,29 @@
       <p><abbr title="This is a Title…">Bushwick Schlitz</abbr>. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
 
       <figure class="noCaption">
-        <div class="imageWrapper b-lazy" data-src="assets/images/_dummy/placeholder_16_10_hires.jpg">
-          <img class="blurredImage" src="assets/images/_dummy/placeholder_16_10_lowres.jpg" alt="Image Alt Text">
-        </div>
+        <img class="lazyload"
+          data-src="assets/images/_dummy/placeholder_16_10_hires.jpg"
+          src="assets/images/_dummy/placeholder_16_10_lowres.jpg"
+          alt="Image Alt Text">
       </figure>
 
       <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci meggings.</p>
 
       <figure>
-        <div class="imageWrapper b-lazy" data-src="assets/images/_dummy/placeholder_10_16_hires.jpg">
-          <img class="blurredImage" src="assets/images/_dummy/placeholder_10_16_lowres.jpg" alt="Image Alt Text">
-        </div>
+        <img class="lazyload"
+          data-src="assets/images/_dummy/placeholder_10_16_hires.jpg"
+          src="assets/images/_dummy/placeholder_10_16_lowres.jpg"
+          alt="Image Alt Text">
+
         <figcaption>Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony.</figcaption>
       </figure>
 
       <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats <span class="uppercase">McSweeney's minim PBR vegan Tumblr</span> irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
-      <pre>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus quis lectus metus, at posuere neque.
-        Sed pharetra nibh eget orci convallis at posuere
-      </pre>
+  <pre>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus quis lectus metus, at posuere neque.
+      Sed pharetra nibh eget orci convallis at posuere
+    </pre>
 
       <h3>Truffaut disrupt sartorial deserunt</h3>
 
@@ -110,7 +113,7 @@
       <blockquote>
         <p>Cosby sweater plaid shabby chic kitsch pour-over ex. Try-hard fanny pack mumblecore cornhole cray scenester. Assumenda narwhal occupy, Blue Bottle nihil culpa fingerstache. Meggings kogi vinyl meh, food truck banh mi Etsy magna 90's duis typewriter banjo organic leggings Vice.</p>
         <footer>
-        — <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a> CEO Facebook</cite>
+          — <cite><a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Bruce Lawson</a> CEO Facebook</cite>
         </footer>
       </blockquote>
 
@@ -133,9 +136,11 @@
       </p>
 
       <figure>
-        <div class="imageWrapper b-lazy" data-src="assets/images/_dummy/placeholder_16_10_hires.jpg">
-          <img class="blurredImage" src="assets/images/_dummy/placeholder_16_10_lowres.jpg" alt="Image Alt Text">
-        </div>
+        <img class="lazyload"
+          data-src="assets/images/_dummy/placeholder_16_10_hires.jpg"
+          src="assets/images/_dummy/placeholder_16_10_lowres.jpg"
+          alt="Image Alt Text">
+
         <figcaption>Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony.</figcaption>
       </figure>
 
