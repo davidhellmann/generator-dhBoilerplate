@@ -282,7 +282,7 @@ gulp.task('watch', function() {
   gulp.watch([dh.src.js + '**/*.js'], ['scripts']);
 
   // Watch Template Files
-  gulp.watch([dh.src.templates + '**/*.{html,php,twig}'], ['templates']);
+  gulp.watch([dh.src.templates + '**/*.{html,php,twig,png,css,md}'], ['templates']);
 
   // If an image is modified, run our images task to compress images
   gulp.watch([dh.src.images + '**/*'], ['images']);
