@@ -118,6 +118,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.projectName          = props.projectName;
       this.projectDescription   = props.projectDescription;
+      this.proxyUrl             = props.proxyUrl;
       this.projectIECompatible  = props.projectIECompatible;
       this.projectjQuery        = props.projectjQuery;
       this.projectUsage         = props.projectUsage;
