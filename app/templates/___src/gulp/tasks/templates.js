@@ -34,7 +34,7 @@ const templates = () => {
 
 
 
-  <% if (projectUsage == 'CraftCMS') { %>
+  <% if (projectUsage == 'WordPress') { %>
     return gulp.src(config.src.templates + '**/*.{html,php,twig,png,css,md}')
       .pipe($.changed(config.dist.markup))
       .pipe(gulp.dest(config.dist.markup))
