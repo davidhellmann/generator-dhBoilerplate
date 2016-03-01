@@ -14,13 +14,15 @@ const buildTask = (cb) => {
       'systemFiles',
       'modernizr',
       'compile:js',
-      'minify:js',
       'sass',
-      'minify:sass',
       'copy:fonts',
       'images',
       'svg-single',
       'svg-sprite',
+    ],
+    [
+      'minify:js',
+      'minify:sass',
       'svg-cleanup'
     ],
     cb
