@@ -4,12 +4,6 @@ import browserSync from 'browser-sync';
 
 
 const browserSyncTask = () => {
-  var browserSyncWatch = [
-    config.dist.markup     + '**/*.{html,php,twig}',
-    config.dist.images     + '**/*.{jpg,jpeg,webp,gif,png,svg}',
-    config.dist.css        + '**/*.css',
-    config.dist.js         + '**/*.js'
-  ];
 
   // Build a condition when Proxy is active
   var bsProxy, bsServer;
@@ -23,21 +17,44 @@ const browserSyncTask = () => {
     bsServer = { baseDir : config.dist.browserSyncDir};
   }
 
-  var browserSyncConfig = {
-    proxy: bsProxy,
-    server: bsServer,
-    ghostMode: {
-      clicks: false,
-      forms: true,
-      scroll: false
-    },
-    logLevel: 'info', // info, debug, warn, silent
-    watchTask: true,
-    open: config.browsersync.openbrowser,
-    stream: true
-  }
-
-  browserSync.init(browserSyncWatch, browserSyncConfig);
+  // Browser Sync
+  browserSync.init([
+      config.dist.markup     + '**/*.{html,php,twig}',
+      config.dist.images     + '**/*.{jpg,jpeg,webp,gif,png,svg}',
+      config.dist.css        + '**/*.css',
+      config.dist.js         + '**/*.js'
+    ],
+    {
+      options: {
+        debugInfo: true,
+        watchTask: true,
+        proxy: bsProxy,
+        ghostMode: {
+          clicks : true,
+          scroll : true,
+          links  : true,
+          forms  : true
+        }
+      },
+      notify: {
+        styles: [
+          'padding: 10px 20px;',
+          'position: fixed;',
+          'font-size: 14px;',
+          'font-weight: bold',
+          'z-index: 9999;',
+          'top: inherit',
+          'border-radius: 0',
+          'right: 0;',
+          'bottom: 0;',
+          'color: #f4f8f9;',
+          'background-color: #026277;',
+          'text-transform: uppercase'
+        ]
+      },
+      server: bsServer,
+      open: config.browsersync.openbrowser
+    });
 }
 
 gulp.task('browser-sync', browserSyncTask);
