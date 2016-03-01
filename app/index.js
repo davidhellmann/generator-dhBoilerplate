@@ -64,6 +64,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         message: 'Short description of the Project',
         default: 'undefined'
       }, {
+        type:    'input',
+        name:    'proxyUrl',
+        message: 'Proxy URL',
+        default: false
+      }, {
         type: 'confirm',
         name: 'projectIECompatible',
         message: 'IE8 compatibility needed?',
@@ -100,7 +105,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       }, {
         type:    'input',
         name:    'projectUrl',
-        message: 'Author URl',
+        message: 'Author URL',
         default: 'http://...'
       }, {
         type:    'input',

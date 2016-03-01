@@ -1,6 +1,6 @@
 {
   "name": "generator-dhboilerplate",
-  "version": "2.0.18",
+  "version": "2.0.19",
   "description": "Boilerplate made by David Hellmann",
   "license": "MIT",
   "main": "app/index.js",

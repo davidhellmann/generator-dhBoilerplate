@@ -74,8 +74,8 @@
 
   "browsersync": {
     "openbrowser": true,
-    <% if (projectUrl != 'http://...') { %>
-    "proxy": "<%= projectUrl %>"
+    <% if (proxyUrl != false) { %>
+    "proxy": "<%= proxyUrl %>"
     <% } else { %>
     "proxy": false
     <% } %>
