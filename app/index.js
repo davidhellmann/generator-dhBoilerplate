@@ -73,9 +73,9 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         name:    'projectUsage',
         message: 'Which purpose does this Project have? Choose the appropriate option',
         choices: [
-          "Just Prototyping",
-          "Use with WordPress",
-          "Use with Craft CMS"
+          "Prototyping",
+          "WordPress",
+          "CraftCMS"
         ]
       }, {
         type: 'confirm',
@@ -130,14 +130,24 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     // move src folder
     this.directory('___src/_system/',   '___src/_system/');
     this.directory('___src/assets/',    '___src/assets/');
-    this.directory('___src/templates/', '___src/templates/');
-    this.directory('___src/twig/',      '___src/twig/');
+
+    if ( this.projectUsage === 'Prototyping' ) {
+      this.directory('___src/templates/prototyping/', '___src/templates/');
+    }
+
+    if ( this.projectUsage === 'WordPress' ) {
+      this.directory('___src/templates/wordpress/', '___src/templates/');
+    }
+
+    if ( this.projectUsage === 'CraftCMS' ) {
+      this.directory('___src/templates/craftcms/', '___src/templates/');
+    }
   },
 
   projectfiles: function () {
     this.copy('_package.json',          'package.json');
     this.copy('_config.json',           'config.json');
-    this.copy('_gulpfile.js',           'gulpfile.js');
+    this.copy('_gulpfile.babel.js',     'gulpfile.babel.js');
     this.copy('_readme.md',             'readme.md');
     this.copy('_gitignore',             '.gitignore');
     this.copy('editorconfig',           '.editorconfig');

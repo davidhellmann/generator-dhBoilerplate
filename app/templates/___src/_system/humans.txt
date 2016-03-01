@@ -15,8 +15,8 @@ Language:            English
 Standards:           HTML5, CSS3
 Components:          Modernizr, jQuery, etc.
 CMS:                 Static
-Tools:               Gulp, Bower, NPM
-IDE:                 SublimeText 3
+Tools:               Gulp, NPM
+IDE:                 PHP Storm
 Built on:            Mac OS X
 
 

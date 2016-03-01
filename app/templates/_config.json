@@ -5,19 +5,17 @@
     "css":        "___src/assets/css/",
     "fonts":      "___src/assets/fonts/",
     "images":     "___src/assets/images/",
-    <% if (projectUsage == 'Just Prototyping' ) { %>
-    "templates":  "___src/twig/",
-    <% } if (projectUsage == 'Use with WordPress' ) { %>
+    "svg": {
+      "base":     "___src/assets/images/svg/",
+      "single":   "___src/assets/images/svg/single/",
+      "sprite":   "___src/assets/images/svg/sprite/"
+    },
     "templates":  "___src/templates/",
-    <% } if (projectUsage == 'Use with Craft CMS' ) { %>
-    "templates":  "___src/twig/",
-    <% } %>
-    "bower":      "___src/bower/",
     "system":     "___src/_system/"
   },
 
   "dist": {
-    <% if (projectUsage == 'Just Prototyping' ) { %>
+    <% if (projectUsage == 'Prototyping' ) { %>
     "base":       "___dist/",
     "markup":     "___dist/",
     "browserSyncDir": "___dist/",
@@ -25,8 +23,13 @@
     "js":         "___dist/assets/js/",
     "css":        "___dist/assets/css/",
     "fonts":      "___dist/assets/fonts/",
-    "images":     "___dist/assets/images/"
-    <% } if (projectUsage == 'Use with WordPress' ) { %>
+    "images":     "___dist/assets/images/",
+    "svg": {
+      "base":     "___dist/assets/images/svg/",
+      "single":   "___dist/assets/images/svg/single/",
+      "sprite":   "___dist/assets/images/svg/sprite/"
+    }
+    <% } if (projectUsage == 'WordPress' ) { %>
     "base":       "___dist/",
     "markup":     "___dist/wp-content/themes/<%= projectName %>/",
     "browserSyncDir": "___dist/wp-content/themes/<%= projectName %>/",
@@ -34,8 +37,13 @@
     "js":         "___dist/wp-content/themes/<%= projectName %>/assets/js/",
     "css":        "___dist/wp-content/themes/<%= projectName %>/assets/css/",
     "fonts":      "___dist/wp-content/themes/<%= projectName %>/assets/fonts/",
-    "images":     "___dist/wp-content/themes/<%= projectName %>/assets/images/"
-    <% } if (projectUsage == 'Use with Craft CMS' ) { %>
+    "images":     "___dist/wp-content/themes/<%= projectName %>/assets/images/",
+    "svg": {
+      "base":     "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/",
+      "single":   "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/single/",
+      "sprite":   "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/sprite/"
+    }
+    <% } if (projectUsage == 'CraftCMS' ) { %>
     "base":       "___dist/public/",
     "markup":     "___dist/templates/",
     "browserSyncDir": "___dist/public/",
@@ -43,7 +51,12 @@
     "js":         "___dist/public/assets/js/",
     "css":        "___dist/public/assets/css/",
     "fonts":      "___dist/public/assets/fonts/",
-    "images":     "___dist/public/assets/images/"
+    "images":     "___dist/public/assets/images/",
+    "svg": {
+      "base":     "___dist/public/images/svg/",
+      "single":   "___dist/public/images/svg/single/",
+      "sprite":   "___dist/public/images/svg/sprite/"
+    }
     <% } %>
   },
 
@@ -61,47 +74,29 @@
 
   "browsersync": {
     "openbrowser": true,
+    <% if (projectUrl != 'http://...') { %>
+    "proxy": <%= projectUrl %>
+    <% } else { %>
     "proxy": false
+    <% } %>
   },
 
   "files": {
-    "jsCombinePlugins": [
-      "node_modules/css-element-queries/src/ResizeSensor.js",
-      "node_modules/css-element-queries/src/ElementQueries.js",
-      "node_modules/gsap/src/uncompressed/TweenMax.js",
-      "node_modules/jquery/dist/jquery.js",
-      "node_modules/jquery-match-height/dist/jquery.matchHeight.js",
-      "node_modules/js-cookie/src/js.cookie.js",
-      "node_modules/lazysizes/lazysizes.js",
-      "node_modules/magnific-popup/dist/jquery.magnific-popup.js",
-      "node_modules/pace-progress/pace.js",
-      "node_modules/picturefill/dist/picturefill.js",
-      "node_modules/skrollr/src/skrollr.js",
-      "node_modules/slick-carousel/slick/slick.js",
-      "node_modules/svg-injector/svg-injector.js",
-      "node_modules/waypoints/lib/jquery.waypoints.js"
-    ],
-    "jsCombinePluginsFilename": "plugins.min.js",
-    "jsCombineScripts": [
-      "___src/assets/js/scripts/example.js",
-      "___src/assets/js/scripts/bodyclass.js",
-      "___src/assets/js/scripts/lazyloading.js",
-      "___src/assets/js/scripts/slick.js",
-      "___src/assets/js/scripts/scrollto.js",
-      "___src/assets/js/scripts/waypoints.js"
-    ],
-    "jsCombineScriptsFilename": "app.min.js",
-    "jsCopyThisPlugins": [
-
-    ],
-    "copySystemFiles": [
+    "systemFiles": [
       "___src/_system/.htaccess",
       "___src/_system/humans.txt",
       "___src/_system/robots.txt"
-    ]
+    ],
+    "jsApp": {
+      "srcName": "app.js",
+      "distName": "app.min.js"
+    }
   },
 
   "modernizr": {
+    "excludeTests": [
+      "hidden"
+    ],
     "options": [
       "setClasses",
       "addTest",

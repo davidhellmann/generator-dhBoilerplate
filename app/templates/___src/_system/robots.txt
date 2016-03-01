@@ -1,3 +1,9 @@
 # robotstxt.org
 
 User-agent: *
+<% } if (projectUsage == 'CraftCMS' ) { %>
+Disallow: /config/
+Disallow: /craft/
+Disallow: /plugins/
+Disallow: /templates/
+<% } %>

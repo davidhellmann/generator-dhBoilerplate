@@ -5,7 +5,6 @@
 # Ignore OS generated files #
 .DS_Store*
 ehthumbs.db
-Icon?
 Thumbs.db
 
 # Always-ignore files and folders #
@@ -51,4 +50,5 @@ ___dist/wp-content/*
 ___dist/config/config.local.php
 ___dist/config/license.key
 ___dist/craft
+___dist/public/uploads
 <% } %>
