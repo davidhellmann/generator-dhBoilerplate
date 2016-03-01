@@ -130,7 +130,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     // move src folder
     this.directory('___src/_system/',   '___src/_system/');
     this.directory('___src/assets/',    '___src/assets/');
-    this.directory('___src/gulp/',    '___src/gulp/');
+    this.directory('___src/gulp/',      './gulp/');
 
     if ( this.projectUsage === 'Prototyping' ) {
       this.directory('___src/templates/prototyping/', '___src/templates/');
@@ -153,6 +153,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     this.copy('_gitignore',             '.gitignore');
     this.copy('editorconfig',           '.editorconfig');
     this.copy('jshintrc',               '.jshintrc');
+    this.copy('babelrc',                '.babelrc');
   },
 
   install: function () {
