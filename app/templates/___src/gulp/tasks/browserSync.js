@@ -39,16 +39,18 @@ const browserSyncTask = () => {
       notify: {
         styles: [
           'padding: 10px 20px;',
+          'font-family: arial;',
+          'line-height: 1',
           'position: fixed;',
-          'font-size: 14px;',
+          'font-size: 12px;',
           'font-weight: bold',
           'z-index: 9999;',
           'top: inherit',
           'border-radius: 0',
           'right: 0;',
           'bottom: 0;',
-          'color: #f4f8f9;',
-          'background-color: #026277;',
+          'color: #fff;',
+          'background-color: #111;',
           'text-transform: uppercase'
         ]
       },
