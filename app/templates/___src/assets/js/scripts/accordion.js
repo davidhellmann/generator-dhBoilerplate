@@ -4,61 +4,57 @@
  * use data-find (unique name) when the content is somewhere between the body tag
  */
 
-;(function($) {
+var _trigger = $('[data-js="accordionTrigger"]');
 
-  var _trigger = $('[data-js="accordionTrigger"]');
+_trigger.on('click', function(event) {
+  event.preventDefault();
 
-  _trigger.on('click', function(event) {
-    event.preventDefault();
+  var _this = $(this);
 
-    var _this = $(this);
+  var _body = $('body');
 
-    var _body = $('body');
+  // Get Target
+  var _next = _this.attr('data-next');
+  var _find = _this.attr('data-find');
 
-    // Get Target
-    var _next = _this.attr('data-next');
-    var _find = _this.attr('data-find');
+  // Get Wrapper
+  var _wrapper = _this.attr('data-wrapper');
 
-    // Get Wrapper
-    var _wrapper = _this.attr('data-wrapper');
+  // Get Status
+  var _status = _this.attr('data-status');
 
-    // Get Status
-    var _status = _this.attr('data-status');
+  // Toggle Content
+  if ( _status == 'closed') {
 
-    // Toggle Content
-    if ( _status == 'closed') {
+    _this.attr('data-status', 'open');
 
-      _this.attr('data-status', 'open');
-
-      // Check if next or find is set
-      if (_next) {
-        _this.next('[data-target="'+_next+'"]').attr('data-status', 'open').slideDown(250);
-      } else {
-        _body.find('[data-target="'+_find+'"]').attr('data-status', 'open').slideDown(250);
-      }
-
-      // Check if data-wrapper exist
-      if (_wrapper) {
-        _this.closest(_wrapper).attr('data-status', 'open');
-      }
-
+    // Check if next or find is set
+    if (_next) {
+      _this.next('[data-target="'+_next+'"]').attr('data-status', 'open').slideDown(250);
     } else {
-
-      _this.attr('data-status', 'closed');
-
-      // Check if next or find is set
-      if (_next) {
-        _this.next('[data-target="'+_next+'"]').attr('data-status', 'closed').slideUp(125);
-      } else {
-        _body.find('[data-target="'+_find+'"]').attr('data-status', 'closed').slideUp(125);
-      }
-
-      // Check if data-wrapper exist
-      if (_wrapper) {
-        _this.closest(_wrapper).attr('data-status', 'closed');
-      }
+      _body.find('[data-target="'+_find+'"]').attr('data-status', 'open').slideDown(250);
     }
 
-  });
+    // Check if data-wrapper exist
+    if (_wrapper) {
+      _this.closest(_wrapper).attr('data-status', 'open');
+    }
 
-}(jQuery));
+  } else {
+
+    _this.attr('data-status', 'closed');
+
+    // Check if next or find is set
+    if (_next) {
+      _this.next('[data-target="'+_next+'"]').attr('data-status', 'closed').slideUp(125);
+    } else {
+      _body.find('[data-target="'+_find+'"]').attr('data-status', 'closed').slideUp(125);
+    }
+
+    // Check if data-wrapper exist
+    if (_wrapper) {
+      _this.closest(_wrapper).attr('data-status', 'closed');
+    }
+  }
+
+});

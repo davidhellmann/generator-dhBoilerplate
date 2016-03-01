@@ -2,8 +2,4 @@
  * Example
  */
 
-;(function($) {
-
-  console.log('Yeah, it works!')
-
-}(jQuery));
+console.log('Yeah, it works!')

@@ -2,37 +2,31 @@
  * Layer
  */
 
-;(function($) {
+var _trigger = $('[data-js="fullLayer"]');
 
-  var _trigger = $('[data-js="fullLayer"]');
+_trigger.on('click', function(e) {
+  e.preventDefault();
 
-  _trigger.on('click', function(e) {
-    e.preventDefault();
+  // Layer
+  var _layer = $(this).attr('data-layer');
 
-    // Layer
-    var _layer = $(this).attr('data-layer');
+  openLayer(_layer);
+});
 
-    openLayer(_layer);
-  });
-
-}(jQuery));
 
 
 /**
  * Close Layer
  */
 
-;(function($) {
+var _trigger = $('[data-js="fullLayer__close"]');
 
-  var _trigger = $('[data-js="fullLayer__close"]');
+_trigger.on('click', function(e) {
+  e.preventDefault();
 
-  _trigger.on('click', function(e) {
-    e.preventDefault();
+  closeLayer();
+});
 
-    closeLayer();
-  });
-
-}(jQuery));
 
 
 /**
