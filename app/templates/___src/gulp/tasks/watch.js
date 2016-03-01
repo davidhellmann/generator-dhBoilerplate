@@ -1,7 +1,3 @@
-/**
-   * Watch Task
-   **/
-
 import config from '../../config.json';
 import gulp from 'gulp';
 import watch from 'gulp-watch';

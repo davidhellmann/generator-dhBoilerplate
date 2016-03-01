@@ -1,7 +1,3 @@
-/**
- * Error Handler
- */
-
 import notify from 'gulp-notify';
 
 module.exports = function (errorObject, callback) {

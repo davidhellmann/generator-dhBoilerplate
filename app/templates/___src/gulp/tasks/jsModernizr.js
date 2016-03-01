@@ -1,7 +1,3 @@
-/**
-   * Modenizr Task
-   **/
-
 import config from '../../config.json';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';

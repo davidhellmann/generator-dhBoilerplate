@@ -1,7 +1,3 @@
-/**
- * Delete from the Folders!
- */
-
 import config from '../../config.json';
 import gulp from 'gulp';
 import del from 'del';

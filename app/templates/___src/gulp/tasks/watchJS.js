@@ -1,7 +1,3 @@
-/**
-   * Watch JS Task
-   **/
-
 import config from '../../config.json';
 import gulp from 'gulp';
 import bundleJs from '../lib/jsBundle';

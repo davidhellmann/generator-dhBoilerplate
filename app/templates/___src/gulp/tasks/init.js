@@ -1,8 +1,3 @@
-/**
- * Init Task
- * Starting the first Build
- **/
-
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 

@@ -1,8 +1,3 @@
-/**
- * Browser Sync
- * @description Refresh the Brwoser after File Change.
- */
-
 import config from '../../config.json';
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
