@@ -42,7 +42,7 @@ const browserSyncTask = () => {
           'font-family: arial;',
           'line-height: 1',
           'position: fixed;',
-          'font-size: 12px;',
+          'font-size: 10px;',
           'font-weight: bold',
           'z-index: 9999;',
           'top: inherit',
@@ -50,7 +50,7 @@ const browserSyncTask = () => {
           'right: 0;',
           'bottom: 0;',
           'color: #fff;',
-          'background-color: #111;',
+          'background-color: rgba(0,0,0, .5)',
           'text-transform: uppercase'
         ]
       },
