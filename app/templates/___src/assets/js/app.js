@@ -1,8 +1,8 @@
 /*
  * Plugins
- * */
+ */
 
-/*import $               from 'jquery'
+import $               from 'jquery'
 import cq              from 'cq-prolyfill'
 import gsap            from 'gsap'
 import matchheight     from 'jquery-match-height'
@@ -19,9 +19,9 @@ import svginjector     from 'svg-injector'
 //import wp            from 'waypoints/lib/jquery.waypoints'
 
 
-/!*
-* Scripts
-* *!/
+/*
+ * Scripts
+ */
 
 import bodyclass       from './scripts/bodyclass'
 import accordion       from './scripts/accordion'
