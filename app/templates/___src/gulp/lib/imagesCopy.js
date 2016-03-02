@@ -5,7 +5,7 @@ import errorHandler from '../lib/errorHandler';
 
 const $ = gulpLoadPlugins();
 
-const _copyImages = (srcFiles, distFiles) => {
+const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .on('error', errorHandler)
@@ -18,4 +18,4 @@ const _copyImages = (srcFiles, distFiles) => {
     }));;
 }
 
-module.exports = _copyImages;
+module.exports = copyImagesLib;

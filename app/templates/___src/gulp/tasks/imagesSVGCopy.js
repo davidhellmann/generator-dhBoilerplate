@@ -2,7 +2,6 @@ import config from '../../config.json';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import errorHandler from '../lib/errorHandler';
-import copyImages from '../lib/imagesCopy';
 
 const $ = gulpLoadPlugins();
 
