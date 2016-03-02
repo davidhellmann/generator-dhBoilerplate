@@ -4,5 +4,9 @@
    -------------------------------------------------- */
 
 .appFooter {
+  @include col(12);
 
+  @include breakpoint('l') {
+    @include col(8);
+  }
 }

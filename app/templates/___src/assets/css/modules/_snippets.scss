@@ -5,7 +5,11 @@
 
 .appWrapper {
   opacity: 0;
-  transition: all .25s;
+  transition: all 1.5s;
+
+  @include breakpoint('l') {
+    padding: 50px;
+  }
 }
 
 .is_ready .appWrapper {
@@ -20,5 +24,9 @@
    -------------------------------------------------- */
 
 .appContent {
+  @include col(12);
 
+  @include breakpoint('l') {
+    @include col(8);
+  }
 }
