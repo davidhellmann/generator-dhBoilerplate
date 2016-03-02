@@ -18,9 +18,6 @@ const watchTask = () => {
   gulp.watch(config.src.svg.single + '**/*', ['svg-single']);
 
   gulp.watch(config.src.svg.sprite + '**/*', ['svg-cleanup']);
-
-  // reload!
-  gulp.watch(config.src.templates + '**/*.{php,html,twig,js,jpg,png,svg}');
 }
 
 gulp.task('watch', ['browser-sync'], watchTask);
