@@ -142,9 +142,9 @@
         {"removeUnknownsAndDefaults": true},
         {"removeEmptyContainers": true},
         {"collapseGroups": true},
+        {"sortAttrs": true},
         {"removeUselessStrokeAndFill": true},
-        {"convertStyleToAttrs": true},
-        {"sortAttrs": true}
+        {"convertStyleToAttrs": true}
       ],
       "progressive": true,
       "interlaced": true

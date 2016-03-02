@@ -11,27 +11,37 @@ const vectorDist = config.dist.svg.sprite;
 
 const svgSprite = () => {
   return gulp
-    .src(vectorSource)
-    .pipe($.changed(vectorDist))
-    .pipe($.imagemin({
-      svgoPlugins: config.minify.images.svgoPlugins
-    }))
-    .pipe($.svgSprite({
-      mode: {
-        symbol: {
-          dest: '.',
-          sprite: 'sprite.svg',
-          inline: true
-        }
+  .src(vectorSource)
+  .pipe($.changed(vectorDist))
+  .pipe($.imagemin({
+    svgoPlugins: config.minify.images.svgoPlugins
+  }))
+  .pipe($.svgSprite({
+    shape: {
+      dimension : {  // Set maximum dimensions
+        maxWidth : 40,
+        maxHeight : 40
+      },
+      spacing : { // Add padding
+        padding : 0
+      },
+      dest : './single/'
+    },
+    mode: {
+      symbol: {
+        dest: '.',
+        sprite: 'sprite.svg',
+        inline: false
       }
-    }))
-    .on('error', errorHandler)
-    .pipe(gulp.dest(vectorDist))
-    .pipe($.size())
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: svg-sprite - done'
-    }));
+    }
+  }))
+  .on('error', errorHandler)
+  .pipe(gulp.dest(vectorDist))
+  .pipe($.size())
+  .pipe($.notify({
+    onLast: true,
+    message: '>>> Task: svg-sprite - done'
+  }));
 }
 
 gulp.task('svg-sprite', svgSprite);
