@@ -18,12 +18,11 @@ const buildTask = (cb) => {
       'copy:fonts',
       'images',
       'svg-single',
-      'svg-sprite',
+      'svg-cleanup',
     ],
     [
       'minify:js',
-      'minify:sass',
-      'svg-cleanup'
+      'minify:sass'
     ],
     cb
   );

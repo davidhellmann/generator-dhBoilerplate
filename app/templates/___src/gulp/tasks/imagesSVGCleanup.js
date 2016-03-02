@@ -22,5 +22,5 @@ const buildSymbolCleanupTask = () => {
     }));
 }
 
-gulp.task('svg-cleanup', buildSymbolCleanupTask)
+gulp.task('svg-cleanup', ['svg-sprite'], buildSymbolCleanupTask)
 module.exports = buildSymbolCleanupTask
