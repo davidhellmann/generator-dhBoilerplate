@@ -18,7 +18,7 @@ const buildTask = (cb) => {
       'copy:fonts',
       'images',
       'svg-single',
-      'svg-cleanup',
+      'svg-sprite',
     ],
     [
       'minify:js',

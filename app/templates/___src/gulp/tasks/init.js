@@ -12,7 +12,7 @@ const initTask = (cb) => {
       'copy:fonts',
       'images',
       'svg-single',
-      'svg-cleanup',
+      'svg-sprite',
     ],
     cb
   )

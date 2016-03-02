@@ -11,37 +11,50 @@ const vectorDist = config.dist.svg.sprite;
 
 const svgSprite = () => {
   return gulp
-  .src(vectorSource)
-  .pipe($.changed(vectorDist))
-  .pipe($.imagemin({
-    svgoPlugins: config.minify.images.svgoPlugins
-  }))
-  .pipe($.svgSprite({
-    shape: {
-      dimension : {  // Set maximum dimensions
-        maxWidth : 40,
-        maxHeight : 40
+    .src(vectorSource)
+    .pipe($.changed(vectorDist))
+    .pipe($.imagemin({
+      svgoPlugins: config.minify.images.svgoPlugins
+    }))
+    .pipe($.svgSprite({
+      shape: {
+        dimension : {  // Set maximum dimensions
+          maxWidth : 40,
+          maxHeight : 40
+        },
+        spacing : { // Add padding
+          padding : 0
+        },
+        dest : './single/'
       },
-      spacing : { // Add padding
-        padding : 0
-      },
-      dest : './single/'
-    },
-    mode: {
-      symbol: {
-        dest: '.',
-        sprite: 'sprite.svg',
-        inline: false
+      mode: {
+        symbol: {
+          dest: '.',
+          sprite: 'sprite.svg',
+          inline: false
+        }
       }
-    }
-  }))
-  .on('error', errorHandler)
-  .pipe(gulp.dest(vectorDist))
-  .pipe($.size())
-  .pipe($.notify({
-    onLast: true,
-    message: '>>> Task: svg-sprite - done'
-  }));
+    }))
+    .on('error', errorHandler)
+    .pipe(gulp.dest(vectorDist))
+    .pipe($.size())
+    .pipe($.notify({
+      onLast: true,
+      message: '>>> Task: svg-sprite - done'
+    }))
+    .pipe($.cheerio({
+      run: function ($) {
+        $('[fill^="#"]').removeAttr('fill');
+        $('[fill^="none"]').removeAttr('fill');
+        $('[fill-rule]').removeAttr('fill-rule');
+      },
+      parserOptions: { xmlMode: true }
+    }))
+    .pipe(gulp.dest(vectorDist))
+    .pipe($.notify({
+      onLast: true,
+      message: '>>> Task: svg-cleanup - done'
+    }));
 }
 
 gulp.task('svg-sprite', svgSprite);
