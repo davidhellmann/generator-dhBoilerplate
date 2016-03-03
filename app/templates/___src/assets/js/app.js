@@ -6,7 +6,7 @@
 import $               from 'jquery'
 
 // Container Queries
-//import cq              from 'cq-prolyfill'
+import cq              from 'cq-prolyfill'
 
 // GSAP
 //import gsap            from 'gsap'
@@ -46,7 +46,7 @@ import slickcarousel   from 'slick-carousel'
  */
 
 // Accordion
-//import accordion        from './partials/accordion'
+//import accordion          from './partials/accordion'
 
 // BodyClass
 import bodyclass          from './partials/bodyclass'
@@ -58,13 +58,13 @@ import debounce           from './partials/debounce'
 import example            from './partials/example'
 
 // Layer
-//import layer            from './partials/layer'
+//import layer              from './partials/layer'
 
 // Lazy Loading
 import lazyloading        from './partials/lazyloading'
 
 // Pace
-//import pace             from './partials/pace'
+//import pace               from './partials/pace'
 
 // ScrollTo
 import scrollto           from './partials/scrollto'
