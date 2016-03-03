@@ -34,17 +34,11 @@ import lazysizesBGSet  from '../../../node_modules/lazysizes/plugins/bgset/ls.bg
 // Picturefill
 import picturefill     from 'picturefill'
 
-// Skrollr
-//import skrollr         from 'skrollr'
-
 // Slick Carousel
 import slickcarousel   from 'slick-carousel'
 
 // SVG Injector
 //import svginjector     from 'svg-injector'
-
-// Waypoints
-//import wp            from 'waypoints/lib/jquery.waypoints'
 
 
 /*
@@ -77,6 +71,3 @@ import scrollto           from './partials/scrollto'
 
 // Slick
 import slick              from './partials/slick'
-
-// Waypoints
-//import waypoints        from './partials/waypoints'

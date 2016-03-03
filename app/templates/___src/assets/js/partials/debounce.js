@@ -25,7 +25,7 @@ const debounce = (func, wait, immediate) => {
 module.exports = debounce;
 
 const testDebounce = debounce(function() {
-  console.log('yo');
+  console.log('So smart this resizing!');
 }, 250);
 
 window.addEventListener('resize', testDebounce);
