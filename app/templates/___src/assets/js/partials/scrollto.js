@@ -43,15 +43,15 @@ _viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup touchmove", fun
 
 $(window).scroll(function() {
 
-  var _topButton = $('.backToTop');
+  var _body = $('body');
 
-  if ($(window).scrollTop() >= 80 ) {
+  if ($(window).scrollTop() >= 100 ) {
 
-    _topButton.addClass('active');
+    _body.addClass('is_scrolled--100');
 
   } else {
 
-    _topButton.removeClass('active');
+    _body.removeClass('is_scrolled--100');
 
   }
 });
