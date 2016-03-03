@@ -13,7 +13,7 @@ const openLayer = (layer) => {
 
 
 // Close Layer Function
-const closeLayer = (layer) => {
+const closeLayer = () => {
   // Body
   var _body = $('body');
 
@@ -37,7 +37,6 @@ openTrigger.on('click', function(e) {
 var closeTrigger = $('[data-js="fullLayer__close"]');
 closeTrigger.on('click', function(e) {
   e.preventDefault();
-
   closeLayer();
 });
 
