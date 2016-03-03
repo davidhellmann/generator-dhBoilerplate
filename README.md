@@ -42,8 +42,8 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 This three scenarios are covered by the generator:
 
 - Prototyping (with Twig)
-- WordPress with a basic Starter Kit (WordPress itself must be Installed from Hand after the first `gulp init`)
-- Craft CMS with a basic index.twig (Craft CMS itself must be Installed from Hand after the first `gulp init`)
+- WordPress with a basic Starter Kit (WordPress itself must be Installed by Hand after the first `gulp init`)
+- Craft CMS with a basic index.twig (Craft CMS itself must be Installed by Hand after the first `gulp init`)
 
 Next Steps are integrate Hearty for Craft CMS and a Craft CMS Starter Kit and Hearty for WordPress.
 
