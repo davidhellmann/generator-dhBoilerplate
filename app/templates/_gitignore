@@ -34,11 +34,11 @@ bower/
 node_modules/
 .tmp
 
-<% if (projectUsage == 'Just Prototyping' ) { %>
+<% if (projectUsage == 'Prototyping' ) { %>
 ___dist/
 <% } %>
 
-<% if (projectUsage == 'Use with WordPress' ) { %>
+<% if (projectUsage == 'WordPress' ) { %>
 ___dist/*
 !___dist/wp-content/
 ___dist/wp-content/*
@@ -46,7 +46,7 @@ ___dist/wp-content/*
 !___dist/wp-content/plugins/
 <% } %>
 
-<% if (projectUsage == 'Use with Craft CMS' ) { %>
+<% if (projectUsage == 'CraftCMS' ) { %>
 ___dist/config/config.local.php
 ___dist/config/license.key
 ___dist/craft
