@@ -1,36 +1,82 @@
 /*
- * Plugins
- */
+* NPM Stuff
+* */
 
+// jQuery
 import $               from 'jquery'
+
+// Container Queries
 //import cq              from 'cq-prolyfill'
+
+// GSAP
 //import gsap            from 'gsap'
+
+// MatchHeight
 //import matchheight     from 'jquery-match-height'
+
+// jQuery Cookie
 //import jscookie        from 'js-cookie'
+
+// Lazy Sizes
 import lazysizes       from 'lazysizes'
 import lazysizesBGSet  from '../../../node_modules/lazysizes/plugins/bgset/ls.bgset.js'
+
+// Magnific Popup
 //import magnificpopup   from 'magnific-popup'
+
+// Pace Progress
 //import paceprogress    from 'pace-progress'
+
+// Photoswipe
 //import photoswipe      from 'photoswipe'
 //import photoswipeUI    from '../../../node_modules/photoswipe/dist/photoswipe-ui-default'
+
+// Picturefill
 import picturefill     from 'picturefill'
+
+// Skrollr
 //import skrollr         from 'skrollr'
+
+// Slick Carousel
 import slickcarousel   from 'slick-carousel'
+
+// SVG Injector
 //import svginjector     from 'svg-injector'
+
+// Waypoints
 //import wp            from 'waypoints/lib/jquery.waypoints'
 
 
 /*
- * Scripts
+ * Partials
  */
 
-import bodyclass       from './scripts/bodyclass'
-//import accordion       from './scripts/accordion'
-import example         from './scripts/example'
-import general         from './scripts/general'
-//import layer           from './scripts/layer'
-import lazyloading     from './scripts/lazyloading'
-//import pace            from './scripts/pace'
-import scrollto        from './scripts/scrollto'
-import slick           from './scripts/slick'
-//import waypoints       from './scripts/waypoints'*!/*/
+// Accordion
+//import accordion        from './partials/accordion'
+
+// BodyClass
+import bodyclass          from './partials/bodyclass'
+
+// Debounce
+import debounce           from './partials/debounce'
+
+// Example
+import example            from './partials/example'
+
+// Layer
+//import layer            from './partials/layer'
+
+// Lazy Loading
+import lazyloading        from './partials/lazyloading'
+
+// Pace
+//import pace             from './partials/pace'
+
+// ScrollTo
+import scrollto           from './partials/scrollto'
+
+// Slick
+import slick              from './partials/slick'
+
+// Waypoints
+//import waypoints        from './partials/waypoints'
