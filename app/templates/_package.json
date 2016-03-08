@@ -44,7 +44,6 @@
     "imagemin-jpeg-recompress": "^4.3.0",
     "imagemin-pngquant": "^4.2.2",
     "imagemin-svgo": "^4.2.1",
-    "lost": "^6.7.2",
     "postcss-flexbugs-fixes": "^2.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
