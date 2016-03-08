@@ -6,8 +6,7 @@ const postCssConfig = () => {
       browsers: config.css.autoprefixer,
       cascade: false
     }),
-    require('postcss-flexbugs-fixes'),
-    require('lost')({})
+    require('postcss-flexbugs-fixes')
   ]
 }
 
