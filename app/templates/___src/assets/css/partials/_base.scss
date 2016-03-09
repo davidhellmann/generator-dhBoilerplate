@@ -197,7 +197,7 @@ abbr {
     left: 0;
     bottom: -1px;
     background: color('black');
-    transition: all .25s;
+    transition: all .25s ease-out;
   }
 
   .no-touchevents &:hover {
@@ -216,7 +216,7 @@ abbr {
 
 a {
   color: color('red');
-  transition: all .25s;
+  transition: all .25s ease-out;
 
   .no-touchevents &:hover {
     color: color('black');

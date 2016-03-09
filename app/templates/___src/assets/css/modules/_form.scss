@@ -29,7 +29,7 @@ textarea {
   color: color('white');
   border: none;
   margin-bottom: 20px;
-  transition: all ms('medium');
+  transition: all 0.5s ease-out;
 
   &:focus {
     background: darken(color('blue'), 5%);

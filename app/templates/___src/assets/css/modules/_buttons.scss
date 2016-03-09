@@ -14,7 +14,7 @@
   margin: 20px 0;
   cursor: pointer;
   text-align: center;
-  transition: all .5s;
+  transition: all .5s ease-out;
 
   .no-touchevents &:hover {
     color: color('white');
