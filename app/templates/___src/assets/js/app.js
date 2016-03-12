@@ -69,3 +69,6 @@ import scrollto             from './partials/scrollto'
 
 // Slick
 import slick                from './partials/slick'
+
+// ScrollMagic
+//import sm                   from './partials/scrollMagic'

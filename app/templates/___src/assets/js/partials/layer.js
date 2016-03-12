@@ -23,7 +23,7 @@ const closeLayer = () => {
 
 
 // Open Layer Trigger
-var openTrigger = $('[data-js="fullLayer"]');
+var openTrigger = $('.js_fullLayerTrigger');
 openTrigger.on('click', function(e) {
   e.preventDefault();
 
@@ -34,7 +34,7 @@ openTrigger.on('click', function(e) {
 
 
 // Close Layer Trigger
-var closeTrigger = $('[data-js="fullLayer__close"]');
+var closeTrigger = $('.js_fullLayerTrigger__close');
 closeTrigger.on('click', function(e) {
   e.preventDefault();
   closeLayer();

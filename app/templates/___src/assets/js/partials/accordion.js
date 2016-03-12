@@ -4,7 +4,7 @@
  * use data-find (unique name) when the content is somewhere between the body tag
  */
 
-var _trigger = $('[data-js="accordionTrigger"]');
+var _trigger = $('.js_accordionTrigger');
 
 _trigger.on('click', function(event) {
   event.preventDefault();
@@ -30,14 +30,19 @@ _trigger.on('click', function(event) {
 
     // Check if next or find is set
     if (_next) {
-      _this.next('[data-target="'+_next+'"]').attr('data-status', 'open').slideDown(250);
+      _this.next('[data-target="'+_next+'"]')
+        .attr('data-status', 'open')
+        .slideDown(250);
     } else {
-      _body.find('[data-target="'+_find+'"]').attr('data-status', 'open').slideDown(250);
+      _body.find('[data-target="'+_find+'"]')
+        .attr('data-status', 'open')
+        .slideDown(250);
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
-      _this.closest(_wrapper).attr('data-status', 'open');
+      _this.closest(_wrapper)
+        .attr('data-status', 'open');
     }
 
   } else {
@@ -46,14 +51,17 @@ _trigger.on('click', function(event) {
 
     // Check if next or find is set
     if (_next) {
-      _this.next('[data-target="'+_next+'"]').attr('data-status', 'closed').slideUp(125);
+      _this.next('[data-target="'+_next+'"]')
+        .attr('data-status', 'closed').slideUp(250);
     } else {
-      _body.find('[data-target="'+_find+'"]').attr('data-status', 'closed').slideUp(125);
+      _body.find('[data-target="'+_find+'"]')
+        .attr('data-status', 'closed').slideUp(250);
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
-      _this.closest(_wrapper).attr('data-status', 'closed');
+      _this.closest(_wrapper)
+        .attr('data-status', 'closed');
     }
   }
 
