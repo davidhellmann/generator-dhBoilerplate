@@ -53,9 +53,9 @@
     "fonts":      "___dist/public/assets/fonts/",
     "images":     "___dist/public/assets/images/",
     "svg": {
-      "base":     "___dist/public/images/svg/",
-      "single":   "___dist/public/images/svg/single/",
-      "sprite":   "___dist/public/images/svg/sprite/"
+      "base":     "___dist/public/assets/images/svg/",
+      "single":   "___dist/public/assets/images/svg/single/",
+      "sprite":   "___dist/public/assets/images/svg/sprite/"
     }
     <% } %>
   },
