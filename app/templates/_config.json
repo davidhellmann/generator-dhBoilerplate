@@ -73,7 +73,7 @@
   },
 
   "browsersync": {
-    "openbrowser": true,
+    "openbrowser": false,
     <% if (proxyUrl != false) { %>
     "proxy": "<%= proxyUrl %>"
     <% } else { %>
