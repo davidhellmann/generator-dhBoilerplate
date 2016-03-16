@@ -24,7 +24,6 @@ body {
   font-weight: 400;
   color: lighten(color('black'), 10%);
   background: color('white');
-  hyphens: auto;
 
   @include breakpoint('s') {
     font-size: $base_font_size;
