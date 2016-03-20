@@ -30,3 +30,23 @@
     @include col(8);
   }
 }
+
+
+
+/* --------------------------------------------------
+
+   Lazyload
+   -------------------------------------------------- */
+
+img,
+figure,
+div {
+  &.lazyload, &.lazyloading {
+    opacity: 0.5;
+  }
+
+  &.lazyloaded {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+}
