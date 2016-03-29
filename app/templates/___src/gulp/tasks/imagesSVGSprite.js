@@ -12,7 +12,7 @@ const vectorDist = config.dist.svg.sprite;
 const svgSprite = () => {
   return gulp
     .src(vectorSource)
-    .pipe($.changed(vectorDist))
+    //.pipe($.changed(vectorDist))
     .pipe($.imagemin({
       svgoPlugins: config.minify.images.svgoPlugins
     }))

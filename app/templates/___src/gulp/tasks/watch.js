@@ -12,7 +12,7 @@ const watchTask = () => {
   gulp.watch(config.src.css + '**/*.scss', ['sass']);
 
   // watch images
-  gulp.watch(config.src.images + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
+  // gulp.watch(config.src.images + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
 
   // watch SVG Stuff
   gulp.watch(config.src.svg.single + '**/*', ['svg-single']);

@@ -17,7 +17,7 @@ $('a[href^="#"]').on('click', function(event) {
 
       setTimeout(function(){
         _viewport.animate({
-          scrollTop: _target.offset().top - dh_headerHeight()
+          scrollTop: _target.offset().top
         }, 250, function () {
           window.location.hash = _target.selector;
         });
@@ -26,7 +26,7 @@ $('a[href^="#"]').on('click', function(event) {
     } else {
 
       _viewport.animate({
-        scrollTop: _target.offset().top - dh_headerHeight()
+        scrollTop: _target.offset().top
       }, 250, function () {
         window.location.hash = _target.selector;
       });

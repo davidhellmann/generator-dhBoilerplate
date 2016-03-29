@@ -11,7 +11,7 @@ const vectorDist = config.dist.svg.single;
 const copyVectors = () => {
   return gulp
     .src(vectorSource)
-    .pipe($.changed(vectorDist))
+    //.pipe($.changed(vectorDist))
     .pipe($.imagemin({
       svgoPlugins:  config.minify.images.svgoPlugins
     }))

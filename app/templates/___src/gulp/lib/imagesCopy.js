@@ -9,7 +9,7 @@ const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .on('error', errorHandler)
-    .pipe($.changed(distFiles))
+    //.pipe($.changed(distFiles))
     .pipe(gulp.dest(distFiles))
     .pipe($.debug())
     .pipe($.notify({
