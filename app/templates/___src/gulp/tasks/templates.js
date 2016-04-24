@@ -9,7 +9,7 @@ const templates = () => {
 
   <% if (projectUsage == 'Prototyping' ) { %>
   return gulp
-    .src(config.src.templates+ '**/*.{html,twig}')
+    .src(config.src.templates+ '**/*.{html,twig,rss}')
     .pipe($.plumber())
     .pipe($.twig())
     .on('error', errorHandler)

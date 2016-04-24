@@ -5,7 +5,7 @@ import browserSync from 'browser-sync';
 
 const browserSyncTask = () => {
   var browserSyncWatch = [
-    config.dist.markup     + '**/*.{html,php,twig}',
+    config.dist.markup     + '**/*.{html,php,twig,rss}',
     config.dist.images     + '**/*.{jpg,jpeg,webp,gif,png,svg}',
     config.dist.css        + '**/*.css',
     config.dist.js         + '**/*.js'

@@ -6,7 +6,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 const watchTask = () => {
 
   // watch templates
-  gulp.watch(config.src.templates + '**/*.{php,html,twig}', ['templates'])
+  gulp.watch(config.src.templates + '**/*.{php,html,twig,rss}', ['templates'])
 
   // watch sass
   gulp.watch(config.src.css + '**/*.scss', ['sass']);
