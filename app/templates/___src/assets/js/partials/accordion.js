@@ -4,8 +4,15 @@
  * use data-find (unique name) when the content is somewhere between the body tag
  */
 
+// Dependencies
+import $ from 'jquery'
+
+
+// Vars
 var _trigger = $('.js_accordionTrigger');
 
+
+// Click Event
 _trigger.on('click', function(event) {
   event.preventDefault();
 
@@ -31,18 +38,18 @@ _trigger.on('click', function(event) {
     // Check if next or find is set
     if (_next) {
       _this.next('[data-target="'+_next+'"]')
-        .attr('data-status', 'open')
-        .slideDown(250);
+      .attr('data-status', 'open')
+      .slideDown(250);
     } else {
       _body.find('[data-target="'+_find+'"]')
-        .attr('data-status', 'open')
-        .slideDown(250);
+      .attr('data-status', 'open')
+      .slideDown(250);
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
       _this.closest(_wrapper)
-        .attr('data-status', 'open');
+      .attr('data-status', 'open');
     }
 
   } else {
@@ -52,16 +59,16 @@ _trigger.on('click', function(event) {
     // Check if next or find is set
     if (_next) {
       _this.next('[data-target="'+_next+'"]')
-        .attr('data-status', 'closed').slideUp(250);
+      .attr('data-status', 'closed').slideUp(250);
     } else {
       _body.find('[data-target="'+_find+'"]')
-        .attr('data-status', 'closed').slideUp(250);
+      .attr('data-status', 'closed').slideUp(250);
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
       _this.closest(_wrapper)
-        .attr('data-status', 'closed');
+      .attr('data-status', 'closed');
     }
   }
 

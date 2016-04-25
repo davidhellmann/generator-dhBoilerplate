@@ -14,8 +14,7 @@ gulp.task('clean:dist', function (cb) {
 
 gulp.task('clean:templates', function (cb) {
   return del([
-    config.dist.templates + '**/*.{php,html,twig}',
-    config.dist.markup + '**/*.{php,html,twig}'
+    config.dist.markup + '**/*.{php,html,twig,rss}'
   ], {
     force: true
   }, cb);

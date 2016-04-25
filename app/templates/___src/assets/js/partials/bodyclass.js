@@ -2,6 +2,11 @@
  * Set Body Classes
  */
 
+// Dependencies
+import $ from 'jquery'
+
+
+// Body Class
 setTimeout(function() {
   $('body').addClass('is_ready');
 }, 0), setTimeout(function() {

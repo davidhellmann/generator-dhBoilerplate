@@ -22,10 +22,10 @@ const debounce = (func, wait, immediate) => {
   };
 };
 
-module.exports = debounce;
+module.exports = debounce
 
-const testDebounce = debounce(function() {
-  console.log('So smart this resizing!');
-}, 250);
+var dh_windowResize = debounce(function() {
+  console.log('Resizing');
+}, 500);
 
-window.addEventListener('resize', testDebounce);
+window.addEventListener('resize', dh_windowResize);

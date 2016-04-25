@@ -2,40 +2,41 @@
  * ScrollMagic
  */
 
+// Dependencies
 import $ from 'jquery'
 import ScrollMagic from 'scrollmagic'
+import TweenMax from '../../../../node_modules/gsap/src/uncompressed/TweenMax'
 import animation from '../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
-import debug from '../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
+//import debug from '../../../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
 
 // ScrollMagic Controller
 var controller = new ScrollMagic.Controller();
 
-// ScrollMagic for fadeInUp Blocks
+// Find Blocks with .sm Element
+var sm_blog_triggers = $('.block, .smWrapper, .workList').has('.sm');
 
-// Fade In Up Trigger
-var fadeInUp_trigger = '.sm.fadeInUp';
+$(sm_blog_triggers).each(function(){
 
-if (fadeInUp_trigger) {
-  $(fadeInUp_trigger).each(function(){
-
-    // Fade In Up Tween
-    var fadeInUp_tween = TweenMax.to(this, 1, {
+  // Fade In Up Settings
+  if ( $(this).has('.fadeInUp, .fadeInDown, .fadeInRight, .fadeInLeft')) {
+    var sm_tween = TweenMax.staggerTo($(this).find('.sm'), .5, {
       opacity: 1,
-      transform: 'translate3d(0, 0, 0)',
-      ease: Power4.easeOut
-    })
+      transform: 'translate3d(0, 0, 0) scale(1)',
+      ease: Power2.easeOut,
+      className: '+=' + 'is_animated'
+    }, 0.15);
+  }
 
-    // Fade In Up Scence
-    var fadeInUp_scene = new ScrollMagic.Scene({
-      triggerElement: this,
-      offset: -100,
-      triggerHook: 0.5,
-      //duration: 250
-    })
-      .reverse(true)
-      .addIndicators({name: "triggerHook .9"})
-      .setClassToggle('.block', "animated")
-      .setTween(fadeInUp_tween)
-      .addTo(controller);
+  // Scene
+  var sm_scence = new ScrollMagic.Scene({
+    triggerElement: this,
+    offset: 0,
+    triggerHook: .8,
+    //duration: 250
   })
-}
+  .reverse(true)
+  //.addIndicators({name: "default"})
+  .setTween(sm_tween)
+  .addTo(controller);
+
+});

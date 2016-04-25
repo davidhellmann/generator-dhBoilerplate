@@ -1,9 +1,12 @@
-/*
+/**
  * Layer
- * */
+ */
+
+// Dependencies
+import $ from 'jquery'
 
 // Open Layer Function
-const openLayer = (layer) => {
+var openLayer = (layer) => {
   // Body
   var _body = $('body');
 
@@ -13,7 +16,7 @@ const openLayer = (layer) => {
 
 
 // Close Layer Function
-const closeLayer = () => {
+var closeLayer = () => {
   // Body
   var _body = $('body');
 

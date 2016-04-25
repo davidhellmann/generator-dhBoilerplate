@@ -3,9 +3,20 @@
  * use data-delay="100" or antoher number do set a timeout for the scrolling
  */
 
+// Dependencies
+import $ from 'jquery'
+import debounce             from './debounce'
+
+
+
+// Vars
 var _viewport = $('html, body');
 
+
+
+// Click Event
 $('a[href^="#"]').on('click', function(event) {
+  console.log(this);
 
   var _target = $( $(this).attr('href') );
   var _delay  = $(this).attr('data-delay');
@@ -18,7 +29,7 @@ $('a[href^="#"]').on('click', function(event) {
       setTimeout(function(){
         _viewport.animate({
           scrollTop: _target.offset().top
-        }, 250, function () {
+        }, 500, function () {
           window.location.hash = _target.selector;
         });
       }, _delay);
@@ -27,7 +38,7 @@ $('a[href^="#"]').on('click', function(event) {
 
       _viewport.animate({
         scrollTop: _target.offset().top
-      }, 250, function () {
+      }, 500, function () {
         window.location.hash = _target.selector;
       });
 
@@ -35,14 +46,17 @@ $('a[href^="#"]').on('click', function(event) {
   }
 });
 
+
+
+// Cancel when user Interact
 _viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup touchmove", function(){
   _viewport.stop();
 });
 
 
 
-$(window).scroll(function() {
-
+// Debounce
+var dh_windowScroll = debounce(function() {
   var _body = $('body');
 
   if ($(window).scrollTop() >= 100 ) {
@@ -54,4 +68,7 @@ $(window).scroll(function() {
     _body.removeClass('is_scrolled--100');
 
   }
-});
+
+}, 500);
+
+window.addEventListener('scroll', dh_windowScroll);

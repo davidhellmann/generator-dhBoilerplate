@@ -23,7 +23,7 @@ const templates = () => {
 
 
   <% if (projectUsage == 'CraftCMS') { %>
-  return gulp.src(config.src.templates + '**/*.{html,twig}')
+  return gulp.src(config.src.templates + '**/*.{html,twig,rss}')
     .pipe($.changed(config.dist.markup))
     .pipe(gulp.dest(config.dist.markup))
     .pipe($.notify({
@@ -35,7 +35,7 @@ const templates = () => {
 
 
   <% if (projectUsage == 'WordPress') { %>
-    return gulp.src(config.src.templates + '**/*.{html,php,twig,png,css,md}')
+    return gulp.src(config.src.templates + '**/*.{html,php,twig,png,css,md,rss}')
       .pipe($.changed(config.dist.markup))
       .pipe(gulp.dest(config.dist.markup))
       .pipe($.notify({
