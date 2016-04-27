@@ -80,3 +80,5 @@ This Task clean the folder, build the stuff from ground up and optimize the imag
 ```
 gulp build
 ```
+
+[![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate)
