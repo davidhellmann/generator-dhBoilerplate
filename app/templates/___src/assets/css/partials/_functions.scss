@@ -90,3 +90,21 @@
 @function lh($key) {
   @return ($base_line_height * $key);
 }
+
+
+
+/* --------------------------------------------------
+
+   Ease Function
+   URL: https://css-tricks.com/snippets/sass/easing-map-get-function/
+
+   -------------------------------------------------- */
+
+@function ease($key) {
+  @if map-has-key($ease, $key) {
+    @return map-get($ease, $key);
+  }
+
+  @warn "Unkown '#{$key}' in $ease.";
+  @return null;
+}
