@@ -44,7 +44,11 @@
     "imagemin-jpeg-recompress": "^4.3.0",
     "imagemin-pngquant": "^4.2.2",
     "imagemin-svgo": "^4.2.1",
+    "postcss-assets": "^4.1.0",
     "postcss-flexbugs-fixes": "^2.0.0",
+    "postcss-selector-matches": "^2.0.1",
+    "postcss-short-size": "^1.1.0",
+    "postcss-svg": "^1.0.5",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "utils-merge": "^1.0.0",
@@ -61,6 +65,7 @@
   "dependencies": {
     "cq-prolyfill": "^0.3.2",
     "gsap": "^1.18.2",
+    "include-media": "^1.4.4",
     <% if (projectjQuery == false ) { %>
     "jquery": "1.11.3",
     <% } else { %>
@@ -69,6 +74,7 @@
     "jquery-match-height": "^0.7.0",
     "js-cookie": "^2.1.0",
     "lazysizes": "^1.4.0",
+    "macy": "^1.1.1",
     "photoswipe": "^4.1.1",
     "scrollmagic": "^2.0.5",
     "slick-carousel": "^1.5.9",
@@ -78,10 +84,10 @@
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js"
   },
-    "browserify": {
+  "browserify": {
     "transform": [
-    "browserify-shim"
-  ]
+      "browserify-shim"
+    ]
   },
     "browserify-shim": {
     "jquery": "$"

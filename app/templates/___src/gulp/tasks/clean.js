@@ -22,7 +22,7 @@ gulp.task('clean:templates', function (cb) {
 
 gulp.task('clean:images', function (cb) {
   return del([
-    config.dist.images + '**/*.{jpeg,jpg,gif,png,webp,svg}'
+    config.dist.images + '**/*.{jpeg,jpg,gif,png,webp,svg,ico}'
   ], {
     force: true
   }, cb);

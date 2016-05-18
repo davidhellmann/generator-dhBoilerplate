@@ -8,7 +8,7 @@ import matchheight          from 'jquery-match-height'
 
 
 
-// MatchHeight with Timeout cause Pagetranstions
+// MatchHeight with Timeout
 setTimeout(function() {
   $('.js_matchHeight').matchHeight();
 }, 2500);

@@ -35,18 +35,44 @@
 
 /* --------------------------------------------------
 
-   Lazyload
+   Lazy Loading
    -------------------------------------------------- */
 
-img,
-figure,
-div {
-  &.lazyload, &.lazyloading {
-    opacity: 0.5;
+.lazyload,
+.lazyloading {
+  opacity: .25;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: all .75s ease-out;
+}
+
+
+
+/* --------------------------------------------------
+
+   Waypoints
+   -------------------------------------------------- */
+
+.waypointElement {
+  &.fadeInUp {
+    opacity: 0;
+    transform: translate3d(0, 200px, 0);
   }
 
-  &.lazyloaded {
-    opacity: 1;
-    transition: opacity 1s ease-out;
+  &.fadeInDown {
+    opacity: 0;
+    transform: translate3d(0, -200px, 0);
+  }
+
+  &.fadeInLeft {
+    opacity: 0;
+    transform: translate3d(200px, 0, 0);
+  }
+
+  &.fadeInRight {
+    opacity: 0;
+    transform: translate3d(-200px, 0, 0);
   }
 }

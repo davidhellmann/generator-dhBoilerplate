@@ -6,7 +6,7 @@ import copyImagesLib from '../lib/imagesCopy';
 const $ = gulpLoadPlugins();
 
 const copyImages = () => {
-  copyImagesLib(config.src.images + '**/*.{png,jpeg,jpg,gif,webp}', config.dist.images);
+  copyImagesLib(config.src.images + '**/*.{png,jpeg,jpg,gif,webp,ico}', config.dist.images);
 }
 
 gulp.task('images', copyImages);

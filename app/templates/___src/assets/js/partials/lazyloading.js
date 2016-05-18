@@ -9,6 +9,6 @@ import lazysizesRespImg     from '../../../../node_modules/lazysizes/plugins/res
 
 
 // Settings
-// window.lazySizesConfig = window.lazySizesConfig || {};
-// window.lazySizesConfig.expand = 130; //default 360-500
-// lazySizesConfig.expFactor = 1.3; //default: 1.7
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.expand = 500; //default 360-500
+lazySizesConfig.expFactor = 1.7; //default: 1.7

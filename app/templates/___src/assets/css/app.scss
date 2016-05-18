@@ -1,7 +1,9 @@
-/**
- * Settings & Basic Stuff
- */
+/* --------------------------------------------------
 
+   Settings & Basic Stuff
+   -------------------------------------------------- */
+
+@import '../../../node_modules/include-media/dist/include-media';
 @import 'partials/settings';
 @import 'partials/functions';
 @import 'partials/mixins';
@@ -10,9 +12,21 @@
 @import 'partials/base';
 
 
-/**
- * All the Sass Partials
- */
+
+/* --------------------------------------------------
+
+   Vendor
+   -------------------------------------------------- */
+
+@import "vendor/photoswipe/photoswipe";
+@import "vendor/photoswipe/defaultSkin";
+
+
+
+/* --------------------------------------------------
+
+   Sass Files
+   -------------------------------------------------- */
 
 @import 'modules/fonts';
 @import 'modules/header';
