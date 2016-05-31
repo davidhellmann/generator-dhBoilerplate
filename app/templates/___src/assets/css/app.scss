@@ -8,6 +8,11 @@
 
 @import '../../../node_modules/include-media/dist/include-media';
 
+// Include Family.scss
+// URL: http://lukyvj.github.io/family.scss/
+
+@import '../../../node_modules/family.scss/family';
+
 @import 'partials/settings';
 @import 'partials/functions';
 @import 'partials/mixins';
