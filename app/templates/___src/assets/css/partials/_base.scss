@@ -58,7 +58,7 @@ h6, .h6 {
   font-family: fontFamily('headline');
   font-size: fontSize('base');
   font-weight: 700;
-  margin: vr(2) 0 vr(1) 0;
+  margin: space(2) 0 space(1) 0;
   word-wrap: break-word;
   line-height: lh(.7);
 }
@@ -106,7 +106,7 @@ dl,
 pre,
 table,
 blockquote {
-  margin: 0 0 vr(1) 0;
+  margin: 0 0 space(1) 0;
 }
 
 ul ul,
@@ -118,7 +118,7 @@ ol ul {
 }
 
 blockquote {
-  margin: vr(2) 0;
+  margin: space(2) 0;
 
   p {
     font-family: fontFamily('headline');
@@ -143,39 +143,39 @@ blockquote {
 
 ul {
   list-style: disc outside;
-  padding-left: vr(2);
+  padding-left: space(2);
 
   @include breakpoint('s') {
-    padding-left: vr(3);
+    padding-left: space(3);
   }
 }
 
 ol {
   list-style: decimal outside;
-  padding-left: vr(2);
+  padding-left: space(2);
 
   @include breakpoint('s') {
-    padding-left: vr(3);
+    padding-left: space(3);
   }
 }
 
 dt {
   font-weight: 700;
-  margin: vr(1) 0;
+  margin: space(1) 0;
 }
 
 dd {
   margin: 0;
-  padding-left: vr(2);
+  padding-left: space(2);
 
   @include breakpoint('s') {
-    padding-left: vr(3);
+    padding-left: space(3);
   }
 }
 
 hr {
   border: none;
-  margin: vr(2)-1px 0;
+  margin: space(2)-1px 0;
   height: 1px;
   background: color('black');
 }
@@ -241,7 +241,7 @@ img {
 }
 
 figure {
-  margin: vr(1) 0 vr(2) 0;
+  margin: space(1) 0 space(2) 0;
 
   img {
     width: 100%;
@@ -250,7 +250,7 @@ figure {
 
 figcaption {
   text-align: center;
-  padding: vr(1) 0 0 0;
+  padding: space(1) 0 0 0;
   font-size: fontSize('s');
 }
 
@@ -269,7 +269,7 @@ figcaption {
   height: 0;
   padding-bottom: 56.25%;
   position: relative;
-  margin: vr(1) 0 vr(2) 0;
+  margin: space(1) 0 space(2) 0;
 
   iframe {
     position: absolute;
@@ -286,5 +286,5 @@ figcaption {
    -------------------------------------------------- */
 
 .gist {
-  margin: vr(1) 0 vr(2) 0;
+  margin: space(1) 0 space(2) 0;
 }
