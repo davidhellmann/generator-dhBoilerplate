@@ -2,13 +2,29 @@
  * Set Body Classes
  */
 
-// Body Class
-var _body = document.querySelector('body');
+var _body     = document.querySelector('body'),
+    _steps    = 1000,
+    _duration = 3000,
+    _timer    = 0,
+    _i        = 1;
 
-setTimeout(function() {
-  _body.classList.add('is_ready');
-}, 0), setTimeout(function() {
-  _body.classList.add('is_now_1000');
-}, 1000), setTimeout(function() {
-  _body.classList.add('is_now_2000');
-}, 2000);
+
+while (_timer <= _duration) {
+
+  if (_timer == 0) {
+
+    _body.classList.add('is_ready');
+
+  } else {
+
+    setTimeout(function() {
+
+      _body.classList.add('is_now_' + (_i * _steps));
+      _i++;
+
+    }, _timer);
+
+  }
+
+  _timer = _timer  + _steps;
+}
