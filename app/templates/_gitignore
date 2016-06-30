@@ -47,8 +47,11 @@ ___dist/wp-content/*
 <% } %>
 
 <% if (projectUsage == 'CraftCMS' ) { %>
+# Craft CMS
 ___dist/config/config.local.php
 ___dist/config/license.key
 ___dist/craft
+___dist/templates
 ___dist/public/uploads
+___dist/public/assets
 <% } %>
