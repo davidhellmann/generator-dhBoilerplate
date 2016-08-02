@@ -1,9 +1,9 @@
 /* --------------------------------------------------
 
-   App Footer
+   .o-appContent
    -------------------------------------------------- */
 
-.appFooter {
+.o-appContent {
   @include col(12);
 
   @include breakpoint('l') {

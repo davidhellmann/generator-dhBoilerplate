@@ -1,9 +1,9 @@
 /* --------------------------------------------------
 
-   Buttons
+   .a-button
    -------------------------------------------------- */
 
-.button {
+.a-button {
   background: color('red');
   font-weight: 700;
   color: color('white');
@@ -22,7 +22,7 @@
   }
 }
 
-.button.button--blue {
+.a-button--blue {
   background: color('blue');
 
   .no-touchevents &:hover {
@@ -31,10 +31,24 @@
   }
 }
 
-.button.button--center {
+.a-button--center {
   @include center();
 }
 
-.button.button--full {
+.a-button--full {
   width: 100%;
+}
+
+
+
+/* --------------------------------------------------
+   .a-buttonWrapper
+   -------------------------------------------------- */
+
+.a-buttonWrapper {
+  @include row();
+
+  &--center {
+    text-align: center;
+  }
 }

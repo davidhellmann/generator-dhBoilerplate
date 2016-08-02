@@ -88,6 +88,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         message: 'Include new (2.1.4 => y) or Old (1.11.3 => n) jQuery Version?',
         default: true
       }, {
+        type: 'confirm',
+        name: 'projectVue',
+        message: 'Do you want to use Vue.js?',
+        default: false
+      }, {
         type:    'input',
         name:    'projectVersion',
         message: 'Project Version Number',
@@ -121,6 +126,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       this.proxyUrl             = props.proxyUrl;
       this.projectIECompatible  = props.projectIECompatible;
       this.projectjQuery        = props.projectjQuery;
+      this.projectVue           = props.projectVue;
       this.projectUsage         = props.projectUsage;
       this.projectVersion       = props.projectVersion;
       this.projectAuthor        = props.projectAuthor;

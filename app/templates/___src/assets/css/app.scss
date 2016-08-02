@@ -1,6 +1,6 @@
 /* --------------------------------------------------
 
-   Settings & Basic Stuff
+   Settings & Global Stuff
    -------------------------------------------------- */
 
 // Include Media Breakpoint Mixin
@@ -13,12 +13,14 @@
 
 @import '../../../node_modules/family.scss/source/src/family';
 
-@import 'partials/settings';
-@import 'partials/functions';
-@import 'partials/mixins';
-@import 'partials/extends';
-@import 'partials/normalize';
-@import 'partials/base';
+
+@import 'global/settings';
+@import 'global/functions';
+@import 'global/mixins';
+@import 'global/extends';
+@import 'global/normalize';
+@import 'global/base';
+@import 'global/fonts';
 
 
 
@@ -29,17 +31,38 @@
 
 @import "vendor/photoswipe/photoswipe";
 @import "vendor/photoswipe/defaultSkin";
+@import "vendor/slick/slick";
 
 
 
 /* --------------------------------------------------
 
-   Sass Files
+   Atoms
    -------------------------------------------------- */
 
-@import 'modules/fonts';
-@import 'modules/header';
-@import 'modules/footer';
 @import 'modules/snippets';
-@import 'modules/buttons';
-@import 'modules/form';
+@import 'atoms/a-button';
+@import 'atoms/form';
+@import 'atoms/a-lazyloading';
+@import 'atoms/a-waypointElement';
+
+
+
+/* --------------------------------------------------
+
+   Molecules
+   -------------------------------------------------- */
+
+@import 'molecules/m-mainNav';
+
+
+
+/* --------------------------------------------------
+
+   Organisms
+   -------------------------------------------------- */
+
+@import 'organisms/o-appFooter';
+@import 'organisms/o-appHeader';
+@import 'organisms/o-appWrapper';
+@import 'organisms/o-appContent';

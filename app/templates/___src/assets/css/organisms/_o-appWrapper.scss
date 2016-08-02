@@ -1,12 +1,17 @@
 /* --------------------------------------------------
 
-   App Header
+   .o-appWrapper
    -------------------------------------------------- */
 
-.appHeader {
-  @include col(12);
+.o-appWrapper {
+  opacity: 0;
+  transition: all 1.5s ease-out;
 
   @include breakpoint('l') {
-    @include col(8);
+    padding: 50px;
   }
+}
+
+.is_ready .appWrapper {
+  opacity: 1;
 }
