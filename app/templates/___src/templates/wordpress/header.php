@@ -80,8 +80,8 @@
 </script>
 
 <!-- WebsiteWrapper -->
-<div class="appWrapper">
-  <div class="appHeader">
+<div class="o-appWrapper">
+  <div class="o-appHeader">
     PAGE HEADER
   </div>
 
