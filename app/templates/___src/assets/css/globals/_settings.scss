@@ -3,9 +3,10 @@
    Grid
    -------------------------------------------------- */
 
-$column__width:         120px;
-$gutter__width:         20px;
-$columns:               12;
+$pixelGridSize:         8px;
+$colWidth:              $pixelGridSize * 8; // 15 * 8 = 120px;
+$gutterWidth:           $pixelGridSize * 2; // 2 * 8 = 16px;
+$cols:                  12;
 
 
 
@@ -71,11 +72,9 @@ $boxshadows: (
    -------------------------------------------------- */
 
 $borders: (
-
   'white':              1px solid $_white,
   'white--2':           2px solid $_white,
   'white--2--dotted':   2px dotted $_white,
-
   'trans':              1px solid transparent,
 );
 
@@ -87,22 +86,24 @@ $borders: (
    -------------------------------------------------- */
 
 $fonts: (
-  'basic':              ('Vollkorn', Georgia, "Times New Roman", Times, serif),
+  'base':               ('Vollkorn', Georgia, "Times New Roman", Times, serif),
   'headline':           ('Lato', Helvetica, Arial, sans-serif),
 );
 
-$fontSizes: (
-  's':                  12px, // 18 / 1.5
-  'base':               18px,
-  'm':                  27px, // 18 * 1.5
-  'l':                  40px, // 27 * 1.5
-  'xl':                 60px, // 40 * 1.5
-);
+$baseFontSize:          18px;
+$baseFontScale:         1.5;
+$baseLineHeight:        1.5;
 
-$base_font_family:      map-get($fonts, 'basic');
-$base_font_size:        map-get($fontSizes, 'base');
-$base_font_scale:       1.6;
-$base_line_height:      1.5;
+$fontSizes: (
+  'xs':                 12px,
+  's':                  15px,
+  'base':               $baseFontSize,
+  'm':                  $baseFontSize * $baseFontScale,
+  'l':                  $baseFontSize * $baseFontScale * $baseFontScale,
+  'xl':                 $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale,
+  'xxl':                $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale,
+  'xxxl':               $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale,
+);
 
 
 
@@ -113,7 +114,7 @@ $base_line_height:      1.5;
    -------------------------------------------------- */
 
 // min or max
-$media-direction:       min;
+$mediaDirection:       min;
 
 // Breakpoints
 $breakpoints: (
@@ -134,10 +135,10 @@ $breakpoints: (
    -------------------------------------------------- */
 
 // min or max
-$media-direction-v:     max;
+$mediaDirection--v:     max;
 
 // Breakpoints
-$breakpoints-v: (
+$breakpoints--v: (
   's':                  600px,
   'm':                  800px,
   'l':                  1000px,

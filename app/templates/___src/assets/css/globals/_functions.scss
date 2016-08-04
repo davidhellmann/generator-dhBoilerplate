@@ -77,7 +77,7 @@
    -------------------------------------------------- */
 
 @function vr($key) {
-  @return ($gutter__width * $key) + 0px;
+  @return ($gutterWidth * $key) + 0px;
 }
 
 
@@ -88,7 +88,7 @@
    -------------------------------------------------- */
 
 @function space($key) {
-  @return ($gutter__width * $key) + 0px;
+  @return ($pixelGridSize * $key) + 0px;
 }
 
 
@@ -99,7 +99,7 @@
    -------------------------------------------------- */
 
 @function lh($key) {
-  @return ($base_line_height * $key);
+  @return ($baseLineHeight * $key);
 }
 
 

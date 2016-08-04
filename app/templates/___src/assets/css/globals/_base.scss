@@ -18,16 +18,12 @@ html {
 }
 
 body {
-  font-family: $base_font_family;
-  font-size: $base_font_size * 0.9;
-  line-height: $base_line_height;
+  font-family: fontFamily('base');
+  font-size: fontSize('base');
+  line-height: $baseLineHeight;
   font-weight: 400;
   color: lighten(color('black'), 10%);
   background: color('white');
-
-  @include breakpoint('s') {
-    font-size: $base_font_size;
-  }
 }
 
 

@@ -4,7 +4,7 @@
    Calc max-width
    -------------------------------------------------- */
 
-$max__width: $column__width*$columns;
+$maxWidth: $colWidth*$cols;
 
 
 
@@ -14,8 +14,8 @@ $max__width: $column__width*$columns;
    -------------------------------------------------- */
 
 @mixin gutter() {
-  padding-left: $gutter__width;
-  padding-right: $gutter__width;
+  padding-left: $gutterWidth;
+  padding-right: $gutterWidth;
 }
 
 
@@ -42,16 +42,16 @@ $max__width: $column__width*$columns;
    -------------------------------------------------- */
 
 @mixin col($i, $gutter: yes, $fw: no) {
-  @if $i <= $columns {
+  @if $i <= $cols {
     float: left;
 
     @if $fw == no {
-      width: ((100 * $column__width * $i) / $max__width) + 0%;
+      width: ((100 * $colWidth * $i) / $maxWidth) + 0%;
     } @else if $fw == yes {
       width: 100%;
     }
 
-    max-width: $column__width * $i;
+    max-width: $colWidth * $i;
 
     @if $gutter == yes {
       @include gutter();
@@ -83,7 +83,7 @@ $max__width: $column__width*$columns;
 @mixin push($i) {
   @if $i > 0 {
     position: relative;
-    left: ((100 * $column__width * $i) / $max__width) + 0%;
+    left: ((100 * $colWidth * $i) / $maxWidth) + 0%;
   } @else if $i < 1 {
     left: 0;
   }
@@ -99,7 +99,7 @@ $max__width: $column__width*$columns;
 @mixin pull($i) {
   @if $i > 0 {
     position: relative;
-    right: ((100 * $column__width * $i) / $max__width) + 0%;
+    right: ((100 * $colWidth * $i) / $maxWidth) + 0%;
   } @else if $i < 1 {
     right: 0;
   }
@@ -142,7 +142,7 @@ $max__width: $column__width*$columns;
    Breakpoints
    -------------------------------------------------- */
 
-@mixin breakpoint($breakpoint,$direction: $media-direction) {
+@mixin breakpoint($breakpoint,$direction: $mediaDirection) {
 
   @if map-has-key($breakpoints, $breakpoint) {
     @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
@@ -159,10 +159,10 @@ $max__width: $column__width*$columns;
   }
 }
 
-@mixin breakpointV($breakpoint,$direction: $media-direction-v) {
+@mixin breakpointV($breakpoint,$direction: $mediaDirection--v) {
 
-  @if map-has-key($breakpoints-v, $breakpoint) {
-    @media (#{$direction}-height: #{map-get($breakpoints-v, $breakpoint)}) {
+  @if map-has-key($breakpoints--v, $breakpoint) {
+    @media (#{$direction}-height: #{map-get($breakpoints--v, $breakpoint)}) {
       @content;
     }
   }
