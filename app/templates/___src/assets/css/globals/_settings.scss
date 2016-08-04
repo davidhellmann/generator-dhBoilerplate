@@ -91,18 +91,18 @@ $fonts: (
 );
 
 $baseFontSize:          18px;
-$baseFontScale:         1.5;
 $baseLineHeight:        1.5;
+$fontScale:             1.5;
 
 $fontSizes: (
   'xs':                 12px,
   's':                  15px,
   'base':               $baseFontSize,
-  'm':                  $baseFontSize * $baseFontScale,
-  'l':                  $baseFontSize * $baseFontScale * $baseFontScale,
-  'xl':                 $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale,
-  'xxl':                $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale,
-  'xxxl':               $baseFontSize * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale * $baseFontScale,
+  'm':                  $baseFontSize * $fontScale,
+  'l':                  $baseFontSize * $fontScale * $fontScale,
+  'xl':                 $baseFontSize * $fontScale * $fontScale * $fontScale,
+  'xxl':                $baseFontSize * $fontScale * $fontScale * $fontScale * $fontScale,
+  'xxxl':               $baseFontSize * $fontScale * $fontScale * $fontScale * $fontScale * $fontScale,
 );
 
 
