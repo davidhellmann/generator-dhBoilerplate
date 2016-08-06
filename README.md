@@ -23,7 +23,7 @@
    dhBoilerplate made with love & help.
    ---------------------------------------
    Author   :   David Hellmann
-   Website  :   http://davidhellmann.com
+   Website  :   https://davidhellmann.com
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
 ```
 
@@ -79,6 +79,41 @@ This Task clean the folder, build the stuff from ground up and optimize the imag
 
 ```
 gulp build
+```
+
+
+### Other Tasks
+There are some other Tasks there…
+
+```
+// Clean Tasks
+// Clean the specific folder in the "___dist" dir
+gulp clean:templates
+gulp clean:css
+gulp clean:js
+gulp clean:images
+
+
+// Main Tasks
+// All this are triggered within "gulp init" & "gulp build" task.
+// Some of this are triggered within the "gulp" task.
+gulp templates
+gulp systemFiles
+gulp modernizr
+gulp compile:js
+gulp sass
+gulp copy:fonts
+gulp images
+gulp svg-single
+gulp svg-sprite
+
+
+// Minify Tasks
+// This task are triggered within the "guld build" task.
+gulp minify:js
+gulp minify:sass
+gulp minify:images
+
 ```
 
 [![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate)
