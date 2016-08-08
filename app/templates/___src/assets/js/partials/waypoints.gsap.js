@@ -6,6 +6,7 @@
 import $ from 'jquery'
 import TweenMax from '../../../../node_modules/gsap/src/uncompressed/TweenMax'
 import waypoint from './vendor/jquery.waypoints'
+import debounce             from './debounce'
 
 
 
@@ -25,7 +26,7 @@ var waypoints = $(sm_blog_triggers).waypoint({
 
       // Get all Child Elements with wayPointID
       var elements = $(this.element).find('.js_waypointElement[data-waypoint-id="' + waypointID + '"]');
-      
+
       // Fade In Up Settings
       TweenMax.staggerTo(elements, .5, {
         opacity: 1,
