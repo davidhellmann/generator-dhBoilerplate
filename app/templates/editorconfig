@@ -1,10 +1,28 @@
 # http://editorconfig.org
+
 root = true
 
+
+# Default Settings
 [*]
-indent_style = space
-indent_size = 2
-end_of_line = lf
 charset = utf-8
-trim_trailing_whitespace = true
+indent_size = 2
+indent_style = space
+end_of_line = lf
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+
+# PHP Settings
+[*.php]
+indent_size = 4
+
+
+# JS Settings
+[*.js]
+indent_size = 4
+
+
+# Markdown Settings
+[*.md]
+trim_trailing_whitespace = false
