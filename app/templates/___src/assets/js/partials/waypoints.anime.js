@@ -27,7 +27,7 @@ var waypoints = $(sm_blog_triggers).waypoint({
       var fadeInUp = function(els, delay) {
         anime({
           targets: els,
-          translateY: ['100','0'],
+          translateY: ['50','0'],
           duration: 750,
           opacity: [0, 1],
           delay: delay,
