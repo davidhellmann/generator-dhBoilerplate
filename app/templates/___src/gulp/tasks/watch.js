@@ -13,12 +13,12 @@ const watchTask = () => {
   // gulp.watch(config.src.templates + '**/*.scss', ['sass']);
 
   // watch images
-  gulp.watch(config.src.images + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
+  gulp.watch(config.src.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
 
   // watch SVG Stuff
-  gulp.watch(config.src.svg.single + '**/*', ['svg-single']);
+  gulp.watch(config.src.images.svg.single + '**/*', ['svg-single']);
 
-  gulp.watch(config.src.svg.sprite + '**/*', ['svg-sprite']);
+  gulp.watch(config.src.images.svg.sprite + '**/*', ['svg-sprite']);
 }
 
 gulp.task('watch', ['browser-sync'], watchTask);

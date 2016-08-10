@@ -5,8 +5,8 @@ import errorHandler from '../lib/errorHandler';
 
 const $ = gulpLoadPlugins();
 
-const vectorSource = config.src.svg.single + '**/*.svg';
-const vectorDist = config.dist.svg.single;
+const vectorSource = config.src.images.svg.single + '**/*.svg';
+const vectorDist = config.dist.images.svg.single;
 
 const copyVectors = () => {
   return gulp

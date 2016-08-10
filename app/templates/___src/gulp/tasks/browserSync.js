@@ -5,9 +5,9 @@ import browserSync from 'browser-sync';
 
 const browserSyncTask = () => {
   var browserSyncWatch = [
-    config.dist.markup     + '**/*.{html,php,twig,rss}',
-    config.dist.images     + '**/*.{jpg,jpeg,webp,gif,png,svg,ico}',
-    config.dist.css        + '**/*.css',
+    config.dist.markup          + '**/*.{html,php,twig,rss}',
+    config.dist.images.base     + '**/*.{jpg,jpeg,webp,gif,png,svg,ico}',
+    config.dist.css             + '**/*.css',
     <% if (projectVue == false ) { %>
     config.dist.js         + '**/*.js'
     <% } %>

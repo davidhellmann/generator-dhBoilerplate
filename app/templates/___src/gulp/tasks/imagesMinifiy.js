@@ -6,7 +6,7 @@ import minifyImages from '../lib/imagesMinify';
 const $ = gulpLoadPlugins();
 
 const minifyImagesTask = () => {
-  minifyImages(config.dist.images + '**/*.{png,jpeg,jpg,gif,webp,ico}', config.dist.images);
+  minifyImages(config.dist.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp,ico}', config.dist.images.bitmap.base);
 }
 
 gulp.task('minify:images', minifyImagesTask);
