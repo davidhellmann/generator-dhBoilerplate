@@ -9,11 +9,7 @@ const minifyCss = () => {
   return gulp
     .src(config.dist.css + '*.css')
     .pipe($.postcss(postCssNano()))
-    .pipe(gulp.dest(config.dist.css))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: minify:sass - done'
-    }));
+    .pipe(gulp.dest(config.dist.css));
 }
 
 gulp.task('minify:sass', minifyCss);

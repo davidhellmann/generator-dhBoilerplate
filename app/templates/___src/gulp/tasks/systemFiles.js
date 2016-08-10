@@ -10,11 +10,7 @@ const systemFiles = () => {
   return gulp
     .src(config.files.systemFiles)
     .pipe( argv.source ? $.debug({ verbose: true }) : $.util.noop() )
-    .pipe(gulp.dest(config.dist.base))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: systemFiles - done'
-    }));
+    .pipe(gulp.dest(config.dist.base));
 }
 
 gulp.task('systemFiles', systemFiles);

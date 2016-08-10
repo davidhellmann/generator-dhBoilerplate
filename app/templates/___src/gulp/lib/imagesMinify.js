@@ -25,10 +25,6 @@ const minifyImages = (srcFiles, distFiles) => {
     .pipe(gulp.dest(distFiles))
     .pipe($.size({
       title: '>>> Task: minify:images - done - Image Size: '
-    }))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: minify:images - done'
     }));
 }
 

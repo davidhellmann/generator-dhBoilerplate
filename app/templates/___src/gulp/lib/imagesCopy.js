@@ -9,13 +9,7 @@ const copyImagesLib = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .on('error', errorHandler)
-    //.pipe($.changed(distFiles))
-    .pipe(gulp.dest(distFiles))
-    .pipe($.debug())
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: copy:images - done'
-    }));;
+    .pipe(gulp.dest(distFiles));
 }
 
 module.exports = copyImagesLib;

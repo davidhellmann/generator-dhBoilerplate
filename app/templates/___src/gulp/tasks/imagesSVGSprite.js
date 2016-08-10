@@ -38,10 +38,6 @@ const svgSprite = () => {
     .on('error', errorHandler)
     .pipe(gulp.dest(vectorDist))
     .pipe($.size())
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: svg-sprite - done'
-    }))
     .pipe($.cheerio({
       run: function ($) {
         $('[fill^="#"]').removeAttr('fill');
@@ -50,11 +46,7 @@ const svgSprite = () => {
       },
       parserOptions: { xmlMode: true }
     }))
-    .pipe(gulp.dest(vectorDist))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: svg-cleanup - done'
-    }));
+    .pipe(gulp.dest(vectorDist));
 }
 
 gulp.task('svg-sprite', svgSprite);

@@ -20,11 +20,7 @@ const buildModernizr = () => {
     .pipe($.rename({
       suffix: '-custom.min'
     }))
-    .pipe(gulp.dest(config.dist.js + 'vendor/'))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: modenizr - done'
-    }));
+    .pipe(gulp.dest(config.dist.js + 'vendor/'));
 }
 
 gulp.task('modernizr', buildModernizr);

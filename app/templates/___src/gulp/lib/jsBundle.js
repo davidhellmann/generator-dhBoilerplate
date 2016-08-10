@@ -21,8 +21,7 @@ const bundleJs = (bundler) => {
     .pipe(env == 'production' ? $.uglify() : $.util.noop())
     .pipe($.rename({ suffix: '.min'}))
     .pipe(env == 'development' ? $.sourcemaps.write('./maps/') : $.util.noop())
-    .pipe(gulp.dest(config.dist.js))
-    .pipe($.debug())
+    .pipe(gulp.dest(config.dist.js));
 }
 
 module.exports = bundleJs;

@@ -17,11 +17,7 @@ const copyVectors = () => {
     }))
     .on('error', errorHandler)
     .pipe(gulp.dest(vectorDist))
-    .pipe($.size())
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: svg-single - done'
-    }));
+    .pipe($.size());
 }
 
 gulp.task('svg-single', copyVectors);

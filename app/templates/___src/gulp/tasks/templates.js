@@ -13,11 +13,8 @@ const templates = () => {
     .pipe($.plumber())
     .pipe($.twig())
     .on('error', errorHandler)
-    .pipe(gulp.dest(config.dist.markup))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: templates - done'
-    }));
+    .pipe($.changed(config.dist.markup))
+    .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
 
@@ -25,11 +22,7 @@ const templates = () => {
   <% if (projectUsage == 'CraftCMS') { %>
   return gulp.src(config.src.templates + '**/*.{html,twig,rss}')
     .pipe($.changed(config.dist.markup))
-    .pipe(gulp.dest(config.dist.markup))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: templates - done'
-    }));
+    .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
 
@@ -37,11 +30,7 @@ const templates = () => {
   <% if (projectUsage == 'WordPress') { %>
     return gulp.src(config.src.templates + '**/*.{html,php,twig,png,css,md,rss}')
       .pipe($.changed(config.dist.markup))
-      .pipe(gulp.dest(config.dist.markup))
-      .pipe($.notify({
-        onLast: true,
-        message: '>>> Task: templates - done'
-      }));
+      .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
 }

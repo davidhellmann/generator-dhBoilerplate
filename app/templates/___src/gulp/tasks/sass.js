@@ -32,10 +32,6 @@ const compileCss = () => {
     }))
     .pipe(browserSync.stream({
       match: '**/*.css'
-    }))
-    .pipe($.notify({
-      onLast: true,
-      message: '>>> Task: sass - done'
     }));
 }
 
