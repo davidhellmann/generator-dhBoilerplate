@@ -8,7 +8,7 @@ const postCssConfig = () => {
     // Include Assets
     require('postcss-assets')({
       basePath: config.dist.markup,
-      loadPaths: [config.dist.images]
+      loadPaths: [config.dist.images.base]
     }),
 
     // Prefixer
@@ -20,7 +20,7 @@ const postCssConfig = () => {
     // Inline SVG Images
     require('postcss-svg')({
       defaults: '[fill]:#f00',
-      paths: [config.dist.svg.single]
+      paths: [config.dist.images.svg.single]
     }),
 
     // Include Size Short hands
