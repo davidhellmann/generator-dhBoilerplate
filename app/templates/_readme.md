@@ -31,7 +31,7 @@
 
 
 ## Description
-soon…
+<%= projectDescription %>
 
 
 ## Install NPM Packages
