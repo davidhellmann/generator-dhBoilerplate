@@ -13,7 +13,7 @@ const templates = () => {
     .pipe($.plumber())
     .pipe($.twig())
     .on('error', errorHandler)
-    .pipe($.changed(config.dist.markup))
+    //.pipe($.changed(config.dist.markup))
     .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
@@ -22,7 +22,7 @@ const templates = () => {
   <% if (projectUsage == 'CraftCMS') { %>
   return gulp
     .src(config.src.templates + '**/*.{html,twig,rss}')
-    .pipe($.changed(config.dist.markup))
+    //.pipe($.changed(config.dist.markup))
     .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
@@ -31,7 +31,7 @@ const templates = () => {
   <% if (projectUsage == 'WordPress') { %>
     return gulp
       .src(config.src.templates + '**/*.{html,php,twig,png,css,md,rss}')
-      .pipe($.changed(config.dist.markup))
+      //.pipe($.changed(config.dist.markup))
       .pipe(gulp.dest(config.dist.markup));
   <% } %>
 
