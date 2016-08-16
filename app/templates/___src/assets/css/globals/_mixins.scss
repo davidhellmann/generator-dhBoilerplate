@@ -13,9 +13,9 @@ $maxWidth: $colWidth*$cols;
    Gutter
    -------------------------------------------------- */
 
-@mixin gutter() {
-  padding-left: $gutter__width;
-  padding-right: $gutter__width;
+@mixin gutter($i: 1) {
+  padding-left: ($i * $gutter__width);
+  padding-right: ($i * $gutter__width);
 }
 
 
