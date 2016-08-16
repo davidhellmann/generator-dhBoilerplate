@@ -52,7 +52,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
     console.log(welcome);
 
-    var prompts = [
+    return this.prompt([
       {
         type:    'input',
         name:    'projectName',
@@ -80,9 +80,25 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         choices: [
           "Prototyping",
           "WordPress",
-          "CraftCMS"
+          "Craft CMS"
         ]
-      }, {
+      },{
+        when: function(answers) {
+            return answers.projectUsage === 'Craft CMS';
+        },
+        type: 'confirm',
+        name: 'craftHearty',
+        message: 'Do you want to use Hearty Config?',
+        default: true
+      },{
+        when: function(answers) {
+            return answers.projectUsage === 'Craft CMS';
+        },
+        type: 'confirm',
+        name: 'craftImager',
+        message: 'Do you want to use Imager?',
+        default: true
+      },{
         type: 'confirm',
         name: 'projectjQuery',
         message: 'Include new (2.1.4 => y) or Old (1.11.3 => n) jQuery Version?',
@@ -118,27 +134,35 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         message: 'Git Repo URL',
         default: 'http://...'
       }
-    ];
-
-    this.prompt(prompts, function (props) {
-      this.projectName          = props.projectName;
-      this.projectDescription   = props.projectDescription;
-      this.proxyUrl             = props.proxyUrl;
-      this.projectIECompatible  = props.projectIECompatible;
-      this.projectjQuery        = props.projectjQuery;
-      this.projectVue           = props.projectVue;
-      this.projectUsage         = props.projectUsage;
-      this.projectVersion       = props.projectVersion;
-      this.projectAuthor        = props.projectAuthor;
-      this.projectMail          = props.projectMail;
-      this.projectUrl           = props.projectUrl;
-      this.projectRepo          = props.projectRepo;
+    ]).then(function(answers) {
+      function checkAnswer(answer) {
+        if(answer) {
+            return answer
+        } else {
+            return false
+        }
+    }
+    this.projectName          = answers.projectName;
+      this.projectDescription   = answers.projectDescription;
+      this.proxyUrl             = answers.proxyUrl;
+      this.projectIECompatible  = answers.projectIECompatible;
+      this.projectjQuery        = answers.projectjQuery;
+      this.projectVue           = answers.projectVue;
+      this.projectUsage         = answers.projectUsage;
+      this.craftHearty          = checkAnswer(answers.craftHearty);
+      this.craftImager          = checkAnswer(answers.craftImager);
+      this.projectVersion       = answers.projectVersion;
+      this.projectAuthor        = answers.projectAuthor;
+      this.projectMail          = answers.projectMail;
+      this.projectUrl           = answers.projectUrl;
+      this.projectRepo          = answers.projectRepo;
       done();
     }.bind(this));
 
   },
 
   app: function () {
+
     // move src folder
     this.directory('___src/_system/',   '___src/_system/');
     this.directory('___src/assets/',    '___src/assets/');
@@ -152,25 +176,88 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
       this.directory('___src/templates/wordpress/', '___src/templates/');
     }
 
-    if ( this.projectUsage === 'CraftCMS' ) {
+    if ( this.projectUsage === 'Craft CMS' ) {
       this.directory('___src/templates/craftcms/', '___src/templates/');
+      this.directory('___src/_craft/hearty/config/', 'dist/config');
+
+      this.fs.copyTpl(
+        this.templatePath('___src/_craft/imager/imager.php'),
+        this.destinationPath('dist/config/imager.php')
+      );
     }
   },
 
   projectfiles: function () {
-    this.copy('_package.json',          'package.json');
-    this.copy('_config.json',           'config.json');
-    this.copy('_gulpfile.babel.js',     'gulpfile.babel.js');
-    this.copy('_readme.md',             'readme.md');
-    this.copy('_gitignore',             '.gitignore');
-    this.copy('editorconfig',           '.editorconfig');
-    this.copy('jshintrc',               '.jshintrc');
-    this.copy('babelrc',                '.babelrc');
+      var params = {
+          projectName:          this.projectName,
+          projectDescription:   this.projectDescription,
+          proxyUrl:             this.proxyUrl,
+          projectIECompatible:  this.projectIECompatible,
+          projectjQuery:        this.projectjQuery,
+          projectVue:           this.projectVue,
+          projectUsage:         this.projectUsage,
+          craftHearty:          this.craftHearty,
+          craftImager:          this.craftImager,
+          projectVersion:       this.projectVersion,
+          projectAuthor:        this.projectAuthor,
+          projectMail:          this.projectMail,
+          projectUrl:           this.projectUrl,
+          projectRepo:          this.projectRepo
+      }
+
+
+      this.fs.copyTpl(
+          this.templatePath('_package.json'),
+          this.destinationPath('package.json'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('_config.json'),
+          this.destinationPath('config.json'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('_gulpfile.babel.js'),
+          this.destinationPath('gulpfile.babel.js'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('_readme.md'),
+          this.destinationPath('readme.md'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('_gitignore'),
+          this.destinationPath('.gitignore'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('editorconfig'),
+          this.destinationPath('.editorconfig'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('jshintrc'),
+          this.destinationPath('.jshintrc'),
+          params
+      );
+
+      this.fs.copyTpl(
+          this.templatePath('babelrc'),
+          this.destinationPath('.babelrc'),
+          params
+      );
   },
 
   install: function () {
-    console.log('Install NPM Modules.');
-    console.log('Give me a moment to do that…');
+    this.log('Install NPM Modules.');
+    this.log('Give me a moment to do that…');
     this.installDependencies({
       bower: false,
       npm: true
