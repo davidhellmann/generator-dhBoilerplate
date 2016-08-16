@@ -58,7 +58,7 @@
         "sprite":           "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/sprite/"
       }
     }
-    <% } if (projectUsage == 'CraftCMS' ) { %>
+    <% } if (projectUsage == 'Craft CMS' ) { %>
     "base":                 "___dist/public/",
     "markup":               "___dist/templates/",
     "browserSyncDir":       "___dist/public/",
