@@ -14,21 +14,23 @@ $maxWidth: $colWidth*$cols;
    -------------------------------------------------- */
 
 @mixin gutter() {
-  padding-left: $gutterWidth;
-  padding-right: $gutterWidth;
+  padding-left: $gutter__width;
+  padding-right: $gutter__width;
 }
 
 
 
 /* --------------------------------------------------
 
-   Row
+   Container
+   @include container(); // full for 100%
    -------------------------------------------------- */
 
-
-@mixin row() {
+@mixin container($width: max) {
   width: 100%;
-  max-width: none;
+  @if $width != 'full' {
+    max-width: $max__width;
+  }
   @include clearfix();
 }
 
@@ -38,39 +40,12 @@ $maxWidth: $colWidth*$cols;
 
    Cols
    Optional Setting to remove default gutter
-   @include col(x, no)
+   @include cols(x)
    -------------------------------------------------- */
 
-@mixin col($i, $gutter: yes, $fw: no) {
-  @if $i <= $cols {
-    float: left;
-
-    @if $fw == no {
-      width: ((100 * $colWidth * $i) / $maxWidth) + 0%;
-    } @else if $fw == yes {
-      width: 100%;
-    }
-
-    max-width: $colWidth * $i;
-
-    @if $gutter == yes {
-      @include gutter();
-    } @else if $gutter == no {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-  } @else {
-
-    @include row();
-
-    @if $gutter == yes {
-      @include gutter();
-    } @else if $gutter == no {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
+@mixin cols($i) {
+  float: left;
+  width: ($i / $columns * 100%);
 }
 
 
@@ -82,10 +57,9 @@ $maxWidth: $colWidth*$cols;
 
 @mixin push($i) {
   @if $i > 0 {
-    position: relative;
-    left: ((100 * $colWidth * $i) / $maxWidth) + 0%;
+    margin-left: ((100 * $column__width * $i) / $max__width) + 0%;
   } @else if $i < 1 {
-    left: 0;
+    margin-left: 0;
   }
 }
 
@@ -98,26 +72,10 @@ $maxWidth: $colWidth*$cols;
 
 @mixin pull($i) {
   @if $i > 0 {
-    position: relative;
-    right: ((100 * $colWidth * $i) / $maxWidth) + 0%;
+    margin-right: ((100 * $column__width * $i) / $max__width) + 0%;
   } @else if $i < 1 {
-    right: 0;
+    margin-right: 0;
   }
-}
-
-
-
-/* --------------------------------------------------
-
-   ltr / rtl support
-   -------------------------------------------------- */
-
-@mixin ltr() {
-  float: left;
-}
-
-@mixin rtl() {
-  float: right;
 }
 
 
@@ -130,9 +88,6 @@ $maxWidth: $colWidth*$cols;
 @mixin center() {
   margin-left: auto;
   margin-right: auto;
-  float: none;
-  clear: both;
-  @include clearfix();
 }
 
 
