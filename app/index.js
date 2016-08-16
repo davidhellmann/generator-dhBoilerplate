@@ -178,11 +178,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
     if ( this.projectUsage === 'Craft CMS' ) {
       this.directory('___src/templates/craftcms/', '___src/templates/');
-      this.directory('___src/_craft/hearty/config/', 'dist/config');
+      this.directory('___src/_craft/hearty/config/', '___dist/config');
 
       this.fs.copyTpl(
         this.templatePath('___src/_craft/imager/imager.php'),
-        this.destinationPath('dist/config/imager.php')
+        this.destinationPath('___dist/config/imager.php')
       );
     }
   },
