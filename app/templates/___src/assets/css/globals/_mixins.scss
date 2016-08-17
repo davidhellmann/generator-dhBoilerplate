@@ -44,8 +44,11 @@ $maxWidth: $colWidth*$cols;
    -------------------------------------------------- */
 
 @mixin cols($i) {
-  float: left;
+  @if $i > $columns {
+    $i: $columns;
+  }
   width: ($i / $columns * 100%);
+  float: left;
 }
 
 
@@ -74,6 +77,9 @@ $maxWidth: $colWidth*$cols;
    -------------------------------------------------- */
 
 @mixin flexcols($i) {
+  @if $i > $columns {
+    $i: $columns;
+  }
   flex: 0 1 ($i / $columns * 100%);
 }
 
