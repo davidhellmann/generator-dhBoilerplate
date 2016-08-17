@@ -22,7 +22,7 @@ $maxWidth: $colWidth*$cols;
 
 /* --------------------------------------------------
 
-   Container
+   Container Floating Grid
    @include container(); // full for 100%
    -------------------------------------------------- */
 
@@ -38,7 +38,7 @@ $maxWidth: $colWidth*$cols;
 
 /* --------------------------------------------------
 
-   Cols
+   Cols Floating Grid
    Optional Setting to remove default gutter
    @include cols(x)
    -------------------------------------------------- */
@@ -46,6 +46,35 @@ $maxWidth: $colWidth*$cols;
 @mixin cols($i) {
   float: left;
   width: ($i / $columns * 100%);
+}
+
+
+/* --------------------------------------------------
+
+   Container Flexbox Grid
+   @include container(); // full for 100%
+   -------------------------------------------------- */
+
+@mixin flexbox($width: max) {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  @if $width != 'full' {
+    max-width: $max__width;
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Cols Flexbox Grid
+   Optional Setting to remove default gutter
+   @include flexcols(x)
+   -------------------------------------------------- */
+
+@mixin flexcols($i) {
+  flex: 0 1 ($i / $columns * 100%);
 }
 
 
