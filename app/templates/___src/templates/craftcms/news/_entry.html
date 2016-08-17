@@ -1,0 +1,32 @@
+{#
+  News Entry Template
+  --------------------------------------------------
+
+  When you view a single news on the website, this template gets loaded.
+#}
+
+
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "single-news" %}
+
+
+
+{# start: Rel Nav #}
+{% block siteHeader %}
+  {% set vars = {
+    section: 'blog',
+    order: 'postDate'
+  } %}
+  {% include '_partials/_header/_siteHeaderLinks--single.html' with vars %}
+{% endblock %}
+
+
+
+{% block appContent %}
+  <article>
+    <h1>{{ entry.title }}</h1>
+    <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+    {{ entry.body }}
+  </article>
+{% endblock %}

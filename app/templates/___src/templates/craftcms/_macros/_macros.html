@@ -1,0 +1,208 @@
+{#
+  Macro Collection
+  --------------------------------------------------
+
+  A lot examples to see. Feel free to use / modify this macros or delete them.
+#}
+
+
+
+{#
+  Social Links Array
+  --------------------------------------------------
+
+  {{ dh_macros.dh_socialLinks([
+    'twitter',
+    'facebook',
+    'xing'
+  ], true) }}
+#}
+
+{% macro dh_socialLinks(networks, icons, label) %}
+  <ul class="socialLinks__list">
+    {# Loop for each network #}
+    {% set icons = icons|default(false) %}
+    {% set label = label|default(false) %}
+    {% for network in networks %}
+      {# Loop through all networks #}
+      {% for sn in socialNetworks.socialLinks %}
+        {% if sn.linkText|lower == network %}
+          <li class="socialLinks__item  socialLinks__item--{{ sn.linkText|lower }}">
+            <a class="socialLinks__link"
+               href="{{ sn.customLink.url }}" {{ sn.customLink.target ? ' target="_blank"' }}>
+
+              {% if icons == true and label == true %}
+
+                <svg class="svgSprite  svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
+                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
+                </svg>
+                <span class="socialLinks__label">{{ sn.linkText }}</span>
+
+              {% elseif icons == true %}
+
+                <svg class="svgSprite  svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
+                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
+                </svg>
+
+              {% else %}
+
+                {{ sn.linkText }}
+
+              {% endif %}
+
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+    {% endfor %}
+  </ul>
+{% endmacro %}
+
+
+
+{#
+  Set Active Class
+  --------------------------------------------------
+
+  {{ dh_macros.dh_is_active('news') }}
+#}
+
+{% macro dh_is_active(segment) %}
+  {% if craft.request.firstSegment == segment %}is_active{% endif %}
+{% endmacro %}
+
+
+
+{#
+  Pagination
+  --------------------------------------------------
+
+  Generate navigation buttons for paginations
+​
+  @param {object}  pages       - Pagination Object
+  @param {object}  craft       - Craft Request Object
+  @param {string}  classname   - Classname (default: 'pagination')
+  @param {string}  searchquery - To pass search words from Searchfields (default: false)
+#}
+
+{% macro dh_pagination(pages,craft,classname,searchquery) %}
+  {% set search = searchquery|default(false) %}
+  {% set class = classname|default('pagination') %}
+  ​
+  {# Add Pagination only if the Page Number is higher than 1#}
+  {% if pages.totalPages > 1 %}
+
+    <nav class="{{ class }}" role="navigation">
+      {# Dont display last page when on the first Page #}
+      {% if pages.currentPage > 2 and pages.prevUrl %}
+        <a class="{{ class }}__link" href="{{ pages.firstUrl }}{{ search ? '?q='~search }}" title="Back to the first page">
+          &laquo;
+        </a>
+      {% endif %}
+      ​
+      {# Display the Previous Link if available #}
+      {% if pages.prevUrl %}
+        <a class="{{ class }}__link" href="{{ pages.prevUrl }}{{ search ? '?q='~search }}" title="Back to the previous page">
+          &lsaquo;
+        </a>
+      {% endif %}
+
+      {# Display prev 5 Page Links#}
+      {% for page, url in pages.getPrevUrls(3) %}
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}" title="Go to page {{ page }}">
+          {{ page }}
+        </a>
+      {% endfor %}
+
+      {# Diplay Current Page#}
+      <span class="{{ class }}__link  {{ class }}__link--current">
+        {{ pages.currentPage }}
+      </span>
+
+      {# Display next 5 Page Links #}
+      {% for page, url in pages.getNextUrls(3) %}
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}" title="Go to page {{ page }}">
+          {{ page }}
+        </a>
+      {% endfor %}
+
+      {# Display next Page Link if available#}
+      {% if pages.nextUrl %}
+        <a class="{{ class }}__link" href="{{ pages.nextUrl }}{{ search ? '?q='~search }}" title="Forward to the next page">
+          &rsaquo;
+        </a>
+      {% endif %}
+
+      {# Dont display when on the last page #}
+      {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
+        <a class="{{ class }}__link" href="{{ pages.lastUrl }}{{ search ? '?q='~search }}" title="Forward to the last page">
+          &raquo;
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endmacro %}
+
+
+
+
+{#
+  Prev / Next Link
+  --------------------------------------------------
+
+  {{ dh_macros.dh_postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
+#}
+
+{% macro dh_postNav(entry, section, order, prevLabel, nextLabel ) %}
+
+  {# Set vars #}
+  {% set section     = section|default('blog') %}
+  {% set order       = order|default('postDate') %}
+  {% set prevLabel   = prevLabel|default(false) %}
+  {% set nextLabel   = nextLabel|default(false) %}
+
+  {# Set parameters for prev/next elements list #}
+  {% set data = craft.entries.section(section).order(order).limit(null) %}
+
+  {# Get the prev/next elements #}
+  {% set prevEntry = entry.getPrev(data) %}
+  {% set nextEntry = entry.getNext(data) %}
+
+  {# And make sure to only output the links if the element exists #}
+  {% if prevEntry or nextEntry %}
+
+
+    <ul class="postNav">
+      {% if prevEntry %}
+        <li class="postNav__item  postNav__item--prev">
+          <a class="postNav__link  postNav__link--prev" href="{{ prevEntry.url }}">
+
+            {% if prevLabel != false %}
+              <span class="postNav__label">{{ prevLabel }}</span>
+            {% endif %}
+            <span class="postNav__title">{{ prevEntry.title }}</span>
+          </a>
+        </li>
+      {% endif %}
+      {% if nextEntry %}
+        <li class="postNav__item  postNav__item--next">
+          <a class="postNav__link  postNav__link--next" href="{{ nextEntry.url }}">
+            {% if nextLabel != false %}
+              <span class="postNav__label">{{ nextLabel }}</span>
+            {% endif %}
+            <span class="postNav__title">{{ nextEntry.title }}</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
+
+{% endmacro %}
+
+
+
+{#
+  Section Icon
+  TODO: Create a Section Icon Macro for the Home.
+#}

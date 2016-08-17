@@ -1,0 +1,11 @@
+{% set order       = order|default('postDate') %}
+{% set section     = section|default('news') %}
+{% set data        = craft.entries.section(section).order(order) %}
+
+{# Get the prev/next elements #}
+{% set prevEntry   = entry.getPrev(data) %}
+{% set nextEntry   = entry.getNext(data) %}
+
+
+{% if prevEntry %}<link rel="prev" href="{{ prevEntry.url }}">{% endif %}
+{% if nextEntry %}<link rel="next" href="{{ nextEntry.url }}">{% endif %}

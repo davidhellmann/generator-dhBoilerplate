@@ -1,0 +1,23 @@
+{#
+  Home Page
+  --------------------------------------------------
+
+  This is your Homepage!
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "home" %}
+
+
+{% block appContent %}
+  <h1>{{ entry.title }}</h1>
+
+  {{ entry.body }}
+
+  <h2>Recent News</h2>
+  <ul>
+    {% for entry in craft.entries.section('news').limit(5).find() %}
+      <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

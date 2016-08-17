@@ -1,0 +1,55 @@
+{#
+  Master Layout
+  --------------------------------------------------
+
+  This i the basic layout. Feel free to modify
+#}
+
+{# Include Macros #}
+{% import '_macros/_macros.html' as dh_macros %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+<head>
+
+  {# Meta #}
+  {% include '_partials/_header/_meta.html' %}
+
+  {# Scripts #}
+  {% include '_partials/_header/_scripts.html' %}
+
+  {# Seomatic #}
+  {#{% include '_partials/_header/_seomatic.html' %}#}
+
+  {# Favicon #}
+  {% include '_partials/_header/_favicons.html' %}
+
+  {% block siteHeader %}{% endblock %}
+
+</head>
+<body id="home" {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
+
+<div class="o-appWrapper">
+
+  <header class="o-appHeader">
+  {% block appHeader %}
+    Header
+  {% endblock %}
+  </header>
+
+  <div class="o-appContent">
+  {% block appContent %}
+    Content
+  {% endblock %}
+  </div>
+
+  <footer class="o-appFooter">
+  {% block appFooter %}
+    Footer
+  {% endblock %}
+  </footer>
+
+</div>
+
+{# Include Scripts, Fonts, Google Analyticy #}
+{% include '_partials/_footer/_scripts.html' %}
