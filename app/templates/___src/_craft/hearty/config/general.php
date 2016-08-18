@@ -15,6 +15,14 @@ $customConfig = array(
   // Applies to all environments
   '*' => array(
 
+    <% if (craftMultilang == true ) { %>
+    // Set URL for Multilang
+    'siteUrl' => array(
+        'de' => CRAFT_SITE_URL,
+        'en' => CRAFT_SITE_URL . 'en'
+    ),
+    <% } %>
+
     /*
         *	General settings
         *
