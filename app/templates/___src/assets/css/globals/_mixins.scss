@@ -223,38 +223,40 @@ $maxWidth: $colWidth*$cols;
 /* --------------------------------------------------
 
    Responsive Type
+   More Infos: http://madebymike.com.au/writing/fluid-type-calc-examples/
+
+   Single property
+   html {
+     @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+   }
+
+   Multiple properties with same values
+   h1 {
+     @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+   }
    -------------------------------------------------- */
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
 
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
 
-@mixin fluid_type($min-vw, $max-vw, $min-font-size, $max-font-size) {
-  $u1: unit($min-vw);
-  $u2: unit($max-vw);
-  $u3: unit($min-font-size);
-  $u4: unit($max-font-size);
 
-  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-    & {
-      font-size: $min-font-size;
 
-      @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-      }
-
-      @media screen and (min-width: $max-vw) {
-        font-size: $max-font-size;
-      }
-    }
-  } @else {
-    @error "Detected mixed units. Please use the same units for all parameters.";
-  }
-}
-
-/*
-
-  Usage:
-  @include fluid-type(320px, 1680px, fontSize('m'), fontSize('xl'));
-
-*/
