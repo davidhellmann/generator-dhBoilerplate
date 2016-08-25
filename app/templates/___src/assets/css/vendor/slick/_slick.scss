@@ -23,7 +23,7 @@
    -------------------------------------------------- */
 
 .slick-dots {
-  @include col(12);
+  @include cols(12);
   margin-bottom: space(1);
   list-style: none;
   text-align: center;

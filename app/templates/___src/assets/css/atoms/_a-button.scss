@@ -46,7 +46,7 @@
    -------------------------------------------------- */
 
 .a-buttonWrapper {
-  @include row();
+  @include container();
 
   &--center {
     text-align: center;

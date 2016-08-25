@@ -4,9 +4,9 @@
    -------------------------------------------------- */
 
 .o-appContent {
-  @include col(12);
+  @include cols(12);
 
   @include breakpoint('l') {
-    @include col(8);
+    @include cols(8);
   }
 }
