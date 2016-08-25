@@ -1,0 +1,8 @@
+/*--------------------------------------------------
+    #GUTTER MIXIN
+  --------------------------------------------------*/
+
+@mixin gutter($i: 1) {
+  padding-left: ($i * $dh-gutterWidth);
+  padding-right: ($i * $dh-gutterWidth);
+}

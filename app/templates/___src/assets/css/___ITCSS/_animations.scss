@@ -1,0 +1,16 @@
+/* --------------------------------------------------
+
+   Animations
+   -------------------------------------------------- */
+
+@keyframes scrollDown {
+  0% {
+    opacity: .5;
+    transform: translate3d(-50%, -10px, 0);
+  }
+
+  100% {
+    opacity: .25;
+    transform: translate3d(-50%, 10px, 0);
+  }
+}

@@ -1,0 +1,28 @@
+/*--------------------------------------------------
+    #GRID FLOAT
+  --------------------------------------------------*/
+
+// Container Floating Grid
+// @include container(); // full for 100%
+@mixin container($width: max) {
+  width: 100%;
+  @if $width != 'full' {
+    max-width: $dh-maxWidth;
+  }
+  @include clearfix();
+}
+
+
+
+// Cols Floating Grid
+//Optional Setting to remove default gutter
+//@include cols(x)
+@mixin cols($i) {
+
+  @if $i > $dh-columns {
+    $i: $dh-columns;
+  }
+
+  width: ($i / $dh-columns * 100%);
+  float: left;
+}

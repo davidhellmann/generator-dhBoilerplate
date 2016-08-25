@@ -1,0 +1,176 @@
+
+/* --------------------------------------------------
+
+   Push the container by x cols
+   -------------------------------------------------- */
+
+@mixin push($i) {
+  @if $i > 0 {
+    margin-left: ((100 * $column__width * $i) / $max__width) + 0%;
+  } @else if $i < 1 {
+    margin-left: 0;
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Pull the container by x cols
+   -------------------------------------------------- */
+
+@mixin pull($i) {
+  @if $i > 0 {
+    margin-right: ((100 * $column__width * $i) / $max__width) + 0%;
+  } @else if $i < 1 {
+    margin-right: 0;
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Center Container
+   -------------------------------------------------- */
+
+@mixin center() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+/* --------------------------------------------------
+
+   Breakpoints
+   -------------------------------------------------- */
+
+@mixin breakpoint($breakpoint,$direction: $mediaDirection) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else if unitless($breakpoint) {
+    $breakpoint: $breakpoint + 0px;
+
+    @media (#{$direction}-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpointV($breakpoint,$direction: $mediaDirection--v) {
+
+  @if map-has-key($breakpoints--v, $breakpoint) {
+    @media (#{$direction}-height: #{map-get($breakpoints--v, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else if unitless($breakpoint) {
+    $breakpoint: $breakpoint + 0px;
+
+    @media (#{$direction}-height: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Clearfix
+   -------------------------------------------------- */
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Filter
+   https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
+   grayscale      ex: filter: grayscale(100%);
+   sepia          ex: filter: sepia(100%);
+   saturate       ex: filter: saturate(0%);
+   hue-rotate     ex: filter: hue-rotate(45deg);
+   invert         ex: filter: invert(100%);
+   brightness     ex: filter: brightness(15%);
+   contrast       ex: filter: contrast(200%);
+   blur           ex: filter: blur(2px);
+   -------------------------------------------------- */
+
+
+@mixin filter($filter-type,$filter-amount) {
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+
+
+/* --------------------------------------------------
+
+   Vertical Align
+   -------------------------------------------------- */
+
+@mixin valign {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+/* --------------------------------------------------
+
+   Responsive Type
+   More Infos: http://madebymike.com.au/writing/fluid-type-calc-examples/
+
+   Single property
+   html {
+     @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+   }
+
+   Multiple properties with same values
+   h1 {
+     @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+   }
+   -------------------------------------------------- */
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+
+
