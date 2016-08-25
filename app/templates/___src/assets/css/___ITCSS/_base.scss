@@ -1,0 +1,256 @@
+/* --------------------------------------------------
+
+   Base
+   -------------------------------------------------- */
+
+html {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: fontFamily('base');
+  font-size: fontSize('base');
+  line-height: $baseLineHeight;
+  font-weight: 400;
+  color: lighten(color('black'), 10%);
+  background: color('white');
+}
+
+
+
+::-moz-selection {
+  background: #ff0;
+  text-shadow: none;
+}
+
+::selection {
+  background: #ff0;
+  text-shadow: none;
+}
+
+
+
+/* --------------------------------------------------
+
+   Headlines
+   -------------------------------------------------- */
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: fontFamily('headline');
+  font-size: fontSize('base');
+  font-weight: 700;
+  margin: space(2) 0 space(1) 0;
+  word-wrap: break-word;
+  line-height: lh(.7);
+}
+
+h1, .h1 {
+  font-size: fontSize('xl') * 0.7;
+  font-weight: 900;
+
+  @include breakpoint('s') {
+    font-size: fontSize('xl');
+  }
+}
+
+h2, .h2 {
+  font-size: fontSize('l') * 0.7;
+
+  @include breakpoint('s') {
+    font-size: fontSize('l');
+  }
+}
+
+h3, .h3 {
+  font-size: fontSize('m') * 0.7;
+
+  @include breakpoint('s') {
+    font-size: fontSize('m');
+  }
+}
+
+h4, .h4 {
+  font-size: fontSize('base');
+}
+
+
+
+/* --------------------------------------------------
+
+   Copy
+   -------------------------------------------------- */
+
+p,
+ul,
+ol,
+dl,
+pre,
+table,
+blockquote {
+  margin: 0 0 space(1) 0;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+  margin: space(2) 0;
+
+  p {
+    font-family: fontFamily('headline');
+    font-size: fontSize('l') * 0.7;
+    line-height: lh(.7);
+    font-weight: 900;
+    font-style: italic;
+
+    @include breakpoint('s') {
+      font-size: fontSize('l');
+      line-height: lh(1);
+    }
+  }
+
+  footer {
+
+    cite {
+
+    }
+  }
+}
+
+ul {
+  list-style: disc outside;
+  padding-left: space(2);
+
+  @include breakpoint('s') {
+    padding-left: space(3);
+  }
+}
+
+ol {
+  list-style: decimal outside;
+  padding-left: space(2);
+
+  @include breakpoint('s') {
+    padding-left: space(3);
+  }
+}
+
+dt {
+  font-weight: 700;
+  margin: space(1) 0;
+}
+
+dd {
+  margin: 0;
+  padding-left: space(2);
+
+  @include breakpoint('s') {
+    padding-left: space(3);
+  }
+}
+
+hr {
+  border: none;
+  margin: space(2)-1px 0;
+  height: 1px;
+  background: color('black');
+}
+
+
+abbr {
+  @extend %uppercase;
+  cursor: help;
+  font-weight: 400;
+  padding-bottom: 1px;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    background: color('black');
+    transition: all .25s ease-out;
+  }
+
+  .no-touchevents &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Links
+   -------------------------------------------------- */
+
+a {
+  color: color('red');
+  transition: all .25s ease-out;
+
+  .no-touchevents &:hover {
+    color: color('black');
+  }
+
+  .no-touchevents &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+
+
+/* --------------------------------------------------
+
+   Figures (Images)
+   -------------------------------------------------- */
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+figure {
+  margin: space(1) 0 space(2) 0;
+
+  img {
+    width: 100%;
+  }
+}
+
+figcaption {
+  text-align: center;
+  padding: space(1) 0 0 0;
+  font-size: fontSize('s');
+}
+
+
+.svgSprite {
+  width: 100px;
+}

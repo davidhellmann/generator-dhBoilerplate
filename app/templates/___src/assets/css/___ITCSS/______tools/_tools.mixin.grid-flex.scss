@@ -1,0 +1,26 @@
+/*--------------------------------------------------
+    #GRID FLEX
+  --------------------------------------------------*/
+
+// Container Flexbox Grid
+// @include container(); // full for 100%
+@mixin flexbox($width: max) {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  @if $width != 'full' {
+    max-width: $dh-maxWidth;
+  }
+}
+
+
+
+// Cols Flexbox Grid
+// Optional Setting to remove default gutter
+// @include flexcols(x)
+@mixin flexcols($i) {
+  @if $i > $dh-columns {
+    $i: $dh-columns;
+  }
+  flex: 0 1 ($i / $dh-columns * 100%);
+}
