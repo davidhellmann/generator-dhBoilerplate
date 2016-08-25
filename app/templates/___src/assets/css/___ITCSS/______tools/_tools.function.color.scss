@@ -10,3 +10,10 @@
   @warn "Unknown `#{$key}` in $dh-colors.";
   @return null;
 }
+
+
+
+// Shorthand Version
+@function c($key) {
+  @return color($key);
+}

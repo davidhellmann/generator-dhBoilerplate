@@ -13,6 +13,11 @@
   }
 }
 
+// Shorthand Version
+@mixin fb($args...) {
+  @include flexbox($args...);
+}
+
 
 
 // Cols Flexbox Grid
@@ -23,4 +28,9 @@
     $i: $dh-columns;
   }
   flex: 0 1 ($i / $dh-columns * 100%);
+}
+
+// Shorthand Version
+@mixin fc($args...) {
+  @include flexcols($args...);
 }
