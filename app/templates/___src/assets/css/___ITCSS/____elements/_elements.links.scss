@@ -1,0 +1,12 @@
+/*--------------------------------------------------
+    #LINKS
+  --------------------------------------------------*/
+
+a {
+  color: c('free-speech-red');
+  transition: all .25s ease('out-cubic');
+
+  .no-touchevents &:hover {
+    color: darken(c('free-speech-red'), 10%);
+  }
+}

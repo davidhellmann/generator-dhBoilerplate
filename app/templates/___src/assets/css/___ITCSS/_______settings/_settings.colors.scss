@@ -4,7 +4,6 @@
     URL: http://www.color-blindness.com/color-name-hue
   --------------------------------------------------*/
 
-
 // Shades of Gray
 $color-white:                         #fff;
 $color-black:                         #000;
@@ -33,10 +32,7 @@ $color-free-speech-red:               #cc0000;
 $color-harlequin:                     #32cc00;
 $color-navy-blue:                     #0065cc;
 
-
-
 $dh-grayShades: (
-
   // Shades of Gray
   'white':                            $color-white,
   'black':                            $color-black,
@@ -59,16 +55,13 @@ $dh-grayShades: (
   'black-85':                         darken($color-white, 85%),
   'black-90':                         darken($color-white, 90%),
   'black-95':                         darken($color-white, 95%),
-
 );
 
 $dh-colored: (
-
   // Colored
   'free-speech-red':                  $color-free-speech-red,
   'harlequin':                        $color-harlequin,
   'navy-blue':                        $color-navy-blue,
-
 );
 
 // Merge Gray Shades and Colored Map

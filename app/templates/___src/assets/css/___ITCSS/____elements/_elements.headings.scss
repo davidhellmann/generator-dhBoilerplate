@@ -1,0 +1,34 @@
+/*--------------------------------------------------
+    #HEADINGS
+  --------------------------------------------------*/
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: ff('headline');
+  font-size: fs('base');
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+h1 {
+  font-size: fs('l');
+
+  @include media('>=s') {
+    font-size: fs('xl');
+  }
+}
+
+h2 {
+  font-size: fs('m');
+
+  @include media('>=s') {
+    font-size: fs('l');
+  }
+}
+
+h3 {
+  font-size: fs('base');
+
+  @include media('>=s') {
+    font-size: fs('m');
+  }
+}

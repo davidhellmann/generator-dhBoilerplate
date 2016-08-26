@@ -1,0 +1,19 @@
+/*--------------------------------------------------
+    #FONT SIZE FUNCTION
+  --------------------------------------------------*/
+
+@function fontsize($key) {
+  @if map-has-key($dh-fontsizes, $key) {
+    @return map-get($dh-fontsizes, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $dh-fontsizes.";
+  @return null;
+}
+
+// Shorthand Version
+@function fs($key) {
+  @return fontsize($key);
+}
+
+
