@@ -27,9 +27,9 @@
     "gulp-cheerio": "^0.6.2",
     "gulp-concat": "^2.6.0",
     "gulp-debug": "^2.1.2",
-    "gulp-imagemin": "^2.4.0",
+    "gulp-imagemin": "^3.0.0",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-modernizr": "0.0.0",
+    "gulp-modernizr": "1.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.0",
@@ -39,12 +39,12 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svg-sprite": "^1.2.19",
     "gulp-twig": "^0.5.0",
-    "gulp-uglify": "^1.5.3",
+    "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
-    "imagemin-jpeg-recompress": "^4.3.0",
-    "imagemin-pngquant": "^4.2.2",
-    "imagemin-svgo": "^4.2.1",
+    "imagemin-jpeg-recompress": "^5.0.0",
+    "imagemin-pngquant": "^5.0.0",
+    "imagemin-svgo": "^5.0.0",
     "postcss-assets": "^4.1.0",
     "postcss-flexbugs-fixes": "^2.0.0",
     "postcss-selector-matches": "^2.0.1",
@@ -63,7 +63,7 @@
     "vue-resource": "^0.9.3",
     <% } %>
     "watchify": "^3.7.0",
-    "yargs": "^4.2.0"
+    "yargs": "^5.0.0"
   },
   "licenses": [
     {
@@ -80,11 +80,11 @@
     <% if (projectjQuery == false ) { %>
     "jquery": "1.11.3",
     <% } else { %>
-    "jquery": "^2.2.0",
+    "jquery": "^3.0.0",
     <% } %>
     "jquery-match-height": "^0.7.0",
     "js-cookie": "^2.1.0",
-    "lazysizes": "^1.4.0",
+    "lazysizes": "^2.0.0",
     "macy": "^1.1.1",
     "photoswipe": "^4.1.1",
     "scrollmagic": "^2.0.5",
