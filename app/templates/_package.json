@@ -29,7 +29,7 @@
     "gulp-debug": "^2.1.2",
     "gulp-imagemin": "^3.0.0",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-modernizr": "1.0.0",
+    "gulp-modernizr": "^1.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.0",
