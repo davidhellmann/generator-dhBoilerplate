@@ -109,7 +109,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             },{
                 type: 'confirm',
                 name: 'projectjQuery',
-                message: 'Include new (2.1.4 => y) or Old (1.11.3 => n) jQuery Version?',
+                message: 'Include new (3.x.x => y) or Old (1.11.3 => n) jQuery Version?',
                 default: true
             }, {
                 type: 'confirm',
