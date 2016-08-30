@@ -39,13 +39,36 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 
 
 ## What is inside
-This three scenarios are covered by the generator:
-
+### This three scenarios are covered by the generator:
 - Prototyping (with Twig)
 - WordPress with a basic Starter Kit (WordPress itself must be Installed by Hand after the first `gulp init`)
-- Craft CMS with a basic index.twig (Craft CMS itself must be Installed by Hand after the first `gulp init`)
+- Craft CMS with a basic Starter Kit (Craft CMS itself must be Installed by Hand after the first `gulp init`)
 
-Next Steps are integrate Hearty for Craft CMS and a Craft CMS Starter Kit and Hearty for WordPress.
+### Sass Functions
+- `borderradius('level-x')` or `br('level-x')`
+- `boxshadow('level-x')` or `bs('level-x')`
+- `color('color-name')` or `c('color-name')`
+- `ease('easing-name')` or `e('easing-name')`
+- `fontfamily('font-name')` or `ff('font-name')` 
+- `font-size('font-size')` or `fs('font-size')`  
+- `lineheight(i)` or `lh(i)`    
+- `sapce(i)` or `s(i)`  
+- `verticalrhythm(i)` or `vr(i)` 
+
+### Sass Mixins
+- `@include center`
+- `@include clearfix`
+- `@include container('full')` ‚full‘ ist optional 
+- `@include cols(i)`
+- `@include filter(filter-name, value%)`
+- `@include fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include ft($properties, $min-vw, $max-vw, $min-value, $max-value)`
+- `@include flexbox('full')` or `@include fb('full')` ‚full‘ is optional
+- `@include flexcols(i)` or `@include fc(i)`
+- `@include gutter(i)`or `@include g(i)`
+- `@include pull(i)`
+- `@include push(i)`
+- `@include valign`
+- `@include visuallyhidden` or `@include vh`
 
 
 ## Install
