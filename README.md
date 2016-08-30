@@ -139,4 +139,14 @@ gulp minify:images
 
 ```
 
+## Thanks to
+- webdevs - for so many things: [Website](http://webdevs.xyz)
+- Sascha Fuchs - for help help help: [Website](https://github.com/gisu)
+- Martin Herweg - for help help help: [Website](https://github.com/martinherweg)
+- CSS Tricks -  for Easing Map: [Website](https://css-tricks.com/snippets/sass/easing-map-get-function/)
+- Florian Kutschera - for the Material Design Box Shadows: [Website](https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d#.f1fz5ac2o)
+- Hugo Giraudel & Eduardo Bouças - for include media: [Website](http://include-media.com/)
+- @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
+- inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)
+
 [![bitHound Overall Score](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate/badges/score.svg)](https://www.bithound.io/github/davidhellmann/generator-dhBoilerplate)
