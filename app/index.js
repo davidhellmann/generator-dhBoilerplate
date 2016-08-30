@@ -199,7 +199,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
             this.directory('___src/_craft/plugins/', '___dist/plugins');
 
-        } else {
+        } else if ( this.projectUsage === 'Craft CMS' ) {
             this.directory('___src/_craft/plugins/', '___dist/craft/plugins');
         }
 
