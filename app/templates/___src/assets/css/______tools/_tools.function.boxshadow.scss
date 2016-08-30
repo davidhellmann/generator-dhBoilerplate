@@ -1,0 +1,17 @@
+/*--------------------------------------------------
+    #BOXSHADOW
+  --------------------------------------------------*/
+
+@function boxshadow($key) {
+  @if map-has-key($dh-boxshadows, $key) {
+    @return map-get($dh-boxshadows, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $dh-boxshadows.";
+  @return null;
+}
+
+// Shorthand Version
+@function bs($key) {
+  @return boxshadow($key);
+}

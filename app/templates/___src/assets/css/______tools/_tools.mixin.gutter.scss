@@ -1,0 +1,13 @@
+/*--------------------------------------------------
+    #GUTTER
+  --------------------------------------------------*/
+
+@mixin gutter($i: 1) {
+  padding-left: round(($i * $dh-gutterWidth));
+  padding-right: round(($i * $dh-gutterWidth));
+}
+
+// Shorthand Version
+@mixin g($args...) {
+  @include gutter($args...);
+}

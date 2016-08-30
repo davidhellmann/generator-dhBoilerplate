@@ -1,0 +1,12 @@
+/*--------------------------------------------------
+    #SPACE
+  --------------------------------------------------*/
+
+@function space($key) {
+  @return round(($dh-gutterWidth * $key) + 0px);
+}
+
+// Shorthand Version
+@function s($key) {
+  @return space($key);
+}

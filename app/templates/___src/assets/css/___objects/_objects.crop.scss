@@ -1,0 +1,61 @@
+/*--------------------------------------------------
+    .o-crop
+  --------------------------------------------------*/
+
+$dh-crops: (
+  2:1,
+  3:2,
+  4:3,
+  16:9
+) !default;
+
+
+.o-crop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+
+.o-crop__content {
+  position: absolute;
+  top:  0;
+  left: 0;
+  max-width: none;
+}
+
+
+.o-crop__content--right {
+  right: 0;
+  left: auto;
+}
+
+.o-crop__content--bottom {
+  top: auto;
+  bottom: 0;
+}
+
+.o-crop__content--center {
+  top:  50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+// Crop Classes
+@each $antecedent, $consequent in $dh-crops {
+
+  @if (type-of($antecedent) != number) {
+    @error "`#{$antecedent}` needs to be a number."
+  }
+
+  @if (type-of($consequent) != number) {
+    @error "`#{$consequent}` needs to be a number."
+  }
+
+  .o-crop--#{$antecedent}\:#{$consequent} {
+    padding-bottom: ($consequent/$antecedent) * 100%;
+  }
+
+}

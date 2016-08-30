@@ -1,0 +1,17 @@
+/*--------------------------------------------------
+    #COLOR
+  --------------------------------------------------*/
+
+@function color($key) {
+  @if map-has-key($dh-colors, $key) {
+    @return map-get($dh-colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $dh-colors.";
+  @return null;
+}
+
+// Shorthand Version
+@function c($key) {
+  @return color($key);
+}

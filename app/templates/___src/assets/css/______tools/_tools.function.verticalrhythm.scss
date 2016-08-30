@@ -1,0 +1,12 @@
+/*--------------------------------------------------
+    #VERTICAL RHYTHM
+  --------------------------------------------------*/
+
+@function verticalrhythm($key) {
+  @return round(($line-height-base-px * $key) + 0px);
+}
+
+// Shorthand Version
+@function vr($key) {
+  @return verticalrhythm($key);
+}

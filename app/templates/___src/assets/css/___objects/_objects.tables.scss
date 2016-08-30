@@ -1,0 +1,53 @@
+/*--------------------------------------------------
+    .o-table
+  --------------------------------------------------*/
+
+.o-table {
+  width: 100%;
+}
+
+
+.o-table--fixed {
+  table-layout: fixed;
+}
+
+
+
+
+// Size variants
+
+.o-table--tiny {
+
+  th,
+  td {
+    padding: s(1);
+  }
+
+}
+
+.o-table--small {
+
+  th,
+  td {
+    padding: s(2);
+  }
+
+}
+
+.o-table--large {
+
+  th,
+  td {
+    padding: s(3);
+  }
+
+}
+
+.o-table--huge {
+
+  th,
+  td {
+    padding: s(4);
+  }
+
+}

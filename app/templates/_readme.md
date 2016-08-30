@@ -136,4 +136,4 @@ gulp minify:images
 - Florian Kutschera - for the Material Design Box Shadows: [Website](https://medium.com/@Florian/freebie-google-material-design-shadow-helper-2a0501295a2d#.f1fz5ac2o)
 - Hugo Giraudel & Eduardo Bouças - for include media: [Website](http://include-media.com/)
 - @LukyVj - for family.scss: [Website](http://lukyvj.github.io/family.scss/)
-- inuitcss - for some snippets: [website](https://github.com/inuitcss/inuitcss)
+- inuitcss - for some snippets and inspiration: [website](https://github.com/inuitcss/inuitcss)

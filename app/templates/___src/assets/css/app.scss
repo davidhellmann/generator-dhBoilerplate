@@ -1,72 +1,134 @@
-/* --------------------------------------------------
+/*--------------------------------------------------
+    #SETTINGS
+  --------------------------------------------------*/
 
-   Settings & Global Stuff
-   -------------------------------------------------- */
+@import '_______settings/settings.borderradius';
+@import '_______settings/settings.boxshadows';
+@import '_______settings/settings.breakpoints';
+@import '_______settings/settings.colors';
+@import '_______settings/settings.easings';
+@import '_______settings/settings.fonts';
+@import '_______settings/settings.fontfamilies';
+@import '_______settings/settings.fontsizes';
+@import '_______settings/settings.grid';
 
+
+
+/*--------------------------------------------------
+    #TOOLS
+  --------------------------------------------------*/
+
+// Functions
+@import '______tools/tools.function.borderradius';
+@import '______tools/tools.function.boxshadow';
+@import '______tools/tools.function.color';
+@import '______tools/tools.function.ease';
+@import '______tools/tools.function.fontfamily';
+@import '______tools/tools.function.fontsize';
+@import '______tools/tools.function.lineheight';
+@import '______tools/tools.function.space';
+@import '______tools/tools.function.verticalrhythm';
+
+
+
+// Mixins
+@import '______tools/tools.mixin.center';
+@import '______tools/tools.mixin.clearfix';
+@import '______tools/tools.mixin.filter';
+@import '______tools/tools.mixin.fluid-type';
+@import '______tools/tools.mixin.grid-flex';
+@import '______tools/tools.mixin.grid-float';
+@import '______tools/tools.mixin.gutter';
+@import '______tools/tools.mixin.pull';
+@import '______tools/tools.mixin.push';
+@import '______tools/tools.mixin.vertical-align';
+@import '______tools/tools.mixin.visually-hidden';
+
+
+
+// Vendors
 // Include Media Breakpoint Mixin
 // URL: http://include-media.com/
-
 @import '../../../node_modules/include-media/dist/include-media';
 
 // Include Family.scss
 // URL: http://lukyvj.github.io/family.scss/
-
 @import '../../../node_modules/family.scss/source/src/family';
 
 
-@import 'globals/settings';
-@import 'globals/functions';
-@import 'globals/mixins';
-@import 'globals/extends';
-@import 'globals/normalize';
-@import 'globals/base';
-@import 'globals/fonts';
-@import 'globals/animations';
+
+/*--------------------------------------------------
+    #GENERIC
+  --------------------------------------------------*/
+
+@import '_____generic/generic.box-sizing';
+@import '_____generic/generic.normalize';
+@import '_____generic/generic.reset';
+@import '_____generic/generic.shared';
 
 
 
-/* --------------------------------------------------
+/*--------------------------------------------------
+    #ELEMENTS
+  --------------------------------------------------*/
 
-   Vendor
-   -------------------------------------------------- */
-
-@import "vendor/photoswipe/photoswipe";
-@import "vendor/photoswipe/defaultSkin";
-@import "vendor/slick/slick";
-
-
-
-/* --------------------------------------------------
-
-   Atoms
-   -------------------------------------------------- */
-
-@import 'atoms/a-button';
-@import 'atoms/a-input';
-@import 'atoms/a-checkbox';
-@import 'atoms/a-radio';
-@import 'atoms/a-lazyloading';
-@import 'atoms/a-waypointElement';
-@import 'atoms/a-videoWrapper';
-@import 'atoms/a-gist';
+@import '____elements/elements.headings';
+@import '____elements/elements.images';
+@import '____elements/elements.links';
+@import '____elements/elements.page';
+@import '____elements/elements.quotes';
+@import '____elements/elements.tables';
 
 
 
-/* --------------------------------------------------
+/*--------------------------------------------------
+    #OBJECTS
+  --------------------------------------------------*/
 
-   Molecules
-   -------------------------------------------------- */
+@import '___objects/objects.block';
+@import '___objects/objects.box';
+@import '___objects/objects.crop';
+@import '___objects/objects.flag';
+@import '___objects/objects.list-bare';
+@import '___objects/objects.list-inline';
+@import '___objects/objects.media';
+@import '___objects/objects.pack';
+@import '___objects/objects.ratio';
+@import '___objects/objects.tables';
+@import '___objects/objects.wrapper';
 
-@import 'molecules/m-mainNav';
+
+
+/*--------------------------------------------------
+    #VENDORS
+  --------------------------------------------------*/
+
+@import 'vendors/photoswipe/photoswipe';
+@import 'vendors/photoswipe/defaultSkin';
+@import 'vendors/slick/slick';
 
 
 
-/* --------------------------------------------------
+/*--------------------------------------------------
+    #COMPONENTS
+  --------------------------------------------------*/
 
-   Organisms
-   -------------------------------------------------- */
+@import '__components/components.appWrapper';
+@import '__components/components.appHeader';
+@import '__components/components.appFooter';
+@import '__components/components.appContent';
+@import '__components/components.button';
+@import '__components/components.checkbox';
+@import '__components/components.input';
+@import '__components/components.radio';
+@import '__components/components.svgSprite';
 
-@import 'organisms/o-appFooter';
-@import 'organisms/o-appHeader';
-@import 'organisms/o-appWrapper';
-@import 'organisms/o-appContent';
+
+
+/*--------------------------------------------------
+    #TRUMPS
+  --------------------------------------------------*/
+
+@import '_trumps/trumps.animation.scroll-down';
+@import '_trumps/trumps.lazyload';
+@import '_trumps/trumps.waypointElement';

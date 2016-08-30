@@ -1,0 +1,25 @@
+/*--------------------------------------------------
+    #QUOTES
+  --------------------------------------------------*/
+
+blockquote {
+  margin: vr(2) 0;
+
+  p {
+    font-family: ff('headline');
+    font-size: fs('m');
+    font-weight: 700;
+    font-style: italic;
+
+    @include media('>=s') {
+      font-size: fs('l');
+    }
+  }
+
+  footer {
+
+    cite {
+
+    }
+  }
+}

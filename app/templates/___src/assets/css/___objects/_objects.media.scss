@@ -1,0 +1,119 @@
+/*--------------------------------------------------
+    .o-media
+    WEBSITE: http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+  --------------------------------------------------*/
+
+.o-media {
+  @include clearfix;
+  display: block;
+}
+
+
+.o-media__img {
+  float: left;
+  margin-right: s(1);
+
+  > img {
+    display: block;
+  }
+
+}
+
+
+.o-media__body {
+  overflow: hidden;
+  display: block;
+
+  &,
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+
+
+// Different Sizes
+.o-media--small {
+
+  > .o-media__img {
+    margin-right: s(2);
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left:  s(2);
+    }
+
+  }
+
+}
+
+
+.o-media--large {
+
+  > .o-media__img {
+    margin-right: s(3);
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left:  s(3);
+    }
+
+  }
+
+}
+
+
+.o-media--huge {
+
+  > .o-media__img {
+    margin-right: s(4);
+  }
+
+  &.o-media--reverse {
+
+    > .o-media__img {
+      margin-right: 0;
+      margin-left:  s(4);
+    }
+
+  }
+
+}
+
+
+
+
+
+// Reversed
+.o-media--reverse {
+
+  > .o-media__img {
+    float: right;
+    margin-right: 0;
+    margin-left: s(2);
+  }
+
+}
+
+
+
+
+
+// Gutterless
+.o-media--flush {
+
+  > .o-media__img {
+    margin-right: 0;
+    margin-left:  0;
+  }
+
+}

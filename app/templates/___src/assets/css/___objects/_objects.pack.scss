@@ -1,0 +1,65 @@
+/*--------------------------------------------------
+    .o-pack
+  --------------------------------------------------*/
+
+.o-pack {
+  width: 100%;
+  margin-left: 0;
+  display: table;
+  table-layout: fixed;
+}
+
+
+.o-pack__item {
+  display: table-cell;
+
+
+  // Vertical alignment variants
+  .o-pack--middle > & {
+    vertical-align: middle;
+  }
+
+  .o-pack--bottom > & {
+    vertical-align: bottom;
+  }
+
+}
+
+
+
+// Unequal-width items
+.o-pack--auto {
+  table-layout: auto;
+}
+
+
+
+// Size variants
+.o-pack--tiny {
+  border-spacing: s(1);
+}
+
+.o-pack--small {
+  border-spacing: s(2);
+}
+
+.o-pack--large {
+  border-spacing: s(3);
+}
+
+.o-pack--huge {
+  border-spacing: s(4);
+}
+
+
+
+// Reversed order packs
+
+.o-pack--rev {
+  direction: rtl;
+
+  > .o-pack__item {
+    direction: ltr;
+  }
+
+}

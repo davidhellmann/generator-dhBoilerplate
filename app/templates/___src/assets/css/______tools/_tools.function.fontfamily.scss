@@ -1,0 +1,17 @@
+/*--------------------------------------------------
+    #FONT FAMILY
+  --------------------------------------------------*/
+
+@function fontfamily($key) {
+  @if map-has-key($dh-fontfamilies, $key) {
+    @return map-get($dh-fontfamilies, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $dh-fontfamilies.";
+  @return null;
+}
+
+// Shorthand Version
+@function ff($key) {
+  @return fontfamily($key);
+}

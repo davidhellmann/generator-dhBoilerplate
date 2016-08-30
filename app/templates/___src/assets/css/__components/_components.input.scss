@@ -1,0 +1,59 @@
+/*--------------------------------------------------
+    .c-input
+  --------------------------------------------------*/
+
+input.c-input,
+input.c-input:focus {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+}
+
+input.c-input:not([type="submit"]),
+input.c-input[type="text"],
+input.c-input[type="email"],
+input.c-input[type="password"],
+input.c-input[type="date"],
+input.c-input[type="search"],
+input.c-input[type="tel"],
+textarea.c-input {
+  -webkit-appearance: none;
+  font-size: fs('base');
+  outline: 0;
+  display: inline-block;
+  width: 100%;
+  padding: s(1);
+  background: darken(c('white'), 5%);
+  border: 1px solid c('black-10');
+  color: c('black-90');
+  margin-bottom: vr(1);
+  transition: all 0.5s ease('out-cubic');
+
+  &:focus {
+    background: c('white');
+  }
+}
+
+textarea.c-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+
+
+// Placeholder Color
+::-webkit-input-placeholder {
+   color: c('black-40');
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: c('black-40');
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: c('black-40');
+}
+
+:-ms-input-placeholder {
+   color: c('black-40');
+}

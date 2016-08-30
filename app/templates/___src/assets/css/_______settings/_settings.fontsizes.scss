@@ -1,0 +1,19 @@
+/*--------------------------------------------------
+    #FONT SIZES
+  --------------------------------------------------*/
+
+$font-size-base:        18px;
+$line-height-base:      1.5;
+$line-height-base-px:   $font-size-base * $line-height-base + 0px;
+$font-scale:            1.5;
+
+$dh-fontsizes: (
+  'xs':     12px,
+  's':      15px,
+  'base':   $font-size-base,
+  'm':      $font-size-base * $font-scale,
+  'l':      $font-size-base * $font-scale * $font-scale,
+  'xl':     $font-size-base * $font-scale * $font-scale * $font-scale,
+  'xxl':    $font-size-base * $font-scale * $font-scale * $font-scale * $font-scale,
+  'xxxl':   $font-size-base * $font-scale * $font-scale * $font-scale * $font-scale * $font-scale,
+);

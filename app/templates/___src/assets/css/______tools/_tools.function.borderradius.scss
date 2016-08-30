@@ -1,0 +1,17 @@
+/*--------------------------------------------------
+    #BORDER RADIUS
+  --------------------------------------------------*/
+
+@function borderradius($key) {
+  @if map-has-key($dh-borderradius, $key) {
+    @return map-get($dh-borderradius, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $dh-borderradius.";
+  @return null;
+}
+
+// Shorthand Version
+@function br($key) {
+  @return borderradius($key);
+}

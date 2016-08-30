@@ -1,0 +1,144 @@
+/*--------------------------------------------------
+    .o-flag
+    WEBSITE: http://csswizardry.com/2013/05/the-flag-object/
+  --------------------------------------------------*/
+
+.o-flag {
+  display: table;
+  width: 100%;
+}
+
+
+.o-flag__img,
+.o-flag__body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+
+.o-flag__img {
+  width: 1px;
+  padding-right: s(1);
+
+  > img {
+    max-width: none; /* [1] */
+  }
+
+}
+
+
+.o-flag__body {
+  width: auto;
+
+  &,
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+// Size variants
+.o-flag--small {
+
+  > .o-flag__img {
+    padding-right: s(2);
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: s(2);
+    }
+
+  }
+
+}
+
+.o-flag--large {
+
+  > .o-flag__img {
+    padding-right: s(3);
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: s(3);
+    }
+
+  }
+
+}
+
+.o-flag--huge {
+
+  > .o-flag__img {
+    padding-right: s(4);
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: s(4);
+    }
+
+  }
+
+}
+
+.o-flag--flush {
+
+  > .o-flag__img {
+    padding-right: 0;
+    padding-left:  0;
+  }
+
+}
+
+
+
+
+
+// Reversed
+.o-flag--reverse {
+  direction: rtl;
+
+  > .o-flag__img,
+  > .o-flag__body {
+    direction: ltr;
+  }
+
+  > .o-flag__img {
+    padding-right: 0;
+    padding-left: s(2);
+  }
+
+}
+
+
+
+
+
+// Alignment variants
+.o-flag--top {
+
+  > .o-flag__img,
+  > .o-flag__body {
+    vertical-align: top;
+  }
+
+}
+
+.o-flag--bottom {
+
+  > .o-flag__img,
+  > .o-flag__body {
+    vertical-align: bottom;
+  }
+
+}

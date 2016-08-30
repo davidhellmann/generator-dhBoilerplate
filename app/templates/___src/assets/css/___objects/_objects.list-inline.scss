@@ -1,0 +1,34 @@
+/*--------------------------------------------------
+    .o-list-inline
+  --------------------------------------------------*/
+
+.o-list-inline {
+  margin-left: 0;
+  list-style: none;
+}
+
+
+.o-list-inline__item {
+  display: inline-block;
+}
+
+
+$dh-list-inline-delimiter:   ",\00A0" !default;
+
+.o-list-inline--delimited {
+  font-size: 0;
+
+  > .o-list-inline__item {
+    font-size: fontSize('base');
+
+  }
+
+  > .o-list-inline__item + .o-list-inline__item {
+
+    &:before {
+      content: "#{$dh-list-inline-delimiter}";
+    }
+
+  }
+
+}

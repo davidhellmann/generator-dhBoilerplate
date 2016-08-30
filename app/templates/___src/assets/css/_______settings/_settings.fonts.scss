@@ -1,0 +1,12 @@
+/*--------------------------------------------------
+    #FONT FACE
+  --------------------------------------------------*/
+
+@font-face {
+  font-family: "FONTNAME";
+  src: url("PATHTOTHEFONT/FONTFILENAME.eot?") format("eot"),
+  url("PATHTOTHEFONT/FONTFILENAME.woff2") format("woff2"),
+  url("PATHTOTHEFONT/FONTFILENAME.woff") format("woff"),
+  url("PATHTOTHEFONT/FONTFILENAME.ttf") format("truetype"),
+  url("PATHTOTHEFONT/FONTFILENAME.svg#Samplino") format("svg");
+}

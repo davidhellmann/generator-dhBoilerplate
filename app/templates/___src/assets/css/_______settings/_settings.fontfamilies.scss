@@ -1,0 +1,11 @@
+/*--------------------------------------------------
+    #FONT FAMILY
+  --------------------------------------------------*/
+
+$font-family-base:      'Vollkorn', Georgia, "Times New Roman", Times, serif;
+$font-family-headline:  'Lato', Helvetica, Arial, sans-serif;
+
+$dh-fontfamilies: (
+  'base':               $font-family-base,
+  'headline':           $font-family-headline,
+);

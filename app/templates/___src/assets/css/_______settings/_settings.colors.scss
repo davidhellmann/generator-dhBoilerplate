@@ -1,0 +1,68 @@
+/*--------------------------------------------------
+    #COLOR
+    Use Name that Color for your naming
+    URL: http://www.color-blindness.com/color-name-hue
+  --------------------------------------------------*/
+
+// Shades of Gray
+$color-white:                         #fff;
+$color-black:                         #000;
+$color-black-5:                       darken($color-white, 5%);
+$color-black-10:                      darken($color-white, 10%);
+$color-black-15:                      darken($color-white, 15%);
+$color-black-20:                      darken($color-white, 20%);
+$color-black-25:                      darken($color-white, 25%);
+$color-black-30:                      darken($color-white, 30%);
+$color-black-35:                      darken($color-white, 35%);
+$color-black-40:                      darken($color-white, 40%);
+$color-black-45:                      darken($color-white, 45%);
+$color-black-50:                      darken($color-white, 50%);
+$color-black-55:                      darken($color-white, 55%);
+$color-black-60:                      darken($color-white, 60%);
+$color-black-65:                      darken($color-white, 65%);
+$color-black-70:                      darken($color-white, 70%);
+$color-black-75:                      darken($color-white, 75%);
+$color-black-80:                      darken($color-white, 80%);
+$color-black-85:                      darken($color-white, 85%);
+$color-black-90:                      darken($color-white, 90%);
+$color-black-95:                      darken($color-white, 95%);
+
+// Colored
+$color-free-speech-red:               #cc0000;
+$color-harlequin:                     #32cc00;
+$color-navy-blue:                     #0065cc;
+
+$dh-grayShades: (
+  // Shades of Gray
+  'white':                            $color-white,
+  'black':                            $color-black,
+  'black-5':                          darken($color-white, 5%),
+  'black-10':                         darken($color-white, 10%),
+  'black-15':                         darken($color-white, 15%),
+  'black-20':                         darken($color-white, 20%),
+  'black-25':                         darken($color-white, 25%),
+  'black-30':                         darken($color-white, 30%),
+  'black-35':                         darken($color-white, 35%),
+  'black-40':                         darken($color-white, 40%),
+  'black-45':                         darken($color-white, 45%),
+  'black-50':                         darken($color-white, 50%),
+  'black-55':                         darken($color-white, 55%),
+  'black-60':                         darken($color-white, 60%),
+  'black-65':                         darken($color-white, 65%),
+  'black-70':                         darken($color-white, 70%),
+  'black-75':                         darken($color-white, 75%),
+  'black-80':                         darken($color-white, 80%),
+  'black-85':                         darken($color-white, 85%),
+  'black-90':                         darken($color-white, 90%),
+  'black-95':                         darken($color-white, 95%),
+);
+
+$dh-colored: (
+  // Colored
+  'free-speech-red':                  $color-free-speech-red,
+  'harlequin':                        $color-harlequin,
+  'navy-blue':                        $color-navy-blue,
+);
+
+// Merge Gray Shades and Colored Map
+$dh-colors: map-merge($dh-colored, $dh-grayShades);

@@ -1,9 +1,0 @@
-/*--------------------------------------------------
-    #VERTICAL ALIGN MIXIN
-  --------------------------------------------------*/
-
-@mixin valign {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}

@@ -1,0 +1,48 @@
+/*--------------------------------------------------
+    #GRID
+    More Infos about the 8 PX GRID here
+    URL: https://spec.fm/specifics/8-pt-grid
+  --------------------------------------------------*/
+
+$dh-pixelGrid:            true; // Do you want to use a PixelGrid
+$dh-pixelGridSize:        8px; // How much Pixels do you want
+$dh-columns:              12; // Set Column Numbers
+$dh-columnWidth:          120px; // How wide is one Column
+$dh-gutterWidth:          16px; // How much ist the Gutter on each Side
+
+/*--------------------------------------------------
+    #DON'T EDIT BELOW HERE
+  --------------------------------------------------*/
+
+// Check Pixel Grid Settings and round up to the next possible Value
+@if $dh-pixelGrid {
+
+  // Round Numbers
+  $dh-roundWidth:   round($dh-columnWidth / $dh-pixelGridSize);
+  $dh-roundGutter:  round($dh-gutterWidth / $dh-pixelGridSize);
+
+  // Check if the Numbers are equal
+  $dh-checkWidth:   $dh-roundWidth != $dh-columnWidth / $dh-pixelGridSize;
+  $dh-checkGutter:  $dh-roundGutter != $dh-gutterWidth / $dh-pixelGridSize;
+
+  @if $dh-checkWidth or $dh-checkGutter {
+
+    $dh-columnWidth:  $dh-roundWidth * $dh-pixelGridSize;
+    $dh-gutterWidth:  $dh-roundGutter * $dh-pixelGridSize;
+
+  } @else {
+
+    $dh-columnWidth:  $dh-columnWidth;
+    $dh-gutterWidth:  $dh-gutterWidth
+
+  }
+
+} @else {
+
+  $dh-columnWidth:  $dh-columnWidth;
+  $dh-gutterWidth:  $dh-gutterWidth
+
+}
+
+// Set max-width
+$dh-maxWidth: $dh-columnWidth * $dh-columns;

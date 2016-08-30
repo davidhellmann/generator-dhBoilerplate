@@ -1,0 +1,12 @@
+/*--------------------------------------------------
+    #LINE HEIGHT
+  --------------------------------------------------*/
+
+@function lineheight($key) {
+  @return round(($line-height-base-px * $key)  + 0px);
+}
+
+// Shorthand Version
+@function lh($key) {
+  @return lineheight($key);
+}

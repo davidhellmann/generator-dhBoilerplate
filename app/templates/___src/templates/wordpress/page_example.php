@@ -5,7 +5,7 @@
 ?>
 <?php get_header(); ?>
 
-<div class="o-appContent">
+<div class="c-appContent">
   <?php if (have_posts()) :
     while (have_posts()) : the_post(); ?>
 

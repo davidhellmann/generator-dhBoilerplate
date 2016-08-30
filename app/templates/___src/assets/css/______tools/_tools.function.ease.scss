@@ -1,0 +1,17 @@
+/*--------------------------------------------------
+    #EASE
+  --------------------------------------------------*/
+
+@function ease($key) {
+  @if map-has-key($dh-easings, $key) {
+    @return map-get($dh-easings, $key);
+  }
+
+  @warn "Unkown '#{$key}' in $dh-easings.";
+  @return null;
+}
+
+// Shorthand Version
+@function e($key) {
+  @return ease($key);
+}

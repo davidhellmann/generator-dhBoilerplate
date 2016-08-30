@@ -1,0 +1,33 @@
+/*--------------------------------------------------
+    .o-box
+  --------------------------------------------------*/
+
+.o-box {
+  @include clearfix;
+  display: block;
+  padding: s(1);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+// Size variants
+.o-box--flush {
+  padding: 0;
+}
+
+.o-box--small {
+  padding: s(2);
+}
+
+.o-box--large {
+  padding: s(3);
+}
+
+.o-box--huge {
+  padding: s(4);
+}
