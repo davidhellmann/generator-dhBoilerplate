@@ -2,29 +2,30 @@
  * Set Body Classes
  */
 
-var _body     = document.querySelector('body'),
-    _steps    = 1000,
-    _duration = 3000,
-    _timer    = 0,
-    _i        = 1;
+const body     = document.body;
+const steps    = 100;
+const duration = 3000;
+
+let timer    = 0;
+let i        = 1;
 
 
-while (_timer <= _duration) {
+while (timer <= duration) {
 
-  if (_timer == 0) {
+    if (timer == 0) {
 
-    _body.classList.add('is_ready');
+        body.classList.add('is_ready');
 
-  } else {
+    } else {
 
-    setTimeout(function() {
+        setTimeout(function() {
 
-      _body.classList.add('is_now_' + (_i * _steps));
-      _i++;
+            body.classList.add('is_now_' + (i * steps));
+            i++;
 
-    }, _timer);
+        }, timer);
 
-  }
+    }
 
-  _timer = _timer  + _steps;
+    timer = timer  + steps;
 }
