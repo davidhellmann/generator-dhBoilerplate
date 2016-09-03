@@ -12,7 +12,7 @@
 <link rel="icon" type="image/png" href="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicon/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicon/favicon-16x16.png" sizes="16x16" />
 <link rel="icon" type="image/png" href="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicon/favicon-128.png" sizes="128x128" />
-<meta name="application-name" content="Adventskalender — Die Roten Bullen"/>
+<meta name="application-name" content="<?php wp_title(); ?>"/>
 <meta name="msapplication-TileColor" content="#FFFFFF"
 <meta name="msapplication-TileImage" content="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicon/mstile-144x144.png" />
 <meta name="msapplication-square70x70logo" content="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicon/mstile-70x70.png" />
