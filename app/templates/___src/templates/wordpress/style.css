@@ -1,8 +1,10 @@
 /*
-Theme Name: dh wordpress
-Theme URI: https://davidhellmann.com
-Author: David Hellmann
-Author URI: https://ddavidhellmann.com
+Theme Name: <%= projectName %>
+Theme URI: http://YOURDOMAIN.COM
+Author: <%= projectMail %>
+Author URI: http://YOURDOMAIN.COM
 Version: 1.0
 Description: Is just a very little Startpoint for WordPress to use it with my dh Boilerplate: https://www.npmjs.com/package/generator-dhboilerplate
 */
+
+
