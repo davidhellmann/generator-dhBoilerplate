@@ -11,10 +11,16 @@
     "url": "<%= projectUrl %>"
   },
   "devDependencies": {
+    "aliasify": "^2.0.0",
     "autoprefixer": "^6.3.3",
     "babel": "^6.5.2",
     "babel-core": "^6.5.2",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.5.0",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "babel-runtime": "^6.11.6",
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
@@ -55,10 +61,10 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     <% if (projectVue == true ) { %>
-    "vue": "1.0.26",
-    "vueify": "^8.7.0",
-    "vue-router": "^0.7.13",
+    "vue": "^2.0.0-rc.4",
     "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "vueify": "^8.7.0",
     "browserify-hmr": "^0.3.1",
     <% } %>
     "watchify": "^3.7.0",
@@ -99,6 +105,5 @@
       "browserify-shim"
     ]
   },
-  "browserify-shim": {
-  }
+  "browserify-shim": {}
 }
