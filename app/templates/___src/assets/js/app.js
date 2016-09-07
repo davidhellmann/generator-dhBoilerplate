@@ -3,6 +3,17 @@
  */
 
 // Vendor
+<% if (projectVue == true ) { %>
+import Vue from 'vue/dist/vue'
+
+import hello from './vue/_helloworld.vue'
+new Vue({
+    el: '#app',
+    components: {
+        hello
+    }
+})
+<% } %>
 
 // Personal
 import './partials/bodyclass'

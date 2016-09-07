@@ -1,6 +1,13 @@
 <?php get_header(); ?>
 
 <div class="c-appContent">
+
+    <% if (projectVue == true ) { %>
+    <div id="app" class="vue">
+        <hello></hello>
+    </div>
+    <% } %>
+
   <?php if (have_posts()) :
     while (have_posts()) : the_post(); ?>
 

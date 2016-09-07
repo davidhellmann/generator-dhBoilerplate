@@ -47,8 +47,8 @@
     "space-before-blocks": [2, "always"],
     "semi": 0,
     "eol-last": 2,
-    "no-new": "off",
-    "no-underscore-dangle": "off",
+    "no-new": 0,
+    "no-underscore-dangle": 0,
     "indent": ["error", 4]
   },
   "globals": {

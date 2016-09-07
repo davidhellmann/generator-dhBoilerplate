@@ -3,6 +3,7 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserify from 'browserify';
 import babelify from 'babelify';
+import vueify from 'vueify';
 import yargs from 'yargs';
 
 const argv = yargs.argv;
@@ -17,12 +18,14 @@ const bundleVar = () => {
         debug: true
       }
     )
-      .transform(babelify.configure({ presets: ["es2015"]}))
+        .transform(babelify.configure({ presets: ["es2015"]}))
+        .transform(vueify)
   } else {
     return browserify(
-      config.src.js + config.files.jsApp.srcName
+        config.src.js + config.files.jsApp.srcName
     )
-      .transform(babelify.configure({ presets: ["es2015"]}))
+        .transform(babelify.configure({ presets: ["es2015"]}))
+        .transform(vueify)
   }
 
   return bundler
