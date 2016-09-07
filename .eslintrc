@@ -27,6 +27,7 @@
     "wrap-iife": 2,
     "no-use-before-define": 2,
     "new-cap": 2,
+    "newline-after-import": 0,
     "no-caller": 2,
     "no-console": 1,
     "quotes": [2, "single"],

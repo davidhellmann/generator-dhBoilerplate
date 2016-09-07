@@ -98,5 +98,7 @@
     "transform": [
       "browserify-shim"
     ]
+  },
+  "browserify-shim": {
   }
 }
