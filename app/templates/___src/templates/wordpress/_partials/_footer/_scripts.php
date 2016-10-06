@@ -44,7 +44,7 @@ if($host == "localhost" or $host == "<%= proxyUrl %>") :
     ?>
     <!-- BrowserSync -->
     <script type='text/javascript' id="__bs_script__">//<![CDATA[
-        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.15.0.js'><\/script>".replace("HOST", location.hostname));
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js'><\/script>".replace("HOST", location.hostname));
         //]]></script>
 <?php endif ?>
 <% } %>

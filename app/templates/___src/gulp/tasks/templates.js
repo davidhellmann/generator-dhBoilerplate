@@ -1,5 +1,6 @@
 import config from '../../config.json';
 import gulp from 'gulp';
+import twig from 'gulp-twig-up-to-date'
 import gulpLoadPlugins from 'gulp-load-plugins';
 import errorHandler from '../lib/errorHandler';
 
@@ -12,7 +13,7 @@ const templates = () => {
       return gulp
         .src(config.src.templates + '**/[^_]*.{html,twig,rss}')
         .pipe($.plumber())
-        .pipe($.twig())
+        .pipe(twig())
         .on('error', errorHandler)
         //.pipe($.changed(config.dist.markup))
         .pipe(gulp.dest(config.dist.markup));

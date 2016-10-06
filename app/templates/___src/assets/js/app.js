@@ -2,6 +2,14 @@
  * Bundle Scripts
  */
 
+const _debug = true
+window._debug = _debug
+
+// Debugging
+if (_debug === true) {
+    console.log('Debugging is: true')
+}
+
 // Vendor
 <% if (projectVue == true ) { %>
 import Vue from 'vue'

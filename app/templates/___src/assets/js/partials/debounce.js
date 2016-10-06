@@ -25,7 +25,10 @@ const debounce = (func, wait, immediate) => {
 module.exports = debounce
 
 var dh_windowResize = debounce(function() {
-  console.log('Resizing');
+    // Debugging
+    if (_debug === true) {
+        console.log('Resizing')
+    }
 }, 500);
 
 window.addEventListener('resize', dh_windowResize);
