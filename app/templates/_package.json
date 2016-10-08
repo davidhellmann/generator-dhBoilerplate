@@ -96,6 +96,7 @@
     "slick-carousel": "^1.5.9",
     "svg-injector": "^1.1.3",
     "waypoints": "^4.0.0"
+    "webfontloader": "^1.6.26"
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js"

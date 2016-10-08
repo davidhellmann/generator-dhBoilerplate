@@ -1,28 +1,9 @@
-<!-- Web Font Loader -->
-<script type="text/javascript">
-    WebFontConfig = {
-        google: { families: [
-            'Playfair+Display:900:latin',
-            'Roboto:400,700:latin'
-        ]}
-    };
-    (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-</script>
+<!-- Modernizr -->
+<script src="<?php bloginfo('template_url'); ?>/assets/js/vendor/modernizr-custom.min.js" async></script>
 
 
-
-<!-- Javascripts -->
-<script src="<?php bloginfo('template_url'); ?>/assets/js/vendor/modernizr-custom.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/assets/js/app.min.js?ver=<?php echo filemtime(get_stylesheet_directory() . '/assets/js/app.min.js'); ?>"></script>
-
+<!-- JS Scripts & Plugins -->
+<script src="<?php bloginfo('template_url'); ?>/assets/js/app.min.js?ver=<?php echo filemtime(get_stylesheet_directory() . '/assets/js/app.min.js'); ?>" async></script>
 
 
 <!-- Google Analytics -->

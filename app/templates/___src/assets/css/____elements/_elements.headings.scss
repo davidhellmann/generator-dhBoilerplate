@@ -3,10 +3,13 @@
   --------------------------------------------------*/
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: ff('headline');
   font-size: fs('base');
   font-weight: 700;
   word-wrap: break-word;
+
+  .wf-active & {
+    font-family: ff('headline');
+  }
 }
 
 h1 {
