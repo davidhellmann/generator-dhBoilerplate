@@ -16,7 +16,9 @@
       }
     },
     "templates":            "___src/templates/",
-    "system":               "___src/_system/"
+    "system":               "___src/_system/",
+    "dataDir":              "___src/_data/",
+    "dataFile":             "___src/_data/global.json"
   },
 
   "dist": {
