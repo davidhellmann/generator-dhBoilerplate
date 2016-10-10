@@ -24,11 +24,11 @@ new Vue({
 <% } %>
 
 // Personal
-import './partials/bodyclass'
 import './partials/example'
-import './partials/lazyloading'
-import './partials/scrollto'
-import './partials/pagetransition'
-import './partials/photoswipe'
+// import './partials/bodyclass'
+// import './partials/lazyloading'
+// import './partials/scrollto'
+// import './partials/pagetransition'
+// import './partials/photoswipe'
 // import './partials/matchHeight'
-import './partials/waypoints.anime'
+// import './partials/waypoints.anime'
