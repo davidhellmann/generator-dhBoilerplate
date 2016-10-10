@@ -4,11 +4,15 @@
 
 // Container Floating Grid
 // @include container(); // full for 100%
-@mixin container($width: max) {
+@mixin container($maxWidth: false) {
   width: 100%;
-  @if $width != 'full' {
+
+  // if $maxWidth: true
+  @if $maxWidth {
     max-width: $dh-maxWidth;
   }
+
+  // Include Clearfix
   @include clearfix();
 }
 
@@ -19,6 +23,7 @@
 //@include cols(x)
 @mixin cols($i) {
 
+  // If columns > $dh-columns set it to this maximum
   @if $i > $dh-columns {
     $i: $dh-columns;
   }
