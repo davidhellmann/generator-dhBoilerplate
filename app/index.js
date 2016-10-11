@@ -117,6 +117,11 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 message: 'Do you want to use Vue.js?',
                 default: false
             }, {
+                type: 'confirm',
+                name: 'projectYarn',
+                message: 'Do you want to use Yarn Package Manager? (https://yarnpkg.com/)',
+                default: false
+            }, {
                 type:    'input',
                 name:    'projectVersion',
                 message: 'Project Version Number',
@@ -165,6 +170,7 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.projectMail          = answers.projectMail;
             this.projectUrl           = answers.projectUrl;
             this.projectRepo          = answers.projectRepo;
+            this.projectYarn          = answers.projectYarn;
             done();
         }.bind(this));
 
@@ -226,7 +232,8 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             projectAuthor:        this.projectAuthor,
             projectMail:          this.projectMail,
             projectUrl:           this.projectUrl,
-            projectRepo:          this.projectRepo
+            projectRepo:          this.projectRepo,
+            projectYarn:          this.projectYarn
         }
 
 
@@ -286,12 +293,16 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
     },
 
     install: function () {
+        if (this.projectYarn) {
+            this.spawnCommand('yarn');
+        } else {
+            this.installDependencies({
+                bower: false,
+                npm: true
+            });
+        };
         this.log('Install NPM Modules.');
         this.log('Give me a moment to do that…');
-        this.installDependencies({
-            bower: false,
-            npm: true
-        });
     }
 
 });
