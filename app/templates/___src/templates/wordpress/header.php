@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js  wf-loading" lang="de_DE">
+<html class="no-js" lang="de_DE">
 <head>
 
     <title>{% block appTitle %}DEVELOPMENT &mdash; dhBoilerplate{% endblock %}</title>

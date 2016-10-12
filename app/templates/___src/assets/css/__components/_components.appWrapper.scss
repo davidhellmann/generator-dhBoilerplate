@@ -6,8 +6,25 @@
   font-weight: 400;
   color: c('black-90');
   background: c('white');
+  font-family: ff('base');
+  opacity: 0;
+}
 
-  .wf-active & {
-    font-family: ff('base');
-  }
+.no-js .c-appWrapper {
+  opacity: 1;
+}
+
+.app_loading .c-appWrapper,
+.app_interactive .c-appWrapper, {
+  opacity: 0;
+}
+
+.app_complete .c-appWrapper {
+  opacity: 1;
+  transition: opacity 1s 1s ease-out;
+}
+
+.js_pageTransition .c-appWrapper {
+  opacity: 0;
+  transition: all .25s ease-out;
 }

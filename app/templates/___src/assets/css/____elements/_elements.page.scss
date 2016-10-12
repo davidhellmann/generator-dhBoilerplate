@@ -8,12 +8,3 @@ html {
   overflow-y: scroll;
   min-height: 100%;
 }
-
-.wf-loading * {
-  opacity: 0;
-}
-
-.wf-active *,
-.wf-inactive * {
-  transition: opacity .5s ease-out !important;
-}

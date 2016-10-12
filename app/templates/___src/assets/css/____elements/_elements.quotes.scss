@@ -9,10 +9,7 @@ blockquote {
     font-size: fs('m');
     font-weight: 700;
     font-style: italic;
-
-    .wf-active & {
-      font-family: ff('headline');
-    }
+    font-family: ff('headline');
 
     @include media('>=s') {
       font-size: fs('l');
