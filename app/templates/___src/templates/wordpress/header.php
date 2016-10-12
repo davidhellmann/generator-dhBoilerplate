@@ -3,7 +3,7 @@
 <head>
 
     <title>{% block appTitle %}DEVELOPMENT &mdash; dhBoilerplate{% endblock %}</title>
-
+    <?php require_once('_partials/_global/_preloader.php'); ?>
     <?php require_once('_partials/_header/_meta.php'); ?>
     <?php require_once('_partials/_header/_scripts.php'); ?>
     <?php require_once('_partials/_header/_favicons.php'); ?>

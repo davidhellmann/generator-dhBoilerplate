@@ -4,11 +4,12 @@
 
 // Container Flexbox Grid
 // @include container(); // full for 100%
-@mixin flexbox($width: max) {
+@mixin flexbox($maxWidth: false) {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  @if $width != 'full' {
+
+  @if $maxWidth {
     max-width: $dh-maxWidth;
   }
 }

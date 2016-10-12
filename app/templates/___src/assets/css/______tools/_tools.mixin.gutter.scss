@@ -2,9 +2,9 @@
     #GUTTER
   --------------------------------------------------*/
 
-@mixin gutter($i: 1) {
-  padding-left: round(($i * $dh-gutterWidth));
-  padding-right: round(($i * $dh-gutterWidth));
+@mixin gutter($key: 1) {
+  padding-left: round(($dh-gutterWidth * $key) + 0px);
+  padding-right: round(($dh-gutterWidth * $key) + 0px);
 }
 
 // Shorthand Version
