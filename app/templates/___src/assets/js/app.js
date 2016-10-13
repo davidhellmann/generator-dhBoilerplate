@@ -8,6 +8,9 @@ window._debug = _debug
 // Debugging
 if (_debug === true) {
     console.log('Debugging is: true')
+    const html = document.getElementsByTagName('html')[0]
+
+    html.classList.add('dev',  'debug')
 }
 
 // Vendor
