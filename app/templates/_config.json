@@ -148,6 +148,11 @@
   "minify": {
     "images": {
       "optimizationLevel": 3,
+      "jpegCompress": {
+        "loops": 3,
+        "min": 60,
+        "max": 70
+      },
       "pngquant": {
         "quality": "75-88",
         "speed": 4

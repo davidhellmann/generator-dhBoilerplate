@@ -14,9 +14,9 @@ const minifyImages = (srcFiles, distFiles) => {
       use: [
         pngquant(config.minify.images.pngquant),
         jpegCompress({
-          loops: 3,
-          min: 75,
-          max: 95
+          loops: config.minify.images.jpegCompress.loops,
+          min: config.minify.images.jpegCompress.min,
+          max: config.minify.images.jpegCompress.max
         })
       ],
       progressive: config.minify.images.progressive,
