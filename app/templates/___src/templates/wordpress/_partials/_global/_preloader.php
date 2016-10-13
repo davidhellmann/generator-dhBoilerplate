@@ -27,7 +27,7 @@
 
         switch (document.readyState) {
             case settings.cases.loading:
-                _html.classList.add(settings.states.loading);
+                settings.html.classList.add(settings.states.loading);
                 break;
 
             case settings.cases.interact:
