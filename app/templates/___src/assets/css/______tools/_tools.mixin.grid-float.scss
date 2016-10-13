@@ -1,19 +1,24 @@
 /*--------------------------------------------------
-    #GRID FLOAT
+    #GRID FLEX
   --------------------------------------------------*/
 
-// Container Floating Grid
+// Container Flexbox Grid
 // @include container(); // full for 100%
-@mixin container($maxWidth: false) {
+@mixin flexbox($maxWidth: false) {
+  display: flex;
+  flex-flow: row wrap;
   width: 100%;
 
-  // if $maxWidth: true
   @if $maxWidth {
     max-width: $dh-maxWidth;
+  } @else {
+    max-width: none;
   }
+}
 
-  // Include Clearfix
-  @include clearfix();
+// Shorthand Version
+@mixin fb($args...) {
+  @include flexbox($args...);
 }
 
 
