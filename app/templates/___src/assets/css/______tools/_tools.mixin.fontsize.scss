@@ -2,6 +2,7 @@
     #FONT SIZE
   --------------------------------------------------*/
 
+
 @function fontsize($key) {
   @if map-has-key($dh-fontsizes, $key) {
     @return map-get($dh-fontsizes, $key);
@@ -15,3 +16,15 @@
 @function fs($key) {
   @return fontsize($key);
 }
+
+
+@mixin fontsize($key, $lineHeight: $line-height-base ) {
+  font-size: fs($key);
+  line-height: $lineHeight;
+}
+
+// Shorthand Version
+@mixin fs($args...) {
+  @include fontsize($args...);
+}
+

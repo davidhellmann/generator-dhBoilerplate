@@ -3,32 +3,32 @@
   --------------------------------------------------*/
 
 h1,h2,h3,h4,h5,h6 {
-  font-size: fs('base');
+  @include fontsize('base');
   font-weight: 700;
   word-wrap: break-word;
   font-family: ff('headline');
 }
 
 h1 {
-  font-size: fs('l');
+  @include fs('l');
 
   @include media('>=s') {
-    font-size: fs('xl');
+    @include fs('xl');
   }
 }
 
 h2 {
-  font-size: fs('m');
+  @include fs('m');
 
   @include media('>=s') {
-    font-size: fs('l');
+    @include fs('l');
   }
 }
 
 h3 {
-  font-size: fs('base');
+  @include fs('base');
 
   @include media('>=s') {
-    font-size: fs('m');
+    @include fs('m');
   }
 }

@@ -3,8 +3,7 @@
   --------------------------------------------------*/
 
 html {
-  font-size: fs('base');
-  line-height: lh(1);
+  @include fontsize('base');
   overflow-y: scroll;
   min-height: 100%;
 }
