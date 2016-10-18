@@ -42,8 +42,12 @@ ___dist/
 ___dist/*
 !___dist/wp-content/
 ___dist/wp-content/*
-!___dist/wp-content/themes/
 !___dist/wp-content/plugins/
+!___dist/wp-content/themes/
+___dist/wp-content/themes/*
+!___dist/wp-content/themes/<%= projectName %>/
+___dist/wp-content/themes/<%= projectName %>/*
+!___dist/wp-content/themes/<%= projectName %>/acf-json/
 <% } %>
 
 <% if (projectUsage == 'Craft CMS' ) { %>
