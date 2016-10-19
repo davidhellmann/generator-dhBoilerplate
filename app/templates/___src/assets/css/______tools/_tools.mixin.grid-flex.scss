@@ -30,7 +30,8 @@
   @if $i > $dh-columns {
     $i: $dh-columns;
   }
-  flex: 0 1 ($i / $dh-columns * 100%);
+  flex: 0 1 auto;
+  width: ($i / $dh-columns * 100%);
 }
 
 // Shorthand Version
