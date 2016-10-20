@@ -1,0 +1,158 @@
+/*--------------------------------------------------
+    .o-grid
+  --------------------------------------------------*/
+
+// Set Gutters for the different Breakpoints
+%gridGutter {
+  @include gutter(1);
+
+  @include media('>=s') {
+    @include gutter(1)
+  }
+
+  @include media('>=m') {
+    @include gutter(1)
+  }
+
+  @include media('>=l') {
+    @include gutter(2)
+  }
+
+  @include media('>=xl') {
+    @include gutter(2)
+  }
+}
+
+
+.o-grid {
+  @if $dh-flexbox {
+    @include flexbox(true);
+  } @else {
+    @include container(true);
+  }
+
+  @include center();
+
+  &--full {
+    @if $dh-flexbox {
+      @include flexbox();
+    } @else {
+      @include container();
+    }
+  }
+}
+
+
+.o-grid__inner {
+  @if $dh-flexbox {
+    @include flexbox(true);
+  } @else {
+    @include container(true);
+  }
+
+  @include center();
+  @extend %gridGutter;
+
+  &--full {
+    @if $dh-flexbox {
+      @include flexbox();
+    } @else {
+      @include container();
+    }
+
+    .o-grid--noGutter & {
+      @include gutter(0);
+    }
+  }
+
+  .o-grid--noGutter & {
+    > .o-col {
+      @include gutter(0);
+    }
+  }
+}
+
+
+.o-col {
+  @if $dh-flexbox {
+    @include flexcols(12);
+  } @else {
+    @include cols(12);
+  }
+
+  @extend %gridGutter;
+
+  .o-grid--2er > .o-grid__inner & {
+    @if $dh-flexbox {
+      @include flexcols(6);
+    } @else {
+      @include cols(6);
+    }
+  }
+
+  .o-grid--3er > .o-grid__inner & {
+    @if $dh-flexbox {
+      @include flexcols(12);
+    } @else {
+      @include cols(12);
+    }
+
+    @include media('>=s') {
+      @if $dh-flexbox {
+        @include flexcols(4);
+      } @else {
+        @include cols(4);
+      }
+    }
+  }
+
+  .o-grid--4er > .o-grid__inner & {
+    @if $dh-flexbox {
+      @include flexcols(12);
+    } @else {
+      @include cols(12);
+    }
+
+    @include media('>=s') {
+      @if $dh-flexbox {
+        @include flexcols(6);
+      } @else {
+        @include cols(6);
+      }
+    }
+
+    @include media('>=m') {
+      @if $dh-flexbox {
+        @include flexcols(3);
+      } @else {
+        @include cols(3);
+      }
+    }
+  }
+
+  .o-grid--6er > .o-grid__inner & {
+    @if $dh-flexbox {
+      @include flexcols(12);
+    } @else {
+      @include cols(12);
+    }
+
+    @include media('>=s') {
+      @if $dh-flexbox {
+        @include flexcols(2);
+      } @else {
+        @include cols(2);
+      }
+    }
+  }
+
+  .o-grid--12er > .o-grid__inner & {
+    @if $dh-flexbox {
+      @include flexcols(1);
+    } @else {
+      @include cols(1);
+    }
+  }
+}
+
+
