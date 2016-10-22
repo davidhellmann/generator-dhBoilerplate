@@ -42,7 +42,7 @@
 - `color('color-name')` or `c('color-name')`
 - `ease('easing-name')` or `e('easing-name')`
 - `fontfamily('font-name')` or `ff('font-name')` 
-- `sapce(i)` or `s(i)`  
+- `space(i)` or `s(i)`  
 - `verticalrhythm(i)` or `vr(i)` 
 
 ### Sass Mixins

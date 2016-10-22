@@ -65,7 +65,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     <% if (projectVue == true ) { %>
-    "vue": "^2.0.0-rc.4",
+    "vue": "^2.0.2",
     "vue-resource": "^0.9.3",
     "vue-router": "^0.7.13",
     "vueify": "^8.7.0",
