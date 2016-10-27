@@ -44,7 +44,7 @@
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svg-sprite": "^1.2.19",
-    "gulp-twig-up-to-date": "^0.6.1",
+    "gulp-twig": "^0.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
