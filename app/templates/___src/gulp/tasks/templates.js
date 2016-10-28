@@ -1,6 +1,6 @@
 import config from '../../config.json';
 import gulp from 'gulp';
-import twig from 'gulp-twig-up-to-date'
+import twig from 'gulp-twig'
 import gulpLoadPlugins from 'gulp-load-plugins';
 import errorHandler from '../lib/errorHandler';
 <% if (projectUsage == 'Prototyping' ) { %>
