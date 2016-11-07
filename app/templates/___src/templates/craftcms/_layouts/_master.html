@@ -6,27 +6,27 @@
 #}
 
 {# Include Macros #}
-{% import '../_macros/_macros.html' as dh_macros %}
+{% import '_macros/_macros.html' as dh_macros %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="de">
 <head>
 
   {# Preloader #}
-  {% include '../_partials/_global/_preloader.html' %}
+  {% include '_partials/_global/_preloader.html' %}
 
 
   {# Meta #}
-  {% include '../_partials/_header/_meta.html' %}
+  {% include '_partials/_header/_meta.html' %}
 
   {# Scripts #}
-  {% include '../_partials/_header/_scripts.html' %}
+  {% include '_partials/_header/_scripts.html' %}
 
   {# Seomatic #}
-  {#{% include '../_partials/_header/_seomatic.html' %}#}
+  {#{% include '_partials/_header/_seomatic.html' %}#}
 
   {# Favicon #}
-  {% include '../_partials/_header/_favicons.html' %}
+  {% include '_partials/_header/_favicons.html' %}
 
   {% block siteHeader %}{% endblock %}
 
@@ -56,4 +56,4 @@
 </div>
 
 {# Include Scripts, Fonts, Google Analyticy #}
-{% include '../_partials/_footer/_scripts.html' %}
+{% include '_partials/_footer/_scripts.html' %}

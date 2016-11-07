@@ -99,9 +99,6 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 message: 'Do you want to use Imager?',
                 default: true
             },{
-                when: function(answers) {
-                    return answers.craftHearty === true;
-                },
                 type: 'confirm',
                 name: 'craftMultilang',
                 message: 'Do you want to use Multilang Config?',
@@ -193,32 +190,47 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
         }
 
         if ( this.projectUsage === 'Craft CMS' ) {
+
+            if (this.craftHearty) {
+                var craftPath = '';
+            } else {
+                var craftPath = 'craft';
+            }
+
+            // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
-        }
 
-        if(this.craftHearty) {
-            this.directory('___src/_craft/hearty/config/', '___dist/config');
 
+            // Copy Imager Config
             this.fs.copyTpl(
                 this.templatePath('___src/_craft/imager/imager.php'),
-                this.destinationPath('___dist/config/imager.php')
+                this.destinationPath('___dist/'+ craftPath +'/config/imager.php')
             );
 
+
+            // Copy Craft CLI
             this.fs.copyTpl(
                 this.templatePath('___src/_craft/.craft-cli.php'),
                 this.destinationPath('.craft-cli.php')
             );
 
-            this.directory('___src/_craft/plugins/', '___dist/plugins');
 
-        } else if ( this.projectUsage === 'Craft CMS' ) {
-            this.directory('___src/_craft/plugins/', '___dist/craft/plugins');
+            // Copy Plugins
+            this.directory('___src/_craft/plugins/', '___dist/'+ craftPath +'/plugins');
+
+
+            // Copy Translations
+            if(this.craftMultilang) {
+                this.directory('___src/_craft/translations/', '___dist/'+ craftPath+ '/translations');
+            }
+
+
+            // Copy Hearty Config
+            if(this.craftHearty) {
+                this.directory('___src/_craft/hearty/config/', '___dist/config');
+            }
+
         }
-
-        if(this.craftMultilang) {
-            this.directory('___src/_craft/translations/', '___dist/translations');
-        }
-
     },
 
     projectfiles: function () {
