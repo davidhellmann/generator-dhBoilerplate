@@ -19,7 +19,7 @@ $dh-list-inline-delimiter:   ",\00A0" !default;
   font-size: 0;
 
   > .o-list-inline__item {
-    font-size: fontSize('base');
+    font-size: fs('ms0');
 
   }
 

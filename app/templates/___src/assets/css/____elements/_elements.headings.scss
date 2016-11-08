@@ -3,32 +3,32 @@
   --------------------------------------------------*/
 
 h1,h2,h3,h4,h5,h6 {
-  @include fontsize('base');
   font-weight: 700;
   word-wrap: break-word;
   font-family: ff('headline');
+  line-height: 1.2;
 }
 
 h1 {
-  @include fs('l');
-
-  @include media('>=s') {
-    @include fs('xl');
-  }
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms6, $msFont-max * $ms6);
 }
 
 h2 {
-  @include fs('m');
-
-  @include media('>=s') {
-    @include fs('l');
-  }
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms5, $msFont-max * $ms5);
 }
 
 h3 {
-  @include fs('base');
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms4, $msFont-max * $ms4);
+}
 
-  @include media('>=s') {
-    @include fs('m');
-  }
+h4 {
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms3, $msFont-max * $ms3);
+}
+
+h5 {
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms2, $msFont-max * $ms2);
+}
+
+h6 {
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms1, $msFont-max * $ms1);
 }

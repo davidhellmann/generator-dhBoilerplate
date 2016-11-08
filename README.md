@@ -50,9 +50,7 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 - `color('color-name')` or `c('color-name')`
 - `ease('easing-name')` or `e('easing-name')`
 - `fontfamily('font-name')` or `ff('font-name')` 
-- `font-size('font-size')` or `fs('font-size')`  
-- `lineheight(i)` or `lh(i)`    
-- `sapce(i)` or `s(i)`  
+- `space(i)` or `s(i)`  
 - `verticalrhythm(i)` or `vr(i)` 
 
 ### Sass Mixins
@@ -64,6 +62,7 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 - `@include fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include ft($properties, $min-vw, $max-vw, $min-value, $max-value)`
 - `@include flexbox('full')` or `@include fb('full')` ‚full‘ is optional
 - `@include flexcols(i)` or `@include fc(i)`
+- `@include fontsize('base', 1)` or `@include fs('base', 1)`
 - `@include gutter(i)`or `@include g(i)`
 - `@include pull(i)`
 - `@include push(i)`

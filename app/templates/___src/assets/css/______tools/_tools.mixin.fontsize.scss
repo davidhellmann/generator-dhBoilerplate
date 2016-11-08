@@ -18,7 +18,7 @@
 }
 
 
-@mixin fontsize($key, $lineHeight: $line-height-base ) {
+@mixin fontsize($key, $lineHeight: $lineHeight-base ) {
   font-size: fs($key);
   line-height: $lineHeight;
 }

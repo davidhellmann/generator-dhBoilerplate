@@ -2,39 +2,47 @@
     #FONT SIZES
   --------------------------------------------------*/
 
-$font-size-base:        16px;
-$line-height-base:      1.5;
-$line-height-base-px:   $font-size-base * $line-height-base + 0px;
+$fontSize-min:          16px;
+$fontSize-max:          21px;
+$lineHeight-base:       1.5;
+$lineHeight-base-px:    $fontSize-min * $lineHeight-base + 0px;
 
 
 
 // Modular Scale Settings
-$dh-msWidthMin:         320px;
-$dh-msWidthMax:         1440px;
-$dh-ms:                 1.2;
+$msWidth-min:           480px;
+$msWidth-max:           1280px;
+$msFactor:              1.2;
 
-$dh-ms1:                $dh-ms;
-$dh-ms2:                $dh-ms * $dh-ms;
-$dh-ms3:                $dh-ms * $dh-ms * $dh-ms;
-$dh-ms4:                $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-ms5:                $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-ms6:                $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-ms7:                $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-ms8:                $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-ms9:                $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms;
-$dh-msFontMin:          $font-size-base;
-$dh-msFontMax:          $font-size-base * $dh-ms * $dh-ms;
+
+
+// Nothing to change here
+$ms1:                   $msFactor;
+$ms2:                   $msFactor * $msFactor;
+$ms3:                   $msFactor * $msFactor * $msFactor;
+$ms4:                   $msFactor * $msFactor * $msFactor * $msFactor;
+$ms5:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
+$ms6:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
+$ms7:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
+$ms8:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
+$ms9:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
+$msFont-min:            $fontSize-min;
+$msFont-max:            $fontSize-max;
 
 
 
 // Font Map
 $dh-fontsizes: (
-  'xs':     12px,
-  's':      15px,
-  'base':   $dh-msFontMin,
-  'm':      $dh-msFontMin * $dh-ms,
-  'l':      $dh-msFontMin * $dh-ms * $dh-ms,
-  'xl':     $dh-msFontMin * $dh-ms * $dh-ms * $dh-ms,
-  'xxl':    $dh-msFontMin * $dh-ms * $dh-ms * $dh-ms * $dh-ms,
-  'xxxl':   $dh-msFontMin * $dh-ms * $dh-ms * $dh-ms * $dh-ms * $dh-ms,
+  'ms-2':               12px,
+  'ms-1':               15px,
+  'ms0':                $fontSize-min,
+  'ms1':                $fontSize-min * $ms1,
+  'ms2':                $fontSize-min * $ms2,
+  'ms3':                $fontSize-min * $ms3,
+  'ms4':                $fontSize-min * $ms4,
+  'ms5':                $fontSize-min * $ms5,
+  'ms6':                $fontSize-min * $ms6,
+  'ms7':                $fontSize-min * $ms7,
+  'ms8':                $fontSize-min * $ms8,
+  'ms9':                $fontSize-min * $ms9,
 );

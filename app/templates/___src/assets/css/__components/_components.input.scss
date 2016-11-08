@@ -18,7 +18,7 @@ input.c-input[type="search"],
 input.c-input[type="tel"],
 textarea.c-input {
   -webkit-appearance: none;
-  font-size: fs('base');
+  @include fs('ms0');
   outline: 0;
   display: inline-block;
   width: 100%;

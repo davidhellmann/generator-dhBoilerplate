@@ -3,7 +3,8 @@
   --------------------------------------------------*/
 
 html {
-  @include fontsize('base');
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min, $msFont-max);
+  line-height: $lineHeight-base;
   overflow-y: scroll;
   min-height: 100%;
 }

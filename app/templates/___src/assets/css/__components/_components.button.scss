@@ -6,7 +6,7 @@
   background: c('free-speech-red');
   font-weight: 700;
   color: c('white');
-  font-size: fs('m');
+  @include fs('ms1');
   border: none;
   padding: s(1);
   display: inline-block;

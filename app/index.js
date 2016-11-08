@@ -99,6 +99,9 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 message: 'Do you want to use Imager?',
                 default: true
             },{
+                when: function(answers) {
+                    return answers.projectUsage === 'Craft CMS';
+                },
                 type: 'confirm',
                 name: 'craftMultilang',
                 message: 'Do you want to use Multilang Config?',

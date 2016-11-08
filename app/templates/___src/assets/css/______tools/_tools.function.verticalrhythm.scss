@@ -3,7 +3,7 @@
   --------------------------------------------------*/
 
 @function verticalrhythm($key) {
-  @return round(($line-height-base-px * $key) + 0px);
+  @return round(($lineHeight-base-px * $key) + 0px);
 }
 
 // Shorthand Version
