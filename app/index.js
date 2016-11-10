@@ -17,38 +17,58 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
         // Have Yeoman greet the user.
         this.log(yosay(
-            'Welcome to the impressive ' + chalk.red('dhBoilerplate') + ' generator!'
+            'Welcome to the impressive ' + chalk.magenta('dhBoilerplate') + ' generator!'
         ));
 
         var welcome =
-                '\n ————————————————————————————————————————————————————————————————————————————————— '+
-                '\n                                                                                   '+
-                '\n               dddddddd                                                            '+
-                '\n               d::::::dhhhhhhh                                                     '+
-                '\n               d::::::dh:::::h                                                     '+
-                '\n               d::::::dh:::::h                                                     '+
-                '\n               d:::::d h:::::h                                                     '+
-                '\n       ddddddddd:::::d  h::::h hhhhh                                               '+
-                '\n     dd::::::::::::::d  h::::hh:::::hhh                                            '+
-                '\n    d::::::::::::::::d  h::::::::::::::hh                                          '+
-                '\n   d:::::::ddddd:::::d  h:::::::hhh::::::h                                         '+
-                '\n   d::::::d    d:::::d  h::::::h   h::::::h                                        '+
-                '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
-                '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
-                '\n   d:::::d     d:::::d  h:::::h     h:::::h                                        '+
-                '\n   d::::::ddddd::::::dd h:::::h     h:::::h                                        '+
-                '\n    d:::::::::::::::::d h:::::h     h:::::h                                        '+
-                '\n     d:::::::::ddd::::d h:::::h     h:::::h                                        '+
-                '\n      ddddddddd   ddddd hhhhhhh     hhhhhhh                                        '+
-                '\n                                                                                   '+
-                '\n                                                                                   '+
-                '\n    dhBoilerplate made with love & help.                                           '+
-                '\n    ---------------------------------------                                        '+
-                '\n    Author   :   David Hellmann                                                    '+
-                '\n    Website  :   http://davidhellmann.com                                          '+
-                '\n    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate          '+
-                '\n                                                                                   '+
-                '\n ————————————————————————————————————————————————————————————————————————————————— ';
+                chalk.styles.magenta.open +
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                        dddddddd                                                            '+
+                '\n                                        d::::::dhhhhhhh                                                     '+
+                '\n                                        d::::::dh:::::h                                                     '+
+                '\n                                        d::::::dh:::::h                                                     '+
+                '\n                                        d:::::d h:::::h                                                     '+
+                '\n                                ddddddddd:::::d  h::::h hhhhh                                               '+
+                '\n                              dd::::::::::::::d  h::::hh:::::hhh                                            '+
+                '\n                             d::::::::::::::::d  h::::::::::::::hh                                          '+
+                '\n                            d:::::::ddddd:::::d  h:::::::hhh::::::h                                         '+
+                '\n                            d::::::d    d:::::d  h::::::h   h::::::h                                        '+
+                '\n                            d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+                '\n                            d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+                '\n                            d:::::d     d:::::d  h:::::h     h:::::h                                        '+
+                '\n                            d::::::ddddd::::::dd h:::::h     h:::::h                                        '+
+                '\n                             d:::::::::::::::::d h:::::h     h:::::h                                        '+
+                '\n                              d:::::::::ddd::::d h:::::h     h:::::h                                        '+
+                '\n                               ddddddddd   ddddd hhhhhhh     hhhhhhh                                        '+
+                '\n                                                                                                            '+
+                '\n                                                                                                            '+
+                chalk.styles.magenta.close +
+                chalk.styles.yellow.open +
+                '\n                                                                                                            '+
+                '\n                          • • • dhBoilerplate made with love & help • • •                                   '+
+                '\n                                                                                                            '+
+                '\n                                                                                                            '+
+                '\n                                                                                                            '+
+                chalk.styles.yellow.close +
+                chalk.styles.cyan.open +
+                '\n              ---------------------------------------------------------------------          '+
+                '\n                                                                                             '+
+                '\n              Version  :   '+ (this.pkg.version)                                              +
+                '\n              Author   :   David Hellmann                                                    '+
+                '\n              Website  :   http://davidhellmann.com                                          '+
+                '\n              Github   :   https://github.com/davidhellmann/generator-dhBoilerplate          '+
+                '\n                                                                                             '+
+                '\n              ---------------------------------------------------------------------          '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                '\n                                                                                             '+
+                chalk.styles.cyan.close;
 
         console.log(welcome);
 
@@ -82,6 +102,22 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
                     "WordPress",
                     "Craft CMS"
                 ]
+            },{
+                when: function(answers) {
+                    return answers.projectUsage === 'WordPress';
+                },
+                type: 'confirm',
+                name: 'wordpressInstall',
+                message: 'Do you want to download the newest WordPress Version via WP-CLI?',
+                default: true
+            },{
+                when: function(answers) {
+                    return answers.projectUsage === 'Craft CMS';
+                },
+                type: 'confirm',
+                name: 'craftInstall',
+                message: 'Do you want to download the newest Craft Version?',
+                default: true
             },{
                 when: function(answers) {
                     return answers.projectUsage === 'Craft CMS';
@@ -162,6 +198,8 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.projectjQuery        = answers.projectjQuery;
             this.projectVue           = answers.projectVue;
             this.projectUsage         = answers.projectUsage;
+            this.wordpressInstall     = checkAnswer(answers.wordpressInstall);
+            this.craftInstall         = checkAnswer(answers.craftInstall);
             this.craftHearty          = checkAnswer(answers.craftHearty);
             this.craftImager          = checkAnswer(answers.craftImager);
             this.craftMultilang       = checkAnswer(answers.craftMultilang);
@@ -245,6 +283,8 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             projectjQuery:        this.projectjQuery,
             projectVue:           this.projectVue,
             projectUsage:         this.projectUsage,
+            wordpressInstall:     this.wordpressInstall,
+            craftInstall:         this.craftInstall,
             craftHearty:          this.craftHearty,
             craftImager:          this.craftImager,
             craftMultilang:       this.craftMultilang,
@@ -311,6 +351,48 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             params
         );
     },
+
+
+    //  --------------------------------------------------------
+    //  installing craft
+    //  --------------------------------------------------------
+
+    installCraft: function() {
+
+        if (this.craftInstall) {
+            var done = this.async();
+            var _self = this;
+
+            this.spawnCommand('wget', ['http://buildwithcraft.com/latest.tar.gz\?accept_license\=yes']).on('close', function () {
+                _self.spawnCommand('mkdir', ['___dist']).on('close', function () {
+                    _self.spawnCommand('tar', ['-zxvf', 'latest.tar.gz\?accept_license=yes', 'craft/']).on('close', function () {
+                        _self.spawnCommand('mv', ['craft', '___dist/']).on('close', function () {
+                            _self.spawnCommand('rm', ['-rf', 'latest.tar.gz\?accept_license=yes']).on('close', done);
+                        });
+                    });
+                });
+            });
+        }
+    },
+
+
+    //  --------------------------------------------------------
+    //  installing WordPress
+    //  --------------------------------------------------------
+
+    installWordPress: function() {
+
+        if (this.wordpressInstall) {
+            var done = this.async();
+            this.spawnCommand('wp', ['core', 'download', '--path=___dist']).on('close', done);
+        }
+    },
+
+
+
+    //  --------------------------------------------------------
+    //  Install Packages
+    //  --------------------------------------------------------
 
     install: function () {
         if (this.projectYarn) {

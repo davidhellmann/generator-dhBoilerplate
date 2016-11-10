@@ -29,6 +29,7 @@ new Vue({
 // Personal
 import './partials/example'
 // import './partials/bodyclass'
+// import './partials/cookies'
 // import './partials/lazyloading'
 // import './partials/scrollto'
 // import './partials/pagetransition'
