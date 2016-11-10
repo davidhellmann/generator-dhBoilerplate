@@ -84,9 +84,17 @@
 
   .o-grid--2er > .o-grid__inner & {
     @if $dh-flexbox {
-      @include flexcols(6);
+      @include flexcols(12);
     } @else {
-      @include cols(6);
+      @include cols(12);
+    }
+
+    @include media('>=s') {
+      @if $dh-flexbox {
+        @include flexcols(6);
+      } @else {
+        @include cols(6);
+      }
     }
   }
 
