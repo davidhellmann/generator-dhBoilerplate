@@ -234,8 +234,10 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
             if (this.craftHearty) {
                 var craftPath = '';
+                var craftIndex = 'index.hearty.php';
             } else {
                 var craftPath = 'craft';
+                var craftIndex = 'index.php';
             }
 
             // Copy Templates
@@ -246,6 +248,12 @@ var dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.fs.copyTpl(
                 this.templatePath('___src/_craft/imager/imager.php'),
                 this.destinationPath('___dist/'+ craftPath +'/config/imager.php')
+            );
+
+            // Copy Index File for Craft
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/public/'+ craftIndex),
+                this.destinationPath('___dist/public/index.php')
             );
 
 
