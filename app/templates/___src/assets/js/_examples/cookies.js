@@ -2,8 +2,10 @@
 //  Cookies
 //  --------------------------------------------------------
 
+
+
 // Create cookie
-export function createCookie(name, value, days) {
+export const createCookie = (name, value, days) => {
     let expires
     if (days) {
         const date = new Date()
@@ -18,7 +20,7 @@ export function createCookie(name, value, days) {
 
 
 // Read cookie
-export function readCookie(name) {
+export const readCookie = (name) => {
     const nameEQ = `${name} =`
     const ca = document.cookie.split(';')
     for (let i = 0; i < ca.length; i += 1) {
@@ -36,6 +38,6 @@ export function readCookie(name) {
 
 
 // Delete Cookie
-export function deleteCookie(name) {
+export const deleteCookie = (name) => {
     createCookie(name, '', -1)
 }

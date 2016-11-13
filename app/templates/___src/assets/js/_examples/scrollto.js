@@ -5,12 +5,15 @@
 
 // Dependencies
 import $ from 'jquery'
-import debounce             from './debounce'
+import debounce             from './lib/debounce'
+import addListenerMulti     from './lib/addListenerMulti'
 
 
 
 // Vars
 var _viewport = $('html, body');
+var viewport = document
+
 
 
 
@@ -49,8 +52,13 @@ $('a[href^="#"]').on('click', function(event) {
 
 
 // Cancel when user Interact
+
+addListenerMulti(_viewport, 'scroll mousedown DOMMouseScroll mousewheel keyup touchmove', function(){
+    _viewport.stop();
+})
+
 _viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup touchmove", function(){
-  _viewport.stop();
+
 });
 
 

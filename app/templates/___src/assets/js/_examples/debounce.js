@@ -8,27 +8,33 @@
 // leading edge, instead of the trailing.
 
 const debounce = (func, wait, immediate) => {
-  var timeout;
+  let timeout
   return function() {
-    var context = this, args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
+    let context = this
+    let args = arguments
+    let later = function() {
+      timeout = null
+      if (!immediate) func.apply(context, args)
+    }
+    let callNow = immediate && !timeout
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+    if (callNow) func.apply(context, args)
+  }
+}
 
-module.exports = debounce
+export default debounce
 
-var dh_windowResize = debounce(function() {
+
+/**
+ * Debounce Example
+ */
+
+/* var dh_windowResize = debounce(function() {
     // Debugging
     if (_debug === true) {
         console.log('Resizing')
     }
 }, 500);
 
-window.addEventListener('resize', dh_windowResize);
+window.addEventListener('resize', dh_windowResize);*/

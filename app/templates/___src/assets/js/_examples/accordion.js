@@ -9,26 +9,26 @@ import $ from 'jquery'
 
 
 // Vars
-var _trigger = $('.js_accordionTrigger');
+let _trigger = $('.js_accordionTrigger');
 
 
 // Click Event
-_trigger.on('click', function(event) {
+_trigger.addEventListener('click', (event) function(event) {
   event.preventDefault();
 
-  var _this = $(this);
+  let _this = $(this);
 
-  var _body = $('body');
+  let _body = $('body');
 
   // Get Target
-  var _next = _this.attr('data-next');
-  var _find = _this.attr('data-find');
+  let _next = _this.attr('data-next');
+  let _find = _this.attr('data-find');
 
   // Get Wrapper
-  var _wrapper = _this.attr('data-wrapper');
+  let _wrapper = _this.attr('data-wrapper');
 
   // Get Status
-  var _status = _this.attr('data-status');
+  let _status = _this.attr('data-status');
 
   // Toggle Content
   if ( _status == 'closed') {
@@ -72,4 +72,4 @@ _trigger.on('click', function(event) {
     }
   }
 
-});
+}, false);

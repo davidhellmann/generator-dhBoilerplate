@@ -2,37 +2,29 @@
  * Bundle Scripts
  */
 
-const _debug = true
+// Debugging
+const _debug = false
 window._debug = _debug
 
-// Debugging
 if (_debug === true) {
     console.log('Debugging is: true')
     const html = document.getElementsByTagName('html')[0]
-
-    html.classList.add('dev',  'debug')
+    html.classList.add('dev', 'debug')
 }
 
-// Vendor
-<% if (projectVue == true ) { %>
-import Vue from 'vue'
-import hello from './vue/_helloworld.vue'
 
-new Vue({
-    el: '#app',
-    components: {
-        hello
-    }
-})
+
+// Vue Stuff
+<% if (projectVue == true ) { %>
+import './scripts/vueExamples.js'
 <% } %>
 
-// Personal
-import './partials/example'
-// import './partials/bodyclass'
-// import './partials/cookies'
-// import './partials/lazyloading'
-// import './partials/scrollto'
-// import './partials/pagetransition'
-// import './partials/photoswipe'
-// import './partials/matchHeight'
-// import './partials/waypoints.anime'
+
+
+// Scripts
+import './scripts/example'
+import './scripts/bodyclass'
+// import './scripts/lazyloading'
+// import './scripts/pagetransition'
+// import './scripts/photoswipe'
+// import './scripts/waypoints.anime'

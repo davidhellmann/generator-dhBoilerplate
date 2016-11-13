@@ -126,26 +126,13 @@
     "options": [
       "setClasses",
       "addTest",
-      "html5printshiv",
-      "testAllProps",
       "fnBind"
     ],
     "tests": [
-      "cssanimations",
-      "csstransforms",
-      "csstransforms3d",
-      "csstransitions",
       "backgroundblendmode",
       "bgsizecover",
-      "preserve3d",
-      "flexbox",
       "touchevents",
-      "svg",
-      "inlinesvg",
-      "respond",
-      "hsla",
-      "rgba",
-      "webgl"
+      "rgba"
     ]
   },
 

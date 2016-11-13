@@ -1,3 +1,7 @@
+//  --------------------------------------------------------
+//  WebFontLoader
+//  --------------------------------------------------------
+
 import WebFont from 'webfontloader'
 
 WebFont.load({
@@ -7,4 +11,4 @@ WebFont.load({
             'Roboto:400,700:latin'
         ]
     }
-});
+})
