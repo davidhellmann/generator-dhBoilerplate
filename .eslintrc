@@ -20,6 +20,7 @@
     "indent": 0,
     "no-console": 1,
     "no-new": 2,
+    "max-len": 0,
     "no-multiple-empty-lines": [2, { "max": 3 }],
     "object-curly-spacing": 1,
     "arrow-body-style": [2, "as-needed"],
