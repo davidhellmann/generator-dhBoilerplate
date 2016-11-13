@@ -1,8 +1,8 @@
 /*--------------------------------------------------
-    .c-waypointElement
+    [data-waypoint
   --------------------------------------------------*/
 
-.c-waypointElement {
+[data-waypoint] {
   &.fadeInUp {
     opacity: 0;
     transform: translate3d(0, 50px, 0);
