@@ -365,7 +365,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             const done = this.async()
             const self = this
 
-            this.spawnCommand(`wget`, [`http://buildwithcraft.com/latest.tar.gz\?accept_license\=yes`]).on('close', () => {
+            this.spawnCommand(`curl`, [`-o ./latest.tar.gz -O -L`, `http://buildwithcraft.com/latest.tar.gz\?accept_license\=yes`]).on('close', () => {
                 self.spawnCommand(`mkdir`, [`___dist`]).on('close', () => {
                     self.spawnCommand(`tar`, [`-zxvf`, `latest.tar.gz\?accept_license=yes`, `craft/`]).on('close', () => {
                         self.spawnCommand(`mv`, [`craft`, `___dist/`]).on('close', () => {
