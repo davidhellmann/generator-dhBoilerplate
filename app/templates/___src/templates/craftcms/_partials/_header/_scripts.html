@@ -6,4 +6,5 @@
 <link type="text/plain" rel="author" href="{{ siteUrl }}humans.txt" />
 
 {# RSS Feed #}
-<link rel="alternate" type="application/rss+xml" title="Blog RSS Feed {#&mdash; {{ seomaticSiteMeta.siteSeoName }}#}" href="{{ url('rss') }}" />
+<link rel="alternate" type="application/rss+xml" title="Blog RSS Feed{% if craft.seomatic is defined %} &mdash; {{ seomaticSiteMeta.siteSeoName }}{% endif %}
+" href="{{ url('rss') }}" />

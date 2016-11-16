@@ -9,7 +9,11 @@
 
 {% extends '_layouts/master.html' %}
 {% set bodyClass = "page-404" %}
-{#{% set seomaticMeta = seomaticMeta | merge({'seoTitle': '404 &mdash; Page not found' }) %}#}
+{% if craft.seomatic is defined %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': '404 &mdash; Page not found' }) %}
+{% else %}
+  {% set appTitle = 'Home' %}
+{% endif %}
 
 
 

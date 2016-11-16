@@ -1,0 +1,13 @@
+{#
+  Seomatic
+  --------------------------------------------------
+  Seomatic Plugin for Craft. Just awesome!
+#}
+
+{% if craft.seomatic is defined %}
+  {% hook 'seomaticRender' %}
+{% else %}
+  <title>{% if appTitle is defined %}{{ appTitle }} &mdash; {% endif %}{{ siteName }}</title>
+{% endif %}
+
+

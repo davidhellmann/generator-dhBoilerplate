@@ -7,6 +7,11 @@
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "home" %}
+{% if craft.seomatic is defined %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'Home' }) %}
+{% else %}
+  {% set appTitle = 'Home' %}
+{% endif %}
 
 
 {% block appContent %}

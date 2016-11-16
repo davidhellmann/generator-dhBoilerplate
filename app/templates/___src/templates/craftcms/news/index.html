@@ -9,7 +9,12 @@
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "news" %}
-{#{% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'News' }) %}#}
+{% if craft.seomatic is defined %}
+  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'News' }) %}
+{% else %}
+  {% set appTitle = 'News' %}
+{% endif %}
+
 
 
 

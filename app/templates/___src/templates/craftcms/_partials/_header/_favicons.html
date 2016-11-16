@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="{{ siteUrl }}assets/images/bitmap/favicon/favicon-16x16.png" sizes="16x16" />
 <link rel="icon" type="image/png" href="{{ siteUrl }}assets/images/bitmap/favicon/favicon-128.png" sizes="128x128" />
 <link rel="icon" href="{{ siteUrl }}assets/images/bitmap/favicon/favicon.ico">
-<meta name="application-name" content="{#{{ seomaticSiteMeta.siteSeoName }}#}"/>
+<meta name="application-name" content="{% if craft.seomatic is defined %}{{ seomaticSiteMeta.siteSeoName }}{% else %}{{ siteName }}{% endif %}"/>
 <meta name="msapplication-TileColor" content="#111111" />
 <meta name="msapplication-TileImage" content="{{ siteUrl }}assets/images/bitmap/favicon/mstile-144x144.png" />
 <meta name="msapplication-square70x70logo" content="{{ siteUrl }}assets/images/bitmap/favicon/mstile-70x70.png" />

@@ -15,3 +15,22 @@
 <meta property="og:image" content="<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/YOURIMAGE.jpg"/>
 <meta property="og:site_name" content="<?php wp_title(); ?>"/>
 <meta property="og:description" content="<?php wp_title(); ?>"/>
+
+<title>
+    <?php
+    if (function_exists('is_tag') && is_tag()) {
+        echo 'Tag Archive for &quot;'.$tag.'&quot; - '; }
+    elseif (is_archive()) {
+        wp_title(''); echo ' Archive &mdash; '; }
+    elseif (is_search()) {
+        echo 'Search for &quot;'.wp_specialchars($s).'&quot; &mdash; '; }
+    elseif (is_page('start')) { }
+    elseif (!(is_404()) && (is_single()) || (is_page())) {
+        wp_title(''); echo ' &mdash; '; }
+    elseif (is_404()) {
+        echo 'Not Found &mdash; '; }
+    if (is_home()) {
+        bloginfo('name'); echo ' &mdash; '; bloginfo('description'); }
+    else { bloginfo('name'); }
+    ?>
+</title>
