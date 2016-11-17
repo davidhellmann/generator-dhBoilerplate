@@ -36,7 +36,7 @@ const waypoints = (elements, ani, offset) => {
                     // Get all Child Elements with wayPointID
                     const elements = self.element.querySelectorAll(`[data-waypoint-id="${waypointID}"]`)
 
-                    for (let i = 0; i < elements.length; i++) {
+                    for (let i = 0; i < elements.length; i += 1) {
                         let obj   = elements[i]
                         let delay = 80 * i
 

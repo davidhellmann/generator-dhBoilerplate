@@ -10,25 +10,28 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1, .h1 {
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms6, $msFont-max * $ms6);
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms4, $msFont-max * $ms6);
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 h2, .h2 {
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms5, $msFont-max * $ms5);
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms3, $msFont-max * $ms5);
+  text-transform: uppercase;
 }
 
 h3, .h3 {
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms4, $msFont-max * $ms4);
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms2, $msFont-max * $ms4);
 }
 
 h4, .h4 {
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms3, $msFont-max * $ms3);
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms1, $msFont-max * $ms3);
 }
 
 h5, .h5 {
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms2, $msFont-max * $ms2);
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms1, $msFont-max * $ms2);
 }
 
-h6, .h6 {
+h6, h6 {
   @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min * $ms1, $msFont-max * $ms1);
 }
