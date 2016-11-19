@@ -6,35 +6,33 @@
 import goToUrl from './lib/goToUrl'
 
 
-
 // Vars
-const body      = document.body
-const siteURL   = `${window.location.protocol}//${window.location.host}`
-const trigger   = document.querySelector(`a[href^="${siteURL}"]:not([href*="#"])`)
-
+const body = document.body
+const siteURL = `${window.location.protocol}//${window.location.host}`
+const trigger = document.querySelector(`a[href^="${siteURL}"]:not([href*="#"])`)
 
 
 // Click Event
-trigger.addEventListener('click', function(event) {
-    if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
-        const newLocation = this.getAttribute('href')
+trigger.addEventListener('click', (event) => {
+  const _self = event.target
+  if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
+    const newLocation = _self.getAttribute('href')
 
-        event.preventDefault()
+    event.preventDefault()
 
-        // Set Transition Class
-        body.classList.add('js_pageTransition')
+    // Set Transition Class
+    body.classList.add('js_pageTransition')
 
-        // Go to New Page
-        setTimeout(() => {
-            goToUrl(newLocation)
-        }, 250)
-    }
+    // Go to New Page
+    setTimeout(() => {
+      goToUrl(newLocation)
+    }, 250)
+  }
 }, false)
 
 
-
-window.onpageshow = function(event) {
-    if (event.persisted) {
-        body.classList.remove('js_pageTransition')
-    }
+window.onpageshow = (event) => {
+  if (event.persisted) {
+    body.classList.remove('js_pageTransition')
+  }
 }

@@ -9,67 +9,63 @@ import $ from 'jquery'
 
 
 // Vars
-let _trigger = $('.js_accordionTrigger');
+const _trigger = $('.js_accordionTrigger')
 
 
 // Click Event
-_trigger.addEventListener('click', (event) function(event) {
-  event.preventDefault();
+_trigger.addEventListener('click', (event) => {
+  event.preventDefault()
 
-  let _this = $(this);
+  const _this = $(this)
 
-  let _body = $('body');
+  const _body = $('body')
 
   // Get Target
-  let _next = _this.attr('data-next');
-  let _find = _this.attr('data-find');
+  const _next = _this.attr('data-next')
+  const _find = _this.attr('data-find')
 
   // Get Wrapper
-  let _wrapper = _this.attr('data-wrapper');
+  const _wrapper = _this.attr('data-wrapper')
 
   // Get Status
-  let _status = _this.attr('data-status');
+  const _status = _this.attr('data-status')
 
   // Toggle Content
-  if ( _status == 'closed') {
-
-    _this.attr('data-status', 'open');
+  if (_status === 'closed') {
+    _this.attr('data-status', 'open')
 
     // Check if next or find is set
     if (_next) {
-      _this.next('[data-target="'+_next+'"]')
-      .attr('data-status', 'open')
-      .slideDown(250);
+      _this.next(`[data-target="${_next}"]`)
+        .attr('data-status', 'open')
+        .slideDown(250)
     } else {
-      _body.find('[data-target="'+_find+'"]')
-      .attr('data-status', 'open')
-      .slideDown(250);
+      _body.find(`[data-target="${_find}"]`)
+        .attr('data-status', 'open')
+        .slideDown(250)
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
       _this.closest(_wrapper)
-      .attr('data-status', 'open');
+        .attr('data-status', 'open')
     }
-
   } else {
-
-    _this.attr('data-status', 'closed');
+    _this.attr('data-status', 'closed')
 
     // Check if next or find is set
     if (_next) {
-      _this.next('[data-target="'+_next+'"]')
-      .attr('data-status', 'closed').slideUp(250);
+      _this.next(`[data-target="${_next}"]`)
+        .attr('data-status', 'closed').slideUp(250)
     } else {
-      _body.find('[data-target="'+_find+'"]')
-      .attr('data-status', 'closed').slideUp(250);
+      _body.find(`[data-target="${_find}"]`)
+        .attr('data-status', 'closed').slideUp(250)
     }
 
     // Check if data-wrapper exist
     if (_wrapper) {
       _this.closest(_wrapper)
-      .attr('data-status', 'closed');
+        .attr('data-status', 'closed')
     }
   }
-
-}, false);
+}, false)

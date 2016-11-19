@@ -6,9 +6,9 @@
 import $ from 'jquery'
 import matchheight          from 'jquery-match-height'
 
-
+const trigger = document.querySelector('.js_matchHeight')
 
 // MatchHeight with Timeout
-setTimeout(function() {
-  $('.js_matchHeight').matchHeight();
-}, 2500);
+setTimeout(() => {
+  trigger.matchHeight()
+}, 2500)

@@ -9,74 +9,54 @@ import debounce             from './lib/debounce'
 import addListenerMulti     from './lib/addListenerMulti'
 
 
-
 // Vars
-var _viewport = $('html, body');
-var viewport = document
-
-
+const viewport = document
+const body = document.body
 
 
 // Click Event
-$('a[href^="#"]').on('click', function(event) {
-  console.log(this);
+$('a[href^="#"]').on('click', (event) => {
+  console.log(this)
 
-  var _target = $( $(this).attr('href') );
-  var _delay  = $(this).attr('data-delay');
+  const _target = $($(this).attr('href'))
+  const _delay = $(this).attr('data-delay')
 
-  if( _target.length ) {
-    event.preventDefault();
+  if (_target.length) {
+    event.preventDefault()
 
-    if ( _delay != '' ) {
-
-      setTimeout(function(){
-        _viewport.animate({
+    if (_delay !== '') {
+      setTimeout(() => {
+        viewport.animate({
           scrollTop: _target.offset().top
-        }, 500, function () {
-          window.location.hash = _target.selector;
-        });
-      }, _delay);
-
+        }, 500, () => {
+          window.location.hash = _target.selector
+        })
+      }, _delay)
     } else {
-
-      _viewport.animate({
+      viewport.animate({
         scrollTop: _target.offset().top
-      }, 500, function () {
-        window.location.hash = _target.selector;
-      });
-
+      }, 500, () => {
+        window.location.hash = _target.selector
+      })
     }
   }
-});
-
+})
 
 
 // Cancel when user Interact
 
-addListenerMulti(_viewport, 'scroll mousedown DOMMouseScroll mousewheel keyup touchmove', function(){
-    _viewport.stop();
+addListenerMulti(viewport, 'scroll mousedown DOMMouseScroll mousewheel keyup touchmove', () => {
+  viewport.stop()
 })
-
-_viewport.bind("scroll mousedown DOMMouseScroll mousewheel keyup touchmove", function(){
-
-});
-
 
 
 // Debounce
-var dh_windowScroll = debounce(function() {
-  var _body = $('body');
-
-  if ($(window).scrollTop() >= 100 ) {
-
-    _body.addClass('is_scrolled--100');
-
+const dh_windowScroll = debounce(() => {
+  if ($(window).scrollTop() >= 100) {
+    body.addClass('is_scrolled--100')
   } else {
-
-    _body.removeClass('is_scrolled--100');
-
+    body.removeClass('is_scrolled--100')
   }
+}, 500)
 
-}, 500);
-
-window.addEventListener('scroll', dh_windowScroll);
+window.addEventListener('scroll', dh_windowScroll)

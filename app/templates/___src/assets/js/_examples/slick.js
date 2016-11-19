@@ -7,15 +7,14 @@ import $ from 'jquery'
 import slickcarousel        from 'slick-carousel'
 
 
-
 // Slick Init
 $('.slick--photoSlider').slick({
   prevArrow: '<span class="slickArrow slickArrow--prev"></span>',
   nextArrow: '<span class="slickArrow slickArrow--next"></span>',
   dots: true,
-  customPaging: function(slider, i) {
+  customPaging(slider, i) {
     // this example would render "tabs" with titles
-    return '<span class="dot"></span>';
+    return '<span class="dot"></span>'
   },
   speed: 300,
   slidesToShow: 5,
@@ -43,4 +42,4 @@ $('.slick--photoSlider').slick({
       }
     }
   ]
-});
+})
