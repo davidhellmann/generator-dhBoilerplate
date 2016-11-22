@@ -5,6 +5,8 @@ const yeoman = require('yeoman-generator')
 const yosay  = require('yosay')
 const chalk  = require('chalk')
 const mkdirp = require('mkdirp')
+const commandExists = require('command-exists')
+const clear = require('clear-terminal')
 
 const dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
@@ -14,6 +16,8 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
     askFor() {
         const done = this.async()
+        let wp_cli = false
+        let wget = false
 
         // Have Yeoman greet the user.
         this.log(yosay(
@@ -70,7 +74,23 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 '\n                                                                                             ' +
                 chalk.styles.cyan.close
 
+        clear()
         console.log(welcome)
+
+        // check if cli tools exist
+        commandExists('wp')
+          .then(function(command){
+            wp_cli = true
+          }).catch(function(){
+          wp_cli = false
+        })
+
+        commandExists('wget --help')
+          .then(function(command){
+            wget = true
+          }).catch(function(){
+          wget = false
+        })
 
         return this.prompt([
             {
@@ -104,19 +124,19 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 ]
             }, {
                 when(answers) {
-                    return answers.projectUsage === 'WordPress'
+                    return answers.projectUsage === 'WordPress' && wp_cli
                 },
                 type: 'confirm',
                 name: 'wordpressInstall',
-                message: 'Do you want to download the newest WordPress Version via WP-CLI?',
+                message: 'Do you want to download the latest WordPress Version via WP-CLI?',
                 default: true
             }, {
                 when(answers) {
-                    return answers.projectUsage === 'Craft CMS'
+                    return answers.projectUsage === 'Craft CMS' && wget
                 },
                 type: 'confirm',
                 name: 'craftInstall',
-                message: 'Do you want to download the newest Craft Version?',
+                message: 'Do you want to download the newest Craft Version via WGET?',
                 default: true
             }, {
                 when(answers) {
@@ -151,11 +171,6 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'confirm',
                 name: 'projectVue',
                 message: 'Do you want to use Vue.js?',
-                default: false
-            }, {
-                type: 'confirm',
-                name: 'projectYarn',
-                message: 'Do you want to use Yarn Package Manager? (https://yarnpkg.com/)',
                 default: false
             }, {
                 type:    'input',
@@ -396,14 +411,21 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
     //  --------------------------------------------------------
 
     install() {
-        if (this.projectYarn) {
-            this.spawnCommand('yarn')
-        } else {
-            this.installDependencies({
-                bower: false,
-                npm: true
+        const _self = this;
+
+        // check if yarn is available and use it instead of npm
+        commandExists('yarn', function(err, commandExists) {
+          if(commandExists) {
+            var done = _self.async()
+            _self.spawnCommand('yarn').on('close', done)
+          } else {
+            _self.installDependencies({
+              bower: false,
+              npm: true
             })
-        }
+          }
+        })
+
         this.log('Install NPM Modules.')
         this.log('Give me a moment to do that…')
     }
