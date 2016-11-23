@@ -1,9 +1,9 @@
 {# CSS File #}
-{% includeCssFile siteUrl ~ 'assets/css/app.min.css' %}
+{% includeCssFile rootUrl ~ 'assets/css/app.min.css' %}
 
 {# Humans File #}
 <!-- humans.txt — http://humanstxt.org -->
-<link type="text/plain" rel="author" href="{{ siteUrl }}humans.txt" />
+<link type="text/plain" rel="author" href="{{ rootUrl }}humans.txt" />
 
 {# RSS Feed #}
 <link rel="alternate" type="application/rss+xml" title="Blog RSS Feed{% if craft.seomatic is defined %} &mdash; {{ seomaticSiteMeta.siteSeoName }}{% endif %}

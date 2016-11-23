@@ -5,6 +5,12 @@
   This i the basic layout. Feel free to modify
 #}
 
+<% if (craftHearty == true ) { %>
+{% set rootUrl = craft.config.environmentVariables.rootUrl %}
+<% } else %>
+{% set rootUrl = siteUrl %}
+<% } %>
+
 {# Include Macros #}
 {% import '_macros/_macros.html' as dh_macros %}
 

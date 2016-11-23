@@ -21,6 +21,8 @@ $customConfig = array(
         'de' => CRAFT_SITE_URL,
         'en' => CRAFT_SITE_URL . 'en'
     ),
+    <% } else { %>
+    'siteUrl' => CRAFT_SITE_URL,
     <% } %>
 
     /*
@@ -34,7 +36,7 @@ $customConfig = array(
     // 'defaultCookieDomain' => '',
     // 'devMode' => false,
     'environmentVariables' => array(
-      'siteUrl' => CRAFT_SITE_URL,
+      'rootUrl' => CRAFT_SITE_URL,
       'basePath' => BASEPATH,
       'pubPath' => PUBPATH,
       'uploadPath' => PUBPATH . 'uploads',
@@ -53,7 +55,7 @@ $customConfig = array(
     // 'searchIgnoreWords' => array('the', 'and'),
     // 'sendPoweredByHeader' => true,
     // 'siteName' => null,
-    'siteUrl' => CRAFT_SITE_URL,
+    // 'siteUrl' => CRAFT_SITE_URL,
     // 'timezone' => null,
     // 'translationDebugOutput' => false,
     // 'useCompressedJs' => true,
