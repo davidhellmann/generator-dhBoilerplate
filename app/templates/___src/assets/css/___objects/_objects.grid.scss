@@ -3,23 +3,23 @@
   --------------------------------------------------*/
 
 // Set Gutters for the different Breakpoints
-%gridGutter {
-  @include gutter(1);
+@mixin gg($key: 1) {
+  @include gutter(1 * $key);
 
   @include media('>=s') {
-    @include gutter(1)
+    @include gutter(2 * $key)
   }
 
   @include media('>=m') {
-    @include gutter(1)
+    @include gutter(2 * $key)
   }
 
   @include media('>=l') {
-    @include gutter(2)
+    @include gutter(2.5 * $key)
   }
 
   @include media('>=xl') {
-    @include gutter(2)
+    @include gutter(2.5 * $key)
   }
 }
 
@@ -51,7 +51,7 @@
   }
 
   @include center();
-  @extend %gridGutter;
+  @include gg();
 
   &--full {
     @if $dh-flexbox {
@@ -80,7 +80,7 @@
     @include cols(12);
   }
 
-  @extend %gridGutter;
+  @include gg();
 
   .o-grid--2er > .o-grid__inner & {
     @if $dh-flexbox {
