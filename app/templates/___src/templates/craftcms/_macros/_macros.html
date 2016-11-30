@@ -11,14 +11,14 @@
   Social Links Array
   --------------------------------------------------
 
-  {{ dh_macros.dh_socialLinks([
+  {{ macros.socialLinks([
     'twitter',
     'facebook',
     'xing'
   ], true) }}
 #}
 
-{% macro dh_socialLinks(networks, icons, label) %}
+{% macro socialLinks(networks, icons, label) %}
   <ul class="socialLinks__list">
     {# Loop for each network #}
     {% set icons = icons|default(false) %}
@@ -65,11 +65,26 @@
   Set Active Class
   --------------------------------------------------
 
-  {{ dh_macros.dh_is_active('news') }}
+  {{ macros.is_active('news') }}
 #}
 
-{% macro dh_is_active(segment) %}
+{% macro is_active(segment) %}
   {% if craft.request.firstSegment == segment %}is_active{% endif %}
+{% endmacro %}
+
+
+
+{#
+  Use SVG
+  --------------------------------------------------
+
+  {{ macros.use_svg(icon_twitter) }}
+#}
+
+{% macro use_svg(spriteName) %}
+  <svg class="c-svgSprite c-svgSprite--{{ spriteName }}" viewbox="0 0 100 100">
+    <use xlink:href="assets/images/svg/sprite/sprite.svg#{{ spriteName }}"></use>
+  </svg>
 {% endmacro %}
 
 
@@ -86,7 +101,7 @@
   @param {string}  searchquery - To pass search words from Searchfields (default: false)
 #}
 
-{% macro dh_pagination(pages,craft,classname,searchquery) %}
+{% macro pagination(pages,craft,classname,searchquery) %}
   {% set search = searchquery|default(false) %}
   {% set class = classname|default('pagination') %}
   ​
@@ -151,10 +166,10 @@
   Prev / Next Link
   --------------------------------------------------
 
-  {{ dh_macros.dh_postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
+  {{ macros.postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
 #}
 
-{% macro dh_postNav(entry, section, order, prevLabel, nextLabel ) %}
+{% macro postNav(entry, section, order, prevLabel, nextLabel ) %}
 
   {# Set vars #}
   {% set section     = section|default('blog') %}
@@ -199,10 +214,3 @@
   {% endif %}
 
 {% endmacro %}
-
-
-
-{#
-  Section Icon
-  TODO: Create a Section Icon Macro for the Home.
-#}

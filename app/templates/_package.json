@@ -94,6 +94,7 @@
     "photoswipe": "^4.1.1",
     "smooth-scroll": "cferdinandi/smooth-scroll",
     "svg-injector": "^1.1.3",
+    "svgxuse": "^1.1.23",
     "waypoints": "^4.0.0",
     "webfontloader": "^1.6.26"
   },

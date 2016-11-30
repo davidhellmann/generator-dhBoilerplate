@@ -19,6 +19,10 @@ if (_debug === true) {
 <% } %>
 
 
+// Polyfills
+import 'svgxuse'
+
+
 // Scripts
 import './scripts/example'
 import './scripts/bodyclass'
