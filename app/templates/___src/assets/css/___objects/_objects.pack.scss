@@ -12,6 +12,7 @@
 
 .o-pack__item {
   display: table-cell;
+  vertical-align: top;
 
 
   // Vertical alignment variants
@@ -55,7 +56,7 @@
 
 // Reversed order packs
 
-.o-pack--rev {
+.o-pack--reverse {
   direction: rtl;
 
   > .o-pack__item {

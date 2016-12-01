@@ -3,10 +3,11 @@
   --------------------------------------------------*/
 
 $dh-ratios: (
-  2:1,
-  3:2,
-  4:3,
-  16:9
+  (2:1),
+  (3:2),
+  (4:3),
+  (16:9),
+  (16:10)
 ) !default;
 
 .o-ratio {
@@ -41,17 +42,22 @@ $dh-ratios: (
 
 
 // Ratio variants
-@each $antecedent, $consequent in $dh-ratios {
+@each $ratio in $dh-ratios {
 
-  @if (type-of($antecedent) != number) {
-    @error "`#{$antecedent}` needs to be a number."
+  @each $antecedent, $consequent in $ratio {
+
+    @if (type-of($antecedent) != number) {
+      @error "`#{$antecedent}` needs to be a number."
+    }
+
+    @if (type-of($consequent) != number) {
+      @error "`#{$consequent}` needs to be a number."
+    }
+
+    .o-ratio--#{$antecedent}\:#{$consequent}:before {
+      padding-bottom: ($consequent/$antecedent) * 100%;
+    }
+
   }
 
-  @if (type-of($consequent) != number) {
-    @error "`#{$consequent}` needs to be a number."
-  }
-
-  .o-ratio--#{$antecedent}\:#{$consequent}:before {
-    padding-bottom: ($consequent/$antecedent) * 100%;
-  }
 }

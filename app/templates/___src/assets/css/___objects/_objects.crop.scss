@@ -3,10 +3,11 @@
   --------------------------------------------------*/
 
 $dh-crops: (
-  2:1,
-  3:2,
-  4:3,
-  16:9
+  (2:1),
+  (3:2),
+  (4:3),
+  (16:9),
+  (16:10)
 ) !default;
 
 
@@ -44,18 +45,22 @@ $dh-crops: (
 
 
 // Crop Classes
-@each $antecedent, $consequent in $dh-crops {
+@each $crop in $dh-crops {
 
-  @if (type-of($antecedent) != number) {
-    @error "`#{$antecedent}` needs to be a number."
-  }
+  @each $antecedent, $consequent in $crop {
 
-  @if (type-of($consequent) != number) {
-    @error "`#{$consequent}` needs to be a number."
-  }
+    @if (type-of($antecedent) != number) {
+      @error "`#{$antecedent}` needs to be a number."
+    }
 
-  .o-crop--#{$antecedent}\:#{$consequent} {
-    padding-bottom: ($consequent/$antecedent) * 100%;
+    @if (type-of($consequent) != number) {
+      @error "`#{$consequent}` needs to be a number."
+    }
+
+    .o-crop--#{$antecedent}\:#{$consequent} {
+      padding-bottom: ($consequent/$antecedent) * 100%;
+    }
+
   }
 
 }
