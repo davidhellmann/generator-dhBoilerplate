@@ -1,0 +1,28 @@
+//  --------------------------------------------------------
+//  Grid Gutter
+//  --------------------------------------------------------
+
+@mixin gridGutter($key: 1) {
+  @include gutter(2 * $key);
+
+  @include media('>=s') {
+    @include gutter(4 * $key)
+  }
+
+  @include media('>=m') {
+    @include gutter(4 * $key)
+  }
+
+  @include media('>=l') {
+    @include gutter(5 * $key)
+  }
+
+  @include media('>=xl') {
+    @include gutter(5 * $key)
+  }
+}
+
+// Shorthand Version
+@mixin gg($args...) {
+  @include gridGutter($args...);
+}

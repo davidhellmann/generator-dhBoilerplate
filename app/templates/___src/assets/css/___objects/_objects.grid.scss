@@ -2,28 +2,6 @@
     .o-grid
   --------------------------------------------------*/
 
-// Set Gutters for the different Breakpoints
-@mixin gg($key: 1) {
-  @include gutter(1 * $key);
-
-  @include media('>=s') {
-    @include gutter(2 * $key)
-  }
-
-  @include media('>=m') {
-    @include gutter(2 * $key)
-  }
-
-  @include media('>=l') {
-    @include gutter(2.5 * $key)
-  }
-
-  @include media('>=xl') {
-    @include gutter(2.5 * $key)
-  }
-}
-
-
 .o-grid {
   @if $dh-flexbox {
     @include flexbox(true);
