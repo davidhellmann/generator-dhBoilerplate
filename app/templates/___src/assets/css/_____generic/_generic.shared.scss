@@ -16,5 +16,10 @@ fieldset {
 
 // Consistent indentation for lists.
 dd, ol, ul {
-  margin-left: s(1);
+
+}
+
+::selection {
+  background: c('black');
+  color: c('white');
 }

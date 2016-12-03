@@ -17,7 +17,15 @@ const copyVectors = () => {
     }))
     .on('error', errorHandler)
     .pipe(gulp.dest(vectorDist))
-    .pipe($.size());
+    .pipe($.size())
+    .pipe($.rename({
+      <% if (projectUsage == 'WordPress' ) { %>
+      extname: ".svg.php"
+      <% } else { %>
+      extname: ".svg.html"
+      <% } %>
+    }))
+    .pipe(gulp.dest(vectorDist + 'inline/'))
 }
 
 gulp.task('svg-single', copyVectors);

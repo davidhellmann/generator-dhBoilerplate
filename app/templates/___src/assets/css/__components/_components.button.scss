@@ -1,44 +1,43 @@
-/*--------------------------------------------------
-    .c-button
-  --------------------------------------------------*/
+//  --------------------------------------------------------
+//  .c-button
+//  --------------------------------------------------------
 
 .c-button {
   background: c('free-speech-red');
   font-weight: 700;
   color: c('white');
-  @include fs('ms1');
+  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min, $msFont-max);
   border: none;
-  padding: s(1);
+  padding: vr(1) s(2);
   display: inline-block;
-  margin: vr(1) 0;
   cursor: pointer;
   text-align: center;
   transition: all .5s ease('out-cubic');
 
-  .no-touchevents &:hover {
+  &:hover {
     color: c('white');
     background: darken(c('free-speech-red'), 5%);
   }
 }
 
-.c-button--center {
-  @include center;
-}
 
 .c-button--full {
   width: 100%;
 }
 
 
+//  --------------------------------------------------------
+//  .c-buttonGroup
+//  --------------------------------------------------------
 
-/*--------------------------------------------------
-    .c-buttonWrapper
-  --------------------------------------------------*/
-
-.c-buttonWrapper {
+.c-buttonGroup {
   @include container();
 
   &--center {
     text-align: center;
+  }
+
+  &--right {
+    text-align: right;
   }
 }

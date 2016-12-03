@@ -29,23 +29,12 @@
   }
 
   @include center();
-  @include gg();
 
   &--full {
     @if $dh-flexbox {
       @include flexbox();
     } @else {
       @include container();
-    }
-
-    .o-grid--noGutter & {
-      @include gutter(0);
-    }
-  }
-
-  .o-grid--noGutter & {
-    > .o-col {
-      @include gutter(0);
     }
   }
 }
@@ -59,6 +48,10 @@
   }
 
   @include gg();
+
+  &--noGutter {
+    @include gutter(0);
+  }
 
   .o-grid--2er > .o-grid__inner & {
     @if $dh-flexbox {

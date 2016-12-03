@@ -8,12 +8,10 @@ $lineHeight-base:       1.5;
 $lineHeight-base-px:    $fontSize-min * $lineHeight-base + 0px;
 
 
-
 // Modular Scale Settings
-$msWidth-min:           480px;
-$msWidth-max:           1280px;
+$msWidth-min:           320px;
+$msWidth-max:           1440px;
 $msFactor:              1.2;
-
 
 
 // Nothing to change here
@@ -28,7 +26,6 @@ $ms8:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFacto
 $ms9:                   $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor * $msFactor;
 $msFont-min:            $fontSize-min;
 $msFont-max:            $fontSize-max;
-
 
 
 // Font Map
