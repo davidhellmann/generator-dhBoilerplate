@@ -1,0 +1,10 @@
+/*--------------------------------------------------
+    #VERTICAL HORIZONTAL ALIGN
+  --------------------------------------------------*/
+
+@mixin vhc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
