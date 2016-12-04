@@ -25,6 +25,7 @@ const copyVectors = () => {
       extname: ".svg.html"
       <% } %>
     }))
+    .pipe(gulp.dest(config.src.images.svg.single + 'inline/'))
     .pipe(gulp.dest(vectorDist + 'inline/'))
 }
 
