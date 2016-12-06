@@ -4,7 +4,7 @@
 
 // Dependencies
 import anime        from 'animejs'
-import waypoints    from './lib/waypoints.anime'
+import waypoints    from '../lib/waypoints.anime'
 
 
 //  --------------------------------------------------------

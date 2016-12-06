@@ -3,32 +3,37 @@
  */
 
 // Dependencies
-import goToUrl from './lib/goToUrl'
+import goToUrl from '../lib/goToUrl'
 
 
 // Vars
 const body = document.body
 const siteURL = `${window.location.protocol}//${window.location.host}`
-const trigger = document.querySelector(`a[href^="${siteURL}"]:not([href*="#"])`)
+const triggers = Array.from(document.querySelectorAll(`a[href^="${siteURL}"]:not([href*="#"])`))
 
 
-// Click Event
-trigger.addEventListener('click', (event) => {
-  const _self = event.target
-  if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
-    const newLocation = _self.getAttribute('href')
+triggers.forEach((trigger) => {
+  // Click Event
+  trigger.addEventListener('click', (event) => {
+    const _self = event.target
+    if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
+      const newLocation = _self.getAttribute('href')
 
-    event.preventDefault()
+      console.log(newLocation)
 
-    // Set Transition Class
-    body.classList.add('js_pageTransition')
+      event.preventDefault()
 
-    // Go to New Page
-    setTimeout(() => {
-      goToUrl(newLocation)
-    }, 250)
-  }
-}, false)
+      // Set Transition Class
+      body.classList.add('js_pageTransition')
+
+      // Go to New Page
+      setTimeout(() => {
+        goToUrl(newLocation)
+      }, 250)
+    }
+  }, false)
+})
+
 
 
 window.onpageshow = (event) => {
