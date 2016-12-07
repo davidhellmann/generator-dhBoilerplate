@@ -27,6 +27,7 @@ const copyVectors = () => {
     }))
     .pipe(gulp.dest(config.src.images.svg.single + 'inline/'))
     .pipe(gulp.dest(vectorDist + 'inline/'))
+    .pipe(gulp.dest(config.src.templates + '_svg/'))
     .pipe(gulp.dest(config.dist.markup + '_svg/'));
 }
 
