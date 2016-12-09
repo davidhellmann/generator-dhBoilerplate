@@ -14,13 +14,9 @@ const triggers = Array.from(document.querySelectorAll(`a[href^="${siteURL}"]:not
 
 triggers.forEach((trigger) => {
   // Click Event
-  trigger.addEventListener('click', (event) => {
-    const _self = event.target
+  trigger.addEventListener('click', function(event) {
     if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
-      const newLocation = _self.getAttribute('href')
-
-      console.log(newLocation)
-
+      const newLocation = this.getAttribute('href')
       event.preventDefault()
 
       // Set Transition Class
