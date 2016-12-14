@@ -30,13 +30,13 @@
 
 
   {# Set Ratio #}
-  {% if (ratio != '0:0') or (ratio != '0') or (ratio != 'nocrop') or (ratio != 'auto') %}
+  {% if (ratio == '0:0') or (ratio == '0') or (ratio == 'nocrop') or (ratio == 'auto') %}
+    {% set _imgRatio = 'noRatioSet' %}
+    {% set ratio = '' %}
+  {% else %}
     {% set _imgRatio = ratio|default('2:1') %}
     {% set _ratioSplit = _imgRatio|split(':') %}
     {% set ratio = _ratioSplit|first/_ratioSplit|last %}
-  {% else %}
-    {% set _imgRatio = 'noRatioSet' %}
-    {% set ratio = '' %}
   {% endif %}
 
 
