@@ -1,42 +1,43 @@
-{# 
-  _m.resimage(entry.image, [
-    { width: 2560 },
-    { width: 1920 },
-    { width: 1440 },
-    { width: 1024 },
-    { width: 512 },
-    { width: 320 },
-  ], '1:1', 'img', 'c-image')
+{#
+  _m.resImage(entry.image, [{ width: 512 },{ width: 320 },], '1:1', 'img', 'c-image')
 #}
 
 
 {% macro resImage(image, sizes, ratio, style, class) %}
 
+  {% set rootUrl = craft.config.environmentVariables.rootUrl %}
+
+  {# Set Placeholder Image #}
+  {% set placeholderImage = rootUrl ~ 'assets/images/bitmap/placeholder.jpg' %}
+
   {# Set Image #}
-  {% set image = image|default(false) %}
+  {% set image = image|default(placeholderImage) %}
 
 
   {# Set Sizes #}
   {% set _sizes = [
-    { width: 2560 },
-    { width: 1920 },
     { width: 1440 },
     { width: 1024 },
     { width: 512 },
     { width: 320 },
+    { width: 50 },
   ] %}
 
   {% set sizes = sizes|default(_sizes) %}
 
 
   {# Set Ratio #}
-  {% if (ratio == '0:0') or (ratio == '0') or (ratio == 'nocrop') or (ratio == 'auto') %}
-    {% set _imgRatio = 'noRatioSet' %}
-    {% set ratio = '' %}
+  {% if ratio == '0:0' or ratio == 'nocrop' or ratio == 'auto' %}
+
+    {% set ratio = 'noRatioSet' %}
+    {% set newRatio = '' %}
+
   {% else %}
-    {% set _imgRatio = ratio|default('2:1') %}
-    {% set _ratioSplit = _imgRatio|split(':') %}
-    {% set ratio = _ratioSplit|first/_ratioSplit|last %}
+
+    {% set ratio = ratio|default('2:1') %}
+    {% set ar = ratio|split(':') %}
+    {% set newRatio = ar|first/ar|last %}
+
   {% endif %}
 
 
@@ -56,23 +57,24 @@
     {% set imagePosition = image.focalPoint|default('50% 50%') %}
     {% set title = image.title %}
   {% endif %}
-  
+
 
   {# Define global variables #}
   {% set globalModifier = {
     jpegQuality: 80,
     mode: 'crop',
     position: imagePosition,
-    ratio: ratio
+    ratio: newRatio
   } %}
+  
 
   {% if image %}
     {% set images = craft.imager.transformImage(image, sizes, globalModifier) %}
 
     {% if style == 'img' %}
-      <figure class="{{ class ~ '__figure' }">
-      
-        <img class="lazyload  {{ class ~ '__image' }"
+      <figure class="{{ class ~ '__figure' }}">
+
+        <img class="lazyload  {{ class ~ '__image' }}"
              data-sizes="auto"
              data-srcset="{{ craft.imager.srcset(images) }}"
              src="{{ images|last.url }}"
@@ -80,12 +82,12 @@
       </figure>
 
     {% else %}
-      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload" 
-              style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};" 
+      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload"
+              style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
-      
-    {% endif %}    
+
+    {% endif %}
   {% endif %}
 {% endmacro %}
