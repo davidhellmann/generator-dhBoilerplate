@@ -6,7 +6,7 @@
   background: c('free-speech-red');
   font-weight: 700;
   color: c('white');
-  @include fluid-type(font-size, $msWidth-min, $msWidth-max, $msFont-min, $msFont-max);
+  @include ft($msFont-min, $msFont-max);
   border: none;
   padding: vr(1) s(2);
   display: inline-block;
