@@ -65,9 +65,9 @@
     {% set images = craft.imager.transformImage(image, sizes, globalModifier) %}
 
     {% if style == 'img' %}
-      <figure class="{{ class }}">
+      <figure class="{{ class ~ '__figure' }">
       
-        <img class="lazyload"
+        <img class="lazyload  {{ class ~ '__image' }"
              data-sizes="auto"
              data-srcset="{{ craft.imager.srcset(images) }}"
              src="{{ images|last.url }}"
@@ -75,7 +75,7 @@
       </figure>
 
     {% else %}
-      <figure class="{{ class }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload" 
+      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload" 
               style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};" 
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
