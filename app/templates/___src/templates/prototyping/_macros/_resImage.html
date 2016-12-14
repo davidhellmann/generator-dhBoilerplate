@@ -1,0 +1,86 @@
+{# 
+  _m.resimage(entry.image, [
+    { width: 2560 },
+    { width: 1920 },
+    { width: 1440 },
+    { width: 1024 },
+    { width: 512 },
+    { width: 320 },
+  ], '1:1', 'img', 'c-image')
+#}
+
+
+{% macro resImage(image, sizes, ratio, style, class) %}
+
+  {# Set Image #}
+  {% set image = image|default(false) %}
+
+
+  {# Set Sizes #}
+  {% set _sizes = [
+    { width: 2560 },
+    { width: 1920 },
+    { width: 1440 },
+    { width: 1024 },
+    { width: 512 },
+    { width: 320 },
+  ] %}
+
+  {% set sizes = sizes|default(_sizes) %}
+
+
+  {# Set Ratio #}
+  {% set _imgRatio = ratio|default('16:10') %}
+  {% set _ratioSplit = _imgRatio|split(':') %}
+  {% set ratio = _ratioSplit|first/_ratioSplit|last %}
+
+
+  {# Set Style | img or bgimg #}
+  {% set style = style|default('img') %}
+
+
+  {# Set Class #}
+  {% set class = class|default('c-resImage') %}
+
+
+  {# Set Focal Point #}
+  {% if image == placeholderImage %}
+    {% set imagePosition = '50% 50%' %}
+    {% set title = 'Placeholder Image. Please change that!' %}
+  {% else %}
+    {% set imagePosition = image.focalPoint|default('50% 50%') %}
+    {% set title = image.title %}
+  {% endif %}
+  
+
+  {# Define global variables #}
+  {% set globalModifier = {
+    jpegQuality: 80,
+    mode: 'crop',
+    position: imagePosition,
+    ratio: ratio
+  } %}
+
+  {% if image %}
+    {% set images = craft.imager.transformImage(image, sizes, globalModifier) %}
+
+    {% if style == 'img' %}
+      <figure class="{{ class }}">
+      
+        <img class="lazyload"
+             data-sizes="auto"
+             data-srcset="{{ craft.imager.srcset(images) }}"
+             src="{{ images|last.url }}"
+             alt="{{ title }}" />
+      </figure>
+
+    {% else %}
+      <figure class="{{ class }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload" 
+              style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};" 
+              data-bgset="{{ craft.imager.srcset(images) }}"
+              data-sizes="auto">
+      </figure>
+      
+    {% endif %}    
+  {% endif %}
+{% endmacro %}
