@@ -1,9 +1,9 @@
 {#
-  _m.resImage(entry.image, [{ width: 512 },{ width: 320 },], '1:1', 'img', 'c-image')
+  _m.resImage(entry.image, [{ width: 512 },{ width: 320 },], '1:1', 'img', 'c-image', { grayscale: true })
 #}
 
 
-{% macro resImage(image, sizes, ratio, style, class) %}
+{% macro resImage(image, sizes, ratio, style, class, effectType) %}
 
   {% set rootUrl = craft.config.environmentVariables.rootUrl %}
 
@@ -49,6 +49,10 @@
   {% set class = class|default('c-resImage') %}
 
 
+  {# Set Effects #}
+  {% set effectsArray = effectType|default({}) %}
+
+
   {# Set Focal Point #}
   {% if image == placeholderImage %}
     {% set imagePosition = '50% 50%' %}
@@ -64,7 +68,8 @@
     jpegQuality: 80,
     mode: 'crop',
     position: imagePosition,
-    ratio: newRatio
+    ratio: newRatio,
+    effects: effectsArray
   } %}
   
 
