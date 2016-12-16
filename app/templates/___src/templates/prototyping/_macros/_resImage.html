@@ -8,7 +8,7 @@
   {% set rootUrl = craft.config.environmentVariables.rootUrl %}
 
   {# Set Placeholder Image #}
-  {% set placeholderImage = rootUrl ~ 'assets/images/bitmap/placeholder.jpg' %}
+  {% set placeholderImage = rootUrl ~ '/images/bitmap/placeholder.jpg' %}
 
   {# Set Image #}
   {% set image = image|default(placeholderImage) %}
@@ -16,6 +16,8 @@
 
   {# Set Sizes #}
   {% set _sizes = [
+    { width: 2560 },
+    { width: 1920 },
     { width: 1440 },
     { width: 1024 },
     { width: 512 },
