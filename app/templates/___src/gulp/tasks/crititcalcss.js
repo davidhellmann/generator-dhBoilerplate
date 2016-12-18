@@ -6,7 +6,12 @@ import critical from 'critical'
 const criticalcss = () => {
   return critical.generate({
     base: config.src.templates,
+
+    <% if (proxyUrl != false) { %>
     src: '<%= proxyUrl %>',
+    <% } else { %>
+    src: 'http://localhost:3000'
+    <% } %>
     dest: 'critical.min.css.html',
     minify: true,
     width: 1440,
