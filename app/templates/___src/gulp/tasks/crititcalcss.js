@@ -5,7 +5,7 @@ import critical from 'critical'
 
 const criticalcss = () => {
   return critical.generate({
-    base: config.dist.markup,
+    base: config.src.templates,
     src: '<%= proxyUrl %>',
     dest: 'critical.min.css.html',
     minify: true,
