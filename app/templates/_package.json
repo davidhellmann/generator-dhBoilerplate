@@ -25,6 +25,7 @@
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
+    "critical": "^0.8.1",
     "cssnano": "^3.5.2",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
