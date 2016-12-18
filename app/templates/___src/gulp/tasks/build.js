@@ -25,6 +25,9 @@ const buildTask = (cb) => {
       'minify:sass',
       'minify:images'
     ],
+    [
+      'criticalcss'
+    ],
     cb
   );
 }
