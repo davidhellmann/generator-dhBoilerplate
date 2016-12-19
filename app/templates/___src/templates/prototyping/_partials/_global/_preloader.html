@@ -22,8 +22,8 @@
       }
     }
 
-    settings.html.classList.remove(settings.js.noJS);
     settings.html.classList.add(settings.js.JS);
+    settings.html.classList.remove(settings.js.noJS);
 
     switch (document.readyState) {
       case settings.cases.loading:
