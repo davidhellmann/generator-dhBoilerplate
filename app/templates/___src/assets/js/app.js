@@ -25,8 +25,9 @@ import 'svgxuse'
 
 // Scripts
 import './scripts/example'
-import './scripts/bodyclass'
+// import './scripts/bodyclass'
 // import './scripts/lazyloading'
 // import './scripts/pagetransition'
+// import './scripts/preloader'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
