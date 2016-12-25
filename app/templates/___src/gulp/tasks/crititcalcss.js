@@ -7,9 +7,9 @@ const argv = yargs.argv
 
 const criticalcss = () => {
   <% if (proxyUrl != false) { %>
-    const localURL = '<%= proxyUrl %>',
+  const localURL = '<%= proxyUrl %>'
   <% } else { %>
-    const localURL = 'http://localhost:3000'
+  const localURL = 'http://localhost:3000'
   <% } %>
   const url = argv.url || localURL
 
