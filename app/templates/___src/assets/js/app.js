@@ -14,9 +14,7 @@ if (_debug === true) {
 
 
 // Vue Stuff
-<% if (projectVue == true) { %>
-  import './scripts/vueExamples.js'
-<% } %>
+
 
 
 // Polyfills
@@ -25,9 +23,9 @@ import 'svgxuse'
 
 // Scripts
 import './scripts/example'
+import './scripts/pagetransition'
+import './scripts/preloader'
 // import './scripts/bodyclass'
 // import './scripts/lazyloading'
-// import './scripts/pagetransition'
-// import './scripts/preloader'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
