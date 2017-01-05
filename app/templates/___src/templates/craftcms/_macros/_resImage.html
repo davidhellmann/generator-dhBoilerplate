@@ -82,9 +82,9 @@
       <figure class="{{ class ~ '__figure' }}">
 
         <img class="lazyload  {{ class ~ '__image' }}"
-             data-sizes="auto"
-             data-srcset="{{ craft.imager.srcset(images) }}"
              src="{{ images|last.url }}"
+             data-srcset="{{ craft.imager.srcset(images) }}"
+             data-sizes="auto"
              alt="{{ title }}" />
       </figure>
 
