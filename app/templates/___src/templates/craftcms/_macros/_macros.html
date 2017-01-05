@@ -97,7 +97,7 @@
       </figure>
 
     {% else %}
-      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ _imgRatio  }}  lazyload"
+      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ ratio }}  lazyload"
               style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
