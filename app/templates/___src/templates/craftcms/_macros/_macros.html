@@ -6,99 +6,107 @@
 #}
 
 
-{#
-  _m.resImage(entry.image, [{ width: 512 },{ width: 320 },], '1:1', 'img', 'c-image', { grayscale: true })
+{# Set Attributes
+  {% set attr = {
+    image: '',
+    class: 'c-image',
+    sizes: [
+      { width: 1680 },
+      { width: 960 },
+      { width: 480 }
+    ],
+    style: 'img',
+    quality: 80,
+    mode: 'crop',
+    position: '50% 50%',
+    ratio: '',
+    caption: '',
+    dominantColor: 'yes',
+    effects: { grayscale: true },
+  } %}
+
+  _m.resImage(attr)
 #}
 
 
-{% macro resImage(image, sizes, ratio, style, class, effectType) %}
+{% macro resImage(attr) %}
 
-  {% set rootUrl = craft.config.environmentVariables.rootUrl %}
-
-  {# Set Placeholder Image #}
-  {% set placeholderImage = rootUrl ~ '/images/bitmap/placeholder.jpg' %}
-
-  {# Set Image #}
-  {% set image = image|default(placeholderImage) %}
-
-
-  {# Set Sizes #}
-  {% set _sizes = [
-    { width: 2560 },
-    { width: 1920 },
-    { width: 1440 },
-    { width: 1024 },
-    { width: 512 },
-    { width: 320 },
-    { width: 50 },
-  ] %}
-
-  {% set sizes = sizes|default(_sizes) %}
-
-
-  {# Set Ratio #}
-  {% if ratio == '0:0' or ratio == 'nocrop' or ratio == 'auto' %}
-
-    {% set ratio = 'noRatioSet' %}
-    {% set newRatio = '' %}
-
-  {% else %}
-
-    {% set ratio = ratio|default('2:1') %}
-    {% set ar = ratio|split(':') %}
-    {% set newRatio = ar|first/ar|last %}
-
-  {% endif %}
-
-
-  {# Set Style | img or bgimg #}
-  {% set style = style|default('img') %}
-
-
-  {# Set Class #}
-  {% set class = class|default('c-resImage') %}
-
-
-  {# Set Effects #}
-  {% set effectsArray = effectType|default({}) %}
-
-
-  {# Set Focal Point #}
-  {% if image == placeholderImage %}
-    {% set imagePosition = '50% 50%' %}
-    {% set title = 'Placeholder Image. Please change that!' %}
-  {% else %}
-    {% set imagePosition = image.focalPoint|default('50% 50%') %}
-    {% set title = image.title %}
-  {% endif %}
-
-
-  {# Define global variables #}
-  {% set globalModifier = {
-    jpegQuality: 80,
+  {# Set Defaults #}
+  {% set defaults = {
+    image: '',
+    class: 'c-image',
+    sizes: [
+      { width: 1680 },
+      { width: 960 },
+      { width: 480 }
+    ],
+    style: 'img',
+    quality: 80,
     mode: 'crop',
-    position: imagePosition,
-    ratio: newRatio,
-    effects: effectsArray
+    position: '50% 50%',
+    ratio: '',
+    caption: '',
+    dominantColor: 'yes',
+    effects: {},
   } %}
 
 
-  {% if image %}
-    {% set images = craft.imager.transformImage(image, sizes, globalModifier) %}
+  {# Merge Attr with Defaults #}
+  {% set attr = attr ? defaults|merge(attr) : defaults %}
 
-    {% if style == 'img' %}
-      <figure class="{{ class ~ '__figure' }}">
 
-        <img class="lazyload  {{ class ~ '__image' }}"
+  {# Set Ratio #}
+  {% if attr.ratio|length %}
+    {% set ratio = attr.ratio|split(':') %}
+    {% set base64Ratio = ratio|split(':') %}
+    {% set ratio = ratio|first/ratio|last %}
+  {% else %}
+    {% set imageSize = attr.image.width ~ ':' ~ attr.image.height %}
+    {% set base64Ratio = imageSize|split(':') %}
+    {% set ratio = '' %}
+  {% endif %}
+
+
+  {# Set Position #}
+  {% set position = image.focalPoint|default(attr.position) %}
+
+
+  {# Define global variables #}
+  {% set imageSettings = {
+    jpegQuality: attr.quality,
+    mode: attr.mode,
+    position: position,
+    ratio: ratio,
+    effects: attr.effects
+  } %}
+
+
+  {# Image #}
+  {% if attr.image %}
+    {% set images = craft.imager.transformImage(attr.image, attr.sizes, imageSettings) %}
+    {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+
+    {% if attr.style == 'img' %}
+      <figure class="{{ attr.class }}" style="background-color: {{ dominantColor }}">
+        <img class="lazyload  {{ attr.class ~ '__image' }}"
              src="{{ images|last.url }}"
+             srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
              data-srcset="{{ craft.imager.srcset(images) }}"
              data-sizes="auto"
-             alt="{{ title }}" />
+             alt="{{ attr.image.title }}" />
+        {% if attr.caption|length %}
+          <figcaption>
+            {{ attr.caption|raw }}
+          </figcaption>
+        {% endif %}
       </figure>
 
     {% else %}
-      <figure class="{{ class ~ '__figure' }}  {{ 'o-ratio  o-ratio--' ~ ratio }}  lazyload"
-              style="background-image: url({{ images|last.url }}); background-position: {{ imagePosition }};"
+
+      <figure class="{{ attr.ratio | length ? 'o-ratio  o-ratio--' ~ attr.ratio : '' }}  {{ attr.class }}  lazyload"
+              style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+                background-position: {{ position }};
+              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ ';' : '' }} background-color: {{ dominantColor }}"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
