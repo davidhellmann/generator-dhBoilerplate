@@ -21,13 +21,12 @@
     position: '50% 50%',
     ratio: '',
     caption: '',
-    dominantColor: 'yes',
+    dominantColor: '',
     effects: { grayscale: true },
   } %}
 
   _m.resImage(attr)
 #}
-
 
 {% macro resImage(attr) %}
 
@@ -43,10 +42,10 @@
     style: 'img',
     quality: 80,
     mode: 'crop',
-    position: '50% 50%',
+    position: '',
     ratio: '',
     caption: '',
-    dominantColor: 'yes',
+    dominantColor: '',
     effects: {},
   } %}
 
@@ -58,7 +57,7 @@
   {# Set Ratio #}
   {% if attr.ratio|length %}
     {% set ratio = attr.ratio|split(':') %}
-    {% set base64Ratio = ratio|split(':') %}
+    {% set base64Ratio = attr.ratio|split(':') %}
     {% set ratio = ratio|first/ratio|last %}
   {% else %}
     {% set imageSize = attr.image.width ~ ':' ~ attr.image.height %}
@@ -68,26 +67,36 @@
 
 
   {# Set Position #}
-  {% set position = image.focalPoint|default(attr.position) %}
+  {% if attr.position %}
+    {% set position = attr.position %}
+  {% else %}
+    {% set position = attr.image.focalPoint|default('50% 50%') %}
+  {% endif %}
 
 
   {# Define global variables #}
   {% set imageSettings = {
-    jpegQuality: attr.quality,
-    mode: attr.mode,
-    position: position,
-    ratio: ratio,
-    effects: attr.effects
+  jpegQuality: attr.quality,
+  mode: attr.mode,
+  position: position,
+  ratio: ratio,
+  effects: attr.effects
   } %}
-
 
   {# Image #}
   {% if attr.image %}
     {% set images = craft.imager.transformImage(attr.image, attr.sizes, imageSettings) %}
-    {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+
+    {# Set Dominant Color #}
+    {% if attr.dominantColor|length %}
+      {% set dominantColor = attr.dominantColor %}
+    {% else %}
+      {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+    {% endif %}
+
 
     {% if attr.style == 'img' %}
-      <figure class="{{ attr.class }}" style="background-color: {{ dominantColor }}">
+      <figure class="{{ attr.class }}" style="background-color: {{ dominantColor }}; ">
         <img class="lazyload  {{ attr.class ~ '__image' }}"
              src="{{ images|last.url }}"
              srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
@@ -106,7 +115,7 @@
       <figure class="{{ attr.ratio | length ? 'o-ratio  o-ratio--' ~ attr.ratio : '' }}  {{ attr.class }}  lazyload"
               style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
                 background-position: {{ position }};
-              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ ';' : '' }} background-color: {{ dominantColor }}"
+              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }} background-color: {{ dominantColor }};"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
