@@ -32,21 +32,21 @@
 
   {# Set Defaults #}
   {% set defaults = {
-    image: '',
-    class: 'c-image',
-    sizes: [
-      { width: 1680 },
-      { width: 960 },
-      { width: 480 }
-    ],
-    style: 'img',
-    quality: 80,
-    mode: 'crop',
-    position: '',
-    ratio: '',
-    caption: '',
-    dominantColor: '',
-    effects: {},
+  image: '',
+  class: 'c-image',
+  sizes: [
+  { width: 1680 },
+  { width: 960 },
+  { width: 480 }
+  ],
+  style: 'img',
+  quality: 80,
+  mode: 'crop',
+  position: '',
+  ratio: '',
+  caption: '',
+  dominantColor: '',
+  effects: {},
   } %}
 
 
@@ -90,13 +90,14 @@
     {# Set Dominant Color #}
     {% if attr.dominantColor|length %}
       {% set dominantColor = attr.dominantColor %}
-    {% else %}
+    {% elseif attr.dominantColor %}
       {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+    {% else %}
+      {% set dominantColor = '' %}
     {% endif %}
 
-
     {% if attr.style == 'img' %}
-      <figure class="{{ attr.class }}" style="background-color: {{ dominantColor }}; ">
+      <figure class="{{ attr.class }}" style="{{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}">
         <img class="lazyload  {{ attr.class ~ '__image' }}"
              src="{{ images|last.url }}"
              srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
@@ -115,7 +116,7 @@
       <figure class="{{ attr.ratio | length ? 'o-ratio  o-ratio--' ~ attr.ratio : '' }}  {{ attr.class }}  lazyload"
               style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
                 background-position: {{ position }};
-              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }} background-color: {{ dominantColor }};"
+              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }} {{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
