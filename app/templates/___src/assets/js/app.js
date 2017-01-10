@@ -18,6 +18,7 @@ if (_debug === true) {
 
 
 // Polyfills
+import "babel-polyfill"
 import 'svgxuse'
 
 
