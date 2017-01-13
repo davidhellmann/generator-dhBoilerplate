@@ -46,6 +46,10 @@ $customConfig = array(
       // 'assetsPath' => PUBPATH . 'assets',
       // 'assetsUrl' => CRAFT_SITE_URL . 'assets',
     ),
+    'defaultSearchTermOptions' => array(
+      'subLeft' => true,
+      'subRight' => true,
+    ),
     // 'isSystemOn' => true,
     // 'logDumpMethod' => 'var_export',
     // 'overridePhpSessionLocation' => false,
