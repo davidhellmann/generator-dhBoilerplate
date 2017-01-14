@@ -68,13 +68,10 @@
     {# Set Position #}
     {% if attr.position %}
       {% set position = attr.position %}
+    {% elseif attr.image.settingFocalPoint | length %}
+      {% set position = attr.image.settingFocalPoint %}
     {% else %}
-      {% if attr.image.settingFocalPoint | length %}
-        {% set position = attr.image.settingFocalPoint|default('50% 50%') %}
-      {% else %}
-        {% set position = attr.position %}
-      {% endif %}
-
+      {% set position = '50% 50%' %}
     {% endif %}
 
 

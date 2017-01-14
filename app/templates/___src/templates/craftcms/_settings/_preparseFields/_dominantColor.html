@@ -1,0 +1,4 @@
+{% if entry.imagePreviewScreenshot.first()|length %}
+  {% set color = craft.imager.getDominantColor(entry.imagePreviewScreenshot.first()) %}
+  {{ color }}
+{% endif %}

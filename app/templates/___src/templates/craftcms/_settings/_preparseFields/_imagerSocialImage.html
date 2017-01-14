@@ -1,0 +1,50 @@
+{% if shareImage.globalShareImage|length and entry.imagePreviewScreenshot|length %}
+  {% set image = entry.imagePreviewScreenshot.first() %}
+
+  {% set sizes = [
+  { width: 427, height: 231 }
+  ] %}
+
+  {% set position = '50% 0%' %}
+
+  {% set imageSettings = {
+  jpegQuality: 100,
+  mode: 'crop',
+  position: position,
+  ratio: '',
+  effects: {},
+  } %}
+
+  {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
+  {% set watermarkImage = images[0].url %}
+
+  {# Social Image #}
+  {% set image = globalShareImage.first() %}
+
+  {% set sizes = [
+    { width: 1200, height: 630 }
+  ] %}
+
+  {% set position = image.settingFocalPoint|default('50% 50%') %}
+
+  {% set imageSettings = {
+    jpegQuality: 100,
+    mode: 'crop',
+    position: position,
+    ratio: '',
+    effects: {},
+    watermark: {
+      image: watermarkImage,
+      width: 427,
+      height: 231,
+      position: {
+        left: 394,
+        top: 241
+      }
+    }
+  } %}
+
+  {% set socialImage = craft.imager.transformImage(image, sizes, imageSettings) %}
+  {{ socialImage[0].url }}
+
+{% endif %}

@@ -1,0 +1,44 @@
+{% set bgImagePositions = [
+  {
+    "name": "Left / Top",
+    "value": "left-top"
+  },
+  {
+    "name": "Left / Center",
+    "value": "left-center"
+  },
+  {
+    "name": "Left / Bottom",
+    "value": "left-bottom"
+  },
+  {
+    "name": "Center / Top",
+    "value": "center-top"
+  },
+  {
+    "name": "Center / Center",
+    "value": "center-center"
+  },
+  {
+    "name": "Center / Bottom",
+    "value": "Center-bottom"
+  },
+  {
+    "name": "Right / Top",
+    "value": "right-top"
+  },
+  {
+    "name": "Right / Center",
+    "value": "right-center"
+  },
+  {
+    "name": "Right / Bottom",
+    "value": "right-bottom"
+  }
+] %}
+
+{"value": "", "label": "Background Position…", "default": true},
+{% for bgImagePosition in bgImagePositions %}
+  {"value": "{{ bgImagePosition.value }}", "label": "{{ bgImagePosition.name}}"}
+  {% if not loop.last%},{% endif %}
+{% endfor %}

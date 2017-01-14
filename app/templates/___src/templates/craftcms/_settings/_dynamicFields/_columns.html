@@ -1,0 +1,32 @@
+{% set columns = [
+  {
+    "name": "One Column (1)",
+    "value": " "
+  },
+  {
+    "name": "Two Columns (1/2 | 1/2)",
+    "value": "o-grid--2er"
+  },
+  {
+    "name": "Three Columns (1/3 | 1/3 | 1/3)",
+    "value": "o-grid--3er"
+  },
+  {
+    "name": "Four Columns (1/4 | 1/4 | 1/4 | 1/4)",
+    "value": "o-grid--4er"
+  },
+  {
+    "name": "Six Columns (1/6 | 1/6 | … | 1/6 | 1/6)",
+    "value": "o-grid--6er"
+  },
+  {
+    "name": "Twelve Columns (1/12 | 1/12 | … | 1/12 | 1/12)",
+    "value": "o-grid--12er"
+  }
+] %}
+
+{"value": "", "label": "Columns…", "default": true},
+{% for col in columns %}
+  {"value": "{{ col.value }}", "label": "{{ col.name}}"}
+  {% if not loop.last%},{% endif %}
+{% endfor %}

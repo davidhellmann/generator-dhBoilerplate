@@ -1,0 +1,21 @@
+{% if entry.imageScreenshots|length %}
+
+  {% for image in entry.imageScreenshots %}
+    {% set sizes = [
+    { width: 1680 },
+    { width: 960 },
+    { width: 480 }
+    ] %}
+
+    {% set position = image.settingFocalPoint|default('50% 50%') %}
+
+    {% set imageSettings = {
+      jpegQuality: 80,
+      mode: 'crop',
+      position: position,
+      ratio: '',
+      effects: {}
+    } %}
+    {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
+  {% endfor %}
+{% endif %}

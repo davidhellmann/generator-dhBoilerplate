@@ -1,0 +1,32 @@
+{% set headlineVisualSizes = [
+  {
+    "name": "Looks like a H1",
+    "value": ".h1"
+  },
+  {
+    "name": "Looks like a H2",
+    "value": ".h2"
+  },
+  {
+    "name": "Looks like a H3",
+    "value": ".h3"
+  },
+  {
+    "name": "Looks like a H4",
+    "value": ".h4"
+  },
+  {
+    "name": "Looks like a H5",
+    "value": ".h5"
+  },
+  {
+    "name": "Looks like a H6",
+    "value": ".h6"
+  }
+] %}
+
+{"value": "", "label": "Visual Headline Size…", "default": true},
+{% for headlineVisualSize in headlineVisualSizes %}
+  {"value": "{{ headlineVisualSize.value }}", "label": "{{ headlineVisualSize.name}}"}
+  {% if not loop.last%},{% endif %}
+{% endfor %}

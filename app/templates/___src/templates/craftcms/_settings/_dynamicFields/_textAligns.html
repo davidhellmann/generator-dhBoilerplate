@@ -1,0 +1,24 @@
+{% set textAligns = [
+  {
+    "name": "Left",
+    "value": "left"
+  },
+  {
+    "name": "Center",
+    "value": "center"
+  },
+  {
+    "name": "Right",
+    "value": "right"
+  },
+  {
+    "name": "Justify",
+    "value": "justify"
+  }
+] %}
+
+{"value": "", "label": "Text Align…", "default": true},
+{% for textAlign in textAligns %}
+  {"value": "{{ textAlign.value }}", "label": "{{ textAlign.name}}"}
+  {% if not loop.last%},{% endif %}
+{% endfor %}
