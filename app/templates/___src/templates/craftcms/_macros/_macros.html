@@ -1,8 +1,8 @@
 {#
-  Macro Collection
-  --------------------------------------------------
+ Macro Collection
+ --------------------------------------------------
 
-  A lot examples to see. Feel free to use / modify this macros or delete them.
+ A lot examples to see. Feel free to use / modify this macros or delete them.
 #}
 
 
@@ -49,42 +49,45 @@
   effects: {},
   } %}
 
+  {% if attr.image|length %}
+    {# Merge Attr with Defaults #}
+    {% set attr = attr ? defaults|merge(attr) : defaults %}
 
-  {# Merge Attr with Defaults #}
-  {% set attr = attr ? defaults|merge(attr) : defaults %}
-
-
-  {# Set Ratio #}
-  {% if attr.ratio|length %}
-    {% set ratio = attr.ratio|split(':') %}
-    {% set base64Ratio = attr.ratio|split(':') %}
-    {% set ratio = ratio|first/ratio|last %}
-  {% else %}
-    {% set imageSize = attr.image.width ~ ':' ~ attr.image.height %}
-    {% set base64Ratio = imageSize|split(':') %}
-    {% set ratio = '' %}
-  {% endif %}
-
-
-  {# Set Position #}
-  {% if attr.position %}
-    {% set position = attr.position %}
-  {% else %}
-    {% set position = attr.image.focalPoint|default('50% 50%') %}
-  {% endif %}
+    {# Set Ratio #}
+    {% if attr.ratio|length %}
+      {% set ratio = attr.ratio|split(':') %}
+      {% set base64Ratio = attr.ratio|split(':') %}
+      {% set ratio = ratio|first/ratio|last %}
+    {% else %}
+      {% set imageSize = attr.image.width ~ ':' ~ attr.image.height %}
+      {% set base64Ratio = imageSize|split(':') %}
+      {% set ratio = '' %}
+    {% endif %}
 
 
-  {# Define global variables #}
-  {% set imageSettings = {
-  jpegQuality: attr.quality,
-  mode: attr.mode,
-  position: position,
-  ratio: ratio,
-  effects: attr.effects
-  } %}
+    {# Set Position #}
+    {% if attr.position %}
+      {% set position = attr.position %}
+    {% else %}
+      {% if attr.image.settingFocalPoint | length %}
+        {% set position = attr.image.settingFocalPoint|default('50% 50%') %}
+      {% else %}
+        {% set position = attr.position %}
+      {% endif %}
 
-  {# Image #}
-  {% if attr.image %}
+    {% endif %}
+
+
+    {# Define global variables #}
+    {% set imageSettings = {
+    jpegQuality: attr.quality,
+    mode: attr.mode,
+    position: position,
+    ratio: ratio,
+    effects: attr.effects
+    } %}
+
+    {# Image #}
     {% set images = craft.imager.transformImage(attr.image, attr.sizes, imageSettings) %}
 
     {# Set Dominant Color #}
@@ -97,13 +100,14 @@
     {% endif %}
 
     {% if attr.style == 'img' %}
-      <figure class="{{ attr.class }}" style="{{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}">
+      <figure class="{{ attr.class }}"
+              style="{{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}">
         <img class="lazyload  {{ attr.class ~ '__image' }}"
              src="{{ images|last.url }}"
              srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
              data-srcset="{{ craft.imager.srcset(images) }}"
              data-sizes="auto"
-             alt="{{ attr.image.title }}" />
+             alt="{{ attr.image.title }}"/>
         {% if attr.caption|length %}
           <figcaption>
             {{ attr.caption|raw }}
@@ -221,9 +225,9 @@
   @param {string}  searchquery - To pass search words from Searchfields (default: false)
 #}
 
-{% macro pagination(pages,craft,classname,searchquery) %}
+{% macro pagination(pages,craft,searchquery,classname) %}
   {% set search = searchquery|default(false) %}
-  {% set class = classname|default('pagination') %}
+  {% set class = classname|default('c-pagination') %}
 
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
@@ -231,21 +235,24 @@
     <nav class="{{ class }}" role="navigation">
       {# Dont display last page when on the first Page #}
       {% if pages.currentPage > 2 and pages.prevUrl %}
-        <a class="{{ class }}__link" href="{{ pages.firstUrl }}{{ search ? '?q='~search }}" title="Back to the first page">
+        <a class="{{ class }}__link" href="{{ pages.firstUrl }}{{ search ? '?q='~search }}"
+           title="Back to the first page">
           &laquo;
         </a>
       {% endif %}
 
       {# Display the Previous Link if available #}
       {% if pages.prevUrl %}
-        <a class="{{ class }}__link" href="{{ pages.prevUrl }}{{ search ? '?q='~search }}" title="Back to the previous page">
+        <a class="{{ class }}__link" href="{{ pages.prevUrl }}{{ search ? '?q='~search }}"
+           title="Back to the previous page">
           &lsaquo;
         </a>
       {% endif %}
 
       {# Display prev 5 Page Links#}
       {% for page, url in pages.getPrevUrls(3) %}
-        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}" title="Go to page {{ page }}">
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}"
+           title="Go to page {{ page }}">
           {{ page }}
         </a>
       {% endfor %}
@@ -257,21 +264,24 @@
 
       {# Display next 5 Page Links #}
       {% for page, url in pages.getNextUrls(3) %}
-        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}" title="Go to page {{ page }}">
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}"
+           title="Go to page {{ page }}">
           {{ page }}
         </a>
       {% endfor %}
 
       {# Display next Page Link if available#}
       {% if pages.nextUrl %}
-        <a class="{{ class }}__link" href="{{ pages.nextUrl }}{{ search ? '?q='~search }}" title="Forward to the next page">
+        <a class="{{ class }}__link" href="{{ pages.nextUrl }}{{ search ? '?q='~search }}"
+           title="Forward to the next page">
           &rsaquo;
         </a>
       {% endif %}
 
       {# Dont display when on the last page #}
       {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
-        <a class="{{ class }}__link" href="{{ pages.lastUrl }}{{ search ? '?q='~search }}" title="Forward to the last page">
+        <a class="{{ class }}__link" href="{{ pages.lastUrl }}{{ search ? '?q='~search }}"
+           title="Forward to the last page">
           &raquo;
         </a>
       {% endif %}
@@ -308,25 +318,25 @@
   {% if prevEntry or nextEntry %}
 
 
-    <ul class="postNav">
+    <ul class="c-postNav">
       {% if prevEntry %}
-        <li class="postNav__item  postNav__item--prev">
-          <a class="postNav__link  postNav__link--prev" href="{{ prevEntry.url }}">
+        <li class="c-postNav__item  c-postNav__item--prev">
+          <a class="c-postNav__link  c-postNav__link--prev" href="{{ prevEntry.url }}">
 
             {% if prevLabel != false %}
-              <span class="postNav__label">{{ prevLabel }}</span>
+              <span class="c-postNav__label">{{ prevLabel }}</span>
             {% endif %}
-            <span class="postNav__title">{{ prevEntry.title }}</span>
+            <span class="c-postNav__title">{{ prevEntry.title }}</span>
           </a>
         </li>
       {% endif %}
       {% if nextEntry %}
-        <li class="postNav__item  postNav__item--next">
-          <a class="postNav__link  postNav__link--next" href="{{ nextEntry.url }}">
+        <li class="c-postNav__item  c-postNav__item--next">
+          <a class="c-postNav__link  c-postNav__link--next" href="{{ nextEntry.url }}">
             {% if nextLabel != false %}
-              <span class="postNav__label">{{ nextLabel }}</span>
+              <span class="c-postNav__label">{{ nextLabel }}</span>
             {% endif %}
-            <span class="postNav__title">{{ nextEntry.title }}</span>
+            <span class="c-postNav__title">{{ nextEntry.title }}</span>
           </a>
         </li>
       {% endif %}
@@ -334,3 +344,45 @@
   {% endif %}
 
 {% endmacro %}
+
+{% if entry.imagePreviewScreenshot|length %}
+  {% set image = entry.imagePreviewScreenshot.first() %}
+
+  {% set sizes = [
+  { width: 1680 },
+  { width: 960 },
+  { width: 480 }
+  ] %}
+
+  {% set position = image.settingFocalPoint|default('50% 50%') %}
+
+  {% set imageSettings = {
+  jpegQuality: 80,
+  mode: 'crop',
+  position: position
+  } %}
+
+  {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
+{% endif %}
+
+
+{% if entry.imageScreenshots|length %}
+  {% set screenhots = entry.imageScreenshots %}
+
+  {% for image in screenshots %}
+    {% set sizes = [
+    { width: 1680 },
+    { width: 960 },
+    { width: 480 }
+    ] %}
+
+    {% set position = image.settingFocalPoint|default('50% 50%') %}
+
+    {% set imageSettings = {
+    jpegQuality: 80,
+    mode: 'crop',
+    position: position
+    } %}
+    {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
+  {% endfor %}
+{% endif %}
