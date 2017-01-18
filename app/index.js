@@ -340,9 +340,15 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         )
 
         this.fs.copyTpl(
-            this.templatePath('_gitignore'),
-            this.destinationPath('.gitignore'),
-            params
+          this.templatePath('_gitignore'),
+          this.destinationPath('.gitignore'),
+          params
+        )
+
+        this.fs.copyTpl(
+          this.templatePath('_labels.json'),
+          this.destinationPath('labels.json'),
+          params
         )
 
         this.fs.copyTpl(
