@@ -1,5 +1,6 @@
 import config from '../../config.json';
 import gulp from 'gulp';
+import yargs from 'yargs'
 import browserSync from 'browser-sync';
 
 
@@ -15,10 +16,11 @@ const browserSyncTask = () => {
 
   // Build a condition when Proxy is active
   var bsProxy, bsServer;
+  const url = argv.url || config.browsersync.proxy;
 
   // Condition for Proxy
   if( config.browsersync.proxy ) {
-    bsProxy = config.browsersync.proxy;
+    bsProxy = url;
     bsServer = false;
   } else {
     bsProxy = false;

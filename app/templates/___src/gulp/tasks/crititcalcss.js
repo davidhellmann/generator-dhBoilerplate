@@ -6,11 +6,15 @@ import config from '../../config.json'
 const argv = yargs.argv
 
 const criticalcss = () => {
-  <% if (proxyUrl != false) { %>
-  const localURL = '<%= proxyUrl %>'
-  <% } else { %>
-  const localURL = 'http://localhost:3000'
-  <% } %>
+  <%
+  if (proxyUrl != false) { %>
+    const localURL = config.browsersync.proxy
+      < %
+  } else { %>
+    const localURL = 'http://localhost:3000'
+      < %
+  }
+  %>
   const url = argv.url || localURL
 
   return critical.generate({
