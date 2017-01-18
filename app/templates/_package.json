@@ -10,6 +10,24 @@
     "email": "<%= projectMail %>",
     "url": "<%= projectUrl %>"
   },
+  "scripts": {
+    "init": "gulp init",
+    "dev": "gulp",
+    "build": "gulp build",
+    "ccss": "gulp criticalcss",
+    "clean:dist": "gulp clean:dist",
+    "clean:templates": "gulp clean:templates",
+    "clean:images": "gulp clean:images",
+    "clean:js": "gulp clean:js",
+    "clean:css": "gulp clean:css",
+    "copy:fonts": "gulp copy:fonts",
+    "images": "gulp images",
+    "svg": "gulp svg",
+    "svg:single": "gulp svg-single",
+    "svg:sprite": "gulp svg-sprite",
+    "sysfiles": "gulp systemFiles",
+    "templates": "gulp templates"
+  },
   "devDependencies": {
     "aliasify": "^2.0.0",
     "autoprefixer": "^6.3.3",
