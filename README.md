@@ -56,11 +56,11 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 ### Sass Mixins
 - `@include center`
 - `@include clearfix`
-- `@include container('full')` ‚full‘ ist optional 
+- `@include container('full')` 'full' ist optional 
 - `@include cols(i)`
 - `@include filter(filter-name, value%)`
 - `@include fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include ft($properties, $min-vw, $max-vw, $min-value, $max-value)`
-- `@include flexbox('full')` or `@include fb('full')` ‚full‘ is optional
+- `@include flexbox('full')` or `@include fb('full')` 'full' is optional
 - `@include flexcols(i)` or `@include fc(i)`
 - `@include fontsize('base', 1)` or `@include fs('base', 1)`
 - `@include gutter(i)`or `@include g(i)`
@@ -85,14 +85,24 @@ yo dhboilerplate
 Run through the options. When you're done grab a coffee. The node module installation take a while :)
 
 
-## Commands
-Intialize your Project simple with `gulp init`
+## Install NPM Packages
+
+```
+npm install // yarn install
+```
+
+
+## Initialize Project
+
+```
+gulp init  // npm run init OR yarn init
+```
 
 
 ### Default Task with BrowserSync
 
 ```
-gulp
+gulp // npm run dev OR yarn dev
 ```
 
 
@@ -100,7 +110,7 @@ gulp
 This Task clean the folder, build the stuff from ground up and optimize the images and minifiy JS / CSS files. Ready for live!
 
 ```
-gulp build
+gulp build // npm run build OR yarn build
 ```
 
 
