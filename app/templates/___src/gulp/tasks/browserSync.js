@@ -3,6 +3,7 @@ import gulp from 'gulp';
 import yargs from 'yargs'
 import browserSync from 'browser-sync';
 
+const argv = yargs.argv
 
 const browserSyncTask = () => {
   var browserSyncWatch = [
