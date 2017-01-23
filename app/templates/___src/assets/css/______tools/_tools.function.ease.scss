@@ -7,7 +7,7 @@
     @return map-get($dh-easings, $key);
   }
 
-  @warn "Unkown '#{$key}' in $dh-easings.";
+  @warn "Unknown '#{$key}' in #{map-keys($dh-easings)}";
   @return null;
 }
 

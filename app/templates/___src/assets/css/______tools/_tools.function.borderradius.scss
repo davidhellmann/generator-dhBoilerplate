@@ -7,7 +7,7 @@
     @return map-get($dh-borderradius, $key);
   }
 
-  @warn "Unknown `#{$key}` in $dh-borderradius.";
+  @warn "Unknown '#{$key}' in #{map-keys($dh-borderradius)}";
   @return null;
 }
 

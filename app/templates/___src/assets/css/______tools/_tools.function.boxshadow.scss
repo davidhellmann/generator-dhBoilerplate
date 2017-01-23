@@ -7,7 +7,7 @@
     @return map-get($dh-boxshadows, $key);
   }
 
-  @warn "Unknown `#{$key}` in $dh-boxshadows.";
+  @warn "Unknown '#{$key}' in #{map-keys($dh-boxshadows)}";
   @return null;
 }
 

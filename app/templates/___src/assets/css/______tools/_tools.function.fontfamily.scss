@@ -7,7 +7,7 @@
     @return map-get($dh-fontfamilies, $key);
   }
 
-  @warn "Unknown `#{$key}` in $dh-fontfamilies.";
+  @warn "Unknown '#{$key}' in #{map-keys($dh-fontfamilies)}";
   @return null;
 }
 

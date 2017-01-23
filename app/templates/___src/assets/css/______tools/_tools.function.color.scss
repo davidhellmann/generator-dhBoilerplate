@@ -7,7 +7,7 @@
     @return map-get($dh-colors, $key);
   }
 
-  @warn "Unknown `#{$key}` in $dh-colors.";
+  @warn "Unknown '#{$key}' in #{map-keys($dh-colors)}";
   @return null;
 }
 
