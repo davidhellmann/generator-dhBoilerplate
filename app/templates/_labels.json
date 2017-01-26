@@ -13,7 +13,7 @@
   { "name": "Inactive: Duplicate", "color": "#D2DAE1"},
   { "name": "Inactive: On Hold", "color": "#D2DAE1"},
   { "name": "Inactive: Wontfix", "color": "#D2DAE1"},
-  { "name": "Mindless: Clean Image Folder", "color": "#fef2c0"},
+  { "name": "Mindless: Clean Folders", "color": "#fef2c0"},
   { "name": "Mindless: Refactoring", "color": "#fef2c0"},
   { "name": "Pending: Backlog", "color": "#fbca04"},
   { "name": "Pending: In Progress", "color": "#fbca04"},
