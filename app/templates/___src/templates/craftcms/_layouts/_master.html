@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html class="" lang="de">
 <head>
-  
+
   {# Critical CSS #}
   <style>
   {% include 'critical.min.css.html' %}
@@ -39,25 +39,25 @@
   {% include '_partials/_header/_favicons.html' %}
 
   {% block siteHeader %}{% endblock %}
-
 </head>
-<body id="home" {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
+<body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}{{ craft.request.isLivePreview ? 'is-livePreview' : '  ' }}">
 
-<div class="c-appWrapper">
 
-  <header class="c-appHeader">
+<div class="m-appWrapper">
+
+  <header class="m-appHeader">
   {% block appHeader %}
     Header
   {% endblock %}
   </header>
 
-  <div class="c-appContent">
+  <div class="m-appContent">
   {% block appContent %}
     Content
   {% endblock %}
   </div>
 
-  <footer class="c-appFooter">
+  <footer class="m-appFooter">
   {% block appFooter %}
     Footer
   {% endblock %}

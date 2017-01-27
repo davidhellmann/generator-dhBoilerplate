@@ -12,15 +12,11 @@ if (_debug === true) {
   html.classList.add('dev', 'debug')
 }
 
-
 // Vue Stuff
-
-
 
 // Polyfills
 import "babel-polyfill"
 import 'svgxuse'
-
 
 // Scripts
 import './scripts/example'

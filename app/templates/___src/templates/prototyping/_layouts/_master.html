@@ -33,23 +33,23 @@
   {% include '../_partials/_header/_favicons.html' %}
 
 </head>
-<body id="home" {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
+<body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}">
 
-<div class="c-appWrapper">
+<div class="m-appWrapper">
 
-  <header class="c-appHeader">
+  <header class="m-appHeader">
   {% block appHeader %}
     Header
   {% endblock %}
   </header>
 
-  <div class="c-appContent">
+  <div class="m-appContent">
   {% block appContent %}
     Content
   {% endblock %}
   </div>
 
-  <footer class="c-appFooter">
+  <footer class="m-appFooter">
   {% block appFooter %}
     Footer
   {% endblock %}

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="c-appContent">
+<div class="m-appContent">
 
     <% if (projectVue == true ) { %>
     <div id="app" class="vue">

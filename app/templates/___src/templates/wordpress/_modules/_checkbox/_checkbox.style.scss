@@ -1,0 +1,33 @@
+/*--------------------------------------------------
+    .m-checkbox
+  --------------------------------------------------*/
+
+input.m-checkbox[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+
+  + span {
+    position: relative;
+    padding: 0 0 0 26px;
+    margin: 0 30px 0 0;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background: c('white')
+    }
+  }
+
+  &:checked + span {
+
+    &::before {
+      background: c('navy-blue');
+      box-shadow: inset 0 0 0 4px c('white');
+    }
+  }
+}

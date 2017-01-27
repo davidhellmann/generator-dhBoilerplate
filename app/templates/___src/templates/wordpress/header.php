@@ -20,8 +20,8 @@
 
 
 
-<div class="c-appWrapper">
-  <div class="c-appHeader">
+<div class="m-appWrapper">
+  <div class="m-appHeader">
     PAGE HEADER
   </div>
 
