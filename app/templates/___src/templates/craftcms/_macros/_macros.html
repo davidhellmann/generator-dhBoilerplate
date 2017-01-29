@@ -296,13 +296,15 @@
   {{ macros.postNav(entry, 'work', 'postDate', 'prev work', 'next work' ) }}
 #}
 
-{% macro postNav(entry, section, order, prevLabel, nextLabel ) %}
+{% macro postNav(entry, section, order, prevLabel, nextLabel, prevIcon, nextIcon) %}
 
   {# Set vars #}
   {% set section     = section|default('blog') %}
   {% set order       = order|default('postDate') %}
   {% set prevLabel   = prevLabel|default(false) %}
   {% set nextLabel   = nextLabel|default(false) %}
+  {% set prevIcon    = prevIcon|default(false) %}
+  {% set nextIcon    = nextIcon|default(false) %}
 
   {# Set parameters for prev/next elements list #}
   {% set data = craft.entries.section(section).order(order).limit(null) %}
@@ -315,25 +317,34 @@
   {% if prevEntry or nextEntry %}
 
 
-    <ul class="m-postNav">
+    <ul class="c-postNav">
       {% if prevEntry %}
-        <li class="m-postNav__item  m-postNav__item--prev">
-          <a class="m-postNav__link  m-postNav__link--prev" href="{{ prevEntry.url }}">
+        <li class="c-postNav__item  c-postNav__item--prev">
+          <a class="c-postNav__link  c-postNav__link--prev" href="{{ prevEntry.url }}">
+            {% if prevIcon != false %}
+              {{ _self.use_svg(prevIcon) }}
+            {% endif %}
 
             {% if prevLabel != false %}
-              <span class="m-postNav__label">{{ prevLabel }}</span>
+              <span class="c-postNav__label">{{ prevLabel }}</span>
             {% endif %}
-            <span class="m-postNav__title">{{ prevEntry.title }}</span>
+
+            <span class="c-postNav__title">{{ prevEntry.title }}</span>
           </a>
         </li>
       {% endif %}
       {% if nextEntry %}
-        <li class="m-postNav__item  m-postNav__item--next">
-          <a class="m-postNav__link  m-postNav__link--next" href="{{ nextEntry.url }}">
+        <li class="c-postNav__item  c-postNav__item--next">
+          <a class="c-postNav__link  c-postNav__link--next" href="{{ nextEntry.url }}">
             {% if nextLabel != false %}
-              <span class="m-postNav__label">{{ nextLabel }}</span>
+              <span class="c-postNav__label">{{ nextLabel }}</span>
             {% endif %}
-            <span class="m-postNav__title">{{ nextEntry.title }}</span>
+
+            <span class="c-postNav__title">{{ nextEntry.title }}</span>
+
+            {% if nextIcon != false %}
+              {{ _self.use_svg(nextIcon) }}
+            {% endif %}
           </a>
         </li>
       {% endif %}
@@ -341,45 +352,3 @@
   {% endif %}
 
 {% endmacro %}
-
-{% if entry.imagePreviewScreenshot|length %}
-  {% set image = entry.imagePreviewScreenshot.first() %}
-
-  {% set sizes = [
-  { width: 1680 },
-  { width: 960 },
-  { width: 480 }
-  ] %}
-
-  {% set position = image.settingFocalPoint|default('50% 50%') %}
-
-  {% set imageSettings = {
-  jpegQuality: 80,
-  mode: 'crop',
-  position: position
-  } %}
-
-  {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
-{% endif %}
-
-
-{% if entry.imageScreenshots|length %}
-  {% set screenhots = entry.imageScreenshots %}
-
-  {% for image in screenshots %}
-    {% set sizes = [
-    { width: 1680 },
-    { width: 960 },
-    { width: 480 }
-    ] %}
-
-    {% set position = image.settingFocalPoint|default('50% 50%') %}
-
-    {% set imageSettings = {
-    jpegQuality: 80,
-    mode: 'crop',
-    position: position
-    } %}
-    {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
-  {% endfor %}
-{% endif %}
