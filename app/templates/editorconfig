@@ -18,6 +18,11 @@ trim_trailing_whitespace = true
 indent_size = 4
 
 
+# PHP Settings
+[*.js]
+indent_size = 4
+
+
 # Markdown Settings
 [*.md]
 trim_trailing_whitespace = false
