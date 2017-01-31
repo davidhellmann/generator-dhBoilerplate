@@ -129,7 +129,8 @@
       {
         "except": [
           "after-single-line-comment"
-        ]
+        ],
+        "ignore": ["after-comment"]
       }
     ],
     "selector-attribute-brackets-space-inside": "never",
