@@ -11,7 +11,7 @@
     "url": "<%= projectUrl %>"
   },
   "scripts": {
-    "init": "gulp init",
+    "start": "gulp init",
     "dev": "gulp",
     "build": "gulp build",
     "ccss": "gulp criticalcss",
