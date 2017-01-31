@@ -89,12 +89,10 @@
   "css": {
     "sourcemap": true,
     "prefix": [
-      "last 2 version",
-      "> 1%",<% if (projectIECompatible == true ) { %>
-      "ie 8",<% } else { %>
-      "ie 9",<% } %>
-      "chrome 30",
-      "firefox 30"
+      "last 2 version"
+      <% if (projectIECompatible == true ) { %>
+      ,"ie 8",<% } else { %>
+      "ie 9"<% } %>
     ]
   },
 
