@@ -9,11 +9,9 @@
   table-layout: fixed;
 }
 
-
 .o-pack__item {
   display: table-cell;
   vertical-align: top;
-
 
   // Vertical alignment variants
   .o-pack--middle > & {
@@ -23,17 +21,12 @@
   .o-pack--bottom > & {
     vertical-align: bottom;
   }
-
 }
-
-
 
 // Unequal-width items
 .o-pack--auto {
   table-layout: auto;
 }
-
-
 
 // Size variants
 .o-pack--tiny {
@@ -52,15 +45,11 @@
   border-spacing: s(4);
 }
 
-
-
 // Reversed order packs
-
 .o-pack--reverse {
   direction: rtl;
 
   > .o-pack__item {
     direction: ltr;
   }
-
 }

@@ -19,14 +19,14 @@
 }
 
 
-.js .app_complete .m-appWrapper {
+.js .is-complete .m-appWrapper {
   opacity: 1;
   transition-duration: 500ms;
   transition-timing-function: ease-in-out;
 }
 
 
-.js .js_pageTransition .m-appWrapper {
+.js .js-pageTransition .m-appWrapper {
   opacity: 0;
   transition-duration: 250ms;
 }

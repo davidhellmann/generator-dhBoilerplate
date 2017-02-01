@@ -3,44 +3,44 @@
 /* -------------------------------------------------- */
 
 .c-appContent {
-  ul, ol {
+  ul,
+  ol {
     list-style: none;
-
-    li {
-      padding-left: 50px;
-      position: relative;
-    }
   }
 
-  ul {
-    li {
-      &::before {
-        content: '';
-        position: absolute;
-        left: 35px;
-        top: 12px;
-        border-radius: 20px;
-        width: 4px;
-        height: 4px;
-        background-color: c('black-50');
-      }
+  ul li,
+  ol li {
+    padding-left: 50px;
+    position: relative;
+  }
+
+  ul li {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 12px;
+      border-radius: 20px;
+      width: 4px;
+      height: 4px;
+      background-color: c('black-50');
     }
   }
 
   ol {
-    counter-reset: olCounter;
+    counter-reset: ol-counter;
+  }
 
-    li {
-      counter-increment: olCounter;
+  ol li {
+    counter-increment: ol-counter;
 
-      &::before {
-        position: absolute;
-        left: 0;
-        content: counter(olCounter) ".";
-        text-align: right;
-        width: 50px;
-        padding-right: s(1);
-      }
+    &::before {
+      position: absolute;
+      left: 0;
+      content: counter(ol-counter) '.';
+      text-align: right;
+      width: 50px;
+      padding-right: s(1);
     }
   }
 }

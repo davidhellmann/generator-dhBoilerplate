@@ -5,15 +5,33 @@
   ],
   "extends": "stylelint-config-sass-guidelines",
   "rules": {
-    "at-rule-empty-line-before": "always",
+    "at-rule-empty-line-before": [
+      "never",
+      {
+        "except": [
+          "all-nested"
+        ],
+        "ignore": [
+          "after-comment",
+          "all-nested"
+        ]
+      }
+    ],
     "at-rule-name-case": "lower",
     "at-rule-name-newline-after": "always-multi-line",
     "at-rule-name-space-after": "always",
-    "at-rule-no-unknown": true,
+    "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,
-    "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
-    "block-closing-brace-newline-after": "always",
+    "block-closing-brace-newline-after": [
+      "always",
+      {
+        "ignoreAtRules": [
+          "if",
+          "else"
+        ]
+      }
+    ],
     "block-closing-brace-newline-before": "always-multi-line",
     "block-closing-brace-space-after": "always-single-line",
     "block-closing-brace-space-before": "always-single-line",
@@ -55,6 +73,7 @@
     ],
     "declaration-block-no-ignored-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
+    "declaration-block-properties-order": null,
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-semicolon-newline-before": "never-multi-line",
     "declaration-block-semicolon-space-after": "always-single-line",
@@ -100,7 +119,6 @@
     "media-query-list-comma-newline-before": "never-multi-line",
     "media-query-list-comma-space-after": "always-single-line",
     "media-query-list-comma-space-before": "never",
-    "no-descending-specificity": true,
     "no-duplicate-selectors": true,
     "no-empty-source": true,
     "no-eol-whitespace": true,
@@ -121,6 +139,9 @@
       {
         "except": [
           "first-nested"
+        ],
+        "ignore": [
+          "after-comment"
         ]
       }
     ],
@@ -130,20 +151,22 @@
         "except": [
           "after-single-line-comment"
         ],
-        "ignore": ["after-comment"]
+        "ignore": [
+          "after-comment"
+        ]
       }
     ],
     "selector-attribute-brackets-space-inside": "never",
     "selector-attribute-operator-space-after": "never",
     "selector-attribute-operator-space-before": "never",
     "selector-attribute-quotes": "always",
-    "selector-class-pattern": "^(?:a|c|m|o|t|u|has|is|no)*(?:-)*[a-z][a-zA-Z0-9]*(?:__[a-z][a-zA-Z0-9]*)?(?:--[a-z][a-zA-Z0-9]*)?$",
+    "selector-class-pattern": "^(?:a|c|m|o|t|u|has|is|no|js)*(?:-)*[a-z0-9][a-zA-Z0-9]*(?:__[a-z0-9][a-zA-Z0-9]*)?(?:--[a-z0-9][a-zA-Z0-9]*)?$",
     "selector-combinator-space-after": "always",
     "selector-combinator-space-before": "always",
     "selector-descendant-combinator-no-non-space": true,
     "selector-id-pattern": "^[a-zA-Z]+$",
     "selector-max-compound-selectors": 3,
-    "selector-max-specificity": "0,3,0",
+    "selector-max-specificity": "0,4,0",
     "selector-no-empty": true,
     "selector-no-id": true,
     "selector-no-qualifying-type": [
@@ -173,8 +196,7 @@
     "stylelint-disable-reason": "always-after",
     "time-no-imperceptible": true,
     "unit-blacklist": [
-      "em",
-      "s"
+      "em"
     ],
     "unit-case": "lower",
     "unit-no-unknown": true,

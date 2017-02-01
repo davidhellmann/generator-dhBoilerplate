@@ -4,9 +4,9 @@
 
 @keyframes scrolldown {
   0% {
-    opacity: .25;
+    opacity: 0.25;
     transform: translate3d(-50%, -5px, 0);
-  },
+  }
 
   100% {
     opacity: 1;

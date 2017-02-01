@@ -10,21 +10,18 @@ $dh-crops: (
   (16:10),
 ) !default;
 
-
 .o-crop {
   position: relative;
   display: block;
   overflow: hidden;
 }
 
-
 .o-crop__content {
   position: absolute;
-  top:  0;
+  top: 0;
   left: 0;
   max-width: none;
 }
-
 
 .o-crop__content--right {
   right: 0;
@@ -37,12 +34,10 @@ $dh-crops: (
 }
 
 .o-crop__content--center {
-  top:  50%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-
 
 // Crop Classes
 @each $crop in $dh-crops {
@@ -50,17 +45,15 @@ $dh-crops: (
   @each $antecedent, $consequent in $crop {
 
     @if (type-of($antecedent) != number) {
-      @error "`#{$antecedent}` needs to be a number."
+      @error '`#{$antecedent}` needs to be a number.';
     }
 
     @if (type-of($consequent) != number) {
-      @error "`#{$consequent}` needs to be a number."
+      @error '`#{$consequent}` needs to be a number.';
     }
 
     .o-crop--#{$antecedent}\:#{$consequent} {
       padding-bottom: ($consequent/$antecedent) * 100%;
     }
-
   }
-
 }

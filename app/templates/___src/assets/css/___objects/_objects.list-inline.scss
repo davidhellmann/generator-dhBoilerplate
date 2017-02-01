@@ -1,34 +1,29 @@
 /* -------------------------------------------------- */
-/*    .o-list-inline
+/*    .o-listInline
 /* -------------------------------------------------- */
 
-.o-list-inline {
+.o-listInline {
   margin-left: 0;
   list-style: none;
 }
 
-
-.o-list-inline__item {
+.o-listInline__item {
   display: inline-block;
 }
 
+$dh-list-inline-delimiter: ',\00A0' !default;
 
-$dh-list-inline-delimiter:   ",\00A0" !default;
-
-.o-list-inline--delimited {
+.o-listInline--delimited {
   font-size: 0;
 
-  > .o-list-inline__item {
+  > .o-listInline__item {
     font-size: fs('ms0');
-
   }
 
-  > .o-list-inline__item + .o-list-inline__item {
-
-    &:before {
-      content: "#{$dh-list-inline-delimiter}";
+  > .o-listInline__item + .o-listInline__item {
+    &::before {
+      content: ''#{$dh-list-inline-delimiter}'';
     }
-
   }
-
 }
+

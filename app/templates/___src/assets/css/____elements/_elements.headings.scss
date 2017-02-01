@@ -2,33 +2,44 @@
 /*    Headings
 /* -------------------------------------------------- */
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   word-wrap: break-word;
   font-family: ff('headline');
   line-height: 1.2;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   @include ft(fs('ms3'), fs('ms5'));
 }
 
-h2, .h2 {
+h2,
+.h2 {
   @include ft(fs('ms2'), fs('ms4'));
 }
 
-h3, .h3 {
+h3,
+.h3 {
   @include ft(fs('ms1'), fs('ms3'));
 }
 
-h4, .h4 {
+h4,
+.h4 {
   @include ft(fs('ms0'), fs('ms2'));
 }
 
-h5, .h5 {
+h5,
+.h5 {
   @include ft(fs('ms0'), fs('ms2'));
 }
 
-h6, h6 {
+h6,
+.h6 {
   @include ft(fs('ms0'), fs('ms2'));
 }

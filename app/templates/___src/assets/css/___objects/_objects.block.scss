@@ -1,12 +1,11 @@
-/*--------------------------------------------------
-    .o-block
-  --------------------------------------------------*/
+/* -------------------------------------------------- */
+/*    .o-block
+/* -------------------------------------------------- */
 
 .o-block {
   display: block;
   text-align: center;
 }
-
 
 .o-block__img {
   margin-bottom: vr(1);
@@ -27,14 +26,11 @@
   .o-block--huge > & {
     margin-bottom: vr(4);
   }
-
 }
-
 
 .o-block__body {
   display: block;
 }
-
 
 // Different Alignments
 .o-block--right {
