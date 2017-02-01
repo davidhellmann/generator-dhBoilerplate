@@ -382,6 +382,12 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         )
 
         this.fs.copyTpl(
+            this.templatePath('stylelintignore'),
+            this.destinationPath('.stylelintignore'),
+            params
+        )
+
+        this.fs.copyTpl(
             this.templatePath('babelrc'),
             this.destinationPath('.babelrc'),
             params
