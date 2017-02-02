@@ -265,6 +265,24 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 this.destinationPath('___dist/config/imager.php')
             );
 
+            // Copy Volumes Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/volumes.php'),
+                this.destinationPath('___dist/config/volumes.php')
+            );
+
+            // Copy General Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/general.php'),
+                this.destinationPath('___dist/config/general.php')
+            );
+
+            // Copy .env Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/.env'),
+                this.destinationPath('___dist/config/.env')
+            );
+
             // Copy Pluginlist
             this.fs.copyTpl(
                 this.templatePath('___src/_craft3/plugins/craft3-plugins.sh'),
