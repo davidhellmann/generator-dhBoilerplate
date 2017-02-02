@@ -1,26 +1,20 @@
 /* TEAM */
-
-Author:              David Hellmann
-Contact:             davidhellmann.com@gmail.com
-Website:             http://davidhellmann.com
+Author:              <%= projectAuthor %>
+Contact:             <%= projectMail %>
+Website:             <%= projectUrl %>
 Twitter:             @davidhellmann
-Location:            Salzburg, Austria
-Contributions:       Design, HTML, Sass (CSS), JS
-
-
+Location:            Linz, Austria
+Contributions:       Design, HTML, Sass (CSS), JS, Twig
 
 /* SITE */
-
 Language:            English
-Standards:           HTML5, CSS3
+Standards:           HTML5, CSS3, ES6
 Components:          Modernizr, jQuery, etc.
-CMS:                 Static
-Tools:               Gulp, NPM
-IDE:                 PHP Storm
-Built on:            Mac OS X
-
-
+CMS:                 <%= projectUsage %>
+Tools:               Gulp, NPM, Yeoman
+IDE:                 PHPStorm
+Built on:            macOS
 
 /* THANKS */
-
 Name:                Sascha Fuchs
+Name:                Martin Herweg

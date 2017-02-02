@@ -2,6 +2,5 @@
 
 User-agent: *
 Disallow: /config/
-Disallow: /craft/
-Disallow: /plugins/
+Disallow: /vendor/
 Disallow: /templates/

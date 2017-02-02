@@ -59,3 +59,13 @@ ___dist/templates
 ___dist/public/uploads
 ___dist/public/assets
 <% } %>
+
+<% if (projectUsage == 'Craft CMS Beta' ) { %>
+# Craft CMS Beta
+___dist/config/config.local.php
+___dist/config/license.key
+___dist/craft
+___dist/templates
+___dist/public/uploads
+___dist/public/assets
+<% } %>
