@@ -62,5 +62,7 @@ return [
      */
     'defaultWeekStartDay' => 1,
 
-    'rootUrl' => getenv('ROOT_URL')
+    'rootUrl' => getenv('ROOT_URL'),
+    'volumesPath' => getenv('ASSETS_BASE_PATH'),
+    'volumesUrl' => getenv('ASSETS_BASE_URL')
 ];
