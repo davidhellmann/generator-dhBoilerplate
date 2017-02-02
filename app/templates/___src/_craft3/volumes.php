@@ -12,4 +12,8 @@ return [
         'path' => getenv('ASSETS_BASE_PATH') . '/graphics',
         'url' => getenv('ASSETS_BASE_URL') . '/graphics',
     ],
+    'siteUsers' => [
+        'path' => getenv('ASSETS_BASE_PATH') . '/users',
+        'url' => getenv('ASSETS_BASE_URL') . '/user',
+    ],
 ];
