@@ -62,10 +62,11 @@ ___dist/public/assets
 
 <% if (projectUsage == 'Craft CMS Beta' ) { %>
 # Craft CMS Beta
-___dist/config/config.local.php
 ___dist/config/license.key
-___dist/craft
+___dist/storage
 ___dist/templates
-___dist/public/uploads
-___dist/public/assets
+___dist/vendor
+___dist/web/assets
+___dist/web/cpresources
+___dist/web/uploads
 <% } %>
