@@ -8,7 +8,7 @@
 
 return [
     // Base site URL
-    'siteUrl' => genenv('SITE_URL'),
+    'siteUrl' => getenv('SITE_URL'),
 
     // Default Week Start Day (0 = Sunday, 1 = Monday...)
     'defaultWeekStartDay' => 0,
