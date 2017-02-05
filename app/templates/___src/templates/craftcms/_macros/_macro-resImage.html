@@ -1,0 +1,119 @@
+{# Set Attributes
+  {% set attr = {
+    image: '',
+    class: 'm-image',
+    sizes: [
+      { width: 1680 },
+      { width: 960 },
+      { width: 480 }
+    ],
+    style: 'img',
+    quality: 80,
+    mode: 'crop',
+    position: '50% 50%',
+    ratio: '',
+    caption: '',
+    dominantColor: '',
+    effects: { grayscale: true },
+  } %}
+
+  macroResImage.resImage(attr)
+#}
+
+{% macro resImage(attr) %}
+
+  {# Set Defaults #}
+  {% set defaults = {
+  image: '',
+  class: 'm-image',
+  sizes: [
+  { width: 1680 },
+  { width: 960 },
+  { width: 480 }
+  ],
+  style: 'img',
+  quality: 80,
+  mode: 'crop',
+  position: '',
+  ratio: '',
+  caption: '',
+  dominantColor: '',
+  effects: {},
+  } %}
+
+  {% if attr.image|length %}
+    {# Merge Attr with Defaults #}
+    {% set attr = attr ? defaults|merge(attr) : defaults %}
+
+    {# Set Ratio #}
+    {% if attr.ratio|length %}
+      {% set ratio = attr.ratio|split(':') %}
+      {% set base64Ratio = attr.ratio|split(':') %}
+      {% set ratio = ratio|first/ratio|last %}
+    {% else %}
+      {% set imageSize = attr.image.width ~ ':' ~ attr.image.height %}
+      {% set base64Ratio = imageSize|split(':') %}
+      {% set ratio = '' %}
+    {% endif %}
+
+
+    {# Set Position #}
+    {% if attr.position %}
+      {% set position = attr.position %}
+    {% elseif attr.image.settingFocalPoint | length %}
+      {% set position = attr.image.settingFocalPoint %}
+    {% else %}
+      {% set position = '50% 50%' %}
+    {% endif %}
+
+
+    {# Define global variables #}
+    {% set imageSettings = {
+    jpegQuality: attr.quality,
+    mode: attr.mode,
+    position: position,
+    ratio: ratio,
+    effects: attr.effects
+    } %}
+
+    {# Image #}
+    {% set images = craft.imager.transformImage(attr.image, attr.sizes, imageSettings) %}
+
+    {# Set Dominant Color #}
+    {% if attr.dominantColor|length %}
+      {% set dominantColor = attr.dominantColor %}
+    {% elseif attr.dominantColor %}
+      {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+    {% else %}
+      {% set dominantColor = '' %}
+    {% endif %}
+
+    {% if attr.style == 'img' %}
+      <figure class="{{ attr.class }}"
+              style="{{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}">
+        <img class="lazyload  {{ attr.class ~ '__image' }}"
+             src="{{ images|last.url }}"
+             srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+             data-srcset="{{ craft.imager.srcset(images) }}"
+             data-sizes="auto"
+             alt="{{ attr.image.title }}"/>
+        {% if attr.caption|length %}
+          <figcaption>
+            {{ attr.caption|raw }}
+          </figcaption>
+        {% endif %}
+      </figure>
+
+    {% else %}
+
+      <figure class="{{ attr.ratio | length ? 'o-ratio  o-ratio--' ~ attr.ratio : '' }}  {{ attr.class }}  lazyload"
+              style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+                background-position: {{ position }};
+              {{ not attr.ratio | length ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }} {{ dominantColor | length ? 'background-color:' ~  dominantColor ~ ';': '' }}"
+              data-bgset="{{ craft.imager.srcset(images) }}"
+              data-sizes="auto">
+      </figure>
+
+    {% endif %}
+  {% endif %}
+{% endmacro %}

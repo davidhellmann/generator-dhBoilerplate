@@ -1,0 +1,51 @@
+{#
+  Social Links Array
+  --------------------------------------------------
+
+  {{ macroSocialLinks.socialLinks([
+    'twitter',
+    'facebook',
+    'xing'
+  ], true) }}
+#}
+
+{% macro socialLinks(networks, icons, label) %}
+  <ul class="socialLinks__list">
+    {# Loop for each network #}
+    {% set icons = icons|default(false) %}
+    {% set label = label|default(false) %}
+    {% for network in networks %}
+      {# Loop through all networks #}
+      {% for sn in socialNetworks.socialLinks %}
+        {% if sn.linkText|lower == network %}
+          <li class="socialLinks__item  socialLinks__item--{{ sn.linkText|lower }}">
+            <a class="socialLinks__link"
+               href="{{ sn.customLink.url }}" {{ sn.customLink.target ? ' target="_blank"' }}>
+
+              {% if icons == true and label == true %}
+
+                <svg class="m-svgSprite  m-svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
+                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
+                </svg>
+                <span class="socialLinks__label">{{ sn.linkText }}</span>
+
+              {% elseif icons == true %}
+
+                <svg class="m-svgSprite  m-svgSprite--icon_{{ sn.linkText|lower }}" viewbox="0 0 48 48">
+                  <use xlink:href="/assets/images/svg/sprite/sprite.svg#icon_{{ sn.linkText|lower }}"></use>
+                </svg>
+
+              {% else %}
+
+                {{ sn.linkText }}
+
+              {% endif %}
+
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+    {% endfor %}
+  </ul>
+{% endmacro %}

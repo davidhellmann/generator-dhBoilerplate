@@ -1,0 +1,75 @@
+{#
+  Pagination
+  --------------------------------------------------
+
+  Generate navigation buttons for paginations
+
+  @param {object}  pages       - Pagination Object
+  @param {object}  craft       - Craft Request Object
+  @param {string}  classname   - Classname (default: 'pagination')
+  @param {string}  searchquery - To pass search words from Searchfields (default: false)
+#}
+
+{% macro pagination(pages,craft,searchquery,classname) %}
+  {% set search = searchquery|default(false) %}
+  {% set class = classname|default('m-pagination') %}
+
+  {# Add Pagination only if the Page Number is higher than 1#}
+  {% if pages.totalPages > 1 %}
+
+    <nav class="{{ class }}" role="navigation">
+      {# Dont display last page when on the first Page #}
+      {% if pages.currentPage > 2 and pages.prevUrl %}
+        <a class="{{ class }}__link" href="{{ pages.firstUrl }}{{ search ? '?q='~search }}"
+           title="Back to the first page">
+          &laquo;
+        </a>
+      {% endif %}
+
+      {# Display the Previous Link if available #}
+      {% if pages.prevUrl %}
+        <a class="{{ class }}__link" href="{{ pages.prevUrl }}{{ search ? '?q='~search }}"
+           title="Back to the previous page">
+          &lsaquo;
+        </a>
+      {% endif %}
+
+      {# Display prev 5 Page Links#}
+      {% for page, url in pages.getPrevUrls(3) %}
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}"
+           title="Go to page {{ page }}">
+          {{ page }}
+        </a>
+      {% endfor %}
+
+      {# Diplay Current Page#}
+      <span class="{{ class }}__link  {{ class }}__link--current">
+        {{ pages.currentPage }}
+      </span>
+
+      {# Display next 5 Page Links #}
+      {% for page, url in pages.getNextUrls(3) %}
+        <a class="{{ class }}__link  {{ class }}__link--number" href="{{ url }}{{ search ? '?q='~search }}"
+           title="Go to page {{ page }}">
+          {{ page }}
+        </a>
+      {% endfor %}
+
+      {# Display next Page Link if available#}
+      {% if pages.nextUrl %}
+        <a class="{{ class }}__link" href="{{ pages.nextUrl }}{{ search ? '?q='~search }}"
+           title="Forward to the next page">
+          &rsaquo;
+        </a>
+      {% endif %}
+
+      {# Dont display when on the last page #}
+      {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
+        <a class="{{ class }}__link" href="{{ pages.lastUrl }}{{ search ? '?q='~search }}"
+           title="Forward to the last page">
+          &raquo;
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% endmacro %}

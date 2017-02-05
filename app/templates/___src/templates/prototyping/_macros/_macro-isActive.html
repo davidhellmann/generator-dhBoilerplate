@@ -1,0 +1,10 @@
+{#
+  Set Active Class
+  --------------------------------------------------
+
+  {{ macroIsActive.isActive('news') }}
+#}
+
+{% macro isActive(segment) %}
+  {% if craft.request.firstSegment == segment %}is_active{% endif %}
+{% endmacro %}
