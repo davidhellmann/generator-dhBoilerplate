@@ -20,11 +20,10 @@
   macroResImage.resImage(options)
 #}
 
-{% macro resImage(options) %}
+{% macro resImage(image,options) %}
 
   {# Set Defaults #}
   {% set defaults = {
-  image: false,
   class: 'm-figure',
   sizes: [
   { width: 1680 },
@@ -45,7 +44,7 @@
   {# Merge Attr with Defaults #}
   {% set options = options ? defaults|merge(options) : defaults %}
 
-  {% if options.image %}
+  {% if image %}
     {# Set Ratio #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
