@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "stylelint-order",
     "stylelint-scss",
     "stylelint-selector-bem-pattern"
   ],
@@ -73,7 +74,8 @@
     ],
     "declaration-block-no-ignored-properties": true,
     "declaration-block-no-shorthand-property-overrides": true,
-    "declaration-block-properties-order": null,
+    "order/declaration-block-order",
+    "order/declaration-block-properties-alphabetical-order": null,
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-semicolon-newline-before": "never-multi-line",
     "declaration-block-semicolon-space-after": "always-single-line",

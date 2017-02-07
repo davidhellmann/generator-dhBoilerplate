@@ -1,0 +1,906 @@
+{
+  "groups": [
+    "CB"
+  ],
+  "fields": [
+    {
+      "group": "CB",
+      "name": "CB: Matrix",
+      "handle": "cbMatrix",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "[ = ] CBM: Content Section",
+            "handle": "cbmContentSection",
+            "fields": {
+              "new1": {
+                "name": "Label",
+                "handle": "label",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new2": {
+                "name": "Settings",
+                "handle": "sectionInfos",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": null,
+                  "selectionLabel": "Set Settings for this Block",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Background Color",
+                          "handle": "backgroundColor",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": "",
+                            "initialRows": 4
+                          }
+                        },
+                        "new2": {
+                          "name": "Background Image",
+                          "handle": "backgroundImage",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": "",
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": 1,
+                            "viewMode": "large",
+                            "selectionLabel": ""
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new2": {
+            "name": "[ + ] CBM: Accordion Label",
+            "handle": "cbmAccordionLabel",
+            "fields": {
+              "new1": {
+                "name": "Label",
+                "handle": "label",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              }
+            }
+          },
+          "new3": {
+            "name": "CBM: Button",
+            "handle": "cbmButton",
+            "fields": {
+              "new1": {
+                "name": "Button",
+                "handle": "button",
+                "instructions": "",
+                "required": 0,
+                "type": "FruitLinkIt",
+                "typesettings": {
+                  "types": [
+                    "email",
+                    "tel",
+                    "custom",
+                    "entry",
+                    "category",
+                    "asset"
+                  ],
+                  "defaultText": "",
+                  "allowCustomText": 1,
+                  "allowTarget": 1,
+                  "entrySources": [],
+                  "entrySelectionLabel": "Select an entry",
+                  "assetSources": "*",
+                  "assetSelectionLabel": "Select an asset",
+                  "categorySources": "*",
+                  "categorySelectionLabel": "Select a category"
+                }
+              },
+              "new2": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": 1
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new4": {
+            "name": "CBM: Button Group",
+            "handle": "cbmButtonGroup",
+            "fields": {
+              "new1": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": 1
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Button Group",
+                "handle": "buttonGroup",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "table",
+                  "staticField": null,
+                  "selectionLabel": "Add a Button",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Button",
+                          "handle": "button",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "FruitLinkIt",
+                          "width": "",
+                          "typesettings": {
+                            "types": [
+                              "email",
+                              "tel",
+                              "custom",
+                              "entry",
+                              "category",
+                              "asset"
+                            ],
+                            "defaultText": "",
+                            "allowCustomText": 1,
+                            "allowTarget": 1,
+                            "entrySources": [],
+                            "entrySelectionLabel": "Select an entry",
+                            "assetSources": "*",
+                            "assetSelectionLabel": "Select an asset",
+                            "categorySources": "*",
+                            "categorySelectionLabel": "Select a category"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new5": {
+            "name": "CBM: Definition List",
+            "handle": "cbmDefinitionList",
+            "fields": {
+              "new1": {
+                "name": "Definition List",
+                "handle": "definitionList",
+                "instructions": "",
+                "required": 0,
+                "type": "Table",
+                "typesettings": {
+                  "columns": {
+                    "col1": {
+                      "heading": "Definition Term",
+                      "handle": "definitionTerm",
+                      "width": "",
+                      "type": "singleline"
+                    },
+                    "col2": {
+                      "heading": "Definition Description",
+                      "handle": "definitionDescription",
+                      "width": "",
+                      "type": "singleline"
+                    }
+                  },
+                  "defaults": {
+                    "row1": {
+                      "col1": "",
+                      "col2": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new6": {
+            "name": "CBM: Embed",
+            "handle": "cbmEmbed",
+            "fields": {
+              "new1": {
+                "name": "Code",
+                "handle": "code",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": 1,
+                  "initialRows": 6
+                }
+              },
+              "new2": {
+                "name": "Source",
+                "handle": "source",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new3": {
+                "name": "Source Link",
+                "handle": "sourceLink",
+                "instructions": "",
+                "required": 0,
+                "type": "FruitLinkIt",
+                "typesettings": {
+                  "types": [
+                    "custom"
+                  ],
+                  "defaultText": "",
+                  "allowCustomText": 1,
+                  "allowTarget": "",
+                  "entrySources": [],
+                  "entrySelectionLabel": "Select an entry",
+                  "assetSources": "*",
+                  "assetSelectionLabel": "Select an asset",
+                  "categorySources": "*",
+                  "categorySelectionLabel": "Select a category"
+                }
+              }
+            }
+          },
+          "new7": {
+            "name": "CBM: Headline",
+            "handle": "cbmHeadline",
+            "fields": {
+              "new1": {
+                "name": "Headline",
+                "handle": "headline",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new2": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": 1
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Semantic Size",
+                "handle": "semanticSize",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "H1",
+                      "value": "h1",
+                      "default": ""
+                    },
+                    {
+                      "label": "H2",
+                      "value": "h2",
+                      "default": ""
+                    },
+                    {
+                      "label": "H3",
+                      "value": "h3",
+                      "default": ""
+                    },
+                    {
+                      "label": "H4",
+                      "value": "h4",
+                      "default": ""
+                    },
+                    {
+                      "label": "H5",
+                      "value": "h5",
+                      "default": ""
+                    },
+                    {
+                      "label": "H6",
+                      "value": "h6",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new4": {
+                "name": "Visual Size",
+                "handle": "visualSize",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Looks like H1",
+                      "value": "h1",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H2",
+                      "value": "h2",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H3",
+                      "value": "h3",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H4",
+                      "value": "h4",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H5",
+                      "value": "h5",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H6",
+                      "value": "h6",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new8": {
+            "name": "CBM: Horizontal Ruler",
+            "handle": "cbmHorizontalRuler",
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new9": {
+            "name": "CBM: Image Cover",
+            "handle": "cbmImageCover",
+            "fields": {
+              "new1": {
+                "name": "Image",
+                "handle": "image",
+                "instructions": "",
+                "required": 1,
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": 1,
+                  "sources": "*",
+                  "defaultUploadLocationSource": "siteImages",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "siteImages",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": 1,
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": 1,
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Image Position",
+                "handle": "imagePosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left | Top",
+                      "value": "left top",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left | Center",
+                      "value": "left center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left | Bottom",
+                      "value": "left bottom",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center | Top",
+                      "value": "center top",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center | Center",
+                      "value": "center center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center | Bottom",
+                      "value": "center bottom",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right | Top",
+                      "value": "right top",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right | Center",
+                      "value": "right center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right | Bottom",
+                      "value": "right bottom",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Caption",
+                "handle": "caption",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": 1,
+                  "initialRows": 6
+                }
+              }
+            }
+          },
+          "new10": {
+            "name": "CBM: Image Gallery",
+            "handle": "cbmImageGallery",
+            "fields": {
+              "new1": {
+                "name": "Image",
+                "handle": "image",
+                "instructions": "",
+                "required": 1,
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": 1,
+                  "sources": "*",
+                  "defaultUploadLocationSource": "siteImages",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "siteImages",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": 1,
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Cols",
+                "handle": "cols",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "4 Columns",
+                      "value": "cols-4",
+                      "default": 1
+                    },
+                    {
+                      "label": "3 Columns",
+                      "value": "cols-3",
+                      "default": ""
+                    },
+                    {
+                      "label": "2 Columns",
+                      "value": "cols-2",
+                      "default": ""
+                    },
+                    {
+                      "label": "1 Column",
+                      "value": "cols-1",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new11": {
+            "name": "CBM: Image Grid",
+            "handle": "cbmImageGrid",
+            "fields": {
+              "new1": {
+                "name": "Image",
+                "handle": "image",
+                "instructions": "",
+                "required": 1,
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": 1,
+                  "sources": "*",
+                  "defaultUploadLocationSource": "siteImages",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "siteImages",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": 1,
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "",
+                  "viewMode": "large",
+                  "selectionLabel": ""
+                }
+              },
+              "new2": {
+                "name": "Cols",
+                "handle": "cols",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "1 Column",
+                      "value": "cols-1",
+                      "default": 1
+                    },
+                    {
+                      "label": "2 Columns",
+                      "value": "cols-2",
+                      "default": ""
+                    },
+                    {
+                      "label": "3 Columns",
+                      "value": "cols-3",
+                      "default": ""
+                    },
+                    {
+                      "label": "4 Columns",
+                      "value": "cols-4",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new12": {
+            "name": "CBM: Image Slider",
+            "handle": "cbmImageSlider",
+            "fields": {
+              "new1": {
+                "name": "Image",
+                "handle": "image",
+                "instructions": "",
+                "required": 1,
+                "type": "Assets",
+                "typesettings": {
+                  "useSingleFolder": 1,
+                  "sources": "*",
+                  "defaultUploadLocationSource": "siteImages",
+                  "defaultUploadLocationSubpath": "",
+                  "singleUploadLocationSource": "siteImages",
+                  "singleUploadLocationSubpath": "",
+                  "restrictFiles": 1,
+                  "allowedKinds": [
+                    "image"
+                  ],
+                  "limit": "",
+                  "viewMode": "large",
+                  "selectionLabel": "Add an Image"
+                }
+              }
+            }
+          },
+          "new13": {
+            "name": "CBM: Quote",
+            "handle": "cbmQuote",
+            "fields": {
+              "new1": {
+                "name": "Quote",
+                "handle": "quote",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": 1,
+                  "initialRows": 6
+                }
+              },
+              "new2": {
+                "name": "Source",
+                "handle": "source",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              }
+            }
+          },
+          "new14": {
+            "name": "CBM: Rich Text",
+            "handle": "cbmRichText",
+            "fields": {
+              "new1": {
+                "name": "Rich Text",
+                "handle": "richText",
+                "instructions": "",
+                "required": 0,
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Simple.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": 1,
+                  "purifyHtml": 1,
+                  "columnType": "text"
+                }
+              }
+            }
+          },
+          "new15": {
+            "name": "CBM: Rich Text + Marginals",
+            "handle": "cbmRichTextMarginal",
+            "fields": {
+              "new1": {
+                "name": "Rich Text",
+                "handle": "richText",
+                "instructions": "",
+                "required": 0,
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Simple.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": 1,
+                  "purifyHtml": 1,
+                  "columnType": "text"
+                }
+              },
+              "new2": {
+                "name": "Marginal Columns",
+                "handle": "marginalColumns",
+                "instructions": "First Column is Left\r\nSecond Column is Right",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": null,
+                  "selectionLabel": "Add a Column",
+                  "maxRows": 2,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Column",
+                          "handle": "column",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Matrix",
+                          "width": "",
+                          "typesettings": {
+                            "maxBlocks": 1,
+                            "blockTypes": {
+                              "new1": {
+                                "name": "Column Image",
+                                "handle": "columnImage",
+                                "fields": {
+                                  "new1": {
+                                    "name": "Image",
+                                    "handle": "image",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "type": "Assets",
+                                    "typesettings": {
+                                      "useSingleFolder": 1,
+                                      "sources": "*",
+                                      "defaultUploadLocationSource": "siteImages",
+                                      "defaultUploadLocationSubpath": "",
+                                      "singleUploadLocationSource": "siteImages",
+                                      "singleUploadLocationSubpath": "",
+                                      "restrictFiles": 1,
+                                      "allowedKinds": [
+                                        "image"
+                                      ],
+                                      "limit": 1,
+                                      "viewMode": "large",
+                                      "selectionLabel": ""
+                                    }
+                                  }
+                                }
+                              },
+                              "new2": {
+                                "name": "Column Quote",
+                                "handle": "columnQuote",
+                                "fields": {
+                                  "new1": {
+                                    "name": "Quote",
+                                    "handle": "quote",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "type": "PlainText",
+                                    "typesettings": {
+                                      "placeholder": "",
+                                      "maxLength": "",
+                                      "multiline": 1,
+                                      "initialRows": 6
+                                    }
+                                  },
+                                  "new2": {
+                                    "name": "Source",
+                                    "handle": "source",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "type": "PlainText",
+                                    "typesettings": {
+                                      "placeholder": "",
+                                      "maxLength": "",
+                                      "multiline": "",
+                                      "initialRows": 4
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

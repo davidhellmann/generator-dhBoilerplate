@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>cp-css</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <circle id="Oval-1" fill="#C262A6" sketch:type="MSShapeGroup" cx="50" cy="50" r="50"></circle>
+        <text id="CSS" sketch:type="MSTextLayer" font-family="Arial Rounded MT Bold" font-size="37" font-weight="normal" sketch:alignment="middle" line-spacing="41" letter-spacing="-1.30341125" fill="#FFFFFF">
+            <tspan x="12.5" y="64.0268555">CSS</tspan>
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,20 @@
+{% import '_includes/forms' as forms %}
+
+<p style="font-weight:bold">Your custom JavaScript will be applied to the entire Control Panel.</p>
+
+{{ forms.textField({
+	label: "JavaScript File"|t,
+	instructions: "Enter the path to your JavaScript file."|t,
+	id: 'jsFile',
+	name: 'jsFile',
+	value: settings.jsFile,
+}) }}
+
+{{ forms.textareaField({
+	label: 'Additional JavaScript'|t,
+	instructions: 'Enter any additional JavaScript here.',
+	id: 'additionalJs',
+	name: 'additionalJs',
+	value: settings.additionalJs,
+	rows: 15
+}) }}

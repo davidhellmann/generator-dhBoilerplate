@@ -1,0 +1,17 @@
+{
+    "name": "boboldehampsink/taskmanager",
+    "description": "Task Manager Plugin for Craft CMS",
+    "authors": [
+        {
+            "name": "Bob Olde Hampsink",
+            "email": "b.oldehampsink@itmundi.nl",
+            "homepage": "http://github.com/boboldehampsink",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "type": "craft-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
