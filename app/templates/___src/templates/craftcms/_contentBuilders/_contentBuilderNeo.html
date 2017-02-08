@@ -1,0 +1,12 @@
+{#
+  Content Builder Neo
+  ======================
+
+  Neo Content Builder use the Neo Plugin
+#}
+
+{% if entry.contentBuilderNeo.level(1)|length %}
+  {% for content in entry.contentBuilderNeo.level(1) %}
+    {% include '_contentBuilders/_contentBuilderNeo' with { data: content } %}
+  {% endfor %}
+{% endif %}
