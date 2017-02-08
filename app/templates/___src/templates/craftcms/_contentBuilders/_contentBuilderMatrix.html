@@ -1,0 +1,12 @@
+{#
+  Content Builder Matrix
+  ======================
+
+  Matrix Content Builder use the Core Matrix Field from Craft CMS
+#}
+
+{% if entry.contentBuilderMatrix|length %}
+  {% for content in entry.contentBuilderMatrix %}
+    {% include '_contentBuilders/_contentBuilderMatrix' with { data: content } %}
+  {% endfor %}
+{% endif %}
