@@ -7,6 +7,6 @@
 
 {% if entry.contentBuilderMatrix|length %}
   {% for content in entry.contentBuilderMatrix %}
-    {% include '_contentBuilders/_contentBuilderMatrix' with { data: content } %}
+    {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
   {% endfor %}
 {% endif %}
