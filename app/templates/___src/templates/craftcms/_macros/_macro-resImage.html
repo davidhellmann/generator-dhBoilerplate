@@ -59,8 +59,8 @@
     {# Set Position #}
     {% if options.position %}
       {% set position = options.position %}
-    {% elseif options.image.settingFocalPoint %}
-      {% set position = options.image.settingFocalPoint %}
+    {% elseif options.image.settingsFocalPoint %}
+      {% set position = options.image.settingsFocalPoint %}
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
