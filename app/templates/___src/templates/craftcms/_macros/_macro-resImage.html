@@ -91,7 +91,7 @@
       <{{ options.elementtype }} class="{{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio : '' }}  {{ options.class }}  lazyload"
       style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
       background-position: {{ position }};
-      {{ not options.ratio ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }}
+      {#{{ not options.ratio ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }}#}
       {{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}"
       data-bgset="{{ craft.imager.srcset(images) }}"
       data-sizes="auto">
