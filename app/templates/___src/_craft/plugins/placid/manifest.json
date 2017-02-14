@@ -1,0 +1,99 @@
+[
+  {
+    "version": "1.8.122",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/1.8.122.zip",
+    "date": "2016-06-16T00:00:00+00:00",
+    "notes": [
+        "# Fixes",
+        "[Fixed] Fixed error when cache ID gets set, resulting in duplicate ID's"
+    ]
+  },
+  {
+    "version": "1.8.121",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/1.8.121.zip",
+    "date": "2016-05-18T00:00:00+00:00",
+    "notes": [
+        "# Additions",
+        "[Added] You can now add [dynamic segments](https://github.com/alecritson/Placid/wiki/Making-requests) to your request urls"
+    ]
+  },
+  {
+    "version": "1.7.120",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+    "date": "2016-05-18T00:00:00+00:00",
+    "notes": [
+        "# Fixes",
+        "[Fixed] Correct misnamed $token variable in Placid_RequestService (thanks Jonathan)"
+    ]
+  },
+  {
+    "version": "1.7.119",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+    "date": "2016-04-28T00:00:00+00:00",
+    "notes": [
+        "# Additions",
+        "[Added] You can now force Basic Auth tokens to go through the query string",
+        "# Maintenance",
+        "[Improved] Changes to Placid UI for better integration to Craft 2.* and better usability",
+        "[Improved] Refactored some of Placids code base"
+    ]
+  },
+  {
+    "version": "1.7.114",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+    "date": "2016-03-30T00:00:00+00:00",
+    "notes": [
+        "# Bug fixes",
+        "[Fixed] Response for custom widgets was empty, this is now updated inline with previous update. You need to reference the response as `response.data` in your templates",
+        "[Fixed] Fixed issue with retrieving access token"
+    ]
+  },
+  {
+    "version": "1.7.112",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+    "date": "2016-02-13T00:00:00+00:00",
+    "notes": [
+        "# Changes and additions",
+        "[Added] Responses now return an instance of `Placid_ResponseVariable`",
+        "[Changes] Changes for Craft 2.5"
+    ]
+  },
+  {
+    "version": "1.6.19",
+    "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+    "date": "2016-01-11T00:00:00+00:00",
+    "notes": [
+        "# Bug Fixes",
+        "[Fixed] Fixed a bug where settings couldn't be saved if CSRF was set to true in the craft configuration."
+    ]
+  },
+  {
+      "version": "1.6.18",
+      "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+      "date": "2016-01-07T00:00:00+00:00",
+      "notes": [
+          "# Bug Fixes",
+          "[Fixed] Fixed an issue with the `$provider->getToken()` method doesn't exist error",
+          "[Fixed] Cache was broken (sorry) but it's fixed now!"
+      ]
+  },
+  {
+      "version": "1.6.16",
+      "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+      "date": "2015-12-11T00:00:00+00:00",
+      "notes": [
+          "# Bug Fixes",
+          "[Fixed] Fixed a bug where placid would return the wrong cached request for POST requests"
+      ]
+  },
+  {
+      "version": "1.6.10",
+      "downloadUrl": "https://github.com/alecritson/Placid/archive/master.zip",
+      "date": "2015-12-03T00:00:00+00:00",
+      "notes": [
+          "# Going to 2.5",
+          "[Added] Plugin description",
+          "[Improved] Tabbed areas are now Control Panel Subnavs"
+      ]
+  }
+]

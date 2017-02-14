@@ -16,14 +16,14 @@ class NeoController extends BaseController
 	 */
 	public function actionSaveExpansion()
 	{
-		$this->requireAdmin();
 		$this->requireAjaxRequest();
 		$this->requirePostRequest();
 
 		$expanded = craft()->request->getPost('expanded');
 		$blockId = craft()->request->getPost('blockId');
+		$locale = craft()->request->getPost('locale');
 
-		$block = craft()->neo->getBlockById($blockId);
+		$block = craft()->neo->getBlockById($blockId, $locale);
 		$block->collapsed = ($expanded === 'false' ? true : !$expanded);
 
 		$success = craft()->neo->saveBlockCollapse($block);
@@ -41,7 +41,6 @@ class NeoController extends BaseController
 	 */
 	public function actionRenderBlocks()
 	{
-		$this->requireAdmin();
 		$this->requireAjaxRequest();
 		$this->requirePostRequest();
 

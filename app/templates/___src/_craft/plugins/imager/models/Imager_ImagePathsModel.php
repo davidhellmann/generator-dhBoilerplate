@@ -84,7 +84,7 @@ class Imager_ImagePathsModel extends BaseModel
     {
         $assetSourcePath = craft()->config->parseEnvironmentString($image->getSource()->settings['url']);
 
-        if (strncmp($assetSourcePath, 'http', 4) === 0) {
+        if (strncmp($assetSourcePath, 'http', 4) === 0 || strncmp($assetSourcePath, '//', 2) === 0) {
             $parsedUrl = parse_url($assetSourcePath);
             $assetSourcePath = $parsedUrl['path'];
         }
@@ -157,8 +157,7 @@ class Imager_ImagePathsModel extends BaseModel
         $pathParts = pathinfo($urlParts['path']);
         $hashRemoteUrl = craft()->imager->getSetting('hashRemoteUrl');
         $hashPath = craft()->imager->getSetting('hashPath');
-
-
+        
         if ($hashPath) {
             $targetFolder = '/' . md5($pathParts['dirname']);
         } else {
@@ -175,12 +174,13 @@ class Imager_ImagePathsModel extends BaseModel
             $parsedDirname = str_replace('.', '_', $urlParts['host']) . $targetFolder;
         }
 
-        $this->sourcePath = craft()->path->getRuntimePath() . 'imager/' . $parsedDirname . '/';
+        $runtimePath = IOHelper::getRealPath(craft()->path->getRuntimePath());
+        $this->sourcePath = ImagerService::fixSlashes($runtimePath . 'imager/' . $parsedDirname . '/');
         $this->sourceUrl = $image;
-        $this->targetPath = craft()->imager->getSetting('imagerSystemPath') . $parsedDirname . '/';
+        $this->targetPath = ImagerService::fixSlashes(craft()->imager->getSetting('imagerSystemPath') . $parsedDirname . '/');
         $this->targetUrl = craft()->imager->getSetting('imagerUrl') . $parsedDirname . '/';
         $this->sourceFilename = $this->targetFilename = str_replace(' ', '-', $pathParts['basename']);
-
+        
         // check if the temp path for remote files exists or can be created.
         if (!IOHelper::getRealPath($this->sourcePath)) {
             IOHelper::createFolder($this->sourcePath, craft()->config->get('defaultFolderPermissions'), true);
@@ -225,9 +225,13 @@ class Imager_ImagePathsModel extends BaseModel
     private function _downloadFile($destinationPath, $imageUrl)
     {
         // url encode filename to account for non-ascii characters in filenames.
-        $imageUrl = preg_replace_callback('#://([^/]+)/([^?]+)#', function ($match) {
-            return '://' . $match[1] . '/' . join('/', array_map('rawurlencode', explode('/', $match[2])));
-        }, urldecode($imageUrl));
+        $imageUrlArr = explode('?', $imageUrl);
+        
+        $imageUrlArr[0] = preg_replace_callback('#://([^/]+)/([^?]+)#', function ($match) {
+            return '://' . $match[1] . '/' . implode('/', array_map('rawurlencode', explode('/', $match[2])));
+        }, urldecode($imageUrlArr[0]));
+        
+        $imageUrl = implode('?', $imageUrlArr);
 
         if (function_exists('curl_init')) {
             $ch = curl_init($imageUrl);
