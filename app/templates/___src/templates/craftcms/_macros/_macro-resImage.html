@@ -59,7 +59,7 @@
 
     {# Set Position #}
     {% if options.position %}
-      {% set position = options.position %}
+      {% set position = "'"~options.position~"'" %}
     {% elseif image.settingsFocalPoint %}
       {% set position = image.settingsFocalPoint %}
     {% else %}
