@@ -52,7 +52,7 @@
       {% set base64Ratio = options.ratio|split(':') %}
       {% set ratio = ratio|first/ratio|last %}
     {% else %}
-      {% set imageSize = options.image.width ~ ':' ~ options.image.height %}
+      {% set imageSize = image.width ~ ':' ~ image.height %}
       {% set base64Ratio = imageSize|split(':') %}
       {% set ratio = '' %}
     {% endif %}
@@ -60,23 +60,23 @@
     {# Set Position #}
     {% if options.position %}
       {% set position = options.position %}
-    {% elseif options.image.settingsFocalPoint %}
-      {% set position = options.image.settingsFocalPoint %}
+    {% elseif image.settingsFocalPoint %}
+      {% set position = image.settingsFocalPoint %}
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
 
     {# Define global variables #}
     {% set imageSettings = {
-      jpegQuality: options.quality,
-      mode: options.mode,
-      position: position,
-      ratio: ratio,
-      effects: options.effects
+    jpegQuality: options.quality,
+    mode: options.mode,
+    position: position,
+    ratio: ratio,
+    effects: options.effects
     } %}
 
     {# Image #}
-    {% set images = craft.imager.transformImage(options.image, options.sizes, imageSettings) %}
+    {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
 
     {# Set Dominant Color #}
     {% if options.dominantColor %}
@@ -105,7 +105,7 @@
              srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
              data-srcset="{{ craft.imager.srcset(images) }}"
              data-sizes="auto"
-             alt="{{ options.image.title }}"/>
+             alt="{{ image.title }}"/>
         {% if options.caption %}
           <figcaption>
             {{ options.caption|raw }}
