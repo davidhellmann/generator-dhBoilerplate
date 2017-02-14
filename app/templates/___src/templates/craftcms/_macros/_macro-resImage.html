@@ -8,6 +8,7 @@
       { width: 480 }
     ],
     background: false,
+    elementtype: 'figure',
     quality: 80,
     mode: 'crop',
     position: '50% 50%',
@@ -17,7 +18,7 @@
     effects: { grayscale: true },
   } %}
 
-  macroResImage.resImage(options)
+  macroResImage.resImage(image, options)
 #}
 
 {% macro resImage(image,options) %}
