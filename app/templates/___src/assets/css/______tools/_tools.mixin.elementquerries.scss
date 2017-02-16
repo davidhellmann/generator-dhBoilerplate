@@ -2,13 +2,14 @@
 /*    Element Querries
 /* -------------------------------------------------- */
 
-@mixin elementquerries($el, $setting, $value) {
-  @element #{$el} and (#{$setting}: #{$value}) {
+@mixin elementquerries($selector, $setting, $value, $el) {
+  @element #{$selector} and (#{$setting}: #{$value}) {
     #{$el} {
       @content;
     }
   }
 }
+
 // Shorthand Version
 @mixin eq($args...) {
   @include elementquerries($args...);
