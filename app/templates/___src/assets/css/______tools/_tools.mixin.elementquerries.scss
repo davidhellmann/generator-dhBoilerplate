@@ -1,0 +1,15 @@
+/* -------------------------------------------------- */
+/*    Element Querries
+/* -------------------------------------------------- */
+
+@mixin elementquerries($el, $setting, $value) {
+  @element #{$el} and (#{$setting}: #{$value}) {
+    #{$el} {
+      @content;
+    }
+  }
+}
+// Shorthand Version
+@mixin eq($args...) {
+  @include elementquerries($args...);
+}
