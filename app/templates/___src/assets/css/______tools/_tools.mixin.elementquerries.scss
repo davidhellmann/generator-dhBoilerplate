@@ -2,9 +2,9 @@
 /*    Element Querries
 /* -------------------------------------------------- */
 
-@mixin elementquerries($selector, $setting, $value, $el) {
-  @element #{$selector} and (#{$setting}: #{$value}) {
-    #{$el} {
+@mixin elementquerries($el, $setting, $value, $selector) {
+  @element #{$el} and (#{$setting}: #{$value}) {
+    #{$selector} {
       @content;
     }
   }
