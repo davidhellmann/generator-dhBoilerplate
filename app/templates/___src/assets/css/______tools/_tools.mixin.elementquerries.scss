@@ -23,7 +23,7 @@
   }
   @else { @error '#{$selector} must be a String'; }
 
-  @element #{$el} and (#{$setting}: #{$value}) {
+  @element "#{$el}" and (#{$setting}: #{$value}) {
     #{$selector} {
       @content;
     }
