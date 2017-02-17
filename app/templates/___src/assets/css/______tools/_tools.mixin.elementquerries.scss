@@ -2,33 +2,38 @@
 /*    Element Querries
 /* -------------------------------------------------- */
 
-@mixin elementquerries($el, $setting, $value) {
-  @if type-of($el) == string {
-    $el: $el;
-  } @else {
-    @error '#{el} must be a String';
+@mixin eq($conditions...) {
+  $selector: &;
+  $joined-conditions: ();
+
+  // at least one EQCSS condition is required
+  @if length($conditions) < 1 or type-of(nth($conditions, length($conditions))) != map {
+    @error 'element query must include at least one condition';
   }
 
-  @if type-of($setting) == string {
-    $setting: $setting;
-  } @else {
-    @error '#{$setting} must be a String';
+  @for $i from 1 through length($conditions) {
+    $condition: nth($conditions, $i);
+    // if a selector (string) wasn't specified at the beginning of the arguments, this will be the current context
+    @if $i == 1 and type-of($condition) == string {
+      $selector: $condition;
+    }
+    @else if type-of($condition) == map {
+      // join each with ' and '
+      @each $key, $value in $condition {
+        $joined-conditions: $joined-conditions + if(length($joined-conditions) > 0, ' and ', '');
+
+        $joined-conditions: $joined-conditions + '(#{$key}: #{$value})';
+      }
+    }
+    @else { @error 'element query conditions must be a map'; }
   }
 
-  @if type-of($value) == number {
-    $value: $value;
-  } @else {
-    @error '#{$value} must be a Number';
-  }
+  $element-query: unquote("'#{$selector}' and #{$joined-conditions}");
 
-  @element "#{$el}" and (#{$setting}: #{$value}) {
-    @content;
-  }
-}
-
-// Shorthand Version
-@mixin eq($args...) {
-  @include elementquerries($args...) {
-    @content;
+  @at-root {
+    // @element syntax doesn't parse with sass, so send as raw string
+    @element #{inspect($element-query)} {
+      @content;
+    }
   }
 }
