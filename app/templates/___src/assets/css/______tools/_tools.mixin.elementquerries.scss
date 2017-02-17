@@ -3,6 +3,26 @@
 /* -------------------------------------------------- */
 
 @mixin elementquerries($el, $setting, $value, $selector) {
+  @if type-of($el) == string {
+    $el: $el;
+  }
+  @else { @error '#{el} must be a String'; }
+
+  @if type-of($setting) == string {
+    $setting: $setting;
+  }
+  @else { @error '#{$setting} must be a String'; }
+
+  @if type-of($value) == number {
+    $value: $value;
+  }
+  @else { @error '#{$value} must be a Number'; }
+
+  @if type-of($selector) == string {
+    $selector: $selector;
+  }
+  @else { @error '#{$selector} must be a String'; }
+
   @element #{$el} and (#{$setting}: #{$value}) {
     #{$selector} {
       @content;
@@ -12,5 +32,5 @@
 
 // Shorthand Version
 @mixin eq($args...) {
-  @include elementquerries($args...);
+  @include elementquerries($args...) { @content };
 }
