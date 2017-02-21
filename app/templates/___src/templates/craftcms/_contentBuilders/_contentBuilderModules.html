@@ -4,110 +4,126 @@
 #}
 
 {% switch data.type %}
-
   {# Accordion Modul #}
-  {% case 'accordionLabel' %}
-    {% include '_modules/_contentBuilder/_accordionLabel.template.html' with {
-      data: data.accordionLabel,
-      name: ''
-    } %}
-
-  {# Content Section Modul #}
-  {% case 'contentSection' %}
-    {% include '_modules/_contentBuilder/_contentSection.template.html' with {
-      data: data.contentSection,
+  {% case 'accordion' %}
+    {% include '_modules/_accordion/_accordion.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Button Modul #}
   {% case 'button' %}
-    {% include '_modules/_contentBuilder/_button.template.html' with {
-      data: data.button,
-      name: ''
+    {% include '_modules/_button/_button.template' with {
+    data: data,
+    name: ''
     } %}
 
   {# Button Group Modul #}
   {% case 'buttonGroup' %}
-    {% include '_modules/_contentBuilder/_buttonGroup.template.html' with {
-      data: data.buttonGroup,
+    {% include '_modules/_buttonGroup/_buttonGroup.template' with {
+    data: data,
+    name: ''
+    } %}
+
+  {# Content Section Modul #}
+  {% case 'contentSection' %}
+    {% include '_modules/_contentSection/_contentSection.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Definiton List Modul #}
   {% case 'definitionList' %}
-    {% include '_modules/_contentBuilder/_definitionList.template.html' with {
-      data: data.definitionList,
+    {% include '_modules/_definitionList/_definitionList.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Embed Modul #}
   {% case 'embed' %}
-    {% include '_modules/_contentBuilder/_embed.template.html' with {
-      data: data.embed,
+    {% include '_modules/_embed/_embed.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Headline Modul #}
   {% case 'headline' %}
-    {% include '_modules/_contentBuilder/_headline.template.html' with {
-      data: data.headline,
-      name: ''
-    } %}
-
-  {# Horizontal Ruler Modul #}
-  {% case 'horizontalRuler' %}
-    {% include '_modules/_contentBuilder/_horizontalRuler.template.html' with {
-      data: data.horizontalRuler,
+    {% include '_modules/_headline/_headline.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Image Cover Modul #}
   {% case 'imageCover' %}
-    {% include '_modules/_contentBuilder/_imageCover.template.html' with {
-      data: data.imageCover,
+    {% include '_modules/_imageCover/_imageCover.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Image Gallery Modul #}
   {% case 'imageGallery' %}
-    {% include '_modules/_contentBuilder/_imageGallery.template.html' with {
-      data: data.imageGallery,
+    {% include '_modules/_imageGallery/_imageGallery.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Image Grid Modul #}
   {% case 'imageGrid' %}
-    {% include '_modules/_contentBuilder/_imageGrid.template.html' with {
-      data: data.imageGrid,
+    {% include '_modules/_imageGrid/_imageGrid.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Single Modul #}
+  {% case 'imageSingle' %}
+    {% include '_modules/_imageSingle/_imageSingle.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Image Slider Modul #}
   {% case 'imageSlider' %}
-    {% include '_modules/_contentBuilder/_imageSlider.template.html' with {
-      data: data.imageSlider,
+    {% include '_modules/_imageSlider/_imageSlider.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Quote Modul #}
   {% case 'quote' %}
-    {% include '_modules/_contentBuilder/_quote.template.html' with {
-      data: data.quote,
+    {% include '_modules/_quote/_quote.template' with {
+      data: data,
       name: ''
     } %}
 
   {# Rich Text Modul #}
   {% case 'richText' %}
-    {% include '_modules/_contentBuilder/_richText.template.html' with {
-      data: data.richText,
+    {% include '_modules/_richText/_richText.template' with {
+      data: data,
       name: ''
     } %}
 
-  {# Rich Text Marginal Modul #}
-  {% case 'richTextMarginal' %}
-    {% include '_modules/_contentBuilder/_richTextMarginal.template.html' with {
-      data: data.richTextMarginal,
+  {# Rich Text Modul #}
+  {% case 'richTextMarginals' %}
+    {% include '_modules/_richTextMarginals/_richTextMarginals.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Separator Modul #}
+  {% case 'separator' %}
+    {% include '_modules/_separator/_separator.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Rich Text Modul #}
+  {% case 'twoColumns' %}
+    {% include '_modules/_twoColumns/_twoColumns.template' with {
+      data: data,
       name: ''
     } %}
 
 {% endswitch %}
+
+
+

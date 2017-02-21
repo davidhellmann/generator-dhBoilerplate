@@ -14,6 +14,9 @@
     position: '50% 50%',
     ratio: IMAGE_ELEMENT_RATIO,
     caption: IMAGE_ELEMENT_CAPTION,
+    captionTitle: IMAGE_ELEMENT_CAPTION_TITLE,
+    captionSource: IMAGE_ELEMENT_CAPTION_SOURCE,
+    captionSourceUrl: IMAGE_ELEMENT_CAPTION_URL,
     dominantColor: true,
     effects: { grayscale: true },
   } %}
@@ -25,21 +28,24 @@
 
   {# Set Defaults #}
   {% set defaults = {
-  class: 'm-figure',
-  sizes: [
-  { width: 1680 },
-  { width: 960 },
-  { width: 480 }
-  ],
-  background: false,
-  elementtype: 'figure',
-  quality: 80,
-  mode: 'crop',
-  position: false,
-  ratio: false,
-  caption: false,
-  dominantColor: false,
-  effects: {},
+    class: 'm-figure',
+    sizes: [
+    { width: 1680 },
+    { width: 960 },
+    { width: 480 }
+    ],
+    background: false,
+    elementtype: 'figure',
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false,
+    caption: false,
+    captionTitle: false,
+    captionSource: false,
+    captionSourceUrl: false,
+    dominantColor: false,
+    effects: {},
   } %}
 
   {# Merge Attr with Defaults #}
@@ -59,7 +65,7 @@
 
     {# Set Position #}
     {% if options.position %}
-      {% set position = "'"~options.position~"'" %}
+      {% set position = options.position %}
     {% elseif image.settingsFocalPoint %}
       {% set position = image.settingsFocalPoint %}
     {% else %}
@@ -68,11 +74,11 @@
 
     {# Define global variables #}
     {% set imageSettings = {
-    jpegQuality: options.quality,
-    mode: options.mode,
-    position: position,
-    ratio: ratio,
-    effects: options.effects
+      jpegQuality: options.quality,
+      mode: options.mode,
+      position: position,
+      ratio: ratio,
+      effects: options.effects
     } %}
 
     {# Image #}
@@ -80,37 +86,55 @@
 
     {# Set Dominant Color #}
     {% if options.dominantColor %}
-      {% set dominantColor = options.dominantColor %}
-    {% elseif options.dominantColor %}
       {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
 
     {% if options.background %}
-      <{{ options.elementtype }} class="{{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio : '' }}  {{ options.class }}  lazyload"
-      style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
-      background-position: {{ position|trim("'") }};
-      {#{{ not options.ratio ? 'padding-bottom:' ~ images[0].height / images[0].width * 100 ~ '%;' : '' }}#}
-      {{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}"
-      data-bgset="{{ craft.imager.srcset(images) }}"
-      data-sizes="auto">
-      </{{ options.elementtype }}>
+      <div class="{{ options.class }}  {{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio|replace({":": "-"}) : '' }} " style="{{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}">
+        <{{ options.elementtype }} class="o-ratio__content  lazyload"
+        style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+        background-position: {{ position|trim("'") }};"
+        data-bgset="{{ craft.imager.srcset(images) }}"
+        data-sizes="auto">
+        </{{ options.elementtype }}>
+      </div>
 
     {% else %}
       <figure class="{{ options.class }}"
-              style="{{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}">
-        <img class="lazyload  {{ options.class ~ '__image' }}"
-             src="{{ images|last.url }}"
-             srcset="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
-             data-srcset="{{ craft.imager.srcset(images) }}"
-             data-sizes="auto"
-             alt="{{ image.title }}"/>
-        {% if options.caption %}
-          <figcaption>
-            {{ options.caption|raw }}
-          </figcaption>
-        {% endif %}
+              itemprop="associatedMedia"
+              itemscope itemtype="http://schema.org/ImageObject">
+          <div class="{{ options.class ~ '__image' }}">
+            <div class="{{ options.class ~ '__imageBackground' }}" style="{{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}">
+              <img class="lazyload"
+                 src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+                 data-srcset="{{ craft.imager.srcset(images) }}"
+                 data-sizes="auto"
+                 alt="{{ image.title }}"/>
+            </div>
+          </div>
+          {% if options.caption or options.captionTitle %}
+            <figcaption class="m-caption  {{ options.class ~ '__caption' }}" itemprop="caption description">
+              {% if options.captionTitle %}
+                <span class="m-caption__headline  {{ options.class ~ '__captionHeadline' }}">
+                  {{ options.captionTitle|raw }}{{ options.caption and options.captionTitle ? ': '  }}
+                </span>
+              {% endif %}
+
+              <span class="m-caption__body  {{ options.class ~ '__captionBody' }}">
+                {{ options.caption|raw }}
+              </span>
+
+              {% if options.captionSourceUrl %}
+              &mdash; <a class="m-caption__link  {{ options.class ~ '__captionLink' }}" href="{{ options.captionSourceUrl.url }}" target="_blank">
+              {% endif %}
+                {{ options.captionSource }}
+              {% if options.captionSourceUrl %}
+              </a>
+              {% endif %}
+            </figcaption>
+          {% endif %}
       </figure>
 
     {% endif %}

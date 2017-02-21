@@ -14,22 +14,23 @@
     "start": "gulp init",
     "dev": "gulp",
     "build": "gulp build",
-    "ccss": "gulp criticalcss",
+    "criticalcss": "gulp criticalcss",
     "clean:dist": "gulp clean:dist",
     "clean:templates": "gulp clean:templates",
     "clean:images": "gulp clean:images",
     "clean:js": "gulp clean:js",
     "clean:css": "gulp clean:css",
     "copy:fonts": "gulp copy:fonts",
-    "images": "gulp images",
-    "svg": "gulp svg",
-    "svg:single": "gulp svg-single",
-    "svg:sprite": "gulp svg-sprite",
-    "sysfiles": "gulp systemFiles",
-    "templates": "gulp templates"
+    "copy:images": "gulp images",
+    "copy:svg": "gulp svg",
+    "copy:single": "gulp svg-single",
+    "copy:sprite": "gulp svg-sprite",
+    "copy:sysfiles": "gulp systemFiles",
+    "copy:templates": "gulp templates"
   },
   "devDependencies": {
     "aliasify": "^2.0.0",
+    "ansi-html": "^0.0.6",
     "autoprefixer": "^6.3.3",
     "babel": "^6.5.2",
     "babel-core": "^6.5.2",
@@ -121,6 +122,7 @@
     "animejs": "^1.1.0",
     "eqcss": "^1.5.0",
     "family.scss": "^1.0.4",
+    "flickity": "^2.0.5",
     "include-media": "^1.4.4",
     <% if (projectjQuery) { %>
     "jquery": "^3.0.0",
@@ -133,7 +135,6 @@
     "smooth-scroll": "cferdinandi/smooth-scroll",
     "svg-injector": "^1.1.3",
     "svgxuse": "^1.1.23",
-    "swiper": "^3.4.1",
     "velocity-animate": "^1.3.1",
     "waypoints": "^4.0.0",
     "webfontloader": "^1.6.26"
@@ -143,6 +144,7 @@
     "jquery": "./node_modules/jquery/dist/jquery.js"
     <% } %>
   },
+  "browser": {},
   "browserify": {
     "transform": [
       "browserify-shim"

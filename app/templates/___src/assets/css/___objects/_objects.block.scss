@@ -3,40 +3,24 @@
 /* -------------------------------------------------- */
 
 .o-block {
-  display: block;
-  text-align: center;
-}
-
-.o-block__img {
+  width: 100%;
   margin-bottom: vr(1);
+  position: relative;
 
-  // Different Sizes
-  .o-block--flush > & {
+  .o-section &:last-child {
     margin-bottom: 0;
   }
-
-  .o-block--small > & {
-    margin-bottom: vr(2);
-  }
-
-  .o-block--large > & {
-    margin-bottom: vr(3);
-  }
-
-  .o-block--huge > & {
-    margin-bottom: vr(4);
-  }
-}
-
-.o-block__body {
-  display: block;
 }
 
 // Different Alignments
-.o-block--right {
-  text-align: right;
-}
-
 .o-block--left {
   text-align: left;
+}
+
+.o-block--center {
+  text-align: center;
+}
+
+.o-block--right {
+  text-align: right;
 }

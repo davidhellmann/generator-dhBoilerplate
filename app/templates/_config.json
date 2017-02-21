@@ -154,12 +154,13 @@
     "images": {
       "optimizationLevel": 3,
       "jpegCompress": {
-        "loops": 3,
-        "min": 60,
-        "max": 70
+        "jpegCompress": {
+        "loops": 6,
+        "min": 75,
+        "max": 95
       },
       "pngquant": {
-        "quality": "75-88",
+        "quality": "75-95",
         "speed": 4
       },
       "svgoPlugins": [

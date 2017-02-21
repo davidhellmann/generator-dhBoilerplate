@@ -7,7 +7,13 @@ $dh-ratios: (
   (3:2),
   (4:3),
   (16:9),
-  (16:10)
+  (16:10),
+  (1:1),
+  (1:2),
+  (2:3),
+  (3:4),
+  (9:16),
+  (10:16)
 ) !default;
 
 .o-ratio {
@@ -48,7 +54,7 @@ $dh-ratios: (
       @error '`#{$consequent}` needs to be a number.';
     }
 
-    .o-ratio--#{$antecedent}\:#{$consequent}::before {
+    .o-ratio--#{$antecedent}-#{$consequent}::before {
       padding-bottom: ($consequent/$antecedent) * 100%;
     }
   }

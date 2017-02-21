@@ -4,9 +4,29 @@
 
   Matrix Content Builder use the Core Matrix Field from Craft CMS
 #}
+<div class="m-contentBuilder">
+  {% if entry.contentBuilderMatrix|length %}
+    {% set matrixfield = entry.contentBuilderMatrix %}
 
-{% if entry.contentBuilderMatrix|length %}
-  {% for content in entry.contentBuilderMatrix %}
-    {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
-  {% endfor %}
-{% endif %}
+    {% for content in matrixfield %}
+      {% if loop.first and content.type != 'contentSection' %}
+        FIRST CONTENT BUILDER BLOCK IS NOT A SECTION!!!
+
+      {% elseif content.type == 'contentSection' and loop.first %}
+        <div class="o-section  m-contentBuilder__section">
+
+      {% elseif content.type == 'contentSection' and not loop.first %}
+        </div>
+        <div class="o-section  m-contentBuilder__section">
+
+      {% elseif content.type != 'contentSection' %}
+        <div class="o-block  o-block--left  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+          <div class="o-block__inner  m-contentBuilder__blockInner  m-contentBuilder__blockInner--{{ content.type }}">
+            {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+  {% endif %}
+</div>

@@ -5,12 +5,12 @@
 
     Single property
     html {
-      @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+      @include fluid-type(14px, 18px, font-size, 320px, 1366px);
     }
 
     Multiple properties with same values
     h1 {
-      @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+      @include fluid-type(20px, 100px, padding-bottom padding-top,  320px, 1440px);
     }
    -------------------------------------------------- */
 

@@ -1,0 +1,1357 @@
+{
+  "groups": [
+    "Content Builder"
+  ],
+  "fields": [
+    {
+      "group": "Content Builder",
+      "name": "Content Builder: Matrix",
+      "handle": "contentBuilderMatrix",
+      "instructions": "",
+      "required": false,
+      "type": "Matrix",
+      "typesettings": {
+        "maxBlocks": null,
+        "blockTypes": {
+          "new1": {
+            "name": "[ = ] Content Section",
+            "handle": "contentSection",
+            "fields": {
+              "new1": {
+                "name": "Label",
+                "handle": "label",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new2": {
+                "name": "Behaviour",
+                "handle": "behaviour",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Width",
+                          "handle": "width",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Default",
+                                "value": "default",
+                                "default": 1
+                              },
+                              {
+                                "label": "Full",
+                                "value": "full",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "new3": {
+                "name": "Settings",
+                "handle": "modulSection",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Set Settings for this Section",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Background Color",
+                          "handle": "backgroundColor",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Default",
+                                "value": "default",
+                                "default": 1
+                              },
+                              {
+                                "label": "Color A",
+                                "value": "colorA",
+                                "default": ""
+                              },
+                              {
+                                "label": "Color B",
+                                "value": "colorB",
+                                "default": ""
+                              },
+                              {
+                                "label": "Color C",
+                                "value": "colorC",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new2": {
+                          "name": "Background Image",
+                          "handle": "backgroundImage",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": 1,
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": "",
+                            "viewMode": "large",
+                            "selectionLabel": "Add an Image"
+                          }
+                        },
+                        "new3": {
+                          "name": "Padding Vertical",
+                          "handle": "paddingVertical",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Default",
+                                "value": "default",
+                                "default": 1
+                              },
+                              {
+                                "label": "Small",
+                                "value": "small",
+                                "default": ""
+                              },
+                              {
+                                "label": "Medium",
+                                "value": "medium",
+                                "default": ""
+                              },
+                              {
+                                "label": "Large",
+                                "value": "large",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new4": {
+                          "name": "Text Color",
+                          "handle": "textColor",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Default",
+                                "value": "default",
+                                "default": ""
+                              },
+                              {
+                                "label": "Black",
+                                "value": "black",
+                                "default": ""
+                              },
+                              {
+                                "label": "White",
+                                "value": "white",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new2": {
+            "name": "[ + ] Accordion Label",
+            "handle": "accordionLabel",
+            "fields": {
+              "new1": {
+                "name": "Label",
+                "handle": "label",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              }
+            }
+          },
+          "new3": {
+            "name": "Button",
+            "handle": "button",
+            "fields": {
+              "new1": {
+                "name": "Modul: Button",
+                "handle": "modulButton",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Button",
+                          "handle": "button",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "FruitLinkIt",
+                          "width": "",
+                          "typesettings": {
+                            "types": [
+                              "email",
+                              "tel",
+                              "custom",
+                              "entry",
+                              "category",
+                              "asset"
+                            ],
+                            "defaultText": "",
+                            "allowCustomText": 1,
+                            "allowTarget": 1,
+                            "entrySources": [],
+                            "entrySelectionLabel": "Select an entry",
+                            "assetSources": "*",
+                            "assetSelectionLabel": "Select an asset",
+                            "categorySources": "*",
+                            "categorySelectionLabel": "Select a category"
+                          }
+                        },
+                        "new2": {
+                          "name": "Style",
+                          "handle": "style",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Primary",
+                                "value": "primary",
+                                "default": 1
+                              },
+                              {
+                                "label": "Secondary",
+                                "value": "secondary",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new3": {
+                          "name": "Alignment",
+                          "handle": "alignment",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Left",
+                                "value": "left",
+                                "default": 1
+                              },
+                              {
+                                "label": "Center",
+                                "value": "center",
+                                "default": ""
+                              },
+                              {
+                                "label": "Right",
+                                "value": "right",
+                                "default": ""
+                              },
+                              {
+                                "label": "Full",
+                                "value": "full",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new4": {
+                          "name": "With Icon",
+                          "handle": "withIcon",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "No",
+                                "value": "no",
+                                "default": 1
+                              },
+                              {
+                                "label": "Yes",
+                                "value": "yes",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new5": {
+                          "name": "Icon Position",
+                          "handle": "iconPosition",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Right",
+                                "value": "right",
+                                "default": 1
+                              },
+                              {
+                                "label": "Left",
+                                "value": "left",
+                                "default": ""
+                              },
+                              {
+                                "label": "Top",
+                                "value": "top",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new6": {
+                          "name": "Icon Size",
+                          "handle": "iconSize",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Small",
+                                "value": "small",
+                                "default": 1
+                              },
+                              {
+                                "label": "Medium",
+                                "value": "medium",
+                                "default": ""
+                              },
+                              {
+                                "label": "Large",
+                                "value": "large",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new7": {
+                          "name": "Icon",
+                          "handle": "icon",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Icon Sample",
+                                "value": "iconSample",
+                                "default": 1
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new4": {
+            "name": "Button Group",
+            "handle": "buttonGroup",
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Primary",
+                      "value": "primary",
+                      "default": 1
+                    },
+                    {
+                      "label": "Secondary",
+                      "value": "secondary",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": 1
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Modul: Button",
+                "handle": "modulButton",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": null,
+                  "selectionLabel": "Add a Button",
+                  "maxRows": 6,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Button",
+                          "handle": "button",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "FruitLinkIt",
+                          "width": "",
+                          "typesettings": {
+                            "types": [
+                              "email",
+                              "tel",
+                              "custom",
+                              "entry",
+                              "category",
+                              "asset"
+                            ],
+                            "defaultText": "",
+                            "allowCustomText": 1,
+                            "allowTarget": 1,
+                            "entrySources": [],
+                            "entrySelectionLabel": "Select an entry",
+                            "assetSources": "*",
+                            "assetSelectionLabel": "Select an asset",
+                            "categorySources": "*",
+                            "categorySelectionLabel": "Select a category"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new5": {
+            "name": "Definition List",
+            "handle": "definitionList",
+            "fields": {
+              "new1": {
+                "name": "Modul: Definition List",
+                "handle": "modulDefinitionList",
+                "instructions": "",
+                "required": 0,
+                "type": "Table",
+                "typesettings": {
+                  "columns": {
+                    "col1": {
+                      "heading": "Definition Term",
+                      "handle": "definitionTerm",
+                      "width": "",
+                      "type": "singleline"
+                    },
+                    "col2": {
+                      "heading": "Definition Description",
+                      "handle": "definitionDescription",
+                      "width": "",
+                      "type": "singleline"
+                    }
+                  },
+                  "defaults": {
+                    "row1": {
+                      "col1": "",
+                      "col2": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new6": {
+            "name": "Embed",
+            "handle": "embed",
+            "fields": {
+              "new1": {
+                "name": "Modul: Embed",
+                "handle": "modulEmbed",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": null,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Code",
+                          "handle": "code",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": 1,
+                            "initialRows": 6
+                          }
+                        },
+                        "new2": {
+                          "name": "Source",
+                          "handle": "source",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": "",
+                            "initialRows": 4
+                          }
+                        },
+                        "new3": {
+                          "name": "Source Link",
+                          "handle": "sourceLink",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "FruitLinkIt",
+                          "width": "",
+                          "typesettings": {
+                            "types": [
+                              "custom"
+                            ],
+                            "defaultText": "",
+                            "allowCustomText": "",
+                            "allowTarget": "",
+                            "entrySources": [],
+                            "entrySelectionLabel": "Select an entry",
+                            "assetSources": "*",
+                            "assetSelectionLabel": "Select an asset",
+                            "categorySources": "*",
+                            "categorySelectionLabel": "Select a category"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new7": {
+            "name": "Headline",
+            "handle": "headline",
+            "fields": {
+              "new1": {
+                "name": "Modul: Headline",
+                "handle": "modulHeadline",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Headline",
+                          "handle": "headline",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": "",
+                            "initialRows": 4
+                          }
+                        },
+                        "new2": {
+                          "name": "Semantic Size",
+                          "handle": "semanticSize",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "H2",
+                                "value": "h2",
+                                "default": 1
+                              },
+                              {
+                                "label": "H3",
+                                "value": "h3",
+                                "default": ""
+                              },
+                              {
+                                "label": "H4",
+                                "value": "h4",
+                                "default": ""
+                              },
+                              {
+                                "label": "H5",
+                                "value": "h5",
+                                "default": ""
+                              },
+                              {
+                                "label": "H6",
+                                "value": "h6",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new3": {
+                          "name": "Visual Size",
+                          "handle": "visualSize",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Default",
+                                "value": "default",
+                                "default": 1
+                              },
+                              {
+                                "label": "Looks like H2",
+                                "value": "h2",
+                                "default": ""
+                              },
+                              {
+                                "label": "Looks like H3",
+                                "value": "h3",
+                                "default": ""
+                              },
+                              {
+                                "label": "Looks like H4",
+                                "value": "h4",
+                                "default": ""
+                              },
+                              {
+                                "label": "Looks like H5",
+                                "value": "h5",
+                                "default": ""
+                              },
+                              {
+                                "label": "Looks like H6",
+                                "value": "h6",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new8": {
+            "name": "Horizontal Ruler",
+            "handle": "horizontalRuler",
+            "fields": {
+              "new1": {
+                "name": "Style ",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Style A",
+                      "value": "styleA",
+                      "default": ""
+                    },
+                    {
+                      "label": "Style B",
+                      "value": "styleB",
+                      "default": ""
+                    },
+                    {
+                      "label": "Style C",
+                      "value": "styleC",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "new9": {
+            "name": "Image Cover",
+            "handle": "imageCover",
+            "fields": {
+              "new1": {
+                "name": "Modul: Image Cover",
+                "handle": "modulImageCover",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Image",
+                          "handle": "image",
+                          "instructions": "",
+                          "required": 1,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": 1,
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": 1,
+                            "viewMode": "large",
+                            "selectionLabel": "Add an Image"
+                          }
+                        },
+                        "new2": {
+                          "name": "Image Position",
+                          "handle": "imagePosition",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "Left : Top",
+                                "value": "left top",
+                                "default": ""
+                              },
+                              {
+                                "label": "Left : Center",
+                                "value": "left center",
+                                "default": ""
+                              },
+                              {
+                                "label": "Left : Bottom",
+                                "value": "left bottom",
+                                "default": ""
+                              },
+                              {
+                                "label": "Center : Top",
+                                "value": "center top",
+                                "default": ""
+                              },
+                              {
+                                "label": "Center : Center",
+                                "value": "center center",
+                                "default": 1
+                              },
+                              {
+                                "label": "Center : Bottom",
+                                "value": "center bottom",
+                                "default": ""
+                              },
+                              {
+                                "label": "Right : Top",
+                                "value": "right top",
+                                "default": ""
+                              },
+                              {
+                                "label": "Right : Center",
+                                "value": "right center",
+                                "default": ""
+                              },
+                              {
+                                "label": "Right : Bottom",
+                                "value": "right bottom",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new3": {
+                          "name": "Image Copy",
+                          "handle": "imageCopy",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": "",
+                            "initialRows": 4
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new10": {
+            "name": "Image Gallery",
+            "handle": "imageGallery",
+            "fields": {
+              "new1": {
+                "name": "Modul: Image Gallery",
+                "handle": "modulImageGallery",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Cols",
+                          "handle": "cols",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "6 Columns",
+                                "value": "cols-6",
+                                "default": 1
+                              },
+                              {
+                                "label": "5 Columns",
+                                "value": "cols-5",
+                                "default": ""
+                              },
+                              {
+                                "label": "4 Columns",
+                                "value": "cols-4",
+                                "default": ""
+                              },
+                              {
+                                "label": "3 Columns",
+                                "value": "cols-3",
+                                "default": ""
+                              },
+                              {
+                                "label": "2 Columns",
+                                "value": "cols-2",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new2": {
+                          "name": "Images",
+                          "handle": "images",
+                          "instructions": "",
+                          "required": 1,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": 1,
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": "",
+                            "viewMode": "large",
+                            "selectionLabel": "Add Images"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new11": {
+            "name": "Image Grid",
+            "handle": "imageGrid",
+            "fields": {
+              "new1": {
+                "name": "Modul: Image Grid",
+                "handle": "modulImageGrid",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Cols",
+                          "handle": "cols",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Dropdown",
+                          "width": "",
+                          "typesettings": {
+                            "options": [
+                              {
+                                "label": "1 Column",
+                                "value": "cols-1",
+                                "default": 1
+                              },
+                              {
+                                "label": "2 Columns",
+                                "value": "cols-2",
+                                "default": ""
+                              },
+                              {
+                                "label": "3 Columns",
+                                "value": "cols-2",
+                                "default": ""
+                              }
+                            ]
+                          }
+                        },
+                        "new2": {
+                          "name": "Images",
+                          "handle": "images",
+                          "instructions": "",
+                          "required": 1,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": 1,
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": "",
+                            "viewMode": "large",
+                            "selectionLabel": "Add Images"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new12": {
+            "name": "Image Slider",
+            "handle": "imageSlider",
+            "fields": {
+              "new1": {
+                "name": "Modul: Image Slider",
+                "handle": "modulImageSlider",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Images",
+                          "handle": "images",
+                          "instructions": "",
+                          "required": 1,
+                          "type": "Assets",
+                          "width": "",
+                          "typesettings": {
+                            "useSingleFolder": 1,
+                            "sources": "*",
+                            "defaultUploadLocationSource": "siteImages",
+                            "defaultUploadLocationSubpath": "",
+                            "singleUploadLocationSource": "siteImages",
+                            "singleUploadLocationSubpath": "",
+                            "restrictFiles": 1,
+                            "allowedKinds": [
+                              "image"
+                            ],
+                            "limit": "",
+                            "viewMode": "large",
+                            "selectionLabel": "Add Images"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new13": {
+            "name": "Quote",
+            "handle": "quote",
+            "fields": {
+              "new1": {
+                "name": "Modul: Quote",
+                "handle": "modulQuote",
+                "instructions": "",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": 1,
+                  "selectionLabel": "Add a row",
+                  "maxRows": null,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Quote",
+                          "handle": "quote",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": 1,
+                            "initialRows": 6
+                          }
+                        },
+                        "new2": {
+                          "name": "Source",
+                          "handle": "source",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "PlainText",
+                          "width": "",
+                          "typesettings": {
+                            "placeholder": "",
+                            "maxLength": "",
+                            "multiline": "",
+                            "initialRows": 4
+                          }
+                        },
+                        "new3": {
+                          "name": "Source Link",
+                          "handle": "sourceLink",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "FruitLinkIt",
+                          "width": "",
+                          "typesettings": {
+                            "types": [
+                              "custom"
+                            ],
+                            "defaultText": "",
+                            "allowCustomText": "",
+                            "allowTarget": "",
+                            "entrySources": [],
+                            "entrySelectionLabel": "Select an entry",
+                            "assetSources": "*",
+                            "assetSelectionLabel": "Select an asset",
+                            "categorySources": "*",
+                            "categorySelectionLabel": "Select a category"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "new14": {
+            "name": "Rich Text",
+            "handle": "richText",
+            "fields": {
+              "new1": {
+                "name": "Rich Text",
+                "handle": "richText",
+                "instructions": "",
+                "required": 0,
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Custom.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": 1,
+                  "purifyHtml": 1,
+                  "columnType": "text"
+                }
+              }
+            }
+          },
+          "new15": {
+            "name": "Rich Text + Marginals",
+            "handle": "richTextMarginal",
+            "fields": {
+              "new1": {
+                "name": "Rich Text",
+                "handle": "richText",
+                "instructions": "",
+                "required": 0,
+                "type": "RichText",
+                "typesettings": {
+                  "configFile": "Custom.json",
+                  "availableAssetSources": "*",
+                  "availableTransforms": "*",
+                  "cleanupHtml": 1,
+                  "purifyHtml": 1,
+                  "columnType": "text"
+                }
+              },
+              "new2": {
+                "name": "Marginal Columns",
+                "handle": "marginalColumns",
+                "instructions": "First Column is Left\r\nSecond Column is Right",
+                "required": 0,
+                "type": "SuperTable",
+                "typesettings": {
+                  "fieldLayout": "row",
+                  "staticField": null,
+                  "selectionLabel": "Add a Column",
+                  "maxRows": 2,
+                  "blockTypes": {
+                    "new": {
+                      "fields": {
+                        "new1": {
+                          "name": "Columns",
+                          "handle": "columns",
+                          "instructions": "",
+                          "required": 0,
+                          "type": "Matrix",
+                          "width": "",
+                          "typesettings": {
+                            "maxBlocks": 1,
+                            "blockTypes": {
+                              "new1": {
+                                "name": "Column Image",
+                                "handle": "columnImage",
+                                "fields": {
+                                  "new1": {
+                                    "name": "Image",
+                                    "handle": "image",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "type": "Assets",
+                                    "typesettings": {
+                                      "useSingleFolder": 1,
+                                      "sources": "*",
+                                      "defaultUploadLocationSource": "siteImages",
+                                      "defaultUploadLocationSubpath": "",
+                                      "singleUploadLocationSource": "siteImages",
+                                      "singleUploadLocationSubpath": "",
+                                      "restrictFiles": 1,
+                                      "allowedKinds": [
+                                        "image"
+                                      ],
+                                      "limit": 1,
+                                      "viewMode": "large",
+                                      "selectionLabel": ""
+                                    }
+                                  }
+                                }
+                              },
+                              "new2": {
+                                "name": "Column Quote",
+                                "handle": "columnQuote",
+                                "fields": {
+                                  "new1": {
+                                    "name": "Quote",
+                                    "handle": "quote",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "type": "PlainText",
+                                    "typesettings": {
+                                      "placeholder": "",
+                                      "maxLength": "",
+                                      "multiline": 1,
+                                      "initialRows": 6
+                                    }
+                                  },
+                                  "new2": {
+                                    "name": "Source",
+                                    "handle": "source",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "type": "PlainText",
+                                    "typesettings": {
+                                      "placeholder": "",
+                                      "maxLength": "",
+                                      "multiline": "",
+                                      "initialRows": 4
+                                    }
+                                  },
+                                  "new3": {
+                                    "name": "Source Link",
+                                    "handle": "sourceLink",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "type": "FruitLinkIt",
+                                    "typesettings": {
+                                      "types": [
+                                        "custom"
+                                      ],
+                                      "defaultText": "",
+                                      "allowCustomText": "",
+                                      "allowTarget": "",
+                                      "entrySources": [],
+                                      "entrySelectionLabel": "Select an entry",
+                                      "assetSources": "*",
+                                      "assetSelectionLabel": "Select an asset",
+                                      "categorySources": "*",
+                                      "categorySelectionLabel": "Select a category"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+/* -------------------------------------------------- */
+/*    Rich Text Marginals
+/* -------------------------------------------------- */
+
+.m-richTextMarginals {
+  @include fc(12);
+  @include ft(s(1), s(2), padding-left padding-right);
+
+  @include media('>=m') {
+    @include fc(6);
+    @include center();
+  }
+}
+
+.m-richTextMarginals__aside {
+  @include fc(12);
+
+  @include media('>=m') {
+    @include fc(3);
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    &--right {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .m-quote {
+    margin: 0;
+  }
+}

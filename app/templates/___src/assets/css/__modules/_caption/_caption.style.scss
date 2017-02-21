@@ -1,0 +1,29 @@
+/* -------------------------------------------------- */
+/*    Caption
+/* -------------------------------------------------- */
+
+.m-caption {
+  @include ft(s(1), s(2), padding-left padding-right);
+  width: 100%;
+  font-size: fs('ms-2');
+  font-family: ff('sans-serif');
+  color: c('black-50');
+  margin-top: vr(1/2);
+
+  @include media('>=m') {
+    margin-top: 0;
+  }
+}
+
+.m-caption__headline {
+  font-weight: 700;
+  color: c('black-90');
+}
+
+.m-caption__body {
+  margin-bottom: vr(1/2);
+}
+
+.m-caption__link {
+  /* empty */
+}

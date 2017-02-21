@@ -26,7 +26,7 @@ input.m-checkbox[type="checkbox"] {
   &:checked + span {
 
     &::before {
-      background: c('navy-blue');
+      background: c('blue');
       box-shadow: inset 0 0 0 4px c('white');
     }
   }

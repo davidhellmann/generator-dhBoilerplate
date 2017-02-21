@@ -1,11 +1,15 @@
 /* -------------------------------------------------- */
-/*    Font Family
+/*    Font Families
 /* -------------------------------------------------- */
 
-$font-family-base:      'Roboto', Georgia, "Times New Roman", Times, serif;
-$font-family-headline:  'Playfair Display', Helvetica, Arial, sans-serif;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-sans-serif:  Helvetica, Arial, sans-serif;
+$font-family-base:        Georgia, "Times New Roman", Times, serif;
+$font-family-headline:    Helvetica, Arial, sans-serif;
 
 $dh-fontfamilies: (
-  'base':               $font-family-base,
-  'headline':           $font-family-headline,
+  'serif':                $font-family-serif,
+  'sans-serif':           $font-family-sans-serif,
+  'base':                 $font-family-base,
+  'headline':             $font-family-headline,
 );

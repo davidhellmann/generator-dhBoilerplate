@@ -1,0 +1,86 @@
+/* -------------------------------------------------- */
+/*    Image Cover
+/* -------------------------------------------------- */
+
+.m-imageCover {
+  position: relative;
+
+  .m-figure {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+
+    > * {
+      margin-bottom: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 10;
+    }
+  }
+}
+
+.m-imageCover__titleWrapper {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  background-image: linear-gradient(to top, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+  color: c('white');
+  font-family: ff('sans-serif');
+  @include ft(fs('ms2'), fs('ms8'));
+
+  .m-imageCover--text-left & {
+    text-align: left;
+  }
+
+  .m-imageCover--text-center & {
+    text-align: center;
+  }
+
+  .m-imageCover--text-right & {
+    text-align: right;
+  }
+
+  .m-imageCover--vPosition-top & {
+    background-image: linear-gradient(to bottom, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+  }
+
+  .m-imageCover--vPosition-center & {
+    background: rgba(c('black'), .5);
+  }
+
+  .m-imageCover--vPosition-bottom & {
+    background-image: linear-gradient(to top, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+  }
+}
+
+
+.m-imageCover__title {
+  @include ft(vr(1), vr(4), padding-top padding-bottom);
+  @include ft(s(1), s(2), padding-left padding-right);
+  position: absolute;
+  font-weight: 700;
+  z-index: 30;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+
+  .m-imageCover--vPosition-top & {
+    bottom: auto;
+    top: 0;
+  }
+
+  .m-imageCover--vPosition-center & {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .m-imageCover--vPosition-bottom & {
+    bottom: 0;
+  }
+}

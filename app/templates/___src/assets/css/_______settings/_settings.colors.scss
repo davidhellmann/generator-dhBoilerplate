@@ -28,9 +28,9 @@ $color-black-90:                      darken($color-white, 90%);
 $color-black-95:                      darken($color-white, 95%);
 
 // Colored
-$color-free-speech-red:               #cc0000;
-$color-harlequin:                     #32cc00;
-$color-navy-blue:                     #0065cc;
+$color-red:                           #cc0000;
+$color-green:                         #32cc00;
+$color-blue:                          #0065cc;
 
 $dh-grayShades: (
   // Shades of Gray
@@ -59,9 +59,9 @@ $dh-grayShades: (
 
 $dh-colored: (
   // Colored
-  'free-speech-red':                  $color-free-speech-red,
-  'harlequin':                        $color-harlequin,
-  'navy-blue':                        $color-navy-blue,
+  'red':                              $color-red,
+  'green':                            $color-green,
+  'blue':                             $color-blue,
 );
 
 // Merge Gray Shades and Colored Map

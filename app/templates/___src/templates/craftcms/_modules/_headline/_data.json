@@ -1,0 +1,22 @@
+{
+  "singleHeadline": "This is a Headline",
+  "settingsHeadline": {
+    "semanticSize": {
+      "H1": "h1",
+      "H2": "h2",
+      "H3": "h3",
+      "H4": "h4",
+      "H5": "h5",
+      "H6": "h6"
+    },
+    "visualSize": {
+      "Default": "default",
+      "Looks like H1": "h1",
+      "Looks like H2": "h2",
+      "Looks like H3": "h3",
+      "Looks like H4": "h4",
+      "Looks like H5": "h5",
+      "Looks like H6": "h5"
+    }
+  }
+}

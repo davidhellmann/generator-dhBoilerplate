@@ -26,4 +26,3 @@ indent_size = 4
 # Markdown Settings
 [*.md]
 trim_trailing_whitespace = false
-
