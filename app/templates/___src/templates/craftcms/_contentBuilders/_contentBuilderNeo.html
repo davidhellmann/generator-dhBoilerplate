@@ -1,0 +1,42 @@
+{#
+  Content Builder Neo
+  ======================
+
+  Neo Content Builder use the Neo Plugin
+#}
+<div class="m-contentBuilder">
+  {% if entry.contentBuilderNeo.level(1)|length %}
+  {% set neoField = entry.contentBuilderNeo.level(1) %}
+
+  {% for content in neoField %}
+  {# Check if first Type is not a Section #}
+  {% if loop.first and content.type != 'contentSection' %}
+    <!-- start: o-section / opened by Content Builder -->
+    {% include '_modules/_contentSection/_contentSection.template' with {
+    data: content,
+    name: ''
+    } %}
+  {% endif %}
+
+  {# Check if an other Section is opened and close the Section before #}
+  {% if content.type == 'contentSection' %}
+  {% if not loop.first %}
+</div>
+<!-- end: o-section -->
+  {% endif %}
+<!-- start: o-section -->
+  {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+
+      {# All other Content Modules #}
+      {% elseif content.type != 'contentSection' %}
+        <!-- start: o-block -->
+        <div class="o-block  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+          {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+        </div>
+        <!-- end: o-block -->
+      {% endif %}
+    {% endfor %}
+  </div>
+<!-- end: o-section -->
+{% endif %}
+</div>

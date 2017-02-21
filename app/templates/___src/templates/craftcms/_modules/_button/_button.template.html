@@ -1,0 +1,47 @@
+{#
+  Button
+  ======
+#}
+
+{# Set Vars #}
+{% set classname = name is defined and name is not empty ? name : 'm-button' %}
+{% set button = data.singleButton is defined ? data.singleButton %}
+{% set settings = data.settingsButton is defined ? data.settingsButton %}
+{% set alignment = settings.alignment is defined ? '  ' ~ classname ~ '--' ~ settings.alignment : '' %}
+{% set style = settings.style is defined ? '  ' ~ classname ~ '--' ~ settings.style : '' %}
+{% set target = button.target is defined and button.target ? ' target=_blank' : '' %}
+{% set withIcon = settings.withIcon is defined ? settings.withIcon %}
+
+
+{# Icon Settings #}
+{% if withIcon %}
+  {% set iconSettings = {
+    'iconClass': '  ' ~ classname ~ '--withIcon',
+    'iconPosition': settings.iconPosition is defined ? '  ' ~ classname ~ '--iconPosition-' ~ settings.iconPosition : '',
+    'iconSize': settings.iconSize is defined ? '  ' ~ classname ~ '--iconSize-' ~ settings.iconSize : ''
+  } %}
+{% endif %}
+
+{# Modul #}
+<div class="{{ classname }}">
+  <a itemprop="url"
+     role="button"
+     href="{{ button.url }}"
+     {{ target }}
+     class="{{ classname ~ '__link' }}{{ style }}{{ alignment }}{% if withIcon %}
+       {{ iconSettings.iconClass }}
+       {{ iconSettings.iconSize }}
+       {{ iconSettings.iconPosition }}
+     {% endif %}">
+     {% if withIcon %}
+       <div class="m-button__iconWrapper">
+         <span>
+          {{ button.text }}
+         </span>
+         {% include '_svg/iconSample.svg.html' %}
+       </div>
+     {% else %}
+       {{ button.text }}
+     {% endif %}
+  </a>
+</div>

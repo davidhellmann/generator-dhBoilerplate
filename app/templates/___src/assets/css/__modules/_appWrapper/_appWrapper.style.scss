@@ -7,17 +7,14 @@
   color: c('black-90');
   background: c('white');
   font-family: ff('base');
-  opacity: 0;
+  opacity: 1;
   transition-property: opacity;
-  will-change: opacity;
   transition-timing-function: ease('out-cubic');
 }
-
 
 .js .m-appWrapper {
   opacity: 0;
 }
-
 
 .js .is-complete .m-appWrapper {
   opacity: 1;
@@ -29,4 +26,8 @@
 .js .js-pageTransition .m-appWrapper {
   opacity: 0;
   transition-duration: 250ms;
+}
+
+.js .is-livePreview .m-appWrapper {
+  opacity: 1 !important;
 }

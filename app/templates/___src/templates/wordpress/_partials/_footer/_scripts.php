@@ -19,7 +19,7 @@
 
 
 <!-- Modernizr -->
-<script src="<?php bloginfo('template_url'); ?>/assets/js/vendor/modernizr-custom.min.js" async></script>
+<!--<script src="<?php /*bloginfo('template_url'); */?>/assets/js/vendor/modernizr-custom.min.js" async></script>-->
 
 
 <!-- JS Scripts & Plugins -->

@@ -1,0 +1,65 @@
+/* -------------------------------------------------- */
+/*    Embed
+/* -------------------------------------------------- */
+
+.m-embed {
+  @include fc(12);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.m-embed__item {
+  @include ft(s(1), s(2), padding-left padding-right);
+}
+
+.m-embed__video {
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Embed Position
+.m-embed--embed-left {
+  .m-embed__item {
+    align-self: flex-start;
+  }
+}
+
+.m-embed--embed-center {
+  .m-embed__item {
+    align-self: center;
+  }
+}
+
+.m-embed--embed-right {
+  .m-embed__item {
+    align-self: flex-end;
+  }
+}
+
+// Embed Width
+.m-embed--embed-full {
+  @include media('>=m') {
+    .m-embed__item {
+      width: 100%;
+    }
+  }
+}
+
+.m-embed--embed-threeQuarter {
+  @include media('>=m') {
+    .m-embed__item {
+      width: 75%;
+    }
+  }
+}
+
+.m-embed--embed-half {
+  @include media('>=m') {
+    .m-embed__item {
+      width: 50%;
+    }
+  }
+}

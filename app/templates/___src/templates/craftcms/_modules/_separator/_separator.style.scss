@@ -1,0 +1,48 @@
+/* -------------------------------------------------- */
+/*    Separator
+/* -------------------------------------------------- */
+
+.m-separator {
+  @include fb(true);
+  @include center();
+  @include ft(vr(1), vr(2), margin-top margin-bottom);
+  position: relative;
+  border: none;
+}
+
+// Full Width
+.m-separator--width-full {
+  @include fb();
+}
+
+// Margin Vertical
+.m-separator--marginVertical-none {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.m-separator--marginVertical-small {
+  @include ft(vr(1), vr(2), margin-top margin-bottom);
+}
+
+.m-separator--marginVertical-medium {
+  @include ft(vr(1), vr(3), margin-top margin-bottom);
+}
+
+.m-separator--marginVertical-large {
+  @include ft(vr(1), vr(4), margin-top margin-bottom);
+}
+
+
+// Styles
+.m-separator--style-default {
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    @include ft(s(1), s(2), left right);
+    height: 1px;
+    background-color: c('black-10');
+  }
+}
+

@@ -17,12 +17,19 @@ if (_debug === true) {
 // Polyfills
 import "babel-polyfill"
 import 'svgxuse'
+// import 'eqcss'
 
 // Scripts
 import './scripts/example'
 import './scripts/pagetransition'
 import './scripts/preloader'
 // import './scripts/bodyclass'
-// import './scripts/lazyloading'
+import './scripts/lazyloading'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
+
+
+// Content Builder Modules
+import '../../templates/_modules/_accordion/_accordion.script'
+import '../../templates/_modules/_imageSlider/_imageSlider.script'
+import '../../templates/_modules/_imageGallery/_imageGallery.script'

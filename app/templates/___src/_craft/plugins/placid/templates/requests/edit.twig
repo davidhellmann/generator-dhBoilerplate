@@ -1,0 +1,72 @@
+{% extends "placid/_layout" %}
+
+{% import "_includes/forms" as forms %}
+
+{% set docsUrl = 'https://github.com/alecritson/Placid/wiki/Create-your-first-request' %}
+
+{% set title = request ? request.name : "New Request"|t %}
+{% set fullPageForm = true %}
+{% set saveShortcutRedirect = "/admin/placid/" ~ (request ? 'requests/' ~ request.id)  %}
+
+{% set crumbs = [
+    { label: "Placid"|t, url: url('placid') },
+    { label: request ? request.name : 'New request', url: url( request ? 'placid/requests/' ~ request.id : 'placid/requests/new') }
+] %}
+
+{% block saveButton %}
+  <input type="submit" class="btn submit" value="{{ 'Save Request'|t }}">
+{% endblock %}
+
+{% block main %}
+
+
+    <input type="hidden" name="action" value="placid/requests/saveRequest">
+    <input type="hidden" name="redirect" value="placid" />
+    <input type="hidden" name="{{ craft.config.csrfTokenName }}" value="{{ craft.request.csrfToken }}">
+
+    {% if request %}
+      <input type="hidden" name="requestId" value="{{ request.id }}" />
+    {% endif %}
+
+    <div class="grid first">
+
+        <div class="item" data-position="left" data-min-colspan="2" data-max-colspan="3">
+          <div class="pane">
+            {% include 'placid/requests/_fields' %}
+          </div>
+        </div>
+        <div class="item" data-position="right" data-colspan="1">
+          <div id="settings" class="pane meta">
+            {{ forms.lightswitchField({
+              label: 'Cache request?',
+              name : 'cache',
+              on : request ? request.cache : true
+            }) }}
+
+            {% if providers|length %}
+              {{ forms.selectField({
+                label: "OAuth Provider" | t,
+                name: 'oauth',
+                options: providers,
+                value : request ? request.oauth : null,
+              }) }}
+            {% endif %}
+            {% if accessTokens|length %}
+              {{ forms.selectField({
+                label: "Basic Auth" | t,
+                name: 'tokenId',
+                options: accessTokens,
+                value : request ? request.tokenId : null,
+              }) }}
+            {% endif %}
+
+          </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% set js %}
+    new Craft.HandleGenerator('#name', '#handle');
+{% endset %}
+{% includeJs js %}

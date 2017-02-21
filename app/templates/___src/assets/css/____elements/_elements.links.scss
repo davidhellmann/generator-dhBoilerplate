@@ -3,10 +3,10 @@
 /* -------------------------------------------------- */
 
 a {
-  color: c('free-speech-red');
+  color: c('red');
   transition: all 0.25s ease('out-cubic');
 
   &:hover {
-    color: darken(c('free-speech-red'), 10%);
+    color: darken(c('red'), 10%);
   }
 }

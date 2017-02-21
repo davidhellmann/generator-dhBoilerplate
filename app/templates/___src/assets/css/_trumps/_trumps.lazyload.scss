@@ -4,10 +4,10 @@
 
 .lazyload,
 .lazyloading {
-  opacity: 0.25;
+  opacity: 0;
 }
 
 .lazyloaded {
   opacity: 1;
-  transition: all 1s ease('out-cubic');
+  transition: opacity 1s 0.1s ease('out-cubic');
 }

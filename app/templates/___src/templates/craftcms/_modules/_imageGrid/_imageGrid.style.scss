@@ -1,0 +1,47 @@
+/* -------------------------------------------------- */
+/*    Image Grid
+/* -------------------------------------------------- */
+
+.m-imageGrid {
+  @include fb();
+
+  .m-figure {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+  }
+
+  .m-figure__image {
+    @include ft(s(1), s(2), padding-left padding-right);
+    width: 100%;
+  }
+
+  .m-caption {
+    margin-top: vr(1/2);
+  }
+}
+
+.m-imageGrid {
+  @include media('>=s') {
+    &--3columns {
+      .m-figure {
+        width: calc(100% / 3);
+      }
+    }
+
+    &--2columns {
+      .m-figure {
+        width: calc(100% / 2);
+      }
+    }
+
+    &--1columns {
+      .m-figure {
+        width: 100%;
+      }
+    }
+  }
+}

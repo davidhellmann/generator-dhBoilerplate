@@ -159,7 +159,8 @@
   -webkit-transition: opacity 0.25s ease('out-cubic');
   transition: opacity 0.25s ease('out-cubic');
   -webkit-backface-visibility: hidden;
-  will-change: opacity; }
+  will-change: opacity;
+}
 
 .pswp__share-modal--hidden {
   display: none; }
@@ -272,13 +273,10 @@ a.pswp__share--download:hover {
   color: #BBB; }
 
 .pswp__caption__center {
-  text-align: center;
-  max-width: 420px;
-  margin: 0 auto;
-  font-size: 13px;
-  padding: 10px;
-  line-height: 20px;
-  color: #CCC; }
+  padding: vr(1) s(2);
+  color: #fff !important;
+  font-size: fs('ms-2');
+}
 
 .pswp__caption--empty {
   display: none; }

@@ -1,0 +1,23 @@
+{#
+  Definition List
+  ===============
+#}
+{# Set Vars #}
+{% set classname = name is defined and name is not empty ? name : 'm-definitionList' %}
+{% set definitionList = data.singleDefinitionList %}
+{% set settings = data.settingsDefinitionList %}
+{% set columnsRatio = settings.columnsRatio != 'default' ? '  ' ~ classname ~ '--columsRatio-' ~ settings.columnsRatio %}
+{% set layout = settings.layout != 'default' ? '  ' ~ classname ~ '--layout-' ~ settings.layout %}
+
+
+{# Modul #}
+<div class="{{ classname }}{{ columnsRatio }}{{ layout }}">
+  {% if definitionList %}
+    <dl class="{{ classname ~ '__list' }}">
+      {% for row in definitionList %}
+        <dt class="{{ classname ~ '__listTerm' }}">{{ row.definitionTerm|raw }}:</dt>
+        <dd class="{{ classname ~ '__listDescription' }}">{{ row.definitionDescription }}</dd>
+      {% endfor %}
+    </dl>
+  {% endif %}
+</div>

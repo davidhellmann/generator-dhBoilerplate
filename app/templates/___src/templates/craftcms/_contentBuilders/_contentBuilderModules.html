@@ -1,0 +1,129 @@
+{#
+  Content Builder Modules
+  =======================
+#}
+
+{% switch data.type %}
+  {# Accordion Modul #}
+  {% case 'accordion' %}
+    {% include '_modules/_accordion/_accordion.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Button Modul #}
+  {% case 'button' %}
+    {% include '_modules/_button/_button.template' with {
+    data: data,
+    name: ''
+    } %}
+
+  {# Button Group Modul #}
+  {% case 'buttonGroup' %}
+    {% include '_modules/_buttonGroup/_buttonGroup.template' with {
+    data: data,
+    name: ''
+    } %}
+
+  {# Content Section Modul #}
+  {% case 'contentSection' %}
+    {% include '_modules/_contentSection/_contentSection.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Definiton List Modul #}
+  {% case 'definitionList' %}
+    {% include '_modules/_definitionList/_definitionList.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Embed Modul #}
+  {% case 'embed' %}
+    {% include '_modules/_embed/_embed.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Headline Modul #}
+  {% case 'headline' %}
+    {% include '_modules/_headline/_headline.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Cover Modul #}
+  {% case 'imageCover' %}
+    {% include '_modules/_imageCover/_imageCover.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Gallery Modul #}
+  {% case 'imageGallery' %}
+    {% include '_modules/_imageGallery/_imageGallery.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Grid Modul #}
+  {% case 'imageGrid' %}
+    {% include '_modules/_imageGrid/_imageGrid.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Single Modul #}
+  {% case 'imageSingle' %}
+    {% include '_modules/_imageSingle/_imageSingle.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Image Slider Modul #}
+  {% case 'imageSlider' %}
+    {% include '_modules/_imageSlider/_imageSlider.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Quote Modul #}
+  {% case 'quote' %}
+    {% include '_modules/_quote/_quote.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Rich Text Modul #}
+  {% case 'richText' %}
+    {% include '_modules/_richText/_richText.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Rich Text Modul #}
+  {% case 'richTextMarginals' %}
+    {% include '_modules/_richTextMarginals/_richTextMarginals.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Separator Modul #}
+  {% case 'separator' %}
+    {% include '_modules/_separator/_separator.template' with {
+      data: data,
+      name: ''
+    } %}
+
+  {# Rich Text Modul #}
+  {% case 'twoColumns' %}
+    {% include '_modules/_twoColumns/_twoColumns.template' with {
+      data: data,
+      name: ''
+    } %}
+
+{% endswitch %}
+
+
+

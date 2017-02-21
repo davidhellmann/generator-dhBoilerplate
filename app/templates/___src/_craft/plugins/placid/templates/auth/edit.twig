@@ -1,0 +1,51 @@
+{% extends "placid/_layout" %}
+{% set selectedSubnavItem  = 'auth' %}
+{% import "_includes/forms" as forms %}
+
+{% set fullPageForm = true %}
+{% set saveShortcutRedirect = "/admin/placid/auth/" ~ (token ? token.id)  %}
+
+{% set crumbs = [
+    { label: "Placid"|t, url: url('placid') },
+    { label: 'Basic Auth', url: url('placid/auth') },
+    { label: token ? token.name : 'New token', url: url( token ? 'placid/auth/' ~ token.id : 'placid/auth/new') }
+] %}
+
+{% set title = token ? token.name : "New access token"|t %}
+
+{% set content %}
+
+    <input type="hidden" name="action" value="placid/token/save">
+    <input type="hidden" name="redirect" value="placid/auth" />
+
+    {% if token %}
+      <input type="hidden" name="tokenId" value="{{ token.id }}" />
+    {% endif %}
+  
+
+    {{ forms.textField({
+      label: 'Name'|t,
+      id : 'name',
+      required: true,
+      name: 'name',
+      value: token ? token.name : null,
+      errors: token ? token.errors('name') : null
+    }) }}
+
+    {{ forms.lightSwitchField({
+      label: 'Force query string',
+      instructions: "Check if you explicitly don't want this token to go through the request headers",
+      name: 'forceQuery',
+      on: token ? token.forceQuery : null,
+      errors: token ? token.errors('forceQuery') : null
+    })}}
+
+    {{ forms.textField({
+      label: 'Token'|t,
+      id : 'token',
+      required: true,
+      name: 'token',
+      value: token ? token.encoded_token : null,
+      errors: token ? token.errors('token') : null
+    }) }}
+{% endset %}

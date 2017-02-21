@@ -118,6 +118,24 @@ gulp build // npm run build OR yarn build
 There are some other Tasks there…
 
 ```
+// NPM RUN / YARN COMMANDS
+"start": "gulp init",
+"dev": "gulp",
+"build": "gulp build",
+"criticalcss": "gulp criticalcss",
+"clean:dist": "gulp clean:dist",
+"clean:templates": "gulp clean:templates",
+"clean:images": "gulp clean:images",
+"clean:js": "gulp clean:js",
+"clean:css": "gulp clean:css",
+"copy:fonts": "gulp copy:fonts",
+"copy:images": "gulp images",
+"copy:svg": "gulp svg",
+"copy:single": "gulp svg-single",
+"copy:sprite": "gulp svg-sprite",
+"copy:sysfiles": "gulp systemFiles",
+"copy:templates": "gulp templates"
+
 // Clean Tasks
 // Clean the specific folder in the "___dist" dir
 gulp clean:templates

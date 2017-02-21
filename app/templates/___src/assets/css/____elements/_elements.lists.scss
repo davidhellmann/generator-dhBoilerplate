@@ -2,7 +2,7 @@
 /*    Lists
 /* -------------------------------------------------- */
 
-.c-appContent {
+.m-appContent {
   ul,
   ol {
     list-style: none;
@@ -12,6 +12,11 @@
   ol li {
     padding-left: 50px;
     position: relative;
+    margin-bottom: vr(1/4);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   ul li {

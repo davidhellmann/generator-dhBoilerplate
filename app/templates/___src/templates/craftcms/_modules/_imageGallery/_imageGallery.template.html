@@ -1,0 +1,117 @@
+{#
+  Image Gallery
+  =============
+#}
+
+{# Set Vars #}
+{% set classname = name is defined and name is not empty ? name : 'm-imageGallery' %}
+{% set images = data.singleImages is defined ? data.singleImages %}
+{% set settings = data.settingsImageGallery is defined ? data.settingsImageGallery %}
+{% set columns = settings.columns is defined and settings.columns != 'default' ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
+{% set ratioThumbs = settings.imageThumbsRatio is defined ? settings.imageThumbsRatio %}
+{% set ratioThumbs = ratioThumbs|split(':') %}
+{% set base64Ratio = ratioThumbs %}
+{% set ratioThumbs = ratioThumbs|first/ratioThumbs|last %}
+
+{# Modul #}
+<div class="{{ classname }}{{ columns }}  js-photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
+  {% for image in images %}
+
+    {% set position = settings.imagePosition is defined and settings.imagePosition == 'focalpoint' ? image.settingsFocalPoint : settings.imagePosition.value %}
+    {% set imageSize = image.width ~ ':' ~ image.height %}
+    {% set largeRatio = imageSize|split(':') %}
+    {% set largeRatio = largeRatio|first/largeRatio|last %}
+
+    {% if image.height >= image.width %}
+      {% set sizes = [
+        { height: 1440 },
+        { height: 320 }
+      ] %}
+    {% else %}
+      {% set sizes = [
+        { width: 1680 },
+        { width: 1280 },
+        { width: 320 }
+      ] %}
+    {% endif %}
+
+    {# Image #}
+    {% set imageSettings = {
+      jpegQuality: 80,
+    } %}
+
+    {% set sizesThumbs = [
+      { width: 640 },
+      { width: 320 },
+      { width: 160 }
+    ] %}
+
+    {% set imageSettingsThumbs = {
+      jpegQuality: 80,
+      mode: 'crop',
+      position: position,
+      ratio: ratioThumbs
+    } %}
+
+    {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
+    {% set thumbs = craft.imager.transformImage(image, sizesThumbs, imageSettingsThumbs) %}
+
+    <figure class="m-figure  {{ classname ~ '__item' }}"
+            itemprop="associatedMedia"
+            itemscope itemtype="http://schema.org/ImageObject">
+      <a class="m-figure__link  m-figure__imageBackground  {{ classname ~ '__link' }}  o-ratio  o-ratio--{{ settings.imageThumbsRatio|replace({":": "-"})  }}" href="{{ images|first.url }}"
+         itemprop="contentUrl"
+         data-size="{{ images|first.width }}x{{ images|first.height }}">
+        <img class="m-figure__image  {{ classname ~ '__image' }}  o-ratio__content  lazyload"
+             data-photoswipe-thumb="{{ images|last.url }}"
+             src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+             data-srcset="{{ craft.imager.srcset(thumbs) }}"
+             data-sizes="auto"
+             alt="{{ image.title }}"/>
+      </a>
+    </figure>
+  {% endfor %}
+</div>
+
+{# Root element of PhotoSwipe. Must have class pswp. #}
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    {# don't modify these 3 pswp__item elements, data is added later on. #}
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    {# Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. #}
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        {# Controls are self-explanatory. Order can be changed. #}
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

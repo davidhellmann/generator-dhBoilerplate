@@ -1,0 +1,2972 @@
+{
+  "groups": [
+    "Categories",
+    "Content Builder",
+    "Globals",
+    "Grouped",
+    "Plugins",
+    "Settings",
+    "Singles"
+  ],
+  "sections": [
+    {
+      "name": "Homepage",
+      "handle": "homepage",
+      "type": "single",
+      "enableVersioning": 0,
+      "typesettings": {
+        "template": "index",
+        "urlFormat": "__home__",
+        "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "News",
+      "handle": "news",
+      "type": "channel",
+      "enableVersioning": 0,
+      "typesettings": {
+        "hasUrls": 1,
+        "template": "news\/_entry",
+        "urlFormat": "news\/{postDate.year}\/{slug}",
+        "nestedUrlFormat": null
+      }
+    }
+  ],
+  "fields": [
+    {
+      "group": "Categories",
+      "name": "Category: Default",
+      "handle": "categoryDefault",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "default",
+        "limit": "",
+        "selectionLabel": ""
+      }
+    },
+    {
+      "group": "Globals",
+      "name": "Global: Social Networks",
+      "handle": "globalSocialNetworks",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Behance Username",
+                "handle": "behanceUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new2": {
+                "name": "Dribbble Username",
+                "handle": "dribbbleUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new3": {
+                "name": "Facebook Username",
+                "handle": "facebookUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new4": {
+                "name": "GitHub Username",
+                "handle": "githubUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new5": {
+                "name": "Google+ Username",
+                "handle": "googleUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new6": {
+                "name": "Instagram Username",
+                "handle": "instagramUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new7": {
+                "name": "LinkedIn Username",
+                "handle": "linkedinUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new8": {
+                "name": "Medium Username",
+                "handle": "mediumUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new9": {
+                "name": "Pinterest Username",
+                "handle": "pinterestUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new10": {
+                "name": "Tumblr Username",
+                "handle": "tumblrUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new11": {
+                "name": "Twitter Username",
+                "handle": "twitterUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new12": {
+                "name": "VSCO Username",
+                "handle": "vscoUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new13": {
+                "name": "Xing Username",
+                "handle": "xingUsername",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Grouped",
+      "name": "Grouped: Caption",
+      "handle": "groupedCaption",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Caption Title",
+                "handle": "captionTitle",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new2": {
+                "name": "Caption",
+                "handle": "caption",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": 1,
+                  "initialRows": 4
+                }
+              },
+              "new3": {
+                "name": "Source",
+                "handle": "source",
+                "instructions": "",
+                "required": 0,
+                "type": "PlainText",
+                "width": "",
+                "typesettings": {
+                  "placeholder": "",
+                  "maxLength": "",
+                  "multiline": "",
+                  "initialRows": 4
+                }
+              },
+              "new4": {
+                "name": "Source URL",
+                "handle": "sourceUrl",
+                "instructions": "",
+                "required": 0,
+                "type": "FruitLinkIt",
+                "width": "",
+                "typesettings": {
+                  "types": [
+                    "custom"
+                  ],
+                  "defaultText": "",
+                  "allowCustomText": "",
+                  "allowTarget": "",
+                  "entrySources": [],
+                  "entrySelectionLabel": "Select an entry",
+                  "assetSources": "*",
+                  "assetSelectionLabel": "Select an asset",
+                  "categorySources": "*",
+                  "categorySelectionLabel": "Select a category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Plugins",
+      "name": "Plugin: Seomatic",
+      "handle": "pluginSeomatic",
+      "instructions": "",
+      "required": false,
+      "type": "Seomatic_Meta",
+      "typesettings": {
+        "assetSources": "*",
+        "seoMainEntityCategory": "CreativeWork",
+        "seoMainEntityOfPage": "WebPage",
+        "seoTitleSource": "field",
+        "seoTitleSourceField": "title",
+        "seoTitle": "",
+        "seoTitleSourceChangeable": 1,
+        "seoDescriptionSource": "custom",
+        "seoDescriptionSourceField": "title",
+        "seoDescription": "",
+        "seoDescriptionSourceChangeable": 1,
+        "seoKeywordsSource": "custom",
+        "seoKeywordsSourceField": "title",
+        "seoKeywords": "",
+        "seoKeywordsSourceChangeable": 1,
+        "seoImageIdSource": "custom",
+        "seoImageIdSourceField": "cbmImage",
+        "seoImageIdSourceChangeable": 1,
+        "seoImageTransform": "",
+        "twitterCardType": "",
+        "twitterCardTypeChangeable": 1,
+        "seoTwitterImageIdSource": "custom",
+        "seoTwitterImageIdSourceField": "cbmImage",
+        "seoTwitterImageIdSourceChangeable": 1,
+        "seoTwitterImageTransform": "",
+        "openGraphType": "",
+        "openGraphTypeChangeable": 1,
+        "seoFacebookImageIdSource": "custom",
+        "seoFacebookImageIdSourceField": "cbmImage",
+        "seoFacebookImageIdSourceChangeable": 1,
+        "seoFacebookImageTransform": "",
+        "robots": "",
+        "robotsChangeable": 1
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Button",
+      "handle": "settingsButton",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Primary",
+                      "value": "primary",
+                      "default": 1
+                    },
+                    {
+                      "label": "Secondary",
+                      "value": "secondary",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "With Icon",
+                "handle": "withIcon",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new4": {
+                "name": "Icon Position",
+                "handle": "iconPosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": 1
+                    }
+                  ]
+                }
+              },
+              "new5": {
+                "name": "Icon Size",
+                "handle": "iconSize",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "16px",
+                      "value": "16px",
+                      "default": 1
+                    },
+                    {
+                      "label": "24px",
+                      "value": "24px",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new6": {
+                "name": "Icon",
+                "handle": "icon",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Icon Sample",
+                      "value": "iconSample",
+                      "default": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: ButtonGroup",
+      "handle": "settingsButtonGroup",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Primary",
+                      "value": "primary",
+                      "default": 1
+                    },
+                    {
+                      "label": "Secondary",
+                      "value": "secondary",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Alignment",
+                "handle": "alignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Definition List",
+      "handle": "settingsDefinitionList",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Columns Ratio",
+                "handle": "columnsRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "50-50",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "33-66",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:3",
+                      "value": "25-75",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Layout",
+                "handle": "layout",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": ""
+                    },
+                    {
+                      "label": "Table Layout",
+                      "value": "table",
+                      "default": ""
+                    },
+                    {
+                      "label": "Row Layout",
+                      "value": "row",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Embed",
+      "handle": "settingsEmbed",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Video",
+                "handle": "video",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new2": {
+                "name": "Embed Position",
+                "handle": "embedPosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Embed: Width",
+                "handle": "embedWidth",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Auto",
+                      "value": "auto",
+                      "default": ""
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    },
+                    {
+                      "label": "Three Quarter",
+                      "value": "threeQuarter",
+                      "default": ""
+                    },
+                    {
+                      "label": "Half",
+                      "value": "half",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Focal Point",
+      "handle": "settingsFocalPoint",
+      "instructions": "",
+      "required": false,
+      "type": "FocalPointField_FocalPoint",
+      "typesettings": {
+        "defaultFocalPoint": "50% 50%"
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Headline",
+      "handle": "settingsHeadline",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Indented",
+                "handle": "indented",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new2": {
+                "name": "Semantic Size",
+                "handle": "semanticSize",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "50%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "H1",
+                      "value": "h1",
+                      "default": ""
+                    },
+                    {
+                      "label": "H2",
+                      "value": "h2",
+                      "default": 1
+                    },
+                    {
+                      "label": "H3",
+                      "value": "h3",
+                      "default": ""
+                    },
+                    {
+                      "label": "H4",
+                      "value": "h4",
+                      "default": ""
+                    },
+                    {
+                      "label": "H5",
+                      "value": "h5",
+                      "default": ""
+                    },
+                    {
+                      "label": "H6",
+                      "value": "h6",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Visual Size",
+                "handle": "visualSize",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "50%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Looks like H1",
+                      "value": "h1",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H2",
+                      "value": "h2",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H3",
+                      "value": "h3",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H4",
+                      "value": "h4",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H5",
+                      "value": "h5",
+                      "default": ""
+                    },
+                    {
+                      "label": "Looks like H6",
+                      "value": "h6",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Image Cover",
+      "handle": "settingsImageCover",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Background Position",
+                "handle": "backgroundPosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Focalpoint",
+                      "value": "focalpoint",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left : Top",
+                      "value": "0% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left : Center",
+                      "value": "0% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left : Bottom",
+                      "value": "0% 100%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Top",
+                      "value": "50% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Center",
+                      "value": "50% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Bottom",
+                      "value": "50% 100%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Top",
+                      "value": "100% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Center",
+                      "value": "100% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Bottom",
+                      "value": "100% 100%",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Text Vertical Position",
+                "handle": "textVerticalPosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Top",
+                      "value": "top",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Bottom",
+                      "value": "bottom",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Text Alignment",
+                "handle": "textAlignment",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Image Gallery",
+      "handle": "settingsImageGallery",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Colums",
+                "handle": "columns",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": 6,
+                      "value": 6,
+                      "default": ""
+                    },
+                    {
+                      "label": 5,
+                      "value": 5,
+                      "default": ""
+                    },
+                    {
+                      "label": 4,
+                      "value": 4,
+                      "default": ""
+                    },
+                    {
+                      "label": 3,
+                      "value": 3,
+                      "default": ""
+                    },
+                    {
+                      "label": 2,
+                      "value": 2,
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Image Position",
+                "handle": "imagePosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Focalpoint",
+                      "value": "focalpoint",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left : Top",
+                      "value": "0% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left : Center",
+                      "value": "0% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Left : Bottom",
+                      "value": "0% 100%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Top",
+                      "value": "50% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Center",
+                      "value": "50% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center : Bottom",
+                      "value": "50% 100%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Top",
+                      "value": "100% 0%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Center",
+                      "value": "100% 50%",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right : Bottom",
+                      "value": "100% 100%",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Image Thumbs Ratio",
+                "handle": "imageThumbsRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "16:10",
+                      "value": "16:10",
+                      "default": ""
+                    },
+                    {
+                      "label": "16:9",
+                      "value": "16:9",
+                      "default": ""
+                    },
+                    {
+                      "label": "4:3",
+                      "value": "4:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:2",
+                      "value": "3:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:1",
+                      "value": "2:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "1:1",
+                      "default": 1
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "1:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:3",
+                      "value": "2:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:4",
+                      "value": "3:4",
+                      "default": ""
+                    },
+                    {
+                      "label": "9:16",
+                      "value": "9:16",
+                      "default": ""
+                    },
+                    {
+                      "label": "10:16",
+                      "value": "10:16",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Image Grid",
+      "handle": "settingsImageGrid",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Caption",
+                "handle": "caption",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new2": {
+                "name": "Columns",
+                "handle": "columns",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": 3,
+                      "value": 3,
+                      "default": ""
+                    },
+                    {
+                      "label": 2,
+                      "value": 2,
+                      "default": ""
+                    },
+                    {
+                      "label": 1,
+                      "value": 1,
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Image Ratio",
+                "handle": "imageRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "16:10",
+                      "value": "16:10",
+                      "default": ""
+                    },
+                    {
+                      "label": "16:9",
+                      "value": "16:9",
+                      "default": ""
+                    },
+                    {
+                      "label": "4:3",
+                      "value": "4:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:2",
+                      "value": "3:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:1",
+                      "value": "2:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "1:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "1:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:3",
+                      "value": "2:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:4",
+                      "value": "3:4",
+                      "default": ""
+                    },
+                    {
+                      "label": "9:16",
+                      "value": "9:16",
+                      "default": ""
+                    },
+                    {
+                      "label": "10:16",
+                      "value": "10:16",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Image Single",
+      "handle": "settingsImageSingle",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Caption",
+                "handle": "caption",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new2": {
+                "name": "Image Position",
+                "handle": "imagePosition",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "left",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "center",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "right",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Image Ratio",
+                "handle": "imageRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "16:10",
+                      "value": "16:10",
+                      "default": ""
+                    },
+                    {
+                      "label": "16:9",
+                      "value": "16:9",
+                      "default": ""
+                    },
+                    {
+                      "label": "4:3",
+                      "value": "4:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:2",
+                      "value": "3:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:1",
+                      "value": "2:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "1:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "1:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:3",
+                      "value": "2:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:4",
+                      "value": "3:4",
+                      "default": ""
+                    },
+                    {
+                      "label": "9:16",
+                      "value": "9:16",
+                      "default": ""
+                    },
+                    {
+                      "label": "10:16",
+                      "value": "10:16",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new4": {
+                "name": "Image Width",
+                "handle": "imageWidth",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Full",
+                      "value": "full",
+                      "default": ""
+                    },
+                    {
+                      "label": "Three Quarter",
+                      "value": "threeQuarter",
+                      "default": ""
+                    },
+                    {
+                      "label": "Half",
+                      "value": "half",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Image Slider",
+      "handle": "settingsImageSlider",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Autoplay",
+                "handle": "autoplay",
+                "instructions": "Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "33%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Disabled",
+                      "value": "disabled",
+                      "default": 1
+                    },
+                    {
+                      "label": "Slow",
+                      "value": "slow",
+                      "default": ""
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium",
+                      "default": ""
+                    },
+                    {
+                      "label": "Fast",
+                      "value": "fast",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Cell Align",
+                "handle": "cellAlign",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "33%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Left",
+                      "value": "\"left\"",
+                      "default": ""
+                    },
+                    {
+                      "label": "Center",
+                      "value": "\"center\"",
+                      "default": ""
+                    },
+                    {
+                      "label": "Right",
+                      "value": "\"right\"",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Draggable",
+                "handle": "draggable",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new4": {
+                "name": "Free Scroll",
+                "handle": "freeScroll",
+                "instructions": "If true then slides will not have fixed positions",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new5": {
+                "name": "Group Cells",
+                "handle": "groupCells",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new6": {
+                "name": "Image Ratio",
+                "handle": "imageRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "33%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "16:10",
+                      "value": "16:10",
+                      "default": 1
+                    },
+                    {
+                      "label": "16:9",
+                      "value": "16:9",
+                      "default": ""
+                    },
+                    {
+                      "label": "4:3",
+                      "value": "4:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:2",
+                      "value": "3:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:1",
+                      "value": "2:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "1:1",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "1:2",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:3",
+                      "value": "2:3",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:4",
+                      "value": "3:4",
+                      "default": ""
+                    },
+                    {
+                      "label": "9:16",
+                      "value": "9:16",
+                      "default": ""
+                    },
+                    {
+                      "label": "10:16",
+                      "value": "10:16",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new7": {
+                "name": "Loop",
+                "handle": "loop",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new8": {
+                "name": "Pause on Hover",
+                "handle": "pauseOnHover",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new9": {
+                "name": "Navigation",
+                "handle": "navigation",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new10": {
+                "name": "Pagination",
+                "handle": "pagination",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": 1
+                }
+              },
+              "new11": {
+                "name": "Right To Left",
+                "handle": "rightToLeft",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "33%",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new12": {
+                "name": "Slides Per View",
+                "handle": "slidesPerView",
+                "instructions": "Number of slides per view (slides visible at the same time on slider's container).",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "33%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": 1,
+                      "value": 1,
+                      "default": ""
+                    },
+                    {
+                      "label": 2,
+                      "value": 2,
+                      "default": ""
+                    },
+                    {
+                      "label": 3,
+                      "value": 3,
+                      "default": ""
+                    },
+                    {
+                      "label": 4,
+                      "value": 4,
+                      "default": ""
+                    },
+                    {
+                      "label": 5,
+                      "value": 5,
+                      "default": ""
+                    },
+                    {
+                      "label": 6,
+                      "value": 6,
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new13": {
+                "name": "Speed",
+                "handle": "speed",
+                "instructions": "Duration of transition between slides (in ms)",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "33%",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Slow",
+                      "value": "slow",
+                      "default": ""
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium",
+                      "default": ""
+                    },
+                    {
+                      "label": "Fast",
+                      "value": "fast",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Section",
+      "handle": "settingsSection",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Section Options",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Background Color",
+                "handle": "backgroundColor",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "Black",
+                      "value": "black",
+                      "default": ""
+                    },
+                    {
+                      "label": "White",
+                      "value": "white",
+                      "default": ""
+                    }
+                  ]
+                }
+              },
+              "new2": {
+                "name": "Full Width",
+                "handle": "fullWidth",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new3": {
+                "name": "Padding Vertical",
+                "handle": "paddingVertical",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "None",
+                      "value": "none",
+                      "default": ""
+                    },
+                    {
+                      "label": "Small",
+                      "value": "small",
+                      "default": ""
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium",
+                      "default": ""
+                    },
+                    {
+                      "label": "Large",
+                      "value": "large",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Separator",
+      "handle": "settingsSeparator",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Full Width",
+                "handle": "fullWidth",
+                "instructions": "",
+                "required": 0,
+                "type": "Lightswitch",
+                "width": "",
+                "typesettings": {
+                  "default": ""
+                }
+              },
+              "new2": {
+                "name": "Style",
+                "handle": "style",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    }
+                  ]
+                }
+              },
+              "new3": {
+                "name": "Margin Vertical",
+                "handle": "marginVertical",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "None",
+                      "value": "none",
+                      "default": ""
+                    },
+                    {
+                      "label": "Small",
+                      "value": "small",
+                      "default": ""
+                    },
+                    {
+                      "label": "Medium",
+                      "value": "medium",
+                      "default": ""
+                    },
+                    {
+                      "label": "Large",
+                      "value": "large",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Settings",
+      "name": "Settings: Two Columns",
+      "handle": "settingsTwoColumns",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": 1,
+        "selectionLabel": "Add a row",
+        "maxRows": null,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Columns Ratio",
+                "handle": "columnsRatio",
+                "instructions": "",
+                "required": 0,
+                "type": "Dropdown",
+                "width": "",
+                "typesettings": {
+                  "options": [
+                    {
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
+                    },
+                    {
+                      "label": "1:1",
+                      "value": "50-50",
+                      "default": ""
+                    },
+                    {
+                      "label": "2:1",
+                      "value": "66-33",
+                      "default": ""
+                    },
+                    {
+                      "label": "3:1",
+                      "value": "75-25",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:3",
+                      "value": "25-75",
+                      "default": ""
+                    },
+                    {
+                      "label": "1:2",
+                      "value": "33-66",
+                      "default": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Anchor",
+      "handle": "singleAnchor",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Button",
+      "handle": "singleButton",
+      "instructions": "",
+      "required": false,
+      "type": "FruitLinkIt",
+      "typesettings": {
+        "types": [
+          "email",
+          "tel",
+          "custom",
+          "entry",
+          "category",
+          "asset"
+        ],
+        "defaultText": "Click here",
+        "allowCustomText": 1,
+        "allowTarget": 1,
+        "entrySources": [],
+        "entrySelectionLabel": "Select an entry",
+        "assetSources": "*",
+        "assetSelectionLabel": "Select an asset",
+        "categorySources": "*",
+        "categorySelectionLabel": "Select a category"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Button Group",
+      "handle": "singleButtonGroup",
+      "instructions": "",
+      "required": false,
+      "type": "SuperTable",
+      "typesettings": {
+        "fieldLayout": "row",
+        "staticField": null,
+        "selectionLabel": "Add a Button",
+        "maxRows": 5,
+        "blockTypes": {
+          "new": {
+            "fields": {
+              "new1": {
+                "name": "Button",
+                "handle": "button",
+                "instructions": "",
+                "required": 0,
+                "type": "FruitLinkIt",
+                "width": "",
+                "typesettings": {
+                  "types": [
+                    "email",
+                    "tel",
+                    "custom",
+                    "entry",
+                    "category",
+                    "asset"
+                  ],
+                  "defaultText": "",
+                  "allowCustomText": 1,
+                  "allowTarget": 1,
+                  "entrySources": [],
+                  "entrySelectionLabel": "Select an entry",
+                  "assetSources": "*",
+                  "assetSelectionLabel": "Select an asset",
+                  "categorySources": "*",
+                  "categorySelectionLabel": "Select a category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Code",
+      "handle": "singleCode",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 8
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Definition List",
+      "handle": "singleDefinitionList",
+      "instructions": "",
+      "required": false,
+      "type": "Table",
+      "typesettings": {
+        "columns": {
+          "col1": {
+            "heading": "Definition Term",
+            "handle": "definitionTerm",
+            "width": "",
+            "type": "singleline"
+          },
+          "col2": {
+            "heading": "Definition Description",
+            "handle": "definitionDescription",
+            "width": "",
+            "type": "singleline"
+          }
+        },
+        "defaults": {
+          "row1": {
+            "col1": "",
+            "col2": ""
+          }
+        }
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Embed Code",
+      "handle": "singleEmbedCode",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 2
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Headline",
+      "handle": "singleHeadline",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Image",
+      "handle": "singleImage",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": 1,
+        "sources": "*",
+        "defaultUploadLocationSource": "siteImages",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "siteImages",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": 1,
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": 1,
+        "viewMode": "list",
+        "selectionLabel": "Add an Image"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Images",
+      "handle": "singleImages",
+      "instructions": "",
+      "required": false,
+      "type": "Assets",
+      "typesettings": {
+        "useSingleFolder": 1,
+        "sources": "*",
+        "defaultUploadLocationSource": "siteImages",
+        "defaultUploadLocationSubpath": "",
+        "singleUploadLocationSource": "siteImages",
+        "singleUploadLocationSubpath": "",
+        "restrictFiles": 1,
+        "allowedKinds": [
+          "image"
+        ],
+        "limit": "",
+        "viewMode": "list",
+        "selectionLabel": "Add an Image"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Label",
+      "handle": "singleLabel",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Quote",
+      "handle": "singleQuote",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": 1,
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Rich Text",
+      "handle": "singleRichText",
+      "instructions": "",
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "Custom.json",
+        "availableAssetSources": "*",
+        "availableTransforms": "*",
+        "cleanupHtml": 1,
+        "purifyHtml": 1,
+        "columnType": "text"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Source",
+      "handle": "singleSource",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Source Url",
+      "handle": "singleSourceUrl",
+      "instructions": "",
+      "required": false,
+      "type": "FruitLinkIt",
+      "typesettings": {
+        "types": [
+          "custom"
+        ],
+        "defaultText": "",
+        "allowCustomText": 1,
+        "allowTarget": "",
+        "entrySources": [],
+        "entrySelectionLabel": "Select an entry",
+        "assetSources": "*",
+        "assetSelectionLabel": "Select an asset",
+        "categorySources": "*",
+        "categorySelectionLabel": "Select a category"
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Subline",
+      "handle": "singleSubline",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Singles",
+      "name": "Single: Text",
+      "handle": "singleText",
+      "instructions": "",
+      "required": false,
+      "type": "PlainText",
+      "typesettings": {
+        "placeholder": "",
+        "maxLength": "",
+        "multiline": "",
+        "initialRows": 4
+      }
+    },
+    {
+      "group": "Content Builder",
+      "name": "Content Builder: Neo",
+      "handle": "contentBuilderNeo",
+      "instructions": "",
+      "required": false,
+      "type": "Neo",
+      "typesettings": {
+        "maxBlocks": null,
+        "groups": {
+          "name": [
+            "Text Modules",
+            "Image Modules",
+            "Button Modules",
+            "Content Wrapper",
+            "More Modules\u2026",
+            "NOT READY YET"
+          ],
+          "sortOrder": [
+            2,
+            8,
+            14,
+            17,
+            22,
+            26
+          ]
+        },
+        "blockTypes": {
+          "new0": {
+            "sortOrder": 1,
+            "name": "Content Section",
+            "handle": "contentSection",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleHeadline",
+                "singleSubline"
+              ],
+              "Settings": [
+                "singleAnchor",
+                "settingsSection"
+              ]
+            }
+          },
+          "new1": {
+            "sortOrder": 3,
+            "name": "Headline",
+            "handle": "headline",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleHeadline"
+              ],
+              "Settings": [
+                "settingsHeadline"
+              ]
+            }
+          },
+          "new2": {
+            "sortOrder": 4,
+            "name": "Rich Text",
+            "handle": "richText",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": 2,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleRichText"
+              ]
+            }
+          },
+          "new3": {
+            "sortOrder": 5,
+            "name": "Rich Text Marginals",
+            "handle": "richTextMarginals",
+            "maxBlocks": null,
+            "childBlocks": [
+              "marginalColumn"
+            ],
+            "maxChildBlocks": 2,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleRichText"
+              ]
+            }
+          },
+          "new4": {
+            "sortOrder": 6,
+            "name": "Marginal Column",
+            "handle": "marginalColumn",
+            "maxBlocks": null,
+            "childBlocks": [
+              "quote",
+              "imageSingle"
+            ],
+            "maxChildBlocks": 1,
+            "topLevel": 0,
+            "fieldLayout": []
+          },
+          "new5": {
+            "sortOrder": 7,
+            "name": "Quote",
+            "handle": "quote",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleQuote",
+                "singleSource",
+                "singleSourceUrl"
+              ]
+            }
+          },
+          "new6": {
+            "sortOrder": 9,
+            "name": "Image Cover",
+            "handle": "imageCover",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImage",
+                "singleText"
+              ],
+              "Settings": [
+                "settingsImageCover"
+              ]
+            }
+          },
+          "new7": {
+            "sortOrder": 10,
+            "name": "Image Gallery",
+            "handle": "imageGallery",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImages"
+              ],
+              "Settings": [
+                "settingsImageGallery"
+              ]
+            }
+          },
+          "new8": {
+            "sortOrder": 11,
+            "name": "Image Grid",
+            "handle": "imageGrid",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImages"
+              ],
+              "Settings": [
+                "settingsImageGrid"
+              ]
+            }
+          },
+          "new9": {
+            "sortOrder": 12,
+            "name": "Image Single",
+            "handle": "imageSingle",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImage"
+              ],
+              "Settings": [
+                "settingsImageSingle"
+              ]
+            }
+          },
+          "new10": {
+            "sortOrder": 13,
+            "name": "Image Slider",
+            "handle": "imageSlider",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImages"
+              ],
+              "Settings": [
+                "settingsImageSlider"
+              ]
+            }
+          },
+          "new11": {
+            "sortOrder": 15,
+            "name": "Button",
+            "handle": "button",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleButton"
+              ],
+              "Settings": [
+                "settingsButton"
+              ]
+            }
+          },
+          "new12": {
+            "sortOrder": 16,
+            "name": "Button Group",
+            "handle": "buttonGroup",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": 5,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleButtonGroup"
+              ],
+              "Settings": [
+                "settingsButtonGroup"
+              ]
+            }
+          },
+          "new13": {
+            "sortOrder": 18,
+            "name": "Accordion",
+            "handle": "accordion",
+            "maxBlocks": null,
+            "childBlocks": [
+              "accordionContent"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": []
+            }
+          },
+          "new14": {
+            "sortOrder": 19,
+            "name": "Accordion Content",
+            "handle": "accordionContent",
+            "maxBlocks": null,
+            "childBlocks": [
+              "headline",
+              "richText",
+              "richTextMarginals",
+              "quote",
+              "imageGallery",
+              "imageGrid",
+              "imageSingle",
+              "button",
+              "buttonGroup",
+              "twoColumns",
+              "definitionList",
+              "embed",
+              "separator",
+              "imageText"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 0,
+            "fieldLayout": {
+              "Content": [
+                "singleLabel"
+              ]
+            }
+          },
+          "new15": {
+            "sortOrder": 20,
+            "name": "Two Columns",
+            "handle": "twoColumns",
+            "maxBlocks": null,
+            "childBlocks": [
+              "column"
+            ],
+            "maxChildBlocks": 2,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [],
+              "Settings": [
+                "settingsTwoColumns"
+              ]
+            }
+          },
+          "new16": {
+            "sortOrder": 21,
+            "name": "Column",
+            "handle": "column",
+            "maxBlocks": null,
+            "childBlocks": [
+              "headline",
+              "richText",
+              "quote",
+              "imageGallery",
+              "imageGrid",
+              "imageSingle",
+              "button",
+              "buttonGroup",
+              "accordion",
+              "definitionList",
+              "embed",
+              "separator"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 0,
+            "fieldLayout": []
+          },
+          "new17": {
+            "sortOrder": 23,
+            "name": "Definition List",
+            "handle": "definitionList",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleDefinitionList"
+              ],
+              "Settings": [
+                "settingsDefinitionList"
+              ]
+            }
+          },
+          "new18": {
+            "sortOrder": 24,
+            "name": "Embed",
+            "handle": "embed",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleEmbedCode"
+              ],
+              "Settings": [
+                "settingsEmbed"
+              ]
+            }
+          },
+          "new19": {
+            "sortOrder": 25,
+            "name": "Separator",
+            "handle": "separator",
+            "maxBlocks": null,
+            "childBlocks": "",
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [],
+              "Settings": [
+                "settingsSeparator"
+              ]
+            }
+          },
+          "new20": {
+            "sortOrder": 27,
+            "name": "Image + Text",
+            "handle": "imageText",
+            "maxBlocks": null,
+            "childBlocks": [
+              "buttonGroup"
+            ],
+            "maxChildBlocks": 1,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [
+                "singleImage",
+                "singleHeadline",
+                "singleRichText"
+              ],
+              "Settings": [
+                "settingsImageSingle",
+                "settingsHeadline"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "entryTypes": [
+    {
+      "sectionHandle": "homepage",
+      "hasTitleField": 1,
+      "titleLabel": "Title",
+      "name": "Homepage",
+      "handle": "homepage",
+      "fieldLayout": {
+        "Content": []
+      }
+    },
+    {
+      "sectionHandle": "news",
+      "hasTitleField": 1,
+      "titleLabel": "Title",
+      "name": "News",
+      "handle": "news",
+      "fieldLayout": {
+        "Content Neo": [
+          "contentBuilderNeo"
+        ],
+        "Meta": [
+          "categoryDefault"
+        ],
+        "SEO": [
+          "pluginSeomatic"
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "name": "Site Images",
+      "handle": "siteImages",
+      "type": "Local",
+      "settings": {
+        "path": "{uploadPath}\/images\/",
+        "publicURLs": 1,
+        "url": "{uploadUrl}\/images\/"
+      },
+      "fieldLayout": {
+        "Content": [
+          "groupedCaption",
+          "settingsFocalPoint"
+        ]
+      }
+    },
+    {
+      "name": "Site Downloads",
+      "handle": "siteDownloads",
+      "type": "Local",
+      "settings": {
+        "path": "{uploadPath}\/downloads\/",
+        "publicURLs": 1,
+        "url": "{uploadUrl}\/downloads\/"
+      },
+      "fieldLayout": {
+        "Content": [
+          "groupedCaption"
+        ]
+      }
+    },
+    {
+      "name": "Site Graphics",
+      "handle": "siteGraphics",
+      "type": "Local",
+      "settings": {
+        "path": "{uploadPath}\/graphics\/",
+        "publicURLs": 1,
+        "url": "{uploadUrl}\/graphics\/"
+      },
+      "fieldLayout": {
+        "Content": [
+          "groupedCaption"
+        ]
+      }
+    },
+    {
+      "name": "Site Users",
+      "handle": "siteUsers",
+      "type": "Local",
+      "settings": {
+        "path": "{uploadPath}\/users\/",
+        "publicURLs": 1,
+        "url": "{uploadUrl}\/users\/"
+      },
+      "fieldLayout": {
+        "Content": [
+          "groupedCaption"
+        ]
+      }
+    }
+  ],
+  "globals": [
+    {
+      "name": "Social Networks",
+      "handle": "socialNetworks",
+      "fieldLayout": {
+        "Content": [
+          "globalSocialNetworks"
+        ]
+      }
+    }
+  ],
+  "categories": [
+    {
+      "name": "Default",
+      "handle": "default",
+      "hasUrls": 1,
+      "template": "",
+      "maxLevels": null,
+      "locales": {
+        "en": {
+          "urlFormat": "default\/{slug}",
+          "nestedUrlFormat": "{parent.uri}\/{slug}"
+        }
+      },
+      "fieldLayout": []
+    }
+  ],
+  "users": [
+    {
+      "enabled": 1,
+      "archived": 0,
+      "locale": "en",
+      "localeEnabled": true,
+      "username": "superuser",
+      "firstName": "Super",
+      "lastName": "User",
+      "email": "david@fredmansky.at",
+      "preferredLocale": "en",
+      "weekStartDay": 1,
+      "admin": 1,
+      "client": 0,
+      "locked": 0,
+      "suspended": 0,
+      "pending": 0
+    }
+  ]
+}
