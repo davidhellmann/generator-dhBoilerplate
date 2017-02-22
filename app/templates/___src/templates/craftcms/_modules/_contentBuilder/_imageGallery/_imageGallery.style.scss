@@ -2,8 +2,8 @@
 /*    Image Gallery
 /* -------------------------------------------------- */
 
-@import '../../../assets/css/vendors/photoswipe/photoswipe';
-@import '../../../assets/css/vendors/photoswipe/defaultSkin';
+@import '../../../../assets/css/vendors/photoswipe/photoswipe';
+@import '../../../../assets/css/vendors/photoswipe/defaultSkin';
 
 .m-imageGallery {
   @include ft(s(0.75), s(1.5), padding-left padding-right);
