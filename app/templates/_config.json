@@ -154,7 +154,6 @@
     "images": {
       "optimizationLevel": 3,
       "jpegCompress": {
-        "jpegCompress": {
         "loops": 6,
         "min": 75,
         "max": 95

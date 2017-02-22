@@ -57,7 +57,7 @@
 
 {# Modul #}
 <!-- Slider main container -->
-<div class="{{ classname }}{{ slidesPerView }}{{ withNavi }}  js-swiper-imageSlider"
+<figure class="{{ classname }}{{ slidesPerView }}{{ withNavi }}  js-imageSlider"
      data-flickity='{
       "autoPlay": {{ autoplay }},
       "cellAlign": {{ cellAlign }},
@@ -77,10 +77,10 @@
       "rightToLeft": {{ rightToLeft }},
       "watchCSS": true,
       "wrapAround": {{ loop }}
-    }'>
+    }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
   <!-- Slides -->
   {% for image in images %}
-    <div class="{{ classname ~ '__slide' }}  swiper-slide">
+    <div class="{{ classname ~ '__slide' }}  swiper-slide" itemscope itemtype="http://schema.org/ImageObject">
       {% set options = {
         ratio: ratio
       } %}
@@ -88,6 +88,6 @@
       {{ macroResImage.resImage(image, options) }}
     </div>
   {% endfor %}
-</div>
+</figure>
 
 

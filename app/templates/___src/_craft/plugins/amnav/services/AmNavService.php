@@ -705,7 +705,7 @@ class AmNavService extends BaseApplicationComponent
 
         // Create breadcrumbs
         $length = count($activeElements);
-        $breadcrumbs = "\n" . sprintf('<%1$s%2$s%3$s xmlns:v="http://rdf.data-vocabulary.org/#">',
+        $breadcrumbs = "\n" . sprintf('< %1$s%2$s%3$s xmlns:v="http://rdf.data-vocabulary.org/#">',
             $this->_getParam('wrapper', 'ol'),
             $this->_getParam('id', false) ? ' id="' . $this->_getParam('id', '') . '"' : '',
             $this->_getParam('class', false) ? ' class="' . $this->_getParam('class', '') . '"' : ''

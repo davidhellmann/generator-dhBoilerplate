@@ -7,6 +7,7 @@
 .m-imageSlider {
   @include fc(12);
   @include ft(s(0.75), s(1.5), padding-left padding-right);
+  margin-bottom: 0;
 
   &--with-navi {
     padding-bottom: vr(2);
@@ -38,30 +39,10 @@
 
 .m-imageSlider {
   @include media('>=s') {
-    &--6cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 2);
-      }
-    }
-
-    &--5cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 2);
-      }
-    }
-
-    &--4cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 2);
-      }
-    }
-
-    &--3cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 2);
-      }
-    }
-
+    &--6cols,
+    &--5cols,
+    &--4cols,
+    &--3cols,
     &--2cols {
       .m-imageSlider__slide {
         width: calc(100% / 2);
@@ -70,19 +51,9 @@
   }
 
   @include media('>=m') {
-    &--6cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 4);
-      }
-    }
-
-    &--5cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 4);
-      }
-    }
-
-    &--4cols {
+    &--6cols,
+    &--5cols,
+    &--4cols{
       .m-imageSlider__slide {
         width: calc(100% / 4);
       }
@@ -148,7 +119,6 @@
   top: auto;
   bottom: 0;
   cursor: pointer;
-  background: none;
   padding: 0;
   z-index: 50;
   transform: none;
