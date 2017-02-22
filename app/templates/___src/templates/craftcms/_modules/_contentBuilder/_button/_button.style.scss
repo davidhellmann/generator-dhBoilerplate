@@ -17,44 +17,44 @@
   border-radius: 2px;
 }
 
-.m-button--primary {
+.m-button__link--primary {
   background-color: c('black-50');
   color: c('white');
 }
 
-.m-button--primary:hover {
+.m-button__link--primary:hover {
   background-color: darken(c('black-50'), 10%);
   color: c('white');
 }
 
-.m-button--secondary {
+.m-button__link--secondary {
   background-color: c('black-20');
   color: c('black-90');
 }
 
-.m-button--secondary:hover {
+.m-button__link--secondary:hover {
   background-color: darken(c('black-20'), 10%);
   color: c('black-90');
 }
 
-.m-button--left {
+.m-button__link--left {
   float: left;
 }
 
-.m-button--center {
+.m-button__link--center {
   @include center();
 }
 
-.m-button--right {
+.m-button__link--right {
   float: right;
 }
 
-.m-button--full {
+.m-button__link--full {
   width: 100%;
 }
 
 // With Icon
-.m-button--withIcon {
+.m-button__link--withIcon {
   svg {
     position: relative;
   }
@@ -66,13 +66,13 @@
   align-items: center;
 }
 
-.m-button--icon.m-button--primary {
+.m-button__link--icon.m-button__link--primary {
   svg {
     fill: c('white');
   }
 }
 
-.m-button--iconSize-16px {
+.m-button__link--iconSize-16px {
   @include fs('ms0', 15px);
 
   svg {
@@ -81,7 +81,7 @@
   }
 }
 
-.m-button--iconSize-24px {
+.m-button__link--iconSize-24px {
   @include fs('ms1', 23px);
 
   svg {
@@ -90,7 +90,7 @@
   }
 }
 
-.m-button--iconPosition-left {
+.m-button__link--iconPosition-left {
   span {
     order: 1;
   }
@@ -100,7 +100,7 @@
   }
 }
 
-.m-button--iconPosition-right {
+.m-button__link--iconPosition-right {
   svg {
     margin-left: s(1/2);
   }
