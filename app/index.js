@@ -104,12 +104,22 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             {
                 type: 'input',
                 name: 'projectName',
-                message: 'Please give your project a name (without Spaces)',
-                default: 'dhBoilerplate'
+                message: chalk.magenta.underline.bold('Project Name') + '\n\xb7 Please give the project a name (without Spaces): ',
+                // default: 'dhBoilerplate',
+                default: process.cwd().split('/').pop(-1).toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
+                validate: function (input) {
+                    // Do async stuff
+                    if (input.indexOf(' ') >= 0 || /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(input)) {
+                        // Pass the return value in the done callback
+                        console.log('' + chalk.styles.red.open + 'No whitespaces or special-chars allowed!' + chalk.styles.red.close);
+                        return false;
+                    }
+                    return true;
+                }
             }, {
                 type: 'input',
                 name: 'projectDescription',
-                message: 'Short description of the Project',
+                message: chalk.magenta.underline.bold('Project Description') + '\n\xb7 Short description of the Project: \n\n',
                 default: 'undefined'
             }, {
                 type: 'input',
@@ -119,7 +129,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             }, {
                 type: 'list',
                 name: 'projectUsage',
-                message: 'Which purpose does this Project have? Choose the appropriate option',
+                message: chalk.magenta.underline.bold('Project Usage') + '\n\xb7 Which purpose does this Project have? Choose the appropriate option: ',
                 choices: [
                     'Prototyping',
                     'WordPress',
@@ -132,7 +142,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'wordpressInstall',
-                message: 'Do you want to download the latest WordPress Version via WP-CLI?',
+                message: chalk.magenta.underline.bold('WordPress Install') + '\n\xb7 Do you want to download the latest WordPress Version via WP-CLI?',
                 default: true
             }, {
                 when(answers) {
@@ -140,7 +150,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'craftInstall',
-                message: 'Do you want to download the newest Craft Version via WGET?',
+                message: chalk.magenta.underline.bold('Craft CMS Install') + '\n\xb7 Do you want to download the newest Craft Version via WGET?',
                 default: true
             }, {
                 when(answers) {
@@ -148,7 +158,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'craftBetaInstall',
-                message: 'Do you want to install the Craft 3 Beta version via Composer?',
+                message: chalk.magenta.underline.bold('Craft CMS Install') + '\n\xb7 Do you want to install the Craft 3 Beta version via Composer?',
                 default: true
             }, {
                 when(answers) {
@@ -156,7 +166,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'craftHearty',
-                message: 'Do you want to use Hearty Config?',
+                message: chalk.magenta.underline.bold('Craft CMS Hearty Config') + '\n\xb7 Do you want to use Hearty Config?',
                 default: true
             }, {
                 when(answers) {
@@ -164,7 +174,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'craftImager',
-                message: 'Do you want to use Imager?',
+                message: chalk.magenta.underline.bold('Craft CMS Imager Config') + '\n\xb7 Do you want to use Imager?',
                 default: true
             }, {
                 when(answers) {
@@ -172,42 +182,42 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 },
                 type: 'confirm',
                 name: 'craftMultilang',
-                message: 'Do you want to use Multilang Config?',
+                message: chalk.magenta.underline.bold('Craft CMS Multilang Config') + '\n\xb7 Do you want to use Multilang Config?',
                 default: false
             }, {
                 type: 'confirm',
                 name: 'projectjQuery',
-                message: 'Do you want to use jQuery (newest Version)?',
+                message: chalk.magenta.underline.bold('jQuery') + '\n\xb7 Do you want to use jQuery (newest Version)?',
                 default: false
             }, {
                 type: 'confirm',
                 name: 'projectVue',
-                message: 'Do you want to use Vue.js?',
+                message: chalk.magenta.underline.bold('Vue.js') + '\n\xb7 Do you want to use Vue.js?',
                 default: false
             }, {
                 type: 'input',
                 name: 'projectVersion',
-                message: 'Project Version Number',
+                message: chalk.magenta.underline.bold('Project Version') + '\n\xb7 The Version Number: ',
                 default: '0.0.1'
             }, {
                 type: 'input',
                 name: 'projectAuthor',
-                message: 'Project Author or company',
+                message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
                 default: 'undefined'
             }, {
                 type: 'input',
                 name: 'projectMail',
-                message: 'Mailadress of the author',
+                message: chalk.magenta.underline.bold('Project Mail') + '\n\xb7 Mailadress of the author: ',
                 default: 'undefined'
             }, {
                 type: 'input',
                 name: 'projectUrl',
-                message: 'Author URL',
+                message: chalk.magenta.underline.bold('Author URL') + '\n\xb7 URL of the author: ',
                 default: 'http://...'
             }, {
                 type: 'input',
                 name: 'projectRepo',
-                message: 'Git Repo URL',
+                message: chalk.magenta.underline.bold('Repo URL') + '\n\xb7 Git Repo URL: ',
                 default: 'http://...'
             }
         ]).then(function(answers) {
