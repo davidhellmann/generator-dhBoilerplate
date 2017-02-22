@@ -253,6 +253,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         // move src folder
         this.directory('___src/_system/', '___src/_system/')
         this.directory('___src/_data/', '___src/_data/')
+        this.directory('___src/_imports/', '___src/_imports/')
         this.directory('___src/assets/', '___src/assets/')
         this.directory('___src/gulp/', './gulp/')
 
