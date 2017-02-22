@@ -100,6 +100,13 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             composer = false
         })
 
+        // check git info
+        var gitInfo = {
+            name: exec('git config user.name', {silent: true}).replace(/\n/g, ''),
+            email: exec('git config user.email', {silent: true}).replace(/\n/g, ''),
+            github: exec('git config github.user', {silent: true}).replace(/\n/g, '')
+        }
+
         return this.prompt([
             {
                 type: 'input',
@@ -203,12 +210,12 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectAuthor',
                 message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
-                default: 'undefined'
+                default: gitInfo.name
             }, {
                 type: 'input',
                 name: 'projectMail',
                 message: chalk.magenta.underline.bold('Project Mail') + '\n\xb7 Mailadress of the author: ',
-                default: 'undefined'
+                default: gitInfo.email
             }, {
                 type: 'input',
                 name: 'projectUrl',
@@ -218,7 +225,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectRepo',
                 message: chalk.magenta.underline.bold('Repo URL') + '\n\xb7 Git Repo URL: ',
-                default: 'http://...'
+                default: gitInfo.github
             }
         ]).then(function(answers) {
             const checkAnswer = (answer) => {
