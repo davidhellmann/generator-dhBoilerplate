@@ -16,7 +16,7 @@ const watchTask = () => {
 
   // watch sass
   gulp.watch(config.src.css + '**/*.scss', ['sass']);
-  // gulp.watch(config.src.templates + '**/*.scss', ['sass']);
+  gulp.watch(config.src.templates + '**/*.scss', ['sass']);
 
   // watch images
   gulp.watch(config.src.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
