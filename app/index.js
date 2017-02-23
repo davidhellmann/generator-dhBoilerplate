@@ -210,12 +210,12 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectAuthor',
                 message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
-                default: gitInfo.name
+                default: 'Author or Company Name'
             }, {
                 type: 'input',
                 name: 'projectMail',
                 message: chalk.magenta.underline.bold('Project Mail') + '\n\xb7 Mailadress of the author: ',
-                default: gitInfo.email
+                default: 'Author or Company Mail'
             }, {
                 type: 'input',
                 name: 'projectUrl',
@@ -225,7 +225,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectRepo',
                 message: chalk.magenta.underline.bold('Repo URL') + '\n\xb7 Git Repo URL: ',
-                default: gitInfo.github
+                default: 'Git Repo URL'
             }
         ]).then(function(answers) {
             const checkAnswer = (answer) => {
