@@ -7,7 +7,7 @@
 {% set classname = name is defined and name is not empty ? name : 'm-imageSlider' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageSlider is defined ? data.settingsImageSlider %}
-{% set cellAlign = settings.cellAlign is defined and settings.cellAlign != 'default' ? settings.cellAlign : '"left"' %}
+{% set cellAlign = settings.cellAlign is defined and settings.cellAlign != 'default' ? '"' ~ settings.cellAlign ~ '"' : '"left"' %}
 {% set rightToLeft = settings.rightToLeft is defined and settings.rightToLeft ? 'true' : 'false' %}
 {% set pagination = settings.pagination is defined and settings.pagination ? 'true' : 'false' %}
 {% set navigation = settings.navigation is defined and settings.navigation ? 'true' : 'false' %}

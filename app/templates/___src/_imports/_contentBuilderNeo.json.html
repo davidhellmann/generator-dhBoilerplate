@@ -1,10 +1,24 @@
 {
   "groups": [
     "Content Builder",
+    "Settings Selector",
     "Settings",
     "Singles"
   ],
   "fields": [
+    {
+      "group": "Settings Selector",
+      "name": "Settings Selector: Image Slider",
+      "handle": "settingsSelectorImageSlider",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "settingsImageSlider",
+        "limit": 1,
+        "selectionLabel": "Select Settings: Image Slider"
+      }
+    },
     {
       "group": "Settings",
       "name": "Settings: Button",
@@ -1175,324 +1189,6 @@
     },
     {
       "group": "Settings",
-      "name": "Settings: Image Slider",
-      "handle": "settingsImageSlider",
-      "instructions": "",
-      "required": false,
-      "type": "SuperTable",
-      "typesettings": {
-        "fieldLayout": "row",
-        "staticField": 1,
-        "selectionLabel": "Add a row",
-        "maxRows": null,
-        "blockTypes": {
-          "new": {
-            "fields": {
-              "new1": {
-                "name": "Autoplay",
-                "handle": "autoplay",
-                "instructions": "Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "33%",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Disabled",
-                      "value": "disabled",
-                      "default": 1
-                    },
-                    {
-                      "label": "Slow",
-                      "value": "slow",
-                      "default": ""
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium",
-                      "default": ""
-                    },
-                    {
-                      "label": "Fast",
-                      "value": "fast",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new2": {
-                "name": "Cell Align",
-                "handle": "cellAlign",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "33%",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Default",
-                      "value": "default",
-                      "default": 1
-                    },
-                    {
-                      "label": "Left",
-                      "value": "\"left\"",
-                      "default": ""
-                    },
-                    {
-                      "label": "Center",
-                      "value": "\"center\"",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right",
-                      "value": "\"right\"",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new3": {
-                "name": "Draggable",
-                "handle": "draggable",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new4": {
-                "name": "Free Scroll",
-                "handle": "freeScroll",
-                "instructions": "If true then slides will not have fixed positions",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new5": {
-                "name": "Group Cells",
-                "handle": "groupCells",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new6": {
-                "name": "Image Ratio",
-                "handle": "imageRatio",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "33%",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "16:10",
-                      "value": "16:10",
-                      "default": 1
-                    },
-                    {
-                      "label": "16:9",
-                      "value": "16:9",
-                      "default": ""
-                    },
-                    {
-                      "label": "4:3",
-                      "value": "4:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:2",
-                      "value": "3:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "2:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:1",
-                      "value": "1:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:2",
-                      "value": "1:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:3",
-                      "value": "2:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:4",
-                      "value": "3:4",
-                      "default": ""
-                    },
-                    {
-                      "label": "9:16",
-                      "value": "9:16",
-                      "default": ""
-                    },
-                    {
-                      "label": "10:16",
-                      "value": "10:16",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new7": {
-                "name": "Loop",
-                "handle": "loop",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new8": {
-                "name": "Pause on Hover",
-                "handle": "pauseOnHover",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new9": {
-                "name": "Navigation",
-                "handle": "navigation",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new10": {
-                "name": "Pagination",
-                "handle": "pagination",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new11": {
-                "name": "Right To Left",
-                "handle": "rightToLeft",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "33%",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new12": {
-                "name": "Slides Per View",
-                "handle": "slidesPerView",
-                "instructions": "Number of slides per view (slides visible at the same time on slider's container).",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "33%",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Default",
-                      "value": "default",
-                      "default": 1
-                    },
-                    {
-                      "label": 1,
-                      "value": 1,
-                      "default": ""
-                    },
-                    {
-                      "label": 2,
-                      "value": 2,
-                      "default": ""
-                    },
-                    {
-                      "label": 3,
-                      "value": 3,
-                      "default": ""
-                    },
-                    {
-                      "label": 4,
-                      "value": 4,
-                      "default": ""
-                    },
-                    {
-                      "label": 5,
-                      "value": 5,
-                      "default": ""
-                    },
-                    {
-                      "label": 6,
-                      "value": 6,
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new13": {
-                "name": "Speed",
-                "handle": "speed",
-                "instructions": "Duration of transition between slides (in ms)",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "33%",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Default",
-                      "value": "default",
-                      "default": 1
-                    },
-                    {
-                      "label": "Slow",
-                      "value": "slow",
-                      "default": ""
-                    },
-                    {
-                      "label": "Medium",
-                      "value": "medium",
-                      "default": ""
-                    },
-                    {
-                      "label": "Fast",
-                      "value": "fast",
-                      "default": ""
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "group": "Settings",
       "name": "Settings: Section",
       "handle": "settingsSection",
       "instructions": "",
@@ -2238,7 +1934,7 @@
                 "singleImages"
               ],
               "Settings": [
-                "settingsImageSlider"
+                "settingsSelectorImageSlider"
               ]
             }
           },

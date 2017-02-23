@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: localhost (MySQL 5.6.34)
-# Datenbank: db135103347_craftcms
-# Erstellt am: 2017-02-21 21:34:31 +0000
+# Datenbank: fm-craftcms
+# Erstellt am: 2017-02-23 12:05:28 +0000
 # ************************************************************
 
 
@@ -18,6 +18,254 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Export von Tabelle craft_amforms_content
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_content`;
+
+CREATE TABLE `craft_amforms_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_name` text COLLATE utf8_unicode_ci,
+  `field_firstName` text COLLATE utf8_unicode_ci,
+  `field_lastName` text COLLATE utf8_unicode_ci,
+  `field_website` text COLLATE utf8_unicode_ci,
+  `field_emailAddress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_telephoneNumber` text COLLATE utf8_unicode_ci,
+  `field_mobileNumber` text COLLATE utf8_unicode_ci,
+  `field_comment` text COLLATE utf8_unicode_ci,
+  `field_reaction` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_amforms_content_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_amforms_content_title_idx` (`title`),
+  KEY `craft_amforms_content_locale_fk` (`locale`),
+  CONSTRAINT `craft_amforms_content_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_amforms_content_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amforms_exports
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_exports`;
+
+CREATE TABLE `craft_amforms_exports` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `formId` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `total` int(10) DEFAULT '0',
+  `totalCriteria` int(10) DEFAULT NULL,
+  `finished` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `map` text COLLATE utf8_unicode_ci,
+  `criteria` text COLLATE utf8_unicode_ci,
+  `submissions` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_amforms_exports_formId_fk` (`formId`),
+  CONSTRAINT `craft_amforms_exports_formId_fk` FOREIGN KEY (`formId`) REFERENCES `craft_amforms_forms` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amforms_forms
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_forms`;
+
+CREATE TABLE `craft_amforms_forms` (
+  `id` int(11) NOT NULL,
+  `fieldLayoutId` int(11) DEFAULT NULL,
+  `redirectEntryId` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `titleFormat` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `submitAction` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `submitButton` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `afterSubmit` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `afterSubmitText` text COLLATE utf8_unicode_ci,
+  `submissionEnabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `displayTabTitles` tinyint(1) DEFAULT '0',
+  `redirectUrl` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sendCopy` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `sendCopyTo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationEnabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `notificationFilesEnabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `notificationRecipients` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationSubject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `confirmationSubject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationSenderName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `confirmationSenderName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationSenderEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `confirmationSenderEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationReplyToEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `formTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tabTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fieldTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `notificationTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `confirmationTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_amforms_forms_fieldLayoutId_fk` (`fieldLayoutId`),
+  KEY `craft_amforms_forms_redirectEntryId_fk` (`redirectEntryId`),
+  CONSTRAINT `craft_amforms_forms_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `craft_fieldlayouts` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `craft_amforms_forms_id_fk` FOREIGN KEY (`id`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_amforms_forms_redirectEntryId_fk` FOREIGN KEY (`redirectEntryId`) REFERENCES `craft_entries` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amforms_notes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_notes`;
+
+CREATE TABLE `craft_amforms_notes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `submissionId` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_amforms_notes_submissionId_fk` (`submissionId`),
+  CONSTRAINT `craft_amforms_notes_submissionId_fk` FOREIGN KEY (`submissionId`) REFERENCES `craft_amforms_submissions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amforms_settings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_settings`;
+
+CREATE TABLE `craft_amforms_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_amforms_settings_type_handle_unq_idx` (`type`,`handle`),
+  KEY `craft_amforms_settings_type_idx` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_amforms_settings` WRITE;
+/*!40000 ALTER TABLE `craft_amforms_settings` DISABLE KEYS */;
+
+INSERT INTO `craft_amforms_settings` (`id`, `enabled`, `type`, `name`, `handle`, `value`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,0,'general','Plugin name','pluginName','','2016-11-21 15:16:08','2016-11-21 15:16:08','b681b8dc-badb-4597-ae26-c90efb9558ea'),
+	(2,0,'general','Quiet errors','quietErrors','0','2016-11-21 15:16:08','2016-11-21 15:16:08','56c8b4b5-4a42-42b6-bf5b-7e33e0623524'),
+	(3,0,'general','Fields per set','fieldsPerSet','8','2016-11-21 15:16:08','2016-11-21 15:16:08','07b08050-58b5-4889-9b12-0d4d44883d11'),
+	(4,0,'general','Use Mandrill for email','useMandrillForEmail','0','2016-11-21 15:16:08','2016-11-21 15:16:08','a7021751-bd41-4154-962a-00bba517fd93'),
+	(5,0,'general','Bcc email address','bccEmailAddress','','2016-11-21 15:16:08','2016-11-21 15:16:08','b368e659-14f2-4b92-9a4f-b0f1f8f17d1a'),
+	(6,0,'export','Delimiter','delimiter',';','2016-11-21 15:16:08','2016-11-21 15:16:08','87c88f86-95c2-45f2-a7a7-a25a1f890cf2'),
+	(7,0,'export','Export rows per set','exportRowsPerSet','50','2016-11-21 15:16:08','2016-11-21 15:16:08','eb77961c-6f3d-46af-b6ca-b4d349c0524a'),
+	(8,0,'export','Ignore Matrix field and block names','ignoreMatrixFieldAndBlockNames','0','2016-11-21 15:16:08','2016-11-21 15:16:08','6d4ef135-2924-4cc9-a7e3-b5aff0daf72e'),
+	(9,0,'antispam','Honeypot enabled','honeypotEnabled','1','2016-11-21 15:16:08','2016-11-21 15:16:08','9b1b184c-5dea-49e7-bb38-e6e9e01f7fbd'),
+	(10,0,'antispam','Honeypot name','honeypotName','yourssince1615','2016-11-21 15:16:08','2016-11-21 15:16:08','8fcc4be9-7f4b-4534-81f6-696e717b1ce5'),
+	(11,0,'antispam','Time check enabled','timeCheckEnabled','1','2016-11-21 15:16:08','2016-11-21 15:16:08','2c81d019-1f17-4dfa-895a-83fc7d6dd935'),
+	(12,0,'antispam','Minimum time in seconds','minimumTimeInSeconds','3','2016-11-21 15:16:08','2016-11-21 15:16:08','195d7c7e-2b52-440f-9d20-1891603a48fd'),
+	(13,0,'antispam','Duplicate check enabled','duplicateCheckEnabled','1','2016-11-21 15:16:08','2016-11-21 15:16:08','b2dd50e9-156a-4c48-bbfa-6f0370fab212'),
+	(14,0,'antispam','Origin check enabled','originCheckEnabled','1','2016-11-21 15:16:08','2016-11-21 15:16:08','fee0bb83-92ac-48fb-b8c2-4a8ec78e29f6'),
+	(15,0,'recaptcha','Google reCAPTCHA enabled','googleRecaptchaEnabled','0','2016-11-21 15:16:08','2016-11-21 15:16:08','0c79a69e-bba4-4663-bd32-cb7655c1049f'),
+	(16,0,'recaptcha','Site key','siteKey','','2016-11-21 15:16:08','2016-11-21 15:16:08','c7daba82-2bd1-4928-abe3-f71d8c6b43db'),
+	(17,0,'recaptcha','Secret key','secretKey','','2016-11-21 15:16:08','2016-11-21 15:16:08','da11f8d8-7146-4556-8aea-08d0db35e65b'),
+	(18,0,'templates','Form template','formTemplate','','2016-11-21 15:16:08','2016-11-21 15:16:08','94fbe636-b415-4ec6-9baf-d52b9ac380b5'),
+	(19,0,'templates','Tab template','tabTemplate','','2016-11-21 15:16:08','2016-11-21 15:16:08','079c02ea-d06a-4ae9-9e2b-b8eb2cd21b4d'),
+	(20,0,'templates','Field template','fieldTemplate','','2016-11-21 15:16:08','2016-11-21 15:16:08','42613d42-215f-46eb-a547-c4dbe1d2ae93'),
+	(21,0,'templates','Notification template','notificationTemplate','','2016-11-21 15:16:08','2016-11-21 15:16:08','6f4ad3c6-b772-467b-9827-d9476c65ee13'),
+	(22,0,'export','Ignore Matrix multiple rows','ignoreMatrixMultipleRows','0','2016-12-13 23:36:12','2016-12-13 23:36:12','90688e59-d61a-4518-bfc3-6156b9820097'),
+	(23,0,'templates','Confirmation template','confirmationTemplate','','2016-12-13 23:36:13','2016-12-13 23:36:13','795e4d08-7c26-4b98-b2c5-894a6f2b9485');
+
+/*!40000 ALTER TABLE `craft_amforms_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_amforms_submissions
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amforms_submissions`;
+
+CREATE TABLE `craft_amforms_submissions` (
+  `id` int(11) NOT NULL,
+  `formId` int(11) NOT NULL,
+  `ipAddress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `userAgent` text COLLATE utf8_unicode_ci,
+  `submittedFrom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_amforms_submissions_formId_fk` (`formId`),
+  CONSTRAINT `craft_amforms_submissions_formId_fk` FOREIGN KEY (`formId`) REFERENCES `craft_amforms_forms` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_amforms_submissions_id_fk` FOREIGN KEY (`id`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amnav_navs
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amnav_navs`;
+
+CREATE TABLE `craft_amnav_navs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `settings` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_amnav_navs_handle_unq_idx` (`handle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_amnav_nodes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_amnav_nodes`;
+
+CREATE TABLE `craft_amnav_nodes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `navId` int(10) NOT NULL,
+  `parentId` int(10) DEFAULT NULL,
+  `order` int(10) DEFAULT '0',
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `listClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blank` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `elementId` int(10) DEFAULT NULL,
+  `elementType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_amnav_nodes_elementId_elementType_locale_idx` (`elementId`,`elementType`,`locale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 # Export von Tabelle craft_assetfiles
@@ -245,7 +493,8 @@ LOCK TABLES `craft_categorygroups` WRITE;
 
 INSERT INTO `craft_categorygroups` (`id`, `structureId`, `fieldLayoutId`, `name`, `handle`, `hasUrls`, `template`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,57,'Default','default',1,'','2017-02-21 21:30:10','2017-02-21 21:30:15','7526dab8-dd2a-4861-9b5f-222bf55077e7');
+	(1,1,57,'Default','default',1,'','2017-02-21 21:30:10','2017-02-21 21:30:15','7526dab8-dd2a-4861-9b5f-222bf55077e7'),
+	(2,2,60,'Settings: Image Slider','settingsImageSlider',0,NULL,'2017-02-23 11:59:41','2017-02-23 12:00:56','6fa00a61-d737-439e-9003-3bb9ab42f617');
 
 /*!40000 ALTER TABLE `craft_categorygroups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -277,7 +526,8 @@ LOCK TABLES `craft_categorygroups_i18n` WRITE;
 
 INSERT INTO `craft_categorygroups_i18n` (`id`, `groupId`, `locale`, `urlFormat`, `nestedUrlFormat`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,1,'en','default/{slug}','{parent.uri}/{slug}','2017-02-21 21:30:10','2017-02-21 21:30:10','c646ba45-d1af-44c7-823c-6dbb0d60e528');
+	(1,1,'en','default/{slug}','{parent.uri}/{slug}','2017-02-21 21:30:10','2017-02-21 21:30:10','c646ba45-d1af-44c7-823c-6dbb0d60e528'),
+	(2,2,'en',NULL,NULL,'2017-02-23 11:59:41','2017-02-23 11:59:41','ca84727e-d7f9-405f-9fee-f4e53eb7ed66');
 
 /*!40000 ALTER TABLE `craft_categorygroups_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -327,7 +577,9 @@ INSERT INTO `craft_content` (`id`, `elementId`, `locale`, `title`, `field_body`,
 VALUES
 	(1,1,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:25:03','2017-02-21 21:29:56','638b03c6-19f7-4d25-b885-d2ef13e849c0'),
 	(4,4,'en','Homepage',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:30:09','2017-02-21 21:30:09','46e548bd-6492-40d1-9040-ae0f9bcee463'),
-	(5,5,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:30:15','2017-02-21 21:30:15','2412953a-4876-49e1-a2c4-d0d6d763d920');
+	(5,5,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:30:15','2017-02-21 21:30:15','2412953a-4876-49e1-a2c4-d0d6d763d920'),
+	(6,6,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:30:15','2017-02-21 21:30:15','1cbb882b-cf9e-459e-9473-59e01b66e24f'),
+	(7,7,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-21 21:30:17','2017-02-21 21:30:17','125921f2-a242-45bc-8799-e0f4da642beb');
 
 /*!40000 ALTER TABLE `craft_content` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -413,7 +665,9 @@ INSERT INTO `craft_elements` (`id`, `type`, `enabled`, `archived`, `dateCreated`
 VALUES
 	(1,'User',1,0,'2017-02-21 21:25:03','2017-02-21 21:28:15','5cb69a2b-cdb4-4ad2-aaf1-9394b6da7077'),
 	(4,'Entry',1,0,'2017-02-21 21:30:09','2017-02-21 21:30:09','d9906ce6-63ef-4a32-9f0b-cd005affd8e8'),
-	(5,'GlobalSet',1,0,'2017-02-21 21:30:15','2017-02-21 21:30:15','381e2970-a21e-4c7b-9fd8-5d98371519a2');
+	(5,'GlobalSet',1,0,'2017-02-21 21:30:15','2017-02-21 21:30:15','381e2970-a21e-4c7b-9fd8-5d98371519a2'),
+	(6,'User',1,0,'2017-02-21 21:30:15','2017-02-21 21:30:15','49169ce1-9e5c-4c6a-ae7b-da8fb0579fc6'),
+	(7,'User',1,0,'2017-02-21 21:30:17','2017-02-21 21:30:17','fe435802-5086-4dae-ab83-f049a1185afa');
 
 /*!40000 ALTER TABLE `craft_elements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -451,7 +705,9 @@ INSERT INTO `craft_elements_i18n` (`id`, `elementId`, `locale`, `slug`, `uri`, `
 VALUES
 	(1,1,'en','',NULL,1,'2017-02-21 21:25:03','2017-02-21 21:29:56','385f1859-1d5a-4bc5-9645-c2dda77b05c7'),
 	(4,4,'en','homepage','__home__',1,'2017-02-21 21:30:09','2017-02-21 21:30:09','bdc66730-9a97-4004-bd2e-eb32846e7e83'),
-	(5,5,'en','',NULL,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','92315c78-9040-40be-873c-4e5fbdd5b51b');
+	(5,5,'en','',NULL,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','92315c78-9040-40be-873c-4e5fbdd5b51b'),
+	(6,6,'en','',NULL,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','f6fcd352-e10f-4e46-bfb1-1d776f951530'),
+	(7,7,'en','',NULL,1,'2017-02-21 21:30:17','2017-02-21 21:30:17','775ee77c-d6b7-40b2-84ff-b9b784e91f43');
 
 /*!40000 ALTER TABLE `craft_elements_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -616,6 +872,91 @@ CREATE TABLE `craft_entryversions` (
 
 
 
+# Export von Tabelle craft_export_map
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_export_map`;
+
+CREATE TABLE `craft_export_map` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `settings` text COLLATE utf8_unicode_ci,
+  `map` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_feedme_feeds
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_feedme_feeds`;
+
+CREATE TABLE `craft_feedme_feeds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `feedUrl` text COLLATE utf8_unicode_ci,
+  `feedType` enum('xml','rss','atom','json') COLLATE utf8_unicode_ci NOT NULL,
+  `primaryElement` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `elementGroup` text COLLATE utf8_unicode_ci,
+  `elementType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `locale` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `duplicateHandle` enum('add','update','delete') COLLATE utf8_unicode_ci NOT NULL,
+  `fieldMapping` text COLLATE utf8_unicode_ci,
+  `fieldElementDefaults` text COLLATE utf8_unicode_ci,
+  `fieldElementMapping` text COLLATE utf8_unicode_ci,
+  `fieldDefaults` text COLLATE utf8_unicode_ci,
+  `fieldUnique` text COLLATE utf8_unicode_ci,
+  `passkey` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `backup` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_feedme_log
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_feedme_log`;
+
+CREATE TABLE `craft_feedme_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logsId` int(11) DEFAULT NULL,
+  `errors` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_feedme_log_logsId_fk` (`logsId`),
+  CONSTRAINT `craft_feedme_log_logsId_fk` FOREIGN KEY (`logsId`) REFERENCES `craft_feedme_logs` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_feedme_logs
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_feedme_logs`;
+
+CREATE TABLE `craft_feedme_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `feedId` int(11) DEFAULT NULL,
+  `items` int(10) DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_feedme_logs_feedId_fk` (`feedId`),
+  CONSTRAINT `craft_feedme_logs_feedId_fk` FOREIGN KEY (`feedId`) REFERENCES `craft_feedme_feeds` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
 # Export von Tabelle craft_fieldgroups
 # ------------------------------------------------------------
 
@@ -643,7 +984,8 @@ VALUES
 	(5,'Grouped','2017-02-21 21:30:09','2017-02-21 21:30:09','021d655b-05ba-46bb-aa7a-dd85b5ae1d69'),
 	(6,'Plugins','2017-02-21 21:30:09','2017-02-21 21:30:09','3c696a1f-7f8d-4038-9fc1-03233dcfa41b'),
 	(7,'Settings','2017-02-21 21:30:09','2017-02-21 21:30:09','1294a69c-21ad-4eaa-abd3-e211d84dc2e5'),
-	(8,'Singles','2017-02-21 21:30:09','2017-02-21 21:30:09','930f7518-ccfc-4194-9fee-b676a1504037');
+	(8,'Singles','2017-02-21 21:30:09','2017-02-21 21:30:09','930f7518-ccfc-4194-9fee-b676a1504037'),
+	(9,'Settings Selector','2017-02-23 11:59:01','2017-02-23 11:59:01','cc095568-cc57-408a-9807-da564f4606f0');
 
 /*!40000 ALTER TABLE `craft_fieldgroups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -725,19 +1067,6 @@ VALUES
 	(47,23,13,60,0,2,'2017-02-21 21:30:12','2017-02-21 21:30:12','d2c70b68-ba0f-4718-9612-7dc89097922e'),
 	(48,23,13,61,0,3,'2017-02-21 21:30:12','2017-02-21 21:30:12','285c8849-cfb5-4cae-9517-2e262c43bee9'),
 	(49,23,13,62,0,4,'2017-02-21 21:30:12','2017-02-21 21:30:12','26179da2-9356-4683-add9-63d48a71c27b'),
-	(50,24,14,64,0,1,'2017-02-21 21:30:13','2017-02-21 21:30:13','c941a8ec-dd2a-4ecd-979b-48bd763690f7'),
-	(51,24,14,65,0,2,'2017-02-21 21:30:13','2017-02-21 21:30:13','6f691776-5e3c-4cff-aeff-da92397995a6'),
-	(52,24,14,66,0,3,'2017-02-21 21:30:13','2017-02-21 21:30:13','0b091465-0086-4361-bab8-8f7d737ed7f0'),
-	(53,24,14,67,0,4,'2017-02-21 21:30:13','2017-02-21 21:30:13','34003a0a-2eb6-476d-97b6-a2c035632f87'),
-	(54,24,14,68,0,5,'2017-02-21 21:30:13','2017-02-21 21:30:13','4b1f68f2-2da1-4244-a247-3e9143bea302'),
-	(55,24,14,69,0,6,'2017-02-21 21:30:13','2017-02-21 21:30:13','2459bb77-e36d-45c2-a621-84917fb696a0'),
-	(56,24,14,70,0,7,'2017-02-21 21:30:13','2017-02-21 21:30:13','b4ff5473-f711-4356-b904-523b9e7286f0'),
-	(57,24,14,71,0,8,'2017-02-21 21:30:13','2017-02-21 21:30:13','f840da8a-f7b5-47a2-9c98-df2b9b9ea8e3'),
-	(58,24,14,72,0,9,'2017-02-21 21:30:13','2017-02-21 21:30:13','4fe9a4d0-cd4b-4c3e-b06c-345329d5a403'),
-	(59,24,14,73,0,10,'2017-02-21 21:30:13','2017-02-21 21:30:13','6cbfd62d-1a7f-44de-bca1-4d1590ef9d1f'),
-	(60,24,14,74,0,11,'2017-02-21 21:30:13','2017-02-21 21:30:13','ab138916-0f1c-4d3d-8e52-47ce9835db8c'),
-	(61,24,14,75,0,12,'2017-02-21 21:30:13','2017-02-21 21:30:13','21a27f39-0c7d-449f-9bf8-730e3ba54386'),
-	(62,24,14,76,0,13,'2017-02-21 21:30:13','2017-02-21 21:30:13','3d205e47-6817-4130-af82-ef738cb20906'),
 	(63,25,15,78,0,1,'2017-02-21 21:30:13','2017-02-21 21:30:13','d7c7cc03-b14a-4be4-8372-faa3a67a1867'),
 	(64,25,15,79,0,2,'2017-02-21 21:30:13','2017-02-21 21:30:13','5b5f6e8e-2e88-4c78-84ee-e71266e9ee8e'),
 	(65,25,15,80,0,3,'2017-02-21 21:30:13','2017-02-21 21:30:13','60be6049-537f-4208-9dac-372a16b22be9'),
@@ -746,44 +1075,6 @@ VALUES
 	(68,26,16,84,0,3,'2017-02-21 21:30:14','2017-02-21 21:30:14','0e1430ba-189e-4d05-8ffa-e266e1102063'),
 	(69,27,17,86,0,1,'2017-02-21 21:30:14','2017-02-21 21:30:14','db1bbd1e-b4d1-4fd7-86b1-10c452c22902'),
 	(70,28,18,90,0,1,'2017-02-21 21:30:14','2017-02-21 21:30:14','23363f63-2e94-46d5-b647-a6cac3be2bab'),
-	(71,29,19,94,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','26989e66-c184-4264-bc19-99d1feee6db3'),
-	(72,29,19,102,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','8a20fd2d-928b-4818-b289-9f996e3961d7'),
-	(73,29,20,87,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','c92baac5-703e-4380-a773-e5f748e7028c'),
-	(74,29,20,77,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','1b65dfba-9e66-4594-b5e8-038b3b7ef23a'),
-	(75,30,21,94,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','f539082f-cc25-49db-840d-2922a57ead48'),
-	(76,30,22,42,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','084fc9ef-5bae-4179-8156-ae88701497a8'),
-	(77,31,23,99,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','76bb4b15-b500-42b0-85d5-c37156a7d39d'),
-	(78,32,24,99,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','c33f3f57-c934-46b6-aaa0-127bea263c3c'),
-	(79,34,25,98,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','94f08730-995e-454b-9701-3415cafa2be7'),
-	(80,34,25,100,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','7f95d859-45f2-4e31-bf9c-df12d16b3d90'),
-	(81,34,25,101,0,3,'2017-02-21 21:30:15','2017-02-21 21:30:15','eb34aec6-2823-4de0-ae87-6008f7121f0e'),
-	(82,35,26,95,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','dc21a4af-c933-4c15-ae8d-e6686e79393a'),
-	(83,35,26,103,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','1cd7e707-d8c9-47bf-bca9-1209c2c5543b'),
-	(84,35,27,46,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','b780416f-947a-4c45-8ce6-b60487d51b3a'),
-	(85,36,28,96,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','cfc6e4b0-4766-4e5c-a7cb-83e3a3b3def0'),
-	(86,36,29,50,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','7fd88570-ab63-4818-90c8-4c9c8fc317e0'),
-	(87,37,30,96,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','3763099d-7426-4619-b3a8-ef3db6733bb3'),
-	(88,37,31,54,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','18b3d7d7-8428-4997-ba0a-ec588186ef7d'),
-	(89,38,32,95,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','6d88c052-ca06-4b84-877e-6ead3c171722'),
-	(90,38,33,58,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','1a851cad-a515-44a2-b4e9-bcf774e1cb32'),
-	(91,39,34,96,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','49301c9a-3254-4523-8144-1f4da53f5c56'),
-	(92,39,35,63,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','e8a67343-22cb-4d0a-90bd-1fd0c8376e6d'),
-	(93,40,36,88,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','70951b29-afcb-407f-97d9-0ff6aa78e3a1'),
-	(94,40,37,24,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','0cf12e97-995a-4826-a3e2-ebb8976418c0'),
-	(95,41,38,89,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','83622c96-4121-4fc8-a009-864825442302'),
-	(96,41,39,31,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','d07c879f-1933-4eba-bc07-ec4e212988ff'),
-	(97,43,41,97,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','55c10449-878d-4dd4-b8c7-65d742942783'),
-	(98,44,43,85,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ef3ebf87-3798-444d-9120-93c257fb24ee'),
-	(99,46,44,92,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','228b0ad1-9ea2-4905-9392-5e73776047da'),
-	(100,46,45,34,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','8442e650-5ec2-44e9-8c11-6369c0f95b1d'),
-	(101,47,46,93,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','5f522f17-e4d8-46a1-a361-ade9a84d819a'),
-	(102,47,47,37,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','0d989d75-9076-4edd-afc5-67463b829fc2'),
-	(103,48,49,81,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','0e1cbf75-ab6d-43a5-aa4e-021040243db6'),
-	(104,49,50,95,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','a7b273c6-aa73-4523-9a95-012dc93e06df'),
-	(105,49,50,94,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','b8c21730-3abd-4065-ab52-cff31af03fd0'),
-	(106,49,50,99,0,3,'2017-02-21 21:30:15','2017-02-21 21:30:15','9849b3e7-0804-4817-8c8e-35bd3ec95b07'),
-	(107,49,51,58,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','614391d3-fc4e-454d-bb18-4e10f61f8ed2'),
-	(108,49,51,42,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','e7c20c21-9a83-4c2f-9b1c-e41e65e34d05'),
 	(109,50,52,18,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','b3748877-b9c0-42e3-a302-6c0671a25ed1'),
 	(110,50,52,41,0,2,'2017-02-21 21:30:15','2017-02-21 21:30:15','96b8db5c-e426-47d9-87a5-d8cfb0770ca6'),
 	(111,51,53,18,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','8aa931f0-aa4d-4da9-b465-454678a94b61'),
@@ -792,7 +1083,59 @@ VALUES
 	(114,55,57,104,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ef5abcdd-a734-458b-b725-99e0fb09d411'),
 	(115,55,58,3,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ea604f8a-ce06-4213-9069-7b33817a4020'),
 	(116,55,59,23,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','9d0a80a4-d58f-462f-91da-0f3a711ff5c0'),
-	(117,56,60,4,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ef363271-da5c-4cae-8162-b0399dd2c7b2');
+	(117,56,60,4,0,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ef363271-da5c-4cae-8162-b0399dd2c7b2'),
+	(118,58,61,64,0,1,'2017-02-23 11:58:50','2017-02-23 11:58:50','fa40802d-228a-4bc6-acb2-2c04f56ad750'),
+	(119,58,61,65,0,2,'2017-02-23 11:58:50','2017-02-23 11:58:50','6d2a5899-434a-4c45-963c-52f7e07c485e'),
+	(120,58,61,66,0,3,'2017-02-23 11:58:50','2017-02-23 11:58:50','86c4fba6-a7dd-4221-aad2-157911adb103'),
+	(121,58,61,67,0,4,'2017-02-23 11:58:50','2017-02-23 11:58:50','da780cac-25b7-4351-b465-d87b5b5ab168'),
+	(122,58,61,68,0,5,'2017-02-23 11:58:50','2017-02-23 11:58:50','d8ac077d-697a-479b-8ff8-4bb02a0a65d7'),
+	(123,58,61,69,0,6,'2017-02-23 11:58:50','2017-02-23 11:58:50','870333e5-c25d-40ab-aaba-01c2da0a7911'),
+	(124,58,61,70,0,7,'2017-02-23 11:58:50','2017-02-23 11:58:50','df2e6fe1-ccdb-4d64-bb8f-3541d1c499b4'),
+	(125,58,61,71,0,8,'2017-02-23 11:58:50','2017-02-23 11:58:50','5ebe05b9-fa55-40fb-95ef-4a2e23d53e38'),
+	(126,58,61,72,0,9,'2017-02-23 11:58:50','2017-02-23 11:58:50','717de209-40dc-4d6b-bb31-055db7ae8b5c'),
+	(127,58,61,73,0,10,'2017-02-23 11:58:50','2017-02-23 11:58:50','e47d8491-0b38-4134-b39b-96d7dec240da'),
+	(128,58,61,74,0,11,'2017-02-23 11:58:50','2017-02-23 11:58:50','fe2d6f14-c20a-4e06-ac1a-81dddb5a5751'),
+	(129,58,61,75,0,12,'2017-02-23 11:58:50','2017-02-23 11:58:50','0a80f3d9-90f1-4289-91f8-56d509dfd2d7'),
+	(130,58,61,76,0,13,'2017-02-23 11:58:50','2017-02-23 11:58:50','8e4f8176-3fb3-4829-bd1d-2bc2a37f8ae3'),
+	(132,60,63,63,0,1,'2017-02-23 12:00:56','2017-02-23 12:00:56','6bc31b81-6fe5-4210-8dfe-df67d6e8ba43'),
+	(133,61,64,94,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','dd0ff439-c7a6-4f5f-8c99-3433f6f39482'),
+	(134,61,64,102,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','d12858e0-0f78-4b74-a616-0ba10a2f0e19'),
+	(135,61,65,87,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','b5953f58-261a-4c0f-834a-6850a22be8c2'),
+	(136,61,65,77,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','530199d7-dac1-4e13-acd9-15a0a5abda9e'),
+	(137,62,66,94,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','d4d5a2dd-6f03-42ed-a8be-48176a9286f8'),
+	(138,62,67,42,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','82a34723-6041-47e5-8637-ff56afc935af'),
+	(139,63,68,99,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','6041ed3e-2588-4abb-8c6f-587f95551989'),
+	(140,64,69,99,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','cac02008-6ed5-4771-a2dc-9af6dd72378c'),
+	(141,66,70,98,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','e5331d73-a8de-42a5-8481-df98fe514161'),
+	(142,66,70,100,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','3463da0b-1f0d-42a5-a126-9f982f6fa615'),
+	(143,66,70,101,0,3,'2017-02-23 12:01:17','2017-02-23 12:01:17','9e2bc6d4-5db6-446c-9dd6-7c55b7e82e7f'),
+	(144,67,71,95,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','a3fcff18-1f79-4095-8116-c1c977b8c48f'),
+	(145,67,71,103,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','342596d2-d83c-4f02-a004-a30a19eef5f7'),
+	(146,67,72,46,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','4cbb65aa-ff0b-4cee-9a67-8174da3edf09'),
+	(147,68,73,96,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','adb10890-b4c2-4a02-bd4e-05546b91bf3b'),
+	(148,68,74,50,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','f1111a24-cc16-480b-ab82-80d60f22c5b7'),
+	(149,69,75,96,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','b8dfb965-5d85-44f2-9d3d-b8aaea7a0f6c'),
+	(150,69,76,54,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','c0b62fde-33a5-4c5b-8e30-a5d1b633d1a1'),
+	(151,70,77,95,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','d1c83baf-4d97-4961-8575-57d703cce472'),
+	(152,70,78,58,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','e2d9dd10-e2af-4537-b2dd-d12b34d11524'),
+	(153,71,79,96,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','295c5283-6b49-4ddd-912f-3c60c914967e'),
+	(154,71,80,105,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','e361b789-f57a-45aa-88df-0810a7d3df97'),
+	(155,72,81,88,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','f923c3d4-0f66-4f7c-b612-ce93f5c37d89'),
+	(156,72,82,24,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','d8706ded-dd7d-4147-8399-0b4d4bbcb709'),
+	(157,73,83,89,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','9d70d3e2-5591-4d18-8978-9ccbfb2dfac4'),
+	(158,73,84,31,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','d951b1fd-8032-4359-9f07-36b3eb14e755'),
+	(159,75,86,97,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','e5f82884-4244-4ea3-93ce-2e8803d9a4f3'),
+	(160,76,88,85,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','51b3b59a-ed0b-4c27-a326-6c399d86c97d'),
+	(161,78,89,92,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','c8817d73-84af-4083-ab9a-c6fd4d4cca2f'),
+	(162,78,90,34,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','b38de4cf-c77e-4b02-a778-7f2cd537245c'),
+	(163,79,91,93,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','e7212a99-1715-4391-9e3a-46eb11c69b8f'),
+	(164,79,92,37,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','1c3eb211-8f0c-47ca-a570-975016e95b82'),
+	(165,80,94,81,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','6fc119cf-57f7-4a16-a94f-f132edb59ab7'),
+	(166,81,95,95,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','a59309e4-8831-4778-a94d-82a639e363bb'),
+	(167,81,95,94,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','38ce9ecd-ecf4-4efa-afd3-04002e5b281c'),
+	(168,81,95,99,0,3,'2017-02-23 12:01:17','2017-02-23 12:01:17','3eb7383f-002a-4b3a-a1d2-386e2b13fa59'),
+	(169,81,96,58,0,1,'2017-02-23 12:01:17','2017-02-23 12:01:17','bd6eaf8e-2148-44c0-9be8-931098801d24'),
+	(170,81,96,42,0,2,'2017-02-23 12:01:17','2017-02-23 12:01:17','bbb655d9-d092-4cda-aa3e-b5840e93b360');
 
 /*!40000 ALTER TABLE `craft_fieldlayoutfields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -830,32 +1173,10 @@ VALUES
 	(21,'SuperTable_Block','2017-02-21 21:30:12','2017-02-21 21:30:12','4b595fe9-96a2-43fb-906e-d9dcf9a73200'),
 	(22,'SuperTable_Block','2017-02-21 21:30:12','2017-02-21 21:30:12','00cda8fa-2724-470a-8a8d-9252920c7ebf'),
 	(23,'SuperTable_Block','2017-02-21 21:30:12','2017-02-21 21:30:12','d281acc5-f47d-4f7e-ac7a-f3c240a58c69'),
-	(24,'SuperTable_Block','2017-02-21 21:30:13','2017-02-21 21:30:13','69827751-53d4-4fd7-bb3f-2aa93e405734'),
 	(25,'SuperTable_Block','2017-02-21 21:30:13','2017-02-21 21:30:13','f8c594bd-5233-4dc8-afdf-a6cdc6ea103c'),
 	(26,'SuperTable_Block','2017-02-21 21:30:14','2017-02-21 21:30:14','5058f285-1386-4f03-88ba-3dcfc747274f'),
 	(27,'SuperTable_Block','2017-02-21 21:30:14','2017-02-21 21:30:14','fed68a5e-b6dd-4209-9fe8-3c1cb6228771'),
 	(28,'SuperTable_Block','2017-02-21 21:30:14','2017-02-21 21:30:14','1dc0a18b-d260-4f80-a26f-159e4bebbd77'),
-	(29,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','3cc410f2-b521-491d-88c0-afc19e682ca8'),
-	(30,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','ffe4ca8c-72de-4ef6-a70a-df94542026a0'),
-	(31,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','7e5dd146-1929-49c2-b69a-d52f9c98c1c1'),
-	(32,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','4b819799-0983-466b-a2fd-2332a919e580'),
-	(33,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','8447f93e-afd0-4e1b-b8ae-1cf50cba7c90'),
-	(34,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','4a8993d1-4a28-430b-861d-2ef5dea3b77e'),
-	(35,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','e0830933-8714-48ee-b5a7-9eb53ee58e21'),
-	(36,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','118df787-a255-4124-b250-dd53a6964cb2'),
-	(37,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','ad98d530-2413-4ad9-b62e-184fbd21af3e'),
-	(38,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','546f8ce7-3029-4127-9a95-6b0aa7ba1b34'),
-	(39,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','d23be047-d3d7-4e8e-9a1a-e94b062c7ea9'),
-	(40,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','6b74b00a-679b-4a0d-bf05-cb22d6605fe1'),
-	(41,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','224230ac-0d34-422c-95b1-3b2b9161f49e'),
-	(42,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','75dd17c1-cf7c-4424-9027-9ddb88e66242'),
-	(43,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','ffe065e0-0402-47bb-9246-e645c5c04c87'),
-	(44,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','32bfc66e-3675-4710-844f-d65cde382fdc'),
-	(45,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','c47af143-2d58-462a-ae92-193d628195cf'),
-	(46,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','5632dce1-7cd0-45af-bb85-c9d8b6a01e3e'),
-	(47,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','1ac6cf0b-cfe0-47d0-aae8-2e0fafc5e2a4'),
-	(48,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','005cf52d-76ba-4d5b-b941-b7bf9fc0d01f'),
-	(49,'Neo_Block','2017-02-21 21:30:15','2017-02-21 21:30:15','9eb0806d-31e3-43ee-a85f-9bfa81774107'),
 	(50,'Asset','2017-02-21 21:30:15','2017-02-21 21:30:15','8879161b-b3cc-40c2-bad8-d430d1444b92'),
 	(51,'Asset','2017-02-21 21:30:15','2017-02-21 21:30:15','4f3027c5-66d7-4c05-bb2a-13ce13330a14'),
 	(52,'Asset','2017-02-21 21:30:15','2017-02-21 21:30:15','e5a582d9-914b-4f56-b2e4-64e2e97c28a7'),
@@ -863,7 +1184,30 @@ VALUES
 	(54,'Entry','2017-02-21 21:30:15','2017-02-21 21:30:15','87a2f14c-a8cd-4665-b3a0-0c77fcf5cb2c'),
 	(55,'Entry','2017-02-21 21:30:15','2017-02-21 21:30:15','6860387c-6bc2-4fb7-a1bb-eef2fcb31dae'),
 	(56,'GlobalSet','2017-02-21 21:30:15','2017-02-21 21:30:15','9f00691b-1027-4f21-8526-42ee7620c020'),
-	(57,'Category','2017-02-21 21:30:15','2017-02-21 21:30:15','af95a0c2-5600-44c7-bde4-54b67a032e8e');
+	(57,'Category','2017-02-21 21:30:15','2017-02-21 21:30:15','af95a0c2-5600-44c7-bde4-54b67a032e8e'),
+	(58,'SuperTable_Block','2017-02-23 11:58:50','2017-02-23 11:58:50','0b44d1c8-762c-458e-b541-b76b3fe3b3a5'),
+	(60,'Category','2017-02-23 12:00:56','2017-02-23 12:00:56','61dd1628-cd54-457a-ac52-9083b0bc370d'),
+	(61,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','833ef625-3ece-4183-a073-96d892fcab97'),
+	(62,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','fe59b29b-ffc9-47d3-bad8-1622d9c84bec'),
+	(63,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','737f1d4c-ef66-4a00-9c18-25b5ee2ad5a2'),
+	(64,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','2c7eaf80-2a72-48cb-a7a3-6bfe098ecca4'),
+	(65,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','da46111b-d7da-459e-9c9d-b901a8e03458'),
+	(66,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','800a3635-edb2-4e51-b8cc-78bb524d0266'),
+	(67,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','34f5d5ce-1795-4c07-abd7-0f78864d3847'),
+	(68,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','59c1d94a-ad1e-4369-905f-c8ef6ba17445'),
+	(69,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','afeb91a3-9883-4a5b-bb41-686556eb6263'),
+	(70,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','2589b58f-3b29-4a91-aa4e-4c1e331b808f'),
+	(71,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','974c5eb1-e1eb-444d-8047-1cb6338b81e0'),
+	(72,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','9bfa8f3e-247e-4335-bab2-cd3943982f2e'),
+	(73,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','9ab2b351-169c-44b7-95a9-92f9231427ab'),
+	(74,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','d8c2b049-a939-4039-89cc-213e246fb348'),
+	(75,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','880fccf1-40fa-4dcb-af96-99ebe7c4820b'),
+	(76,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','bec757c8-fa32-47ea-a153-d896eae16ae7'),
+	(77,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','fd50f4dc-5c21-45cd-b0a8-7d9cebf47ff9'),
+	(78,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','fbd328a5-0032-45c9-ad63-af0a89fd0304'),
+	(79,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','28562bf0-ec7d-4db1-858e-53adf23db030'),
+	(80,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','391de0db-a440-48dc-ae3c-2409dab8a6bc'),
+	(81,'Neo_Block','2017-02-23 12:01:17','2017-02-23 12:01:17','b72bc26b-57de-45e5-8a06-c618b778d99f');
 
 /*!40000 ALTER TABLE `craft_fieldlayouts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -904,44 +1248,10 @@ VALUES
 	(11,21,'Content',1,'2017-02-21 21:30:12','2017-02-21 21:30:12','dec29a2b-628b-42c4-90c8-2c13c39d5c9c'),
 	(12,22,'Content',1,'2017-02-21 21:30:12','2017-02-21 21:30:12','52dbd124-f9c3-4f0f-ba2d-190c192df8b7'),
 	(13,23,'Content',1,'2017-02-21 21:30:12','2017-02-21 21:30:12','9d396a3f-e6f7-41fa-9d42-af5a190e0a60'),
-	(14,24,'Content',1,'2017-02-21 21:30:13','2017-02-21 21:30:13','2cce6869-a0b6-430f-a479-b43793e3e7c7'),
 	(15,25,'Content',1,'2017-02-21 21:30:13','2017-02-21 21:30:13','de779f0a-03bc-48d7-9c53-eb6c5623f0ad'),
 	(16,26,'Content',1,'2017-02-21 21:30:14','2017-02-21 21:30:14','de1b46c3-a304-4884-8396-e2abd3f1976d'),
 	(17,27,'Content',1,'2017-02-21 21:30:14','2017-02-21 21:30:14','ca748926-5657-4dfb-892f-66f6c1f3d115'),
 	(18,28,'Content',1,'2017-02-21 21:30:14','2017-02-21 21:30:14','d6b1bf38-0ae8-4f89-9149-07b64aa05908'),
-	(19,29,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','54e6d81d-b403-4f8f-965b-52dfd0a0cbe0'),
-	(20,29,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','6684723d-9e92-48e0-a2ef-a0e1298d4620'),
-	(21,30,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','4f4de703-0e76-4284-b7dd-5ad0d7ae38da'),
-	(22,30,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','7e354bf2-1bba-4344-a7d4-accafaa4058a'),
-	(23,31,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','41a628ef-29b1-484a-8947-04cc54c6c1f7'),
-	(24,32,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','28794f62-fdc0-400c-be37-924a8bf6ee6b'),
-	(25,34,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','701e854a-cce8-411a-9b2e-87e957bf359c'),
-	(26,35,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','d44985e8-a07a-4114-b855-edb6db83f9ea'),
-	(27,35,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','7a0c2098-f011-4592-b396-9f4d8ed491c5'),
-	(28,36,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','e144bb8b-0506-49ec-ab47-29409a6393a2'),
-	(29,36,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','1fa191f6-3587-4fba-a3eb-c1f62bc56651'),
-	(30,37,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','6baad1b5-7ef6-4920-a05e-810c49eb9b7d'),
-	(31,37,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','b5dfa493-093c-40a0-804a-12405dd9287f'),
-	(32,38,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','2955b7dd-480b-4281-86bf-4d69a85d1d9a'),
-	(33,38,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','07313b09-bf77-40eb-ba96-8742bd4cedcf'),
-	(34,39,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','2f91ad81-9e3e-49de-aead-05f86a6f9efb'),
-	(35,39,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','c6d1f99f-3ad3-4d33-a8e7-8ca480e55844'),
-	(36,40,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','7be1b7a6-a9ce-4552-b130-3fefd18a52bb'),
-	(37,40,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','76955669-27e8-4d4d-8b8b-cd868816ac37'),
-	(38,41,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','7dc1e707-bd49-4e83-93d2-2ea3e0eae3b1'),
-	(39,41,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','0760b15a-ddca-41bf-abb0-aa0626d30312'),
-	(40,42,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','920f77a7-c27f-462c-83a6-e11b97797f5a'),
-	(41,43,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','39793fea-8346-4201-89ae-822815ccedbf'),
-	(42,44,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ab109beb-6005-4aab-99e6-0401cc366688'),
-	(43,44,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','327e2d69-1c0c-4da6-950c-9fc0dbfa6e14'),
-	(44,46,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','2c237dff-8b39-415c-8af9-cf21ea429078'),
-	(45,46,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','e08c645e-23eb-4841-9c51-4ced44e8470d'),
-	(46,47,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','998ab86d-b407-41be-967c-cd101577217c'),
-	(47,47,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','76fee83f-a1a3-4264-87ac-c931452d11d9'),
-	(48,48,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','de66e294-b0d9-4923-9324-3f493d31e627'),
-	(49,48,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','283bb359-cca2-461e-ab91-4b551132520c'),
-	(50,49,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','ddca1343-ab0b-4fe6-b3d9-f0617f34cd4e'),
-	(51,49,'Settings',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','0d1e3ac5-e547-461e-bc33-53d88e2efef8'),
 	(52,50,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','a08c5da5-18d9-4f9c-9389-1223a1e4686e'),
 	(53,51,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','9a2e3213-031c-424f-82b8-310cbffc7cf9'),
 	(54,52,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','e3e1e993-cb73-475b-88ba-3470cdbaff8a'),
@@ -950,7 +1260,42 @@ VALUES
 	(57,55,'Content Neo',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','311d4093-44e2-4de7-ab96-306df7174f88'),
 	(58,55,'Meta',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','e9ed43b0-d62c-4d40-bb20-93e1986d6e6a'),
 	(59,55,'SEO',3,'2017-02-21 21:30:15','2017-02-21 21:30:15','fe4e729b-9164-42c4-b5cb-04e437bf09ed'),
-	(60,56,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','b1ee48af-39fd-4f08-af35-86df64b2fff3');
+	(60,56,'Content',1,'2017-02-21 21:30:15','2017-02-21 21:30:15','b1ee48af-39fd-4f08-af35-86df64b2fff3'),
+	(61,58,'Content',1,'2017-02-23 11:58:50','2017-02-23 11:58:50','b41db2e3-4ee9-4092-9214-1e1179318c66'),
+	(63,60,'Settings',1,'2017-02-23 12:00:56','2017-02-23 12:00:56','dec11777-2bed-4582-b61a-96ee8d665fd7'),
+	(64,61,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','04f5b8a1-68f2-4dc1-ab2a-cc6271071761'),
+	(65,61,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','ffb7fb37-f797-40f9-9375-d8ecbfbf55dc'),
+	(66,62,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','339860d9-8864-4842-9f0e-0208b2ef3f60'),
+	(67,62,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','70b10732-7b29-4ec4-ad30-783e9635d559'),
+	(68,63,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','189a8fc7-1701-4027-9bee-15099deb256a'),
+	(69,64,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','6358282b-359a-48a4-8caa-adac3cdc690d'),
+	(70,66,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','a37c7d77-4528-4fb1-8264-72a2cc9f825f'),
+	(71,67,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','787e8e20-b887-49ae-81d8-cc0b04d1f2b5'),
+	(72,67,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','385c3461-88dd-491f-8286-70435a63a3f2'),
+	(73,68,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','c72e9513-bea2-4f06-95a9-7bb6791f8295'),
+	(74,68,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','63001307-eaab-4c4e-935e-555790042b23'),
+	(75,69,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','619d49dd-10bd-4dbe-a51f-f2c67b61641e'),
+	(76,69,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','bb78ecc0-2656-4511-9e03-3c828bfb1df8'),
+	(77,70,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','b71661ab-3d64-47e0-a38e-1fbed97c89ed'),
+	(78,70,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','5eed9cb2-0284-4256-ae2d-825200b65351'),
+	(79,71,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','9873a1e2-74d5-45be-aa99-b5ba6c8a132b'),
+	(80,71,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','38930948-e0ba-4b53-bdc0-628157c10189'),
+	(81,72,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','87b21b49-08d0-4de3-8f79-fac7bcce62b5'),
+	(82,72,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','c6ef32dd-2075-4ab5-afb0-b44a00cb8439'),
+	(83,73,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','73048bff-febb-41ab-84e1-5fa5dafa1c65'),
+	(84,73,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','53d72700-6e43-492f-945c-b6265c8be293'),
+	(85,74,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','8c8dbeb6-8f3a-428a-98ef-70f511559f64'),
+	(86,75,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','8767b955-1a6a-4997-8e6b-a82fce9feced'),
+	(87,76,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','5fd1cc8b-7aae-4c89-a81e-3f4e9d22773a'),
+	(88,76,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','c19be3f3-b348-4027-9777-909227b864a8'),
+	(89,78,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','cc4614d9-f316-43c5-b66f-c0fbeb14f589'),
+	(90,78,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','b9f43572-bffb-4fb1-844a-0c7957ff7c78'),
+	(91,79,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','b7b561f4-b776-405a-b25e-a3bb147e30a6'),
+	(92,79,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','91d4ade5-43a8-4b8e-8c7b-ccd194dc3c5b'),
+	(93,80,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','116fdced-4ee7-411d-8954-f5cb9fab81b3'),
+	(94,80,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','75e0e0b6-8e42-451b-8a96-47ce3d2f606a'),
+	(95,81,'Content',1,'2017-02-23 12:01:17','2017-02-23 12:01:17','54c43497-ac65-43e4-9890-86ca3cee267e'),
+	(96,81,'Settings',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','3507da5a-72b0-4bb4-a542-1e05b0e2b00d');
 
 /*!40000 ALTER TABLE `craft_fieldlayouttabs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1048,20 +1393,20 @@ VALUES
 	(60,NULL,'Image Position','imagePosition','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Left\",\"value\":\"left\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-02-21 21:30:12','2017-02-21 21:30:12','b2ee8e1c-114e-4f25-9c00-f5c16a4d82a8'),
 	(61,NULL,'Image Ratio','imageRatio','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":\"\"},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-02-21 21:30:12','2017-02-21 21:30:12','9f132934-c270-475b-b3c7-fbff360eebe6'),
 	(62,NULL,'Image Width','imageWidth','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Full\",\"value\":\"full\",\"default\":\"\"},{\"label\":\"Three Quarter\",\"value\":\"threeQuarter\",\"default\":\"\"},{\"label\":\"Half\",\"value\":\"half\",\"default\":\"\"}]}','2017-02-21 21:30:12','2017-02-21 21:30:12','55f40ce2-def2-4aa0-bd0b-7c4a5347f77b'),
-	(63,7,'Settings: Image Slider','settingsImageSlider','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"33%\"},\"new2\":{\"width\":\"33%\"},\"new3\":{\"width\":\"33%\"},\"new4\":{\"width\":\"33%\"},\"new5\":{\"width\":\"33%\"},\"new6\":{\"width\":\"33%\"},\"new7\":{\"width\":\"33%\"},\"new8\":{\"width\":\"33%\"},\"new9\":{\"width\":\"33%\"},\"new10\":{\"width\":\"33%\"},\"new11\":{\"width\":\"33%\"},\"new12\":{\"width\":\"33%\"},\"new13\":{\"width\":\"33%\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-02-21 21:30:12','2017-02-21 21:30:12','ec384fc7-31ba-4900-9f56-ac39876942a3'),
-	(64,NULL,'Autoplay','autoplay','superTableBlockType:12','Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled',0,'Dropdown','{\"options\":[{\"label\":\"Disabled\",\"value\":\"disabled\",\"default\":1},{\"label\":\"Slow\",\"value\":\"slow\",\"default\":\"\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Fast\",\"value\":\"fast\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','961eea20-dd38-4363-94d0-d73555058f95'),
-	(65,NULL,'Cell Align','cellAlign','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Left\",\"value\":\"\\\"left\\\"\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"\\\"center\\\"\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"\\\"right\\\"\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','b9ae8342-d351-4c8b-ae46-a0e1f8cdaf5e'),
-	(66,NULL,'Draggable','draggable','superTableBlockType:12','',0,'Lightswitch','{\"default\":1}','2017-02-21 21:30:13','2017-02-21 21:30:13','156593ea-755c-4b98-aa06-828246d2e228'),
-	(67,NULL,'Free Scroll','freeScroll','superTableBlockType:12','If true then slides will not have fixed positions',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-21 21:30:13','4d2d9123-f936-4e6c-8f6f-5fd884796edc'),
-	(68,NULL,'Group Cells','groupCells','superTableBlockType:12','',0,'Lightswitch','{\"default\":1}','2017-02-21 21:30:13','2017-02-21 21:30:13','e0be11c0-6207-4182-b7de-3d3414602a77'),
-	(69,NULL,'Image Ratio','imageRatio','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":1},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','14cdcb23-9019-4dd9-b270-4e74ea9c3826'),
-	(70,NULL,'Loop','loop','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-21 21:30:13','b3805984-e048-4468-ad37-51e94bec3caa'),
-	(71,NULL,'Pause on Hover','pauseOnHover','superTableBlockType:12','',0,'Lightswitch','{\"default\":1}','2017-02-21 21:30:13','2017-02-21 21:30:13','c800a76d-8eb1-468f-80c2-dcaa1d94d52d'),
-	(72,NULL,'Navigation','navigation','superTableBlockType:12','',0,'Lightswitch','{\"default\":1}','2017-02-21 21:30:13','2017-02-21 21:30:13','113b04c2-2d0b-41cb-85d7-6af47204cf67'),
-	(73,NULL,'Pagination','pagination','superTableBlockType:12','',0,'Lightswitch','{\"default\":1}','2017-02-21 21:30:13','2017-02-21 21:30:13','46804b2d-f8ea-49fe-a194-b19e23652c60'),
-	(74,NULL,'Right To Left','rightToLeft','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-21 21:30:13','4800be9a-c95a-4fb9-a15b-ad86466e9ee2'),
-	(75,NULL,'Slides Per View','slidesPerView','superTableBlockType:12','Number of slides per view (slides visible at the same time on slider\'s container).',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":1,\"value\":1,\"default\":\"\"},{\"label\":2,\"value\":2,\"default\":\"\"},{\"label\":3,\"value\":3,\"default\":\"\"},{\"label\":4,\"value\":4,\"default\":\"\"},{\"label\":5,\"value\":5,\"default\":\"\"},{\"label\":6,\"value\":6,\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','a6d28877-5448-461a-91d0-57890dbc327c'),
-	(76,NULL,'Speed','speed','superTableBlockType:12','Duration of transition between slides (in ms)',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Slow\",\"value\":\"slow\",\"default\":\"\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Fast\",\"value\":\"fast\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','ba22b0f5-3fe4-4596-b266-87a8f34ef7fe'),
+	(63,7,'Settings: Image Slider','settingsImageSlider','global','',0,'SuperTable','{\"columns\":{\"64\":{\"width\":\"\"},\"65\":{\"width\":\"\"},\"66\":{\"width\":\"\"},\"67\":{\"width\":\"\"},\"68\":{\"width\":\"\"},\"69\":{\"width\":\"\"},\"70\":{\"width\":\"\"},\"71\":{\"width\":\"\"},\"72\":{\"width\":\"\"},\"73\":{\"width\":\"\"},\"74\":{\"width\":\"\"},\"75\":{\"width\":\"\"},\"76\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-02-21 21:30:12','2017-02-23 11:58:50','ec384fc7-31ba-4900-9f56-ac39876942a3'),
+	(64,NULL,'Autoplay','autoplay','superTableBlockType:12','Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled',0,'Dropdown','{\"options\":[{\"label\":\"Disabled\",\"value\":\"disabled\",\"default\":\"1\"},{\"label\":\"Slow\",\"value\":\"slow\",\"default\":\"\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Fast\",\"value\":\"fast\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-23 11:58:50','961eea20-dd38-4363-94d0-d73555058f95'),
+	(65,NULL,'Cell Align','cellAlign','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"Left\",\"value\":\"left\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-23 11:58:50','b9ae8342-d351-4c8b-ae46-a0e1f8cdaf5e'),
+	(66,NULL,'Draggable','draggable','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"1\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','156593ea-755c-4b98-aa06-828246d2e228'),
+	(67,NULL,'Free Scroll','freeScroll','superTableBlockType:12','If true then slides will not have fixed positions',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','4d2d9123-f936-4e6c-8f6f-5fd884796edc'),
+	(68,NULL,'Group Cells','groupCells','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"1\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','e0be11c0-6207-4182-b7de-3d3414602a77'),
+	(69,NULL,'Image Ratio','imageRatio','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":\"1\"},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-23 11:58:50','14cdcb23-9019-4dd9-b270-4e74ea9c3826'),
+	(70,NULL,'Loop','loop','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','b3805984-e048-4468-ad37-51e94bec3caa'),
+	(71,NULL,'Pause on Hover','pauseOnHover','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"1\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','c800a76d-8eb1-468f-80c2-dcaa1d94d52d'),
+	(72,NULL,'Navigation','navigation','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"1\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','113b04c2-2d0b-41cb-85d7-6af47204cf67'),
+	(73,NULL,'Pagination','pagination','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"1\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','46804b2d-f8ea-49fe-a194-b19e23652c60'),
+	(74,NULL,'Right To Left','rightToLeft','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-23 11:58:50','4800be9a-c95a-4fb9-a15b-ad86466e9ee2'),
+	(75,NULL,'Slides Per View','slidesPerView','superTableBlockType:12','Number of slides per view (slides visible at the same time on slider\'s container).',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"1\",\"value\":\"1\",\"default\":\"\"},{\"label\":\"2\",\"value\":\"2\",\"default\":\"\"},{\"label\":\"3\",\"value\":\"3\",\"default\":\"\"},{\"label\":\"4\",\"value\":\"4\",\"default\":\"\"},{\"label\":\"5\",\"value\":\"5\",\"default\":\"\"},{\"label\":\"6\",\"value\":\"6\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-23 11:58:50','a6d28877-5448-461a-91d0-57890dbc327c'),
+	(76,NULL,'Speed','speed','superTableBlockType:12','Duration of transition between slides (in ms)',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"Slow\",\"value\":\"slow\",\"default\":\"\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Fast\",\"value\":\"fast\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-23 11:58:50','ba22b0f5-3fe4-4596-b266-87a8f34ef7fe'),
 	(77,7,'Settings: Section','settingsSection','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Section Options\",\"maxRows\":null}','2017-02-21 21:30:13','2017-02-21 21:30:13','1ff15ce4-5b84-4c8a-80ec-76281bba55ef'),
 	(78,NULL,'Background Color','backgroundColor','superTableBlockType:13','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Black\",\"value\":\"black\",\"default\":\"\"},{\"label\":\"White\",\"value\":\"white\",\"default\":\"\"}]}','2017-02-21 21:30:13','2017-02-21 21:30:13','565c7ce4-258c-4df0-8cf4-354b979b5ae0'),
 	(79,NULL,'Full Width','fullWidth','superTableBlockType:13','',0,'Lightswitch','{\"default\":\"\"}','2017-02-21 21:30:13','2017-02-21 21:30:13','46571a18-ba60-4d72-99e8-0ac7aa4a009c'),
@@ -1089,7 +1434,8 @@ VALUES
 	(101,8,'Single: Source Url','singleSourceUrl','global','',0,'FruitLinkIt','{\"types\":[\"custom\"],\"defaultText\":\"\",\"allowCustomText\":1,\"allowTarget\":\"\",\"entrySources\":[],\"entrySelectionLabel\":\"Select an entry\",\"assetSources\":\"*\",\"assetSelectionLabel\":\"Select an asset\",\"categorySources\":\"*\",\"categorySelectionLabel\":\"Select a category\"}','2017-02-21 21:30:15','2017-02-21 21:30:15','3a6d6bd1-e43b-4fbe-af40-2e1af1988990'),
 	(102,8,'Single: Subline','singleSubline','global','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-02-21 21:30:15','2017-02-21 21:30:15','778777d8-4748-4c37-a974-ed9f1aa32fb2'),
 	(103,8,'Single: Text','singleText','global','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-02-21 21:30:15','2017-02-21 21:30:15','774f5e40-b8aa-4c0b-b123-4bb24978e0c2'),
-	(104,3,'Content Builder: Neo','contentBuilderNeo','global','',0,'Neo','{\"maxBlocks\":null}','2017-02-21 21:30:15','2017-02-21 21:30:15','9172ad61-ae3c-4788-a854-ba4abbb9ba0f');
+	(104,3,'Content Builder: Neo','contentBuilderNeo','global','',0,'Neo','{\"maxBlocks\":null}','2017-02-21 21:30:15','2017-02-23 12:01:17','9172ad61-ae3c-4788-a854-ba4abbb9ba0f'),
+	(105,9,'Settings Selector: Image Slider','settingsSelectorImageSlider','global','',0,'Categories','{\"source\":\"group:2\",\"limit\":\"1\",\"selectionLabel\":\"Select Settings: Image Slider\"}','2017-02-23 12:00:49','2017-02-23 12:00:49','b53afa47-1515-4a09-9300-a917f3b0bd1f');
 
 /*!40000 ALTER TABLE `craft_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1125,6 +1471,73 @@ VALUES
 
 /*!40000 ALTER TABLE `craft_globalsets` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Export von Tabelle craft_import_entries
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_import_entries`;
+
+CREATE TABLE `craft_import_entries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `historyId` int(11) DEFAULT NULL,
+  `entryId` int(11) DEFAULT NULL,
+  `versionId` int(11) DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_import_entries_historyId_fk` (`historyId`),
+  KEY `craft_import_entries_entryId_fk` (`entryId`),
+  KEY `craft_import_entries_versionId_fk` (`versionId`),
+  CONSTRAINT `craft_import_entries_entryId_fk` FOREIGN KEY (`entryId`) REFERENCES `craft_entries` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_import_entries_historyId_fk` FOREIGN KEY (`historyId`) REFERENCES `craft_import_history` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `craft_import_entries_versionId_fk` FOREIGN KEY (`versionId`) REFERENCES `craft_entryversions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_import_history
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_import_history`;
+
+CREATE TABLE `craft_import_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rows` int(10) DEFAULT NULL,
+  `behavior` enum('append','replace','delete') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('started','finished','reverted') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_import_history_userId_fk` (`userId`),
+  CONSTRAINT `craft_import_history_userId_fk` FOREIGN KEY (`userId`) REFERENCES `craft_users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_import_log
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_import_log`;
+
+CREATE TABLE `craft_import_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `historyId` int(11) DEFAULT NULL,
+  `line` int(10) DEFAULT NULL,
+  `errors` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_import_log_historyId_fk` (`historyId`),
+  CONSTRAINT `craft_import_log_historyId_fk` FOREIGN KEY (`historyId`) REFERENCES `craft_import_history` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 # Export von Tabelle craft_info
@@ -1237,6 +1650,154 @@ CREATE TABLE `craft_matrixblocktypes` (
   KEY `craft_matrixblocktypes_fieldLayoutId_fk` (`fieldLayoutId`),
   CONSTRAINT `craft_matrixblocktypes_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `craft_fields` (`id`) ON DELETE CASCADE,
   CONSTRAINT `craft_matrixblocktypes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `craft_fieldlayouts` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_matrixcontent_cbmatrix
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_matrixcontent_cbmatrix`;
+
+CREATE TABLE `craft_matrixcontent_cbmatrix` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_modulButton_button` text COLLATE utf8_unicode_ci,
+  `field_modulCopy_copy` text COLLATE utf8_unicode_ci,
+  `field_modulDefinitionList_definitionList` text COLLATE utf8_unicode_ci,
+  `field_modulHeadline_headline` text COLLATE utf8_unicode_ci,
+  `field_modulHeadline_size` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_modulHeadline_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_modulImageCover_caption` text COLLATE utf8_unicode_ci,
+  `field_modulImageGallery_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'lightbox',
+  `field_modulImageGrid_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_modulQuote_quote` text COLLATE utf8_unicode_ci,
+  `field_modulQuote_source` text COLLATE utf8_unicode_ci,
+  `field_modulVideoEmbed_videoEmbed` text COLLATE utf8_unicode_ci,
+  `field_accordionLabel_label` text COLLATE utf8_unicode_ci,
+  `field_modulCopyMarginal_copy` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_matrixcontent_cbmatrix_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_matrixcontent_cbmatrix_locale_fk` (`locale`),
+  CONSTRAINT `craft_matrixcontent_cbmatrix_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_matrixcontent_cbmatrix_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_matrixcontent_cbmatrix` WRITE;
+/*!40000 ALTER TABLE `craft_matrixcontent_cbmatrix` DISABLE KEYS */;
+
+INSERT INTO `craft_matrixcontent_cbmatrix` (`id`, `elementId`, `locale`, `field_modulButton_button`, `field_modulCopy_copy`, `field_modulDefinitionList_definitionList`, `field_modulHeadline_headline`, `field_modulHeadline_size`, `field_modulHeadline_visualSize`, `field_modulImageCover_caption`, `field_modulImageGallery_style`, `field_modulImageGrid_cols`, `field_modulQuote_quote`, `field_modulQuote_source`, `field_modulVideoEmbed_videoEmbed`, `field_accordionLabel_label`, `field_modulCopyMarginal_copy`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(3,99,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:31:09','2017-02-01 17:08:40','443ab5e4-db59-4894-80ae-7ffa198e3b84'),
+	(4,100,'en',NULL,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','70af4e12-9a66-4d2d-b585-f7099e3a96ca'),
+	(5,101,'en',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','396fd0e5-cd7b-4095-818b-a2bbb8023895'),
+	(6,102,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','e1b7c30b-766c-40ad-9704-9b5985b664f5'),
+	(7,103,'en',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','defd7d20-2d39-4697-b295-5361c776cd48'),
+	(8,104,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','058834d5-5614-4431-84b9-2207e886ff2e'),
+	(9,105,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','',NULL,NULL,NULL,'2017-02-01 16:33:46','2017-02-01 17:08:40','35f0524d-d346-4d21-8229-a9bf087dd82a'),
+	(10,106,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:54:19','2017-02-01 17:08:40','fe1520b6-aebc-4d5d-b140-32233a77ed26'),
+	(11,107,'en',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 16:54:19','2017-02-01 17:08:40','f990d8ef-c99e-4adf-8197-f8a021b38198'),
+	(14,115,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 17:01:21','2017-02-01 17:08:40','cb7a0ff2-2898-4568-af67-0fdcc0ece3bb'),
+	(15,116,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','2017-02-01 17:03:28','2017-02-01 17:08:40','d4eb9867-4f93-4b65-ab27-622267ff0918'),
+	(16,125,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','2017-02-01 17:08:40','2017-02-01 17:08:40','355a8835-1c7f-4e24-bc9c-7b1655be207d'),
+	(17,130,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 17:08:40','2017-02-01 17:08:40','2a9ae86e-bc33-44fb-86b6-bd7799c0e522'),
+	(18,131,'en',NULL,'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-02-01 17:08:40','2017-02-01 17:08:40','37559b7e-22e3-42f1-8458-25e0458cab5c'),
+	(19,132,'en',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Label',NULL,'2017-02-01 17:08:40','2017-02-01 17:08:40','96621114-db0b-49ac-b4b2-ad4bdcfe1b58');
+
+/*!40000 ALTER TABLE `craft_matrixcontent_cbmatrix` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_matrixcontent_column
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_matrixcontent_column`;
+
+CREATE TABLE `craft_matrixcontent_column` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_columnQuote_quote` text COLLATE utf8_unicode_ci,
+  `field_columnQuote_source` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_matrixcontent_column_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_matrixcontent_column_locale_fk` (`locale`),
+  CONSTRAINT `craft_matrixcontent_column_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_matrixcontent_column_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_matrixcontent_column` WRITE;
+/*!40000 ALTER TABLE `craft_matrixcontent_column` DISABLE KEYS */;
+
+INSERT INTO `craft_matrixcontent_column` (`id`, `elementId`, `locale`, `field_columnQuote_quote`, `field_columnQuote_source`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,110,'en',NULL,NULL,'2017-02-01 16:54:19','2017-02-01 16:57:01','f31ec15d-784b-420a-bd65-bd1a6b616154'),
+	(2,112,'en','','','2017-02-01 16:54:19','2017-02-01 16:57:01','1f7bb24f-ea40-4793-be3f-50ec0da67ed4'),
+	(5,122,'en','','','2017-02-01 17:08:40','2017-02-01 17:08:40','115c8784-630a-40e8-bd72-a1f7ec7b995b'),
+	(6,124,'en',NULL,NULL,'2017-02-01 17:08:40','2017-02-01 17:08:40','327eb0db-2e68-492b-9f9f-dbed46b9ccb0'),
+	(7,127,'en','','','2017-02-01 17:08:40','2017-02-01 17:08:40','c688d683-8933-4c73-9cb9-c54c359a0321'),
+	(8,129,'en',NULL,NULL,'2017-02-01 17:08:40','2017-02-01 17:08:40','81e4d1d1-dc69-41dc-ade8-d2affeabe7cd');
+
+/*!40000 ALTER TABLE `craft_matrixcontent_column` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_matrixcontent_columns
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_matrixcontent_columns`;
+
+CREATE TABLE `craft_matrixcontent_columns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_columnQuote_quote` text COLLATE utf8_unicode_ci,
+  `field_columnQuote_source` text COLLATE utf8_unicode_ci,
+  `field_columnQuote_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_matrixcontent_columns_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_matrixcontent_columns_locale_fk` (`locale`),
+  CONSTRAINT `craft_matrixcontent_columns_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_matrixcontent_columns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_matrixcontent_contentbuildermatrix
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_matrixcontent_contentbuildermatrix`;
+
+CREATE TABLE `craft_matrixcontent_contentbuildermatrix` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_contentSection_label` text COLLATE utf8_unicode_ci,
+  `field_accordionLabel_label` text COLLATE utf8_unicode_ci,
+  `field_buttonGroup_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
+  `field_buttonGroup_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'left',
+  `field_definitionList_modulDefinitionList` text COLLATE utf8_unicode_ci,
+  `field_horizontalRuler_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_richText_richText` text COLLATE utf8_unicode_ci,
+  `field_richTextMarginal_richText` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_matrixcontent_contentbuildermatrix_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_matrixcontent_contentbuildermatrix_locale_fk` (`locale`),
+  CONSTRAINT `craft_matrixcontent_contentbuildermatrix_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_matrixcontent_contentbuildermatrix_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -1434,27 +1995,27 @@ LOCK TABLES `craft_neoblocktypes` WRITE;
 
 INSERT INTO `craft_neoblocktypes` (`id`, `fieldId`, `fieldLayoutId`, `name`, `handle`, `maxBlocks`, `maxChildBlocks`, `childBlocks`, `topLevel`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,104,29,'Content Section','contentSection',NULL,NULL,'',1,1,'2017-02-21 21:30:15','2017-02-21 21:30:15','0e8e9073-26d0-4835-afc2-d5e4f7e43127'),
-	(2,104,30,'Headline','headline',NULL,NULL,'',1,3,'2017-02-21 21:30:15','2017-02-21 21:30:15','e44cc173-b209-4a19-9f54-b374f0af3c14'),
-	(3,104,31,'Rich Text','richText',NULL,2,'',1,4,'2017-02-21 21:30:15','2017-02-21 21:30:15','05cac5e3-a182-4869-94a0-e4217124f721'),
-	(4,104,32,'Rich Text Marginals','richTextMarginals',NULL,2,'[\"marginalColumn\"]',1,5,'2017-02-21 21:30:15','2017-02-21 21:30:15','c760a34a-4fbd-4f2f-945d-e619eca11fb2'),
-	(5,104,33,'Marginal Column','marginalColumn',NULL,1,'[\"quote\",\"imageSingle\"]',0,6,'2017-02-21 21:30:15','2017-02-21 21:30:15','de970d11-5828-49c6-828d-ae0484bbf19c'),
-	(6,104,34,'Quote','quote',NULL,NULL,'',1,7,'2017-02-21 21:30:15','2017-02-21 21:30:15','ff01243b-1277-4bac-a0c1-89b8cd041f58'),
-	(7,104,35,'Image Cover','imageCover',NULL,NULL,'',1,9,'2017-02-21 21:30:15','2017-02-21 21:30:15','a1d53e91-bb4f-4f08-b080-48ec6c0586b5'),
-	(8,104,36,'Image Gallery','imageGallery',NULL,NULL,'',1,10,'2017-02-21 21:30:15','2017-02-21 21:30:15','155ebc47-cdd3-47af-8c0f-7228e1c522a4'),
-	(9,104,37,'Image Grid','imageGrid',NULL,NULL,'',1,11,'2017-02-21 21:30:15','2017-02-21 21:30:15','8364d609-2369-492d-b541-9f0ba4f49169'),
-	(10,104,38,'Image Single','imageSingle',NULL,NULL,'',1,12,'2017-02-21 21:30:15','2017-02-21 21:30:15','2935578f-aa87-45e6-9b9f-5c065f97edcd'),
-	(11,104,39,'Image Slider','imageSlider',NULL,NULL,'',1,13,'2017-02-21 21:30:15','2017-02-21 21:30:15','99ed428c-ae5f-4c5a-b0db-18d9de7b43b5'),
-	(12,104,40,'Button','button',NULL,NULL,'',1,15,'2017-02-21 21:30:15','2017-02-21 21:30:15','c9ffacd6-bbe0-424d-97e5-ca758b9e62e1'),
-	(13,104,41,'Button Group','buttonGroup',NULL,5,'',1,16,'2017-02-21 21:30:15','2017-02-21 21:30:15','aba8c89c-3429-4cd4-b166-f3f4be940041'),
-	(14,104,42,'Accordion','accordion',NULL,NULL,'[\"accordionContent\"]',1,18,'2017-02-21 21:30:15','2017-02-21 21:30:15','39c71d8a-02fe-4715-9bd0-50ba9f674027'),
-	(15,104,43,'Accordion Content','accordionContent',NULL,NULL,'[\"headline\",\"richText\",\"richTextMarginals\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"twoColumns\",\"definitionList\",\"embed\",\"separator\",\"imageText\"]',0,19,'2017-02-21 21:30:15','2017-02-21 21:30:15','8d681d3f-f4e1-4be4-8e88-0908767afcb8'),
-	(16,104,44,'Two Columns','twoColumns',NULL,2,'[\"column\"]',1,20,'2017-02-21 21:30:15','2017-02-21 21:30:15','2d25fdae-d55d-453d-bbf9-705befd1ce6e'),
-	(17,104,45,'Column','column',NULL,NULL,'[\"headline\",\"richText\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"accordion\",\"definitionList\",\"embed\",\"separator\"]',0,21,'2017-02-21 21:30:15','2017-02-21 21:30:15','b9e8f725-b23c-431d-87b1-aa3530eae5f1'),
-	(18,104,46,'Definition List','definitionList',NULL,NULL,'',1,23,'2017-02-21 21:30:15','2017-02-21 21:30:15','cd036e4a-4763-423f-8905-021f940278a3'),
-	(19,104,47,'Embed','embed',NULL,NULL,'',1,24,'2017-02-21 21:30:15','2017-02-21 21:30:15','5d9f9219-c773-45ff-b695-523d55d070b2'),
-	(20,104,48,'Separator','separator',NULL,NULL,'',1,25,'2017-02-21 21:30:15','2017-02-21 21:30:15','efecfce7-281c-4cbd-a9c2-c2b74eaf8102'),
-	(21,104,49,'Image + Text','imageText',NULL,1,'[\"buttonGroup\"]',1,27,'2017-02-21 21:30:15','2017-02-21 21:30:15','e6f6132c-a5bc-4b59-8d7a-fefadd6219ac');
+	(1,104,61,'Content Section','contentSection',NULL,NULL,'',1,1,'2017-02-21 21:30:15','2017-02-23 12:01:17','0e8e9073-26d0-4835-afc2-d5e4f7e43127'),
+	(2,104,62,'Headline','headline',NULL,NULL,'',1,3,'2017-02-21 21:30:15','2017-02-23 12:01:17','e44cc173-b209-4a19-9f54-b374f0af3c14'),
+	(3,104,63,'Rich Text','richText',NULL,2,'',1,4,'2017-02-21 21:30:15','2017-02-23 12:01:17','05cac5e3-a182-4869-94a0-e4217124f721'),
+	(4,104,64,'Rich Text Marginals','richTextMarginals',NULL,2,'[\"marginalColumn\"]',1,5,'2017-02-21 21:30:15','2017-02-23 12:01:17','c760a34a-4fbd-4f2f-945d-e619eca11fb2'),
+	(5,104,65,'Marginal Column','marginalColumn',NULL,1,'[\"quote\",\"imageSingle\"]',0,6,'2017-02-21 21:30:15','2017-02-23 12:01:17','de970d11-5828-49c6-828d-ae0484bbf19c'),
+	(6,104,66,'Quote','quote',NULL,NULL,'',1,7,'2017-02-21 21:30:15','2017-02-23 12:01:17','ff01243b-1277-4bac-a0c1-89b8cd041f58'),
+	(7,104,67,'Image Cover','imageCover',NULL,NULL,'',1,9,'2017-02-21 21:30:15','2017-02-23 12:01:17','a1d53e91-bb4f-4f08-b080-48ec6c0586b5'),
+	(8,104,68,'Image Gallery','imageGallery',NULL,NULL,'',1,10,'2017-02-21 21:30:15','2017-02-23 12:01:17','155ebc47-cdd3-47af-8c0f-7228e1c522a4'),
+	(9,104,69,'Image Grid','imageGrid',NULL,NULL,'',1,11,'2017-02-21 21:30:15','2017-02-23 12:01:17','8364d609-2369-492d-b541-9f0ba4f49169'),
+	(10,104,70,'Image Single','imageSingle',NULL,NULL,'',1,12,'2017-02-21 21:30:15','2017-02-23 12:01:17','2935578f-aa87-45e6-9b9f-5c065f97edcd'),
+	(11,104,71,'Image Slider','imageSlider',NULL,NULL,'',1,13,'2017-02-21 21:30:15','2017-02-23 12:01:17','99ed428c-ae5f-4c5a-b0db-18d9de7b43b5'),
+	(12,104,72,'Button','button',NULL,NULL,'',1,15,'2017-02-21 21:30:15','2017-02-23 12:01:17','c9ffacd6-bbe0-424d-97e5-ca758b9e62e1'),
+	(13,104,73,'Button Group','buttonGroup',NULL,5,'',1,16,'2017-02-21 21:30:15','2017-02-23 12:01:17','aba8c89c-3429-4cd4-b166-f3f4be940041'),
+	(14,104,74,'Accordion','accordion',NULL,NULL,'[\"accordionContent\"]',1,18,'2017-02-21 21:30:15','2017-02-23 12:01:17','39c71d8a-02fe-4715-9bd0-50ba9f674027'),
+	(15,104,75,'Accordion Content','accordionContent',NULL,NULL,'[\"headline\",\"richText\",\"richTextMarginals\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"twoColumns\",\"definitionList\",\"embed\",\"separator\",\"imageText\"]',0,19,'2017-02-21 21:30:15','2017-02-23 12:01:17','8d681d3f-f4e1-4be4-8e88-0908767afcb8'),
+	(16,104,76,'Two Columns','twoColumns',NULL,2,'[\"column\"]',1,20,'2017-02-21 21:30:15','2017-02-23 12:01:17','2d25fdae-d55d-453d-bbf9-705befd1ce6e'),
+	(17,104,77,'Column','column',NULL,NULL,'[\"headline\",\"richText\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"accordion\",\"definitionList\",\"embed\",\"separator\"]',0,21,'2017-02-21 21:30:15','2017-02-23 12:01:17','b9e8f725-b23c-431d-87b1-aa3530eae5f1'),
+	(18,104,78,'Definition List','definitionList',NULL,NULL,'',1,23,'2017-02-21 21:30:15','2017-02-23 12:01:17','cd036e4a-4763-423f-8905-021f940278a3'),
+	(19,104,79,'Embed','embed',NULL,NULL,'',1,24,'2017-02-21 21:30:15','2017-02-23 12:01:17','5d9f9219-c773-45ff-b695-523d55d070b2'),
+	(20,104,80,'Separator','separator',NULL,NULL,'',1,25,'2017-02-21 21:30:15','2017-02-23 12:01:17','efecfce7-281c-4cbd-a9c2-c2b74eaf8102'),
+	(21,104,81,'Image + Text','imageText',NULL,1,'[\"buttonGroup\"]',1,27,'2017-02-21 21:30:15','2017-02-23 12:01:17','e6f6132c-a5bc-4b59-8d7a-fefadd6219ac');
 
 /*!40000 ALTER TABLE `craft_neoblocktypes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1483,14 +2044,135 @@ LOCK TABLES `craft_neogroups` WRITE;
 
 INSERT INTO `craft_neogroups` (`id`, `fieldId`, `name`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,104,'Text Modules',2,'2017-02-21 21:30:15','2017-02-21 21:30:15','0997577d-6682-4272-81a8-be058561d416'),
-	(2,104,'Image Modules',8,'2017-02-21 21:30:15','2017-02-21 21:30:15','0658e797-3417-4d65-ac81-ac4e4b47f156'),
-	(3,104,'Button Modules',14,'2017-02-21 21:30:15','2017-02-21 21:30:15','d1e51004-0f58-48e8-8cb2-32a55d820057'),
-	(4,104,'Content Wrapper',17,'2017-02-21 21:30:15','2017-02-21 21:30:15','10ff12cd-cadf-4223-8174-ffc619d9e7ec'),
-	(5,104,'More Modules…',22,'2017-02-21 21:30:15','2017-02-21 21:30:15','62034561-add1-4d48-b343-225989d9199f'),
-	(6,104,'NOT READY YET',26,'2017-02-21 21:30:15','2017-02-21 21:30:15','fb4dd6ed-7185-4973-916c-cc0af3aa1a5e');
+	(7,104,'Text Modules',2,'2017-02-23 12:01:17','2017-02-23 12:01:17','a61b496c-535a-4021-8810-7fad4dc6b5c5'),
+	(8,104,'Image Modules',8,'2017-02-23 12:01:17','2017-02-23 12:01:17','d1f160ae-1c03-432c-a612-b5b9596fbeab'),
+	(9,104,'Button Modules',14,'2017-02-23 12:01:17','2017-02-23 12:01:17','a0054056-d94c-46ae-b4bf-0c5511d85568'),
+	(10,104,'Content Wrapper',17,'2017-02-23 12:01:17','2017-02-23 12:01:17','80338de4-40cf-4ae7-93aa-ee68e5059458'),
+	(11,104,'More Modules…',22,'2017-02-23 12:01:17','2017-02-23 12:01:17','596e1d53-7c08-400e-bc86-fd267c4a454c'),
+	(12,104,'NOT READY YET',26,'2017-02-23 12:01:17','2017-02-23 12:01:17','52fee274-9581-4aff-aeb4-903b166a7c3e');
 
 /*!40000 ALTER TABLE `craft_neogroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_pimpmymatrix_blocktypes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_pimpmymatrix_blocktypes`;
+
+CREATE TABLE `craft_pimpmymatrix_blocktypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fieldId` int(11) NOT NULL,
+  `matrixBlockTypeId` int(11) NOT NULL,
+  `fieldLayoutId` int(11) DEFAULT NULL,
+  `groupName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `context` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_pimpmymatrix_blocktypes_fieldId_fk` (`fieldId`),
+  KEY `craft_pimpmymatrix_blocktypes_matrixBlockTypeId_fk` (`matrixBlockTypeId`),
+  KEY `craft_pimpmymatrix_blocktypes_fieldLayoutId_fk` (`fieldLayoutId`),
+  CONSTRAINT `craft_pimpmymatrix_blocktypes_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `craft_fields` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_pimpmymatrix_blocktypes_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `craft_fieldlayouts` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `craft_pimpmymatrix_blocktypes_matrixBlockTypeId_fk` FOREIGN KEY (`matrixBlockTypeId`) REFERENCES `craft_matrixblocktypes` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_pimpmymatrix_blocktypes` WRITE;
+/*!40000 ALTER TABLE `craft_pimpmymatrix_blocktypes` DISABLE KEYS */;
+
+INSERT INTO `craft_pimpmymatrix_blocktypes` (`id`, `fieldId`, `matrixBlockTypeId`, `fieldLayoutId`, `groupName`, `context`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(143,125,19,1296,'Wrapper','global','2017-02-08 17:16:06','2017-02-08 17:16:06','46c31764-29e9-44b4-8b4e-2edaf9bd4537'),
+	(144,125,20,NULL,'Wrapper','global','2017-02-08 17:16:06','2017-02-08 17:16:06','5da76b64-9533-4962-821c-c62b41b907b0'),
+	(145,125,23,NULL,'Text','global','2017-02-08 17:16:06','2017-02-08 17:16:06','8de3d188-d14f-4d7a-ae20-0dfcbba5aa0d'),
+	(146,125,25,NULL,'Text','global','2017-02-08 17:16:06','2017-02-08 17:16:06','08752051-2e16-44cd-b225-e535a866789c'),
+	(147,125,31,NULL,'Text','global','2017-02-08 17:16:06','2017-02-08 17:16:06','18e028a5-ad7f-44ca-99a6-08ab18e3d6c1'),
+	(148,125,32,NULL,'Text','global','2017-02-08 17:16:06','2017-02-08 17:16:06','c247f5aa-03b0-419e-81cd-b9055361c7d8'),
+	(149,125,33,NULL,'Text','global','2017-02-08 17:16:06','2017-02-08 17:16:06','ecc6e3da-efe9-4279-9183-57980b7c496e'),
+	(150,125,27,NULL,'Images','global','2017-02-08 17:16:07','2017-02-08 17:16:07','ace95ac4-d595-4ba0-a307-df135c1fecb1'),
+	(151,125,28,NULL,'Images','global','2017-02-08 17:16:07','2017-02-08 17:16:07','02acdbf6-388f-4d27-9263-7a29be963336'),
+	(152,125,29,NULL,'Images','global','2017-02-08 17:16:07','2017-02-08 17:16:07','646b9888-ceb0-4268-bb06-1c42f09398fd'),
+	(153,125,30,NULL,'Images','global','2017-02-08 17:16:07','2017-02-08 17:16:07','00ff502d-23b2-4044-bc70-894efd454f23'),
+	(154,125,21,NULL,'Buttons','global','2017-02-08 17:16:07','2017-02-08 17:16:07','4a915141-86e1-4e7e-a0cb-55b5670a660f'),
+	(155,125,22,NULL,'Buttons','global','2017-02-08 17:16:07','2017-02-08 17:16:07','e267859d-a244-484f-b83f-f9ed41452662'),
+	(156,125,24,NULL,'More…','global','2017-02-08 17:16:07','2017-02-08 17:16:07','a96c1374-26e7-47da-8922-de075a1cb374'),
+	(157,125,26,NULL,'More…','global','2017-02-08 17:16:07','2017-02-08 17:16:07','4de4ba54-0ac3-460d-b01e-65bb95107364');
+
+/*!40000 ALTER TABLE `craft_pimpmymatrix_blocktypes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_placid_accesstokens
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_placid_accesstokens`;
+
+CREATE TABLE `craft_placid_accesstokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `forceQuery` tinyint(1) DEFAULT NULL,
+  `encoded_token` text COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_placid_oauth_tokens
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_placid_oauth_tokens`;
+
+CREATE TABLE `craft_placid_oauth_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tokenId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_placid_oauth_tokens_handle_unq_idx` (`handle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_placid_requests
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_placid_requests`;
+
+CREATE TABLE `craft_placid_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tokenId` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `oauth` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `params` text COLLATE utf8_unicode_ci,
+  `headers` text COLLATE utf8_unicode_ci,
+  `cache` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `cache_id` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_placid_requests_handle_unq_idx` (`handle`),
+  KEY `craft_placid_requests_tokenId_fk` (`tokenId`),
+  CONSTRAINT `craft_placid_requests_tokenId_fk` FOREIGN KEY (`tokenId`) REFERENCES `craft_placid_accesstokens` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_placid_requests` WRITE;
+/*!40000 ALTER TABLE `craft_placid_requests` DISABLE KEYS */;
+
+INSERT INTO `craft_placid_requests` (`id`, `tokenId`, `name`, `handle`, `url`, `oauth`, `params`, `headers`, `cache`, `cache_id`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,NULL,'Dribbble shots','dribbbleShots','http://api.dribbble.com/shots/everyone','','',NULL,1,NULL,'2016-11-21 16:33:52','2016-11-21 16:33:52','4a6e8d9c-d701-4ee8-96c4-ab235bc6d8ac');
+
+/*!40000 ALTER TABLE `craft_placid_requests` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -1555,6 +2237,25 @@ CREATE TABLE `craft_rackspaceaccess` (
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `craft_rackspaceaccess_connectionKey_unq_idx` (`connectionKey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_reasons
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_reasons`;
+
+CREATE TABLE `craft_reasons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fieldLayoutId` int(10) DEFAULT NULL,
+  `conditionals` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_reasons_fieldLayoutId_fk` (`fieldLayoutId`),
+  CONSTRAINT `craft_reasons_fieldLayoutId_fk` FOREIGN KEY (`fieldLayoutId`) REFERENCES `craft_fieldlayouts` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
@@ -1713,7 +2414,19 @@ VALUES
 	(1,'fullname',0,'de',' david hellmann '),
 	(1,'email',0,'de',' david fredmansky at '),
 	(1,'slug',0,'de',''),
+	(7,'email',0,'en',' dan fredmansky at '),
+	(7,'slug',0,'en',''),
+	(7,'fullname',0,'en',' daniel wittberger '),
 	(5,'slug',0,'en',''),
+	(6,'username',0,'en',' andy '),
+	(6,'firstname',0,'en',' andy '),
+	(6,'lastname',0,'en',' schreyer '),
+	(6,'fullname',0,'en',' andy schreyer '),
+	(6,'email',0,'en',' andy fredmansky at '),
+	(6,'slug',0,'en',''),
+	(7,'username',0,'en',' dan '),
+	(7,'firstname',0,'en',' daniel '),
+	(7,'lastname',0,'en',' wittberger '),
 	(5,'field',4,'en',''),
 	(4,'slug',0,'en',' homepage '),
 	(4,'title',0,'en',' homepage ');
@@ -2020,6 +2733,35 @@ CREATE TABLE `craft_shunnedmessages` (
 
 
 
+# Export von Tabelle craft_simplemap_maps
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_simplemap_maps`;
+
+CREATE TABLE `craft_simplemap_maps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ownerId` int(11) NOT NULL,
+  `fieldId` int(11) NOT NULL,
+  `ownerLocale` char(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lat` decimal(12,8) DEFAULT NULL,
+  `lng` decimal(12,8) DEFAULT NULL,
+  `zoom` int(10) DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `parts` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `craft_simplemap_maps_ownerId_idx` (`ownerId`),
+  KEY `craft_simplemap_maps_fieldId_idx` (`fieldId`),
+  KEY `craft_simplemap_maps_ownerLocale_fk` (`ownerLocale`),
+  CONSTRAINT `craft_simplemap_maps_fieldId_fk` FOREIGN KEY (`fieldId`) REFERENCES `craft_fields` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_simplemap_maps_ownerId_fk` FOREIGN KEY (`ownerId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_simplemap_maps_ownerLocale_fk` FOREIGN KEY (`ownerLocale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
 # Export von Tabelle craft_structureelements
 # ------------------------------------------------------------
 
@@ -2068,7 +2810,8 @@ LOCK TABLES `craft_structures` WRITE;
 
 INSERT INTO `craft_structures` (`id`, `maxLevels`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,NULL,'2017-02-21 21:30:10','2017-02-21 21:30:15','ab9bf0ec-57a6-4f22-b0be-0cb9f704c311');
+	(1,NULL,'2017-02-21 21:30:10','2017-02-21 21:30:15','ab9bf0ec-57a6-4f22-b0be-0cb9f704c311'),
+	(2,1,'2017-02-23 11:59:41','2017-02-23 12:00:56','76b5d042-3279-4750-add7-79f64df16d72');
 
 /*!40000 ALTER TABLE `craft_structures` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2139,7 +2882,7 @@ VALUES
 	(9,50,21,'2017-02-21 21:30:12','2017-02-21 21:30:12','b4192fba-422d-4893-a4d3-cd2b7fd2f49b'),
 	(10,54,22,'2017-02-21 21:30:12','2017-02-21 21:30:12','602475bf-6746-4db6-b079-58859d80a45e'),
 	(11,58,23,'2017-02-21 21:30:12','2017-02-21 21:30:12','5377894c-3f7f-4498-8903-a0c4c7804ae8'),
-	(12,63,24,'2017-02-21 21:30:13','2017-02-21 21:30:13','78c1aee8-021d-4892-84b3-ca8801a71a34'),
+	(12,63,58,'2017-02-21 21:30:13','2017-02-23 11:58:50','78c1aee8-021d-4892-84b3-ca8801a71a34'),
 	(13,77,25,'2017-02-21 21:30:13','2017-02-21 21:30:13','506f284d-c4bb-4fdf-a753-07fc5b133e91'),
 	(14,81,26,'2017-02-21 21:30:13','2017-02-21 21:30:14','aa3a6735-ff9e-4cbf-9a82-1954a4f0f07f'),
 	(15,85,27,'2017-02-21 21:30:14','2017-02-21 21:30:14','f0784d25-1f26-41ab-99da-172acba73735'),
@@ -2147,6 +2890,1241 @@ VALUES
 
 /*!40000 ALTER TABLE `craft_supertableblocktypes` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_1_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_1_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_1_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
+  `field_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'left',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_1_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_1_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_1_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_1_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_1_modulbutton` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_1_modulbutton` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_1_modulbutton` (`id`, `elementId`, `locale`, `field_button`, `field_style`, `field_alignment`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,216,'en','','primary','left','2017-02-08 00:15:26','2017-02-08 00:33:52','6cd04768-5d68-48e0-a7dc-ba070c8177e0'),
+	(2,230,'en','','primary','left','2017-02-08 01:08:41','2017-02-08 01:08:41','97d797a6-5c06-4085-bd5f-4eaa8387c9e2');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_1_modulbutton` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_10_modulquote
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_10_modulquote`;
+
+CREATE TABLE `craft_supertablecontent_10_modulquote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_quote` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_10_modulquote_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_10_modulquote_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_10_modulquote_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_10_modulquote_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_11_modulembed
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_11_modulembed`;
+
+CREATE TABLE `craft_supertablecontent_11_modulembed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_code` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_11_modulembed_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_11_modulembed_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_11_modulembed_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_11_modulembed_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_12_modulsection
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_12_modulsection`;
+
+CREATE TABLE `craft_supertablecontent_12_modulsection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_label` text COLLATE utf8_unicode_ci,
+  `field_backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_12_modulsection_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_12_modulsection_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_12_modulsection_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_12_modulsection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_12_sectioninfos
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_12_sectioninfos`;
+
+CREATE TABLE `craft_supertablecontent_12_sectioninfos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'white',
+  `field_columnPadding` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'noPadding',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_12_sectioninfos_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_12_sectioninfos_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_12_sectioninfos_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_12_sectioninfos_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_14_marginalcolumns
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_14_marginalcolumns`;
+
+CREATE TABLE `craft_supertablecontent_14_marginalcolumns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_14_marginalcolumn_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_14_marginalcolumns_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_14_marginalcolumns_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_14_marginalcolumns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_14_marginalcolumns` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_14_marginalcolumns` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_14_marginalcolumns` (`id`, `elementId`, `locale`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,109,'en','2017-02-01 16:54:19','2017-02-01 16:57:01','ed0496a8-56fd-43c5-af43-bae02bd0119b'),
+	(2,111,'en','2017-02-01 16:54:19','2017-02-01 16:57:01','6c611c06-0ac1-4be1-981e-c134341e32c7'),
+	(3,114,'en','2017-02-01 16:57:01','2017-02-01 16:57:01','c7fc309e-77f6-422f-a441-46e8e38f92c8'),
+	(6,121,'en','2017-02-01 17:08:40','2017-02-02 08:33:26','d14f2909-86b1-4365-951b-1b3e7ed3115f'),
+	(7,123,'en','2017-02-01 17:08:40','2017-02-02 08:33:26','5737df52-fb08-4b92-b5cd-e9eb6a47cc15'),
+	(8,126,'en','2017-02-01 17:08:40','2017-02-02 08:33:26','722a4fcc-2396-4cfe-bbad-316d09e4e4cd'),
+	(9,128,'en','2017-02-01 17:08:40','2017-02-02 08:33:26','439cce3c-e1c0-452c-b6a3-de61cb3e2745'),
+	(10,141,'en','2017-02-02 12:39:17','2017-02-07 09:43:41','98734b96-1246-4501-a117-5f1438adc2f3'),
+	(11,143,'en','2017-02-02 12:39:17','2017-02-07 09:43:41','ff1f26ee-f466-4add-a8c2-70cff661e043'),
+	(12,184,'en','2017-02-07 17:40:00','2017-02-07 17:54:24','462d41a5-f50e-476f-ab51-304d58e8eaa9'),
+	(13,186,'en','2017-02-07 17:40:00','2017-02-07 17:54:24','67dd52c9-5b76-4d7e-950a-4a30f64b799a');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_14_marginalcolumns` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_17_modulimageslider
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_17_modulimageslider`;
+
+CREATE TABLE `craft_supertablecontent_17_modulimageslider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_17_modulimageslide_elementI_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_17_modulimageslider_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_17_modulimageslider_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_17_modulimageslider_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_19_behaviour
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_19_behaviour`;
+
+CREATE TABLE `craft_supertablecontent_19_behaviour` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_width` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_19_behaviour_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_19_behaviour_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_19_behaviour_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_19_behaviour_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_19_behaviour` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_19_behaviour` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_19_behaviour` (`id`, `elementId`, `locale`, `field_width`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,211,'en','default','2017-02-08 23:20:23','2017-02-08 23:22:53','efb291ba-f7c0-414b-8fa9-a14be4640e57'),
+	(2,216,'en','default','2017-02-08 23:31:11','2017-02-08 23:35:09','6b9ed27d-68ba-45ed-a5a9-87366d9d693c'),
+	(3,223,'en','default','2017-02-09 20:53:49','2017-02-09 21:15:00','b8d8feed-e881-49f6-a441-4f7ec5e99133'),
+	(4,226,'en','default','2017-02-09 21:14:53','2017-02-09 21:15:01','1d25abe2-965d-46ed-8ce3-4749a6b7e994'),
+	(6,236,'en','default','2017-02-09 21:30:11','2017-02-13 12:53:05','26b32d2e-453c-4c6f-bde5-3d11f32e83a7'),
+	(7,242,'en','default','2017-02-09 21:32:52','2017-02-09 22:28:31','131bfc67-e4b6-426b-88a4-68cc637a9005'),
+	(8,245,'en','default','2017-02-09 21:32:59','2017-02-09 22:28:31','0876aa88-38a0-4017-96b9-c422f414219f'),
+	(9,265,'en','default','2017-02-12 19:24:51','2017-02-13 12:53:05','9f9d27e7-e444-4490-884c-7cd6179ec233'),
+	(10,272,'en','default','2017-02-13 10:51:41','2017-02-13 12:53:05','0bcdf39b-2de3-4fa5-a02c-79a058ab3ea5');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_19_behaviour` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_19_modulsection
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_19_modulsection`;
+
+CREATE TABLE `craft_supertablecontent_19_modulsection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_textColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_19_modulsection_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_19_modulsection_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_19_modulsection_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_19_modulsection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_19_modulsection` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_19_modulsection` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_19_modulsection` (`id`, `elementId`, `locale`, `field_backgroundColor`, `field_paddingVertical`, `field_textColor`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,212,'en','default','default','default','2017-02-08 23:20:23','2017-02-08 23:22:53','95d244da-42c2-40ca-b81a-a8908f1cb446'),
+	(2,217,'en','default','default','default','2017-02-08 23:31:11','2017-02-08 23:35:09','014e07cb-e064-4e00-bf9a-59f1b31781a7'),
+	(3,224,'en','default','default','default','2017-02-09 20:53:49','2017-02-09 21:15:00','17ea25be-7584-42e9-ba7c-615c9f7e30ef'),
+	(4,227,'en','default','default','default','2017-02-09 21:14:53','2017-02-09 21:15:01','aa97b3a0-f16f-437d-9d09-4438af01ebf0'),
+	(6,237,'en','colorC','medium','white','2017-02-09 21:30:11','2017-02-13 12:53:05','91f5c821-facb-4fe4-afb9-49c972dfcdc0'),
+	(7,243,'en','default','default','default','2017-02-09 21:32:52','2017-02-09 22:28:31','448b17e7-2043-4f53-8a54-0a2ecf65a055'),
+	(8,246,'en','default','default','default','2017-02-09 21:32:59','2017-02-09 22:28:31','c8d2e337-b8f8-448d-bd5e-544df81db1d7'),
+	(9,266,'en','default','default','default','2017-02-12 19:24:51','2017-02-13 12:53:05','c6c7a359-2f9d-4cc7-936a-6b051ff755f7'),
+	(10,273,'en','default','default','default','2017-02-13 10:51:41','2017-02-13 12:53:05','b7d0912a-109f-45d2-b218-79215cd33270');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_19_modulsection` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_2_buttongroup
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_2_buttongroup`;
+
+CREATE TABLE `craft_supertablecontent_2_buttongroup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_2_buttongroup_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_2_buttongroup_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_2_buttongroup_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_2_buttongroup_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_2_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_2_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_2_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_2_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_2_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_2_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_2_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_21_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_21_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_21_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
+  `field_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'left',
+  `field_withIcon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'no',
+  `field_iconPosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'right',
+  `field_icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'iconSample',
+  `field_iconSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'small',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_21_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_21_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_21_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_21_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_21_modulbutton` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_21_modulbutton` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_21_modulbutton` (`id`, `elementId`, `locale`, `field_button`, `field_style`, `field_alignment`, `field_withIcon`, `field_iconPosition`, `field_icon`, `field_iconSize`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,219,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/davidhellmann.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Link\",\"target\":\"\"}','primary','left','no','right','iconSample','small','2017-02-08 23:31:11','2017-02-09 21:15:01','b74d888b-7305-469b-9a8f-4a1bd377c2c0'),
+	(2,221,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/davidhellmann.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Link 2\",\"target\":\"\"}','primary','left','no','right','iconSample','small','2017-02-09 00:56:22','2017-02-09 21:15:01','b7487b4d-9533-4e62-8de3-de61d15f1938'),
+	(3,240,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','left','no','right','iconSample','small','2017-02-09 21:32:52','2017-02-10 09:00:26','1dd88959-1885-43c2-9774-a5833104f9b0'),
+	(4,249,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','left','no','right','iconSample','small','2017-02-09 21:33:56','2017-02-09 22:28:31','7f204b5b-44ff-4f18-80be-7fbbb9c66497'),
+	(5,252,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','left','no','right','iconSample','small','2017-02-09 21:34:29','2017-02-09 22:28:31','fb1c53f2-5c7e-461d-aa18-d376f8dca863'),
+	(6,254,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','center','no','right','iconSample','small','2017-02-09 22:28:01','2017-02-09 22:28:31','df2d379e-e815-4e9e-8088-6714eda01565'),
+	(7,256,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','right','no','right','iconSample','small','2017-02-09 22:28:01','2017-02-09 22:28:31','eb41caeb-d64b-41c9-adb0-8d481201784d'),
+	(8,258,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"_blank\"}','primary','full','no','right','iconSample','small','2017-02-09 22:28:01','2017-02-09 22:28:31','524b5121-43d3-4c0b-8bd2-024f13007aa2'),
+	(9,261,'en','{\"type\":\"custom\",\"email\":\"\",\"tel\":\"\",\"custom\":\"http:\\/\\/google.com\",\"entry\":\"\",\"asset\":\"\",\"category\":\"\",\"customText\":\"Google\",\"target\":\"\"}','primary','left','yes','right','iconSample','small','2017-02-10 09:37:24','2017-02-13 12:53:05','38398316-6f5c-4881-b4d6-b1d4541f6d5e');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_21_modulbutton` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_22_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_22_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_22_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_22_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_22_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_22_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_22_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_24_modulembed
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_24_modulembed`;
+
+CREATE TABLE `craft_supertablecontent_24_modulembed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_code` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_24_modulembed_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_24_modulembed_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_24_modulembed_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_24_modulembed_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_25_modulheadline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_25_modulheadline`;
+
+CREATE TABLE `craft_supertablecontent_25_modulheadline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_25_modulheadline_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_25_modulheadline_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_25_modulheadline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_25_modulheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_25_modulheadline` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_25_modulheadline` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_25_modulheadline` (`id`, `elementId`, `locale`, `field_headline`, `field_semanticSize`, `field_visualSize`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,263,'en','Ich bin eine Headline','h2','h2','2017-02-12 18:51:17','2017-02-13 12:53:05','3dec9efa-97ef-4283-9bb5-7cc9f0cfc5dd');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_25_modulheadline` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_27_modulimagecover
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_27_modulimagecover`;
+
+CREATE TABLE `craft_supertablecontent_27_modulimagecover` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_imagePosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'center center',
+  `field_imageCopy` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_27_modulimagecove_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_27_modulimagecover_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_27_modulimagecover_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_27_modulimagecover_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_28_modulimagegallery
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_28_modulimagegallery`;
+
+CREATE TABLE `craft_supertablecontent_28_modulimagegallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-6',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_28_modulimagegaller_elementI_locale_unq_i` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_28_modulimagegallery_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_28_modulimagegallery_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_28_modulimagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_29_modulimagegrid
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_29_modulimagegrid`;
+
+CREATE TABLE `craft_supertablecontent_29_modulimagegrid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-1',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_29_modulimagegrid_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_29_modulimagegrid_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_29_modulimagegrid_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_29_modulimagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_30_modulimageslider
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_30_modulimageslider`;
+
+CREATE TABLE `craft_supertablecontent_30_modulimageslider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_30_modulimageslide_elementI_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_30_modulimageslider_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_30_modulimageslider_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_30_modulimageslider_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_31_modulquote
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_31_modulquote`;
+
+CREATE TABLE `craft_supertablecontent_31_modulquote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_quote` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_31_modulquote_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_31_modulquote_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_31_modulquote_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_31_modulquote_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_31_modulquote` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_31_modulquote` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_31_modulquote` (`id`, `elementId`, `locale`, `field_quote`, `field_source`, `field_sourceLink`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,269,'en','Es gibt nichts gutes außer man tut es ','Max Mustermann','{\"type\":\"custom\",\"custom\":\"http:\\/\\/google.com\"}','2017-02-12 19:27:55','2017-02-13 12:53:05','8ea3f9e5-8572-432a-9282-40996b940f0b');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_31_modulquote` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_33_marginalcolumns
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_33_marginalcolumns`;
+
+CREATE TABLE `craft_supertablecontent_33_marginalcolumns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_33_marginalcolumn_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_33_marginalcolumns_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_33_marginalcolumns_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_33_marginalcolumns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_36_behaviour
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_36_behaviour`;
+
+CREATE TABLE `craft_supertablecontent_36_behaviour` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_width` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_36_behaviour_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_36_behaviour_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_36_behaviour_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_36_behaviour_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_36_modulsection
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_36_modulsection`;
+
+CREATE TABLE `craft_supertablecontent_36_modulsection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_textColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_36_modulsection_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_36_modulsection_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_36_modulsection_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_36_modulsection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_38_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_38_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_38_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
+  `field_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'left',
+  `field_withIcon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'no',
+  `field_iconPosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'right',
+  `field_iconSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'small',
+  `field_icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'iconSample',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_38_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_38_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_38_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_38_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_39_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_39_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_39_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_39_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_39_modulbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_39_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_39_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_41_modulembed
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_41_modulembed`;
+
+CREATE TABLE `craft_supertablecontent_41_modulembed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_code` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_41_modulembed_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_41_modulembed_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_41_modulembed_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_41_modulembed_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_42_modulheadline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_42_modulheadline`;
+
+CREATE TABLE `craft_supertablecontent_42_modulheadline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_42_modulheadline_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_42_modulheadline_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_42_modulheadline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_42_modulheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_44_modulimagecover
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_44_modulimagecover`;
+
+CREATE TABLE `craft_supertablecontent_44_modulimagecover` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_imagePosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'center center',
+  `field_imageCopy` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_44_modulimagecove_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_44_modulimagecover_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_44_modulimagecover_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_44_modulimagecover_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_45_modulimagegallery
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_45_modulimagegallery`;
+
+CREATE TABLE `craft_supertablecontent_45_modulimagegallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-6',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_45_modulimagegaller_elementI_locale_unq_i` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_45_modulimagegallery_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_45_modulimagegallery_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_45_modulimagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_46_modulimagegrid
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_46_modulimagegrid`;
+
+CREATE TABLE `craft_supertablecontent_46_modulimagegrid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-1',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_46_modulimagegrid_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_46_modulimagegrid_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_46_modulimagegrid_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_46_modulimagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_47_modulimageslider
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_47_modulimageslider`;
+
+CREATE TABLE `craft_supertablecontent_47_modulimageslider` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_47_modulimageslide_elementI_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_47_modulimageslider_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_47_modulimageslider_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_47_modulimageslider_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_48_modulquote
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_48_modulquote`;
+
+CREATE TABLE `craft_supertablecontent_48_modulquote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_quote` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceLink` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_48_modulquote_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_48_modulquote_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_48_modulquote_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_48_modulquote_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_5_modulheadline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_5_modulheadline`;
+
+CREATE TABLE `craft_supertablecontent_5_modulheadline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_5_modulheadline_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_5_modulheadline_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_5_modulheadline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_5_modulheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_5_modulheadline` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_5_modulheadline` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_5_modulheadline` (`id`, `elementId`, `locale`, `field_headline`, `field_semanticSize`, `field_visualSize`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(2,221,'en','','h2','default','2017-02-08 00:30:36','2017-02-08 01:08:41','7e207234-8207-4982-a013-6fcddbf3c0ff');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_5_modulheadline` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_50_marginalcolumns
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_50_marginalcolumns`;
+
+CREATE TABLE `craft_supertablecontent_50_marginalcolumns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_50_marginalcolumn_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_50_marginalcolumns_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_50_marginalcolumns_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_50_marginalcolumns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_7_modulimagecover
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_7_modulimagecover`;
+
+CREATE TABLE `craft_supertablecontent_7_modulimagecover` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_imagePosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'center center',
+  `field_imageCopy` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_7_modulimagecove_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_7_modulimagecover_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_7_modulimagecover_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_7_modulimagecover_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_7_modulimagecover` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_7_modulimagecover` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_7_modulimagecover` (`id`, `elementId`, `locale`, `field_imagePosition`, `field_imageCopy`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,224,'en','center center','','2017-02-08 00:30:36','2017-02-08 01:08:41','3d57db3e-ab42-4545-9934-6e802e316362');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_7_modulimagecover` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_8_modulimagegallery
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_8_modulimagegallery`;
+
+CREATE TABLE `craft_supertablecontent_8_modulimagegallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-6',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_8_modulimagegaller_elementI_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_8_modulimagegallery_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_8_modulimagegallery_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_8_modulimagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_8_modulimagegallery` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_8_modulimagegallery` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_8_modulimagegallery` (`id`, `elementId`, `locale`, `field_cols`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,226,'en','cols-6','2017-02-08 00:30:36','2017-02-08 01:08:41','01f0d3cc-d775-44c8-aad5-6dc00dc3a21b');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_8_modulimagegallery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_9_modulimagegrid
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_9_modulimagegrid`;
+
+CREATE TABLE `craft_supertablecontent_9_modulimagegrid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-1',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_9_modulimagegrid_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_9_modulimagegrid_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_9_modulimagegrid_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_9_modulimagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_9_modulimagegrid` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_9_modulimagegrid` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_9_modulimagegrid` (`id`, `elementId`, `locale`, `field_cols`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,228,'en','cols-2','2017-02-08 00:30:36','2017-02-08 01:08:41','efb54c20-2081-4670-bc8f-8d21e6fae837');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_9_modulimagegrid` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_behavioursection
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_behavioursection`;
+
+CREATE TABLE `craft_supertablecontent_behavioursection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_width` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_behavioursection_elementId_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_behavioursection_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_behavioursection_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_behavioursection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_button
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_button`;
+
+CREATE TABLE `craft_supertablecontent_button` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_button_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_button_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_button_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_button_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_button` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_button` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_button` (`id`, `elementId`, `locale`, `field_button`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,70,'de','{\"type\":\"entry\",\"email\":\"\",\"tel\":\"\",\"custom\":\"\",\"entry\":[\"40\"],\"asset\":\"\",\"category\":\"\",\"text\":\"CUSTOM TEXT\",\"target\":\"\"}','2016-12-02 11:52:23','2016-12-02 11:52:23','194fd296-b198-47fa-bf6f-da379a045951');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_button` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_buttons
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_buttons`;
+
+CREATE TABLE `craft_supertablecontent_buttons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_buttons_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_buttons_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_buttons_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_buttons_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_caption
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_caption`;
+
+CREATE TABLE `craft_supertablecontent_caption` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_copy` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceUrl` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_caption_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_caption_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_caption_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_caption_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_code
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_code`;
+
+CREATE TABLE `craft_supertablecontent_code` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_language` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'plainText',
+  `field_snippet` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_code_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_code_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_code_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_code_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_codepen
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_codepen`;
+
+CREATE TABLE `craft_supertablecontent_codepen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_codepenTitle` text COLLATE utf8_unicode_ci,
+  `field_codepenId` text COLLATE utf8_unicode_ci,
+  `field_codepenUsername` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_codepen_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_codepen_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_codepen_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_codepen_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_columnsettings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_columnsettings`;
+
+CREATE TABLE `craft_supertablecontent_columnsettings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_padding` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_columnsettings_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_columnsettings_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_columnsettings_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_columnsettings_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_contactmeta
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_contactmeta`;
+
+CREATE TABLE `craft_supertablecontent_contactmeta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_bio` text COLLATE utf8_unicode_ci,
+  `field_eMail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_phone` text COLLATE utf8_unicode_ci,
+  `field_jobTitle` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_contactmeta_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_contactmeta_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_contactmeta_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_contactmeta_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_contactmeta` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_contactmeta` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_contactmeta` (`id`, `elementId`, `locale`, `field_headline`, `field_bio`, `field_eMail`, `field_phone`, `field_jobTitle`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(2,79,'en','Headline','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>','georg@kusser.com','+49 992 2343242 34234','Ing.','2016-12-02 12:28:13','2016-12-02 12:33:08','9344569b-9e42-4892-8603-1a6864f4ec28'),
+	(3,80,'de','CUSTOM','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>','davidhellmann.com@de.com','+65+4+','Ing','2016-12-02 12:42:49','2016-12-02 12:42:49','99b8d310-d453-4693-8159-ca52125b38c8');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_contactmeta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_cta
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_cta`;
+
+CREATE TABLE `craft_supertablecontent_cta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_copy` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_cta_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_cta_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_cta_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_cta_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_gist
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_gist`;
+
+CREATE TABLE `craft_supertablecontent_gist` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_gistId` text COLLATE utf8_unicode_ci,
+  `field_gistUsername` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_gist_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_gist_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_gist_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_gist_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 # Export von Tabelle craft_supertablecontent_globalsocialnetworks
@@ -2206,6 +4184,581 @@ CREATE TABLE `craft_supertablecontent_groupedcaption` (
   CONSTRAINT `craft_supertablecontent_groupedcaption_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+
+# Export von Tabelle craft_supertablecontent_headline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_headline`;
+
+CREATE TABLE `craft_supertablecontent_headline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_copy` text COLLATE utf8_unicode_ci,
+  `field_size` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'notSet',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'notSet',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_headline_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_headline_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_headline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_headline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_imagefull
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_imagefull`;
+
+CREATE TABLE `craft_supertablecontent_imagefull` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_caption` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_imagefull_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_imagefull_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_imagefull_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_imagefull_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_imagegallery
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_imagegallery`;
+
+CREATE TABLE `craft_supertablecontent_imagegallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'lightbox',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_imagegallery_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_imagegallery_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_imagegallery_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_imagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_imagegrid
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_imagegrid`;
+
+CREATE TABLE `craft_supertablecontent_imagegrid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols--1',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_imagegrid_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_imagegrid_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_imagegrid_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_imagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_modulbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulbutton`;
+
+CREATE TABLE `craft_supertablecontent_modulbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_button` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulbutton_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_modulcaption
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulcaption`;
+
+CREATE TABLE `craft_supertablecontent_modulcaption` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_caption` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceUrl` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulcaption_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulcaption_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulcaption_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulcaption_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_modulcaption` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_modulcaption` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_modulcaption` (`id`, `elementId`, `locale`, `field_caption`, `field_source`, `field_sourceUrl`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,35,'en','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.','ada','{\"type\":\"custom\",\"custom\":\"http:\\/\\/bla.blub\"}','2016-12-02 08:12:33','2016-12-02 08:12:33','b8420267-925b-49d7-b126-8e10d1c4b855');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_modulcaption` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_modulembed
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulembed`;
+
+CREATE TABLE `craft_supertablecontent_modulembed` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_code` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulembed_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulembed_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulembed_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulembed_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_modulembed` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_modulembed` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_modulembed` (`id`, `elementId`, `locale`, `field_code`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(2,164,'en','','2017-02-07 09:43:41','2017-02-07 13:59:38','e69d0086-6cf4-4f03-8167-6ee8c133160b');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_modulembed` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_modulheadline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulheadline`;
+
+CREATE TABLE `craft_supertablecontent_modulheadline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_headline` text COLLATE utf8_unicode_ci,
+  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulheadline_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulheadline_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulheadline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_modulheadline` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_modulheadline` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_modulheadline` (`id`, `elementId`, `locale`, `field_headline`, `field_semanticSize`, `field_visualSize`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(2,11,'en','test','','','2016-11-23 11:10:34','2016-11-23 12:47:19','69dbc56c-9c5b-436e-981e-049292b8fc21'),
+	(3,92,'en','sadad','','','2017-01-30 11:33:02','2017-01-30 11:33:02','ba09894b-0148-48fb-b7f5-e42f0de6dcb9'),
+	(4,174,'en','','','','2017-02-07 17:40:00','2017-02-07 17:40:00','21e155b6-b09c-45bd-873d-685a3a31d73a'),
+	(5,287,'en',NULL,'h2','','2017-02-13 11:32:59','2017-02-13 11:32:59','9cb39b6e-ced7-47f6-bf41-3eaafa8e9a73'),
+	(6,293,'en','Headline','h2','default','2017-02-13 11:39:50','2017-02-13 11:40:28','707ed1bb-64bd-450a-bb63-7b2e4e0fba6d');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_modulheadline` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_modulimagecover
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulimagecover`;
+
+CREATE TABLE `craft_supertablecontent_modulimagecover` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_caption` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulimagecover_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulimagecover_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulimagecover_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulimagecover_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_modulimagegallery
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulimagegallery`;
+
+CREATE TABLE `craft_supertablecontent_modulimagegallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-4',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_modulimagegaller_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulimagegallery_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulimagegallery_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulimagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_modulimagegrid
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulimagegrid`;
+
+CREATE TABLE `craft_supertablecontent_modulimagegrid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_cols` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'cols-2',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulimagegrid_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulimagegrid_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulimagegrid_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulimagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_modulquote
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_modulquote`;
+
+CREATE TABLE `craft_supertablecontent_modulquote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_quote` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `field_sourceUrl` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_modulquote_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_modulquote_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_modulquote_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_modulquote_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_modulquote` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_modulquote` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_modulquote` (`id`, `elementId`, `locale`, `field_quote`, `field_source`, `field_sourceUrl`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,300,'en','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.','Da ist das her','','2017-02-13 11:39:50','2017-02-13 11:40:28','76dd7734-efe7-48d7-85c9-4d53a40fa0be');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_modulquote` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_portfoliometa
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_portfoliometa`;
+
+CREATE TABLE `craft_supertablecontent_portfoliometa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_jahr` datetime DEFAULT NULL,
+  `field_abmessungen` text COLLATE utf8_unicode_ci,
+  `field_bauherr` text COLLATE utf8_unicode_ci,
+  `field_info` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_portfoliometa_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_portfoliometa_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_portfoliometa_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_portfoliometa_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_portfoliometa` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_portfoliometa` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_portfoliometa` (`id`, `elementId`, `locale`, `field_jahr`, `field_abmessungen`, `field_bauherr`, `field_info`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,45,'de',NULL,'','','','2016-12-02 09:34:46','2016-12-02 14:27:44','c6aaf919-71ea-486b-bd6b-93aca7839139');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_portfoliometa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_portfoliometabridge
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_portfoliometabridge`;
+
+CREATE TABLE `craft_supertablecontent_portfoliometabridge` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_jahr` datetime DEFAULT NULL,
+  `field_abmessungen` text COLLATE utf8_unicode_ci,
+  `field_bauherr` text COLLATE utf8_unicode_ci,
+  `field_info` text COLLATE utf8_unicode_ci,
+  `field_laenge` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertableconten_portfoliometabridg_elementI_locale_unq_id` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_portfoliometabridge_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_portfoliometabridge_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_portfoliometabridge_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_portfoliometabridge` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_portfoliometabridge` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_portfoliometabridge` (`id`, `elementId`, `locale`, `field_jahr`, `field_abmessungen`, `field_bauherr`, `field_info`, `field_laenge`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,41,'en',NULL,'','','','lt3','2016-12-02 08:57:21','2016-12-02 08:57:21','1e8b567e-f8ef-4fe3-aa36-1b80e4b12355'),
+	(2,44,'de','2014-11-30 23:00:00','L: 100m\r\nB: 50m\r\nT: 300m','Ich AG','<p>Lorem ipsum dolor sit <strong>amet</strong>, consectetur adipiscing elit. Phasellus quis lectus metus, at <em>posuere</em> neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue <strong>scelerisque</strong> bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>','3t6','2016-12-02 09:01:37','2016-12-02 09:01:37','960b0b83-1f26-4fa8-ac05-959073a5e6a1');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_portfoliometabridge` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_quote
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_quote`;
+
+CREATE TABLE `craft_supertablecontent_quote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_copy` text COLLATE utf8_unicode_ci,
+  `field_source` text COLLATE utf8_unicode_ci,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_quote_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_quote_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_quote_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_quote_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_sectionsettings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_sectionsettings`;
+
+CREATE TABLE `craft_supertablecontent_sectionsettings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` char(7) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_sectionsettings_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_sectionsettings_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_sectionsettings_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_sectionsettings_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_sectionsettings` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_sectionsettings` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_sectionsettings` (`id`, `elementId`, `locale`, `field_backgroundColor`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,14,'de','#fff700','2016-11-23 17:09:40','2016-11-23 17:58:25','c413a611-13d8-478e-96e6-e5c530329ac5'),
+	(2,26,'de','#000000','2016-11-25 11:09:37','2016-11-25 11:09:37','efa61a62-70b9-47df-861f-44585a91d8e4'),
+	(3,47,'de','#000000','2016-12-02 09:37:41','2016-12-02 09:37:41','e8631228-fcce-47a7-b023-e15ef2cc335c'),
+	(4,57,'de','#000000','2016-12-02 11:07:28','2016-12-02 11:33:11','a4af0951-ac38-432b-983e-60494bf9d8df'),
+	(5,85,'de','#000000','2016-12-02 14:27:44','2016-12-02 14:27:44','1e97e178-7054-4415-a534-d988ce646f67');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_sectionsettings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_segmentsettings
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_segmentsettings`;
+
+CREATE TABLE `craft_supertablecontent_segmentsettings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` char(7) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_segmentsettings_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_segmentsettings_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_segmentsettings_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_segmentsettings_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle craft_supertablecontent_settingbutton
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_settingbutton`;
+
+CREATE TABLE `craft_supertablecontent_settingbutton` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
+  `field_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_withIcon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'no',
+  `field_iconPosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'right',
+  `field_iconSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'small',
+  `field_icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_settingbutton_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_settingbutton_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_settingbutton_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_settingbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_settingbutton` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingbutton` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingbutton` (`id`, `elementId`, `locale`, `field_style`, `field_alignment`, `field_withIcon`, `field_iconPosition`, `field_iconSize`, `field_icon`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,326,'en','primary','default','no','right','small','default','2017-02-13 23:59:51','2017-02-13 23:59:51','a06b7359-f0c3-4792-8e60-d12d38983851');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingbutton` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_settingcolumns
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_settingcolumns`;
+
+CREATE TABLE `craft_supertablecontent_settingcolumns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_padding` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_settingcolumns_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_settingcolumns_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_settingcolumns_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_settingcolumns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_settingcolumns` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingcolumns` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingcolumns` (`id`, `elementId`, `locale`, `field_padding`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,90,'en',1,'2017-01-30 11:33:01','2017-01-30 11:33:01','f65f0dc4-7200-4c62-8b70-6a6a94e40620'),
+	(2,96,'en',1,'2017-02-01 16:16:13','2017-02-01 16:16:13','8ea72b40-644d-43db-aac4-5c15f3ff5b14'),
+	(3,161,'en',1,'2017-02-07 09:43:41','2017-02-07 09:43:41','cdac2d53-8eb2-4c9d-968c-2249a29bd416'),
+	(4,172,'en',1,'2017-02-07 17:40:00','2017-02-07 17:40:00','fbc908a6-48c8-41d6-b111-92e2c69ab213'),
+	(5,178,'en',1,'2017-02-07 17:40:00','2017-02-07 17:40:00','3e17cd0c-c4dd-4948-bbb6-d4b227c19203'),
+	(6,276,'en',1,'2017-02-13 10:51:41','2017-02-13 10:51:41','7ee454b3-720a-4c39-8cb5-f4f6f41fb590'),
+	(7,280,'en',1,'2017-02-13 10:51:41','2017-02-13 10:51:41','f512bb0f-17cd-4e60-a221-07ef5ea26952'),
+	(8,291,'en',1,'2017-02-13 11:39:50','2017-02-13 11:39:50','d346f761-b38a-43e9-8200-050c022ba420'),
+	(9,297,'en',1,'2017-02-13 11:39:50','2017-02-13 11:39:50','ad704338-ce38-4b97-aedc-96d50af91eb1');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingcolumns` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Export von Tabelle craft_supertablecontent_settingheadline
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_settingheadline`;
+
+CREATE TABLE `craft_supertablecontent_settingheadline` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
+  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_settingheadline_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_settingheadline_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_settingheadline_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_settingheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_settingheadline` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingheadline` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingheadline` (`id`, `elementId`, `locale`, `field_semanticSize`, `field_visualSize`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(2,11,'en','','','2016-11-23 11:10:34','2016-11-23 12:47:19','69dbc56c-9c5b-436e-981e-049292b8fc21'),
+	(3,92,'en','','','2017-01-30 11:33:02','2017-01-30 11:33:02','ba09894b-0148-48fb-b7f5-e42f0de6dcb9'),
+	(4,174,'en','','','2017-02-07 17:40:00','2017-02-07 17:40:00','21e155b6-b09c-45bd-873d-685a3a31d73a'),
+	(5,287,'en','h2','','2017-02-13 11:32:59','2017-02-13 11:32:59','9cb39b6e-ced7-47f6-bf41-3eaafa8e9a73'),
+	(6,293,'en','h2','default','2017-02-13 11:39:50','2017-02-13 23:39:22','707ed1bb-64bd-450a-bb63-7b2e4e0fba6d'),
+	(7,310,'en','h2','default','2017-02-13 23:34:14','2017-02-13 23:39:22','a492e34c-5331-45cc-a6d8-855ada003726'),
+	(8,318,'en','h2','default','2017-02-13 23:55:58','2017-02-13 23:59:50','9e23139e-a994-4949-8d92-3c4843e8000b');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingheadline` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsbutton
@@ -2279,6 +4832,49 @@ CREATE TABLE `craft_supertablecontent_settingsdefinitionlist` (
   CONSTRAINT `craft_supertablecontent_settingsdefinitionlist_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+
+# Export von Tabelle craft_supertablecontent_settingsection
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_settingsection`;
+
+CREATE TABLE `craft_supertablecontent_settingsection` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_backgroundColor` char(7) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_textColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_width` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_settingsection_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_settingsection_locale_idx` (`locale`),
+  CONSTRAINT `craft_supertablecontent_settingsection_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_settingsection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_settingsection` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsection` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsection` (`id`, `elementId`, `locale`, `field_backgroundColor`, `field_textColor`, `field_paddingVertical`, `field_width`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,89,'en','#000000','default','default','default','2017-01-30 11:33:01','2017-01-30 11:33:01','76270d11-f6ff-41e2-8951-40884f5d6c73'),
+	(2,95,'en','#000000','default','default','default','2017-02-01 16:16:13','2017-02-01 16:16:13','a4cad5f3-4d27-42ee-8cec-4a57dc60eb94'),
+	(3,160,'en','#000000','default','default','default','2017-02-07 09:43:41','2017-02-07 09:43:41','c9598fa2-e0e8-482d-88fc-1bdfcc3d0a21'),
+	(4,171,'en','#000000','default','default','default','2017-02-07 17:39:59','2017-02-07 17:39:59','3da6a49c-4e8f-4df6-8fef-6148f4b43cc3'),
+	(5,177,'en','#000000','default','default','default','2017-02-07 17:40:00','2017-02-07 17:40:00','28249aa5-ea6a-4a31-848a-0e04f8e044f0'),
+	(6,275,'en','#000000','default','default','default','2017-02-13 10:51:41','2017-02-13 10:51:41','88f6f3e1-1837-4462-ae66-11e7451f2d68'),
+	(7,279,'en','#000000','default','default','default','2017-02-13 10:51:41','2017-02-13 10:51:41','8e10a4e4-a71c-4bb1-b9b7-cce6d80057a5'),
+	(8,290,'en','#000000','default','default','default','2017-02-13 11:39:50','2017-02-13 23:39:22','38f8ff79-0413-4bcc-80fd-22611c52842c'),
+	(9,296,'en','#000000','default','default','default','2017-02-13 11:39:50','2017-02-13 23:39:22','2844094a-02ae-4293-b917-31d8d66511e1'),
+	(10,316,'en','#000000','default','default','default','2017-02-13 23:55:58','2017-02-13 23:59:50','48a6ee01-f88c-4ca7-affd-cc39e5a9bb3a');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsection` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsembed
@@ -2506,6 +5102,43 @@ CREATE TABLE `craft_supertablecontent_settingsseparator` (
   CONSTRAINT `craft_supertablecontent_settingsseparator_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+
+# Export von Tabelle craft_supertablecontent_settingstwocols
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_supertablecontent_settingstwocols`;
+
+CREATE TABLE `craft_supertablecontent_settingstwocols` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `elementId` int(11) NOT NULL,
+  `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `field_columnsRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `craft_supertablecontent_settingstwocols_elementId_locale_unq_idx` (`elementId`,`locale`),
+  KEY `craft_supertablecontent_settingstwocols_locale_fk` (`locale`),
+  CONSTRAINT `craft_supertablecontent_settingstwocols_elementId_fk` FOREIGN KEY (`elementId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `craft_supertablecontent_settingstwocols_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+LOCK TABLES `craft_supertablecontent_settingstwocols` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingstwocols` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingstwocols` (`id`, `elementId`, `locale`, `field_columnsRatio`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,418,'en','default','2017-02-18 18:20:12','2017-02-19 23:54:06','56ad7f8b-8c77-415b-8e48-e9a4177898d9'),
+	(2,469,'en','50-50','2017-02-19 22:09:37','2017-02-19 23:54:06','3411e014-1439-4794-bdc7-f4138b759de7'),
+	(3,483,'en','66-33','2017-02-19 22:09:38','2017-02-19 23:54:06','be8684e2-17d7-4830-82ee-52654b70481f'),
+	(4,497,'en','75-25','2017-02-19 22:09:38','2017-02-19 23:54:07','d2158fb3-8269-479f-873b-69687dc1534c'),
+	(5,511,'en','25-75','2017-02-19 22:09:38','2017-02-19 23:54:07','1f80b6a5-9972-4455-9c52-c74c6d36bc03'),
+	(6,525,'en','33-66','2017-02-19 22:12:33','2017-02-19 23:54:07','15a75e73-292b-4498-808c-4debe7d3ed41'),
+	(7,601,'en','default','2017-02-20 08:12:58','2017-02-20 08:12:58','8dece17e-f4cd-45f7-a088-a63e04ffc00a');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingstwocols` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingstwocolumns
@@ -2883,10 +5516,29 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'davidhellmann',NULL,'David','Hellmann','david@fredmansky.at','$2y$13$XdeudxRcgdiqby0iPzCIkuwd.RoJB/GdieXO/kHdgMuyfwxEqI4WG',NULL,1,1,0,0,0,0,0,'2017-02-21 21:25:05','::1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-02-21 21:25:03','2017-02-21 21:25:03','2017-02-21 21:28:15','a3222b4f-e824-4ab5-a27f-6a450b2c9525');
+	(1,'davidhellmann',NULL,'David','Hellmann','david@fredmansky.at','$2y$13$XdeudxRcgdiqby0iPzCIkuwd.RoJB/GdieXO/kHdgMuyfwxEqI4WG',NULL,1,1,0,0,0,0,0,'2017-02-21 21:25:05','::1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-02-21 21:25:03','2017-02-21 21:25:03','2017-02-21 21:28:15','a3222b4f-e824-4ab5-a27f-6a450b2c9525'),
+	(6,'andy',NULL,'Andy','Schreyer','andy@fredmansky.at',NULL,NULL,1,1,0,0,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,'$2y$13$TKXg2Plrux6WEK8CqQ/rw.PskoeNH7E9Q6q0BiVfAqDt2FJUdzMCG','2017-02-21 21:30:17',NULL,0,NULL,'2017-02-21 21:30:15','2017-02-21 21:30:17','6d32c057-73fd-4ddf-b5cd-cb449e74e164'),
+	(7,'dan',NULL,'Daniel','Wittberger','dan@fredmansky.at',NULL,NULL,1,1,0,0,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,'$2y$13$Hl6SFY4Q6/FcCp.BKQVrxuPrkVUGcU3vtqsU32.7guyjkOtR/ejMG','2017-02-21 21:30:19',NULL,0,NULL,'2017-02-21 21:30:17','2017-02-21 21:30:19','0f38a6ac-82c0-4268-936d-00ce423d2efa');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Export von Tabelle craft_visitscount_history
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `craft_visitscount_history`;
+
+CREATE TABLE `craft_visitscount_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entry` int(10) DEFAULT NULL,
+  `sessionId` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateUpdated` datetime NOT NULL,
+  `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 
 # Export von Tabelle craft_widgets

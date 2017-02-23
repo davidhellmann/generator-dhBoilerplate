@@ -1,10 +1,12 @@
 {
   "groups": [
+    "Default",
     "Categories",
     "Content Builder",
     "Globals",
     "Grouped",
     "Plugins",
+    "Settings Selector",
     "Settings",
     "Singles"
   ],
@@ -34,6 +36,18 @@
     }
   ],
   "fields": [
+    {
+      "group": "Default",
+      "name": "Body",
+      "handle": "body",
+      "instructions": null,
+      "required": false,
+      "type": "RichText",
+      "typesettings": {
+        "configFile": "Standard.json",
+        "columnType": "text"
+      }
+    },
     {
       "group": "Categories",
       "name": "Category: Default",
@@ -374,6 +388,19 @@
         "seoFacebookImageTransform": "",
         "robots": "",
         "robotsChangeable": 1
+      }
+    },
+    {
+      "group": "Settings Selector",
+      "name": "Settings Selector: Image Slider",
+      "handle": "settingsSelectorImageSlider",
+      "instructions": "",
+      "required": false,
+      "type": "Categories",
+      "typesettings": {
+        "source": "settingsImageSlider",
+        "limit": 1,
+        "selectionLabel": "Select Settings: Image Slider"
       }
     },
     {
@@ -1576,7 +1603,7 @@
                 "instructions": "Delay between transitions (in ms). If this parameter is not specified, auto play will be disabled",
                 "required": 0,
                 "type": "Dropdown",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "options": [
                     {
@@ -1608,7 +1635,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "options": [
                     {
@@ -1618,17 +1645,17 @@
                     },
                     {
                       "label": "Left",
-                      "value": "\"left\"",
+                      "value": "left",
                       "default": ""
                     },
                     {
                       "label": "Center",
-                      "value": "\"center\"",
+                      "value": "center",
                       "default": ""
                     },
                     {
                       "label": "Right",
-                      "value": "\"right\"",
+                      "value": "right",
                       "default": ""
                     }
                   ]
@@ -1640,7 +1667,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": 1
                 }
@@ -1651,7 +1678,7 @@
                 "instructions": "If true then slides will not have fixed positions",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": ""
                 }
@@ -1662,7 +1689,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": 1
                 }
@@ -1673,7 +1700,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "options": [
                     {
@@ -1740,7 +1767,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": ""
                 }
@@ -1751,7 +1778,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": 1
                 }
@@ -1762,7 +1789,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": 1
                 }
@@ -1773,7 +1800,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": 1
                 }
@@ -1784,7 +1811,7 @@
                 "instructions": "",
                 "required": 0,
                 "type": "Lightswitch",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "default": ""
                 }
@@ -1795,7 +1822,7 @@
                 "instructions": "Number of slides per view (slides visible at the same time on slider's container).",
                 "required": 0,
                 "type": "Dropdown",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "options": [
                     {
@@ -1842,7 +1869,7 @@
                 "instructions": "Duration of transition between slides (in ms)",
                 "required": 0,
                 "type": "Dropdown",
-                "width": "33%",
+                "width": "",
                 "typesettings": {
                   "options": [
                     {
@@ -2430,6 +2457,17 @@
       }
     },
     {
+      "group": "Default",
+      "name": "Tags",
+      "handle": "tags",
+      "instructions": null,
+      "required": false,
+      "type": "Tags",
+      "typesettings": {
+        "source": "default"
+      }
+    },
+    {
       "group": "Content Builder",
       "name": "Content Builder: Neo",
       "handle": "contentBuilderNeo",
@@ -2634,7 +2672,7 @@
                 "singleImages"
               ],
               "Settings": [
-                "settingsImageSlider"
+                "settingsSelectorImageSlider"
               ]
             }
           },
@@ -2948,6 +2986,30 @@
         }
       },
       "fieldLayout": []
+    },
+    {
+      "name": "Settings: Image Slider",
+      "handle": "settingsImageSlider",
+      "hasUrls": 0,
+      "template": null,
+      "maxLevels": 1,
+      "locales": {
+        "en": {
+          "urlFormat": null,
+          "nestedUrlFormat": null
+        }
+      },
+      "fieldLayout": {
+        "Settings": [
+          "settingsImageSlider"
+        ]
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "Default",
+      "handle": "default"
     }
   ],
   "users": [
@@ -2960,7 +3022,6 @@
       "firstName": "Super",
       "lastName": "User",
       "email": "david@fredmansky.at",
-      "preferredLocale": "en",
       "weekStartDay": 1,
       "admin": 1,
       "client": 0,
