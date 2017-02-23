@@ -101,11 +101,11 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         })
 
         // check git info
-        var gitInfo = {
+        /*var gitInfo = {
             name: exec('git config user.name', {silent: true}).replace(/\n/g, ''),
             email: exec('git config user.email', {silent: true}).replace(/\n/g, ''),
             github: exec('git config github.user', {silent: true}).replace(/\n/g, '')
-        }
+        }*/
 
         return this.prompt([
             {
