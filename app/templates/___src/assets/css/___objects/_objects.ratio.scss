@@ -54,7 +54,7 @@ $dh-ratios: (
       @error '`#{$consequent}` needs to be a number.';
     }
 
-    .o-ratio--#{$antecedent}-#{$consequent} {
+    .o-ratio--#{$antecedent}-#{$consequent}::before {
       padding-bottom: ($consequent/$antecedent) * 100%;
     }
   }

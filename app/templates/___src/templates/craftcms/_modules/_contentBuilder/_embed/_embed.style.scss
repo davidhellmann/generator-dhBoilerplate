@@ -11,6 +11,7 @@
 
 .m-embed__item {
   @include ft(s(1), s(2), padding-left padding-right);
+  width: 100%;
 }
 
 .m-embed__video {
