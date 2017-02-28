@@ -101,11 +101,27 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         })
 
         // check git info
+        commandExists('git')
+            .then(function(command) {
+                var gitInfo = {
+                    name: exec('git config user.name', {silent: true}).replace(/\n/g, ''),
+                    email: exec('git config user.email', {silent: true}).replace(/\n/g, ''),
+                    github: exec('git config github.user', {silent: true}).replace(/\n/g, '')
+                }
+            }).catch(function() {
+            var gitInfo = {
+                name: 'Author or Company Name',
+                email: 'Author or Company Mail',
+                github: ''
+            }
+        })
+
+        // check git info
         /*var gitInfo = {
-            name: exec('git config user.name', {silent: true}).replace(/\n/g, ''),
-            email: exec('git config user.email', {silent: true}).replace(/\n/g, ''),
-            github: exec('git config github.user', {silent: true}).replace(/\n/g, '')
-        }*/
+         name: exec('git config user.name', {silent: true}).replace(/\n/g, ''),
+         email: exec('git config user.email', {silent: true}).replace(/\n/g, ''),
+         github: exec('git config github.user', {silent: true}).replace(/\n/g, '')
+         }*/
 
         return this.prompt([
             {
@@ -114,7 +130,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 message: chalk.magenta.underline.bold('Project Name') + '\n\xb7 Please give the project a name (without Spaces): ',
                 // default: 'dhBoilerplate',
                 default: process.cwd().split('/').pop(-1).toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
-                validate: function (input) {
+                validate: function(input) {
                     // Do async stuff
                     if (input.indexOf(' ') >= 0 || /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(input)) {
                         // Pass the return value in the done callback
@@ -210,22 +226,17 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectAuthor',
                 message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
-                default: 'Author or Company Name'
+                default: gitInfo.name
             }, {
                 type: 'input',
                 name: 'projectMail',
                 message: chalk.magenta.underline.bold('Project Mail') + '\n\xb7 Mailadress of the author: ',
-                default: 'Author or Company Mail'
+                default: gitInfo.email
             }, {
                 type: 'input',
                 name: 'projectUrl',
                 message: chalk.magenta.underline.bold('Author URL') + '\n\xb7 URL of the author: ',
                 default: 'http://...'
-            }, {
-                type: 'input',
-                name: 'projectRepo',
-                message: chalk.magenta.underline.bold('Repo URL') + '\n\xb7 Git Repo URL: ',
-                default: 'Git Repo URL'
             }
         ]).then(function(answers) {
             const checkAnswer = (answer) => {
@@ -250,7 +261,6 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.projectAuthor = answers.projectAuthor
             this.projectMail = answers.projectMail
             this.projectUrl = answers.projectUrl
-            this.projectRepo = answers.projectRepo
             this.projectYarn = answers.projectYarn
             done()
         }.bind(this))
@@ -310,7 +320,7 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             // Copy Redactor
             this.fs.copyTpl(
                 this.templatePath('___src/_craft3/redactor/Standard.json'),
-                this.destinationPath('___dist/config/redactor/'+this.projectName+'.json')
+                this.destinationPath('___dist/config/redactor/' + this.projectName + '.json')
             );
         }
 
@@ -382,7 +392,6 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             projectAuthor: this.projectAuthor,
             projectMail: this.projectMail,
             projectUrl: this.projectUrl,
-            projectRepo: this.projectRepo,
             projectYarn: this.projectYarn
         }
 

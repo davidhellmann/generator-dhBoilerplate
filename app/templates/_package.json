@@ -4,7 +4,7 @@
   "description": "<%= projectDescription %>",
   "version": "<%= projectVersion %>",
   "license": "MIT",
-  "repository": "<%= projectRepo %>",
+  "repository": "…",
   "author": {
     "name": "<%= projectAuthor %>",
     "email": "<%= projectMail %>",
