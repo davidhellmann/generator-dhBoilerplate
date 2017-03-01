@@ -5,10 +5,11 @@
 html {
   @include ft($msFont-min, $msFont-max);
   line-height: $lineHeight-base;
-  overflow-y: scroll;
-  height: 100%;
 }
 
 body {
-  height: 100%;
+  .js &.is-navOpen {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
