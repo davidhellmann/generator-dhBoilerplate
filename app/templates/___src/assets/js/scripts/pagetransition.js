@@ -20,7 +20,7 @@ triggers.forEach((trigger) => {
       event.preventDefault()
 
       // Set Transition Class
-      body.classList.add('js_pageTransition')
+      body.classList.add('js-pageTransition')
 
       // Go to New Page
       setTimeout(() => {
@@ -34,6 +34,6 @@ triggers.forEach((trigger) => {
 
 window.onpageshow = (event) => {
   if (event.persisted) {
-    body.classList.remove('js_pageTransition')
+    body.classList.remove('js-pageTransition')
   }
 }
