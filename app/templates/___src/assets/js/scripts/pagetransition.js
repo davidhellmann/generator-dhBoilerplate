@@ -14,7 +14,7 @@ const triggers = Array.from(document.querySelectorAll(`a[href^="${siteURL}"]:not
 
 triggers.forEach((trigger) => {
   // Click Event
-  trigger.addEventListener('click', function(event) {
+  trigger.addEventListener('onmouseup', function(event) {
     if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
       const newLocation = this.getAttribute('href')
       event.preventDefault()
