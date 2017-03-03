@@ -4,6 +4,7 @@
 
 // Dependencies
 import goToUrl from '../lib/goToUrl'
+import Velocity from 'velocity-animate'
 
 // Vars
 const body = document.body
@@ -28,6 +29,7 @@ triggers.forEach((trigger) => {
 
                 // Set Transition Class
                 body.classList.add('js-pageTransition')
+                Velocity(document.body, 'scroll', { duration: 250 }, 'easeOutCubic')
 
                 // Go to New Page
                 setTimeout(() => {
