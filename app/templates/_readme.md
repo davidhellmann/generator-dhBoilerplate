@@ -108,6 +108,7 @@ There are some other Tasks there…
 "clean:css": "gulp clean:css",
 "copy:fonts": "gulp copy:fonts",
 "copy:images": "gulp images",
+"copy:favicon": "gulp favicon",
 "copy:svg": "gulp svg",
 "copy:single": "gulp svg-single",
 "copy:sprite": "gulp svg-sprite",
