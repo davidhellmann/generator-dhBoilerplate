@@ -7,7 +7,7 @@ const argv = yargs.argv
 
 const criticalcss = () => {
   <% if (proxyUrl != false) { %>
-    const localURL = config.browsersync.proxy
+    const localURL = 'http://' + config.browsersync.proxy
   <% } else { %>
     const localURL = 'http://localhost:3000'
   <% } %>
@@ -20,7 +20,7 @@ const criticalcss = () => {
     minify: true,
     width: 1440,
     height: 900,
-    ignore: ['font-face'],
+    ignore: ['@font-face'],
   })
 }
 
