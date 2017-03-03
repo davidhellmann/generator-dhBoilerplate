@@ -23,18 +23,18 @@
 #}
 {% macro pagination(pages,craft,options) %}
   {% set opt = {
-    'class': 'm-pagination',
-    'searchquery': false,
-    'pagenumber': 5,
-    'fistPageSign': '&laquo;',
-    'lastPageSign': '&raquo;',
-    'prevSign': '&lsaquo;',
-    'nextSign': '&rsaquo;',
-    'firstPageText': 'Zur ersten Seite',
-    'lastPageText': 'Zur letzten Seite',
-    'prevText': 'Zurück zur vorhergehenden Seite',
-    'nextText': 'Weiter zur nächsten Seite',
-    'jumpText': 'Sprung zur Seite'
+  'class': 'm-pagination',
+  'searchquery': false,
+  'pagenumber': 5,
+  'fistPageSign': '&laquo;',
+  'lastPageSign': '&raquo;',
+  'prevSign': '&lsaquo;',
+  'nextSign': '&rsaquo;',
+  'firstPageText': 'Zur ersten Seite',
+  'lastPageText': 'Zur letzten Seite',
+  'prevText': 'Zurück zur vorhergehenden Seite',
+  'nextText': 'Weiter zur nächsten Seite',
+  'jumpText': 'Sprung zur Seite'
   } %}
 
   {# Merge Options with Defaults #}
@@ -58,7 +58,7 @@
       {% if options.pagenumber > 0 %}
         {# Display prev 5 Page Links#}
         {% for page, url in pages.getPrevUrls(options.pagenumber) %}
-          <a class="{{ options.class }}__link---number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
+          <a class="{{ options.class }}__link  {{ options.class }}__link--number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
         {% endfor %}
 
         {# Diplay Current Page#}
