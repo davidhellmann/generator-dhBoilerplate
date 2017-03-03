@@ -20,7 +20,7 @@ const criticalcss = () => {
     minify: true,
     width: 1440,
     height: 900,
-    ignore: ['@font-face'],
+    ignore: ['font-face'],
   })
 }
 
