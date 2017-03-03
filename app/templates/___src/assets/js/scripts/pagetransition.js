@@ -5,35 +5,41 @@
 // Dependencies
 import goToUrl from '../lib/goToUrl'
 
-
 // Vars
 const body = document.body
 const siteURL = `${window.location.protocol}//${window.location.host}`
 const triggers = Array.from(document.querySelectorAll(`a[href^="${siteURL}"]:not([href*="#"])`))
 
-
 triggers.forEach((trigger) => {
-  // Click Event
-  trigger.addEventListener('onmouseup', function(event) {
-    if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
-      const newLocation = this.getAttribute('href')
-      event.preventDefault()
+    // Click Event
+    let dragged = 0
+    trigger.addEventListener('mousedown', function() {
+        dragged = 0
+    }, false)
+    trigger.addEventListener('mousemove', function() {
+        dragged = 1
+    }, false)
 
-      // Set Transition Class
-      body.classList.add('js-pageTransition')
+    trigger.addEventListener('mouseup', function(event) {
+        if (dragged === 0) {
+            if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
+                const newLocation = this.getAttribute('href')
+                event.preventDefault()
 
-      // Go to New Page
-      setTimeout(() => {
-        goToUrl(newLocation)
-      }, 250)
-    }
-  }, false)
+                // Set Transition Class
+                body.classList.add('js-pageTransition')
+
+                // Go to New Page
+                setTimeout(() => {
+                    goToUrl(newLocation)
+                }, 250)
+            }
+        }
+    }, false)
 })
 
-
-
 window.onpageshow = (event) => {
-  if (event.persisted) {
-    body.classList.remove('js-pageTransition')
-  }
+    if (event.persisted) {
+        body.classList.remove('js-pageTransition')
+    }
 }
