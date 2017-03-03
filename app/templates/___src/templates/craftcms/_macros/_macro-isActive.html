@@ -5,6 +5,6 @@
   {{ macroIsActive.isActive('news') }}
 #}
 
-{% macro isActive(segment) %}
-  {% if craft.request.firstSegment == segment %}is_active{% endif %}
+{% macro isActive(segment|default('news'), position|default(1), class|default('is-active')) %}
+  {% if craft.request.getSegment(position) == segment %}{{ class }}{% endif %}
 {% endmacro %}
