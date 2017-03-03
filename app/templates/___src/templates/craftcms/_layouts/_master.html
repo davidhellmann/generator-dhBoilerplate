@@ -44,7 +44,7 @@
   {# Favicon #}
   {% include '_partials/_header/_favicons.html' %}
 
-  {% block appHeader %}{% endblock %}
+  {% block siteHeader %}{% endblock %}
 </head>
 <body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}{{ craft.request.isLivePreview ? 'is-livePreview' : '  ' }}">
 
