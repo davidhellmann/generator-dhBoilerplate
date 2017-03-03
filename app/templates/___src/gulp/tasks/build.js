@@ -21,9 +21,6 @@ const buildTask = (cb) => {
             'svg-sprite',
         ],
         [
-            'combinemq:sass'
-        ],
-        [
             'minify:js',
             'minify:sass',
             'minify:images'
