@@ -80,7 +80,7 @@
     }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
   <!-- Slides -->
   {% for image in images %}
-    <div class="{{ classname ~ '__slide' }}  swiper-slide" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
       {% set options = {
         ratio: ratio
       } %}

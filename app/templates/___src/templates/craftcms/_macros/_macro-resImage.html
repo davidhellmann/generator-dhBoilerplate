@@ -32,7 +32,8 @@
     sizes: [
     { width: 1680 },
     { width: 960 },
-    { width: 480 }
+    { width: 480 },
+    { width: 30 }
     ],
     background: false,
     elementtype: 'figure',
@@ -94,7 +95,7 @@
     {% if options.background %}
       <div class="{{ options.class }}  {{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio|replace({":": "-"}) : '' }} " style="{{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}">
         <{{ options.elementtype }} class="o-ratio__content  lazyload"
-        style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+        style="background-image: url('{{ images|last.url }}');
         background-position: {{ position|trim("'") }};"
         data-bgset="{{ craft.imager.srcset(images) }}"
         data-sizes="auto">
@@ -108,7 +109,7 @@
           <div class="{{ options.class ~ '__image' }}">
             <div class="{{ options.class ~ '__imageBackground' }}" style="{{ dominantColor ? 'background-color:' ~  dominantColor ~ ';': '' }}">
               <img class="lazyload"
-                 src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
+                 src="{{ images|last.url }}"
                  data-srcset="{{ craft.imager.srcset(images) }}"
                  data-sizes="auto"
                  alt="{{ image.title }}"/>

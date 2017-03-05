@@ -20,21 +20,16 @@
 <head>
   <title>{% block appTitle %}DEVELOPMENT &mdash; dhBoilerplate{% endblock %}</title>
 
-  {# Critical CSS #}
-  <style>
-  {% include '../critical.min.css.html' %}
-  </style>
+  {# -- Check JS -- #}
+  {% include '../_partials/_global/_checkJS.html' %}
 
-  {# Preloader #}
-  {% include '../_partials/_global/_preloader.html' %}
-
-  {# Meta #}
+  {# -- Meta -- #}
   {% include '../_partials/_header/_meta.html' %}
 
-  {# Scripts #}
+  {# -- Scripts -- #}
   {% include '../_partials/_header/_scripts.html' %}
 
-  {# Favicon #}
+  {# -- Favicon -- #}
   {% include '../_partials/_header/_favicons.html' %}
 
 </head>
@@ -62,7 +57,7 @@
 
 </div>
 
-{# Include Scripts, Fonts, Google Analyticy #}
+{# -- Scripts -- #}
 {% include '../_partials/_footer/_scripts.html' %}
 </body>
 </html>

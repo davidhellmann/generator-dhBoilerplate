@@ -15,8 +15,12 @@
   {% set appTitle = 'News' %}
 {% endif %}
 
-
-
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
 
 {# Set Query #}
 {% set data = craft.entries({

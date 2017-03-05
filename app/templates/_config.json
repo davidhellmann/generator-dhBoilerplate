@@ -105,7 +105,16 @@
       }
     <% } %>
   },
-
+  "critical": [
+    { "url": "", "template": "index" },
+    { "url": "NEWS/ENTRY-SLUG", "template": "news/_entry" },
+    { "url": "NEWS", "template": "news/index" },
+    { "url": "404", "template": "404" }
+  ],
+  "inlineJs": [
+    "./node_modules/fg-loadcss/src/loadCSS.js",
+    "./node_modules/fg-loadcss/src/cssrelpreload.js"
+  ],
   "css": {
     "sourcemap": true,
     "prefix": [

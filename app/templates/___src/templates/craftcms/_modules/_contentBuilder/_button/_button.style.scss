@@ -2,106 +2,83 @@
 /*    Button
 /* -------------------------------------------------- */
 
-.m-button {
+.m-buttonWrapper {
   @include container();
-  text-align: center;
   @include ft(s(1), s(2), padding-left padding-right);
 }
 
-.m-button__link {
+.m-button {
   display: inline-block;
-  padding: vr(1/2) s(1.5);
-  @include fs('ms-1');
-  font-family: ff('sans-serif');
+  font-size: fs('ms0');
   text-decoration: none;
   border-radius: 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: ff('base-bold');
+  letter-spacing: 1.5px;
+
+  .fonts-loaded & {
+    font-family: ff('base-bold');
+  }
 }
 
-.m-button__link--primary {
-  background-color: c('black-50');
-  color: c('white');
+.m-button--primary {
+  font-size: fs('ms0') * 0.95;
 }
 
-.m-button__link--primary:hover {
-  background-color: darken(c('black-50'), 10%);
-  color: c('white');
+.m-button--primary:hover {
+  color: c('black');
 }
 
-.m-button__link--secondary {
-  background-color: c('black-20');
+.m-button--secondary {
+  font-size: fs('ms0') * 0.84;
   color: c('black-90');
 }
 
-.m-button__link--secondary:hover {
-  background-color: darken(c('black-20'), 10%);
-  color: c('black-90');
+.m-button--secondary:hover {
+  color: c('black');
 }
 
-.m-button__link--left {
+.m-button--left {
   float: left;
 }
 
-.m-button__link--center {
+.m-button--center {
   @include center();
 }
 
-.m-button__link--right {
+.m-button--right {
   float: right;
 }
 
-.m-button__link--full {
+.m-button--full {
   width: 100%;
 }
 
 // With Icon
-.m-button__link--withIcon {
-  svg {
-    position: relative;
-  }
-}
-
-.m-button__iconWrapper {
+.m-button__inner {
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
-}
 
-.m-button__link--icon.m-button__link--primary {
   svg {
-    fill: c('white');
+    position: relative;
+    margin-left: s(1.5);
+    transition: fill 0.5s ease-out;
+
+    .t-red & {
+      fill: c('prairie-sand')
+    }
+
+    .t-yellow & {
+      fill: c('gold')
+    }
   }
 }
 
-.m-button__link--iconSize-16px {
-  @include fs('ms0', 15px);
-
+.m-button--primary:hover,
+.m-button--secondary:hover {
   svg {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.m-button__link--iconSize-24px {
-  @include fs('ms1', 23px);
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.m-button__link--iconPosition-left {
-  span {
-    order: 1;
-  }
-
-  svg {
-    margin-right: s(1/2);
-  }
-}
-
-.m-button__link--iconPosition-right {
-  svg {
-    margin-left: s(1/2);
+    fill: c('black-80');
   }
 }

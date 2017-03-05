@@ -20,12 +20,12 @@ triggers.forEach((trigger) => {
     trigger.addEventListener('mousemove', function() {
         dragged = 1
     }, false)
-
     trigger.addEventListener('mouseup', function(event) {
         if (dragged === 0) {
             if (!(event.ctrlKey || event.metaKey || event.which === 2)) {
                 const newLocation = this.getAttribute('href')
                 event.preventDefault()
+                console.log('test')
 
                 // Set Transition Class
                 body.classList.add('js-pageTransition')

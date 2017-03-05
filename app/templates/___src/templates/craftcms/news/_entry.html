@@ -10,7 +10,12 @@
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "single-news" %}
 
-
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
 
 {# start: Rel Nav #}
 {% block siteHeader %}

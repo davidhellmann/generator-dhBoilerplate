@@ -16,6 +16,7 @@ const buildTask = (cb) => {
             'compile:js',
             'sass',
             'copy:fonts',
+            'inlineJS',
             'images',
             'svg-single',
             'svg-sprite',

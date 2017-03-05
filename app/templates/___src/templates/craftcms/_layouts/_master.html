@@ -24,24 +24,45 @@
 <html class="" lang="de">
 <head>
 
-  {# Critical CSS #}
-  <style>
-  {% include 'critical.min.css.html' %}
-  </style>
+  {# -- LOADS CSS -- #}
+  <script>
+    {{ source('_inlineJS/loadCSS.min.js') }}
+    {{ source('_inlineJS/cssrelpreload.min.js') }}
+  </script>
 
-  {# Preloader #}
-  {% include '_partials/_global/_preloader.html' %}
+  {# -- WEBFONTS HERE -- #}
 
-  {# Meta #}
+  {# -- CRITICAL CSS -- #}
+  {% if craft.getCookie is defined %}
+    {% set cacheVal = getCookie('critical-css') %}
+    {% if not cacheVal or craft.config.devMode %}
+      {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
+      {% block appInlineCSS %}
+      {% endblock %}
+      <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
+    {% else %}
+      <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
+    {% endif %}
+  {% else %}
+    {% block appInlineCSS %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
+  {% endif %}
+
+  {# -- CHECK JS -- #}
+  {% include '_partials/_global/_checkJS.html' %}
+
+  {# -- META -- #}
   {% include '_partials/_header/_meta.html' %}
 
-  {# Scripts #}
+  {# -- SCRIPTS -- #}
   {% include '_partials/_header/_scripts.html' %}
 
-  {# Seo Stuff / Title Tag #}
+  {# -- SEO & TITLE TAG -- #}
   {% include '_partials/_header/_seo.html' %}
 
-  {# Favicon #}
+  {# -- FAV ICON -- #}
   {% include '_partials/_header/_favicons.html' %}
 
   {% block siteHeader %}{% endblock %}
@@ -71,7 +92,7 @@
 
 </div>
 
-{# Include Scripts, Fonts, Google Analyticy #}
+{# -- SCRIPTS -- #}
 {% include '_partials/_footer/_scripts.html' %}
 </body>
 </html>

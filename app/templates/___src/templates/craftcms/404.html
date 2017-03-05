@@ -15,7 +15,12 @@
   {% set appTitle = 'Home' %}
 {% endif %}
 
-
+{# -- CRITICAL CSS -- #}
+{% block appInlineCSS %}
+  <style>
+    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
 
 {% block appContent %}
   <h1>404 &mdash; Page not found</h1>
