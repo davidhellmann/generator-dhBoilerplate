@@ -5,7 +5,7 @@ const $ = gulpLoadPlugins()
 
 const inlineJS = () => {
     return gulp
-        .src(config.inlineJs)
+        .src(config.inlineJS)
         .pipe($.uglify())
         .pipe($.rename({ suffix: '.min'}))
         .pipe(gulp.dest(config.dist.markup + '_inlineJS/'));
