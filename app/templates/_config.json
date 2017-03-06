@@ -111,7 +111,7 @@
     { "url": "NEWS", "template": "news/index" },
     { "url": "404", "template": "404" }
   ],
-  "inlineJs": [
+  "inlineJS": [
     "./node_modules/fg-loadcss/src/loadCSS.js",
     "./node_modules/fg-loadcss/src/cssrelpreload.js"
   ],
