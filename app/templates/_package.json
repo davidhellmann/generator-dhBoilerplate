@@ -131,6 +131,7 @@
     "eqcss": "^1.5.0",
     "family.scss": "^1.0.4",
     "flickity": "^2.0.5",
+    "fontfaceobserver": "^2.0.9",
     "include-media": "^1.4.4",
     <% if (projectjQuery) { %>
     "jquery": "^3.0.0",

@@ -17,7 +17,6 @@
 .m-pagination__link {
   background-color: transparent;
   color: color('black-80');
-  font-family: ff('base-bold');
   line-height: 38px;
   width: 40px;
   height: 40px;
@@ -25,6 +24,10 @@
   text-align: center;
   border-radius: 300px;
   flex: 0 0 40px;
+
+  .wf-loaded & {
+    font-family: ff('sans-serif');
+  }
 
   &:hover {
     background: c('black-80');
@@ -34,35 +37,5 @@
   &--current {
     background: c('black-80');
     color: c('white');
-  }
-
-  .t-red & {
-    color: color('prairie-sand');
-    box-shadow: inset 0 0  0 2px color('prairie-sand');
-
-    &--current {
-      background: c('prairie-sand');
-      color: c('white');
-    }
-
-    &:hover {
-      background: c('prairie-sand');
-      color: c('white');
-    }
-  }
-
-  .t-yellow & {
-    background-color: c('gold');
-    box-shadow: inset 0 0 0 2px color('gold');
-
-    &--current {
-      background: c('gold');
-      color: c('black-80');
-    }
-
-    &:hover {
-      background: c('gold');
-      color: c('black-80');
-    }
   }
 }
