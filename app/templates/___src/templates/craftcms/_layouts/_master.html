@@ -33,20 +33,14 @@
   {# -- WEBFONTS HERE -- #}
 
   {# -- CRITICAL CSS -- #}
-  {% if craft.getCookie is defined %}
-    {% set cacheVal = getCookie('critical-css') %}
-    {% if not cacheVal or craft.config.devMode %}
-      {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
-      {% block appInlineCSS %}
-      {% endblock %}
-      <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
-      <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
-    {% else %}
-      <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
-    {% endif %}
-  {% else %}
+  {% set cacheVal = getCookie('critical-css') %}
+  {% if not cacheVal or craft.config.devMode %}
+    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
     {% block appInlineCSS %}
     {% endblock %}
+    <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
+  {% else %}
     <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
   {% endif %}
 
