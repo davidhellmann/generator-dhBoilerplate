@@ -12,14 +12,8 @@
   font-size: fs('ms0');
   text-decoration: none;
   border-radius: 2px;
-  letter-spacing: 2px;
   text-transform: uppercase;
-  font-family: ff('base-bold');
-  letter-spacing: 1.5px;
-
-  .fonts-loaded & {
-    font-family: ff('base-bold');
-  }
+  font-weight: 700;
 }
 
 .m-button--primary {
@@ -65,14 +59,6 @@
     position: relative;
     margin-left: s(1.5);
     transition: fill 0.5s ease-out;
-
-    .t-red & {
-      fill: c('prairie-sand')
-    }
-
-    .t-yellow & {
-      fill: c('gold')
-    }
   }
 }
 

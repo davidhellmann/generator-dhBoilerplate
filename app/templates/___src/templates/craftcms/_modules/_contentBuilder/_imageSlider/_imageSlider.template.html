@@ -7,48 +7,11 @@
 {% set classname = name is defined and name is not empty ? name : 'm-imageSlider' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageSlider is defined ? data.settingsImageSlider %}
-{% set cellAlign = settings.cellAlign is defined and settings.cellAlign != 'default' ? '"' ~ settings.cellAlign ~ '"' : '"left"' %}
 {% set rightToLeft = settings.rightToLeft is defined and settings.rightToLeft ? 'true' : 'false' %}
 {% set pagination = settings.pagination is defined and settings.pagination ? 'true' : 'false' %}
 {% set navigation = settings.navigation is defined and settings.navigation ? 'true' : 'false' %}
-{% set groupCells = settings.groupCells is defined and settings.groupCells ? 'true' : 'false' %}
-{% set loop = settings.loop is defined and settings.loop ? 'true' : 'false' %}
-{% set draggable = settings.draggable is defined and settings.draggable ? 'true' : 'false' %}
-{% set freeScroll = settings.freeScroll is defined and settings.freeScroll ? 'true' : 'false' %}
-{% set pauseOnHover = settings.pauseOnHover is defined and settings.pauseOnHover ? 'true' : 'false' %}
 {% set slidesPerView = settings.slidesPerView is defined and settings.slidesPerView != 'default' ? '  ' ~ classname ~ '--' ~ settings.slidesPerView ~ 'cols' %}
 {% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
-
-{# Set Autoplay Settings #}
-{% set autoplay = settings.autoplay is defined ? settings.autoplay %}
-{% switch autoplay %}
-  {% case "slow" %}
-    {% set autoplay = 10000 %}
-  {% case "medium" %}
-    {% set autoplay = 5000 %}
-  {% case "fast" %}
-    {% set autoplay = 2500 %}
-  {% case "disabled" %}
-    {% set autoplay = 'false' %}
-  {% default %}
-    {% set autoplay = 'false' %}
-  {% endswitch %}
-{# Set Speed Settings #}
-{% set speed = settings.speed is defined ? settings.speed %}
-{% switch speed %}
-  {% case "slow" %}
-    {% set selectedAttraction = 0.3 %}
-    {% set friction = 0.9 %}
-  {% case "medium" %}
-    {% set selectedAttraction = 0.2 %}
-    {% set friction = 0.45 %}
-  {% case "fast" %}
-    {% set selectedAttraction = 0.1 %}
-    {% set friction = 0.225 %}
-  {% default %}
-    {% set selectedAttraction = 0.3 %}
-    {% set friction = 0.9 %}
-{% endswitch %}
 
 {% set withNavi = '' %}
 {% if navigation == 'true' or pagination == 'true' %}
@@ -58,36 +21,28 @@
 {# Modul #}
 <!-- Slider main container -->
 <figure class="{{ classname }}{{ slidesPerView }}{{ withNavi }}  js-imageSlider"
-     data-flickity='{
-      "autoPlay": {{ autoplay }},
-      "cellAlign": {{ cellAlign }},
+        data-flickity='{
+      "cellAlign": "left",
       "contain": true,
-      "draggable": {{ draggable }},
-      "dragThreshold": 10,
-      "freeScroll": {{ freeScroll }},
-      "freeScrollFriction": 0.03,
-      "friction": {{ friction }},
-      "selectedAttraction": {{ selectedAttraction }},
-      "groupCells": {{ groupCells }},
+      "draggable": true,
+      "friction": 0.9,
+      "selectedAttraction": 0.3,
+      "groupCells": true,
       "imagesLoaded": true,
-      "lazyLoad": false,
-      "pauseAutoPlayOnHover": {{ pauseOnHover }},
       "prevNextButtons": {{ navigation }},
       "pageDots": {{ pagination }},
       "rightToLeft": {{ rightToLeft }},
-      "watchCSS": true,
-      "wrapAround": {{ loop }}
+      "watchCSS": true
     }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
   <!-- Slides -->
   {% for image in images %}
     <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
       {% set options = {
-        ratio: ratio
+      ratio: ratio,
+      dominantColor: true
       } %}
 
       {{ macroResImage.resImage(image, options) }}
     </div>
   {% endfor %}
 </figure>
-
-

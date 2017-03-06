@@ -1,0 +1,42 @@
+{#
+  Neuigkeiten Template
+  ====================
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-neuigkeiten" %}
+
+{# Set Query #}
+{% set data = craft.entries({
+  section: 'neuigkeiten',
+  relatedTo: craft.categories.slug(category.slug),
+  limit: 12
+}) %}
+
+
+{% paginate data as pageInfo, pageEntries %}
+
+{# start: Rel Nav #}
+{% block siteHeader %}
+  {% set vars = {
+  pageInfo: pageInfo
+  } %}
+  {% include '_partials/_header/_siteHeaderLinks.html' with vars %}
+{% endblock %}
+
+
+{% block appContent %}
+
+  {# Include Page Title #}
+  {% include '_modules/_pageTitle/_pageTitle.template.html' with { object: category } %}
+
+  <div class="m-news">
+    {% for entry in pageEntries %}
+      {# Include Referenz #}
+      {#{% include '_modules/_newsSingle/_newsSingle.template.html' %}#}
+    {% endfor %}
+  </div>
+
+  {# Pagination #}
+  {{ macroPagination.pagination(pageInfo,craft) }}
+{% endblock %}

@@ -1,0 +1,17 @@
+{#
+  Default Template
+  ================
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-default" %}
+
+{% block appContent %}
+
+  {# Include Page Title #}
+  {% include '_modules/_pageTitle/_pageTitle.template.html' %}
+
+  {# Content Builder #}
+  {% include '_contentBuilders/_contentBuilderNeo' %}
+{% endblock %}
+

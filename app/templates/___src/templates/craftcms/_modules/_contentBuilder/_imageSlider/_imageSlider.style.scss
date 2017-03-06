@@ -26,9 +26,10 @@
 
 .m-imageSlider__slide {
   width: 100%;
+  float: left;
+  @include ft(s(0.25), s(0.5), padding-left padding-right);
 
   .m-figure {
-    @include ft(s(0.25), s(0.5), padding-left padding-right);
     margin-bottom: 0;
   }
 
@@ -153,74 +154,6 @@
 
     &:hover {
       background-position: center right;
-    }
-  }
-}
-
-.swiper-button-next {
-  @include ft(s(1), s(2), right);
-
-  svg {
-    float: right;
-    transform: translatex(s(-1));
-  }
-
-  &:hover {
-    svg {
-      transform: translatex(0);
-    }
-  }
-}
-
-.swiper-button-prev {
-  @include ft(s(1), s(2), left);
-
-  svg {
-    float: left;
-    transform: translatex(s(1));
-  }
-
-  &:hover {
-    svg {
-      transform: translatex(0);
-    }
-  }
-}
-
-.swiper-button-disabled {
-  opacity: 0.1 !important;
-}
-
-// Pagination
-.swiper-pagination {
-  height: 30px;
-  line-height: 30px;
-  font-family: ff('sans-serif');
-  font-size: fs('ms-1');
-  bottom: vr(1.5) !important;
-
-  &-fraction {
-    span {
-      display: inline-block;
-      min-width: 20px;
-    }
-  }
-
-  &-bullets {
-    display: none;
-
-    @include media('>=s') {
-      display: block;
-    }
-
-    .swiper-pagination-bullet {
-      position: relative;
-      background-color: c('black-50');
-      top: -1px;
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: c('black');
     }
   }
 }

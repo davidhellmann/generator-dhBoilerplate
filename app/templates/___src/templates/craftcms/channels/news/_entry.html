@@ -8,29 +8,22 @@
 
 
 {% extends "_layouts/_master.html" %}
-{% set bodyClass = "single-news" %}
-
-{# -- CRITICAL CSS -- #}
-{% block appInlineCSS %}
-  <style>
-    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
-  </style>
-{% endblock %}
+{% set bodyClass = "p-newsSingle" %}
 
 {# start: Rel Nav #}
 {% block siteHeader %}
   {% set vars = {
-    section: 'blog',
+    section: 'neuigkeiten',
     order: 'postDate'
   } %}
   {% include '_partials/_header/_siteHeaderLinks--single.html' with vars %}
 {% endblock %}
 
-
-
 {% block appContent %}
+  <article>
+    <h1>{{ entry.title }}</h1>
 
-  {# Content Builder #}
-  {% include '_contentBuilders/_contentBuilderNeo' %}
-
+    {# Content Builder #}
+    {% include '_contentBuilders/_contentBuilderNeo' %}
+  </article>
 {% endblock %}

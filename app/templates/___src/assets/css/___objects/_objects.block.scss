@@ -7,9 +7,13 @@
   margin-bottom: vr(1);
   position: relative;
 
-  .o-section &:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
+}
+
+.o-section__inner > .o-block:last-child {
+  margin-bottom: 0;
 }
 
 // Different Alignments

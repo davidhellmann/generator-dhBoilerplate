@@ -16,7 +16,8 @@
 <div class="m-figure__imageBackground  {{ classname }}{{ textAlignment }}{{ textVerticalPosition }}">
   {% set options = {
     background: true,
-    position: position
+    position: position,
+    dominantColor: true
   } %}
 
   {{ macroResImage.resImage(image, options) }}

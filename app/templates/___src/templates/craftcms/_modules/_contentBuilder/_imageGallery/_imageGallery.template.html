@@ -25,13 +25,15 @@
     {% if image.height >= image.width %}
       {% set sizes = [
         { height: 1440 },
-        { height: 320 }
+        { height: 320 },
+        { height: 30 }
       ] %}
     {% else %}
       {% set sizes = [
         { width: 1680 },
         { width: 1280 },
-        { width: 320 }
+        { width: 320 },
+        { width: 30 }
       ] %}
     {% endif %}
 
@@ -43,14 +45,16 @@
     {% set sizesThumbs = [
       { width: 640 },
       { width: 320 },
-      { width: 160 }
+      { width: 160 },
+      { width: 30 }
     ] %}
 
     {% set imageSettingsThumbs = {
       jpegQuality: 80,
       mode: 'crop',
       position: position,
-      ratio: ratioThumbs
+      ratio: ratioThumbs,
+      dominantColor: true
     } %}
 
     {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}

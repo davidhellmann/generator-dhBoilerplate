@@ -8,7 +8,10 @@ blockquote {
   p {
     @include ft(fs('ms2'), fs('ms3'));
     font-weight: 700;
-    font-family: ff('serif');
+
+    .fonts-loaded & {
+      font-family: ff('serif');
+    }
   }
 
   footer {

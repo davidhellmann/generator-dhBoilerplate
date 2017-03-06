@@ -12,7 +12,7 @@
   {# Check if first Type is not a Section #}
   {% if loop.first and content.type != 'contentSection' %}
     <!-- start: o-section / opened by Content Builder -->
-    {% include '_modules/_contentSection/_contentSection.template' with {
+    {% include '_modules/_contentBuilder/_contentSection/_contentSection.template' with {
     data: content,
     name: ''
     } %}
@@ -22,6 +22,7 @@
   {% if content.type == 'contentSection' %}
   {% if not loop.first %}
 </div>
+  </div>
 <!-- end: o-section -->
   {% endif %}
 <!-- start: o-section -->
@@ -30,12 +31,13 @@
       {# All other Content Modules #}
       {% elseif content.type != 'contentSection' %}
         <!-- start: o-block -->
-        <div class="o-block  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+        <div class="o-block  o-block--{{ content.type }}  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
           {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
         </div>
         <!-- end: o-block -->
       {% endif %}
     {% endfor %}
+  </div>
   </div>
 <!-- end: o-section -->
 {% endif %}

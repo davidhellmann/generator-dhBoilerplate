@@ -2,15 +2,13 @@
 /*    Modules
 /* -------------------------------------------------- */
 
-// Framework
-@import '__modules/_appContent/appContent.style';
-@import '__modules/_appFooter/appFooter.style';
-@import '__modules/_appHeader/appHeader.style';
-@import '__modules/_appWrapper/appWrapper.style';
-
 // Modules
-@import '__modules/_caption/caption.style';
-@import '__modules/_figure/figure.style';
+@import '../../templates/_modules/_appContent/appContent.style';
+@import '../../templates/_modules/_appFooter/appFooter.style';
+@import '../../templates/_modules/_appHeader/appHeader.style';
+@import '../../templates/_modules/_appWrapper/appWrapper.style';
+@import '../../templates/_modules/_caption/caption.style';
+@import '../../templates/_modules/_figure/figure.style';
 
 // Modules Content Builder
 @import '../../templates/_modules/_contentBuilder/_accordion/accordion.style';
@@ -32,9 +30,13 @@
 @import '../../templates/_modules/_contentBuilder/_twoColumns/twoColumns.style';
 
 // Form Stuff
-@import '../../templates/_modules/_form/_checkbox/checkbox.style';
-@import '../../templates/_modules/_form/_input/input.style';
-@import '../../templates/_modules/_form/_radio/radio.style';
+@import '../../templates/_modules/_checkbox/checkbox.style';
+@import '../../templates/_modules/_input/input.style';
+@import '../../templates/_modules/_radio/radio.style';
 
 // Partials
-@import '../../templates/_modules/_partials/_svgSprite/svgSprite.style';
+@import '../../templates/_modules/_svgSprite/svgSprite.style';
+@import '../../templates/_modules/_pageTitle/pageTitle.style';
+
+// Macros
+@import '__modules/module.pagination';

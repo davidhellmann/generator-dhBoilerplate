@@ -16,9 +16,7 @@
   {% if video %}
     <div class="{{ classname ~ '__item' }}">
       <div class="{{ classname ~ '__video' }}  o-ratio  o-ratio--16-9">
-        <div class="o-ratio__content">
-          {{ embedCode|raw }}
-        </div>
+        {{ embedCode|raw }}
       </div>
     </div>
   {% else %}

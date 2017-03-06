@@ -30,8 +30,11 @@
   text-align: center;
   background-image: linear-gradient(to top, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
   color: c('white');
-  font-family: ff('sans-serif');
   @include ft(fs('ms2'), fs('ms8'));
+
+  .fonts-loaded & {
+    font-family: ff('sans-serif');
+  }
 
   .m-imageCover--text-left & {
     text-align: left;

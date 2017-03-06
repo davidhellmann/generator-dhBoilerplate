@@ -41,8 +41,11 @@
   position: relative;
   margin: 0;
   font-size: fs('ms0');
-  font-family: ff('sans-serif');
   font-weight: 700;
+
+  .fonts-loaded & {
+    font-family: ff('sans-serif');
+  }
 
   &::before,
   &::after {

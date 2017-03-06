@@ -6,9 +6,12 @@
   @include ft(s(1), s(2), padding-left padding-right);
   width: 100%;
   font-size: fs('ms-2');
-  font-family: ff('sans-serif');
   color: c('black-50');
   margin-top: vr(1/2);
+
+  .fonts-loaded & {
+    font-family: ff('base');
+  }
 
   @include media('>=m') {
     margin-top: 0;

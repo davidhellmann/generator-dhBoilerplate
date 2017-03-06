@@ -1,0 +1,15 @@
+/* -------------------------------------------------- */
+/*    .m-appWrapper
+/* -------------------------------------------------- */
+
+.m-appWrapper {
+  font-weight: 400;
+  color: c('black-90');
+  background: c('white');
+  transition-property: opacity;
+  transition-timing-function: ease('out-cubic');
+
+  .fonts-loaded & {
+    font-family: ff('base');
+  }
+}

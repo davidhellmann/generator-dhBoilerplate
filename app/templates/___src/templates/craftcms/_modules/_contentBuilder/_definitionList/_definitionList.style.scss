@@ -23,9 +23,12 @@
   @include ft(s(1), s(2), padding-left padding-right);
   @include ft(vr(1/2), vr(1), padding-top);
   border-top: 1px solid c('black-25');
-  font-family: ff('sans-serif');
   font-weight: 700;
   @include fc(12);
+
+  .fonts-loaded & {
+    font-family: ff('sans-serif');
+  }
 
   @include media('>=m') {
     @include ft(vr(1/2), vr(1), padding-top padding-bottom);

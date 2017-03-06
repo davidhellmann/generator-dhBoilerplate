@@ -4,9 +4,9 @@
 
   {{ macroAmNav.amNav(node, loop.index) }}
 #}
-
-{% macro amNav(node, index) %}
-  {%- set nodeClasses = [] -%}
+{% set classname = classname|default('m-nav') %}
+{% macro amNav(node, index, classname) %}
+  {%- set nodeClasses = [classname ~ '__item'] -%}
   {%- if node.hasChildren -%}
     {%- set nodeClasses = nodeClasses|merge(['has-children']) -%}
   {%- endif -%}
@@ -21,9 +21,9 @@
   {%- endif -%}
 
   <li{% if nodeClasses|length %} class="{{ nodeClasses|join(' ') }}"{% endif %}>
-    <a href="{{ node.url }}" title="{{ node.name }}"{% if node.blank %} target="_blank"{% endif %}>{{ node.name }}</a>
+    <a class="{{ classname ~ '__link' }}" href="{{ node.url }}" title="{{ node.name }}"{% if node.blank %} target="_blank"{% endif %}>{{ node.name }}</a>
     {% if node.hasChildren %}
-      <ul class="m-mainNav__subList  m-mainNav__subList--{{ (node.level + 1) }}">
+      <ul class="{{ classname ~ '__subList' }}  {{ classname ~ '__subList--' ~ (node.level + 1) }}">
         {% for subnode in node.children %}
           {{ _self.addNodeToNavigation(subnode, loop.index) }}
         {% endfor %}

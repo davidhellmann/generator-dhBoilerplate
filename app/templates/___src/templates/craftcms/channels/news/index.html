@@ -5,32 +5,18 @@
   When you view the news overview on the website, this template gets loaded.
 #}
 
-
-
 {% extends "_layouts/_master.html" %}
-{% set bodyClass = "news" %}
-{% if craft.seomatic is defined %}
-  {% set seomaticMeta = seomaticMeta | merge({'seoTitle': 'News' }) %}
-{% else %}
-  {% set appTitle = 'News' %}
-{% endif %}
-
-{# -- CRITICAL CSS -- #}
-{% block appInlineCSS %}
-  <style>
-    {{ source (_self.getTemplateName() ~ '_critical.min.css', ignore_missing = true) }}
-  </style>
-{% endblock %}
+{% set bodyClass = "p-news" %}
 
 {# Set Query #}
 {% set data = craft.entries({
-  section: 'news',
+  section: 'neuigkeiten',
   limit: 12
 }) %}
 {% paginate data as pageInfo, pageEntries %}
 
 {# start: Rel Nav #}
-{% block siteHeader %}
+{% block appHeader %}
   {% set vars = {
     pageInfo: pageInfo
   } %}
@@ -38,15 +24,13 @@
 {% endblock %}
 
 
-
-{% block content %}
-  <h1>News</h1>
-
-  {% for entry in craft.entries.section('news').find() %}
+{% block appContent %}
+sadsad
+  {% for entry in data %}
     <article>
+      <h1>{{ entry.title }}</h1>
       <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
       <p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-      {{ entry.body.getPage(1) }}
       <p><a href="{{ entry.url }}">Continue reading</a></p>
     </article>
   {% endfor %}

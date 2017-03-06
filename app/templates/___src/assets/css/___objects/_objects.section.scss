@@ -61,3 +61,13 @@
     @include ft(vr(-1/2), vr(-3), margin-top);
   }
 }
+
+// Section Inner
+.o-section__inner {
+  @include fb(true);
+  @include center();
+}
+
+.o-section__inner--width-full {
+  @include fb(true);
+}

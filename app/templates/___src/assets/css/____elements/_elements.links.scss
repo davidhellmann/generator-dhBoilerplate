@@ -4,6 +4,7 @@
 
 a {
   color: c('red');
+  text-decoration: none;
   transition: all 0.25s ease('out-cubic');
 
   &:hover {
