@@ -26,7 +26,7 @@
   font-weight: 700;
   @include fc(12);
 
-  .fonts-loaded & {
+  .wf-loaded & {
     font-family: ff('sans-serif');
   }
 

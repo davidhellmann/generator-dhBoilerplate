@@ -9,7 +9,7 @@ blockquote {
     @include ft(fs('ms2'), fs('ms3'));
     font-weight: 700;
 
-    .fonts-loaded & {
+    .wf-loaded & {
       font-family: ff('serif');
     }
   }

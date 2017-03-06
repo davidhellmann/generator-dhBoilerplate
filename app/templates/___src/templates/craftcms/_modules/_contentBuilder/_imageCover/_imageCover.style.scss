@@ -32,7 +32,7 @@
   color: c('white');
   @include ft(fs('ms2'), fs('ms8'));
 
-  .fonts-loaded & {
+  .wf-loaded & {
     font-family: ff('sans-serif');
   }
 

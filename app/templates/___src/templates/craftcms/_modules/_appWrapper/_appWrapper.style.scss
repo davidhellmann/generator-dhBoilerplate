@@ -9,7 +9,7 @@
   transition-property: opacity;
   transition-timing-function: ease('out-cubic');
 
-  .fonts-loaded & {
+  .wf-loaded & {
     font-family: ff('base');
   }
 }
