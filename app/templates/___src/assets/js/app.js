@@ -26,6 +26,7 @@ import './scripts/example'
 // import './scripts/bodyclass'
 import './scripts/lazyloading'
 import './scripts/fontfaceobserver'
+import './scripts/smoothScroll'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 

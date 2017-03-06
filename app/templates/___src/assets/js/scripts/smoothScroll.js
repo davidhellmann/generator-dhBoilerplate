@@ -26,3 +26,13 @@ smoothScroll.init({
   callback: function(anchor, toggle) {
   }
 })
+
+if ( window.location.hash ) {
+    setTimeout(function() {
+        var anchor = document.querySelector( window.location.hash ); // Get the anchor
+        var toggle = document.querySelector( 'a[href*="' + window.location.hash + '"]' ); // Get the toggle (if one exists)
+        var options = {}; // Any custom options you want to use would go here
+        smoothScroll.animateScroll( anchor, toggle, options );
+    }, 250)
+}
+
