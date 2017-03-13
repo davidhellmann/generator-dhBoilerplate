@@ -8,8 +8,8 @@
 {% set image = data.singleImage.first() is defined ? data.singleImage.first() %}
 {% set settings = data.settingsImageCover is defined ? data.settingsImageCover %}
 {% set position = settings.backgroundPosition is defined and settings.backgroundPosition == 'focalpoint' ? image.settingsFocalPoint : settings.backgroundPosition.value %}
-{% set textAlignment = settings.textAlignment is defined and settings.textAlignment != 'default' ? '  ' ~ classname ~ '--text-' ~ settings.textAlignment %}
-{% set textVerticalPosition = settings.textVerticalPosition is defined and settings.textVerticalPosition != 'default' ? '  ' ~ classname ~ '--vPosition-' ~ settings.textVerticalPosition %}
+{% set textAlignment = settings.textAlignment is defined ? '  ' ~ classname ~ '--text-' ~ settings.textAlignment %}
+{% set textVerticalPosition = settings.textVerticalPosition is defined '  ' ~ classname ~ '--vPosition-' ~ settings.textVerticalPosition %}
 {% set title = data.singleText %}
 
 {# Modul #}

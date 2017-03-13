@@ -6,7 +6,7 @@
 {# Set Vars #}
 {% set classname = name is defined and name is not empty ? name : 'm-twoColumns' %}
 {% set settings = data.settingsTwoColumns is defined ? data.settingsTwoColumns %}
-{% set columnsRatio = settings.columnsRatio is defined and settings.columnsRatio != 'default' ? '  ' ~ classname ~ '--columsRatio-' ~ settings.columnsRatio %}
+{% set columnsRatio = settings.columnsRatio is defined ? '  ' ~ classname ~ '--columsRatio-' ~ settings.columnsRatio %}
 
 {# Modul #}
 {% if data.children is not empty %}

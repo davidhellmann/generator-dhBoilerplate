@@ -12,7 +12,6 @@
 .o-section--width-full {
   width: 100vw;
   max-width: none;
-  @include ft(s(-1), s(-2), margin-left margin-right);
 }
 
 // Background Color

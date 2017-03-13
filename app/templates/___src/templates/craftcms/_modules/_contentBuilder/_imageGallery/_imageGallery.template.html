@@ -7,7 +7,7 @@
 {% set classname = name is defined and name is not empty ? name : 'm-imageGallery' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageGallery is defined ? data.settingsImageGallery %}
-{% set columns = settings.columns is defined and settings.columns != 'default' ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
+{% set columns = settings.columns is defined ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
 {% set ratioThumbs = settings.imageThumbsRatio is defined ? settings.imageThumbsRatio %}
 {% set ratioThumbs = ratioThumbs|split(':') %}
 {% set base64Ratio = ratioThumbs %}

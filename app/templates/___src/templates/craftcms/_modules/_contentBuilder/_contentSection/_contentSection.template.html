@@ -7,7 +7,7 @@
 {% set classname = name is defined and name is not empty ? name : 'm-contentSection' %}
 {% set settings = data.settingsSection %}
 {% set backgroundColor = settings.backgroundColor is defined and settings.backgroundColor != 'default' ? '  o-section--bgColor-' ~ settings.backgroundColor %}
-{% set paddingVertical = settings.paddingVertical is defined and settings.paddingVertical != 'default' ? '  o-section--paddingVertical-' ~ settings.paddingVertical %}
+{% set paddingVertical = settings.paddingVertical is defined ? '  o-section--paddingVertical-' ~ settings.paddingVertical %}
 {% set fullWidth = settings.fullWidth is defined and settings.fullWidth ? '  o-section--width-full' %}
 {% set fullWidthInner = settings.fullWidthInner is defined and settings.fullWidthInner ? '  o-section__inner--width-full' %}
 {% set headline = data.singleHeadline is defined ? data.singleHeadline %}

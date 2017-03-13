@@ -21,8 +21,8 @@
   {% set captionSourceUrl = '' %}
 {% endif %}
 
-{% set imagePosition = settings.imagePosition is defined and settings.imagePosition != 'default' ? '  ' ~ classname ~ '--image-' ~ settings.imagePosition %}
-{% set imageWidth = settings.imageWidth is defined and settings.imageWidth != 'default' ? '  ' ~ classname ~ '--image-' ~ settings.imageWidth : '  ' ~ classname ~ '--image-full' %}
+{% set imagePosition = settings.imagePosition is defined ? '  ' ~ classname ~ '--image-' ~ settings.imagePosition %}
+{% set imageWidth = settings.imageWidth is defined ? '  ' ~ classname ~ '--image-' ~ settings.imageWidth : '  ' ~ classname ~ '--image-full' %}
 {% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
 
 {# Modul #}

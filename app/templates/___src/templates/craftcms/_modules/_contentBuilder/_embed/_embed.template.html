@@ -8,8 +8,8 @@
 {% set embedCode = data.singleEmbedCode is defined ? data.singleEmbedCode %}
 {% set settings = data.settingsEmbed is defined ? data.settingsEmbed %}
 {% set video = settings.video is defined ? settings.video %}
-{% set embedPosition = settings.embedPosition is defined and settings.embedPosition != 'default' ? '  ' ~ classname ~ '--embed-' ~ settings.embedPosition %}
-{% set embedWidth = settings.embedWidth is defined and settings.embedWidth != 'default' ? '  ' ~ classname ~ '--embed-' ~ settings.embedWidth %}
+{% set embedPosition = settings.embedPosition is defined ? '  ' ~ classname ~ '--align-' ~ settings.embedPosition %}
+{% set embedWidth = settings.embedWidth is defined ? '  ' ~ classname ~ '--width-' ~ settings.embedWidth %}
 
 {# Modul #}
 <div class="{{ classname }}{{ embedPosition }}{{ embedWidth }}" role="presentation">

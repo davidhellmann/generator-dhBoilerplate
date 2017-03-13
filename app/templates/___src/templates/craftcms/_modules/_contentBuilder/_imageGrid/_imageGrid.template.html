@@ -7,7 +7,7 @@
 {% set classname = name is defined and name is not empty ? name : 'm-imageGrid' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageGrid is defined ? data.settingsImageGrid %}
-{% set columns = settings.columns is defined and settings.columns != 'default' ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
+{% set columns = settings.columns is defined ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
 {% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
 
 {# Modul #}

@@ -6,7 +6,7 @@
 {% set classname = name is defined and name is not empty ? name : 'm-definitionList' %}
 {% set definitionList = data.singleDefinitionList %}
 {% set settings = data.settingsDefinitionList %}
-{% set columnsRatio = settings.columnsRatio != 'default' ? '  ' ~ classname ~ '--columsRatio-' ~ settings.columnsRatio %}
+{% set columnsRatio = settings.columnsRatio is defined ? '  ' ~ classname ~ '--columsRatio-' ~ settings.columnsRatio %}
 {% set layout = settings.layout != 'default' ? '  ' ~ classname ~ '--layout-' ~ settings.layout %}
 
 
