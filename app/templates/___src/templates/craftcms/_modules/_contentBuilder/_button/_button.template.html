@@ -11,6 +11,7 @@
 {% set style = settings.style is defined ? '  ' ~ classname ~ '--' ~ settings.style : '' %}
 {% set target = button.target is defined and button.target ? ' target=_blank' : '' %}
 {% set showIcon = settings.showIcon is defined ? settings.showIcon %}
+{% set icon = settings.icon is defined ? settings.icon %}
 
 
 {# Modul #}
@@ -21,11 +22,11 @@
     {{ target }}
      class="{{ classname }}{{ style }}{{ alignment }}">
     {% if showIcon %}
-      <div class="m-button__inner">
+      <div class="{{ classname ~ '__inner' }}">
          <span>
           {{ button.text }}
          </span>
-        {% include '_svg/iconArrowRight.svg.html' %}
+        {% include '_svg/' ~ icon ~ '.svg.html' %}
       </div>
     {% else %}
       {{ button.text }}

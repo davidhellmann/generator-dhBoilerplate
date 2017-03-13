@@ -64,6 +64,8 @@
 
   {% block siteHeader %}{% endblock %}
 </head>
+{% cache %}
+{% minify %}
 <body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}{{ craft.request.isLivePreview ? 'is-livePreview' : '  ' }}">
 
 <div class="m-appWrapper">
@@ -83,4 +85,6 @@
 {# -- SCRIPTS -- #}
 {% include '_partials/_footer/_scripts.html' %}
 </body>
+{% endminify %}
+{% endcache %}
 </html>
