@@ -45,6 +45,10 @@ return array(
   'instanceReuseEnabled' => false,
   'noop' => false,
   'suppressExceptions' => false,
+    
+  'fillTransforms' => false,
+  'fillAttribute' => 'width', // this could be any attribute that is numeric
+  'fillInterval' => '200',
   
   'jpegoptimEnabled' => false,
   'jpegoptimPath' => '/usr/bin/jpegoptim',
@@ -61,6 +65,9 @@ return array(
   'pngquantEnabled' => false,
   'pngquantPath' => '/usr/bin/pngquant',
   'pngquantOptionString' => '--strip --skip-if-larger',
+  'gifsicleEnabled' => false,
+  'gifsiclePath' => '/usr/bin/gifsicle',
+  'gifsicleOptionString' => '--optimize=3 --colors 256',
   'tinyPngEnabled' => false,
   'tinyPngApiKey' => '',
   'optimizeType' => 'task',

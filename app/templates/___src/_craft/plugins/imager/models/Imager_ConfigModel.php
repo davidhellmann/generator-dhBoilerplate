@@ -31,8 +31,8 @@ class Imager_ConfigModel extends BaseModel
             }
         }
         
-        if (isset(ImagerService::$craftPositonTranslate[(string)$this->position])) {
-            $this->position = ImagerService::$craftPositonTranslate[(string)$this->position];
+        if (isset(ImagerService::$craftPositionTranslate[(string)$this->position])) {
+            $this->position = ImagerService::$craftPositionTranslate[(string)$this->position];
         } 
             
         $this->position = str_replace('%', '', $this->position);
@@ -66,6 +66,9 @@ class Imager_ConfigModel extends BaseModel
           'instanceReuseEnabled' => array(AttributeType::Bool),
           'noop' => array(AttributeType::Bool),
           'suppressExceptions' => array(AttributeType::Bool),
+          'fillTransforms' => array(AttributeType::Bool),
+          'fillAttribute' => array(AttributeType::String),
+          'fillInterval' => array(AttributeType::Number),
           'jpegoptimEnabled' => array(AttributeType::Bool),
           'jpegoptimPath' => array(AttributeType::String),
           'jpegoptimOptionString' => array(AttributeType::String),
@@ -81,6 +84,9 @@ class Imager_ConfigModel extends BaseModel
           'pngquantEnabled' => array(AttributeType::Bool),
           'pngquantPath' => array(AttributeType::String),
           'pngquantOptionString' => array(AttributeType::String),
+          'gifsicleEnabled' => array(AttributeType::Bool),
+          'gifsiclePath' => array(AttributeType::String),
+          'gifsicleOptionString' => array(AttributeType::String),
           'tinyPngEnabled' => array(AttributeType::Bool),
           'tinyPngApiKey' => array(AttributeType::String),
           'optimizeType' => array(AttributeType::String),
