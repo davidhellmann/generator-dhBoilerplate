@@ -3,14 +3,12 @@
   ============
 #}
 
-{# Set Vars #}
+{# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-imageSlider' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageSlider is defined ? data.settingsImageSlider %}
-{% set rightToLeft = settings.rightToLeft is defined and settings.rightToLeft ? 'true' : 'false' %}
 {% set pagination = settings.pagination is defined and settings.pagination ? 'true' : 'false' %}
 {% set navigation = settings.navigation is defined and settings.navigation ? 'true' : 'false' %}
-{% set slidesPerView = settings.slidesPerView is defined and settings.slidesPerView != 'default' ? '  ' ~ classname ~ '--' ~ settings.slidesPerView ~ 'cols' %}
 {% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
 
 {% set withNavi = '' %}
@@ -18,28 +16,30 @@
   {% set withNavi = '  ' ~ classname ~ '--with-navi' %}
 {% endif %}
 
-{# Modul #}
+{# -- Modul -- #}
 <!-- Slider main container -->
-<figure class="{{ classname }}{{ slidesPerView }}{{ withNavi }}  js-imageSlider"
+<figure class="{{ classname }}{{ withNavi }}  js-imageSlider"
         data-flickity='{
-      "cellAlign": "left",
-      "contain": true,
-      "draggable": true,
-      "friction": 0.9,
-      "selectedAttraction": 0.3,
-      "groupCells": true,
-      "imagesLoaded": true,
-      "prevNextButtons": {{ navigation }},
-      "pageDots": {{ pagination }},
-      "rightToLeft": {{ rightToLeft }},
-      "watchCSS": true
-    }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+          "cellAlign": "left",
+          "contain": true,
+          "draggable": true,
+          "friction": 0.9,
+          "selectedAttraction": 0.3,
+          "groupCells": true,
+          "imagesLoaded": true,
+          "prevNextButtons": {{ navigation }},
+          "pageDots": {{ pagination }},
+          "rightToLeft": false,
+          "watchCSS": true
+        }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
   <!-- Slides -->
   {% for image in images %}
     <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
+
+      {# -- Res Image -- #}
       {% set options = {
-      ratio: ratio,
-      dominantColor: true
+        ratio: ratio,
+        dominantColor: true
       } %}
 
       {{ macroResImage.resImage(image, options) }}

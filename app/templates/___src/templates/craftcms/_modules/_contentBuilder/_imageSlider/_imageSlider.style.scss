@@ -38,51 +38,12 @@
   }
 }
 
-.m-imageSlider {
-  @include media('>=s') {
-    &--6cols,
-    &--5cols,
-    &--4cols,
-    &--3cols,
-    &--2cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 2);
-      }
-    }
-  }
-
-  @include media('>=m') {
-    &--6cols,
-    &--5cols,
-    &--4cols{
-      .m-imageSlider__slide {
-        width: calc(100% / 4);
-      }
-    }
-  }
-
-  @include media('>=l') {
-    &--6cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 6);
-      }
-    }
-
-    &--5cols {
-      .m-imageSlider__slide {
-        width: calc(100% / 5);
-      }
-    }
-  }
-}
-
 // Flickity Styling
 .m-imageSlider {
   .flickity-viewport {
     overflow: visible;
   }
 }
-
 
 .flickity-page-dots {
   list-style: none;
