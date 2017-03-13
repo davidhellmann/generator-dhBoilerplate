@@ -6,8 +6,6 @@
   font-weight: 400;
   color: c('black-90');
   background: c('white');
-  transition-property: opacity;
-  transition-timing-function: ease('out-cubic');
 
   .wf-loaded & {
     font-family: ff('base');

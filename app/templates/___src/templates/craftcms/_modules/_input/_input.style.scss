@@ -9,37 +9,52 @@ input.m-input:focus {
   border: none;
 }
 
-input.m-input:not([type="submit"]),
-input.m-input[type="text"],
-input.m-input[type="email"],
-input.m-input[type="password"],
-input.m-input[type="date"],
-input.m-input[type="search"],
-input.m-input[type="tel"],
-textarea.m-input {
+input:not([type="submit"]),
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="search"],
+input[type="tel"],
+input[type="file"],
+textarea,
+select {
   -webkit-appearance: none;
   @include fs('ms0');
   outline: 0;
   display: inline-block;
   width: 100%;
-  padding: s(1);
-  background: darken(c('white'), 5%);
-  border: 1px solid c('black-10');
+  padding: vr(1/4) s(2);
+  background: c('white');
+  border: 1px solid c('black-40');
   color: c('black-90');
-  margin-bottom: vr(1);
+  margin-bottom: vr(1/2);
+  border-radius: 3px;
   transition: all 0.5s ease('out-cubic');
 
   &:focus {
-    background: c('white');
+    background-color: c('white');
+    border-color: c('black-80');
   }
 }
 
-textarea.m-input {
+input[type="file"] {
+  border-style: dotted;
+}
+
+textarea {
   resize: vertical;
+  width: 100%;
   min-height: 100px;
 }
 
-
+select {
+  width: 100%;
+  background: url('../images/svg/single/iconAccordion.svg');
+  background-repeat: no-repeat;
+  background-position: center right s(1);
+  background-size: 16px 16px;
+}
 
 // Placeholder Color
 ::-webkit-input-placeholder {
