@@ -288,10 +288,10 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 this.destinationPath('___dist/config/imager.php')
             );
 
-            // Copy Volumes Config
+            // Copy DB Config
             this.fs.copyTpl(
-                this.templatePath('___src/_craft3/volumes.php'),
-                this.destinationPath('___dist/config/volumes.php')
+                this.templatePath('___src/_craft3/db.php'),
+                this.destinationPath('___dist/config/db.php')
             );
 
             // Copy General Config
@@ -300,10 +300,34 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 this.destinationPath('___dist/config/general.php')
             );
 
-            // Copy .env Config
+            // Copy Index Config
             this.fs.copyTpl(
-                this.templatePath('___src/_craft3/.env'),
-                this.destinationPath('___dist/config/.env')
+                this.templatePath('___src/_craft3/db.php'),
+                this.destinationPath('___dist/web/index.php')
+            );
+
+            // Copy Volumes Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/volumes.php'),
+                this.destinationPath('___dist/config/volumes.php')
+            );
+
+            // Copy craft Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/craft'),
+                this.destinationPath('___dist/craft')
+            );
+
+            // Copy .env.php Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/.env.php'),
+                this.destinationPath('___dist/.env.php')
+            );
+
+            // Copy example.env.php Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft3/example.env.php'),
+                this.destinationPath('___dist/example.env.php')
             );
 
             // Copy Pluginlist
