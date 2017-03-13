@@ -33,6 +33,10 @@ return array(
     'imageDriver' => 'imagick',
     'maxUploadFileSize' => '16777216', // 16MB
     'rotateImagesOnUploadByExifData' => false,
+    'defaultSearchTermOptions' => array(
+        'subLeft' => true,
+        'subRight' => true,
+    ),
 
     'testToEmailAddress' => 'YOUR MAIL FOR TESTING',
 
