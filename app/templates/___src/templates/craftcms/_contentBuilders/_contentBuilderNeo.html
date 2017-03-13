@@ -21,7 +21,8 @@
   {# Check if an other Section is opened and close the Section before #}
   {% if content.type == 'contentSection' %}
   {% if not loop.first %}
-</div>
+      </div>
+    </div>
   </div>
 <!-- end: o-section -->
   {% endif %}
@@ -37,7 +38,8 @@
         <!-- end: o-block -->
       {% endif %}
     {% endfor %}
-  </div>
+      </div>
+    </div>
   </div>
 <!-- end: o-section -->
 {% endif %}

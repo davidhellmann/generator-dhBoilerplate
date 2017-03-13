@@ -6,6 +6,11 @@
 #}
 {% set classname = classname|default('m-nav') %}
 {% macro amNav(node, index, classname) %}
+  {%- set navNameSpaces = '' -%}
+  {%- set urlNameSpace = craft.request.getSegment(2) -%}
+  {%- if node.listClass|length -%}
+    {%- set navNameSpaces = node.listClass|split(',')  -%}
+  {%- endif -%}
   {%- set nodeClasses = [classname ~ '__item'] -%}
   {%- if node.hasChildren -%}
     {%- set nodeClasses = nodeClasses|merge(['has-children']) -%}
@@ -13,6 +18,11 @@
   {%- if node.active or node.hasActiveChild -%}
     {%- set nodeClasses = nodeClasses|merge(['is-active']) -%}
   {%- endif -%}
+  {%- for navNameSpace in navNameSpaces -%}
+    {%- if urlNameSpace starts with navNameSpace -%}
+      {%- set nodeClasses = nodeClasses|merge(['is-active']) -%}
+    {%- endif -%}
+  {%- endfor -%}
   {%- if node.level == 1 and index == 1 -%}
     {%- set nodeClasses = nodeClasses|merge(['is-first']) -%}
   {%- endif -%}

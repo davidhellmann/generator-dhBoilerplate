@@ -66,14 +66,10 @@
 </head>
 <body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}{{ craft.request.isLivePreview ? 'is-livePreview' : '  ' }}">
 
-
 <div class="m-appWrapper">
 
-  <header class="m-appHeader">
-  {% block appHeader %}
-    Header
-  {% endblock %}
-  </header>
+  {# -- App Header -- #}
+  {% include '_modules/_appHeader/_appHeader.template.html' %}
 
   <div class="m-appContent">
   {% block appContent %}
@@ -81,11 +77,8 @@
   {% endblock %}
   </div>
 
-  <footer class="m-appFooter">
-  {% block appFooter %}
-    Footer
-  {% endblock %}
-  </footer>
+  {# -- App Footer -- #}
+  {% include '_modules/_appFooter/_appFooter.template.html' %}
 
 </div>
 
