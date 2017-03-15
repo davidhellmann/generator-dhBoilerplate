@@ -137,12 +137,12 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'projectDescription',
                 message: chalk.magenta.underline.bold('Project Description') + '\n\xb7 Short description of the Project: ',
-                default: 'undefined'
+                default: 'This is my super awesome project build with dh-Boilerplate.'
             }, {
                 type: 'input',
                 name: 'proxyUrl',
                 message: 'Proxy URL',
-                message: chalk.magenta.underline.bold('Proxy URL') + '\n\xb7 The URL for local decelopment. Inlcude http:// or https:// and add a / at the end!',
+                message: chalk.magenta.underline.bold('Proxy URL') + '\n\xb7 The URL for local decelopment. Leave blank if you prefer localhost or something else.',
                 default: false
             }, {
                 type: 'list',

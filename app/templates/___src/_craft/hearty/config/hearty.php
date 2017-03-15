@@ -3,8 +3,8 @@
 // What be yer environment URLs, matey?
 $envs = array(
   'dev'     => '<%= proxyUrl %>',
-  'stage'   => 'http://stage.domain.com/',
-  'prod'    => 'http://domain.com/',
+  'stage'   => 'stage.domain.com',
+  'prod'    => 'domain.com',
 );
 
 /*
