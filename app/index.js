@@ -188,7 +188,9 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 default: true
             }, {
                 when(answers) {
-                    return answers.projectUsage === 'Craft CMS' || 'Craft CMS Beta'
+                    if (answers.projectUsage === 'Craft CMS' || answers.projectUsage === 'Craft CMS Beta') {
+                        return true
+                    }
                 },
                 type: 'confirm',
                 name: 'craftImager',
