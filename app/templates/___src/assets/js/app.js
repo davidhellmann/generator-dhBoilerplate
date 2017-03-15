@@ -30,7 +30,7 @@ import './scripts/fontfaceobserver'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 
-<% } if (projectUsage == 'Craft CMS' ) { %>
+<% if (projectUsage == 'Craft CMS' ) { %>
 // Content Builder Modules
 import '../../templates/_modules/_contentBuilder/_accordion/_accordion.script'
 import '../../templates/_modules/_contentBuilder/_imageSlider/_imageSlider.script'

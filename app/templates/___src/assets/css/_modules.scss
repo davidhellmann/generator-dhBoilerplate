@@ -16,7 +16,7 @@
 @import '../../templates/_modules/_pageTitle/pageTitle.style';
 @import '__modules/module.pagination';
 
-<% } if (projectUsage == 'Craft CMS' ) { %>
+<% if (projectUsage == 'Craft CMS' ) { %>
 // Modules Content Builder
 @import '../../templates/_modules/_contentBuilder/_accordion/accordion.style';
 @import '../../templates/_modules/_contentBuilder/_button/button.style';
