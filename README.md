@@ -33,6 +33,9 @@ That's my own YO Generator who fits for my own requirements.
 Last year I go most of the time with CodeKit and a more oldsql workflow.
 Now, this one is more up to date :)
 
+## IMPORTANT NOTE
+Actually the WordPress Version has no Focus. Craft CMS + Prototyping have priority! But you can use it, no problem.
+
 Big thanks to [Sascha Fuchs](https://github.com/gisu) and his [Kittn](http://kittn.de/) for a lot of help and inspiration.
 Also big thanks to [Martin Herweg](https://github.com/martinherweg) and his [YO Generator](https://www.npmjs.com/package/generator-mh-boilerplate) that help me a lot too.
 And last but not least thanks to all members from our Slack Channel [webdevs](http://webdevs.xyz/) — feel free to join us.
@@ -49,14 +52,14 @@ And last but not least thanks to all members from our Slack Channel [webdevs](ht
 - `boxshadow('level-x')` or `bs('level-x')`
 - `color('color-name')` or `c('color-name')`
 - `ease('easing-name')` or `e('easing-name')`
-- `fontfamily('font-name')` or `ff('font-name')` 
-- `space(i)` or `s(i)`  
-- `verticalrhythm(i)` or `vr(i)` 
+- `fontfamily('font-name')` or `ff('font-name')`
+- `space(i)` or `s(i)`
+- `verticalrhythm(i)` or `vr(i)`
 
 ### Sass Mixins
 - `@include center`
 - `@include clearfix`
-- `@include container('full')` 'full' ist optional 
+- `@include container('full')` 'full' ist optional
 - `@include cols(i)`
 - `@include filter(filter-name, value%)`
 - `@include fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include ft($properties, $min-vw, $max-vw, $min-value, $max-value)`

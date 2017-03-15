@@ -23,15 +23,16 @@ import 'svgxuse'
 import './scripts/example'
 // import './scripts/pagetransition'
 // import './scripts/preloader'
-// import './scripts/bodyclass'
+import './scripts/bodyclass'
 import './scripts/lazyloading'
 import './scripts/fontfaceobserver'
-import './scripts/smoothScroll'
+// import './scripts/smoothScroll'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 
-
+<% } if (projectUsage == 'Craft CMS' ) { %>
 // Content Builder Modules
 import '../../templates/_modules/_contentBuilder/_accordion/_accordion.script'
 import '../../templates/_modules/_contentBuilder/_imageSlider/_imageSlider.script'
 import '../../templates/_modules/_contentBuilder/_imageGallery/_imageGallery.script'
+<% } %>

@@ -1,0 +1,10 @@
+/* -------------------------------------------------- */
+/*    Pagetitle
+/* -------------------------------------------------- */
+
+.m-pageTitle {
+  @include fb(true);
+  @include center();
+  @include ft(s(1), s(2), padding-left padding-right);
+  @include ft(vr(2), vr(4), padding-top);
+}

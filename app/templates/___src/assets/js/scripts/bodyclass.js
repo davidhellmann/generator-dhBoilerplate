@@ -3,7 +3,7 @@
  */
 
 const   body      = document.body
-const   steps     = 1000
+const   steps     = 500
 const   duration  = 3000
 let     timer     = 0
 let     i         = 1

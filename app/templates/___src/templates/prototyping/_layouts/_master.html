@@ -4,17 +4,6 @@
 
   This i the basic layout. Feel free to modify
 #}
-
-
-{# Include Macros #}
-{% import '../_macros/_macro-isActive.html' as macroIsActive %}
-{% import '../_macros/_macro-pagination.html' as macroPagination %}
-{% import '../_macros/_macro-postNav.html' as macroPostNav %}
-{% import '../_macros/_macro-resImage.html' as macroResImage %}
-{% import '../_macros/_macro-socialLinks.html' as macroSocialLinks %}
-{% import '../_macros/_macro-svgSprite.html' as macroSvgSprite %}
-
-
 <!DOCTYPE html>
 <html class="" lang="de">
 <head>
@@ -37,23 +26,17 @@
 
 <div class="m-appWrapper">
 
-  <header class="m-appHeader">
-  {% block appHeader %}
-    Header
-  {% endblock %}
-  </header>
+  {# -- App Header -- #}
+  {% include '_modules/_appHeader/_appHeader.template.html' %}
 
   <div class="m-appContent">
-  {% block appContent %}
-    Content
-  {% endblock %}
+    {% block appContent %}
+      Content
+    {% endblock %}
   </div>
 
-  <footer class="m-appFooter">
-  {% block appFooter %}
-    Footer
-  {% endblock %}
-  </footer>
+  {# -- App Footer -- #}
+  {% include '_modules/_appFooter/_appFooter.template.html' %}
 
 </div>
 
