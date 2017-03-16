@@ -2,20 +2,10 @@
  * Bundle Scripts
  */
 
-// Debugging
-const _debug = false
-window._debug = _debug
-
-if (_debug === true) {
-  console.log('Debugging is: true')
-  const html = document.getElementsByTagName('html')[0]
-  html.classList.add('dev', 'debug')
-}
-
 // Vue Stuff
 
 // Polyfills
-import "babel-polyfill"
+import 'babel-polyfill'
 import 'svgxuse'
 // import 'eqcss'
 
@@ -36,3 +26,14 @@ import '../../templates/_modules/_contentBuilder/_accordion/_accordion.script'
 import '../../templates/_modules/_contentBuilder/_imageSlider/_imageSlider.script'
 import '../../templates/_modules/_contentBuilder/_imageGallery/_imageGallery.script'
 <% } %>
+
+// Debugging
+const _debug = false
+window._debug = _debug
+
+if (_debug === true) {
+    console.log('Debugging is: true')
+    const html = document.getElementsByTagName('html')[0]
+    html.classList.add('dev', 'debug')
+}
+
