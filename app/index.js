@@ -284,6 +284,10 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
 
+
+            // Copy Plugins
+            this.directory('___src/_craft3/web/uploads/', '___dist/web/uploads');
+
             // Copy Imager Config
             this.fs.copyTpl(
                 this.templatePath('___src/_craft3/imager/imager.php'),
@@ -379,6 +383,10 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
 
             // Copy Plugins
+            this.directory('___src/_craft/public/uploads/', '___dist/public/uploads');
+
+
+            // Copy Upload Dirs
             this.directory('___src/_craft/plugins/', '___dist/' + craftPath + '/plugins');
 
 
