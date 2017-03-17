@@ -1,0 +1,18 @@
+{% macro srcset(image, aspectRatio, outputWidths) %}
+  {# setup #}
+  {%- set outputWidths = outputWidths | default([300, 500, 800, 1100, 1400]) -%}
+  {%- set srcset = [] -%}
+  {# if output width is smaller than or equal to the original image width #}
+  {%- for outputWidth in outputWidths -%}
+    {%- if outputWidth <= image.width -%}
+      {%- if aspectRatio -%}
+        {%- set transformOptions = { width: outputWidth, height: outputWidth * aspectRatio } -%}
+      {%- else -%}
+        {%- set transformOptions = { width: outputWidth } -%}
+      {%- endif -%}
+      {%- set srcset = srcset | merge([image.url(transformOptions) ~ ' ' ~ outputWidth ~ 'w']) -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {# output srcset #}
+  {{- srcset | join(', ') -}}
+{% endmacro %}
