@@ -21,6 +21,17 @@
       }
     },
     {
+      "name": "Modules",
+      "handle": "modules",
+      "type": "single",
+      "enableVersioning": 0,
+      "typesettings": {
+        "template": "modules",
+        "urlFormat": "modules",
+        "nestedUrlFormat": null
+      }
+    },
+    {
       "name": "News",
       "handle": "news",
       "type": "channel",
@@ -2107,23 +2118,23 @@
         "maxBlocks": null,
         "groups": {
           "name": [
+            "Content Wrapper",
             "Text Modules",
             "Image Modules",
             "Button Modules",
-            "Content Wrapper",
             "More Modules\u2026"
           ],
           "sortOrder": [
-            2,
-            8,
-            14,
-            17,
+            1,
+            7,
+            13,
+            19,
             22
           ]
         },
         "blockTypes": {
           "new0": {
-            "sortOrder": 1,
+            "sortOrder": 2,
             "name": "Content Section",
             "handle": "contentSection",
             "maxBlocks": null,
@@ -2143,6 +2154,88 @@
           },
           "new1": {
             "sortOrder": 3,
+            "name": "Accordion",
+            "handle": "accordion",
+            "maxBlocks": null,
+            "childBlocks": [
+              "accordionContent"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": []
+            }
+          },
+          "new2": {
+            "sortOrder": 4,
+            "name": "Accordion Content",
+            "handle": "accordionContent",
+            "maxBlocks": null,
+            "childBlocks": [
+              "twoColumns",
+              "headline",
+              "richText",
+              "richTextMarginals",
+              "quote",
+              "imageGallery",
+              "imageGrid",
+              "imageSingle",
+              "button",
+              "buttonGroup",
+              "definitionList",
+              "embed",
+              "separator"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 0,
+            "fieldLayout": {
+              "Content": [
+                "singleLabel"
+              ]
+            }
+          },
+          "new3": {
+            "sortOrder": 5,
+            "name": "Two Columns",
+            "handle": "twoColumns",
+            "maxBlocks": null,
+            "childBlocks": [
+              "column"
+            ],
+            "maxChildBlocks": 2,
+            "topLevel": 1,
+            "fieldLayout": {
+              "Content": [],
+              "Settings": [
+                "settingsTwoColumns"
+              ]
+            }
+          },
+          "new4": {
+            "sortOrder": 6,
+            "name": "Column",
+            "handle": "column",
+            "maxBlocks": null,
+            "childBlocks": [
+              "accordion",
+              "headline",
+              "richText",
+              "quote",
+              "imageGallery",
+              "imageGrid",
+              "imageSingle",
+              "button",
+              "buttonGroup",
+              "definitionList",
+              "embed",
+              "separator"
+            ],
+            "maxChildBlocks": null,
+            "topLevel": 0,
+            "fieldLayout": []
+          },
+          "new5": {
+            "sortOrder": 8,
             "name": "Headline",
             "handle": "headline",
             "maxBlocks": null,
@@ -2158,8 +2251,8 @@
               ]
             }
           },
-          "new2": {
-            "sortOrder": 4,
+          "new6": {
+            "sortOrder": 9,
             "name": "Rich Text",
             "handle": "richText",
             "maxBlocks": null,
@@ -2172,8 +2265,8 @@
               ]
             }
           },
-          "new3": {
-            "sortOrder": 5,
+          "new7": {
+            "sortOrder": 10,
             "name": "Rich Text Marginals",
             "handle": "richTextMarginals",
             "maxBlocks": null,
@@ -2188,8 +2281,8 @@
               ]
             }
           },
-          "new4": {
-            "sortOrder": 6,
+          "new8": {
+            "sortOrder": 11,
             "name": "Marginal Column",
             "handle": "marginalColumn",
             "maxBlocks": null,
@@ -2201,8 +2294,8 @@
             "topLevel": 0,
             "fieldLayout": []
           },
-          "new5": {
-            "sortOrder": 7,
+          "new9": {
+            "sortOrder": 12,
             "name": "Quote",
             "handle": "quote",
             "maxBlocks": null,
@@ -2217,8 +2310,8 @@
               ]
             }
           },
-          "new6": {
-            "sortOrder": 9,
+          "new10": {
+            "sortOrder": 14,
             "name": "Image Cover",
             "handle": "imageCover",
             "maxBlocks": null,
@@ -2235,8 +2328,8 @@
               ]
             }
           },
-          "new7": {
-            "sortOrder": 10,
+          "new11": {
+            "sortOrder": 15,
             "name": "Image Gallery",
             "handle": "imageGallery",
             "maxBlocks": null,
@@ -2252,8 +2345,8 @@
               ]
             }
           },
-          "new8": {
-            "sortOrder": 11,
+          "new12": {
+            "sortOrder": 16,
             "name": "Image Grid",
             "handle": "imageGrid",
             "maxBlocks": null,
@@ -2269,8 +2362,8 @@
               ]
             }
           },
-          "new9": {
-            "sortOrder": 12,
+          "new13": {
+            "sortOrder": 17,
             "name": "Image Single",
             "handle": "imageSingle",
             "maxBlocks": null,
@@ -2286,8 +2379,8 @@
               ]
             }
           },
-          "new10": {
-            "sortOrder": 13,
+          "new14": {
+            "sortOrder": 18,
             "name": "Image Slider",
             "handle": "imageSlider",
             "maxBlocks": null,
@@ -2303,8 +2396,8 @@
               ]
             }
           },
-          "new11": {
-            "sortOrder": 15,
+          "new15": {
+            "sortOrder": 20,
             "name": "Button",
             "handle": "button",
             "maxBlocks": null,
@@ -2320,8 +2413,8 @@
               ]
             }
           },
-          "new12": {
-            "sortOrder": 16,
+          "new16": {
+            "sortOrder": 21,
             "name": "Button Group",
             "handle": "buttonGroup",
             "maxBlocks": null,
@@ -2336,88 +2429,6 @@
                 "settingsButtonGroup"
               ]
             }
-          },
-          "new13": {
-            "sortOrder": 18,
-            "name": "Accordion",
-            "handle": "accordion",
-            "maxBlocks": null,
-            "childBlocks": [
-              "accordionContent"
-            ],
-            "maxChildBlocks": null,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": []
-            }
-          },
-          "new14": {
-            "sortOrder": 19,
-            "name": "Accordion Content",
-            "handle": "accordionContent",
-            "maxBlocks": null,
-            "childBlocks": [
-              "headline",
-              "richText",
-              "richTextMarginals",
-              "quote",
-              "imageGallery",
-              "imageGrid",
-              "imageSingle",
-              "button",
-              "buttonGroup",
-              "twoColumns",
-              "definitionList",
-              "embed",
-              "separator"
-            ],
-            "maxChildBlocks": null,
-            "topLevel": 0,
-            "fieldLayout": {
-              "Content": [
-                "singleLabel"
-              ]
-            }
-          },
-          "new15": {
-            "sortOrder": 20,
-            "name": "Two Columns",
-            "handle": "twoColumns",
-            "maxBlocks": null,
-            "childBlocks": [
-              "column"
-            ],
-            "maxChildBlocks": 2,
-            "topLevel": 1,
-            "fieldLayout": {
-              "Content": [],
-              "Settings": [
-                "settingsTwoColumns"
-              ]
-            }
-          },
-          "new16": {
-            "sortOrder": 21,
-            "name": "Column",
-            "handle": "column",
-            "maxBlocks": null,
-            "childBlocks": [
-              "headline",
-              "richText",
-              "quote",
-              "imageGallery",
-              "imageGrid",
-              "imageSingle",
-              "button",
-              "buttonGroup",
-              "accordion",
-              "definitionList",
-              "embed",
-              "separator"
-            ],
-            "maxChildBlocks": null,
-            "topLevel": 0,
-            "fieldLayout": []
           },
           "new17": {
             "sortOrder": 23,
@@ -2481,6 +2492,18 @@
       "handle": "homepage",
       "fieldLayout": {
         "Content": []
+      }
+    },
+    {
+      "sectionHandle": "modules",
+      "hasTitleField": 1,
+      "titleLabel": "",
+      "name": "Modules",
+      "handle": "modules",
+      "fieldLayout": {
+        "Content": [
+          "contentBuilderNeo"
+        ]
       }
     },
     {
