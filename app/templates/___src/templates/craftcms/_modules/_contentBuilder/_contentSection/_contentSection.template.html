@@ -9,13 +9,12 @@
 {% set backgroundColor = settings.backgroundColor is defined and settings.backgroundColor != 'default' ? '  o-section--bgColor-' ~ settings.backgroundColor %}
 {% set paddingVertical = settings.paddingVertical is defined ? '  o-section--paddingVertical-' ~ settings.paddingVertical %}
 {% set fullWidth = settings.fullWidth is defined and settings.fullWidth ? '  o-section--width-full' %}
-{% set fullWidthInner = settings.fullWidthInner is defined and settings.fullWidthInner ? '  o-section__inner--width-full' %}
 {% set headline = data.singleHeadline is defined ? data.singleHeadline %}
 {% set subline = data.singleSubline is defined ? data.singleSubline %}
 
 {# Modul #}
 <div class="o-section{{ fullWidth }}{{ paddingVertical }}{{ backgroundColor }}  {{ classname }}">
-  <div class="o-section__inner{{ fullWidthInner }}  {{ classname ~ '__inner' }}">
+  <div class="o-section__inner  {{ classname ~ '__inner' }}">
     {% if headline %}
       <h2 class="o-section__headline  {{ classname ~ '__headline' }}">
         {{ headline}}
