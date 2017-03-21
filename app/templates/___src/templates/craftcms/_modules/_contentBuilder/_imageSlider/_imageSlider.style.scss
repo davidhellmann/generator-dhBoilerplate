@@ -43,78 +43,78 @@
   .flickity-viewport {
     overflow: visible;
   }
-}
 
-.flickity-page-dots {
-  list-style: none;
-  height: 50px;
-  bottom: 0;
-  height: vr(2);
-  display: flex;
-  flex: row wrap;
-  justify-content: center;
-  align-items: center;
-  display: none;
+  .flickity-page-dots {
+    list-style: none;
+    height: 50px;
+    bottom: 0;
+    height: vr(2);
+    display: flex;
+    flex: row wrap;
+    justify-content: center;
+    align-items: center;
+    display: none;
 
-  @include media('>=s') {
-    display: block;
+    @include media('>=s') {
+      display: flex;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
   }
 
-  .dot {
-    width: 5px;
-    height: 5px;
+  // Arrows
+  .flickity-prev-next-button {
+    background: none;
+    border-radius: 0;
+    width: 80px;
+    height: vr(2);
+    margin: 0;
+    top: auto;
+    bottom: 0;
+    cursor: pointer;
     padding: 0;
+    z-index: 50;
+    transform: none;
+    background-size: auto 24px;
+    background-repeat: no-repeat;
+    transition: background-position 0.25s ease-out;
 
-    &::before {
+    &:disabled {
+      opacity: 0;
+    }
+
+    svg {
       display: none;
     }
-  }
-}
 
-// Arrows
-.flickity-prev-next-button {
-  background: none;
-  border-radius: 0;
-  width: 80px;
-  height: vr(2);
-  margin: 0;
-  top: auto;
-  bottom: 0;
-  cursor: pointer;
-  padding: 0;
-  z-index: 50;
-  transform: none;
-  background-size: auto 24px;
-  background-repeat: no-repeat;
-  transition: background-position 0.25s ease-out;
+    &.previous {
+      background: url('../images/svg/single/iconArrowLeft.svg');
+      background-repeat: no-repeat;
+      background-position: center left s(1);
+      @include ft(s(1), s(2), left);
 
-  &:disabled {
-    opacity: 0;
-  }
-
-  svg {
-    display: none;
-  }
-
-  &.previous {
-    background: url('../images/svg/single/iconArrowLeft.svg');
-    background-repeat: no-repeat;
-    background-position: center left s(1);
-    @include ft(s(1), s(2), left);
-
-    &:hover {
-      background-position: center left;
+      &:hover {
+        background-position: center left;
+      }
     }
-  }
 
-  &.next {
-    background: url('../images/svg/single/iconArrowRight.svg');
-    background-repeat: no-repeat;
-    background-position: center right s(1);
-    @include ft(s(1), s(2), right);
+    &.next {
+      background: url('../images/svg/single/iconArrowRight.svg');
+      background-repeat: no-repeat;
+      background-position: center right s(1);
+      @include ft(s(1), s(2), right);
 
-    &:hover {
-      background-position: center right;
+      &:hover {
+        background-position: center right;
+      }
     }
   }
 }
