@@ -1,0 +1,78 @@
+{# Set Attributes
+  {% set options = {
+    classname: 'm-image',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 30 }
+    ],
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false
+  } %}
+
+  macroImage.image(image, options)
+#}
+
+{% macro image(image, options) %}
+
+  {% set defaults = {
+    classname: 'm-image',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 30 }
+    ],
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false
+  } %}
+
+  {% set options = options ? defaults|merge(options) : defaults %}
+
+  {% if image %}
+
+    {# -- Ratio -- #}
+    {% if options.ratio %}
+      {% set ratio = options.ratio|split(':') %}
+      {% set ratio = ratio|first/ratio|last %}
+    {% else %}
+      {% set ratio = '' %}
+    {% endif %}
+
+    {# -- Set Position -- #}
+    {% if options.position %}
+      {% set position = options.position %}
+    {% elseif image.settingsFocalPoint %}
+      {% set position = image.settingsFocalPoint %}
+    {% else %}
+      {% set position = '50% 50%' %}
+    {% endif %}
+
+    {# -- Define global variables -- #}
+    {% set imageSettings = {
+      jpegQuality: options.quality,
+      mode: options.mode,
+      position: position,
+      ratio: ratio
+    } %}
+
+    {# -- Image -- #}
+    {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
+
+    <img width="{{ image.width }}" width="{{ image.height }}" class="{{ options.classname }}  lazyload"
+         src="{{ images|last.url }}"
+         data-srcset="{{ craft.imager.srcset(images) }}"
+         data-sizes="auto"
+         alt="{{ image.title }}"/>
+  {% endif %}
+{% endmacro %}
+

@@ -1,0 +1,81 @@
+{# Set Attributes
+  {% set options = {
+    classname: 'm-bgImage',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 30 }
+    ],
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false
+  } %}
+
+  macroImage.bgImage(image, options)
+#}
+
+{% macro bgImage(image, options) %}
+
+  {% set defaults = {
+    classname: 'm-bgImage',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 30 }
+    ],
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false
+  } %}
+
+  {% set options = options ? defaults|merge(options) : defaults %}
+
+  {% if image %}
+
+    {# -- Ratio -- #}
+    {% if options.ratio %}
+      {% set ratio = options.ratio|split(':') %}
+      {% set ratio = ratio|first/ratio|last %}
+    {% else %}
+      {% set ratio = '' %}
+    {% endif %}
+
+    {# -- Set Position -- #}
+    {% if options.position %}
+      {% set position = options.position %}
+    {% elseif image.settingsFocalPoint %}
+      {% set position = image.settingsFocalPoint %}
+    {% else %}
+      {% set position = '50% 50%' %}
+    {% endif %}
+
+    {# -- Define global variables -- #}
+    {% set imageSettings = {
+      jpegQuality: options.quality,
+      mode: options.mode,
+      position: position,
+      ratio: ratio
+    } %}
+
+    {# -- BG Image -- #}
+    {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
+
+    <div class="{{ options.class }}  {{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio|replace({":": "-"}) : '' }}">
+      <figure class="{{ options.class ~ '__figure' }}  o-ratio__content  lazyload"
+              style="background-image: url('{{ images|last.url }}');
+                     background-position: {{ position|trim("'") }};"
+              data-bgset="{{ craft.imager.srcset(images) }}"
+              data-sizes="auto">
+      </figure>
+    </div>
+  {% endif %}
+{% endmacro %}
+
