@@ -116,16 +116,16 @@
                  alt="{{ image.title }}"/>
             </div>
           </div>
-          {% if options.caption or options.captionTitle %}
+          {% if options.captionCaption or options.captionTitle %}
             <figcaption class="m-caption  {{ options.class ~ '__caption' }}" itemprop="caption description">
               {% if options.captionTitle %}
                 <span class="m-caption__headline  {{ options.class ~ '__captionHeadline' }}">
-                  {{ options.captionTitle|raw }}{{ options.caption and options.captionTitle ? ': '  }}
+                  {{ options.captionTitle|raw }}{{ options.captionCaption and options.captionTitle ? ': '  }}
                 </span>
               {% endif %}
 
               <span class="m-caption__body  {{ options.class ~ '__captionBody' }}">
-                {{ options.caption|raw }}
+                {{ options.captionCaption|raw }}
               </span>
 
               {% if options.captionSourceUrl %}
