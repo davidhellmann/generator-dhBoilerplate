@@ -26,9 +26,9 @@
   {% if prevEntry or nextEntry %}
 
 
-    <ul class="m-postNav">
+    <nav class="m-postNav">
       {% if prevEntry %}
-        <li class="m-postNav__item  m-postNav__item--prev">
+        <div class="m-postNav__item  m-postNav__item--prev">
           <a class="m-postNav__link  m-postNav__link--prev" href="{{ prevEntry.url }}">
             {% if prevIcon != false %}
               {% include '_svg/' ~ prevIcon ~ '.svg.html' %}
@@ -40,10 +40,10 @@
 
             <span class="m-postNav__title">{{ prevEntry.title }}</span>
           </a>
-        </li>
+        </div>
       {% endif %}
       {% if nextEntry %}
-        <li class="m-postNav__item  m-postNav__item--next">
+        <div class="m-postNav__item  m-postNav__item--next">
           <a class="m-postNav__link  m-postNav__link--next" href="{{ nextEntry.url }}">
             {% if nextLabel != false %}
               <span class="m-postNav__label">{{ nextLabel }}</span>
@@ -55,9 +55,9 @@
               {% include '_svg/' ~ nextIcon ~ '.svg.html' %}
             {% endif %}
           </a>
-        </li>
+        </div>
       {% endif %}
-    </ul>
+    </nav>
   {% endif %}
 
 {% endmacro %}
