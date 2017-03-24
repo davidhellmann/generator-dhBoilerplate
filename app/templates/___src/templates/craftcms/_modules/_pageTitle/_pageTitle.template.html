@@ -5,6 +5,7 @@
 
 {# Set Vars #}
 {% set object = object is defined ? object : entry  %}
+{% set hSize = hSize is defined ? hSize : 'h1'  %}
 {% set classname = name is defined and name is not empty ? name : 'm-pageTitle' %}
 
 {# Modul #}
@@ -14,6 +15,6 @@
   {% set headline = object.title %}
 {% endif %}
 
-<h1 class="{{ classname }}">
-  {{ headline|nl2br }}
-</h1>
+<{{ hSize }} class="{{ classname }}">
+{{ headline|nl2br }}
+</{{ hSize }}>
