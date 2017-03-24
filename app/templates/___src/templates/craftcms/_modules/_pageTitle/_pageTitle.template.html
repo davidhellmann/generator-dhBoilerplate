@@ -8,8 +8,8 @@
 {% set classname = name is defined and name is not empty ? name : 'm-pageTitle' %}
 
 {# Modul #}
-{% if entry.singleSeoTitle is defined and entry.singleSeoTitle != '' %}
-  {% set headline = entry.singleSeoTitle %}
+{% if object.singleSeoTitle is defined and object.singleSeoTitle != '' %}
+  {% set headline = object.singleSeoTitle %}
 {% else %}
   {% set headline = object.title %}
 {% endif %}
