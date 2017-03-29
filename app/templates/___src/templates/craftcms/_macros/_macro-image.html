@@ -68,7 +68,7 @@
     {# -- Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
 
-    <img width="{{ image.width }}" width="{{ image.height }}" class="{{ options.classname }}  lazyload"
+    <img width="{{ image.width }}" height="{{ image.height }}" class="{{ options.classname }}  lazyload"
          src="{{ images|last.url }}"
          data-srcset="{{ craft.imager.srcset(images) }}"
          data-sizes="auto"
