@@ -13,23 +13,26 @@
 {% set withIcon = settings.withIcon is defined ? settings.withIcon %}
 {% set icon = settings.icon is defined ? settings.icon %}
 
+{% set defaults = {
+    classname: button ? classname : 'm-button',
+    url: button ? button.url : url,
+    target: button ? target : targetBlank ? ' target="_blank',
+    style: button ? style : style,
+    alignment: button ? alignment : alignment,
+    withIcon: button ? withIcon : withIcon,
+    icon: button ? icon : icon,
+    text: button ? button.text : text
+} %}
+
+{% set options = options ? defaults|merge(options) : defaults %}
 
 {# Modul #}
-<div class="{{ classname ~ 'Wrapper'}}">
-  <a itemprop="url"
-     role="button"
-     href="{{ button.url }}"
-    {{ target }}
-     class="{{ classname }}{{ style }}{{ alignment }}">
-    {% if withIcon %}
-      <div class="{{ classname ~ '__inner' }}">
-         <span>
-          {{ button.text }}
-         </span>
-        {% include '_svg/' ~ icon ~ '.svg.html' %}
-      </div>
-    {% else %}
-      {{ button.text }}
+<a itemprop="url"
+   role="button"
+   href="{{ options.url }}" {{ options.target }}
+   class="{{ options.classname }}{{ options.style }}{{ options.alignment }}">
+    {{ options.text }}
+    {% if options.withIcon %}
+        {% include '_svg/' ~ options.icon ~ '.svg.html' %}
     {% endif %}
-  </a>
-</div>
+</a>
