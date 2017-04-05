@@ -2,69 +2,52 @@
 /*    Button
 /* -------------------------------------------------- */
 
-.m-buttonWrapper {
-  @include container();
-  @include ft(s(1), s(2), padding-left padding-right);
-}
-
 .m-button {
   display: inline-block;
   font-size: fs('ms0');
+  color: c('white');
+  background-color: c('black-50');
   text-decoration: none;
   border-radius: 2px;
   text-transform: uppercase;
+  text-align: center;
   font-weight: 700;
-}
-
-.m-button--primary {
-  font-size: fs('ms0') * 0.95;
-}
-
-.m-button--primary:hover {
-  color: c('black');
-}
-
-.m-button--secondary {
-  font-size: fs('ms0') * 0.84;
-  color: c('black-90');
-}
-
-.m-button--secondary:hover {
-  color: c('black');
-}
-
-.m-button--left {
-  float: left;
-}
-
-.m-button--center {
-  @include center();
-}
-
-.m-button--right {
-  float: right;
-}
-
-.m-button--full {
-  width: 100%;
-}
-
-// With Icon
-.m-button__inner {
-  margin: 0 auto;
-  display: inline-flex;
-  align-items: center;
 
   svg {
-    position: relative;
-    margin-left: s(1.5);
-    transition: fill 0.5s ease-out;
+    fill: c('white');
   }
-}
 
-.m-button--primary:hover,
-.m-button--secondary:hover {
-  svg {
-    fill: c('black-80');
+  &--primary {
+    color: c('white');
+    background-color: c('black-90');
+  }
+
+  &--primary:hover {
+    background-color: c('black');
+  }
+
+  &--secondary {
+    font-size: fs('ms-1');
+    background-color: c('black-70');
+  }
+
+  &--secondary:hover {
+    color: c('black-80');
+  }
+
+  &--left {
+    float: left;
+  }
+
+  &--center {
+    @include center();
+  }
+
+  &--right {
+    float: right;
+  }
+
+  &--full {
+    width: 100%;
   }
 }
