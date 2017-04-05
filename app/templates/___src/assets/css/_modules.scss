@@ -18,22 +18,22 @@
 
 <% if (projectUsage == 'Craft CMS' ) { %>
 // Modules Content Builder
-@import '../../templates/_modules/_contentBuilder/_accordion/accordion.style';
-@import '../../templates/_modules/_contentBuilder/_button/button.style';
-@import '../../templates/_modules/_contentBuilder/_buttonGroup/buttonGroup.style';
-@import '../../templates/_modules/_contentBuilder/_contentSection/contentSection.style';
-@import '../../templates/_modules/_contentBuilder/_definitionList/definitionList.style';
-@import '../../templates/_modules/_contentBuilder/_embed/embed.style';
-@import '../../templates/_modules/_contentBuilder/_headline/headline.style';
-@import '../../templates/_modules/_contentBuilder/_separator/separator.style';
-@import '../../templates/_modules/_contentBuilder/_imageCover/imageCover.style';
-@import '../../templates/_modules/_contentBuilder/_imageGallery/imageGallery.style';
-@import '../../templates/_modules/_contentBuilder/_imageGrid/imageGrid.style';
-@import '../../templates/_modules/_contentBuilder/_imageSingle/imageSingle.style';
-@import '../../templates/_modules/_contentBuilder/_imageSlider/imageSlider.style';
-@import '../../templates/_modules/_contentBuilder/_quote/quote.style';
-@import '../../templates/_modules/_contentBuilder/_richText/richText.style';
-@import '../../templates/_modules/_contentBuilder/_richTextMarginals/richTextMarginals.style';
-@import '../../templates/_modules/_contentBuilder/_twoColumns/twoColumns.style';
+@import '../../templates/_modules/_accordion/accordion.style';
+@import '../../templates/_modules/_button/button.style';
+@import '../../templates/_modules/_buttonGroup/buttonGroup.style';
+@import '../../templates/_modules/_contentSection/contentSection.style';
+@import '../../templates/_modules/_definitionList/definitionList.style';
+@import '../../templates/_modules/_embed/embed.style';
+@import '../../templates/_modules/_headline/headline.style';
+@import '../../templates/_modules/_separator/separator.style';
+@import '../../templates/_modules/_imageCover/imageCover.style';
+@import '../../templates/_modules/_imageGallery/imageGallery.style';
+@import '../../templates/_modules/_imageGrid/imageGrid.style';
+@import '../../templates/_modules/_imageSingle/imageSingle.style';
+@import '../../templates/_modules/_imageSlider/imageSlider.style';
+@import '../../templates/_modules/_quote/quote.style';
+@import '../../templates/_modules/_richText/richText.style';
+@import '../../templates/_modules/_richTextMarginals/richTextMarginals.style';
+@import '../../templates/_modules/_twoColumns/twoColumns.style';
 <% } %>
 
