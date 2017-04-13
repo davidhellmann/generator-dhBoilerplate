@@ -106,10 +106,10 @@
     <% } %>
   },
   "critical": [
-    { "url": "", "template": "index" },
-    { "url": "NEWS/ENTRY-SLUG", "template": "news/_entry" },
-    { "url": "NEWS", "template": "news/index" },
-    { "url": "404", "template": "404" }
+    { "url": "/", "template": "index" },
+    { "url": "/NEWS/ENTRY-SLUG", "template": "news/_entry" },
+    { "url": "/NEWS", "template": "news/index" },
+    { "url": "/404", "template": "404" }
   ],
   "inlineJS": [
     "./node_modules/fg-loadcss/src/loadCSS.js",
