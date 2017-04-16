@@ -13,16 +13,29 @@
 {% set withIcon = settings.withIcon is defined ? settings.withIcon %}
 {% set icon = settings.icon is defined ? settings.icon %}
 
-{% set defaults = {
-    classname: button ? classname : 'm-button',
-    url: button ? button.url : url,
-    target: button ? target : targetBlank ? ' target="_blank',
-    style: button ? style : style,
-    alignment: button ? alignment : alignment,
-    withIcon: button ? withIcon : withIcon,
-    icon: button ? icon : icon,
-    text: button ? button.text : text
-} %}
+{% if button %}
+    {% set defaults = {
+        classname = name is defined and name is not empty ? name : 'm-button',
+        url: button ? button.url : url,
+        target: button ? target : targetBlank ? ' target="_blank',
+        style: button ? style : style,
+        alignment: button ? alignment : alignment,
+        withIcon: button ? withIcon : withIcon,
+        icon: button ? icon : icon,
+        text: button ? button.text : text
+    } %}
+{% else %}
+    {% set defaults = {
+        classname: 'm-button',
+        url: '#',
+        target: '',
+        style: '',
+        alignment: '',
+        withIcon: false,
+        icon: '',
+        text: 'Button'
+    } %}
+{% endif %}
 
 {% set options = options ? defaults|merge(options) : defaults %}
 
