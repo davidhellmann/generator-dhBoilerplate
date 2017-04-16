@@ -1,0 +1,18 @@
+{#
+  News Entry Template
+  --------------------------------------------------
+
+  When you view a single news on the website, this template gets loaded.
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-modules" %}
+
+{% block appContent %}
+  <article>
+    <h1>{{ entry.title }}</h1>
+
+    {# Content Builder #}
+    {% include '_contentBuilders/_contentBuilderNeo' %}
+  </article>
+{% endblock %}

@@ -7,12 +7,12 @@
 
 
 
-{% extends '_layouts/master.html' %}
-{% set bodyClass = "page-404" %}
+{% extends '_layouts/_master.html' %}
+{% set bodyClass = "p-404" %}
 {% if craft.seomatic is defined %}
   {% set seomaticMeta = seomaticMeta | merge({'seoTitle': '404 &mdash; Page not found' }) %}
 {% else %}
-  {% set appTitle = 'Home' %}
+  {% set appTitle = '404 &mdash; Page not found' %}
 {% endif %}
 
 {# -- CRITICAL CSS -- #}
@@ -24,5 +24,8 @@
 
 {% block appContent %}
   <h1>404 &mdash; Page not found</h1>
-  <p>Fuck, you're lost!</p>
+  <p>
+    Oh no, this page is missing… Sorry!<br>
+    Back to <a href="{{ siteUrl }}">Home</a>
+  </p>
 {% endblock %}
