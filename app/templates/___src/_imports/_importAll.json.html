@@ -35,12 +35,24 @@
       "name": "News",
       "handle": "news",
       "type": "channel",
-      "enableVersioning": 0,
+      "enableVersioning": 1,
       "typesettings": {
         "hasUrls": 1,
-        "template": "news\/_entry",
-        "urlFormat": "news\/{postDate.year}\/{slug}",
+        "template": "channels\/news\/_entry",
+        "urlFormat": "n\/{slug}",
         "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Pages",
+      "handle": "pages",
+      "type": "structure",
+      "enableVersioning": 1,
+      "typesettings": {
+        "hasUrls": 1,
+        "template": "structures\/pages\/_entry",
+        "urlFormat": "p\/{slug}",
+        "nestedUrlFormat": "{parent.uri}\/{slug}"
       }
     }
   ],
@@ -2731,40 +2743,6 @@
         }
       },
       "fieldLayout": []
-    }
-  ],
-  "users": [
-    {
-      "enabled": 1,
-      "archived": 0,
-      "locale": "en",
-      "localeEnabled": true,
-      "username": "davidhellmann",
-      "firstName": "David",
-      "lastName": "Hellmann",
-      "email": "david@fredmansky.at",
-      "weekStartDay": 1,
-      "admin": 1,
-      "client": 0,
-      "locked": 0,
-      "suspended": 0,
-      "pending": 0
-    },
-    {
-      "enabled": 1,
-      "archived": 0,
-      "locale": "en",
-      "localeEnabled": true,
-      "username": "superuser",
-      "firstName": "Super",
-      "lastName": "User",
-      "email": "super@user.com",
-      "weekStartDay": 1,
-      "admin": 1,
-      "client": 0,
-      "locked": 0,
-      "suspended": 0,
-      "pending": 0
     }
   ]
 }
