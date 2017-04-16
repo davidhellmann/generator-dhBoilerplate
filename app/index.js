@@ -391,9 +391,8 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
 
 
             // Copy Translations
-            if (this.craftMultilang) {
-                this.directory('___src/_craft/translations/', '___dist/' + craftPath + '/translations');
-            }
+            this.directory('___src/_craft/translations/', '___dist/' + craftPath + '/translations');
+
 
 
             // Copy Hearty Config

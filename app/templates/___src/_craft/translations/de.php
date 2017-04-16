@@ -5,7 +5,7 @@ if (craft()->request->isCpRequest())
 {
     if (craft()->userSession->isAdmin())
     {
-        return (include '../craft/app/translations/en_us.php');
+        return (include '../craft/app/translations/en_gb.php');
     }
     else
     {
