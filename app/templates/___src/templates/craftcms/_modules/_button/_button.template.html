@@ -3,49 +3,37 @@
   ======
 #}
 
-{# Set Vars #}
-{% set classname = name is defined and name is not empty ? name : 'm-button' %}
-{% set button = data.singleButton is defined ? data.singleButton %}
-{% set settings = data.settingsButton is defined ? data.settingsButton %}
-{% set alignment = settings.alignment is defined ? '  ' ~ classname ~ '--' ~ settings.alignment : '' %}
-{% set style = settings.style is defined ? '  ' ~ classname ~ '--' ~ settings.style : '' %}
-{% set target = button.target is defined and button.target ? ' target=_blank' : '' %}
-{% set withIcon = settings.withIcon is defined ? settings.withIcon %}
-{% set icon = settings.icon is defined ? settings.icon %}
+{# -- Set CB Vars -- #}
+{% set cbClassname = name is defined and name is not empty ? name : 'm-button' %}
+{% set cbButton = data.singleButton is defined ? data.singleButton %}
+{% set cbSettings = data.settingsButton is defined ? data.settingsButton %}
 
-{% if button %}
-    {% set defaults = {
-        classname = name is defined and name is not empty ? name : 'm-button',
-        url: button ? button.url : url,
-        target: button ? target : targetBlank ? ' target="_blank',
-        style: button ? style : style,
-        alignment: button ? alignment : alignment,
-        withIcon: button ? withIcon : withIcon,
-        icon: button ? icon : icon,
-        text: button ? button.text : text
-    } %}
+{# -- Set Defaults -- #}
+{% set defaults = {
+classname: cbButton ? cbClassname : 'm-button',
+url: cbButton ? cbButton.url : '#',
+target: cbButton and cbButton.target is defined and cbButton.target ? ' target=_blank' : '',
+style: cbButton and cbSettings.style is defined ? cbClassname ~ '--' ~ cbSettings.style : '',
+alignment: cbButton and cbSettings.alignment is defined ? cbClassname ~ '--' ~ cbSettings.alignment : '',
+withIcon: cbButton and cbSettings.withIcon is defined ? cbSettings.withIcon : false,
+icon: cbButton and cbSettings.icon is defined ? cbSettings.icon : '',
+text: cbButton and cbButton.text is defined and cbButton.text is not empty ? cbButton.text : 'Button'
+} %}
+
+{# -- Set Options -- #}
+{% if cbButton and options is not defined %}
+  {% set options = defaults %}
 {% else %}
-    {% set defaults = {
-        classname: 'm-button',
-        url: '#',
-        target: '',
-        style: '',
-        alignment: '',
-        withIcon: false,
-        icon: '',
-        text: 'Button'
-    } %}
+  {% set options = options ? defaults|merge(options) : defaults %}
 {% endif %}
 
-{% set options = options ? defaults|merge(options) : defaults %}
-
-{# Modul #}
+{# -- Modul -- #}
 <a itemprop="url"
    role="button"
    href="{{ options.url }}" {{ options.target }}
-   class="{{ options.classname }}{{ options.style }}{{ options.alignment }}">
-    {{ options.text }}
-    {% if options.withIcon %}
-        {% include '_svg/' ~ options.icon ~ '.svg.html' %}
-    {% endif %}
+   class="{{ options.classname }}  {{ options.style }}  {{ options.alignment }}">
+  {{ options.text }}
+  {% if options.withIcon %}
+    {% include '_svg/' ~ options.icon ~ '.svg.html' %}
+  {% endif %}
 </a>

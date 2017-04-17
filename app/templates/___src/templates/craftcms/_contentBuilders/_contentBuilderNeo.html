@@ -12,7 +12,7 @@
   {# Check if first Type is not a Section #}
   {% if loop.first and content.type != 'contentSection' %}
     <!-- start: o-section / opened by Content Builder -->
-    {% include '_modules/_contentBuilder/_contentSection/_contentSection.template' with {
+    {% include '_modules/_contentSection/_contentSection.template' with {
     data: content,
     name: ''
     } %}

@@ -12,6 +12,12 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;
+  padding: s(1/2) s(1);
+
+  &:hover {
+    color: c('white');
+    background-color: c('black');
+  }
 
   svg {
     fill: c('white');
@@ -23,6 +29,7 @@
   }
 
   &--primary:hover {
+    color: c('white');
     background-color: c('black');
   }
 
@@ -32,6 +39,7 @@
   }
 
   &--secondary:hover {
+    color: c('white');
     color: c('black-80');
   }
 
