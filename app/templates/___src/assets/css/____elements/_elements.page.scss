@@ -8,8 +8,10 @@ html {
 }
 
 body {
+  /* stylelint-disable */
   .js &.is-navOpen {
     height: 100vh;
     overflow: hidden;
   }
+  /* stylelint-enable */
 }

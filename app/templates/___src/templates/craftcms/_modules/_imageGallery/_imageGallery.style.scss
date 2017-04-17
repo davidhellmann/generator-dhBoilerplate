@@ -6,7 +6,7 @@
 @import '../../../../assets/css/vendors/photoswipe/defaultSkin';
 
 .m-imageGallery {
-  @include ft(s(0.75), s(1.5), padding-left padding-right);
+  @include ft(s(1.5), s(3), padding-left padding-right);
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@
 }
 
 .m-imageGallery__item {
-  @include ft(s(0.25), s(0.5), padding-left padding-right);
+  @include ft(s(0.5), s(1), padding-left padding-right);
   display: flex;
   align-items: stretch;
   width: calc(100% / 2);

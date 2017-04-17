@@ -12,7 +12,7 @@
   ol li {
     padding-left: 50px;
     position: relative;
-    margin-bottom: vr(1/4);
+    margin-bottom: s(1/2);
 
     &:last-child {
       margin-bottom: 0;
@@ -45,7 +45,7 @@
       content: counter(ol-counter) '.';
       text-align: right;
       width: 50px;
-      padding-right: s(1);
+      padding-right: s(2);
     }
   }
 }

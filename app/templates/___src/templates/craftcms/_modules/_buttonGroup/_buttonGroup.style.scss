@@ -3,7 +3,7 @@
 /* -------------------------------------------------- */
 
 .m-buttonGroup {
-  @include ft(s(1), s(2), padding-left padding-right);
+  @include ft(s(2), s(4), padding-left padding-right);
   display: flex;
   flex: row wrap;
   justify-content: flex-start;

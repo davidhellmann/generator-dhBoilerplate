@@ -7,7 +7,7 @@
   width: 100%;
   font-size: fs('ms-2');
   color: c('black-50');
-  margin-top: vr(1/2);
+  margin-top: s(1);
 
   .wf-loaded & {
     font-family: ff('base');
@@ -24,7 +24,7 @@
 }
 
 .m-caption__body {
-  margin-bottom: vr(1/2);
+  margin-bottom: s(1);
 }
 
 .m-caption__link {

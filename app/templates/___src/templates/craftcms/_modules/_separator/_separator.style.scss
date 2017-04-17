@@ -5,7 +5,7 @@
 .m-separator {
   @include fb(true);
   @include center();
-  @include ft(vr(1), vr(2), margin-top margin-bottom);
+  @include ft(s(2), s(4), margin-top margin-bottom);
   position: relative;
   border: none;
 }
@@ -22,15 +22,15 @@
 }
 
 .m-separator--marginVertical-small {
-  @include ft(vr(1), vr(2), margin-top margin-bottom);
+  @include ft(s(2), s(4), margin-top margin-bottom);
 }
 
 .m-separator--marginVertical-medium {
-  @include ft(vr(1), vr(3), margin-top margin-bottom);
+  @include ft(s(2), s(6), margin-top margin-bottom);
 }
 
 .m-separator--marginVertical-large {
-  @include ft(vr(1), vr(4), margin-top margin-bottom);
+  @include ft(s(2), s(8), margin-top margin-bottom);
 }
 
 
@@ -40,7 +40,7 @@
     content: '';
     position: absolute;
     top: 0;
-    @include ft(s(1), s(2), left right);
+    @include ft(s(2), s(4), left right);
     height: 1px;
     background-color: c('black-10');
   }

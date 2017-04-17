@@ -16,7 +16,7 @@
 
 .o-flag__img {
   width: 1px;
-  padding-right: s(1);
+  padding-right: s(2);
 
   > img {
     max-width: none; /* [1] */
@@ -35,32 +35,6 @@
 // Size variants
 .o-flag--small {
   > .o-flag__img {
-    padding-right: s(2);
-  }
-
-  &.o-flag--reverse {
-    > .o-flag__img {
-      padding-right: 0;
-      padding-left: s(2);
-    }
-  }
-}
-
-.o-flag--large {
-  > .o-flag__img {
-    padding-right: s(3);
-  }
-
-  &.o-flag--reverse {
-    > .o-flag__img {
-      padding-right: 0;
-      padding-left: s(3);
-    }
-  }
-}
-
-.o-flag--huge {
-  > .o-flag__img {
     padding-right: s(4);
   }
 
@@ -68,6 +42,32 @@
     > .o-flag__img {
       padding-right: 0;
       padding-left: s(4);
+    }
+  }
+}
+
+.o-flag--large {
+  > .o-flag__img {
+    padding-right: s(6);
+  }
+
+  &.o-flag--reverse {
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: s(6);
+    }
+  }
+}
+
+.o-flag--huge {
+  > .o-flag__img {
+    padding-right: s(8);
+  }
+
+  &.o-flag--reverse {
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: s(8);
     }
   }
 }
@@ -90,7 +90,7 @@
 
   > .o-flag__img {
     padding-right: 0;
-    padding-left: s(2);
+    padding-left: s(4);
   }
 }
 

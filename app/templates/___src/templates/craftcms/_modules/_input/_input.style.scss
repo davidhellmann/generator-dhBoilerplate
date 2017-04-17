@@ -24,11 +24,11 @@ select {
   outline: 0;
   display: inline-block;
   width: 100%;
-  padding: vr(1/4) s(2);
+  padding: s(1/2) s(4);
   background: c('white');
   border: 1px solid c('black-40');
   color: c('black-90');
-  margin-bottom: vr(1/2);
+  margin-bottom: s(1);
   border-radius: 3px;
   transition: all 0.5s ease('out-cubic');
 
@@ -52,7 +52,7 @@ select {
   width: 100%;
   background: url('../images/svg/single/iconAccordion.svg');
   background-repeat: no-repeat;
-  background-position: center right s(1);
+  background-position: center right s(2);
   background-size: 16px 16px;
 }
 
