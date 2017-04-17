@@ -6,7 +6,7 @@ import log from 'fancy-log'
 import chalk from 'chalk'
 
 const argv = yargs.argv
-const localURL = config.browsersync.proxy
+const localURL = 'http://' + config.browsersync.proxy
 const url = argv.url || localURL
 
 
