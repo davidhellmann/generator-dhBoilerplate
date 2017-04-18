@@ -6,7 +6,7 @@ blockquote {
   margin: s(4) 0;
 
   p {
-    @include ft(fs('ms2'), fs('ms3'));
+    @include f(fs('ms2'), fs('ms3'));
     font-weight: 700;
 
     .wf-loaded & {

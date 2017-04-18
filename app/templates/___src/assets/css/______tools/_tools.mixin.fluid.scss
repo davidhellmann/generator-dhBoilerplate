@@ -5,16 +5,16 @@
 
     Single property
     html {
-      @include fluid-type(14px, 18px, font-size, 320px, 1366px);
+      @include fluid(14px, 18px, font-size, 320px, 1366px);
     }
 
     Multiple properties with same values
     h1 {
-      @include fluid-type(20px, 100px, padding-bottom padding-top,  320px, 1440px);
+      @include fluid(20px, 100px, padding-bottom padding-top,  320px, 1440px);
     }
    -------------------------------------------------- */
 
-@mixin fluid-type($min-value, $max-value, $properties: font-size, $min-vw: $msWidth-min, $max-vw: $msWidth-max) {
+@mixin fluid($min-value, $max-value, $properties: font-size, $min-vw: $msWidth-min, $max-vw: $msWidth-max) {
   @each $property in $properties {
     #{$property}: $min-value;
   }
@@ -37,6 +37,6 @@
 }
 
 // Shorthand Version
-@mixin ft($args...) {
-  @include fluid-type($args...);
+@mixin f($args...) {
+  @include fluid($args...);
 }

@@ -5,13 +5,15 @@
 .o-section {
   @include fb(true);
   @include center();
-  @include ft(s(2), s(4), padding-top padding-bottom);
+  overflow: hidden;
+  @include f(s(1), s(2), padding-top padding-bottom);
+  @include f(s(2), s(4), padding-left padding-right);
+  background-color: c('black-10');
 }
 
 // Width
 .o-section--width-full {
-  width: 100vw;
-  max-width: none;
+  @include fb();
 }
 
 // Background Color
@@ -30,43 +32,33 @@
 }
 
 .o-section--paddingVertical-small {
-  @include ft(s(2), s(4), padding-top padding-bottom);
+  @include f(s(1), s(2), padding-top padding-bottom);
 }
 
 .o-section--paddingVertical-medium {
-  @include ft(s(2), s(6), padding-top padding-bottom);
+  @include f(s(1), s(4), padding-top padding-bottom);
 }
 
 .o-section--paddingVertical-large {
-  @include ft(s(2), s(8), padding-top padding-bottom);
+  @include f(s(1), s(8), padding-top padding-bottom);
 }
 
 // Headline
 .o-section__headline {
   @include fc(12);
-  @include ft(s(2), s(4), padding-left padding-right);
-  @include ft(s(2), s(8), margin-bottom);
+  @include f(s(2), s(4), padding-left padding-right);
+  @include f(s(2), s(8), margin-bottom);
   text-align: center;
 }
 
 // Subline
 .o-section__subline {
   @include fc(12);
-  @include ft(s(2), s(4), padding-left padding-right);
-  @include ft(s(2), s(8), margin-bottom);
+  @include f(s(2), s(4), padding-left padding-right);
+  @include f(s(2), s(8), margin-bottom);
   text-align: center;
 
   .o-section__headline + & {
-    @include ft(s(-1), s(-6), margin-top);
+    @include f(s(-1), s(-6), margin-top);
   }
-}
-
-// Section Inner
-.o-section__inner {
-  @include fb(true);
-  @include center();
-}
-
-.o-section__inner--width-full {
-  @include fb(true);
 }

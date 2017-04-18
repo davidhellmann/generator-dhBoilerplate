@@ -11,7 +11,7 @@ figure,
 hr,
 table,
 fieldset {
-  margin-bottom: s(2);
+  @include f($dh-gutterWidthMin * 2, $dh-gutterWidthMax * 2, margin-top);
 }
 
 // Consistent indentation for lists.

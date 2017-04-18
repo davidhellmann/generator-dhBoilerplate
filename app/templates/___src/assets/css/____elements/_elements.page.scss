@@ -3,7 +3,7 @@
 /* -------------------------------------------------- */
 
 html {
-  @include ft($msFont-min, $msFont-max);
+  @include f($msFont-min, $msFont-max);
   line-height: $lineHeight-base;
 }
 

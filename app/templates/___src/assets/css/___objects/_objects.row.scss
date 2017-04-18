@@ -1,30 +1,26 @@
 /* -------------------------------------------------- */
-/*    .o-block
+/*    .o-row
 /* -------------------------------------------------- */
 
-.o-block {
+.o-row {
   width: 100%;
-  margin-bottom: s(2);
+  @include f(s(1), s(2), margin-top);
   position: relative;
 
-  > *:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
   }
 }
 
-.o-section__inner > .o-block:last-child {
-  margin-bottom: 0;
-}
-
 // Different Alignments
-.o-block--left {
+.o-row--left {
   text-align: left;
 }
 
-.o-block--center {
+.o-row--center {
   text-align: center;
 }
 
-.o-block--right {
+.o-row--right {
   text-align: right;
 }

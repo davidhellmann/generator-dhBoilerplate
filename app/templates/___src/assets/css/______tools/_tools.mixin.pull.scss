@@ -2,10 +2,11 @@
 /*    Pull
 /* -------------------------------------------------- */
 
-@mixin pull($i) {
-  @if $i > 0 {
-    margin-left: -((100 * $dh-columnWidth * $i) / $dh-maxWidth) + 0%;
+@mixin pull($columns) {
+  position: relative;
+  @if $columns > 0 {
+    right: $columns / 12 * 100%;
   } @else if $i < 1 {
-    margin-left: 0;
+    right: auto;
   }
 }
