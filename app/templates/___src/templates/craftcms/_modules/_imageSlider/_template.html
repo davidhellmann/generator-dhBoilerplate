@@ -38,11 +38,10 @@
 
       {# -- Res Image -- #}
       {% set options = {
-        ratio: ratio,
-        dominantColor: true
+        ratio: ratio
       } %}
 
-      {{ macroResImage.resImage(image, options) }}
+      {{ macroImage.image(image, options) }}
     </div>
   {% endfor %}
 </figure>

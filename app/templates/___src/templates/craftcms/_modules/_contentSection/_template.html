@@ -14,14 +14,13 @@
 
 {# Modul #}
 <div class="o-section{{ fullWidth }}{{ paddingVertical }}{{ backgroundColor }}  {{ classname }}">
-  <div class="o-section__inner  {{ classname ~ '__inner' }}">
-    {% if headline %}
-      <h2 class="o-section__headline  {{ classname ~ '__headline' }}">
-        {{ headline}}
-      </h2>
-    {% endif %}
-    {% if subline %}
-      <h3 class="o-section__subline  {{ classname ~ '__subline' }}">
-        {{ subline}}
-      </h3>
-    {% endif %}
+  {% if headline %}
+    <h2 class="o-section__headline  {{ classname ~ '__headline' }}">
+      {{ headline }}
+    </h2>
+  {% endif %}
+  {% if subline %}
+    <h3 class="o-section__subline  {{ classname ~ '__subline' }}">
+      {{ subline }}
+    </h3>
+  {% endif %}

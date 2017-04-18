@@ -87,12 +87,12 @@
   display: none;
   @include clearfix();
 
-  .o-block {
+  .o-row {
     opacity: 0;
   }
 
   &.fadeIn {
-    .o-block {
+    .o-row {
       opacity: 1;
       transition: opacity 0.5s ease-out;
     }

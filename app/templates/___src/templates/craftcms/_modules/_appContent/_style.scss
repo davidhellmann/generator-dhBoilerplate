@@ -4,7 +4,6 @@
 
 .m-appContent {
   overflow: hidden;
-  @include ft(s(2), s(4), padding-left padding-right);
   @include ft(s(2), s(4), padding-top padding-bottom);
 }
 

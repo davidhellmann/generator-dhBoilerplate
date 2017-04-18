@@ -16,11 +16,11 @@
       {% set counter = loop.index %}
       <div class="{{ classname ~ '__column' }}  {{ classname ~ '__column'~counter }}">
         {% for content in columns.children %}
-          <!-- start: o-block -->
-          <div class="o-block  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+          <!-- start: o-row -->
+          <div class="o-row  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
             {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
           </div>
-          <!-- end: o-block -->
+          <!-- end: o-row -->
         {% endfor %}
       </div>
     {% endfor %}

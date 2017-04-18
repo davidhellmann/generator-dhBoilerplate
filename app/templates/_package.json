@@ -150,10 +150,13 @@
   },
   "browser": {
     <% if (projectjQuery) { %>
-    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "jquery": "./node_modules/jquery/dist/jquery.js"
+    <% } %>
+    <% if (projectjQuery && projectVue == true) { %>
+      ,
     <% } %>
     <% if (projectVue == true ) { %>
-    "vue": "vue/dist/vue.common",
+    "vue": "vue/dist/vue.common"
     <% } %>
   },
   "browserify": {

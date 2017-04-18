@@ -53,8 +53,7 @@
       jpegQuality: 80,
       mode: 'crop',
       position: position,
-      ratio: ratioThumbs,
-      dominantColor: true
+      ratio: ratioThumbs
     } %}
 
     {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}

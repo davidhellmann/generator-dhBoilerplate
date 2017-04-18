@@ -15,12 +15,10 @@
 {# Modul #}
 <div class="m-figure__imageBackground  {{ classname }}{{ textAlignment }}{{ textVerticalPosition }}">
   {% set options = {
-    background: true,
-    position: position,
-    dominantColor: true
+    position: position
   } %}
 
-  {{ macroResImage.resImage(image, options) }}
+  {{ macroBgImage.bgImage(image, options) }}
 
   <div class="{{ classname ~ '__titleWrapper' }}">
     <div class="{{ classname ~ '__title' }}">
