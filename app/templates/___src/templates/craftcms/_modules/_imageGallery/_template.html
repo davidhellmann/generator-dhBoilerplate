@@ -8,7 +8,25 @@
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageGallery is defined ? data.settingsImageGallery %}
 {% set columns = settings.columns is defined ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
-{% set ratioThumbs = settings.imageThumbsRatio is defined ? settings.imageThumbsRatio %}
+
+{% if settings.imageThumbsRatio is defined %}
+  {% switch settings.imageThumbsRatio %}
+
+  {% case "landscape" %}
+    {% set ratioThumbs = '16:10' %}
+
+  {% case "square" %}
+    {% set ratioThumbs = '1:1' %}
+
+  {% case "portrait" %}
+    {% set ratioThumbs = '10:16' %}
+
+  {% endswitch %}
+
+{% else %}
+  {% set ratioThumbs = '1:1' %}
+{% endif %}
+
 {% set ratioThumbs = ratioThumbs|split(':') %}
 {% set base64Ratio = ratioThumbs %}
 {% set ratioThumbs = ratioThumbs|first/ratioThumbs|last %}
@@ -17,43 +35,43 @@
 <div class="{{ classname }}{{ columns }}  js-photoswipe" itemscope itemtype="http://schema.org/ImageGallery">
   {% for image in images %}
 
-    {% set position = settings.imagePosition is defined and settings.imagePosition == 'focalpoint' ? image.settingsFocalPoint : settings.imagePosition.value %}
+    {% set position = image.settingsFocalPoint is defined ? image.settingsFocalPoint : '50% 50%' %}
     {% set imageSize = image.width ~ ':' ~ image.height %}
     {% set largeRatio = imageSize|split(':') %}
     {% set largeRatio = largeRatio|first/largeRatio|last %}
 
     {% if image.height >= image.width %}
       {% set sizes = [
-        { height: 1440 },
-        { height: 320 },
-        { height: 30 }
+      { height: 1440 },
+      { height: 320 },
+      { height: 30 }
       ] %}
     {% else %}
       {% set sizes = [
-        { width: 1680 },
-        { width: 1280 },
-        { width: 320 },
-        { width: 30 }
+      { width: 1680 },
+      { width: 1280 },
+      { width: 320 },
+      { width: 30 }
       ] %}
     {% endif %}
 
     {# Image #}
     {% set imageSettings = {
-      jpegQuality: 80,
+    jpegQuality: 80,
     } %}
 
     {% set sizesThumbs = [
-      { width: 640 },
-      { width: 320 },
-      { width: 160 },
-      { width: 30 }
+    { width: 640 },
+    { width: 320 },
+    { width: 160 },
+    { width: 30 }
     ] %}
 
     {% set imageSettingsThumbs = {
-      jpegQuality: 80,
-      mode: 'crop',
-      position: position,
-      ratio: ratioThumbs
+    jpegQuality: 80,
+    mode: 'crop',
+    position: position,
+    ratio: ratioThumbs
     } %}
 
     {% set images = craft.imager.transformImage(image, sizes, imageSettings) %}
@@ -62,14 +80,16 @@
     <figure class="m-figure  {{ classname ~ '__item' }}"
             itemprop="associatedMedia"
             itemscope itemtype="http://schema.org/ImageObject">
-      <a class="m-figure__link  m-figure__imageBackground  {{ classname ~ '__link' }}  o-ratio  o-ratio--{{ settings.imageThumbsRatio|replace({":": "-"})  }}" href="{{ images|first.url }}"
-         itemprop="contentUrl"
-         data-size="{{ images|first.width }}x{{ images|first.height }}">
+      <a
+        class="m-figure__link  m-figure__imageBackground  {{ classname ~ '__link' }}  o-ratio  o-ratio--{{ settings.imageThumbsRatio|replace({":": "-"}) }}"
+        href="{{ images|first.url }}"
+        itemprop="contentUrl"
+        data-size="{{ images|first.width }}x{{ images|first.height }}">
         <img class="m-figure__image  {{ classname ~ '__image' }}  o-ratio__content  lazyload"
              data-photoswipe-thumb="{{ images|last.url }}"
              src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
              data-srcset="{{ craft.imager.srcset(thumbs) }}"
-             data-sizes="auto"
+             data-sizes="100vw"
              alt="{{ image.title }}"/>
       </a>
     </figure>

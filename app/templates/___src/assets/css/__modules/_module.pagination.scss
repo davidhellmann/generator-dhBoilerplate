@@ -5,8 +5,8 @@
 .m-pagination {
   @include fb(true);
   @include center();
-  @include fluid-type(s(2), s(4), padding-top);
-  @include fluid-type(s(2), s(8), padding-bottom);
+  @include f(s(2), s(4), padding-top);
+  @include f(s(2), s(8), padding-bottom);
   list-style: none;
   position: relative;
   display: flex;

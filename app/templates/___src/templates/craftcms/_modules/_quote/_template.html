@@ -3,7 +3,7 @@
   =====
 #}
 
-{# Set Vars #}
+{# -- Set Vars -- #}
 {% set classname = name is defined and name != '' ? name : 'm-quote' %}
 {% set quote = data.singleQuote is defined ? data.singleQuote %}
 {% set source = false %}
@@ -16,22 +16,24 @@
   {% endif %}
 {% endif %}
 
-{# Modul #}
-<blockquote class="{{ classname }}">
-  <p>
-    {{ quote }}
-  </p>
-{% if source %}
-  <footer>
-    <cite>
-      {% if sourceLink %}
-      <a href="{{ sourceLink.url }}" target="_blank">
-      {% endif %}
-        {{ source }}
-      {% if sourceLink %}
-      </a>
-      {% endif %}
-    </cite>
-  </footer>
-{% endif %}
-</blockquote>
+{# -- Modul -- #}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <blockquote class="{{ classname }}">
+    <p>
+      {{ quote }}
+    </p>
+  {% if source %}
+    <footer>
+      <cite>
+        {% if sourceLink %}
+        <a href="{{ sourceLink.url }}" target="_blank">
+        {% endif %}
+          {{ source }}
+        {% if sourceLink %}
+        </a>
+        {% endif %}
+      </cite>
+    </footer>
+  {% endif %}
+  </blockquote>
+</div>

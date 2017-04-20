@@ -25,7 +25,7 @@ import './scripts/fontfaceobserver'
 import '../../templates/_modules/_accordion/_main'
 import '../../templates/_modules/_imageSlider/_main'
 import '../../templates/_modules/_imageGallery/_main'
-
+<% } %>
 
 // Debugging
 const _debug = false

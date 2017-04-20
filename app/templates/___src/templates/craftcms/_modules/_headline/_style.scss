@@ -2,14 +2,13 @@
 /*    Headline
 /* -------------------------------------------------- */
 
-.m-headline {
-  @include fc(12);
-  @include ft(s(1), s(2), padding-left padding-right);
-
-  &--indendet {
-    @include media('>=m') {
-      @include fc(9);
-      @include push(3);
-    }
+.m-headlineWrapper {
+  @include media('>=m') {
+    @include make-col(8);
+    @include offset(2);
   }
+}
+
+.m-headline {
+  /* No Styling until now */
 }

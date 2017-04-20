@@ -3,14 +3,13 @@
 /* -------------------------------------------------- */
 
 .m-caption {
-  @include ft(s(1), s(2), padding-left padding-right);
   width: 100%;
   font-size: fs('ms-2');
   color: c('black-50');
   margin-top: s(1);
 
   .wf-loaded & {
-    font-family: ff('base');
+    font-family: ff('sans-serif');
   }
 
   @include media('>=m') {

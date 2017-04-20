@@ -2,21 +2,20 @@
 /*    Image Grid
 /* -------------------------------------------------- */
 
+.m-imageGridWrapper {
+  /* No Style until now */
+}
+
 .m-imageGrid {
-  @include fb();
-  width: auto;
-  @include ft(s(-1), s(-2), margin-left margin-right);
-  @include ft(s(-2), s(-4), margin-top);
+  @include make-row();
 
   &__figure {
+    @include make-col();
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: flex-start;
-    width: 100%;
-    @include ft(s(2), s(4), margin-top);
-    @include ft(s(1), s(2), padding-left padding-right);
   }
 
   &__image {
@@ -31,19 +30,19 @@
   @include media('>=s') {
     &--3columns {
       .m-imageGrid__figure {
-        width: calc(100% / 3);
+        @include make-col(4);
       }
     }
 
     &--2columns {
       .m-imageGrid__figure {
-        width: calc(100% / 2);
+        @include make-col(6);
       }
     }
 
     &--1columns {
       .m-imageGrid__figure {
-        width: 100%;
+        @include make-col(12);
       }
     }
   }

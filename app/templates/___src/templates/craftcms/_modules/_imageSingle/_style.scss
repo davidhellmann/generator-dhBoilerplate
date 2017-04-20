@@ -2,9 +2,11 @@
 /*    Image Single
 /* -------------------------------------------------- */
 
-.m-imageSingle {
-  @include fc(12);
+.m-imageSingleWrapper {
+  /* empty */
+}
 
+.m-imageSingle {
   .m-figure {
     display: flex;
     flex-direction: row;
@@ -15,7 +17,7 @@
   }
 
   .m-figure__image {
-    @include ft(s(2), s(4), padding-left padding-right);
+    @include f(s(2), s(4), padding-left padding-right);
     width: 100%;
   }
 

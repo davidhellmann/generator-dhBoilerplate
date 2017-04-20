@@ -38,3 +38,50 @@
 @mixin fc($args...) {
   @include flexcols($args...);
 }
+
+// Make Section Mixin
+@mixin make-section($behaviour: fixed) {
+  width: 100%;
+  @if $behaviour != 'fluid' {
+    max-width: $dh-maxWidth;
+  } @else {
+    max-width: none;
+  }
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  @include f($dh-gutterWidthMin * 2, $dh-gutterWidthMax * 2, padding-left padding-right);
+}
+
+@mixin make-row($factor: 1) {
+  display: flex;
+  flex-wrap: wrap;
+  @include f(-$dh-gutterWidthMin * $factor, -$dh-gutterWidthMax * $factor, margin-left margin-right);
+}
+
+// Make Col Mixin
+@mixin make-col($columns: 12) {
+  // Force Columns to 12 if it > as 12
+  @if $columns > $dh-columns {
+    $columns: $dh-columns;
+  }
+
+  // Basics
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+
+  // Col Width
+  max-width: $columns / 12 * 100%;
+  flex: 1 1 $columns / 12 * 100%;
+
+  // Set Padding
+  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
+}
+
+// Vertical Rhythmu Mixin
+@mixin make-vr($factor: 1) {
+  $multi: $factor * 2;
+  @include f($dh-gutterWidthMin * $multi, $dh-gutterWidthMax * $multi, margin-top);
+}
+

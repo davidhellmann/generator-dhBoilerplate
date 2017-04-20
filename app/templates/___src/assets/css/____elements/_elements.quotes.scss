@@ -3,11 +3,9 @@
 /* -------------------------------------------------- */
 
 blockquote {
-  margin: s(4) 0;
-
   p {
-    @include f(fs('ms2'), fs('ms3'));
-    font-weight: 700;
+    @include f(fs('ms0'), fs('ms3'));
+    font-style: italic;
 
     .wf-loaded & {
       font-family: ff('serif');
@@ -16,9 +14,11 @@ blockquote {
 
   footer {
     /* empty */
+    margin-top: s(1);
 
     cite {
       /* empty */
+      font-style: normal;
     }
   }
 }

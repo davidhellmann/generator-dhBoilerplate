@@ -2,8 +2,19 @@
 /*    Button
 /* -------------------------------------------------- */
 
+.m-buttonWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include media('>=m') {
+    @include make-col(8);
+    @include offset(2);
+  }
+}
+
 .m-button {
-  display: inline-block;
+  @include make-vr();
+  align-self: flex-start;
   font-size: fs('ms0');
   color: c('white');
   background-color: c('black-50');
@@ -34,25 +45,26 @@
   }
 
   &--secondary {
+    color: c('black-60');
     font-size: fs('ms-1');
-    background-color: c('black-70');
+    background-color: c('black-20');
   }
 
   &--secondary:hover {
-    color: c('white');
-    color: c('black-80');
+    color: c('black-70');
+    background-color: c('black-30');
   }
 
   &--left {
-    float: left;
+    align-self: flex-start;
   }
 
   &--center {
-    @include center();
+    align-self: center;
   }
 
   &--right {
-    float: right;
+    align-self: flex-end;
   }
 
   &--full {

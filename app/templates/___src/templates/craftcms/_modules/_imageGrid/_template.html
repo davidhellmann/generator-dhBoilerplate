@@ -8,48 +8,67 @@
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageGrid is defined ? data.settingsImageGrid %}
 {% set columns = settings.columns is defined ? '  ' ~ classname ~ '--' ~ settings.columns ~ 'columns' %}
-{% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
+
+{% if settings.imageRatio is defined %}
+  {% switch settings.imageRatio %}
+
+  {% case "landscape" %}
+  {% set ratio = '16:10' %}
+
+  {% case "square" %}
+  {% set ratio = '1:1' %}
+
+  {% case "portrait" %}
+  {% set ratio = '10:16' %}
+
+  {% endswitch %}
+
+{% else %}
+  {% set ratio = '' %}
+{% endif %}
 
 {# Modul #}
-<div class="{{ classname }}{{ columns }}">
-  {% for image in images %}
-    <figure class="m-figure  {{ classname ~ '__figure' }}">
-      {% set caption = image.groupedCaption is defined ? image.groupedCaption %}
-      {% if caption and settings.caption %}
-        {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle %}
-        {% set captionCaption = caption.caption is defined ? caption.caption %}
-        {% set captionSource = caption.source is defined ? caption.source %}
-        {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl %}
-      {% endif %}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <div class="{{ classname }}{{ columns }}">
+    {% for image in images %}
+      <figure class="m-figure  {{ classname ~ '__figure' }}">
+        {% set caption = image.groupedCaption is defined ? image.groupedCaption %}
+        {% if caption and settings.caption %}
+          {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle %}
+          {% set captionCaption = caption.caption is defined ? caption.caption %}
+          {% set captionSource = caption.source is defined ? caption.source %}
+          {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl %}
+        {% endif %}
 
-      {% set options = {
-        classname: 'm-image  ' ~ classname ~ '__image',
-        ratio: ratio
-      } %}
+        {% set options = {
+          classname: 'm-image  ' ~ classname ~ '__image',
+          ratio: ratio
+        } %}
 
-      {{ macroImage.image(image, options) }}
+        {{ macroImage.image(image, options) }}
 
-      {% if caption %}
-        <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
-          {% if captionTitle %}
-            <span class="m-caption__headline  {{ classname ~ '__captionHeadline' }}">
-          {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': '  }}
-        </span>
-          {% endif %}
-
-          <span class="m-caption__body  {{ classname ~ '__captionBody' }}">
-        {{ captionCaption|raw }}
-      </span>
-
-          {% if captionSourceUrl %}
-        &mdash; <a class="m-caption__link  {{ classname ~ '__captionLink' }}" href="{{ captionSourceUrl.url }}" target="_blank">
+        {% if caption %}
+          <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
+            {% if captionTitle %}
+              <span class="m-caption__headline  {{ classname ~ '__captionHeadline' }}">
+            {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': '  }}
+          </span>
             {% endif %}
-            {{ captionSource }}
+
+            <span class="m-caption__body  {{ classname ~ '__captionBody' }}">
+          {{ captionCaption|raw }}
+        </span>
+
             {% if captionSourceUrl %}
-          </a>
-          {% endif %}
-        </figcaption>
-      {% endif %}
-    </figure>
-  {% endfor %}
+          &mdash; <a class="m-caption__link  {{ classname ~ '__captionLink' }}" href="{{ captionSourceUrl.url }}" target="_blank">
+              {% endif %}
+              {{ captionSource }}
+              {% if captionSourceUrl %}
+            </a>
+            {% endif %}
+          </figcaption>
+        {% endif %}
+      </figure>
+    {% endfor %}
+  </div>
 </div>

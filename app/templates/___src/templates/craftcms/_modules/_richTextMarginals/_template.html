@@ -2,7 +2,13 @@
   Rich Text Marginals
   ===================
 #}
+
+{# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-richTextMarginals' %}
+
+{# -- Modul -- #}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <div class="o-row">
 {% if data.children is not empty %}
   {% set childs = data.children %}
   {% set firstColumn = false %}
@@ -22,14 +28,16 @@
       {% if firstColumn.children is not empty %}
         {% for marginalColumn in firstColumn.children %}
           <div class="{{ classname ~ '__aside' }}  {{ classname ~ '__aside--left' }}">
-            {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            <div class="o-row">
+              {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            </div>
           </div>
         {% endfor %}
       {% endif %}
     {% endif %}
 
     {# Rich Text Field #}
-    <div class="{{ classname }}">
+    <div class="o-col  {{ classname }}">
       {{ data.singleRichText }}
     </div>
 
@@ -40,12 +48,13 @@
       {% if lastColumn.children is not empty %}
         {% for marginalColumn in lastColumn.children %}
           <div class="{{ classname ~ '__aside' }}  {{ classname ~ '__aside--right' }}">
-            {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            <div class="o-row">
+              {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            </div>
           </div>
         {% endfor %}
       {% endif %}
     {% endif %}
-
   {% else %}
 
     {# Get first Marginal Column #}
@@ -58,14 +67,16 @@
       {% if firstColumn.children is not empty %}
         {% for marginalColumn in firstColumn.children %}
           <div class="{{ classname ~ '__aside' }}  {{ classname ~ '__aside--left' }}">
-            {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            <div class="o-row">
+              {% include '_contentBuilders/_contentBuilderModules' with { data: marginalColumn } %}
+            </div>
           </div>
         {% endfor %}
       {% endif %}
     {% endif %}
 
     {# Rich Text Field #}
-    <div class="{{ classname }}">
+    <div class="o-col  {{ classname }}">
       {{ data.singleRichText }}
     </div>
   {% endif %}
@@ -73,8 +84,10 @@
 {% else %}
 
   {# Rich Text Field #}
-  <div class="{{ classname }}">
+  <div class="o-col  {{ classname }}">
     {{ data.singleRichText }}
   </div>
 
 {% endif %}
+  </div>
+</div>

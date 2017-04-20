@@ -1,5 +1,8 @@
 import FontFaceObserver from 'fontfaceobserver'
 
+// Disable if you use WebFonts
+document.documentElement.className += " wf-loaded"
+
 /*
 const fontA = new FontFaceObserver('fontA')
 const fontB = new FontFaceObserver('fontB')

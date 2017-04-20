@@ -8,7 +8,8 @@
 {% set settings = data.settingsSeparator is defined ? data.settingsSeparator %}
 {% set fullWidth = settings.fullWidth is defined and settings.fullWidth ? '  ' ~ classname ~ '--width-full' : '' %}
 {% set style = settings.style is defined ? '  ' ~ classname ~ '--style-' ~ settings.style : '' %}
-{% set marginVertical = settings.marginVertical is defined ? '  ' ~ classname ~ '--marginVertical-' ~ settings.marginVertical %}
+
+{% set marginVertical = settings.marginVertical is defined and settings.marginVertical != 'default'  ? '' : '  ' ~ classname ~ '--marginVertical-' ~ settings.marginVertical %}
 
 {# Modul #}
 <hr class="{{ classname }}{{ fullWidth }}{{ style }}{{ marginVertical }}" role="separator">

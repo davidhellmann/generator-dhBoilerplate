@@ -3,24 +3,23 @@
 /* -------------------------------------------------- */
 
 .o-row {
-  width: 100%;
-  @include f(s(1), s(2), margin-top);
-  position: relative;
+  @include make-row();
+  background-color: rgba(c('blue'), 0.1);
 
-  &:first-child {
-    margin-top: 0;
+  &--imageCover {
+    @include make-row(3);
   }
-}
 
-// Different Alignments
-.o-row--left {
-  text-align: left;
-}
+  // Different Alignments
+  &--left {
+    text-align: left;
+  }
 
-.o-row--center {
-  text-align: center;
-}
+  &--center {
+    text-align: center;
+  }
 
-.o-row--right {
-  text-align: right;
+  &--right {
+    text-align: right;
+  }
 }

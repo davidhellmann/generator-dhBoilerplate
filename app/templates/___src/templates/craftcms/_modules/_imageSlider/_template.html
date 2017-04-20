@@ -7,18 +7,28 @@
 {% set classname = name is defined and name is not empty ? name : 'm-imageSlider' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageSlider is defined ? data.settingsImageSlider %}
-{% set pagination = settings.pagination is defined and settings.pagination ? 'true' : 'false' %}
-{% set navigation = settings.navigation is defined and settings.navigation ? 'true' : 'false' %}
-{% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
 
-{% set withNavi = '' %}
-{% if navigation == 'true' or pagination == 'true' %}
-  {% set withNavi = '  ' ~ classname ~ '--with-navi' %}
+{% if settings.imageRatio is defined %}
+  {% switch settings.imageRatio %}
+
+  {% case "landscape" %}
+  {% set ratio = '16:10' %}
+
+  {% case "square" %}
+  {% set ratio = '1:1' %}
+
+  {% case "portrait" %}
+  {% set ratio = '10:16' %}
+
+  {% endswitch %}
+
+{% else %}
+  {% set ratio = '' %}
 {% endif %}
 
 {# -- Modul -- #}
 <!-- Slider main container -->
-<figure class="{{ classname }}{{ withNavi }}  js-imageSlider"
+<figure class="{{ classname }}  js-imageSlider"
         data-flickity='{
           "cellAlign": "left",
           "contain": true,
@@ -27,8 +37,8 @@
           "selectedAttraction": 0.3,
           "groupCells": true,
           "imagesLoaded": true,
-          "prevNextButtons": {{ navigation }},
-          "pageDots": {{ pagination }},
+          "prevNextButtons": true,
+          "pageDots": true,
           "rightToLeft": false,
           "watchCSS": true
         }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">

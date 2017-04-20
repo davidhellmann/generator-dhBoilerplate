@@ -15,25 +15,31 @@
   target: cbButton and cbButton.target is defined and cbButton.target ? ' target=_blank' : '',
   style: cbButton and cbSettings.style is defined ? cbClassname ~ '--' ~ cbSettings.style : '',
   alignment: cbButton and cbSettings.alignment is defined ? cbClassname ~ '--' ~ cbSettings.alignment : '',
-  withIcon: cbButton and cbSettings.withIcon is defined ? cbSettings.withIcon : false,
-  icon: cbButton and cbSettings.icon is defined ? cbSettings.icon : '',
+  withIcon: false,
+  icon: '',
   text: cbButton and cbButton.text is defined and cbButton.text is not empty ? cbButton.text : 'Button'
 } %}
 
 {# -- Set Options -- #}
-{% if cbButton and options is not defined %}
+{% if cbButton and options is not null %}
   {% set options = defaults %}
 {% else %}
   {% set options = options ? defaults|merge(options) : defaults %}
 {% endif %}
 
 {# -- Modul -- #}
-<a itemprop="url"
-   role="button"
-   href="{{ options.url }}" {{ options.target }}
-   class="{{ options.classname }}  {{ options.style }}  {{ options.alignment }}">
+<div class="o-col  {{ options.classname ~ 'Wrapper' }}">
+  <a itemprop="url"
+     role="button"
+     href="{{ options.url }}" {{ options.target }}
+     class="{{ options.classname }}  {{ options.style }}  {{ options.alignment }}">
     {{ options.text }}
     {% if options.withIcon %}
-        {% include '_svg/' ~ options.icon ~ '.svg.html' %}
+      {% include '_svg/' ~ options.icon ~ '.svg.html' %}
     {% endif %}
-</a>
+  </a>
+</div>
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}
+

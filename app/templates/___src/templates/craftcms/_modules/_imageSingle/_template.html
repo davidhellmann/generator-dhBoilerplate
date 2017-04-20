@@ -3,7 +3,7 @@
   ===========
 #}
 
-{# Set Vars #}
+{# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-imageSingle' %}
 {% set image = data.singleImage.first() is defined ? data.singleImage.first() %}
 {% set settings = data.settingsImageSingle is defined ? data.settingsImageSingle %}
@@ -23,17 +23,58 @@
 
 {% set imagePosition = settings.imagePosition is defined ? '  ' ~ classname ~ '--image-' ~ settings.imagePosition %}
 {% set imageWidth = settings.imageWidth is defined ? '  ' ~ classname ~ '--image-' ~ settings.imageWidth : '  ' ~ classname ~ '--image-full' %}
-{% set ratio = settings.imageRatio is defined and settings.imageRatio != 'default' ? settings.imageRatio : '' %}
 
-{# Modul #}
-<div class="{{ classname }}{{ imagePosition }}{{ imageWidth }}">
-  {% set options = {
-    captionTitle: captionTitle,
-    caption: captionCaption,
-    captionSource: captionSource,
-    captionSourceUrl: captionSourceUrl,
-    ratio: ratio
-  } %}
+{% if settings.imageRatio is defined %}
+  {% switch settings.imageRatio %}
 
-  {{ macroImage.image(image, options) }}
+  {% case "landscape" %}
+  {% set ratio = '16:10' %}
+
+  {% case "square" %}
+  {% set ratio = '1:1' %}
+
+  {% case "portrait" %}
+  {% set ratio = '10:16' %}
+
+  {% endswitch %}
+
+{% else %}
+  {% set ratio = '' %}
+{% endif %}
+
+{# -- Modul -- #}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <div class="{{ classname }}{{ imagePosition }}{{ imageWidth }}">
+    <figure class="m-figure  {{ classname ~ '__figure' }}">
+
+      {% set options = {
+        ratio: ratio
+      } %}
+
+      {{ macroImage.image(image, options) }}
+
+      {% if caption %}
+        <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
+          {% if captionTitle %}
+            <span class="m-caption__headline  {{ classname ~ '__captionHeadline' }}">
+            {{ captionTitle|raw }}{{ captionCaption and captionTitle ? ': ' }}
+          </span>
+          {% endif %}
+
+          <span class="m-caption__body  {{ classname ~ '__captionBody' }}">
+          {{ captionCaption|raw }}
+        </span>
+
+          {% if captionSourceUrl %}
+        &mdash; <a class="m-caption__link  {{ classname ~ '__captionLink' }}" href="{{ captionSourceUrl.url }}"
+                   target="_blank">
+            {% endif %}
+            {{ captionSource }}
+            {% if captionSourceUrl %}
+          </a>
+          {% endif %}
+        </figcaption>
+      {% endif %}
+    </figure>
+  </div>
 </div>

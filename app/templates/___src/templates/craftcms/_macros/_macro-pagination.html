@@ -22,7 +22,7 @@
   @param {string}  options.jumpText      - Titletext for Jump
 #}
 {% macro pagination(pages,craft,options) %}
-  {% set opt = {
+  {% set defaults = {
   'class': 'm-pagination',
   'searchquery': false,
   'pagenumber': 5,
@@ -38,7 +38,7 @@
   } %}
 
   {# Merge Options with Defaults #}
-  {% set options = options ? opt|merge(options) : opt %}
+  {% set options = options ? defaults|merge(options) : defaults %}
 
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}

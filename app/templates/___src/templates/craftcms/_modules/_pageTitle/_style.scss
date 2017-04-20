@@ -5,6 +5,6 @@
 .m-pageTitle {
   @include fb(true);
   @include center();
-  @include ft(s(2), s(4), padding-left padding-right);
-  @include ft(s(4), s(8), padding-top);
+  @include f(s(2), s(4), padding-left padding-right);
+  @include f(s(4), s(8), padding-top);
 }
