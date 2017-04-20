@@ -27,9 +27,15 @@
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
 ```
 
+## Install dhBoilerplate
 ```
-// Install dhBoilerplate Globally
-npm i generator-dhboilerplate
+npm i generator-dhboilerplate -g
+```
+
+## Start Generator
+```
+// Go to your project directory and do that
+yo
 ```
 
 ## Intro
