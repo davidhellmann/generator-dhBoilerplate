@@ -4,7 +4,6 @@
   "description": "<%= projectDescription %>",
   "version": "<%= projectVersion %>",
   "license": "MIT",
-  "repository": "…",
   "author": {
     "name": "<%= projectAuthor %>",
     "email": "<%= projectMail %>",
@@ -34,11 +33,12 @@
     "aliasify": "^2.0.0",
     "ansi-html": "^0.0.6",
     "autoprefixer": "^6.3.3",
-    "babel": "^6.5.2",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.5.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-es2015-native-modules": "^6.9.4",
     "babel-runtime": "^6.11.6",
@@ -150,10 +150,13 @@
   },
   "browser": {
     <% if (projectjQuery) { %>
-    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "jquery": "./node_modules/jquery/dist/jquery.js"
+    <% } %>
+    <% if (projectjQuery && projectVue == true) { %>
+      ,
     <% } %>
     <% if (projectVue == true ) { %>
-    "vue": "vue/dist/vue.common",
+    "vue": "vue/dist/vue.common"
     <% } %>
   },
   "browserify": {

@@ -21,19 +21,19 @@
 {% macro bgImage(image, options) %}
 
   {% set defaults = {
-    classname: 'm-bgImage',
-    sizes: [
-      { width: 1400 },
-      { width: 1100 },
-      { width: 800 },
-      { width: 500 },
-      { width: 300 },
-      { width: 30 }
-    ],
-    quality: 80,
-    mode: 'crop',
-    position: false,
-    ratio: false
+  classname: 'm-bgImage',
+  sizes: [
+  { width: 1400 },
+  { width: 1100 },
+  { width: 800 },
+  { width: 500 },
+  { width: 300 },
+  { width: 30 }
+  ],
+  quality: 80,
+  mode: 'crop',
+  position: false,
+  ratio: false
   } %}
 
   {% set options = options ? defaults|merge(options) : defaults %}
@@ -68,14 +68,15 @@
     {# -- BG Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
 
-    <div class="{{ options.class }}  {{ options.ratio ? 'o-ratio  o-ratio--' ~ options.ratio|replace({":": "-"}) : '' }}">
-      <figure class="{{ options.class ~ '__figure' }}  o-ratio__content  lazyload"
-              style="background-image: url('{{ images|last.url }}');
-                     background-position: {{ position|trim("'") }};"
-              data-bgset="{{ craft.imager.srcset(images) }}"
-              data-sizes="auto">
-      </figure>
-    </div>
+    <figure class="{{ options.classname }}  lazyload"
+            style="background-image: url('{{ images|last.url }}');
+              background-position: {{ position|trim("'") }};"
+            data-bgset="{{ craft.imager.srcset(images) }}"
+            data-sizes="auto">
+    </figure>
   {% endif %}
 {% endmacro %}
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}
 

@@ -5,7 +5,7 @@
 .o-box {
   @include clearfix;
   display: block;
-  padding: s(1);
+  padding: s(2);
 
   > :last-child {
     margin-bottom: 0;
@@ -18,13 +18,13 @@
 }
 
 .o-box--small {
-  padding: s(2);
+  padding: s(4);
 }
 
 .o-box--large {
-  padding: s(3);
+  padding: s(6);
 }
 
 .o-box--huge {
-  padding: s(4);
+  padding: s(8);
 }

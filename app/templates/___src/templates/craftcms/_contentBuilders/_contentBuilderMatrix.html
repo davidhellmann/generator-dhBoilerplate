@@ -20,8 +20,8 @@
         <div class="o-section  m-contentBuilder__section">
 
       {% elseif content.type != 'contentSection' %}
-        <div class="o-block  o-block--left  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
-          <div class="o-block__inner  m-contentBuilder__blockInner  m-contentBuilder__blockInner--{{ content.type }}">
+        <div class="o-row  o-row--left  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+          <div class="o-row__inner  m-contentBuilder__blockInner  m-contentBuilder__blockInner--{{ content.type }}">
             {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
           </div>
         </div>

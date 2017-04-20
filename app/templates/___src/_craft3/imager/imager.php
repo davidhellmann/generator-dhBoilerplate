@@ -19,9 +19,14 @@
  */
 
 return array(
-  'imagerSystemPath' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/imager/',
-  'imagerUrl' => '/uploads/imager/',
-  'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
-  'instanceReuseEnabled' => false,
-  'allowUpscale' => false
+    'imagerSystemPath' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/imager/',
+    'imagerUrl' => '/uploads/imager/',
+    'interlace' => true, // false, true ('line'), 'none', 'line', 'plane', 'partition'x
+    'instanceReuseEnabled' => true,
+    'allowUpscale' => false,
+    'hashFilename' => false,
+    'cacheDuration' => 24192000,
+    'jpegQuality' => 80,
+    'pngCompressionLevel' => 2,
+    'webpQuality' => 80
 );

@@ -1,0 +1,89 @@
+/* -------------------------------------------------- */
+/*    Image Single
+/* -------------------------------------------------- */
+
+.m-imageSingleWrapper {
+  /* empty */
+}
+
+.m-imageSingle {
+  .m-figure {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+  }
+
+  .m-figure__image {
+    @include f(s(2), s(4), padding-left padding-right);
+    width: 100%;
+  }
+
+  .m-figure__imageBackground {
+    background-color: c('black');
+  }
+
+  // Image Position
+  &--image-left {
+    .m-figure__image {
+      float: left;
+    }
+  }
+
+  &--image-center {
+    .m-figure__image {
+      float: none;
+      margin: 0 auto;
+    }
+  }
+
+  &--image-right {
+    .m-figure__image {
+      float: right;
+
+      @include media('>=m') {
+        order: 1;
+      }
+    }
+  }
+
+  // Image Width
+  &--image-full {
+    @include media('>=m') {
+      .m-figure__image {
+        width: 100%;
+      }
+
+      .m-caption {
+        width: 100%;
+        margin-top: s(1);
+      }
+    }
+  }
+
+  &--image-threeQuarter {
+    @include media('>=m') {
+      .m-figure__image {
+        width: 75%;
+      }
+
+      .m-caption {
+        width: 25%;
+      }
+    }
+  }
+
+  &--image-half {
+    @include media('>=m') {
+      .m-figure__image {
+        width: 50%;
+      }
+
+      .m-caption {
+        width: 50%;
+      }
+    }
+  }
+}

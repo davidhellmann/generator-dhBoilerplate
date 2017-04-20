@@ -1,0 +1,25 @@
+/* -------------------------------------------------- */
+/*    .o-row
+/* -------------------------------------------------- */
+
+.o-row {
+  @include make-row();
+  // background-color: rgba(c('blue'), 0.1);
+
+  &--imageCover {
+    @include make-row(3);
+  }
+
+  // Different Alignments
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}

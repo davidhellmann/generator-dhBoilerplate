@@ -22,21 +22,20 @@ $customConfig = array(
             'de' => CRAFT_SITE_URL,
             'en' => CRAFT_SITE_URL . 'en'
         ),
-        <% } else {
-        %>
+        <% } else { %>
         'siteUrl' => CRAFT_SITE_URL,
         <% } %>
         'environmentVariables' => array(
-        'rootUrl' => CRAFT_SITE_URL,
-        'basePath' => BASEPATH,
-        'pubPath' => PUBPATH,
-        'uploadPath' => PUBPATH . 'uploads',
-        'uploadUrl' => CRAFT_SITE_URL . 'uploads',
-        // 'imagePath' => PUBPATH . 'uploads/images',
-        // 'imageUrl' => CRAFT_SITE_URL . 'uploads/images',
-        // 'assetsPath' => PUBPATH . 'assets',
-        // 'assetsUrl' => CRAFT_SITE_URL . 'assets',
-),
+            'rootUrl' => CRAFT_SITE_URL,
+            'basePath' => BASEPATH,
+            'pubPath' => PUBPATH,
+            'uploadPath' => PUBPATH . 'uploads',
+            'uploadUrl' => CRAFT_SITE_URL . 'uploads',
+            // 'imagePath' => PUBPATH . 'uploads/images',
+            // 'imageUrl' => CRAFT_SITE_URL . 'uploads/images',
+            // 'assetsPath' => PUBPATH . 'assets',
+            // 'assetsUrl' => CRAFT_SITE_URL . 'assets',
+        ),
 
         'addTrailingSlashesToUrls' => false,
         'limitAutoSlugsToAscii' => true, // default false
@@ -48,8 +47,8 @@ $customConfig = array(
         'imageDriver' => 'imagick',
         'maxUploadFileSize' => '16777216', // 16MB
         'rotateImagesOnUploadByExifData' => false,
-        'environment' => CRAFT_ENVIRONMENT,
-    ),
+        'environment' => CRAFT_ENVIRONMENT
+    )
 
     // You can add additional environments here, but I'd recommend creating individual config.{CRAFT_ENVIRONMENT}.php files instead
 

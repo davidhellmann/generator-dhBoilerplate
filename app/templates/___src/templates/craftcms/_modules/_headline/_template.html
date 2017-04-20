@@ -1,0 +1,35 @@
+{#
+  Headline
+  ========
+#}
+
+{# -- Set Vars -- #}
+{% set cbClassname = name is defined and name is not empty ? name : 'm-headline' %}
+{% set cbHeadline = data.singleHeadline is defined ? data.singleHeadline %}
+{% set cbSettings = data.settingsHeadline is defined ? data.settingsHeadline %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: cbHeadline ? cbClassname : 'm-headline',
+  text: cbHeadline ? cbHeadline : 'Headline',
+  size: cbHeadline and cbSettings.size is defined ? cbSettings.size : 'h2'
+} %}
+
+{# -- Set Options -- #}
+{% if cbHeadline and options is not null %}
+  {% set options = defaults %}
+{% else %}
+  {% set options = options ? defaults|merge(options) : defaults %}
+{% endif %}
+
+{# -- Modul -- #}
+<div class="o-col  {{ options.classname ~ 'Wrapper' }}">
+  <{{ options.size }} class="{{ options.classname }}">
+    {{ options.text }}
+  </{{ options.size }}>
+</div>
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}
+
+

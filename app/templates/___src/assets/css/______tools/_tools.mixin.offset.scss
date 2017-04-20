@@ -1,0 +1,11 @@
+/* -------------------------------------------------- */
+/*    Offset
+/* -------------------------------------------------- */
+
+@mixin offset($columns) {
+  @if $columns > 0 {
+    margin-left: $columns / 12 * 100%;
+  } @else if $columns < 1 {
+    margin-left: 0;
+  }
+}

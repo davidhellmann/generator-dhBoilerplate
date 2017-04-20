@@ -22,9 +22,9 @@ import './scripts/fontfaceobserver'
 
 <% if (projectUsage == 'Craft CMS' ) { %>
 // Content Builder Modules
-import '../../templates/_modules/_contentBuilder/_accordion/_accordion.script'
-import '../../templates/_modules/_contentBuilder/_imageSlider/_imageSlider.script'
-import '../../templates/_modules/_contentBuilder/_imageGallery/_imageGallery.script'
+import '../../templates/_modules/_accordion/_main'
+import '../../templates/_modules/_imageSlider/_main'
+import '../../templates/_modules/_imageGallery/_main'
 <% } %>
 
 // Debugging

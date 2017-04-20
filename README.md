@@ -41,69 +41,66 @@ Also big thanks to [Martin Herweg](https://github.com/martinherweg) and his [YO 
 And last but not least thanks to all members from our Slack Channel [webdevs](http://webdevs.xyz/) — feel free to join us.
 
 
-## What is inside
+## What's inside? A lot! :-)
 ### This three scenarios are covered by the generator:
-- Prototyping (with Twig)
-- WordPress with a basic Starter Kit (WordPress itself must be Installed by Hand after the first `gulp init`)
-- Craft CMS with a basic Starter Kit (Craft CMS itself must be Installed by Hand after the first `gulp init`)
+- Craft CMS — Up to Date
+- Craft CMS Beta 3 — Not for production
+- WordPress — No up to date but a good startpoint
+- Prototyping (with Twig) — No up to date but a good startpoint
+
+### Settings
+You can find this stuff here: `___src/assets/css/_______settings`
+
+- **_settings.borderradius.scss**
+- **_settings.boxshadows.scss**
+- **_settings.breakpoints.scss**
+- **_settings.colors.scss**
+- **_settings.easings.scss**
+- **_settings.fontfamilies.scss**
+- **_settings.fonts.scss**
+- **_settings.fontsizes.scss**
+- **_settings.grid.scss**
+
 
 ### Sass Functions
+You can find this stuff here: `___src/assets/css/______tools`
+
 - `borderradius('level-x')` or `br('level-x')`
 - `boxshadow('level-x')` or `bs('level-x')`
-- `color('color-name')` or `c('color-name')`
+- `color('color-name')` or `c('color-name')
 - `ease('easing-name')` or `e('easing-name')`
 - `fontfamily('font-name')` or `ff('font-name')`
-- `space(i)` or `s(i)`
-- `verticalrhythm(i)` or `vr(i)`
+- `space(i)` or `s(i)` to use the default spacing with a custom multiplicator => **_settings.grid.scss**
+
 
 ### Sass Mixins
-- `@include center`
-- `@include clearfix`
-- `@include container('full')` 'full' ist optional
-- `@include cols(i)`
-- `@include filter(filter-name, value%)`
-- `@include fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include ft($properties, $min-vw, $max-vw, $min-value, $max-value)`
-- `@include flexbox('full')` or `@include fb('full')` 'full' is optional
-- `@include flexcols(i)` or `@include fc(i)`
-- `@include fontsize('base', 1)` or `@include fs('base', 1)`
-- `@include gutter(i)`or `@include g(i)`
-- `@include pull(i)`
-- `@include push(i)`
-- `@include valign`
-- `@include visuallyhidden` or `@include vh`
+You can find this stuff here: `___src/assets/css/_______settings`
 
-
-## Install
-```
-$ npm install -g generator-dhboilerplate
-```
-
-
-## Usage
-Jump in your Working Directory and type:
-
-```
-yo dhboilerplate
-```
-Run through the options. When you're done grab a coffee. The node module installation take a while :)
+- `@include center` — to center an element.
+- `@include clearfix` — add clearfix stuff magix.
+- `@include filter(filter-name, value%)` — to use CSS Filters
+- `@include fluid($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include f($properties, $min-vw, $max-vw, $min-value, $max-value)` — to use Fluid CSS Properties dependent to the current viewport. Next level shit!
+- `@include fontsize('base', 1)` or `@include fs('base', 1)` — to set a Font Family in Combination with Line Height. Default Line Height => **_settings.fontssizes.scss**
+- `@include offsett(i)` — to set an offset for a column. It use **margin-left** to do that.
+- `@include push(i)` — to push a column. It use **left** to do that.
+- `@include pull(i)` — to pull a column. It use **right** to do that.
+- `@include valign` — to arrange a element vertical centered.
+- `@include visuallyhidden` or `@include vh` — to hide an element visual.
 
 
 ## Install NPM Packages
-
 ```
 npm install // yarn install
 ```
 
 
 ## Initialize Project
-
 ```
 gulp init  // npm run init OR yarn init
 ```
 
 
 ### Default Task with BrowserSync
-
 ```
 gulp // npm run dev OR yarn dev
 ```
@@ -119,7 +116,6 @@ gulp build // npm run build OR yarn build
 
 ### Other Tasks
 There are some other Tasks there…
-
 ```
 // NPM RUN / YARN COMMANDS
 "start": "gulp init",
@@ -134,6 +130,7 @@ There are some other Tasks there…
 "copy:fonts": "gulp copy:fonts",
 "copy:images": "gulp images",
 "copy:favicon": "gulp favicon",
+"copy:inlinejs": "gulp inlineJS",
 "copy:svg": "gulp svg",
 "copy:single": "gulp svg-single",
 "copy:sprite": "gulp svg-sprite",
@@ -147,11 +144,11 @@ gulp clean:css
 gulp clean:js
 gulp clean:images
 
-
 // Main Tasks
 // All this are triggered within "gulp init" & "gulp build" task.
 // Some of this are triggered within the "gulp" task.
 gulp templates
+gulp inlineJS,
 gulp systemFiles
 gulp modernizr
 gulp compile:js
@@ -161,14 +158,13 @@ gulp images
 gulp svg-single
 gulp svg-sprite
 
-
 // Minify Tasks
 // This task are triggered within the "guld build" task.
 gulp minify:js
 gulp minify:sass
 gulp minify:images
-
 ```
+
 
 ## Thanks to
 - webdevs - for so many things: [Website](http://webdevs.xyz)

@@ -1,0 +1,10 @@
+/* -------------------------------------------------- */
+/*    .m-appHeader
+/* -------------------------------------------------- */
+
+.m-appHeader {
+  @include fb();
+  background-color: c('black-10');
+  @include f(s(1), s(2), padding-left padding-right);
+  @include f(s(2), s(4), padding-top padding-bottom);
+}

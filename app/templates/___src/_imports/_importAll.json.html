@@ -35,12 +35,24 @@
       "name": "News",
       "handle": "news",
       "type": "channel",
-      "enableVersioning": 0,
+      "enableVersioning": 1,
       "typesettings": {
         "hasUrls": 1,
-        "template": "news\/_entry",
-        "urlFormat": "news\/{postDate.year}\/{slug}",
+        "template": "channels\/news\/_entry",
+        "urlFormat": "n\/{slug}",
         "nestedUrlFormat": null
+      }
+    },
+    {
+      "name": "Pages",
+      "handle": "pages",
+      "type": "structure",
+      "enableVersioning": 1,
+      "typesettings": {
+        "hasUrls": 1,
+        "template": "structures\/pages\/_entry",
+        "urlFormat": "p\/{slug}",
+        "nestedUrlFormat": "{parent.uri}\/{slug}"
       }
     }
   ],
@@ -573,34 +585,6 @@
                     }
                   ]
                 }
-              },
-              "new3": {
-                "name": "With Icon",
-                "handle": "withIcon",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new4": {
-                "name": "Icon",
-                "handle": "icon",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Icon Sample",
-                      "value": "iconSample",
-                      "default": 1
-                    }
-                  ]
-                }
               }
             }
           }
@@ -862,30 +846,14 @@
           "new": {
             "fields": {
               "new1": {
-                "name": "Indented",
-                "handle": "indented",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new2": {
-                "name": "Semantic Size",
-                "handle": "semanticSize",
+                "name": "Size",
+                "handle": "size",
                 "instructions": "",
                 "required": 0,
                 "type": "Dropdown",
                 "width": "",
                 "typesettings": {
                   "options": [
-                    {
-                      "label": "H1",
-                      "value": "h1",
-                      "default": ""
-                    },
                     {
                       "label": "H2",
                       "value": "h2",
@@ -908,53 +876,6 @@
                     },
                     {
                       "label": "H6",
-                      "value": "h6",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new3": {
-                "name": "Visual Size",
-                "handle": "visualSize",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Default",
-                      "value": "default",
-                      "default": 1
-                    },
-                    {
-                      "label": "Looks like H1",
-                      "value": "h1",
-                      "default": ""
-                    },
-                    {
-                      "label": "Looks like H2",
-                      "value": "h2",
-                      "default": ""
-                    },
-                    {
-                      "label": "Looks like H3",
-                      "value": "h3",
-                      "default": ""
-                    },
-                    {
-                      "label": "Looks like H4",
-                      "value": "h4",
-                      "default": ""
-                    },
-                    {
-                      "label": "Looks like H5",
-                      "value": "h5",
-                      "default": ""
-                    },
-                    {
-                      "label": "Looks like H6",
                       "value": "h6",
                       "default": ""
                     }
@@ -1155,68 +1076,6 @@
                 }
               },
               "new2": {
-                "name": "Image Position",
-                "handle": "imagePosition",
-                "instructions": "",
-                "required": 0,
-                "type": "Dropdown",
-                "width": "",
-                "typesettings": {
-                  "options": [
-                    {
-                      "label": "Focalpoint",
-                      "value": "focalpoint",
-                      "default": 1
-                    },
-                    {
-                      "label": "Left : Top",
-                      "value": "0% 0%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Left : Center",
-                      "value": "0% 50%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Left : Bottom",
-                      "value": "0% 100%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Center : Top",
-                      "value": "50% 0%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Center : Center",
-                      "value": "50% 50%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Center : Bottom",
-                      "value": "50% 100%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right : Top",
-                      "value": "100% 0%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right : Center",
-                      "value": "100% 50%",
-                      "default": ""
-                    },
-                    {
-                      "label": "Right : Bottom",
-                      "value": "100% 100%",
-                      "default": ""
-                    }
-                  ]
-                }
-              },
-              "new3": {
                 "name": "Image Thumbs Ratio",
                 "handle": "imageThumbsRatio",
                 "instructions": "",
@@ -1226,58 +1085,18 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "16:10",
-                      "value": "16:10",
+                      "label": "Landscape",
+                      "value": "landscape",
                       "default": ""
                     },
                     {
-                      "label": "16:9",
-                      "value": "16:9",
-                      "default": ""
-                    },
-                    {
-                      "label": "4:3",
-                      "value": "4:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:2",
-                      "value": "3:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "2:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:1",
-                      "value": "1:1",
+                      "label": "Square",
+                      "value": "square",
                       "default": 1
                     },
                     {
-                      "label": "1:2",
-                      "value": "1:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:3",
-                      "value": "2:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:4",
-                      "value": "3:4",
-                      "default": ""
-                    },
-                    {
-                      "label": "9:16",
-                      "value": "9:16",
-                      "default": ""
-                    },
-                    {
-                      "label": "10:16",
-                      "value": "10:16",
+                      "label": "Portrait",
+                      "value": "portrait",
                       "default": ""
                     }
                   ]
@@ -1351,63 +1170,18 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Default",
-                      "value": "default",
+                      "label": "Landscape",
+                      "value": "landscape",
+                      "default": ""
+                    },
+                    {
+                      "label": "Square",
+                      "value": "square",
                       "default": 1
                     },
                     {
-                      "label": "16:10",
-                      "value": "16:10",
-                      "default": ""
-                    },
-                    {
-                      "label": "16:9",
-                      "value": "16:9",
-                      "default": ""
-                    },
-                    {
-                      "label": "4:3",
-                      "value": "4:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:2",
-                      "value": "3:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "2:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:1",
-                      "value": "1:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:2",
-                      "value": "1:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:3",
-                      "value": "2:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:4",
-                      "value": "3:4",
-                      "default": ""
-                    },
-                    {
-                      "label": "9:16",
-                      "value": "9:16",
-                      "default": ""
-                    },
-                    {
-                      "label": "10:16",
-                      "value": "10:16",
+                      "label": "Portrait",
+                      "value": "portrait",
                       "default": ""
                     }
                   ]
@@ -1481,63 +1255,18 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "Default",
-                      "value": "default",
+                      "label": "Landscape",
+                      "value": "landscape",
                       "default": 1
                     },
                     {
-                      "label": "16:10",
-                      "value": "16:10",
+                      "label": "Square",
+                      "value": "square",
                       "default": ""
                     },
                     {
-                      "label": "16:9",
-                      "value": "16:9",
-                      "default": ""
-                    },
-                    {
-                      "label": "4:3",
-                      "value": "4:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:2",
-                      "value": "3:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "2:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:1",
-                      "value": "1:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:2",
-                      "value": "1:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:3",
-                      "value": "2:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:4",
-                      "value": "3:4",
-                      "default": ""
-                    },
-                    {
-                      "label": "9:16",
-                      "value": "9:16",
-                      "default": ""
-                    },
-                    {
-                      "label": "10:16",
-                      "value": "10:16",
+                      "label": "Portrait",
+                      "value": "portrait",
                       "default": ""
                     }
                   ]
@@ -1600,83 +1329,21 @@
                 "typesettings": {
                   "options": [
                     {
-                      "label": "16:10",
-                      "value": "16:10",
+                      "label": "Landscape",
+                      "value": "landscape",
                       "default": 1
                     },
                     {
-                      "label": "16:9",
-                      "value": "16:9",
+                      "label": "Square",
+                      "value": "square",
                       "default": ""
                     },
                     {
-                      "label": "4:3",
-                      "value": "4:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:2",
-                      "value": "3:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:1",
-                      "value": "2:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:1",
-                      "value": "1:1",
-                      "default": ""
-                    },
-                    {
-                      "label": "1:2",
-                      "value": "1:2",
-                      "default": ""
-                    },
-                    {
-                      "label": "2:3",
-                      "value": "2:3",
-                      "default": ""
-                    },
-                    {
-                      "label": "3:4",
-                      "value": "3:4",
-                      "default": ""
-                    },
-                    {
-                      "label": "9:16",
-                      "value": "9:16",
-                      "default": ""
-                    },
-                    {
-                      "label": "10:16",
-                      "value": "10:16",
+                      "label": "Portrait",
+                      "value": "portrait",
                       "default": ""
                     }
                   ]
-                }
-              },
-              "new2": {
-                "name": "Navigation",
-                "handle": "navigation",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": 1
-                }
-              },
-              "new3": {
-                "name": "Pagination",
-                "handle": "pagination",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": 1
                 }
               }
             }
@@ -1752,14 +1419,14 @@
                       "default": ""
                     },
                     {
-                      "label": "Small",
-                      "value": "small",
-                      "default": ""
+                      "label": "Default",
+                      "value": "default",
+                      "default": 1
                     },
                     {
                       "label": "Medium",
                       "value": "medium",
-                      "default": 1
+                      "default": ""
                     },
                     {
                       "label": "Large",
@@ -1790,17 +1457,6 @@
           "new": {
             "fields": {
               "new1": {
-                "name": "Full Width",
-                "handle": "fullWidth",
-                "instructions": "",
-                "required": 0,
-                "type": "Lightswitch",
-                "width": "",
-                "typesettings": {
-                  "default": ""
-                }
-              },
-              "new2": {
                 "name": "Style",
                 "handle": "style",
                 "instructions": "",
@@ -1817,7 +1473,7 @@
                   ]
                 }
               },
-              "new3": {
+              "new2": {
                 "name": "Margin Vertical",
                 "handle": "marginVertical",
                 "instructions": "",
@@ -1832,8 +1488,8 @@
                       "default": ""
                     },
                     {
-                      "label": "Small",
-                      "value": "small",
+                      "label": "Default",
+                      "value": "default",
                       "default": 1
                     },
                     {
@@ -2641,6 +2297,14 @@
           "pluginSeomatic"
         ]
       }
+    },
+    {
+      "sectionHandle": "pages",
+      "hasTitleField": 1,
+      "titleLabel": "Title",
+      "name": "Pages",
+      "handle": "pages",
+      "fieldLayout": []
     }
   ],
   "sources": [
@@ -2725,46 +2389,12 @@
       "template": "",
       "maxLevels": null,
       "locales": {
-        "en": {
+        "de": {
           "urlFormat": "default\/{slug}",
           "nestedUrlFormat": "{parent.uri}\/{slug}"
         }
       },
       "fieldLayout": []
-    }
-  ],
-  "users": [
-    {
-      "enabled": 1,
-      "archived": 0,
-      "locale": "en",
-      "localeEnabled": true,
-      "username": "davidhellmann",
-      "firstName": "David",
-      "lastName": "Hellmann",
-      "email": "david@fredmansky.at",
-      "weekStartDay": 1,
-      "admin": 1,
-      "client": 0,
-      "locked": 0,
-      "suspended": 0,
-      "pending": 0
-    },
-    {
-      "enabled": 1,
-      "archived": 0,
-      "locale": "en",
-      "localeEnabled": true,
-      "username": "superuser",
-      "firstName": "Super",
-      "lastName": "User",
-      "email": "super@user.com",
-      "weekStartDay": 1,
-      "admin": 1,
-      "client": 0,
-      "locked": 0,
-      "suspended": 0,
-      "pending": 0
     }
   ]
 }

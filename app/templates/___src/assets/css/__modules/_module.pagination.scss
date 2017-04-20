@@ -2,11 +2,13 @@
 /*    Pagination
 /* -------------------------------------------------- */
 
+.m-paginationWrapper {
+  /* empty */
+}
+
 .m-pagination {
-  @include fb(true);
-  @include center();
-  @include fluid-type(vr(1), vr(2), padding-top);
-  @include fluid-type(vr(1), vr(4), padding-bottom);
+  @include make-vr();
+  width: 100%;
   list-style: none;
   position: relative;
   display: flex;

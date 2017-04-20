@@ -3,13 +3,15 @@
 /* -------------------------------------------------- */
 
 html {
-  @include ft($msFont-min, $msFont-max);
+  @include f($msFont-min, $msFont-max);
   line-height: $lineHeight-base;
 }
 
 body {
+  /* stylelint-disable */
   .js &.is-navOpen {
     height: 100vh;
     overflow: hidden;
   }
+  /* stylelint-enable */
 }

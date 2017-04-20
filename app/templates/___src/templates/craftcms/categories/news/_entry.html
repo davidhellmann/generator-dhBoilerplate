@@ -28,7 +28,7 @@
 {% block appContent %}
 
   {# Include Page Title #}
-  {% include '_modules/_pageTitle/_pageTitle.template.html' with { object: category } %}
+  {% include '_modules/_pageTitle/_template.html' with { object: category } %}
 
   <div class="m-news">
     {% for entry in pageEntries %}

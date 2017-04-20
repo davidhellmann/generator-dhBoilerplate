@@ -16,30 +16,30 @@ h6 {
 
 h1,
 .m-headline--h1 {
-  @include ft(fs('ms3'), fs('ms5'));
+  @include f(fs('ms3'), fs('ms5'));
 }
 
 h2,
 .m-headline--h2 {
-  @include ft(fs('ms2'), fs('ms4'));
+  @include f(fs('ms2'), fs('ms4'));
 }
 
 h3,
 .m-headline--h3 {
-  @include ft(fs('ms1'), fs('ms3'));
+  @include f(fs('ms1'), fs('ms3'));
 }
 
 h4,
 .m-headline--h4 {
-  @include ft(fs('ms0'), fs('ms2'));
+  @include f(fs('ms0'), fs('ms2'));
 }
 
 h5,
 .m-headline--h5 {
-  @include ft(fs('ms0'), fs('ms2'));
+  @include f(fs('ms0'), fs('ms2'));
 }
 
 h6,
 .m-headline--h6 {
-  @include ft(fs('ms0'), fs('ms2'));
+  @include f(fs('ms0'), fs('ms2'));
 }

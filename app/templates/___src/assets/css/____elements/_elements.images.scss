@@ -4,11 +4,7 @@
 
 img {
   max-width: 100%;
+  height: auto;
   font-style: italic;
   vertical-align: middle;
-}
-
-img[width],
-img[height] {
-  max-width: none;
 }

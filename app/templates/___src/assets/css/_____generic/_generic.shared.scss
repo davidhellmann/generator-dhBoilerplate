@@ -11,7 +11,7 @@ figure,
 hr,
 table,
 fieldset {
-  margin-bottom: vr(1);
+  @include make-vr();
 }
 
 // Consistent indentation for lists.

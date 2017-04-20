@@ -22,7 +22,7 @@
   @param {string}  options.jumpText      - Titletext for Jump
 #}
 {% macro pagination(pages,craft,options) %}
-  {% set opt = {
+  {% set defaults = {
   'class': 'm-pagination',
   'searchquery': false,
   'pagenumber': 5,
@@ -38,47 +38,48 @@
   } %}
 
   {# Merge Options with Defaults #}
-  {% set options = options ? opt|merge(options) : opt %}
+  {% set options = options ? defaults|merge(options) : defaults %}
 
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}
+    <div class="o-col  {{ options.class ~ 'Wrapper' }}">
+      <nav class="{{ options.class }}" role="navigation">
+        {# Dont display last page when on the first Page #}
+        {% if pages.currentPage > 2 and pages.prevUrl %}
+          <a class="{{ options.class }}__link" href="{{ pages.firstUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.firstPageText }}">{{ options.fistPageSign|raw }}</a>
+        {% endif %}
 
-    <nav class="{{ options.class }}" role="navigation">
-      {# Dont display last page when on the first Page #}
-      {% if pages.currentPage > 2 and pages.prevUrl %}
-        <a class="{{ options.class }}__link" href="{{ pages.firstUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.firstPageText }}">{{ options.fistPageSign|raw }}</a>
-      {% endif %}
+        {# Display the Previous Link if available #}
+        {% if pages.prevUrl %}
+          <a class="{{ options.class }}__link" href="{{ pages.prevUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.prevText }}">{{ options.prevSign|raw }}</a>
+        {% endif %}
 
-      {# Display the Previous Link if available #}
-      {% if pages.prevUrl %}
-        <a class="{{ options.class }}__link" href="{{ pages.prevUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.prevText }}">{{ options.prevSign|raw }}</a>
-      {% endif %}
+        {# With Pagenumber higher than zero the pagination will display pages #}
+        {% if options.pagenumber > 0 %}
+          {# Display prev 5 Page Links#}
+          {% for page, url in pages.getPrevUrls(options.pagenumber) %}
+            <a class="{{ options.class }}__link  {{ options.class }}__link--number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
+          {% endfor %}
 
-      {# With Pagenumber higher than zero the pagination will display pages #}
-      {% if options.pagenumber > 0 %}
-        {# Display prev 5 Page Links#}
-        {% for page, url in pages.getPrevUrls(options.pagenumber) %}
-          <a class="{{ options.class }}__link  {{ options.class }}__link--number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
-        {% endfor %}
+          {# Diplay Current Page#}
+          <span class="{{ options.class }}__link  {{ options.class }}__link--current">{{ pages.currentPage }}</span>
 
-        {# Diplay Current Page#}
-        <span class="{{ options.class }}__link  {{ options.class }}__link--current">{{ pages.currentPage }}</span>
+          {# Display next 5 Page Links #}
+          {% for page, url in pages.getNextUrls(options.pagenumber) %}
+            <a class="{{ options.class }}__link  {{ options.class }}__link--number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
+          {% endfor %}
+        {% endif %}
 
-        {# Display next 5 Page Links #}
-        {% for page, url in pages.getNextUrls(options.pagenumber) %}
-          <a class="{{ options.class }}__link  {{ options.class }}__link--number" href="{{ url }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.jumpText }} {{ page }}">{{ page }}</a>
-        {% endfor %}
-      {% endif %}
+        {# Display next Page Link if available#}
+        {% if pages.nextUrl %}
+          <a class="{{ options.class }}__link" href="{{ pages.nextUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.nextText }}">{{ options.nextSign|raw }}</a>
+        {% endif %}
 
-      {# Display next Page Link if available#}
-      {% if pages.nextUrl %}
-        <a class="{{ options.class }}__link" href="{{ pages.nextUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.nextText }}">{{ options.nextSign|raw }}</a>
-      {% endif %}
-
-      {# Dont display when on the last page #}
-      {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
-        <a class="{{ options.class }}__link" href="{{ pages.lastUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.lastPageText }}">{{ options.lastPageSign|raw }}</a>
-      {% endif %}
-    </nav>
+        {# Dont display when on the last page #}
+        {% if (pages.totalPages - 1) > pages.currentPage and pages.totalPages > 2 %}
+          <a class="{{ options.class }}__link" href="{{ pages.lastUrl }}{{ options.searchquery ? '?q='~options.searchquery }}" title="{{ options.lastPageText }}">{{ options.lastPageSign|raw }}</a>
+        {% endif %}
+      </nav>
+    </div>
   {% endif %}
 {% endmacro %}
