@@ -116,6 +116,7 @@ gulp build // npm run build OR yarn build
 
 ### Other Tasks
 There are some other Tasks there…
+
 ```
 // NPM RUN / YARN COMMANDS
 "start": "gulp init",
@@ -136,14 +137,18 @@ There are some other Tasks there…
 "copy:sprite": "gulp svg-sprite",
 "copy:sysfiles": "gulp systemFiles",
 "copy:templates": "gulp templates"
+```
 
+```
 // Clean Tasks
 // Clean the specific folder in the "___dist" dir
 gulp clean:templates
 gulp clean:css
 gulp clean:js
 gulp clean:images
+```
 
+```
 // Main Tasks
 // All this are triggered within "gulp init" & "gulp build" task.
 // Some of this are triggered within the "gulp" task.
@@ -157,7 +162,9 @@ gulp copy:fonts
 gulp images
 gulp svg-single
 gulp svg-sprite
+```
 
+```
 // Minify Tasks
 // This task are triggered within the "guld build" task.
 gulp minify:js
