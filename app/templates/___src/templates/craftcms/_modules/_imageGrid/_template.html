@@ -34,10 +34,10 @@
       <figure class="m-figure  {{ classname ~ '__figure' }}">
         {% set caption = image.groupedCaption is defined ? image.groupedCaption %}
         {% if caption and settings.caption %}
-          {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle %}
-          {% set captionCaption = caption.caption is defined ? caption.caption %}
-          {% set captionSource = caption.source is defined ? caption.source %}
-          {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl %}
+          {% set captionTitle = caption.captionTitle is defined ? caption.captionTitle : '' %}
+          {% set captionCaption = caption.caption is defined ? caption.caption : '' %}
+          {% set captionSource = caption.source is defined ? caption.source : '' %}
+          {% set captionSourceUrl = caption.sourceUrl is defined ? caption.sourceUrl : '' %}
         {% endif %}
 
         {% set options = {
@@ -46,8 +46,8 @@
         } %}
 
         {{ macroImage.image(image, options) }}
-
-        {% if caption %}
+  
+        {% if (caption and captionTitle is not empty) or (caption and captionCaption is not empty) %}
           <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
             {% if captionTitle %}
               <span class="m-caption__headline  {{ classname ~ '__captionHeadline' }}">

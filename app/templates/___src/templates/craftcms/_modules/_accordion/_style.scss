@@ -2,114 +2,105 @@
 /*    Accordion Label
 /* -------------------------------------------------- */
 
-.m-accordion {
-  @include f(s(2), s(4), padding-top padding-bottom);
+.m-accordionWrapper {
+  /* empty */
 }
 
-.m-accordion__item {
-  position: relative;
-  overflow: hidden;
+.m-accordion {
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    @include f(s(2), s(4), left right);
-    height: 1px;
-    background-color: c('black-10');
-  }
+  &__item {
+    @include make-vr();
+    position: relative;
+    overflow: hidden;
 
-  &:last-child {
-    &::after {
+    &::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      @include f(s(2), s(4), left right);
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
-      background-color: c('black-10');
+      background-color: c('black-50');
+    }
+
+    &:last-child {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: c('black-50');
+      }
     }
   }
-}
-.m-accordion__trigger {
-  cursor: pointer;
-  @include f(s(2), s(4), padding-left padding-right);
-}
 
-.m-accordion__headline {
-  @include f(s(1), s(2), padding-top padding-bottom);
-  @include f(s(6), s(12), padding-right);
-  position: relative;
-  margin: 0;
-  font-size: fs('ms0');
-  font-weight: 700;
-
-  .wf-loaded & {
-    font-family: ff('sans-serif');
+  &__trigger {
+    cursor: pointer;
   }
 
-  &::before,
-  &::after {
-    content: '';
-    width: 20px;
-    height: 4px;
-    position: absolute;
-    @include f(s(2), s(4), right);
-    @include f(20px, 34px, top);
-    background-color: c('black-10');
-    transition-property: background-color, transform;
-    transition: 0.25s ease-out;
-  }
+  &__headline {
+    @include f(s(1), s(2), padding-top padding-bottom);
+    @include f(s(6), s(12), padding-right);
+    @include f(s(1), s(2), padding-left);
+    position: relative;
+    font-size: fs('ms0');
+    font-weight: 700;
 
-  &::after {
-    transform: rotate(-90deg);
-  }
+    .wf-loaded & {
+      font-family: ff('sans-serif');
+    }
 
-  &:hover {
     &::before,
     &::after {
-      background-color: c('black');
+      content: '';
+      width: 20px;
+      height: 4px;
+      position: absolute;
+      @include f(s(1), s(2), right);
+      top: calc(50% - 2px);
+      background-color: c('black-50');
+      transition-property: background-color, transform;
+      transition: 0.25s ease('out-cubic');
     }
-  }
 
-  .is-open & {
-    &::before,
     &::after {
-      background-color: c('black');
+      transform: rotate(-90deg);
     }
 
-    &::after {
-      transform: rotate(0deg);
+    &:hover {
+      &::before,
+      &::after {
+        background-color: c('black');
+      }
+    }
+
+    .is-open & {
+      &::before,
+      &::after {
+        background-color: c('black');
+      }
+
+      &::after {
+        transform: rotate(0deg);
+      }
     }
   }
-}
 
-.m-accordion__content {
-  display: none;
-  @include clearfix();
+  &__content {
+    display: none;
+    @include clearfix();
 
-  .o-row {
-    opacity: 0;
-  }
-
-  &.fadeIn {
     .o-row {
-      opacity: 1;
-      transition: opacity 0.5s ease-out;
+      opacity: 0;
     }
-  }
-}
 
-// Modul Overwrites
-.m-accordion {
-  // Rich Text
-  .m-richText {
-    @include fc(12);
-    margin: 0;
-  }
-
-  // Headline
-  .m-headline {
-    @include fc(12);
-    @include push(0);
+    &.fadeIn {
+      .o-row {
+        opacity: 1;
+        transition: opacity 0.5s ease('out-cubic');
+      }
+    }
   }
 }

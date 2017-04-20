@@ -2,8 +2,17 @@
 /*    Button Group
 /* -------------------------------------------------- */
 
+.m-buttonGroupWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include media('>=m') {
+    @include make-col(8);
+    @include offset(2);
+  }
+}
+
 .m-buttonGroup {
-  @include f(s(2), s(4), padding-left padding-right);
   display: flex;
   flex: row wrap;
   justify-content: flex-start;
@@ -21,12 +30,12 @@
   }
 
   &--full {
-    .m-button__link {
+    .m-button {
       flex: 1 1 auto;
     }
   }
 
-  .m-button__link {
+  .m-button {
     display: inline-block;
     float: left;
     width: auto !important;
@@ -35,11 +44,11 @@
     text-align: center;
 
     &--primary {
-      border-right: 1px solid c('black-60');
+      border-right: 1px solid c('black');
     }
 
     &--secondary {
-      border-right: 1px solid c('black-35');
+      border-right: 1px solid c('black-30');
     }
 
     &:first-child {

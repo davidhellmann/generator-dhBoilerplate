@@ -4,7 +4,7 @@
 
 .o-row {
   @include make-row();
-  background-color: rgba(c('blue'), 0.1);
+  // background-color: rgba(c('blue'), 0.1);
 
   &--imageCover {
     @include make-row(3);

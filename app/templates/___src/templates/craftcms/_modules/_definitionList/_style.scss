@@ -2,97 +2,118 @@
 /*    Definition List
 /* -------------------------------------------------- */
 
-.m-definitionList {
-  @include fb();
+.m-definitionListWrapper {
   @include f(s(2), s(4), padding-left padding-right);
 }
 
-.m-definitionList__list {
-  width: 100%;
+.m-definitionList {
+  @include make-row();
+  @include make-vr();
   display: flex;
   flex-direction: row;
   align-content: stretch;
   align-items: stretch;
   flex-wrap: wrap;
-  border: 1px solid c('black-25');
   border-top: none;
   font-size: fs('ms-1');
-}
+  border: 1px solid c('black-25');
+  border-bottom: none;
 
-.m-definitionList__listTerm {
-  @include f(s(2), s(4), padding-left padding-right);
-  @include f(s(1), s(2), padding-top);
-  border-top: 1px solid c('black-25');
-  font-weight: 700;
-  @include fc(6);
-
-  .wf-loaded & {
-    font-family: ff('sans-serif');
-  }
-
-  @include media('>=m') {
+  &__listTerm {
     @include f(s(1), s(2), padding-top padding-bottom);
+    border-right: 1px solid c('black-25');
+    border-bottom: 1px dotted c('black-25');
+    background-color: c('black-5');
+    border-right: none;
+    font-weight: 700;
+    @include make-col(6);
+
+    @include media('>=m') {
+      border-right: 1px dotted c('black-25');
+      border-bottom: 1px solid c('black-25');
+    }
+
+    .wf-loaded & {
+      font-family: ff('sans-serif');
+    }
   }
-}
 
-.m-definitionList__listDescription {
-  @include f(s(2), s(4), padding-left padding-right);
-  @include f(s(1), s(2), padding-bottom);
-  @include fc(6);
-
-  @include media('>=m') {
+  &__listDescription {
     @include f(s(1), s(2), padding-top padding-bottom);
-    border-top: 1px solid c('black-25');
-  }
-}
+    @include make-col(6);
+    border-bottom: 1px solid c('black-25');
 
-// Row Layout
-.m-definitionList--layout-row {
-  .m-definitionList__listTerm {
-    padding-bottom: 0;
-    @include fc(12);
+    @include media('>=m') {
+    }
   }
 
-  .m-definitionList__listDescription {
-    padding-top: 0;
-    @include fc(12);
-    border: none;
-  }
-}
+  // Row Layout
+  &--layout-row {
+    .m-definitionList__listTerm {
+      @include make-col(12);
+    }
 
-// Table Layout
-.m-definitionList--layout-table {
-  @include media('>=m') {
+    .m-definitionList__listDescription {
+      @include make-col(12);
+    }
+  }
+
+  // Table Layout
+  &--layout-table {
     // 50-50
     &.m-definitionList--columsRatio-50-50 {
       .m-definitionList__listTerm {
-        @include fc(6);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(6);
+        }
       }
 
       .m-definitionList__listDescription {
-        @include fc(6);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(6);
+        }
       }
     }
 
     // 33-66
     &.m-definitionList--columsRatio-33-66 {
       .m-definitionList__listTerm {
-        @include fc(4);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(4);
+        }
       }
 
       .m-definitionList__listDescription {
-        @include fc(8);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(8);
+        }
       }
     }
 
     // 25-75
     &.m-definitionList--columsRatio-25-75 {
       .m-definitionList__listTerm {
-        @include fc(3);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(3);
+        }
       }
 
       .m-definitionList__listDescription {
-        @include fc(9);
+        @include make-col(12);
+
+        @include media('>=m') {
+          @include make-col(9);
+        }
       }
     }
   }

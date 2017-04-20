@@ -1,12 +1,14 @@
 /* -------------------------------------------------- */
 /*    Image Slider
 /* -------------------------------------------------- */
-
 @import '../../../../assets/css/vendors/flickity/flickity';
 
+.m-imageSliderWrapper {
+  /* empty */
+}
+
 .m-imageSlider {
-  @include fc(12);
-  @include f(s(1.5), s(3), padding-left padding-right);
+  @include make-row(1/8, 1/4);
   padding-bottom: s(4);
   margin-bottom: 0;
 
@@ -19,26 +21,22 @@
       display: none;
     }*/
   }
-}
 
-.m-imageSlider__slide {
-  width: 100%;
-  float: left;
-  @include f(s(0.5), s(1), padding-left padding-right);
+  &__slide {
+    @include make-col(5.5);
+    padding-left: s(1/2) !important;
+    padding-right: s(1/2) !important;
 
-  .m-figure {
-    margin-bottom: 0;
+    .m-image {
+      height: 100%;
+      display: block;
+    }
   }
 
-  .m-figure__image {
-    width: 100%;
-  }
-}
-
-// Flickity Styling
-.m-imageSlider {
+  // Flickity Styling
   .flickity-viewport {
     overflow: visible;
+    width: 100%;
   }
 
   .flickity-page-dots {
@@ -82,7 +80,7 @@
     transform: none;
     background-size: auto 24px;
     background-repeat: no-repeat;
-    transition: background-position 0.25s ease-out;
+    transition: background-position 0.25s ease('out-cubic');
 
     &:disabled {
       opacity: 0;

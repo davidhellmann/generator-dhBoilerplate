@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.6.34)
 # Datenbank: db58503077_cbmodules
-# Erstellt am: 2017-04-16 23:00:03 +0000
+# Erstellt am: 2017-04-20 20:50:03 +0000
 # ************************************************************
 
 
@@ -47,6 +47,18 @@ CREATE TABLE `craft_assetfiles` (
   CONSTRAINT `craft_assetfiles_sourceId_fk` FOREIGN KEY (`sourceId`) REFERENCES `craft_assetsources` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_assetfiles` WRITE;
+/*!40000 ALTER TABLE `craft_assetfiles` DISABLE KEYS */;
+
+INSERT INTO `craft_assetfiles` (`id`, `sourceId`, `folderId`, `filename`, `kind`, `width`, `height`, `size`, `dateModified`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(11,1,1,'image_01.jpg','image',4000,3000,888342,'2017-04-20 09:16:37','2017-04-17 18:46:13','2017-04-20 20:46:13','d74680cf-438d-4052-9036-6bb2dd4ae2bc'),
+	(12,1,1,'image_02.jpg','image',4000,2660,690372,'2017-04-20 09:16:39','2017-04-17 18:46:14','2017-04-20 20:46:27','af99f5dc-b5c5-415b-a44c-56b5388fcdd6'),
+	(13,1,1,'image_03.jpg','image',2660,4000,348087,'2017-04-20 09:16:41','2017-04-17 18:46:15','2017-04-20 20:46:41','1a37c407-09d1-4e8c-b276-b5adaab2e4d7'),
+	(14,1,1,'image_04.jpg','image',2660,4000,345495,'2017-04-20 09:16:42','2017-04-17 18:46:16','2017-04-20 20:46:51','1219a84f-94ab-44d6-921f-5ea1a65c8489');
+
+/*!40000 ALTER TABLE `craft_assetfiles` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_assetfolders
@@ -168,6 +180,18 @@ CREATE TABLE `craft_assettransformindex` (
   KEY `craft_assettransformindex_sourceId_fileId_location_idx` (`sourceId`,`fileId`,`location`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_assettransformindex` WRITE;
+/*!40000 ALTER TABLE `craft_assettransformindex` DISABLE KEYS */;
+
+INSERT INTO `craft_assettransformindex` (`id`, `fileId`, `filename`, `format`, `location`, `sourceId`, `fileExists`, `inProgress`, `dateIndexed`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,11,'image_01.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-04-20 20:46:01','2017-04-20 20:46:01','2017-04-20 20:46:13','daaffb48-493e-4aad-8cfd-f9237dd3564c'),
+	(2,12,'image_02.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-04-20 20:46:16','2017-04-20 20:46:16','2017-04-20 20:46:27','90b613c7-716c-4efd-a3fc-f7269a3b2e77'),
+	(3,13,'image_03.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-04-20 20:46:29','2017-04-20 20:46:29','2017-04-20 20:46:41','f1216b9c-cec9-4f79-bf04-58746fd107dc'),
+	(4,14,'image_04.jpg',NULL,'_300xAUTO_crop_center-center',1,1,1,'2017-04-20 20:46:43','2017-04-20 20:46:43','2017-04-20 20:46:51','f3571076-22eb-4ae0-bbaf-f6a79d9993df');
+
+/*!40000 ALTER TABLE `craft_assettransformindex` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_assettransforms
@@ -326,8 +350,48 @@ INSERT INTO `craft_content` (`id`, `elementId`, `locale`, `title`, `field_plugin
 VALUES
 	(1,1,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 21:53:42','2017-04-16 21:53:42','d0823a0f-a07f-4750-aae2-c64b5131b2c5'),
 	(4,4,'de','Homepage',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','33215c87-bbc0-45fa-8e1c-adb0601eaa92'),
-	(5,5,'de','Modules',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','1b8d64a7-32b4-4dd0-9b86-eee90214b9af'),
-	(6,6,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 22:49:03','2017-04-16 22:49:03','59c70a0e-77ae-46fb-8f2a-00ff9bf4dd8f');
+	(5,5,'de','Modules',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 22:48:52','2017-04-20 15:55:00','1b8d64a7-32b4-4dd0-9b86-eee90214b9af'),
+	(6,6,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-16 22:49:03','2017-04-16 22:49:03','59c70a0e-77ae-46fb-8f2a-00ff9bf4dd8f'),
+	(7,7,'de',NULL,NULL,NULL,NULL,'{\"type\":\"entry\",\"email\":\"\",\"tel\":\"\",\"custom\":\"\",\"entry\":[\"4\"],\"asset\":\"\",\"category\":\"\",\"customText\":\"HOME\",\"target\":\"\"}',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 02:19:23','2017-04-20 15:55:00','f1098126-0bd8-441e-ad39-d58120f35a71'),
+	(8,9,'de',NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,'',NULL,'2017-04-17 18:45:37','2017-04-20 15:55:00','2c88f81e-af36-43a6-bdaf-5f3f57300e65'),
+	(9,11,'de','Image 01',NULL,'52.43% 34.78%',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 18:46:13','2017-04-20 20:46:13','58b7be95-b740-43dc-9da0-403ccb510ded'),
+	(10,12,'de','Image 02',NULL,'26.76% 45.37%',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 18:46:14','2017-04-20 20:46:27','4b04ecc5-c7a8-4917-9955-0249ad6c39c0'),
+	(11,13,'de','Image 03',NULL,'60.43% 52.08%',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 18:46:15','2017-04-20 20:46:41','1f2ec258-2381-4ab3-a2e0-95862b64e8dc'),
+	(12,14,'de','Image 04',NULL,'55.43% 31.07%',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 18:46:16','2017-04-20 20:46:51','64eabe10-07c0-41b0-bfe8-5639673636c0'),
+	(13,15,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-17 18:46:19','2017-04-20 15:55:00','fe97cb4b-f9e3-4ca7-8199-40a91f6f27ce'),
+	(14,20,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Das ist eine Headline',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-19 21:20:00','2017-04-20 15:55:00','5c8b4628-9327-4ad7-af5f-cbea64f46e44'),
+	(15,22,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, <a href=\"{entry:4:url}\">consectetur adipiscing elit</a>. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>\n<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</strong><br /></p>\n<p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</em><br /></p>\n<p><del>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</del></p>\n<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<ul><li>!Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.\n<ul><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li></ul></li></ul></li><li>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna.</li><li>In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li></ul><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>\n<ol><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.\n<ol><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.\n<ol><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</li></ol></li></ol></li></ol>',NULL,NULL,NULL,NULL,'2017-04-19 21:28:03','2017-04-20 15:55:00','750018e6-7cff-4dfd-8e61-f2ab6774c9f2'),
+	(20,28,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>\n<p>An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.</p>',NULL,NULL,NULL,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','2717fcbd-5134-4f81-acad-6b670090c144'),
+	(21,29,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','e08ae2fb-4453-4c95-88a6-ebb3f1e86214'),
+	(22,30,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no?',NULL,'Max Mustermann','{\"type\":\"custom\",\"custom\":\"http:\\/\\/google.com\",\"customText\":\"YO\"}',NULL,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','46d1aa50-79c8-471e-acc1-a755abe133b9'),
+	(23,31,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','2e2b6ae3-82fa-4fd4-bc32-2848ab41a16c'),
+	(24,32,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','a325a432-9545-44f5-b610-a0b36f13890b'),
+	(25,34,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior. ',NULL,'Max Mustermann','{\"type\":\"custom\",\"custom\":\"http:\\/\\/google.com\",\"customText\":\"\"}',NULL,NULL,'2017-04-20 00:06:35','2017-04-20 15:55:00','d1ffa843-375b-4768-9d23-d041d056d867'),
+	(26,35,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 00:07:18','2017-04-20 15:55:00','765aa23f-a4a3-4929-83ea-0f768bd50c5d'),
+	(27,37,'de',NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,'',NULL,'2017-04-20 00:11:24','2017-04-20 15:55:00','7b8bb989-0326-4e14-acc0-ad5ff239491a'),
+	(28,39,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Mimi the Cat','2017-04-20 00:11:24','2017-04-20 15:55:00','578cf9f6-2afe-4b07-b71c-85bdd45d9f1c'),
+	(37,49,'de',NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,'',NULL,'2017-04-20 09:21:50','2017-04-20 15:55:00','ab925287-f9aa-4037-8dd1-259f7f5f9623'),
+	(38,51,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>\n<p>An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.<br /></p>',NULL,NULL,NULL,NULL,'2017-04-20 09:21:50','2017-04-20 15:55:00','b89b29ab-f8e2-4cd0-ace6-2968a6b487eb'),
+	(39,52,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 09:25:22','2017-04-20 15:55:00','b0b15206-c96d-4832-82a4-1da2d616f946'),
+	(40,54,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 11:41:09','2017-04-20 15:55:00','d558b2fb-ac66-494d-9248-b3ad9a1d65b8'),
+	(41,56,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','d45520d5-d9b2-4f57-8f34-548f22641ebc'),
+	(42,61,'de',NULL,NULL,NULL,NULL,NULL,NULL,'[{\"col1\":\"Term 1\",\"col2\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri?\"},{\"col1\":\"Term 2\",\"col2\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri?\"},{\"col1\":\"Term 3\",\"col2\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri?\"},{\"col1\":\"Term 4\",\"col2\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri?\"},{\"col1\":\"Term 5\",\"col2\":\"Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri?\"}]',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 12:52:30','2017-04-20 15:55:00','2fe603b4-4251-49ba-ba1d-f7afc12d17c5'),
+	(43,63,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ySTsMuOdhRg\" frameborder=\"0\" allowfullscreen></iframe>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 13:24:34','2017-04-20 15:55:01','e489fc29-3e79-4446-a8cd-359817bb4896'),
+	(44,65,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<script src=\"https://gist.github.com/davidhellmann/bcff756336391e0ad3173a3ceba34511.js\"></script>',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 13:35:13','2017-04-20 15:55:01','ab95d8c8-7ed7-455e-bd82-2c367dbe3b02'),
+	(47,71,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 13:52:06','2017-04-20 15:55:01','cf69c476-d962-44a2-96f3-eafd30642f45'),
+	(48,73,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','38e05b05-322c-4c14-9d87-99085e4fd71d'),
+	(49,74,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Accordion',NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','c44c6ba9-0b6f-4a17-9816-bfe82ec8f4ab'),
+	(50,75,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>\n<p>An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.</p>',NULL,NULL,NULL,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','03e00a3e-9ad9-4574-9962-8b5a2c6564c9'),
+	(51,76,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ein weiteres Label',NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','ed2fb3f2-5612-4c40-b555-0a15d618ab64'),
+	(52,77,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.<br /></p>',NULL,NULL,NULL,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','a012072a-8068-4a6b-927b-ac598ad21bc8'),
+	(53,78,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 14:09:24','2017-04-20 15:55:01','0e427122-63b0-4dbd-8981-fafae68a0059'),
+	(54,80,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 14:46:34','2017-04-20 15:55:00','36540ff8-d8ec-4928-99d0-6fed9c8efcb7'),
+	(55,82,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','ab765c0d-bae6-482b-8621-31f0a9c188ae'),
+	(56,84,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','1904dc2b-1f22-4ccd-81b7-03ae01618b64'),
+	(57,85,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>Lorem ipsum dolor sit amet, quas appetere qui te, vel ne enim putent tractatos, ullum inani et duo. Per placerat ocurreret te, eos diceret accumsan in? Qui no viderer vivendum facilisi, pro illud possim legimus at. Illum sonet numquam id vis. Ei accumsan nominati eos? Nam suas admodum ancillae ne? Nullam noster scribentur per cu, te duis consetetur adipiscing pri? Mollis deseruisse te mei. Cu euismod singulis suavitate eam. Ex eos purto similique, an eum fabellas adolescens! Dolor signiferumque cum id. Dicunt cetero detracto mea ei? Ex dico dolor vis, splendide vituperatoribus cu usu, ei mea posse sonet labores! Ad duo veritus intellegam, alterum appellantur vix et. Vis dissentiet repudiandae eu, decore integre principes per ei. Id vim stet mentitum repudiandae, pri mentitum qualisque ea, ex usu augue viderer suscipit. Ea vel mucius graecis, mentitum perfecto eu duo, duo eu ipsum urbanitas. Eruditi recteque abhorreant ius et, omnes dolore debitis vel ei? An inani copiosae nec, audiam sanctus nostrum est ea? Assum iuvaret mea id.</p>\n<p>An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior.<br /></p>',NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','c56ccf60-aab0-45fc-9c65-39f771be43e4'),
+	(58,86,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','07727dcf-d018-42db-a174-c450b96f900e'),
+	(59,87,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>An populo iriure interesset sit! Eum quas zril nostrum ei. Est no esse illum, falli doming vix no? No pri causae petentium! Id vocibus volutpat deterruisset usu, vocibus verterem sed ne, usu ne similique temporibus! Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior. </p>',NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','ef4dfc24-a9b8-4375-b0b1-64c43be68031'),
+	(60,88,'de',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','8648615e-3c33-4f3c-86fb-c96e8856bad2');
 
 /*!40000 ALTER TABLE `craft_content` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -404,8 +468,77 @@ INSERT INTO `craft_elements` (`id`, `type`, `enabled`, `archived`, `dateCreated`
 VALUES
 	(1,'User',1,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','b9c2bd4b-c068-45fc-9760-bc6107691d2b'),
 	(4,'Entry',1,0,'2017-04-16 22:48:52','2017-04-16 22:48:52','a216f836-8252-4f04-aaad-40b19b0fd94a'),
-	(5,'Entry',1,0,'2017-04-16 22:48:52','2017-04-16 22:48:52','1528fa5d-880c-4c02-990a-f8c773f5eb9e'),
-	(6,'GlobalSet',1,0,'2017-04-16 22:49:03','2017-04-16 22:49:03','05e2ebe3-b333-4020-8e73-24d7e5c9c0de');
+	(5,'Entry',1,0,'2017-04-16 22:48:52','2017-04-20 15:55:00','1528fa5d-880c-4c02-990a-f8c773f5eb9e'),
+	(6,'GlobalSet',1,0,'2017-04-16 22:49:03','2017-04-16 22:49:03','05e2ebe3-b333-4020-8e73-24d7e5c9c0de'),
+	(7,'Neo_Block',1,0,'2017-04-17 02:19:23','2017-04-20 15:55:00','95c22ec9-eb46-40af-b616-35d483ba7735'),
+	(8,'SuperTable_Block',1,0,'2017-04-17 02:19:23','2017-04-20 15:55:00','9ab033e0-2785-4ba9-95f4-9d4f36417e6c'),
+	(9,'Neo_Block',1,0,'2017-04-17 18:45:37','2017-04-20 15:55:00','976570eb-3504-4a37-a31e-295ba8f1f4c8'),
+	(10,'SuperTable_Block',1,0,'2017-04-17 18:45:37','2017-04-20 15:55:00','abc5ece8-ffa8-41c3-b263-b9936c8a9a56'),
+	(11,'Asset',1,0,'2017-04-17 18:46:13','2017-04-20 20:46:13','ae4b1200-1d3f-43dc-9a13-9e6c32e1ffd3'),
+	(12,'Asset',1,0,'2017-04-17 18:46:14','2017-04-20 20:46:27','3ad031c9-8a24-4183-b5be-077478ef3454'),
+	(13,'Asset',1,0,'2017-04-17 18:46:15','2017-04-20 20:46:41','f92cb31e-d450-463d-95bc-288009105b0b'),
+	(14,'Asset',1,0,'2017-04-17 18:46:16','2017-04-20 20:46:51','ce7ca515-c1a7-4b37-805b-484a247e20ae'),
+	(15,'Neo_Block',1,0,'2017-04-17 18:46:19','2017-04-20 15:55:00','c5f1953f-3cbc-435e-af8e-9f0876c5edc4'),
+	(16,'SuperTable_Block',1,0,'2017-04-17 18:46:20','2017-04-20 15:55:00','19305e63-956d-4cb2-91e9-3791164c54a6'),
+	(17,'SuperTable_Block',1,0,'2017-04-19 20:53:27','2017-04-20 20:46:13','4262430b-d9d4-4532-b83d-d41280b15d42'),
+	(18,'SuperTable_Block',1,0,'2017-04-19 20:53:40','2017-04-20 20:46:27','1cf7c8ac-134d-4cc6-a943-21b6076705c3'),
+	(19,'SuperTable_Block',1,0,'2017-04-19 20:54:05','2017-04-20 20:46:41','981c9f99-c845-41e9-84e1-f8f777c6cadd'),
+	(20,'Neo_Block',1,0,'2017-04-19 21:20:00','2017-04-20 15:55:00','0e57cd64-1684-4b2f-87be-3be60c6d9076'),
+	(21,'SuperTable_Block',1,0,'2017-04-19 21:20:00','2017-04-20 15:55:00','69fb9b10-29c1-4a10-a076-f59dc0641d94'),
+	(22,'Neo_Block',1,0,'2017-04-19 21:28:03','2017-04-20 15:55:00','672c1951-8884-471a-a112-656caa796dc8'),
+	(27,'SuperTable_Block',1,0,'2017-04-19 21:54:58','2017-04-20 20:46:51','b6d0e80d-76c7-4322-a2fc-44198d51a3e2'),
+	(28,'Neo_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','4994418a-c428-4b47-983d-ca7f9d74e0f7'),
+	(29,'Neo_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','1fc8a3e4-a20f-4b69-a760-0781c5d0e6bf'),
+	(30,'Neo_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','845893ac-7c61-4c1a-98c8-e78642871a4c'),
+	(31,'Neo_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','7ae85594-dad8-4893-93fd-3787afa34cdd'),
+	(32,'Neo_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','954ec390-b1b2-4794-aefc-35613f22ae68'),
+	(33,'SuperTable_Block',1,0,'2017-04-19 23:18:28','2017-04-20 15:55:00','1978281f-9fd4-43af-992c-7cca53bc550a'),
+	(34,'Neo_Block',1,0,'2017-04-20 00:06:35','2017-04-20 15:55:00','e133c79f-2866-44c3-9b09-8114d8725ae2'),
+	(35,'Neo_Block',1,0,'2017-04-20 00:07:18','2017-04-20 15:55:00','be9a3815-aa5e-450c-8a52-76ad67b078f0'),
+	(36,'SuperTable_Block',1,0,'2017-04-20 00:07:18','2017-04-20 15:55:00','67c18d84-e3d5-4613-a9bd-fae972c09d5f'),
+	(37,'Neo_Block',1,0,'2017-04-20 00:11:24','2017-04-20 15:55:00','81f83c63-3e49-41b7-a26b-207397be60ef'),
+	(38,'SuperTable_Block',1,0,'2017-04-20 00:11:24','2017-04-20 15:55:00','5a8dddda-3293-41ea-8555-3da7d79916ac'),
+	(39,'Neo_Block',1,0,'2017-04-20 00:11:24','2017-04-20 15:55:00','8a83f404-1ad6-4bff-95ea-f3fec19fcc66'),
+	(40,'SuperTable_Block',1,0,'2017-04-20 00:11:24','2017-04-20 15:55:00','f53919e7-de68-4ddc-9923-a5a49847e0eb'),
+	(49,'Neo_Block',1,0,'2017-04-20 09:21:50','2017-04-20 15:55:00','bc9b96ff-de40-4470-a6cb-53aaf7e26d1a'),
+	(50,'SuperTable_Block',1,0,'2017-04-20 09:21:50','2017-04-20 15:55:00','8d202440-d90b-4de7-8b05-3842c24767ae'),
+	(51,'Neo_Block',1,0,'2017-04-20 09:21:50','2017-04-20 15:55:00','013b35b5-a46d-492c-9ec0-1bcaf4badd28'),
+	(52,'Neo_Block',1,0,'2017-04-20 09:25:22','2017-04-20 15:55:00','a6c7f7cd-9f47-49b2-9143-852a264dcb90'),
+	(53,'SuperTable_Block',1,0,'2017-04-20 09:25:22','2017-04-20 15:55:00','c240a0c7-85ba-4c03-b296-4930e63b1eb0'),
+	(54,'Neo_Block',1,0,'2017-04-20 11:41:09','2017-04-20 15:55:00','239f51f2-00d3-4c2c-827f-cd93438ad686'),
+	(55,'SuperTable_Block',1,0,'2017-04-20 11:41:09','2017-04-20 15:55:00','7fb22c58-7524-4d72-b60a-141ae98ceba1'),
+	(56,'Neo_Block',1,0,'2017-04-20 12:31:26','2017-04-20 15:55:00','a7be6e6a-74e6-4d35-a886-5a4b2b6d12eb'),
+	(57,'SuperTable_Block',1,0,'2017-04-20 12:31:26','2017-04-20 15:55:00','8a844580-1acf-4cc1-858f-845306af7417'),
+	(58,'SuperTable_Block',1,0,'2017-04-20 12:31:26','2017-04-20 15:55:00','e66da67a-61f3-403b-b833-1acd9f88c410'),
+	(59,'SuperTable_Block',1,0,'2017-04-20 12:31:26','2017-04-20 15:55:00','43d5651f-5ff2-49c2-853a-4b0496fc00a8'),
+	(60,'SuperTable_Block',1,0,'2017-04-20 12:31:26','2017-04-20 15:55:00','88415733-a2b6-46a5-a8de-6519d1e3561a'),
+	(61,'Neo_Block',1,0,'2017-04-20 12:52:30','2017-04-20 15:55:00','8d8aff87-4569-4260-bbec-4d0aee85af6f'),
+	(62,'SuperTable_Block',1,0,'2017-04-20 12:52:30','2017-04-20 15:55:00','bb06c451-e96b-41b2-8ede-37d2fa591a22'),
+	(63,'Neo_Block',1,0,'2017-04-20 13:24:34','2017-04-20 15:55:01','20496821-1d5a-4abd-a91a-526bd337b340'),
+	(64,'SuperTable_Block',1,0,'2017-04-20 13:24:34','2017-04-20 15:55:01','3cbb9d4f-2456-4bee-9f5e-67ceae5f3346'),
+	(65,'Neo_Block',1,0,'2017-04-20 13:35:13','2017-04-20 15:55:01','8ad5b10f-c6aa-469f-8168-e0722699656f'),
+	(66,'SuperTable_Block',1,0,'2017-04-20 13:35:13','2017-04-20 15:55:01','3e9ab57c-0d03-4a57-81af-24fdb99b20ba'),
+	(68,'SuperTable_Block',1,0,'2017-04-20 13:44:03','2017-04-20 13:51:14','6f3915b5-28fc-407b-8fc8-5750458fb90c'),
+	(70,'SuperTable_Block',1,0,'2017-04-20 13:48:14','2017-04-20 13:51:15','e124bd04-78b4-4163-b583-54462071ee32'),
+	(71,'Neo_Block',1,0,'2017-04-20 13:52:06','2017-04-20 15:55:01','551be05a-c026-4e58-91b7-2dea57697fa7'),
+	(72,'SuperTable_Block',1,0,'2017-04-20 13:52:06','2017-04-20 15:55:01','05f63c9d-1d60-498b-a63f-4b15186f4905'),
+	(73,'Neo_Block',1,0,'2017-04-20 14:00:53','2017-04-20 15:55:01','19cf20e0-a127-4a12-a3ff-7204b3e03336'),
+	(74,'Neo_Block',1,0,'2017-04-20 14:00:53','2017-04-20 15:55:01','18573337-661a-4dd3-8d0b-1de962ac358b'),
+	(75,'Neo_Block',1,0,'2017-04-20 14:00:53','2017-04-20 15:55:01','510d688b-2c7f-43da-9009-efa217f79e94'),
+	(76,'Neo_Block',1,0,'2017-04-20 14:00:53','2017-04-20 15:55:01','a81518bb-66a5-4a6a-93de-e5722f9d0c78'),
+	(77,'Neo_Block',1,0,'2017-04-20 14:00:53','2017-04-20 15:55:01','5ea70f8e-f5ad-4fe9-8791-7c0fd26b4844'),
+	(78,'Neo_Block',1,0,'2017-04-20 14:09:24','2017-04-20 15:55:01','81db86bf-1e83-423c-b363-28c89cfc0ae7'),
+	(79,'SuperTable_Block',1,0,'2017-04-20 14:09:24','2017-04-20 15:55:01','58d07b83-7c39-47bc-ad98-8b2e55a82022'),
+	(80,'Neo_Block',1,0,'2017-04-20 14:46:34','2017-04-20 15:55:00','8ab7b374-6c43-47a6-87ee-9867e9777997'),
+	(81,'SuperTable_Block',1,0,'2017-04-20 14:46:34','2017-04-20 15:55:00','4e7b5e72-4a06-4220-a6a6-d7ec52524150'),
+	(82,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','f3d0eebf-e645-4b97-90d3-ca8e1e60c01c'),
+	(83,'SuperTable_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','50eaf1f5-d5b2-4e05-a09d-0d1d5f77b131'),
+	(84,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','a8e40946-34df-4264-90c6-8da981d6f0d6'),
+	(85,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','a8b88977-5a0b-4e73-b608-77dcbf2a880c'),
+	(86,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','c291adc4-aea1-4b46-98b8-001153436319'),
+	(87,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','80e1f386-1a93-4bc5-a424-f9c642a84628'),
+	(88,'Neo_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','4f34d00d-43a4-4dcf-ba01-0ef3846b8982'),
+	(89,'SuperTable_Block',1,0,'2017-04-20 15:34:51','2017-04-20 15:55:01','acbdf331-6556-4b4d-b772-fc7442c65625');
 
 /*!40000 ALTER TABLE `craft_elements` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -443,8 +576,77 @@ INSERT INTO `craft_elements_i18n` (`id`, `elementId`, `locale`, `slug`, `uri`, `
 VALUES
 	(1,1,'de','',NULL,1,'2017-04-16 21:53:42','2017-04-16 21:53:42','f62f4336-026f-47a1-ad80-3c23aa756d4f'),
 	(4,4,'de','homepage','__home__',1,'2017-04-16 22:48:52','2017-04-16 22:48:52','73ad8ab1-228c-4fb3-b707-3cb697ae55d3'),
-	(5,5,'de','modules','modules',1,'2017-04-16 22:48:52','2017-04-16 22:48:52','4c07ed46-b518-48cf-90cb-44c91579600c'),
-	(6,6,'de','',NULL,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','fd02fd31-754a-410a-8ff2-4b579d1cd428');
+	(5,5,'de','modules','modules',1,'2017-04-16 22:48:52','2017-04-20 15:55:00','4c07ed46-b518-48cf-90cb-44c91579600c'),
+	(6,6,'de','',NULL,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','fd02fd31-754a-410a-8ff2-4b579d1cd428'),
+	(7,7,'de','',NULL,1,'2017-04-17 02:19:23','2017-04-20 15:55:00','f32474d8-9ac8-4609-a237-e4b641377110'),
+	(8,8,'de','',NULL,1,'2017-04-17 02:19:23','2017-04-20 15:55:00','db6cd980-aaa9-4a56-928f-92e8539a56c2'),
+	(9,9,'de','',NULL,1,'2017-04-17 18:45:37','2017-04-20 15:55:00','357deee4-5db8-4408-b74b-c3411660e0aa'),
+	(10,10,'de','',NULL,1,'2017-04-17 18:45:37','2017-04-20 15:55:00','127af6b9-7d86-417c-a2d7-811825a6f627'),
+	(11,11,'de','home-01',NULL,1,'2017-04-17 18:46:13','2017-04-20 20:46:13','f0777221-993b-410f-8a65-6b5f11438166'),
+	(12,12,'de','home-02',NULL,1,'2017-04-17 18:46:14','2017-04-20 20:46:27','bb9b7b7e-eac5-4709-9681-78e682853075'),
+	(13,13,'de','home-03',NULL,1,'2017-04-17 18:46:15','2017-04-20 20:46:41','2a99d309-e8bc-4479-b234-7ee202f49ae4'),
+	(14,14,'de','home-04',NULL,1,'2017-04-17 18:46:16','2017-04-20 20:46:51','261a0f74-2957-400b-8d57-f9f133a6a034'),
+	(15,15,'de','',NULL,1,'2017-04-17 18:46:20','2017-04-20 15:55:00','de75c465-0831-405f-8f6e-8eb1d3c31137'),
+	(16,16,'de','',NULL,1,'2017-04-17 18:46:20','2017-04-20 15:55:00','75ea762b-7006-40a4-b645-b322b5f61ae3'),
+	(17,17,'de','',NULL,1,'2017-04-19 20:53:27','2017-04-20 20:46:13','255aee1b-746d-42a9-92d1-edb42021298a'),
+	(18,18,'de','',NULL,1,'2017-04-19 20:53:40','2017-04-20 20:46:27','79017fb1-52f8-4c66-a764-c715870cba15'),
+	(19,19,'de','',NULL,1,'2017-04-19 20:54:05','2017-04-20 20:46:41','2d947d0f-ef2b-4908-a217-728488d85a22'),
+	(20,20,'de','',NULL,1,'2017-04-19 21:20:00','2017-04-20 15:55:00','d5094353-bb2d-4893-a363-4f7a43c6ca49'),
+	(21,21,'de','',NULL,1,'2017-04-19 21:20:00','2017-04-20 15:55:00','d1d0e30f-be75-4478-add4-d8891f12b121'),
+	(22,22,'de','',NULL,1,'2017-04-19 21:28:03','2017-04-20 15:55:00','1b47f93e-cf18-4f69-8d57-a8044472b468'),
+	(27,27,'de','',NULL,1,'2017-04-19 21:54:58','2017-04-20 20:46:51','9c908638-9cae-45f8-b252-df53c3541660'),
+	(28,28,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','9303bc89-2a5a-4a02-9136-858de2329063'),
+	(29,29,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','2425c8ea-a9a4-40d9-9be9-f2b74fdd78d8'),
+	(30,30,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','e8255174-b764-4a2c-b199-a2319d7ff9ed'),
+	(31,31,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','174d4b84-d662-4322-8cd1-5fb0f73f59c9'),
+	(32,32,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','8ed45b4a-2d89-4429-847c-5bc37cfcd4b8'),
+	(33,33,'de','',NULL,1,'2017-04-19 23:18:28','2017-04-20 15:55:00','895377e7-ee94-4714-a09b-824c1d1d23a4'),
+	(34,34,'de','',NULL,1,'2017-04-20 00:06:35','2017-04-20 15:55:00','35cca813-2e93-4e5d-8eb0-897fb21345ef'),
+	(35,35,'de','',NULL,1,'2017-04-20 00:07:18','2017-04-20 15:55:00','d74f6750-ef63-4b79-810f-cdff406c1b73'),
+	(36,36,'de','',NULL,1,'2017-04-20 00:07:18','2017-04-20 15:55:00','4214bfbd-5ee3-49ef-a21c-35879f8ed379'),
+	(37,37,'de','',NULL,1,'2017-04-20 00:11:24','2017-04-20 15:55:00','7686c3cf-ed00-4ff2-b227-11965fb02c7d'),
+	(38,38,'de','',NULL,1,'2017-04-20 00:11:24','2017-04-20 15:55:00','9cfe7ea0-823e-441c-adce-cfe6392c569b'),
+	(39,39,'de','',NULL,1,'2017-04-20 00:11:24','2017-04-20 15:55:00','7e1cb961-1131-4edb-9c99-41f2faf3e30d'),
+	(40,40,'de','',NULL,1,'2017-04-20 00:11:24','2017-04-20 15:55:00','d71061f0-d7d6-491d-ad1c-edf493976b69'),
+	(49,49,'de','',NULL,1,'2017-04-20 09:21:50','2017-04-20 15:55:00','3e19ee6b-18df-4690-930b-17329cedd7b2'),
+	(50,50,'de','',NULL,1,'2017-04-20 09:21:50','2017-04-20 15:55:00','a26cac71-a40a-4181-a9e1-907687589ac1'),
+	(51,51,'de','',NULL,1,'2017-04-20 09:21:50','2017-04-20 15:55:00','0ea10db1-3598-4599-bd87-4f18a228e058'),
+	(52,52,'de','',NULL,1,'2017-04-20 09:25:22','2017-04-20 15:55:00','f6a9f4bf-9219-4b68-8c10-b7614f6e3614'),
+	(53,53,'de','',NULL,1,'2017-04-20 09:25:22','2017-04-20 15:55:00','6f0824aa-8c2c-4ddf-9264-b8eca51032d5'),
+	(54,54,'de','',NULL,1,'2017-04-20 11:41:09','2017-04-20 15:55:00','39f812c9-802f-46cb-ba6a-ec905eda8895'),
+	(55,55,'de','',NULL,1,'2017-04-20 11:41:09','2017-04-20 15:55:00','70522f66-27bf-4510-9897-cd5bf9468107'),
+	(56,56,'de','',NULL,1,'2017-04-20 12:31:26','2017-04-20 15:55:00','df661912-402c-4620-8e16-953c9dbefc6c'),
+	(57,57,'de','',NULL,1,'2017-04-20 12:31:26','2017-04-20 15:55:00','035da827-a41d-4bf3-beed-948dfdf36c2e'),
+	(58,58,'de','',NULL,1,'2017-04-20 12:31:26','2017-04-20 15:55:00','1914f7e7-d39c-4550-88d1-f9d7334fbb4e'),
+	(59,59,'de','',NULL,1,'2017-04-20 12:31:26','2017-04-20 15:55:00','5e5fd66a-b04b-4c8e-a222-f9c1dd6cc138'),
+	(60,60,'de','',NULL,1,'2017-04-20 12:31:26','2017-04-20 15:55:00','059b8623-fe50-4e07-8258-bfedd9921412'),
+	(61,61,'de','',NULL,1,'2017-04-20 12:52:30','2017-04-20 15:55:00','84fced02-e310-4e13-93ba-8998e2dbd1d1'),
+	(62,62,'de','',NULL,1,'2017-04-20 12:52:30','2017-04-20 15:55:00','ed5596a6-9f2c-46af-8573-8df45585cff5'),
+	(63,63,'de','',NULL,1,'2017-04-20 13:24:34','2017-04-20 15:55:01','2834affa-bc80-4cf2-914d-9bf786b44c8b'),
+	(64,64,'de','',NULL,1,'2017-04-20 13:24:34','2017-04-20 15:55:01','67435172-aa81-47c0-8eeb-b4958aea3d20'),
+	(65,65,'de','',NULL,1,'2017-04-20 13:35:13','2017-04-20 15:55:01','4240cfeb-15d4-4fb9-bac2-ecad98ffd7d1'),
+	(66,66,'de','',NULL,1,'2017-04-20 13:35:13','2017-04-20 15:55:01','828c4566-4e99-49cf-9132-671f87a843ea'),
+	(68,68,'de','',NULL,1,'2017-04-20 13:44:03','2017-04-20 13:51:14','f96e686f-bd47-4b02-86d0-d100bc12b407'),
+	(70,70,'de','',NULL,1,'2017-04-20 13:48:14','2017-04-20 13:51:15','14b7a88a-54eb-4e5a-9c99-c5c0da90f27a'),
+	(71,71,'de','',NULL,1,'2017-04-20 13:52:06','2017-04-20 15:55:01','effce781-1d5e-4594-9d26-2acee178f4c6'),
+	(72,72,'de','',NULL,1,'2017-04-20 13:52:06','2017-04-20 15:55:01','1ba4b7c4-78df-4bce-888e-653b7a189e28'),
+	(73,73,'de','',NULL,1,'2017-04-20 14:00:53','2017-04-20 15:55:01','1d4153c9-7f52-4b23-96fd-6b781e74e6c9'),
+	(74,74,'de','',NULL,1,'2017-04-20 14:00:53','2017-04-20 15:55:01','168b5de6-8635-484a-825f-68a03441e03f'),
+	(75,75,'de','',NULL,1,'2017-04-20 14:00:53','2017-04-20 15:55:01','d3af4a3a-fb94-445b-bb38-28d6178cc962'),
+	(76,76,'de','',NULL,1,'2017-04-20 14:00:53','2017-04-20 15:55:01','81a0722b-0b26-4f0a-82a1-836b401b4e70'),
+	(77,77,'de','',NULL,1,'2017-04-20 14:00:53','2017-04-20 15:55:01','489c3a91-10ec-48ff-bb92-31bb2b3ede03'),
+	(78,78,'de','',NULL,1,'2017-04-20 14:09:24','2017-04-20 15:55:01','5471cb68-23c5-4514-9053-2dfa4c4807b5'),
+	(79,79,'de','',NULL,1,'2017-04-20 14:09:24','2017-04-20 15:55:01','ebf3863c-2b9d-4f5e-9897-9b18da613406'),
+	(80,80,'de','',NULL,1,'2017-04-20 14:46:34','2017-04-20 15:55:00','1c714894-c1ec-4c0a-83ff-f01c7f17c026'),
+	(81,81,'de','',NULL,1,'2017-04-20 14:46:34','2017-04-20 15:55:00','a3663324-b3bb-4b9f-ba8c-125d860613e3'),
+	(82,82,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','971d740d-d134-4888-85d2-6d0438cabac9'),
+	(83,83,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','9a0d350b-ece8-430e-b527-6e518e021489'),
+	(84,84,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','bbe7d532-2c80-4285-b6e5-42b89b6dfeed'),
+	(85,85,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','59fddf71-4da6-4eff-87cb-763b0aebffab'),
+	(86,86,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','6269a87d-eabd-4c4e-b60a-05ef9590b7f8'),
+	(87,87,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','19c39413-e8c0-42f2-b926-c63e4cf58e2f'),
+	(88,88,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','4279ed88-c27b-424a-91d0-d0a261f8180e'),
+	(89,89,'de','',NULL,1,'2017-04-20 15:34:51','2017-04-20 15:55:01','2eab2310-ab05-40dd-be44-d87110925136');
 
 /*!40000 ALTER TABLE `craft_elements_i18n` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -505,7 +707,7 @@ LOCK TABLES `craft_entries` WRITE;
 INSERT INTO `craft_entries` (`id`, `sectionId`, `typeId`, `authorId`, `postDate`, `expiryDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
 	(4,3,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','77150553-bb5a-4f6d-9185-2f663ef161f1'),
-	(5,4,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-04-16 22:48:52','34d64afe-d272-4d07-b2d5-3fbb69a34f30');
+	(5,4,NULL,NULL,'2017-04-16 22:48:52',NULL,'2017-04-16 22:48:52','2017-04-20 15:55:01','34d64afe-d272-4d07-b2d5-3fbb69a34f30');
 
 /*!40000 ALTER TABLE `craft_entries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -698,10 +900,6 @@ VALUES
 	(25,15,5,28,0,2,'2017-04-16 22:48:54','2017-04-16 22:48:54','28a51620-9a0d-4d9a-827e-1f10ac365ae6'),
 	(26,15,5,29,0,3,'2017-04-16 22:48:54','2017-04-16 22:48:54','19684494-7425-4bc6-aa45-f6152ffa3c7b'),
 	(27,15,5,30,0,4,'2017-04-16 22:48:54','2017-04-16 22:48:54','2a584ce2-8e27-4f31-94ba-99d237bb95a5'),
-	(28,16,6,33,0,1,'2017-04-16 22:48:55','2017-04-16 22:48:55','7d87fda0-0b7a-48c7-9ecb-d7b89fc8a7c1'),
-	(29,16,6,34,0,2,'2017-04-16 22:48:55','2017-04-16 22:48:55','8195ab71-15a8-4c5d-8443-5bddc0407699'),
-	(30,16,6,35,0,3,'2017-04-16 22:48:55','2017-04-16 22:48:55','95972cbd-0732-4d00-80dc-6043ce10f1e0'),
-	(31,16,6,36,0,4,'2017-04-16 22:48:55','2017-04-16 22:48:55','12473daf-0fb9-4703-9e8b-3c04d6469dd0'),
 	(32,17,7,38,0,1,'2017-04-16 22:48:55','2017-04-16 22:48:55','be0caa24-1430-4843-b675-62a440cadf48'),
 	(33,17,7,39,0,2,'2017-04-16 22:48:55','2017-04-16 22:48:55','937cecd3-ab07-40ed-b7a9-308e3e859ff7'),
 	(34,18,8,41,0,1,'2017-04-16 22:48:55','2017-04-16 22:48:55','aea2236a-f06d-4970-b6f0-6b7d6e8483d3'),
@@ -709,66 +907,11 @@ VALUES
 	(36,19,9,44,0,1,'2017-04-16 22:48:56','2017-04-16 22:48:56','554813c8-efe6-47ed-84b7-d72a7502d218'),
 	(37,19,9,45,0,2,'2017-04-16 22:48:56','2017-04-16 22:48:56','591470b4-b24a-48f1-9052-bc4e84227c47'),
 	(38,19,9,46,0,3,'2017-04-16 22:48:56','2017-04-16 22:48:56','295ed385-50dd-4794-bd57-4308c5b0e0a1'),
-	(39,20,10,49,0,1,'2017-04-16 22:48:57','2017-04-16 22:48:57','4c126cc2-e837-42a1-9c01-947d03473c06'),
-	(40,20,10,50,0,2,'2017-04-16 22:48:57','2017-04-16 22:48:57','a9221e54-a2be-4171-b3f8-86ae8b1aed25'),
-	(41,20,10,51,0,3,'2017-04-16 22:48:57','2017-04-16 22:48:57','709f5582-4c99-4e41-b6ca-64dc3c0274f2'),
 	(42,21,11,53,0,1,'2017-04-16 22:48:57','2017-04-16 22:48:57','256d1a0d-a135-4903-a02c-a826fe2684df'),
 	(43,21,11,54,0,2,'2017-04-16 22:48:57','2017-04-16 22:48:57','648136f5-79e4-4240-8e92-7eaa3585e070'),
 	(44,21,11,55,0,3,'2017-04-16 22:48:57','2017-04-16 22:48:57','86e1b47d-a9a9-4364-99ea-8c25c3087ec5'),
-	(45,22,12,57,0,1,'2017-04-16 22:48:58','2017-04-16 22:48:58','5e4c6629-b5b7-4125-ab53-9b83f0469a50'),
-	(46,22,12,58,0,2,'2017-04-16 22:48:58','2017-04-16 22:48:58','6bf3db0b-7458-4e16-98a9-81083da0268a'),
-	(47,22,12,59,0,3,'2017-04-16 22:48:58','2017-04-16 22:48:58','fd9d8c85-cb8e-4982-9cb2-1d5d278ba6fc'),
-	(48,23,13,61,0,1,'2017-04-16 22:48:58','2017-04-16 22:48:58','cdd509fc-7b3f-4ddc-8d70-0ad8c6a40a62'),
-	(49,23,13,62,0,2,'2017-04-16 22:48:58','2017-04-16 22:48:58','45fff081-ee04-495c-b620-5999371777db'),
-	(50,23,13,63,0,3,'2017-04-16 22:48:58','2017-04-16 22:48:58','c62d64e7-e2eb-4b51-8484-2313b8eec6f8'),
-	(51,24,14,65,0,1,'2017-04-16 22:48:59','2017-04-16 22:48:59','4fe9cb84-a66d-4258-a334-ef2dc7e05282'),
-	(52,24,14,66,0,2,'2017-04-16 22:48:59','2017-04-16 22:48:59','7d5d4848-8399-48c5-beb1-b119d052434c'),
-	(53,24,14,67,0,3,'2017-04-16 22:48:59','2017-04-16 22:48:59','a866470e-83a2-47cb-bf1a-f40dd0e5d4d0'),
-	(54,24,14,68,0,4,'2017-04-16 22:48:59','2017-04-16 22:48:59','769da901-6a97-4bba-a7e4-4e33995a3bb1'),
-	(55,25,15,70,0,1,'2017-04-16 22:48:59','2017-04-16 22:48:59','702b2880-133e-4a6b-ba42-97baf0b8ea6d'),
-	(56,25,15,71,0,2,'2017-04-16 22:48:59','2017-04-16 22:48:59','3904b78a-c549-4446-82cc-5bc6c3d56488'),
-	(57,25,15,72,0,3,'2017-04-16 22:48:59','2017-04-16 22:48:59','fed3ebc1-c8a8-452a-8b1c-071b8b8a8e20'),
-	(58,26,16,74,0,1,'2017-04-16 22:49:00','2017-04-16 22:49:00','fe90c6c9-8de9-4b72-91b3-d45ddde28588'),
-	(59,26,16,75,0,2,'2017-04-16 22:49:00','2017-04-16 22:49:00','d5c0e410-2fda-4b50-b2d1-f2bdd2441c63'),
-	(60,26,16,76,0,3,'2017-04-16 22:49:00','2017-04-16 22:49:00','a038edab-9806-4d68-b03f-34fc47fc5c61'),
-	(61,27,17,78,0,1,'2017-04-16 22:49:00','2017-04-16 22:49:00','8127723b-c491-422a-b6c8-5c9bc16b3cc5'),
-	(62,27,17,79,0,2,'2017-04-16 22:49:00','2017-04-16 22:49:00','610bd33a-5b10-4430-9329-43c17d02bdf3'),
-	(63,27,17,80,0,3,'2017-04-16 22:49:00','2017-04-16 22:49:00','c6d14104-918e-4a32-85bd-0a5d1d7b0940'),
 	(64,28,18,82,0,1,'2017-04-16 22:49:01','2017-04-16 22:49:01','f201f300-8d3c-4d6b-94a2-4765c81a82b9'),
 	(65,29,19,86,0,1,'2017-04-16 22:49:01','2017-04-16 22:49:01','42e4156a-870f-4856-97ae-19e8dc94b919'),
-	(66,30,20,90,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','9d89d273-e25b-426d-b255-9dc2e9347e37'),
-	(67,30,20,98,0,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','1cadca74-7412-4fc5-a247-ec0257a5b3b4'),
-	(68,30,21,83,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','e8a583ff-4820-4703-b763-54ad522d7f7c'),
-	(69,30,21,73,0,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','ad654de8-a596-42aa-8915-fff6850ce73f'),
-	(70,32,23,93,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','91f8f8f3-3493-49b5-92c3-829d08bfea7a'),
-	(71,33,25,81,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','88a74c0f-175f-482f-97f4-5b77c3ed6897'),
-	(72,35,26,90,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','f645b793-cebb-46cf-9293-bd96dd59ba54'),
-	(73,35,27,48,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','21b05484-99e5-4f6c-849f-14bb7b6224ee'),
-	(74,36,28,95,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','40596a24-781f-4405-9d28-f2022868a3fb'),
-	(75,37,29,95,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','0326c1e7-7a50-490b-b6ed-da458bee7489'),
-	(76,39,30,94,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','d8ccbed2-1c86-4d6d-816b-683ecd582f3a'),
-	(77,39,30,96,0,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','93c91c79-e25b-4687-be6a-6a179a48ae63'),
-	(78,39,30,97,0,3,'2017-04-16 22:49:03','2017-04-16 22:49:03','5adefcd5-8ba1-444e-9c65-3521a2d1da12'),
-	(79,40,31,91,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','1016d093-b095-4a81-a11a-c832580708f1'),
-	(80,40,31,99,0,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','c942298c-ab29-4795-b154-860d747fbfd5'),
-	(81,40,32,52,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','93ac8ad3-336c-4911-a838-f786a5a5f15d'),
-	(82,41,33,92,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','78d40f82-4533-4c9b-a9a6-163be0e0b758'),
-	(83,41,34,56,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','013e81fd-b047-46cb-a302-5f91559d2693'),
-	(84,42,35,92,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','a0595d8e-9bd6-4601-8ad6-bcd2b4d64cd1'),
-	(85,42,36,60,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','535880da-a58a-4c60-a033-5284130b11b2'),
-	(86,43,37,91,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','67374883-0f52-4148-93df-0e5123b61ebf'),
-	(87,43,38,64,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','4c806902-579f-4b3a-bfd8-668cb56a1e31'),
-	(88,44,39,92,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','ef4bb7b5-a7cf-4036-abcb-cbda5af32236'),
-	(89,44,40,69,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','b7dad340-5b41-43fb-87cd-da849a98454e'),
-	(90,45,41,84,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','1a39a304-95e5-4e13-8c8c-874e82a05432'),
-	(91,45,42,32,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','6a2d16ff-7965-4640-aa31-2b0030274b98'),
-	(92,46,43,85,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','3c6255b7-ada9-4c69-b6ef-2667dead893b'),
-	(93,46,44,37,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','1a4f573b-aa86-421e-8102-5c9b0ba778b0'),
-	(94,47,45,88,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','f06d0da3-2a32-4533-9aea-aa49091e7752'),
-	(95,47,46,40,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','a88980b9-b48a-4d05-a418-04f6995065ee'),
-	(96,48,47,89,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','18ef6ed1-eb08-4838-90ad-471eb48257d6'),
-	(97,48,48,43,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','7d7f7883-7159-483f-af6c-4c263c25d857'),
-	(98,49,50,77,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','527d9310-1fed-43b9-b74b-190eff83d54e'),
 	(99,50,51,26,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','7b4f4089-faf0-40f7-b026-c854633030ae'),
 	(100,50,51,47,0,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','b755860e-11b9-49ff-8cdb-7f8eca2bf663'),
 	(101,51,52,26,0,1,'2017-04-16 22:49:03','2017-04-16 22:49:03','971c6df5-0932-4191-9e8c-1d573be635e4'),
@@ -778,7 +921,58 @@ VALUES
 	(109,60,62,100,0,1,'2017-04-16 22:50:54','2017-04-16 22:50:54','fc27caae-0d91-444c-8824-1717e11ee74d'),
 	(110,61,63,100,0,1,'2017-04-16 22:50:54','2017-04-16 22:50:54','122f466e-4faa-4125-89b5-320a1092ec49'),
 	(111,61,64,3,0,1,'2017-04-16 22:50:54','2017-04-16 22:50:54','0cd14865-874e-4cb7-b540-0f7fb59c9f12'),
-	(112,61,65,31,0,1,'2017-04-16 22:50:54','2017-04-16 22:50:54','28c95367-87e0-44bb-868e-1a3a24ed5cd3');
+	(112,61,65,31,0,1,'2017-04-16 22:50:54','2017-04-16 22:50:54','28c95367-87e0-44bb-868e-1a3a24ed5cd3'),
+	(179,103,128,90,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','ed8c31e8-71a3-490b-9931-223d3c5a86fe'),
+	(180,103,128,98,0,2,'2017-04-17 02:18:07','2017-04-17 02:18:07','04bef9be-251b-44f9-bc2d-ff57716b94a9'),
+	(181,103,129,83,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','1528c9cf-4fd5-4aa2-82f1-2d7793fe6ccd'),
+	(182,103,129,73,0,2,'2017-04-17 02:18:07','2017-04-17 02:18:07','201a0b4c-fb56-400d-9137-b60ebacec754'),
+	(183,104,130,90,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','dea64125-8fa4-4ce5-a8a7-3a97a5fab4ed'),
+	(184,104,131,48,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','6de004aa-e875-473a-8d77-63272e4cd013'),
+	(185,105,132,95,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','3dafd6aa-d580-48b5-93a9-b123ed078451'),
+	(186,107,134,93,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','557f5f7c-806d-436a-b95b-0eb5e2b8b941'),
+	(187,108,136,81,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','8e5e61cb-a27a-46d6-ac11-ec6b69eedae7'),
+	(188,110,137,95,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','5fa09bf2-1a93-4a3e-94df-de4d70e832c0'),
+	(189,112,138,94,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','9b8a0481-7107-4639-bb9a-c564272dd83a'),
+	(190,112,138,96,0,2,'2017-04-17 02:18:07','2017-04-17 02:18:07','a73881c9-63ec-4221-ab68-0cf4318d22bb'),
+	(191,112,138,97,0,3,'2017-04-17 02:18:07','2017-04-17 02:18:07','4eff006b-dac6-4804-88b5-0f6340e1eecc'),
+	(192,113,139,91,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','93d8be46-2b4b-4359-8013-a428ce4c8190'),
+	(193,113,139,99,0,2,'2017-04-17 02:18:07','2017-04-17 02:18:07','3384c4d0-d899-483b-b89e-0325136109f1'),
+	(194,113,140,52,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','e704759f-e928-484c-ac12-e4182d8e8c57'),
+	(195,114,141,92,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','0fba243e-e767-4c4a-bb4e-3f64fefa4827'),
+	(196,114,142,56,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','68e58586-1df5-48f6-a0cc-c0e79628b9d4'),
+	(197,115,143,92,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','17daf9f7-17a4-4bc2-b1bc-143dc4754b8e'),
+	(198,115,144,60,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','06502d27-a7fb-4194-a475-a93b2e9180f9'),
+	(199,116,145,91,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','77490f04-051c-4c35-b863-0c4deb891d70'),
+	(200,116,146,64,0,1,'2017-04-17 02:18:07','2017-04-17 02:18:07','13b4c4ad-693d-4191-8b00-f2a262ec50a5'),
+	(201,117,147,92,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','865c3604-b306-4eec-a639-418ef53b102f'),
+	(202,117,148,69,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','6429d596-71fe-415b-86ce-2626eeb6aa49'),
+	(203,118,149,84,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','d6d8cedb-dcde-42ee-a7ad-787fa3c12fa5'),
+	(204,118,150,32,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','c8d8be0a-5b5b-4849-b07d-7f926a53dfd6'),
+	(205,119,151,85,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','c4dfd80f-dfba-40ff-988a-fc9609ee28d5'),
+	(206,119,152,37,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','a981f93c-d403-4075-acc0-022961bd8090'),
+	(207,120,153,88,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','06a51f0d-df00-4c5d-b557-9df9b945574c'),
+	(208,120,154,40,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','b6ce43ab-ca8d-4389-9de2-39ed5f6a9c84'),
+	(209,121,155,89,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','5a2e3cf9-f18a-45a2-98e8-a4fb9be2b5a8'),
+	(210,121,156,43,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','c32bfe4e-11ec-4645-acb5-4903d423e049'),
+	(211,122,158,77,0,1,'2017-04-17 02:18:08','2017-04-17 02:18:08','c834c598-77bc-45e8-8f61-32205e0fa9ff'),
+	(240,132,168,33,0,1,'2017-04-18 23:47:03','2017-04-18 23:47:03','529e5525-6a7f-4f47-b11f-b0d06958f48b'),
+	(241,132,168,34,0,2,'2017-04-18 23:47:03','2017-04-18 23:47:03','6411c946-673e-41f4-b815-9bb764844a34'),
+	(247,136,172,57,0,1,'2017-04-18 23:57:22','2017-04-18 23:57:22','94e5fd4b-c225-426f-8ce4-070a8cc365d2'),
+	(248,136,172,59,0,2,'2017-04-18 23:57:22','2017-04-18 23:57:22','0e15f6e4-2923-4eaa-b02f-47e0d90ac5f6'),
+	(249,137,173,61,0,1,'2017-04-18 23:58:19','2017-04-18 23:58:19','f141f940-45ce-493c-93bf-7c5360ed618b'),
+	(250,137,173,62,0,2,'2017-04-18 23:58:19','2017-04-18 23:58:19','f6079302-3888-41ab-a8c8-fb93f72e2b63'),
+	(251,137,173,63,0,3,'2017-04-18 23:58:19','2017-04-18 23:58:19','cd3a3063-840b-4453-8066-45ce25f8cc43'),
+	(252,138,174,70,0,1,'2017-04-19 00:02:41','2017-04-19 00:02:41','32c04667-078b-47fb-b84e-95d527695042'),
+	(253,139,175,65,0,1,'2017-04-19 00:06:27','2017-04-19 00:06:27','42ffb1d6-dbd4-4d70-bfdc-344db13693e9'),
+	(254,139,175,66,0,2,'2017-04-19 00:06:27','2017-04-19 00:06:27','b81ad3d1-57ad-4f7f-ad5a-2be0338d0c69'),
+	(255,139,175,67,0,3,'2017-04-19 00:06:27','2017-04-19 00:06:27','2e26b27d-1579-4312-a3bf-5460c5094c2f'),
+	(256,139,175,68,0,4,'2017-04-19 00:06:27','2017-04-19 00:06:27','b0859f17-357f-4f8a-a345-75be524fa439'),
+	(257,140,176,74,0,1,'2017-04-19 00:06:43','2017-04-19 00:06:43','f235727b-fb02-4aca-9c98-ecfb31ffb342'),
+	(258,140,176,75,0,2,'2017-04-19 00:06:43','2017-04-19 00:06:43','b1b8d96d-9326-433a-92d0-bc0f0d39743c'),
+	(259,140,176,76,0,3,'2017-04-19 00:06:43','2017-04-19 00:06:43','7a98ac81-cb22-4ea5-860d-f06d89de3319'),
+	(263,142,178,50,0,1,'2017-04-19 22:01:54','2017-04-19 22:01:54','87f3b80d-b9e4-428b-acce-13207c617ada'),
+	(266,144,180,79,0,1,'2017-04-20 13:51:37','2017-04-20 13:51:37','5061ba62-a81e-45ae-b5a5-6db50c0b205c'),
+	(267,144,180,80,0,2,'2017-04-20 13:51:37','2017-04-20 13:51:37','917a4d9b-7485-473b-80e7-af0b185b08ba');
 
 /*!40000 ALTER TABLE `craft_fieldlayoutfields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -807,40 +1001,12 @@ VALUES
 	(13,'SuperTable_Block','2017-04-16 22:48:52','2017-04-16 22:48:52','84ec66fe-438c-41c9-9ad6-d8551e9359c6'),
 	(14,'SuperTable_Block','2017-04-16 22:48:53','2017-04-16 22:48:53','cd987564-825a-4f26-a7bb-d46a77e74019'),
 	(15,'SuperTable_Block','2017-04-16 22:48:54','2017-04-16 22:48:54','40d3ba27-29c7-4ddb-837f-2ab4f76c308e'),
-	(16,'SuperTable_Block','2017-04-16 22:48:55','2017-04-16 22:48:55','21a69951-f453-47d4-bf3c-5cd5b877e227'),
 	(17,'SuperTable_Block','2017-04-16 22:48:55','2017-04-16 22:48:55','52d2feb8-1dce-43bb-b27f-a2041544b230'),
 	(18,'SuperTable_Block','2017-04-16 22:48:55','2017-04-16 22:48:55','a6f48cd5-f329-46be-8fcc-dd8b332951ee'),
 	(19,'SuperTable_Block','2017-04-16 22:48:56','2017-04-16 22:48:56','f9fd5e91-16c0-489d-9102-7f98c5d7c8bc'),
-	(20,'SuperTable_Block','2017-04-16 22:48:57','2017-04-16 22:48:57','e4468a1d-4d89-499d-b56b-04b0d0b579c9'),
 	(21,'SuperTable_Block','2017-04-16 22:48:57','2017-04-16 22:48:57','195790ea-e473-4aed-b00e-610a292f407e'),
-	(22,'SuperTable_Block','2017-04-16 22:48:58','2017-04-16 22:48:58','221ad0cc-e6a6-4af0-a794-eae8313be347'),
-	(23,'SuperTable_Block','2017-04-16 22:48:58','2017-04-16 22:48:58','7b39b17a-d42d-4aae-81ae-2a4f34f003d9'),
-	(24,'SuperTable_Block','2017-04-16 22:48:59','2017-04-16 22:48:59','2bedaf19-d6dd-4b50-ba17-7a9a15e8cd9a'),
-	(25,'SuperTable_Block','2017-04-16 22:48:59','2017-04-16 22:48:59','89e473c3-0c15-4585-9fca-a46de5acf1e7'),
-	(26,'SuperTable_Block','2017-04-16 22:49:00','2017-04-16 22:49:00','bbda4f03-b80c-4eee-9a56-d2029e857b97'),
-	(27,'SuperTable_Block','2017-04-16 22:49:00','2017-04-16 22:49:00','a93ca467-5fa1-4eff-841f-bba4dd20cc95'),
 	(28,'SuperTable_Block','2017-04-16 22:49:01','2017-04-16 22:49:01','043e5bf8-074d-45a7-9a11-50d7c32b1208'),
 	(29,'SuperTable_Block','2017-04-16 22:49:01','2017-04-16 22:49:01','8c830c2b-9863-4f78-a837-c6e34d7a3de6'),
-	(30,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','bec0e549-8c7d-44e0-bc87-f968cf49714d'),
-	(31,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','a27754f5-726b-4679-850b-6e18dd5f3d96'),
-	(32,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','8a7bdded-b6c7-4e17-b2a6-1fad1491ccea'),
-	(33,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','932ec0e6-2f38-46d0-9fc2-c29fb1fac387'),
-	(34,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','43aca7cf-b772-42b6-9c4f-9f4c7a8b77ff'),
-	(35,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','88b5d3a4-57f2-4616-89dc-e76645d26b43'),
-	(36,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','d9b84b7c-645f-4195-866b-43a3298bcda8'),
-	(37,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','b6098bde-62e1-40d8-8ef0-e7aecbd621f9'),
-	(38,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','d13223e8-7509-40b4-b1c0-e9a051ffc96a'),
-	(39,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','e1899c0f-25ce-486f-831f-dbd028b6c7ac'),
-	(40,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','5f09094b-62f4-41a0-9613-7c1f741f0e2f'),
-	(41,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','e5bc34f6-0998-4c1b-8dc1-d8a4f08de734'),
-	(42,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','fe8b1706-2903-4b2a-ade1-02985ffe6dea'),
-	(43,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','7ee1f415-5ff8-41dd-8b67-9bfc6c87991d'),
-	(44,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','bc8f8f85-6aad-43db-9ed6-f772a59e00b5'),
-	(45,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','af41f54c-f5d3-425a-a5f5-9749f190a69c'),
-	(46,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','613e5039-fcea-4042-85de-5789dbfed82d'),
-	(47,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','07749319-6b9d-4c42-8b98-12219a2d93c1'),
-	(48,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','500c76bb-c9b5-42c4-8c02-06005ad345fd'),
-	(49,'Neo_Block','2017-04-16 22:49:03','2017-04-16 22:49:03','9766cf0f-bf4b-4e27-9296-fa5563998c98'),
 	(50,'Asset','2017-04-16 22:49:03','2017-04-16 22:49:03','fe71cc0b-e5ed-4b25-b1eb-56bc7be8939b'),
 	(51,'Asset','2017-04-16 22:49:03','2017-04-16 22:49:03','77461fdf-6c59-4c8b-9d8f-50886e76ef7d'),
 	(52,'Asset','2017-04-16 22:49:03','2017-04-16 22:49:03','a6282a9d-2e19-44d2-8776-8eb70035ac58'),
@@ -850,7 +1016,35 @@ VALUES
 	(59,'Entry','2017-04-16 22:50:54','2017-04-16 22:50:54','52e2db79-3c1c-4171-9eca-5c8820b59bc1'),
 	(60,'Entry','2017-04-16 22:50:54','2017-04-16 22:50:54','2cbefcd5-323f-4d89-ac74-23ed17091e18'),
 	(61,'Entry','2017-04-16 22:50:54','2017-04-16 22:50:54','8a144c09-6973-449d-ae30-624d4fe0ae92'),
-	(62,'Entry','2017-04-16 22:56:24','2017-04-16 22:56:24','72539bda-f54f-4897-b9a0-d32502898220');
+	(62,'Entry','2017-04-16 22:56:24','2017-04-16 22:56:24','72539bda-f54f-4897-b9a0-d32502898220'),
+	(103,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','72a45a69-f9a4-4937-8fd9-ffc1e584ec90'),
+	(104,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','62acc691-0b9a-4e83-a02e-9651c053fc22'),
+	(105,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','05d32493-d285-4871-845c-3886f51b58ff'),
+	(106,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','e2d7a093-f69f-4b0c-819e-cd8d6491a72f'),
+	(107,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','2c70b120-7d48-4363-b9f8-2f474e71a16f'),
+	(108,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','805a22b6-a94a-4348-9770-8d22a56e2c2f'),
+	(109,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','f395692c-1499-4777-957e-6a2aa953f4eb'),
+	(110,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','b3b0dcd2-0088-464c-b61c-eac9d6830490'),
+	(111,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','be0daece-a573-43f9-896f-461a6c7a8b18'),
+	(112,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','eae5b81c-d570-421a-be96-d7b061c5bd56'),
+	(113,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','28e5d67c-ea40-4fdc-9bed-4f732a64bcd6'),
+	(114,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','a320219c-b24c-4115-990f-1da664b7158f'),
+	(115,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','0485ecd5-5a3a-450f-b80f-79518cc4b617'),
+	(116,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','f6ac0b10-a189-46b4-9acc-810f2339db79'),
+	(117,'Neo_Block','2017-04-17 02:18:07','2017-04-17 02:18:07','98d1e675-0828-4a92-a156-b9fb42a38c60'),
+	(118,'Neo_Block','2017-04-17 02:18:08','2017-04-17 02:18:08','350c8131-dfcf-4a7e-acbe-12d95ef27592'),
+	(119,'Neo_Block','2017-04-17 02:18:08','2017-04-17 02:18:08','118d3ca5-8036-4f43-95e8-d9e49cffc849'),
+	(120,'Neo_Block','2017-04-17 02:18:08','2017-04-17 02:18:08','117ca5da-f0f4-4e5b-96e1-69d4154d924f'),
+	(121,'Neo_Block','2017-04-17 02:18:08','2017-04-17 02:18:08','4dfdee22-e42c-4ac5-90ff-47ce1b412140'),
+	(122,'Neo_Block','2017-04-17 02:18:08','2017-04-17 02:18:08','4cfb4446-2ce5-4095-b71f-0e5b8ed015fd'),
+	(132,'SuperTable_Block','2017-04-18 23:47:03','2017-04-18 23:47:03','dc4545f9-40d8-401a-8ce1-365a3ad77a13'),
+	(136,'SuperTable_Block','2017-04-18 23:57:22','2017-04-18 23:57:22','8027d76d-3a25-4bf8-8e74-527a7aef1200'),
+	(137,'SuperTable_Block','2017-04-18 23:58:19','2017-04-18 23:58:19','f83402ba-c2c4-47eb-ab45-60cad19b0479'),
+	(138,'SuperTable_Block','2017-04-19 00:02:41','2017-04-19 00:02:41','578f0140-06f8-42e6-8764-1be9806b5d7a'),
+	(139,'SuperTable_Block','2017-04-19 00:06:27','2017-04-19 00:06:27','e33947be-f64d-4201-9323-fbf40f7ee778'),
+	(140,'SuperTable_Block','2017-04-19 00:06:43','2017-04-19 00:06:43','021beab0-70d7-491e-9170-e736a21f9f05'),
+	(142,'SuperTable_Block','2017-04-19 22:01:54','2017-04-19 22:01:54','a61eef88-4be8-4159-bd7d-d8e39d8ae1d1'),
+	(144,'SuperTable_Block','2017-04-20 13:51:37','2017-04-20 13:51:37','7cc893e0-8266-4a5a-8ec1-eb3dd78781f1');
 
 /*!40000 ALTER TABLE `craft_fieldlayouts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -883,51 +1077,12 @@ VALUES
 	(3,13,'Content',1,'2017-04-16 22:48:52','2017-04-16 22:48:52','ddf7ff43-0835-45db-b192-b99d96ae689b'),
 	(4,14,'Content',1,'2017-04-16 22:48:53','2017-04-16 22:48:53','f74fff47-bc9e-432d-be65-b01bcf14286b'),
 	(5,15,'Content',1,'2017-04-16 22:48:54','2017-04-16 22:48:54','9514d65d-7e2c-4a92-9b9b-83e0b6441ba7'),
-	(6,16,'Content',1,'2017-04-16 22:48:55','2017-04-16 22:48:55','61a58e5c-6e55-4415-8116-9899007dd618'),
 	(7,17,'Content',1,'2017-04-16 22:48:55','2017-04-16 22:48:55','28b234bd-564b-4cf5-9f36-1566b8212afa'),
 	(8,18,'Content',1,'2017-04-16 22:48:55','2017-04-16 22:48:55','7ffaef62-7eb7-4de8-8c4a-c060fe36d287'),
 	(9,19,'Content',1,'2017-04-16 22:48:56','2017-04-16 22:48:56','46586fbd-3e8e-4553-bd93-e8e9425971d0'),
-	(10,20,'Content',1,'2017-04-16 22:48:57','2017-04-16 22:48:57','38eb46c2-2ccb-43fb-8bac-2cb7efaa1c8a'),
 	(11,21,'Content',1,'2017-04-16 22:48:57','2017-04-16 22:48:57','35c2b7dd-3e9a-4990-9dcb-127240029c7b'),
-	(12,22,'Content',1,'2017-04-16 22:48:58','2017-04-16 22:48:58','d130c873-c539-4e10-bbf1-e863e239a0f3'),
-	(13,23,'Content',1,'2017-04-16 22:48:58','2017-04-16 22:48:58','95fe3b05-4239-40f0-a93e-8f9689fb8dc8'),
-	(14,24,'Content',1,'2017-04-16 22:48:59','2017-04-16 22:48:59','8ea5c5ad-560e-4722-9340-634102b399b7'),
-	(15,25,'Content',1,'2017-04-16 22:48:59','2017-04-16 22:48:59','d05a25b5-6b6e-4bbf-b07d-e2e901a12ec2'),
-	(16,26,'Content',1,'2017-04-16 22:49:00','2017-04-16 22:49:00','0e8b925d-e96e-4192-9944-35c9c31f388d'),
-	(17,27,'Content',1,'2017-04-16 22:49:00','2017-04-16 22:49:00','f34f15a3-c7e9-440f-895a-e12c305af11f'),
 	(18,28,'Content',1,'2017-04-16 22:49:01','2017-04-16 22:49:01','902c9f4d-29aa-464f-9f09-4814bdf3b470'),
 	(19,29,'Content',1,'2017-04-16 22:49:01','2017-04-16 22:49:01','566a1488-86d5-460c-9714-3452467cdbea'),
-	(20,30,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','9de82b37-817f-4838-8ffd-ad7c6325f0c5'),
-	(21,30,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','f3057513-019f-425c-ba51-20e15b88fb36'),
-	(22,31,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','953a9dd5-2860-44cb-bd13-55fa392e8fa5'),
-	(23,32,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','1d660a10-174c-4d83-b910-c05f1f6bfc84'),
-	(24,33,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','5acb6ae6-c176-4288-977c-a1f6cc58f251'),
-	(25,33,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','c4c25f5e-28c8-4c57-8d5e-5c0c86afe680'),
-	(26,35,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','347bfc74-481a-4d7e-9ddf-05b802e03a2d'),
-	(27,35,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','236018bd-057c-4d26-9c83-b997ac00110d'),
-	(28,36,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','d2f444d3-2801-4320-801b-04a81db1f248'),
-	(29,37,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','0cb9c19d-a825-4589-ab4e-3a682013b422'),
-	(30,39,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','dcfe28a4-d032-4b9b-9ddf-93378dc896e3'),
-	(31,40,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','2e6b8098-1d35-4c14-aa95-3651502e5e4b'),
-	(32,40,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','b029c373-f95f-489b-a366-2354be38eee5'),
-	(33,41,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','e3eeb91e-ee08-4346-8d15-387d6279516b'),
-	(34,41,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','05039281-f3a3-45a2-a576-45dceb027a04'),
-	(35,42,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','f90b479c-97f9-4c1d-b477-089c516dd7c2'),
-	(36,42,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','2253a881-d16a-4fb1-ba02-2e4738336e3e'),
-	(37,43,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','23f31c1e-fbd7-4392-9c44-30bbb9b90bc4'),
-	(38,43,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','92e65d47-2506-49cd-a2ec-224a987697ba'),
-	(39,44,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','2950a1c3-90d2-4f66-9cee-41c30373e72b'),
-	(40,44,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','c9f244ab-61ef-4e4f-b8d6-4009a022d7a5'),
-	(41,45,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','c9b8abd5-766b-442b-b95f-0310c06a0b83'),
-	(42,45,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','444b3f58-3208-4166-985d-8546fd599253'),
-	(43,46,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','22331423-95be-4e54-b622-bab1e5067aeb'),
-	(44,46,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','0d7dd488-3a41-4dba-8d4a-b2a613406b90'),
-	(45,47,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','59b173c8-3a5f-42fc-ba1e-cec0e18c7d24'),
-	(46,47,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','132fe154-b136-4477-8081-1d97e94b1ae5'),
-	(47,48,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','bba03578-d0d9-4821-89b8-38974b121b92'),
-	(48,48,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','5630a55a-b945-42c9-b932-76d7448c2295'),
-	(49,49,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','b72c0e52-cabd-474e-88f4-ee3ee141ba0b'),
-	(50,49,'Settings',2,'2017-04-16 22:49:03','2017-04-16 22:49:03','58a8f7c0-dc5f-450a-8ceb-034c4cf06afc'),
 	(51,50,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','7ac06180-abe9-4fa1-8bfe-5170df40f36f'),
 	(52,51,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','5a6aacb7-34e5-48fe-bff2-90a187e340bf'),
 	(53,52,'Content',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','4a77c3a2-b27f-414e-b670-74eb86a9d71b'),
@@ -937,7 +1092,46 @@ VALUES
 	(62,60,'Content',1,'2017-04-16 22:50:54','2017-04-16 22:50:54','c974e55a-a6c4-4e65-acc3-2dd4b3a83f0b'),
 	(63,61,'Content Neo',1,'2017-04-16 22:50:54','2017-04-16 22:50:54','ea6c2926-bfdd-40c7-b0d3-ccb2e243c2e2'),
 	(64,61,'Meta',2,'2017-04-16 22:50:54','2017-04-16 22:50:54','cbee3064-d627-405a-9576-1f16ab2fa03f'),
-	(65,61,'SEO',3,'2017-04-16 22:50:54','2017-04-16 22:50:54','8d9ffd8f-79ec-414c-b227-2ddf1ff7b024');
+	(65,61,'SEO',3,'2017-04-16 22:50:54','2017-04-16 22:50:54','8d9ffd8f-79ec-414c-b227-2ddf1ff7b024'),
+	(128,103,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','4e75ec6e-3309-4de3-9f1d-d7bd774fa82e'),
+	(129,103,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','378ed583-0392-4f3f-84cd-5f4cb7a65fa0'),
+	(130,104,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','9f972a01-becc-4f3c-bf16-e99aedf38ed1'),
+	(131,104,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','55129243-0584-42a7-8185-a162072edbb4'),
+	(132,105,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','754369a9-106e-4278-bb1d-fd3ff92c8d9e'),
+	(133,106,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','12130eb4-b0b7-4b74-9d1f-1d49e8f778eb'),
+	(134,107,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','4ab1c205-270a-49ab-98b4-3e70e3e7b5e8'),
+	(135,108,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','473c1a3b-d84f-4902-9dad-f2b51fa193e0'),
+	(136,108,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','d1bf048b-8dfa-40e9-a959-5090a68ad16d'),
+	(137,110,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','5fea1e36-795e-4134-8f84-5c5e271d8951'),
+	(138,112,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','aaaa6e8c-6e3e-4168-8c08-d0366f76f913'),
+	(139,113,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','8ce4d549-ab2e-4d6f-b07f-347b44b0e7b9'),
+	(140,113,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','6a0d08d8-db36-46b0-95f7-32e817afc57e'),
+	(141,114,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','d1edb55f-3971-45a1-a800-1363220dbd75'),
+	(142,114,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','e015fa5e-0058-40a3-979c-7f6709521564'),
+	(143,115,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','a88dd438-03fd-4e8c-a267-a9115bb4890d'),
+	(144,115,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','65a67cbf-a18f-4c65-ad68-096b002769d3'),
+	(145,116,'Content',1,'2017-04-17 02:18:07','2017-04-17 02:18:07','2a6ee058-35b4-47b1-8af1-380920c8a61c'),
+	(146,116,'Settings',2,'2017-04-17 02:18:07','2017-04-17 02:18:07','ddcd5e0b-c628-4c56-9929-00481752d1ac'),
+	(147,117,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','7767e881-a690-45f0-b231-58df65b515fe'),
+	(148,117,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','0b977a73-0360-4ec2-b5a6-aa8d5959d1d7'),
+	(149,118,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','07e6d16d-01ba-47e6-8609-7737ad2b5a3f'),
+	(150,118,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','00dc2fd0-40fa-4468-8f88-2f6282dd423a'),
+	(151,119,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','5f96f2d9-eb9a-404f-806f-96c8057784e8'),
+	(152,119,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','92e97f6f-f078-4aec-a169-2ac6b8b5e2fe'),
+	(153,120,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','48b6831e-d542-487c-a757-77349dbad788'),
+	(154,120,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','9257295b-edf7-405c-aa15-a751c51c7124'),
+	(155,121,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','1320c60d-fd69-41ae-baca-3e133d192c7f'),
+	(156,121,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','95c56574-60fe-458d-950e-cdb479c44519'),
+	(157,122,'Content',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','1647ed12-cdf4-4b6a-9c33-b96152da9d77'),
+	(158,122,'Settings',2,'2017-04-17 02:18:08','2017-04-17 02:18:08','ce36ba81-5a7e-4335-b9af-f4469624e713'),
+	(168,132,'Content',1,'2017-04-18 23:47:03','2017-04-18 23:47:03','7907d41e-c00f-43bb-8904-26c07e61166b'),
+	(172,136,'Content',1,'2017-04-18 23:57:22','2017-04-18 23:57:22','f551dc9a-903a-44f2-9f09-87b8cfe1117a'),
+	(173,137,'Content',1,'2017-04-18 23:58:19','2017-04-18 23:58:19','97a0c4e8-5627-467e-ada4-1ca217470159'),
+	(174,138,'Content',1,'2017-04-19 00:02:41','2017-04-19 00:02:41','1eb8edec-e32a-42db-9401-5766bfb7524b'),
+	(175,139,'Content',1,'2017-04-19 00:06:27','2017-04-19 00:06:27','a9843e71-b178-4630-a68f-6ad98fc47009'),
+	(176,140,'Content',1,'2017-04-19 00:06:43','2017-04-19 00:06:43','42dbeac9-20bc-4940-a827-5d096946ced5'),
+	(178,142,'Content',1,'2017-04-19 22:01:54','2017-04-19 22:01:54','5e88fbf7-4853-4ef5-8910-c7b7292c0fce'),
+	(180,144,'Content',1,'2017-04-20 13:51:37','2017-04-20 13:51:37','a21795a9-c404-41f2-bbc7-2a1b942779cc');
 
 /*!40000 ALTER TABLE `craft_fieldlayouttabs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1002,11 +1196,9 @@ VALUES
 	(29,NULL,'Source','source','superTableBlockType:3','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:48:54','2017-04-16 22:48:54','d6d22381-2c84-4784-96fc-8564e6b5d384'),
 	(30,NULL,'Source URL','sourceUrl','superTableBlockType:3','',0,'FruitLinkIt','{\"types\":[\"custom\"],\"defaultText\":\"\",\"allowCustomText\":\"\",\"allowTarget\":\"\",\"entrySources\":[],\"entrySelectionLabel\":\"Select an entry\",\"assetSources\":\"*\",\"assetSelectionLabel\":\"Select an asset\",\"categorySources\":\"*\",\"categorySelectionLabel\":\"Select a category\"}','2017-04-16 22:48:54','2017-04-16 22:48:54','39aa2cb6-f8c4-492f-8300-4f6291025bc0'),
 	(31,6,'Plugin: Seomatic','pluginSeomatic','global','',0,'Seomatic_Meta','{\"assetSources\":\"*\",\"seoMainEntityCategory\":\"CreativeWork\",\"seoMainEntityOfPage\":\"WebPage\",\"seoTitleSource\":\"field\",\"seoTitleSourceField\":\"title\",\"seoTitle\":\"\",\"seoTitleSourceChangeable\":1,\"seoDescriptionSource\":\"custom\",\"seoDescriptionSourceField\":\"title\",\"seoDescription\":\"\",\"seoDescriptionSourceChangeable\":1,\"seoKeywordsSource\":\"custom\",\"seoKeywordsSourceField\":\"title\",\"seoKeywords\":\"\",\"seoKeywordsSourceChangeable\":1,\"seoImageIdSource\":\"custom\",\"seoImageIdSourceField\":\"cbmImage\",\"seoImageIdSourceChangeable\":1,\"seoImageTransform\":\"\",\"twitterCardType\":\"\",\"twitterCardTypeChangeable\":1,\"seoTwitterImageIdSource\":\"custom\",\"seoTwitterImageIdSourceField\":\"cbmImage\",\"seoTwitterImageIdSourceChangeable\":1,\"seoTwitterImageTransform\":\"\",\"openGraphType\":\"\",\"openGraphTypeChangeable\":1,\"seoFacebookImageIdSource\":\"custom\",\"seoFacebookImageIdSourceField\":\"cbmImage\",\"seoFacebookImageIdSourceChangeable\":1,\"seoFacebookImageTransform\":\"\",\"robots\":\"\",\"robotsChangeable\":1}','2017-04-16 22:48:54','2017-04-16 22:48:54','07f85313-5d91-415c-9bd3-6cd0acf06af1'),
-	(32,7,'Settings: Button','settingsButton','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"},\"new4\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:54','2017-04-16 22:48:54','08cd9e7a-9813-425d-a459-957dfbd8d3f4'),
-	(33,NULL,'Style','style','superTableBlockType:4','',0,'Dropdown','{\"options\":[{\"label\":\"Primary\",\"value\":\"primary\",\"default\":1},{\"label\":\"Secondary\",\"value\":\"secondary\",\"default\":\"\"}]}','2017-04-16 22:48:54','2017-04-16 22:48:54','01c6ed96-507a-4b5b-b289-e724f15bb9f4'),
-	(34,NULL,'Alignment','alignment','superTableBlockType:4','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":1},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"},{\"label\":\"Full\",\"value\":\"full\",\"default\":\"\"}]}','2017-04-16 22:48:54','2017-04-16 22:48:54','3ef6503f-da31-4ba9-b345-afa2b7c8a582'),
-	(35,NULL,'With Icon','withIcon','superTableBlockType:4','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:54','2017-04-16 22:48:54','e49d80c5-fa5b-410c-93c5-6c8fd92cea6c'),
-	(36,NULL,'Icon','icon','superTableBlockType:4','',0,'Dropdown','{\"options\":[{\"label\":\"Icon Sample\",\"value\":\"iconSample\",\"default\":1}]}','2017-04-16 22:48:55','2017-04-16 22:48:55','6882dfa7-51ee-4047-bccc-6640382a4a53'),
+	(32,7,'Settings: Button','settingsButton','global','',0,'SuperTable','{\"columns\":{\"33\":{\"width\":\"\"},\"34\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:54','2017-04-18 23:47:02','08cd9e7a-9813-425d-a459-957dfbd8d3f4'),
+	(33,NULL,'Style','style','superTableBlockType:4','',0,'Dropdown','{\"options\":[{\"label\":\"Primary\",\"value\":\"primary\",\"default\":\"1\"},{\"label\":\"Secondary\",\"value\":\"secondary\",\"default\":\"\"}]}','2017-04-16 22:48:54','2017-04-18 23:47:03','01c6ed96-507a-4b5b-b289-e724f15bb9f4'),
+	(34,NULL,'Alignment','alignment','superTableBlockType:4','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":\"1\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"},{\"label\":\"Full\",\"value\":\"full\",\"default\":\"\"}]}','2017-04-16 22:48:54','2017-04-18 23:47:03','3ef6503f-da31-4ba9-b345-afa2b7c8a582'),
 	(37,7,'Settings: ButtonGroup','settingsButtonGroup','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:55','2017-04-16 22:48:55','2ce3ba09-a1bf-4a19-bafd-421b3114a1e9'),
 	(38,NULL,'Style','style','superTableBlockType:5','',0,'Dropdown','{\"options\":[{\"label\":\"Primary\",\"value\":\"primary\",\"default\":1},{\"label\":\"Secondary\",\"value\":\"secondary\",\"default\":\"\"}]}','2017-04-16 22:48:55','2017-04-16 22:48:55','6c309da0-b686-4525-9228-a816b6fdfea4'),
 	(39,NULL,'Alignment','alignment','superTableBlockType:5','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":1},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"},{\"label\":\"Full\",\"value\":\"full\",\"default\":\"\"}]}','2017-04-16 22:48:55','2017-04-16 22:48:55','006f2f65-036f-4194-9eb3-40aab320f0a7'),
@@ -1018,39 +1210,33 @@ VALUES
 	(45,NULL,'Embed Position','embedPosition','superTableBlockType:7','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":1},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-04-16 22:48:56','2017-04-16 22:48:56','a536303f-28f8-44ce-a714-7016c49cbefd'),
 	(46,NULL,'Embed: Width','embedWidth','superTableBlockType:7','',0,'Dropdown','{\"options\":[{\"label\":\"Full\",\"value\":\"full\",\"default\":1},{\"label\":\"Three Quarter\",\"value\":\"threeQuarter\",\"default\":\"\"},{\"label\":\"Half\",\"value\":\"half\",\"default\":\"\"}]}','2017-04-16 22:48:56','2017-04-16 22:48:56','0a23214e-c6eb-43ae-ba97-6687d0c41bc2'),
 	(47,7,'Settings: Focal Point','settingsFocalPoint','global','',0,'FocalPointField_FocalPoint','{\"defaultFocalPoint\":\"50% 50%\"}','2017-04-16 22:48:56','2017-04-16 22:48:56','56b4e0bb-3648-4872-a635-41125c6d0fd5'),
-	(48,7,'Settings: Headline','settingsHeadline','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:56','2017-04-16 22:48:56','0cc564f2-f3aa-4195-acfe-e2d440c35d1f'),
-	(49,NULL,'Indented','indented','superTableBlockType:8','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:56','2017-04-16 22:48:56','b91cd474-62c4-4ff6-a691-3b1f451f5a9f'),
-	(50,NULL,'Semantic Size','semanticSize','superTableBlockType:8','',0,'Dropdown','{\"options\":[{\"label\":\"H1\",\"value\":\"h1\",\"default\":\"\"},{\"label\":\"H2\",\"value\":\"h2\",\"default\":1},{\"label\":\"H3\",\"value\":\"h3\",\"default\":\"\"},{\"label\":\"H4\",\"value\":\"h4\",\"default\":\"\"},{\"label\":\"H5\",\"value\":\"h5\",\"default\":\"\"},{\"label\":\"H6\",\"value\":\"h6\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','e762c338-786b-4e81-89c6-bb58d32ebc28'),
-	(51,NULL,'Visual Size','visualSize','superTableBlockType:8','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Looks like H1\",\"value\":\"h1\",\"default\":\"\"},{\"label\":\"Looks like H2\",\"value\":\"h2\",\"default\":\"\"},{\"label\":\"Looks like H3\",\"value\":\"h3\",\"default\":\"\"},{\"label\":\"Looks like H4\",\"value\":\"h4\",\"default\":\"\"},{\"label\":\"Looks like H5\",\"value\":\"h5\",\"default\":\"\"},{\"label\":\"Looks like H6\",\"value\":\"h6\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','de49f995-e774-4d2b-ad9c-17376f79a2ae'),
+	(48,7,'Settings: Headline','settingsHeadline','global','',0,'SuperTable','{\"columns\":{\"50\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:56','2017-04-19 22:01:54','0cc564f2-f3aa-4195-acfe-e2d440c35d1f'),
+	(50,NULL,'Size','size','superTableBlockType:8','',0,'Dropdown','{\"options\":[{\"label\":\"H2\",\"value\":\"h2\",\"default\":\"1\"},{\"label\":\"H3\",\"value\":\"h3\",\"default\":\"\"},{\"label\":\"H4\",\"value\":\"h4\",\"default\":\"\"},{\"label\":\"H5\",\"value\":\"h5\",\"default\":\"\"},{\"label\":\"H6\",\"value\":\"h6\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-19 22:01:54','e762c338-786b-4e81-89c6-bb58d32ebc28'),
 	(52,7,'Settings: Image Cover','settingsImageCover','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:57','2017-04-16 22:48:57','209881bb-a426-47e6-aaa2-79354a549e58'),
 	(53,NULL,'Background Position','backgroundPosition','superTableBlockType:9','',0,'Dropdown','{\"options\":[{\"label\":\"Focalpoint\",\"value\":\"focalpoint\",\"default\":1},{\"label\":\"Left : Top\",\"value\":\"0% 0%\",\"default\":\"\"},{\"label\":\"Left : Center\",\"value\":\"0% 50%\",\"default\":\"\"},{\"label\":\"Left : Bottom\",\"value\":\"0% 100%\",\"default\":\"\"},{\"label\":\"Center : Top\",\"value\":\"50% 0%\",\"default\":\"\"},{\"label\":\"Center : Center\",\"value\":\"50% 50%\",\"default\":\"\"},{\"label\":\"Center : Bottom\",\"value\":\"50% 100%\",\"default\":\"\"},{\"label\":\"Right : Top\",\"value\":\"100% 0%\",\"default\":\"\"},{\"label\":\"Right : Center\",\"value\":\"100% 50%\",\"default\":\"\"},{\"label\":\"Right : Bottom\",\"value\":\"100% 100%\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','bdd100ab-144e-4264-a75a-b5e6cb7c3350'),
 	(54,NULL,'Text Vertical Position','textVerticalPosition','superTableBlockType:9','',0,'Dropdown','{\"options\":[{\"label\":\"Top\",\"value\":\"top\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"\"},{\"label\":\"Bottom\",\"value\":\"bottom\",\"default\":1}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','332b34bc-c8e4-4ae5-8bc1-b4a1d403aaf2'),
 	(55,NULL,'Text Alignment','textAlignment','superTableBlockType:9','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":1},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','80e5dc50-61d7-4a7c-b1d9-8591cde2c6d9'),
-	(56,7,'Settings: Image Gallery','settingsImageGallery','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:57','2017-04-16 22:48:57','21cf9e06-e54a-49e8-8799-c46f1308abcb'),
-	(57,NULL,'Colums','columns','superTableBlockType:10','',0,'Dropdown','{\"options\":[{\"label\":6,\"value\":6,\"default\":1},{\"label\":5,\"value\":5,\"default\":\"\"},{\"label\":4,\"value\":4,\"default\":\"\"},{\"label\":3,\"value\":3,\"default\":\"\"},{\"label\":2,\"value\":2,\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','72e6effe-f568-4a11-8038-6d64a548ee83'),
-	(58,NULL,'Image Position','imagePosition','superTableBlockType:10','',0,'Dropdown','{\"options\":[{\"label\":\"Focalpoint\",\"value\":\"focalpoint\",\"default\":1},{\"label\":\"Left : Top\",\"value\":\"0% 0%\",\"default\":\"\"},{\"label\":\"Left : Center\",\"value\":\"0% 50%\",\"default\":\"\"},{\"label\":\"Left : Bottom\",\"value\":\"0% 100%\",\"default\":\"\"},{\"label\":\"Center : Top\",\"value\":\"50% 0%\",\"default\":\"\"},{\"label\":\"Center : Center\",\"value\":\"50% 50%\",\"default\":\"\"},{\"label\":\"Center : Bottom\",\"value\":\"50% 100%\",\"default\":\"\"},{\"label\":\"Right : Top\",\"value\":\"100% 0%\",\"default\":\"\"},{\"label\":\"Right : Center\",\"value\":\"100% 50%\",\"default\":\"\"},{\"label\":\"Right : Bottom\",\"value\":\"100% 100%\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-16 22:48:57','56a92d04-bb91-47f0-9958-9cf59125118a'),
-	(59,NULL,'Image Thumbs Ratio','imageThumbsRatio','superTableBlockType:10','',0,'Dropdown','{\"options\":[{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":\"\"},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":1},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-16 22:48:58','812a3f7a-45d9-4351-8bb3-7a11f5aeb371'),
-	(60,7,'Settings: Image Grid','settingsImageGrid','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:58','2017-04-16 22:48:58','b0f61e15-eec0-4227-b19b-3db8252c752c'),
-	(61,NULL,'Caption','caption','superTableBlockType:11','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:58','2017-04-16 22:48:58','364a21c0-c4fd-4da0-a2c0-f9f83fb5233e'),
-	(62,NULL,'Columns','columns','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":3,\"value\":3,\"default\":\"\"},{\"label\":2,\"value\":2,\"default\":1},{\"label\":1,\"value\":1,\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-16 22:48:58','6cf16dcf-f649-464d-9be3-f40daefb1333'),
-	(63,NULL,'Image Ratio','imageRatio','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":\"\"},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-16 22:48:58','81d289bd-9d5d-49fd-93a4-9dff38fa9966'),
-	(64,7,'Settings: Image Single','settingsImageSingle','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"},\"new4\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:58','2017-04-16 22:48:58','810871ff-93b3-4f1d-a8ff-8e3743dd8361'),
-	(65,NULL,'Caption','caption','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:58','2017-04-16 22:48:58','674b8645-5a09-44f1-9b6c-d7f73179886f'),
-	(66,NULL,'Image Position','imagePosition','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":1},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-16 22:48:59','2bedac5a-5b13-49ef-92d0-91478e203fe7'),
-	(67,NULL,'Image Ratio','imageRatio','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":\"\"},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-16 22:48:59','5c9b3f7d-b541-4f5a-b514-cfc65f52ef7b'),
-	(68,NULL,'Image Width','imageWidth','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Full\",\"value\":\"full\",\"default\":1},{\"label\":\"Three Quarter\",\"value\":\"threeQuarter\",\"default\":\"\"},{\"label\":\"Half\",\"value\":\"half\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-16 22:48:59','2661efb8-eb33-45be-8b5b-bd92ce47d06b'),
-	(69,7,'Settings: Image Slider','settingsImageSlider','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:59','2017-04-16 22:48:59','cd018358-a1a4-40d0-a332-1cba4dfbc14e'),
-	(70,NULL,'Image Ratio','imageRatio','superTableBlockType:13','',0,'Dropdown','{\"options\":[{\"label\":\"16:10\",\"value\":\"16:10\",\"default\":1},{\"label\":\"16:9\",\"value\":\"16:9\",\"default\":\"\"},{\"label\":\"4:3\",\"value\":\"4:3\",\"default\":\"\"},{\"label\":\"3:2\",\"value\":\"3:2\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"2:1\",\"default\":\"\"},{\"label\":\"1:1\",\"value\":\"1:1\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"1:2\",\"default\":\"\"},{\"label\":\"2:3\",\"value\":\"2:3\",\"default\":\"\"},{\"label\":\"3:4\",\"value\":\"3:4\",\"default\":\"\"},{\"label\":\"9:16\",\"value\":\"9:16\",\"default\":\"\"},{\"label\":\"10:16\",\"value\":\"10:16\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-16 22:48:59','0be4f25a-452b-4c08-914d-ce1cb40d71f6'),
-	(71,NULL,'Navigation','navigation','superTableBlockType:13','',0,'Lightswitch','{\"default\":1}','2017-04-16 22:48:59','2017-04-16 22:48:59','087ecfe2-a335-42ce-929f-2cfd88e3f7e5'),
-	(72,NULL,'Pagination','pagination','superTableBlockType:13','',0,'Lightswitch','{\"default\":1}','2017-04-16 22:48:59','2017-04-16 22:48:59','b1654cbd-9fb1-4e70-aaad-e296cf33e17e'),
-	(73,7,'Settings: Section','settingsSection','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Section Options\",\"maxRows\":null}','2017-04-16 22:48:59','2017-04-16 22:48:59','8fabec04-d56b-4b9e-9387-759a5a223433'),
-	(74,NULL,'Background Color','backgroundColor','superTableBlockType:14','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1},{\"label\":\"Black\",\"value\":\"black\",\"default\":\"\"},{\"label\":\"White\",\"value\":\"white\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-16 22:49:00','f8094dfe-0a52-4bc0-bd65-f3628d1a10d9'),
-	(75,NULL,'Full Width','fullWidth','superTableBlockType:14','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:49:00','2017-04-16 22:49:00','9fc896ef-e002-4809-805e-bc7c64740e7a'),
-	(76,NULL,'Padding Vertical','paddingVertical','superTableBlockType:14','',0,'Dropdown','{\"options\":[{\"label\":\"None\",\"value\":\"none\",\"default\":\"\"},{\"label\":\"Small\",\"value\":\"small\",\"default\":\"\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":1},{\"label\":\"Large\",\"value\":\"large\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-16 22:49:00','21fe272b-40cb-43da-933f-d55c4ecdb2ff'),
-	(77,7,'Settings: Separator','settingsSeparator','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"},\"new2\":{\"width\":\"\"},\"new3\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:49:00','2017-04-16 22:49:00','1c16da1a-9828-49c5-9e0b-1aee38fbfbed'),
-	(78,NULL,'Full Width','fullWidth','superTableBlockType:15','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:49:00','2017-04-16 22:49:00','de0b8df7-f8cb-42a9-bf5c-5052d27f9f43'),
-	(79,NULL,'Style','style','superTableBlockType:15','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":1}]}','2017-04-16 22:49:00','2017-04-16 22:49:00','f16ffbfa-5ac1-4106-b2a9-788bb96cb649'),
-	(80,NULL,'Margin Vertical','marginVertical','superTableBlockType:15','',0,'Dropdown','{\"options\":[{\"label\":\"None\",\"value\":\"none\",\"default\":\"\"},{\"label\":\"Small\",\"value\":\"small\",\"default\":1},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Large\",\"value\":\"large\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-16 22:49:00','1fcf5028-579b-41eb-8c3f-57c23c97f15f'),
+	(56,7,'Settings: Image Gallery','settingsImageGallery','global','',0,'SuperTable','{\"columns\":{\"57\":{\"width\":\"\"},\"59\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:57','2017-04-18 23:57:22','21cf9e06-e54a-49e8-8799-c46f1308abcb'),
+	(57,NULL,'Colums','columns','superTableBlockType:10','',0,'Dropdown','{\"options\":[{\"label\":\"6\",\"value\":\"6\",\"default\":\"1\"},{\"label\":\"5\",\"value\":\"5\",\"default\":\"\"},{\"label\":\"4\",\"value\":\"4\",\"default\":\"\"},{\"label\":\"3\",\"value\":\"3\",\"default\":\"\"},{\"label\":\"2\",\"value\":\"2\",\"default\":\"\"}]}','2017-04-16 22:48:57','2017-04-18 23:57:22','72e6effe-f568-4a11-8038-6d64a548ee83'),
+	(59,NULL,'Image Thumbs Ratio','imageThumbsRatio','superTableBlockType:10','',0,'Dropdown','{\"options\":[{\"label\":\"Landscape\",\"value\":\"landscape\",\"default\":\"\"},{\"label\":\"Square\",\"value\":\"square\",\"default\":\"1\"},{\"label\":\"Portrait\",\"value\":\"portrait\",\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-18 23:57:22','812a3f7a-45d9-4351-8bb3-7a11f5aeb371'),
+	(60,7,'Settings: Image Grid','settingsImageGrid','global','',0,'SuperTable','{\"columns\":{\"61\":{\"width\":\"\"},\"62\":{\"width\":\"\"},\"63\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:58','2017-04-18 23:58:19','b0f61e15-eec0-4227-b19b-3db8252c752c'),
+	(61,NULL,'Caption','caption','superTableBlockType:11','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:58','2017-04-18 23:58:19','364a21c0-c4fd-4da0-a2c0-f9f83fb5233e'),
+	(62,NULL,'Columns','columns','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"3\",\"value\":\"3\",\"default\":\"\"},{\"label\":\"2\",\"value\":\"2\",\"default\":\"1\"},{\"label\":\"1\",\"value\":\"1\",\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-18 23:58:19','6cf16dcf-f649-464d-9be3-f40daefb1333'),
+	(63,NULL,'Image Ratio','imageRatio','superTableBlockType:11','',0,'Dropdown','{\"options\":[{\"label\":\"Landscape\",\"value\":\"landscape\",\"default\":\"\"},{\"label\":\"Square\",\"value\":\"square\",\"default\":\"1\"},{\"label\":\"Portrait\",\"value\":\"portrait\",\"default\":\"\"}]}','2017-04-16 22:48:58','2017-04-18 23:58:19','81d289bd-9d5d-49fd-93a4-9dff38fa9966'),
+	(64,7,'Settings: Image Single','settingsImageSingle','global','',0,'SuperTable','{\"columns\":{\"65\":{\"width\":\"\"},\"66\":{\"width\":\"\"},\"67\":{\"width\":\"\"},\"68\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:58','2017-04-19 00:06:27','810871ff-93b3-4f1d-a8ff-8e3743dd8361'),
+	(65,NULL,'Caption','caption','superTableBlockType:12','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:48:58','2017-04-19 00:06:27','674b8645-5a09-44f1-9b6c-d7f73179886f'),
+	(66,NULL,'Image Position','imagePosition','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Left\",\"value\":\"left\",\"default\":\"\"},{\"label\":\"Center\",\"value\":\"center\",\"default\":\"1\"},{\"label\":\"Right\",\"value\":\"right\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-19 00:06:27','2bedac5a-5b13-49ef-92d0-91478e203fe7'),
+	(67,NULL,'Image Ratio','imageRatio','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Landscape\",\"value\":\"landscape\",\"default\":\"1\"},{\"label\":\"Square\",\"value\":\"square\",\"default\":\"\"},{\"label\":\"Portrait\",\"value\":\"portrait\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-19 00:06:27','5c9b3f7d-b541-4f5a-b514-cfc65f52ef7b'),
+	(68,NULL,'Image Width','imageWidth','superTableBlockType:12','',0,'Dropdown','{\"options\":[{\"label\":\"Full\",\"value\":\"full\",\"default\":\"1\"},{\"label\":\"Three Quarter\",\"value\":\"threeQuarter\",\"default\":\"\"},{\"label\":\"Half\",\"value\":\"half\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-19 00:06:27','2661efb8-eb33-45be-8b5b-bd92ce47d06b'),
+	(69,7,'Settings: Image Slider','settingsImageSlider','global','',0,'SuperTable','{\"columns\":{\"70\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:48:59','2017-04-19 00:02:40','cd018358-a1a4-40d0-a332-1cba4dfbc14e'),
+	(70,NULL,'Image Ratio','imageRatio','superTableBlockType:13','',0,'Dropdown','{\"options\":[{\"label\":\"Landscape\",\"value\":\"landscape\",\"default\":\"1\"},{\"label\":\"Square\",\"value\":\"square\",\"default\":\"\"},{\"label\":\"Portrait\",\"value\":\"portrait\",\"default\":\"\"}]}','2017-04-16 22:48:59','2017-04-19 00:02:41','0be4f25a-452b-4c08-914d-ce1cb40d71f6'),
+	(73,7,'Settings: Section','settingsSection','global','',0,'SuperTable','{\"columns\":{\"74\":{\"width\":\"\"},\"75\":{\"width\":\"\"},\"76\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Section Options\",\"maxRows\":null}','2017-04-16 22:48:59','2017-04-19 00:06:43','8fabec04-d56b-4b9e-9387-759a5a223433'),
+	(74,NULL,'Background Color','backgroundColor','superTableBlockType:14','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"Black\",\"value\":\"black\",\"default\":\"\"},{\"label\":\"White\",\"value\":\"white\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-19 00:06:43','f8094dfe-0a52-4bc0-bd65-f3628d1a10d9'),
+	(75,NULL,'Full Width','fullWidth','superTableBlockType:14','',0,'Lightswitch','{\"default\":\"\"}','2017-04-16 22:49:00','2017-04-19 00:06:43','9fc896ef-e002-4809-805e-bc7c64740e7a'),
+	(76,NULL,'Padding Vertical','paddingVertical','superTableBlockType:14','',0,'Dropdown','{\"options\":[{\"label\":\"None\",\"value\":\"none\",\"default\":\"\"},{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Large\",\"value\":\"large\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-19 00:06:43','21fe272b-40cb-43da-933f-d55c4ecdb2ff'),
+	(77,7,'Settings: Separator','settingsSeparator','global','',0,'SuperTable','{\"columns\":{\"79\":{\"width\":\"\"},\"80\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":\"1\",\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:49:00','2017-04-20 13:51:37','1c16da1a-9828-49c5-9e0b-1aee38fbfbed'),
+	(79,NULL,'Style','style','superTableBlockType:15','',0,'Dropdown','{\"options\":[{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"}]}','2017-04-16 22:49:00','2017-04-20 13:51:37','f16ffbfa-5ac1-4106-b2a9-788bb96cb649'),
+	(80,NULL,'Margin Vertical','marginVertical','superTableBlockType:15','',0,'Dropdown','{\"options\":[{\"label\":\"None\",\"value\":\"none\",\"default\":\"\"},{\"label\":\"Default\",\"value\":\"default\",\"default\":\"1\"},{\"label\":\"Medium\",\"value\":\"medium\",\"default\":\"\"},{\"label\":\"Large\",\"value\":\"large\",\"default\":\"\"}]}','2017-04-16 22:49:00','2017-04-20 13:51:37','1fcf5028-579b-41eb-8c3f-57c23c97f15f'),
 	(81,7,'Settings: Two Columns','settingsTwoColumns','global','',0,'SuperTable','{\"columns\":{\"new1\":{\"width\":\"\"}},\"fieldLayout\":\"row\",\"staticField\":1,\"selectionLabel\":\"Add a row\",\"maxRows\":null}','2017-04-16 22:49:00','2017-04-16 22:49:00','18802973-8832-41e0-a612-0e29b2c9487c'),
 	(82,NULL,'Columns Ratio','columnsRatio','superTableBlockType:16','',0,'Dropdown','{\"options\":[{\"label\":\"1:1\",\"value\":\"50-50\",\"default\":\"\"},{\"label\":\"2:1\",\"value\":\"66-33\",\"default\":\"\"},{\"label\":\"3:1\",\"value\":\"75-25\",\"default\":\"\"},{\"label\":\"1:3\",\"value\":\"25-75\",\"default\":\"\"},{\"label\":\"1:2\",\"value\":\"33-66\",\"default\":\"\"}]}','2017-04-16 22:49:01','2017-04-16 22:49:01','8f8d6b41-1126-47ed-9021-55a3edaee831'),
 	(83,8,'Single: Anchor','singleAnchor','global','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:49:01','2017-04-16 22:49:01','dd3cf74d-e16d-4a66-b61c-dacf217067c9'),
@@ -1070,7 +1256,7 @@ VALUES
 	(97,8,'Single: Source Url','singleSourceUrl','global','',0,'FruitLinkIt','{\"types\":[\"custom\"],\"defaultText\":\"\",\"allowCustomText\":1,\"allowTarget\":\"\",\"entrySources\":[],\"entrySelectionLabel\":\"Select an entry\",\"assetSources\":\"*\",\"assetSelectionLabel\":\"Select an asset\",\"categorySources\":\"*\",\"categorySelectionLabel\":\"Select a category\"}','2017-04-16 22:49:03','2017-04-16 22:49:03','28ac9431-3120-41a6-a177-85a8f047d82f'),
 	(98,8,'Single: Subline','singleSubline','global','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:49:03','2017-04-16 22:49:03','9e2275b6-c045-4134-96b7-7320ffac648d'),
 	(99,8,'Single: Text','singleText','global','',0,'PlainText','{\"placeholder\":\"\",\"maxLength\":\"\",\"multiline\":\"\",\"initialRows\":4}','2017-04-16 22:49:03','2017-04-16 22:49:03','93e95a04-5244-4b57-aed4-575f7a4e1bcf'),
-	(100,3,'Content Builder: Neo','contentBuilderNeo','global','',0,'Neo','{\"maxBlocks\":null}','2017-04-16 22:49:03','2017-04-16 22:49:03','aab66a18-eccb-4d87-9ce7-41dbac12dc72');
+	(100,3,'Content Builder: Neo','contentBuilderNeo','global','',0,'Neo','{\"maxBlocks\":null}','2017-04-16 22:49:03','2017-04-17 02:18:07','aab66a18-eccb-4d87-9ce7-41dbac12dc72');
 
 /*!40000 ALTER TABLE `craft_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1134,7 +1320,7 @@ LOCK TABLES `craft_info` WRITE;
 
 INSERT INTO `craft_info` (`id`, `version`, `schemaVersion`, `edition`, `siteName`, `siteUrl`, `timezone`, `on`, `maintenance`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'2.6.2972','2.6.9',2,'CB Modules','http://cbmodules.dev','UTC',1,0,'2017-04-16 21:53:40','2017-04-16 21:53:55','66d3ce2a-d695-463f-af51-9364c16014bf');
+	(1,'2.6.2973','2.6.9',2,'CB Modules','http://cbmodules.dev','UTC',1,0,'2017-04-16 21:53:40','2017-04-20 09:21:24','66d3ce2a-d695-463f-af51-9364c16014bf');
 
 /*!40000 ALTER TABLE `craft_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1349,6 +1535,50 @@ CREATE TABLE `craft_neoblocks` (
   CONSTRAINT `craft_neoblocks_typeId_fk` FOREIGN KEY (`typeId`) REFERENCES `craft_neoblocktypes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_neoblocks` WRITE;
+/*!40000 ALTER TABLE `craft_neoblocks` DISABLE KEYS */;
+
+INSERT INTO `craft_neoblocks` (`id`, `ownerId`, `fieldId`, `typeId`, `collapsed`, `ownerLocale`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(7,5,100,16,1,NULL,'2017-04-17 02:19:23','2017-04-20 15:55:00','196dea1c-8c7d-457a-ae0b-38979e4ddf3e'),
+	(9,5,100,1,1,NULL,'2017-04-17 18:45:37','2017-04-20 15:55:00','f3e57361-5754-4e41-9dc1-585bb4fb60e3'),
+	(15,5,100,13,1,NULL,'2017-04-17 18:46:20','2017-04-20 15:55:00','b27ace01-bba4-4847-a822-388934bf27fb'),
+	(20,5,100,6,1,NULL,'2017-04-19 21:20:00','2017-04-20 15:55:00','d4ee806e-a3b0-4417-9fd6-9989f7f76d64'),
+	(22,5,100,7,1,NULL,'2017-04-19 21:28:03','2017-04-20 15:55:00','9fa71e09-fa60-4232-bac9-8338911bce54'),
+	(28,5,100,8,1,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','75c7e55c-5145-483f-8dfc-b3561df31957'),
+	(29,5,100,9,0,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','37c07392-e243-4524-93b3-d8ed60b2c4d6'),
+	(30,5,100,10,0,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','87277df6-1dc2-4995-a13b-6737a0acfb32'),
+	(31,5,100,9,0,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','c90498d5-7db5-4baa-8db3-ff8f6f5a7815'),
+	(32,5,100,14,0,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','02a79d50-d679-4175-89da-5e896af3c55e'),
+	(34,5,100,10,1,NULL,'2017-04-20 00:06:35','2017-04-20 15:55:00','d8229f8f-d7e7-4ae3-8ccb-bf17e203c1ce'),
+	(35,5,100,14,1,NULL,'2017-04-20 00:07:18','2017-04-20 15:55:00','d8629fe5-98cc-4c9d-a6b6-35c553ab1e56'),
+	(37,5,100,1,1,NULL,'2017-04-20 00:11:24','2017-04-20 15:55:00','aad4713d-8867-4882-a12a-ae53ebfb6577'),
+	(39,5,100,11,1,NULL,'2017-04-20 00:11:24','2017-04-20 15:55:00','02bdcb53-20eb-4184-acda-d9a14110c8ad'),
+	(49,5,100,1,1,NULL,'2017-04-20 09:21:50','2017-04-20 15:55:00','fba18f06-1294-42c5-898d-c138f0f25dce'),
+	(51,5,100,7,1,NULL,'2017-04-20 09:21:50','2017-04-20 15:55:00','fcc6e200-42d0-45c4-b019-9d87c3038a6e'),
+	(52,5,100,12,1,NULL,'2017-04-20 09:25:22','2017-04-20 15:55:00','23ff035d-ebe6-44de-82fb-9e5251b7b4f4'),
+	(54,5,100,15,1,NULL,'2017-04-20 11:41:09','2017-04-20 15:55:00','331f6200-6888-4175-b3b2-5330d2b3dbe2'),
+	(56,5,100,17,1,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','60b59514-9baa-45b3-a4fd-a86168f671ca'),
+	(61,5,100,18,1,NULL,'2017-04-20 12:52:30','2017-04-20 15:55:01','23218fcb-4f9e-4f7e-9503-677894373b2d'),
+	(63,5,100,19,1,NULL,'2017-04-20 13:24:34','2017-04-20 15:55:01','dc8e1085-702c-419f-a724-7848c24b7960'),
+	(65,5,100,19,1,NULL,'2017-04-20 13:35:13','2017-04-20 15:55:01','fbf79742-64c3-4d8a-b172-f492d5a08378'),
+	(71,5,100,20,0,NULL,'2017-04-20 13:52:06','2017-04-20 15:55:01','54a02015-dba3-48b9-90e3-8bbf353060e4'),
+	(73,5,100,2,1,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','74dc24ac-bd61-4805-a5b1-7461ce218a6c'),
+	(74,5,100,3,0,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','3fa82bf1-5e74-4d29-ad4a-9c21e15b1007'),
+	(75,5,100,7,0,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','2d72be88-c83b-4be5-b218-f68048577636'),
+	(76,5,100,3,0,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','f2db6af4-877f-4c2f-9b30-f8a393a05e68'),
+	(77,5,100,7,0,NULL,'2017-04-20 14:00:53','2017-04-20 15:55:01','3dfcdf42-2370-4193-8589-e10e1b3dd1ed'),
+	(78,5,100,14,0,NULL,'2017-04-20 14:09:24','2017-04-20 15:55:01','f25bec82-7e33-4c98-820c-65bf3298073d'),
+	(80,5,100,15,1,NULL,'2017-04-20 14:46:34','2017-04-20 15:55:00','37649b33-d2fb-4e18-b55e-074ed260c8ba'),
+	(82,5,100,4,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','ee40c976-f52c-4c11-83c7-06032193d785'),
+	(84,5,100,5,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','3c164f29-07bf-4dac-85c0-12136dd99c95'),
+	(85,5,100,7,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','d7163a01-765b-4c40-98e4-99d27b084f59'),
+	(86,5,100,5,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','2f777ebf-5437-464c-9d72-4816118bb656'),
+	(87,5,100,7,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','0fcec56e-af90-4af0-b356-b7db3f95447d'),
+	(88,5,100,14,0,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','576c101a-9e54-43d8-9247-636cdc0b5ae2');
+
+/*!40000 ALTER TABLE `craft_neoblocks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_neoblockstructures
@@ -1376,6 +1606,15 @@ CREATE TABLE `craft_neoblockstructures` (
   CONSTRAINT `craft_neoblockstructures_structureId_fk` FOREIGN KEY (`structureId`) REFERENCES `craft_structures` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_neoblockstructures` WRITE;
+/*!40000 ALTER TABLE `craft_neoblockstructures` DISABLE KEYS */;
+
+INSERT INTO `craft_neoblockstructures` (`id`, `structureId`, `ownerId`, `fieldId`, `ownerLocale`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(89,91,5,100,NULL,'2017-04-20 15:55:00','2017-04-20 15:55:00','1ce5dcaf-9b09-49d5-a341-190bcc551ce4');
+
+/*!40000 ALTER TABLE `craft_neoblockstructures` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_neoblocktypes
@@ -1411,26 +1650,26 @@ LOCK TABLES `craft_neoblocktypes` WRITE;
 
 INSERT INTO `craft_neoblocktypes` (`id`, `fieldId`, `fieldLayoutId`, `name`, `handle`, `maxBlocks`, `maxChildBlocks`, `childBlocks`, `topLevel`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,100,30,'Content Section','contentSection',NULL,NULL,'',1,2,'2017-04-16 22:49:03','2017-04-16 22:49:03','78239f04-f35e-4486-96c0-22ce83005e52'),
-	(2,100,31,'Accordion','accordion',NULL,NULL,'[\"accordionContent\"]',1,3,'2017-04-16 22:49:03','2017-04-16 22:49:03','24a92ae0-ef4c-47ff-a4bf-ae9c7b51a842'),
-	(3,100,32,'Accordion Content','accordionContent',NULL,NULL,'[\"twoColumns\",\"headline\",\"richText\",\"richTextMarginals\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"definitionList\",\"embed\",\"separator\"]',0,4,'2017-04-16 22:49:03','2017-04-16 22:49:03','a1f6f60c-322b-4f9f-be18-92641e5fc621'),
-	(4,100,33,'Two Columns','twoColumns',NULL,2,'[\"column\"]',1,5,'2017-04-16 22:49:03','2017-04-16 22:49:03','923a02f6-5448-4c01-9658-a53002677da6'),
-	(5,100,34,'Column','column',NULL,NULL,'[\"accordion\",\"headline\",\"richText\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"definitionList\",\"embed\",\"separator\"]',0,6,'2017-04-16 22:49:03','2017-04-16 22:49:03','aa8ae593-add3-41fc-acf3-99656f120965'),
-	(6,100,35,'Headline','headline',NULL,NULL,'',1,8,'2017-04-16 22:49:03','2017-04-16 22:49:03','17fd7dce-492b-46c0-9e31-1349ede5974d'),
-	(7,100,36,'Rich Text','richText',NULL,2,'',1,9,'2017-04-16 22:49:03','2017-04-16 22:49:03','7ac911e0-9050-4a42-9973-4fd2254979d7'),
-	(8,100,37,'Rich Text Marginals','richTextMarginals',NULL,2,'[\"marginalColumn\"]',1,10,'2017-04-16 22:49:03','2017-04-16 22:49:03','6766b9e5-47e3-419e-9b4f-747380865009'),
-	(9,100,38,'Marginal Column','marginalColumn',NULL,1,'[\"quote\",\"imageSingle\"]',0,11,'2017-04-16 22:49:03','2017-04-16 22:49:03','3474dff3-8e0f-40cb-bd85-0959acab99b8'),
-	(10,100,39,'Quote','quote',NULL,NULL,'',1,12,'2017-04-16 22:49:03','2017-04-16 22:49:03','0f31b23d-9cf9-4af2-9177-da772cb61534'),
-	(11,100,40,'Image Cover','imageCover',NULL,NULL,'',1,14,'2017-04-16 22:49:03','2017-04-16 22:49:03','eff1c786-4c77-49ca-b177-873fbd713465'),
-	(12,100,41,'Image Gallery','imageGallery',NULL,NULL,'',1,15,'2017-04-16 22:49:03','2017-04-16 22:49:03','1052add9-8383-4344-9c8e-b17abd59adeb'),
-	(13,100,42,'Image Grid','imageGrid',NULL,NULL,'',1,16,'2017-04-16 22:49:03','2017-04-16 22:49:03','e9cda3a8-9c3b-45e8-888f-98fa13cb219d'),
-	(14,100,43,'Image Single','imageSingle',NULL,NULL,'',1,17,'2017-04-16 22:49:03','2017-04-16 22:49:03','875dae98-1d96-4528-a3d2-d5a72b4664d2'),
-	(15,100,44,'Image Slider','imageSlider',NULL,NULL,'',1,18,'2017-04-16 22:49:03','2017-04-16 22:49:03','996e77e7-6822-4714-af11-eede05096719'),
-	(16,100,45,'Button','button',NULL,NULL,'',1,20,'2017-04-16 22:49:03','2017-04-16 22:49:03','5fb03a9b-975c-4e05-adcf-ccfeeebeafec'),
-	(17,100,46,'Button Group','buttonGroup',NULL,5,'',1,21,'2017-04-16 22:49:03','2017-04-16 22:49:03','208ab3ca-885d-44a5-aa88-7b31cb15ba25'),
-	(18,100,47,'Definition List','definitionList',NULL,NULL,'',1,23,'2017-04-16 22:49:03','2017-04-16 22:49:03','a7c26f72-f741-4679-95bf-26e52968fee4'),
-	(19,100,48,'Embed','embed',NULL,NULL,'',1,24,'2017-04-16 22:49:03','2017-04-16 22:49:03','bfdd8ca2-35d6-4716-8f16-120127bb8dbc'),
-	(20,100,49,'Separator','separator',NULL,NULL,'',1,25,'2017-04-16 22:49:03','2017-04-16 22:49:03','c1b095f7-15f7-48b1-9cad-8cdf7a67c07e');
+	(1,100,103,'Content Section','contentSection',NULL,NULL,'',1,2,'2017-04-16 22:49:03','2017-04-17 02:18:07','78239f04-f35e-4486-96c0-22ce83005e52'),
+	(2,100,106,'Accordion','accordion',NULL,NULL,'[\"accordionContent\"]',1,3,'2017-04-16 22:49:03','2017-04-17 02:18:07','24a92ae0-ef4c-47ff-a4bf-ae9c7b51a842'),
+	(3,100,107,'Accordion Content','accordionContent',NULL,NULL,'[\"twoColumns\",\"headline\",\"richText\",\"richTextMarginals\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"definitionList\",\"embed\",\"separator\"]',0,4,'2017-04-16 22:49:03','2017-04-17 02:18:07','a1f6f60c-322b-4f9f-be18-92641e5fc621'),
+	(4,100,108,'Two Columns','twoColumns',NULL,2,'[\"column\"]',1,5,'2017-04-16 22:49:03','2017-04-17 02:18:07','923a02f6-5448-4c01-9658-a53002677da6'),
+	(5,100,109,'Column','column',NULL,NULL,'[\"accordion\",\"headline\",\"richText\",\"quote\",\"imageGallery\",\"imageGrid\",\"imageSingle\",\"button\",\"buttonGroup\",\"definitionList\",\"embed\",\"separator\"]',0,6,'2017-04-16 22:49:03','2017-04-17 02:18:07','aa8ae593-add3-41fc-acf3-99656f120965'),
+	(6,100,104,'Headline','headline',NULL,NULL,'',1,8,'2017-04-16 22:49:03','2017-04-17 02:18:07','17fd7dce-492b-46c0-9e31-1349ede5974d'),
+	(7,100,105,'Rich Text','richText',NULL,2,'',1,9,'2017-04-16 22:49:03','2017-04-17 02:18:07','7ac911e0-9050-4a42-9973-4fd2254979d7'),
+	(8,100,110,'Rich Text Marginals','richTextMarginals',NULL,2,'[\"marginalColumn\"]',1,10,'2017-04-16 22:49:03','2017-04-17 02:18:07','6766b9e5-47e3-419e-9b4f-747380865009'),
+	(9,100,111,'Marginal Column','marginalColumn',NULL,1,'[\"quote\",\"imageSingle\"]',0,11,'2017-04-16 22:49:03','2017-04-17 02:18:07','3474dff3-8e0f-40cb-bd85-0959acab99b8'),
+	(10,100,112,'Quote','quote',NULL,NULL,'',1,12,'2017-04-16 22:49:03','2017-04-17 02:18:07','0f31b23d-9cf9-4af2-9177-da772cb61534'),
+	(11,100,113,'Image Cover','imageCover',NULL,NULL,'',1,14,'2017-04-16 22:49:03','2017-04-17 02:18:07','eff1c786-4c77-49ca-b177-873fbd713465'),
+	(12,100,114,'Image Gallery','imageGallery',NULL,NULL,'',1,15,'2017-04-16 22:49:03','2017-04-17 02:18:07','1052add9-8383-4344-9c8e-b17abd59adeb'),
+	(13,100,115,'Image Grid','imageGrid',NULL,NULL,'',1,16,'2017-04-16 22:49:03','2017-04-17 02:18:07','e9cda3a8-9c3b-45e8-888f-98fa13cb219d'),
+	(14,100,116,'Image Single','imageSingle',NULL,NULL,'',1,17,'2017-04-16 22:49:03','2017-04-17 02:18:07','875dae98-1d96-4528-a3d2-d5a72b4664d2'),
+	(15,100,117,'Image Slider','imageSlider',NULL,NULL,'',1,18,'2017-04-16 22:49:03','2017-04-17 02:18:08','996e77e7-6822-4714-af11-eede05096719'),
+	(16,100,118,'Button','button',NULL,NULL,'',1,20,'2017-04-16 22:49:03','2017-04-17 02:18:08','5fb03a9b-975c-4e05-adcf-ccfeeebeafec'),
+	(17,100,119,'Button Group','buttonGroup',NULL,5,'',1,21,'2017-04-16 22:49:03','2017-04-17 02:18:08','208ab3ca-885d-44a5-aa88-7b31cb15ba25'),
+	(18,100,120,'Definition List','definitionList',NULL,NULL,'',1,23,'2017-04-16 22:49:03','2017-04-17 02:18:08','a7c26f72-f741-4679-95bf-26e52968fee4'),
+	(19,100,121,'Embed','embed',NULL,NULL,'',1,24,'2017-04-16 22:49:03','2017-04-17 02:18:08','bfdd8ca2-35d6-4716-8f16-120127bb8dbc'),
+	(20,100,122,'Separator','separator',NULL,NULL,'',1,25,'2017-04-16 22:49:03','2017-04-17 02:18:08','c1b095f7-15f7-48b1-9cad-8cdf7a67c07e');
 
 /*!40000 ALTER TABLE `craft_neoblocktypes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1459,11 +1698,11 @@ LOCK TABLES `craft_neogroups` WRITE;
 
 INSERT INTO `craft_neogroups` (`id`, `fieldId`, `name`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,100,'Content Wrapper',1,'2017-04-16 22:49:03','2017-04-16 22:49:03','653a1775-03e0-4b93-8662-bd31e8d88093'),
-	(2,100,'Text Modules',7,'2017-04-16 22:49:03','2017-04-16 22:49:03','9961c544-d772-4612-8f71-1379a099669c'),
-	(3,100,'Image Modules',13,'2017-04-16 22:49:03','2017-04-16 22:49:03','89b989f1-7758-41a0-8a04-7de578a9ca4d'),
-	(4,100,'Button Modules',19,'2017-04-16 22:49:03','2017-04-16 22:49:03','3907646a-945d-415b-bfee-a500f1d7a34c'),
-	(5,100,'More Modules…',22,'2017-04-16 22:49:03','2017-04-16 22:49:03','7d0750fd-f945-42e4-b81f-35be1f7a9d32');
+	(16,100,'Content Wrapper',1,'2017-04-17 02:18:08','2017-04-17 02:18:08','d3df576e-669c-423e-8d32-836e02d83e47'),
+	(17,100,'Text Modules',7,'2017-04-17 02:18:08','2017-04-17 02:18:08','bdbf7d9a-db71-435b-8e9c-2bc471a1898c'),
+	(18,100,'Image Modules',13,'2017-04-17 02:18:08','2017-04-17 02:18:08','437271e4-73fd-4dd3-b10a-0527a2bc623f'),
+	(19,100,'Button Modules',19,'2017-04-17 02:18:08','2017-04-17 02:18:08','eeeac278-2fad-4d3c-8213-7ec52a2c13d5'),
+	(20,100,'More Modules…',22,'2017-04-17 02:18:08','2017-04-17 02:18:08','1e9f3991-ac72-49d7-af54-4ed45feb8d3e');
 
 /*!40000 ALTER TABLE `craft_neogroups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1495,18 +1734,18 @@ LOCK TABLES `craft_plugins` WRITE;
 
 INSERT INTO `craft_plugins` (`id`, `class`, `version`, `schemaVersion`, `licenseKey`, `licenseKeyStatus`, `enabled`, `settings`, `installDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'CpCss','1.1.1','1.1.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:42','2017-04-16 22:11:42','2017-04-16 22:11:42','14fc1ae7-d768-4028-bd92-4498515ce6d3'),
-	(2,'Cookies','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:44','2017-04-16 22:11:44','2017-04-16 22:11:44','ef47ceba-51a6-4565-90bd-bfc199022e6c'),
-	(3,'FocalPointField','1.0.2',NULL,NULL,'unknown',1,NULL,'2017-04-16 22:11:48','2017-04-16 22:11:48','2017-04-16 22:11:48','4e64b877-25c4-4f86-91ff-a5e3109b4e2f'),
-	(4,'Imager','1.5.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:50','2017-04-16 22:11:50','2017-04-16 22:11:50','0cff012d-6717-4a58-aa39-51268d2dbe80'),
-	(5,'Kint','1.1.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:55','2017-04-16 22:11:55','2017-04-16 22:11:55','f101513d-d2bd-4990-a866-6ad089964b4a'),
-	(6,'FruitLinkIt','2.3.4','2.3.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:59','2017-04-16 22:11:59','2017-04-16 22:11:59','47ace0df-f9d6-49c2-9647-788d50e2e275'),
-	(7,'Minify','1.1.1','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-04-16 22:42:23','16bd2799-b641-4981-a41c-0e3392a48d5a'),
-	(8,'Neo','1.4.1','1.4.1',NULL,'unknown',1,NULL,'2017-04-16 22:42:26','2017-04-16 22:42:26','2017-04-16 22:42:26','70d7e5dd-2268-40a4-85f3-a7ab5dcf34cc'),
-	(9,'SidebarEnhancer','1.0.6','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:33','2017-04-16 22:42:33','2017-04-16 22:42:33','217a761d-a45d-4d67-8ee2-7cbd11ac91c4'),
-	(10,'SuperTable','1.0.3','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:40','2017-04-16 22:42:40','2017-04-16 22:42:40','196c672e-f9cb-444f-b32c-f399bca73a78'),
-	(11,'TheArchitect','1.6.0','1.6.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:43','2017-04-16 22:42:43','2017-04-16 22:42:43','fb4f3140-f2f7-4c99-9257-087a3f99f655'),
-	(12,'Seomatic','1.1.43','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-04-16 22:43:59','7dcd03d0-54c8-47ed-b618-e93935503345');
+	(1,'CpCss','1.1.1','1.1.0',NULL,'unknown',1,'{\"cssFile\":\"\",\"additionalCss\":\"#footer {\\r\\n  margin-top: 50vh;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock {\\r\\n  width: calc(94% - 28px);\\r\\n  margin-left: 6%;\\r\\n}\\r\\n\\r\\n\\r\\n.blocks .mc-solid-contentSection {\\r\\n  width: calc(100% - 28px);\\r\\n  margin-top: 40px;\\r\\n  margin-left: 0;\\r\\n}\\r\\n\\r\\n.blocks .mc-solid-accordionLabel {\\r\\n  width: calc(97% - 28px);\\r\\n  margin-top: 20px;\\r\\n  margin-left: 3%;\\r\\n}\\r\\n\\r\\n.blocks .matrixblock:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block:first-child {\\r\\n  margin-top: 10px;\\r\\n}\\r\\n\\r\\n\\r\\n.ni_blocks .ni_block {\\r\\n  width: 95%;\\r\\n  margin-left: 5%;\\r\\n}\\r\\n\\r\\n.ni_blocks .ni_block--contentSection,\\r\\n.ni_block_children .ni_block {\\r\\n  width: 100%;\\r\\n  margin-left: 0%;\\r\\n}\\r\\n\\r\\n.ni_block--contentSection .ni_block_topbar {\\r\\n  height: 40px;\\r\\n  line-height: 40px;\\r\\n  background-color: #E4E5E6;\\r\\n}\\r\\n\\r\\n.ni_block--contentSection .ni_block_topbar_item.tabs .tab {\\r\\n  height: 40px;\\r\\n}\\r\\n\"}','2017-04-16 22:11:42','2017-04-16 22:11:42','2017-04-20 14:00:59','14fc1ae7-d768-4028-bd92-4498515ce6d3'),
+	(2,'Cookies','1.0.4','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:44','2017-04-16 22:11:44','2017-04-20 14:00:59','ef47ceba-51a6-4565-90bd-bfc199022e6c'),
+	(3,'FocalPointField','1.0.2',NULL,NULL,'unknown',1,NULL,'2017-04-16 22:11:48','2017-04-16 22:11:48','2017-04-20 14:00:59','4e64b877-25c4-4f86-91ff-a5e3109b4e2f'),
+	(4,'Imager','1.5.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:50','2017-04-16 22:11:50','2017-04-20 14:00:59','0cff012d-6717-4a58-aa39-51268d2dbe80'),
+	(5,'Kint','1.1.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:55','2017-04-16 22:11:55','2017-04-20 14:00:59','f101513d-d2bd-4990-a866-6ad089964b4a'),
+	(6,'FruitLinkIt','2.3.4','2.3.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:59','2017-04-16 22:11:59','2017-04-20 14:00:59','47ace0df-f9d6-49c2-9647-788d50e2e275'),
+	(7,'Minify','1.1.1','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-04-20 14:00:59','16bd2799-b641-4981-a41c-0e3392a48d5a'),
+	(8,'Neo','1.4.1','1.4.1',NULL,'unknown',1,NULL,'2017-04-16 22:42:26','2017-04-16 22:42:26','2017-04-20 14:00:59','70d7e5dd-2268-40a4-85f3-a7ab5dcf34cc'),
+	(9,'SidebarEnhancer','1.0.6','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:33','2017-04-16 22:42:33','2017-04-20 14:00:59','217a761d-a45d-4d67-8ee2-7cbd11ac91c4'),
+	(10,'SuperTable','1.0.3','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:40','2017-04-16 22:42:40','2017-04-20 14:00:59','196c672e-f9cb-444f-b32c-f399bca73a78'),
+	(11,'TheArchitect','1.6.0','1.6.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:43','2017-04-16 22:42:43','2017-04-20 14:00:59','fb4f3140-f2f7-4c99-9257-087a3f99f655'),
+	(12,'Seomatic','1.1.43','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-04-20 14:00:59','7dcd03d0-54c8-47ed-b618-e93935503345');
 
 /*!40000 ALTER TABLE `craft_plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1558,6 +1797,35 @@ CREATE TABLE `craft_relations` (
   CONSTRAINT `craft_relations_targetId_fk` FOREIGN KEY (`targetId`) REFERENCES `craft_elements` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_relations` WRITE;
+/*!40000 ALTER TABLE `craft_relations` DISABLE KEYS */;
+
+INSERT INTO `craft_relations` (`id`, `fieldId`, `sourceId`, `sourceLocale`, `targetId`, `sortOrder`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(843,92,15,NULL,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','9b8621b6-1aca-4c9d-ac91-25c4297cdfd7'),
+	(844,92,15,NULL,12,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','2be3f7e9-4e03-4c20-8fb4-91a34741560a'),
+	(845,92,15,NULL,13,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','2bea8e79-2b0e-4453-b0c5-9661b286b747'),
+	(846,92,15,NULL,14,4,'2017-04-20 15:55:00','2017-04-20 15:55:00','999f01a2-57c3-42b4-b152-0fd784cfb817'),
+	(847,91,32,NULL,14,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','e6dba492-6d27-4801-8e5f-feab9e3104db'),
+	(848,91,35,NULL,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','042d95d4-361f-4f85-acee-c4439c4864a1'),
+	(849,91,39,NULL,12,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','e4ff1d2c-ee1f-41c0-a422-77a4501fcbcf'),
+	(850,92,52,NULL,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','25384139-3b07-4778-a26c-13a0669ad646'),
+	(851,92,52,NULL,12,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','1dde45d7-010b-4e5f-abb4-1c07f52f995a'),
+	(852,92,52,NULL,13,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','69bbbebe-2c47-49fe-9364-6df225d2d56b'),
+	(853,92,52,NULL,14,4,'2017-04-20 15:55:00','2017-04-20 15:55:00','4381b869-92cf-40ad-b134-fd6848e0848e'),
+	(854,92,54,NULL,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','a02d729f-fb2f-4d2d-9924-3100846ff761'),
+	(855,92,54,NULL,12,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','2be2bf67-51e0-4469-9d4e-d4fd74df65b3'),
+	(856,92,54,NULL,13,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','f366e698-8c2d-4b8e-bcf2-11627085da84'),
+	(857,92,54,NULL,14,4,'2017-04-20 15:55:00','2017-04-20 15:55:00','132a6351-0fbf-4d5b-9f27-133eeaee3c91'),
+	(858,92,80,NULL,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','8bfbda6b-7302-48dd-9372-3132c5b414f4'),
+	(859,92,80,NULL,12,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','1c25b2bb-661f-44ea-8aad-0b3da2b6d306'),
+	(860,92,80,NULL,13,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','54b90be4-b03e-4015-91f2-eb455b6e10fa'),
+	(861,92,80,NULL,14,4,'2017-04-20 15:55:00','2017-04-20 15:55:00','e7d1f59e-789d-42f4-be46-7bc644ee9ff3'),
+	(862,91,78,NULL,13,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','be225a89-4009-4183-9c38-1323f7f4a136'),
+	(863,91,88,NULL,11,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','2b5f4964-dddb-4e7c-abd5-4f025be2872a');
+
+/*!40000 ALTER TABLE `craft_relations` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_routes
@@ -1609,12 +1877,244 @@ VALUES
 	(1,'fullname',0,'de',''),
 	(1,'email',0,'de',' davidhellmann com gmail com '),
 	(1,'slug',0,'de',''),
+	(10,'slug',0,'de',''),
+	(8,'slug',0,'de',''),
+	(9,'field',90,'de',''),
+	(9,'field',98,'de',''),
+	(9,'field',83,'de',''),
+	(9,'field',73,'de',' default 0 default '),
+	(9,'slug',0,'de',''),
+	(10,'field',74,'de',' default '),
+	(10,'field',75,'de',' 0 '),
+	(10,'field',76,'de',' default '),
+	(8,'field',36,'de',' iconsample '),
 	(6,'field',12,'de',''),
 	(6,'slug',0,'de',''),
+	(5,'field',100,'de',''),
+	(7,'field',84,'de',' entry 4 click here home '),
+	(7,'field',32,'de',' left primary '),
+	(7,'slug',0,'de',''),
+	(8,'field',33,'de',' primary '),
+	(8,'field',34,'de',' left '),
+	(8,'field',35,'de',' 0 '),
 	(5,'title',0,'de',' modules '),
 	(5,'slug',0,'de',' modules '),
 	(4,'slug',0,'de',' homepage '),
-	(4,'title',0,'de',' homepage ');
+	(4,'title',0,'de',' homepage '),
+	(11,'field',26,'de',' lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue caption title max mustermann custom http google com '),
+	(11,'field',47,'de',' 52 43% 34 78% '),
+	(11,'filename',0,'de',' image_01 jpg '),
+	(11,'extension',0,'de',' jpg '),
+	(11,'kind',0,'de',' image '),
+	(11,'slug',0,'de',' home 01 '),
+	(11,'title',0,'de',' image 01 '),
+	(12,'field',26,'de',' caption title '),
+	(12,'field',47,'de',' 26 76% 45 37% '),
+	(12,'filename',0,'de',' image_02 jpg '),
+	(12,'extension',0,'de',' jpg '),
+	(12,'kind',0,'de',' image '),
+	(12,'slug',0,'de',' home 02 '),
+	(12,'title',0,'de',' image 02 '),
+	(13,'field',26,'de',' lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue '),
+	(13,'field',47,'de',' 60 43% 52 08% '),
+	(13,'filename',0,'de',' image_03 jpg '),
+	(13,'extension',0,'de',' jpg '),
+	(13,'kind',0,'de',' image '),
+	(13,'slug',0,'de',' home 03 '),
+	(13,'title',0,'de',' image 03 '),
+	(14,'field',26,'de',' ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior caption '),
+	(14,'field',47,'de',' 55 43% 31 07% '),
+	(14,'filename',0,'de',' image_04 jpg '),
+	(14,'extension',0,'de',' jpg '),
+	(14,'kind',0,'de',' image '),
+	(14,'slug',0,'de',' home 04 '),
+	(14,'title',0,'de',' image 04 '),
+	(15,'field',92,'de',' home 01 home 02 home 03 home 04 '),
+	(15,'field',60,'de',' 1 2 landscape '),
+	(15,'slug',0,'de',''),
+	(16,'field',61,'de',' 1 '),
+	(16,'field',62,'de',' 2 '),
+	(16,'field',63,'de',' landscape '),
+	(16,'slug',0,'de',''),
+	(17,'field',27,'de',' caption title '),
+	(17,'field',28,'de',' lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue '),
+	(17,'field',29,'de',' max mustermann '),
+	(17,'field',30,'de',' custom http google com '),
+	(17,'slug',0,'de',''),
+	(18,'field',27,'de',' caption title '),
+	(18,'field',28,'de',''),
+	(18,'field',29,'de',''),
+	(18,'field',30,'de',''),
+	(18,'slug',0,'de',''),
+	(19,'field',27,'de',''),
+	(19,'field',28,'de',' lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue '),
+	(19,'field',29,'de',''),
+	(19,'field',30,'de',''),
+	(19,'slug',0,'de',''),
+	(20,'field',90,'de',' das ist eine headline '),
+	(20,'field',48,'de',' h2 '),
+	(20,'slug',0,'de',''),
+	(21,'field',50,'de',' h2 '),
+	(21,'slug',0,'de',''),
+	(22,'field',95,'de',' lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue lorem ipsum dolor sit amet consectetur adipiscing elit phasellus quis lectus metus at posuere neque sed pharetra nibh eget orci convallis at posuere leo convallis sed blandit augue vitae augue scelerisque bibendum vivamus sit amet libero turpis non venenatis urna in blandit odio convallis suscipit venenatis ante ipsum cursus augue '),
+	(22,'slug',0,'de',''),
+	(28,'field',95,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(27,'slug',0,'de',''),
+	(27,'field',30,'de',''),
+	(27,'field',29,'de',''),
+	(27,'field',28,'de',' ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(27,'field',27,'de',' caption '),
+	(28,'slug',0,'de',''),
+	(29,'slug',0,'de',''),
+	(30,'field',94,'de',' an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no '),
+	(34,'field',94,'de',' an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(30,'field',96,'de',' max mustermann '),
+	(30,'field',97,'de',' custom http google com yo '),
+	(30,'slug',0,'de',''),
+	(31,'slug',0,'de',''),
+	(32,'field',91,'de',' home 04 '),
+	(32,'field',64,'de',' 1 center portrait full '),
+	(32,'slug',0,'de',''),
+	(33,'field',65,'de',' 1 '),
+	(33,'field',66,'de',' center '),
+	(33,'field',67,'de',' portrait '),
+	(33,'field',68,'de',' full '),
+	(33,'slug',0,'de',''),
+	(34,'field',96,'de',' max mustermann '),
+	(34,'field',97,'de',' custom http google com '),
+	(34,'slug',0,'de',''),
+	(35,'field',91,'de',' home 01 '),
+	(35,'field',64,'de',' 1 center landscape full '),
+	(35,'slug',0,'de',''),
+	(36,'field',65,'de',' 1 '),
+	(36,'field',66,'de',' center '),
+	(36,'field',67,'de',' landscape '),
+	(36,'field',68,'de',' full '),
+	(36,'slug',0,'de',''),
+	(37,'field',90,'de',''),
+	(37,'field',98,'de',''),
+	(37,'field',83,'de',''),
+	(37,'field',73,'de',' default 1 none '),
+	(37,'slug',0,'de',''),
+	(38,'field',74,'de',' default '),
+	(38,'field',75,'de',' 1 '),
+	(38,'field',76,'de',' none '),
+	(38,'slug',0,'de',''),
+	(39,'field',91,'de',' home 02 '),
+	(39,'field',99,'de',' mimi the cat '),
+	(39,'field',52,'de',' focalpoint center bottom '),
+	(39,'slug',0,'de',''),
+	(40,'field',53,'de',' focalpoint '),
+	(40,'field',54,'de',' bottom '),
+	(40,'field',55,'de',' center '),
+	(40,'slug',0,'de',''),
+	(50,'field',75,'de',' 0 '),
+	(50,'field',76,'de',' default '),
+	(50,'slug',0,'de',''),
+	(51,'field',95,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(50,'field',74,'de',' default '),
+	(49,'slug',0,'de',''),
+	(49,'field',83,'de',''),
+	(49,'field',73,'de',' default 0 default '),
+	(49,'field',98,'de',''),
+	(49,'field',90,'de',''),
+	(51,'slug',0,'de',''),
+	(52,'field',92,'de',' home 01 home 02 home 03 home 04 '),
+	(52,'field',56,'de',' 4 landscape '),
+	(52,'slug',0,'de',''),
+	(53,'field',57,'de',' 4 '),
+	(53,'field',59,'de',' landscape '),
+	(53,'slug',0,'de',''),
+	(54,'field',92,'de',' home 01 home 02 home 03 home 04 '),
+	(54,'field',69,'de',' square '),
+	(54,'slug',0,'de',''),
+	(55,'field',70,'de',' square '),
+	(55,'slug',0,'de',''),
+	(56,'field',85,'de',' entry 4 home entry 5 modules entry 4 homepage '),
+	(56,'field',37,'de',' left primary '),
+	(56,'slug',0,'de',''),
+	(57,'field',86,'de',' entry 4 home '),
+	(57,'slug',0,'de',''),
+	(58,'field',86,'de',' entry 5 modules '),
+	(58,'slug',0,'de',''),
+	(59,'field',86,'de',' entry 4 homepage '),
+	(59,'slug',0,'de',''),
+	(60,'field',38,'de',' primary '),
+	(60,'field',39,'de',' left '),
+	(60,'slug',0,'de',''),
+	(61,'field',88,'de',' term 1 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 1 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 2 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 2 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 3 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 3 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 4 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 4 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 5 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri term 5 lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri '),
+	(61,'field',40,'de',' 33 66 table '),
+	(61,'slug',0,'de',''),
+	(62,'field',41,'de',' 33 66 '),
+	(62,'field',42,'de',' table '),
+	(62,'slug',0,'de',''),
+	(63,'field',89,'de',''),
+	(63,'field',43,'de',' left full 1 '),
+	(63,'slug',0,'de',''),
+	(64,'field',44,'de',' 1 '),
+	(64,'field',45,'de',' left '),
+	(64,'field',46,'de',' full '),
+	(64,'slug',0,'de',''),
+	(65,'field',89,'de',''),
+	(72,'field',79,'de',' default '),
+	(71,'slug',0,'de',''),
+	(68,'field',78,'de',' 0 '),
+	(68,'field',79,'de',' default '),
+	(68,'field',80,'de',' default '),
+	(68,'slug',0,'de',''),
+	(71,'field',77,'de',' default default '),
+	(70,'field',78,'de',' 0 '),
+	(70,'field',79,'de',' default '),
+	(65,'field',43,'de',' center threequarter 0 '),
+	(65,'slug',0,'de',''),
+	(66,'field',44,'de',' 0 '),
+	(66,'field',45,'de',' center '),
+	(66,'field',46,'de',' threequarter '),
+	(66,'slug',0,'de',''),
+	(70,'field',80,'de',' large '),
+	(70,'slug',0,'de',''),
+	(72,'field',80,'de',' default '),
+	(72,'slug',0,'de',''),
+	(73,'slug',0,'de',''),
+	(74,'field',93,'de',' accordion '),
+	(74,'slug',0,'de',''),
+	(75,'field',95,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(75,'slug',0,'de',''),
+	(76,'field',93,'de',' ein weiteres label '),
+	(76,'slug',0,'de',''),
+	(77,'field',95,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id '),
+	(77,'slug',0,'de',''),
+	(78,'field',91,'de',' home 03 '),
+	(78,'field',64,'de',' 0 center landscape full '),
+	(78,'slug',0,'de',''),
+	(79,'field',65,'de',' 0 '),
+	(79,'field',66,'de',' center '),
+	(79,'field',67,'de',' landscape '),
+	(79,'field',68,'de',' full '),
+	(79,'slug',0,'de',''),
+	(80,'field',92,'de',' home 01 home 02 home 03 home 04 '),
+	(80,'field',69,'de',' square '),
+	(80,'slug',0,'de',''),
+	(81,'field',70,'de',' square '),
+	(81,'slug',0,'de',''),
+	(82,'field',81,'de',' 50 50 '),
+	(82,'slug',0,'de',''),
+	(83,'field',82,'de',' 50 50 '),
+	(83,'slug',0,'de',''),
+	(84,'slug',0,'de',''),
+	(85,'field',95,'de',' lorem ipsum dolor sit amet quas appetere qui te vel ne enim putent tractatos ullum inani et duo per placerat ocurreret te eos diceret accumsan in qui no viderer vivendum facilisi pro illud possim legimus at illum sonet numquam id vis ei accumsan nominati eos nam suas admodum ancillae ne nullam noster scribentur per cu te duis consetetur adipiscing pri mollis deseruisse te mei cu euismod singulis suavitate eam ex eos purto similique an eum fabellas adolescens dolor signiferumque cum id dicunt cetero detracto mea ei ex dico dolor vis splendide vituperatoribus cu usu ei mea posse sonet labores ad duo veritus intellegam alterum appellantur vix et vis dissentiet repudiandae eu decore integre principes per ei id vim stet mentitum repudiandae pri mentitum qualisque ea ex usu augue viderer suscipit ea vel mucius graecis mentitum perfecto eu duo duo eu ipsum urbanitas eruditi recteque abhorreant ius et omnes dolore debitis vel ei an inani copiosae nec audiam sanctus nostrum est ea assum iuvaret mea id an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(85,'slug',0,'de',''),
+	(86,'slug',0,'de',''),
+	(87,'field',95,'de',' an populo iriure interesset sit eum quas zril nostrum ei est no esse illum falli doming vix no no pri causae petentium id vocibus volutpat deterruisset usu vocibus verterem sed ne usu ne similique temporibus ex vix dicat discere partiendo at ignota corpora mei posse percipitur mea ut at doming commodo deseruisse sit eu diceret fabulas eligendi vix sea nostrum scriptorem ad quo cu eius tollit instructior '),
+	(87,'slug',0,'de',''),
+	(88,'field',91,'de',' home 01 '),
+	(88,'field',64,'de',' 0 center landscape full '),
+	(88,'slug',0,'de',''),
+	(89,'field',65,'de',' 0 '),
+	(89,'field',66,'de',' center '),
+	(89,'field',67,'de',' landscape '),
+	(89,'field',68,'de',' full '),
+	(89,'slug',0,'de','');
 
 /*!40000 ALTER TABLE `craft_searchindex` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1860,6 +2360,15 @@ CREATE TABLE `craft_seomatic_settings` (
   CONSTRAINT `craft_seomatic_settings_siteSeoTwitterImageId_fk` FOREIGN KEY (`siteSeoTwitterImageId`) REFERENCES `craft_assetfiles` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_seomatic_settings` WRITE;
+/*!40000 ALTER TABLE `craft_seomatic_settings` DISABLE KEYS */;
+
+INSERT INTO `craft_seomatic_settings` (`id`, `siteSeoImageId`, `siteSeoTwitterImageId`, `siteSeoFacebookImageId`, `genericOwnerImageId`, `genericCreatorImageId`, `locale`, `siteSeoName`, `siteSeoTitle`, `siteSeoTitleSeparator`, `siteSeoTitlePlacement`, `siteSeoDescription`, `siteSeoKeywords`, `siteSeoImageTransform`, `siteSeoFacebookImageTransform`, `siteSeoTwitterImageTransform`, `siteTwitterCardType`, `siteOpenGraphType`, `siteRobots`, `siteRobotsTxt`, `siteLinksSearchTargets`, `siteLinksQueryInput`, `googleSiteVerification`, `bingSiteVerification`, `googleAnalyticsUID`, `googleTagManagerID`, `googleAnalyticsSendPageview`, `googleAnalyticsAdvertising`, `googleAnalyticsEcommerce`, `googleAnalyticsEEcommerce`, `googleAnalyticsLinkAttribution`, `googleAnalyticsLinker`, `googleAnalyticsAnonymizeIp`, `siteOwnerType`, `siteOwnerSubType`, `siteOwnerSpecificType`, `genericOwnerName`, `genericOwnerAlternateName`, `genericOwnerDescription`, `genericOwnerUrl`, `genericOwnerTelephone`, `genericOwnerEmail`, `genericOwnerStreetAddress`, `genericOwnerAddressLocality`, `genericOwnerAddressRegion`, `genericOwnerPostalCode`, `genericOwnerAddressCountry`, `genericOwnerGeoLatitude`, `genericOwnerGeoLongitude`, `organizationOwnerDuns`, `organizationOwnerFounder`, `organizationOwnerFoundingDate`, `organizationOwnerFoundingLocation`, `organizationOwnerContactPoints`, `localBusinessPriceRange`, `localBusinessOwnerOpeningHours`, `corporationOwnerTickerSymbol`, `restaurantOwnerServesCuisine`, `restaurantOwnerMenuUrl`, `restaurantOwnerReservationsUrl`, `personOwnerGender`, `personOwnerBirthPlace`, `twitterHandle`, `facebookHandle`, `facebookProfileId`, `facebookAppId`, `linkedInHandle`, `googlePlusHandle`, `youtubeHandle`, `youtubeChannelHandle`, `instagramHandle`, `pinterestHandle`, `githubHandle`, `vimeoHandle`, `wikipediaUrl`, `siteCreatorType`, `siteCreatorSubType`, `siteCreatorSpecificType`, `genericCreatorName`, `genericCreatorAlternateName`, `genericCreatorDescription`, `genericCreatorUrl`, `genericCreatorTelephone`, `genericCreatorEmail`, `genericCreatorStreetAddress`, `genericCreatorAddressLocality`, `genericCreatorAddressRegion`, `genericCreatorPostalCode`, `genericCreatorAddressCountry`, `genericCreatorGeoLatitude`, `genericCreatorGeoLongitude`, `organizationCreatorDuns`, `organizationCreatorFounder`, `organizationCreatorFoundingDate`, `organizationCreatorFoundingLocation`, `organizationCreatorContactPoints`, `localBusinessCreatorOpeningHours`, `corporationCreatorTickerSymbol`, `restaurantCreatorServesCuisine`, `restaurantCreatorMenuUrl`, `restaurantCreatorReservationsUrl`, `personCreatorGender`, `personCreatorBirthPlace`, `genericCreatorHumansTxt`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,NULL,NULL,NULL,NULL,NULL,'de','CB Modules','This is the default global title of the site pages.','|','after','This is the default global natural language description of the content on the site pages.','default,global,comma-separated,keywords','','','','summary','website','','# robots.txt for {{ siteUrl }}\n\nSitemap: {{ siteUrl |trim(\'/\') }}/sitemap.xml\n\n# Don\'t allow web crawlers to index Craft\n\nUser-agent: *\nDisallow: /craft/\n','','','','','','',1,0,0,0,0,0,0,'Organization','Corporation','','CB Modules','','','http://cbmodules.dev/','','','','','','','','','','','','','','','$$$','','','','','','','','','','','','','','','','','','','','','Organization','Corporation','','','','','','','','','','','','','','','','','','','','','','','','','','','/* TEAM */\n\n{% if seomaticCreator.name is defined and seomaticCreator.name %}\nCreator: {{ seomaticCreator.name }}\n{% endif %}\n{% if seomaticCreator.url is defined and seomaticCreator.url %}\nURL: {{ seomaticCreator.url }}\n{% endif %}\n{% if seomaticCreator.description is defined and seomaticCreator.description %}\nDescription: {{ seomaticCreator.description }}\n{% endif %}\n\n/* THANKS */\n\nPixel & Tonic - https://pixelandtonic.com\n\n/* SITE */\n\nStandards: HTML5, CSS3\nComponents: Craft CMS, Yii, PHP, Javascript, SEOmatic','2017-04-16 23:05:29','2017-04-16 23:05:29','fce4ae7f-6daa-4b68-9d2f-b83927bf3974');
+
+/*!40000 ALTER TABLE `craft_seomatic_settings` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_sessions
@@ -1887,7 +2396,9 @@ LOCK TABLES `craft_sessions` WRITE;
 
 INSERT INTO `craft_sessions` (`id`, `userId`, `token`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(2,1,'ae98f9b273b3bdaf2aa81e4beba8347f376a4f37czozMjoienFYdkJrfkpkdTZiWEtIVVdYRnpVM3Qzdzl0RDFSTkQiOw==','2017-04-16 22:06:52','2017-04-16 22:06:52','19036233-290c-41cc-b605-c1fdf1a3761f');
+	(2,1,'3be99f73365e1e42df8113004e408a2405de5011czozMjoiZ2RfZ0xYZXVrZENkNTBoNXJvOHNjZmFtMkltMExaS3kiOw==','2017-04-16 22:06:52','2017-04-17 15:04:03','19036233-290c-41cc-b605-c1fdf1a3761f'),
+	(3,1,'7658c0e254ae030491cff7f33b86209c69cdd5c5czozMjoiY3VIZ1Z5cF9uY2xZelRvRnM0X3haY35YfnZXanVuUX4iOw==','2017-04-20 08:59:17','2017-04-20 08:59:17','df086c6e-caf9-423f-aefb-3cfc97d767e7'),
+	(4,1,'2a72da73a8f0f02f4fa8dda82f0574e82bed65a8czozMjoifmZEYUtxbVNRNEthemlyU28yb2tSNmszNzJsQm9ybEQiOw==','2017-04-20 20:45:08','2017-04-20 20:45:08','1d08f149-54fa-45d7-948e-03aff0cb2505');
 
 /*!40000 ALTER TABLE `craft_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1940,6 +2451,51 @@ CREATE TABLE `craft_structureelements` (
   CONSTRAINT `craft_structureelements_structureId_fk` FOREIGN KEY (`structureId`) REFERENCES `craft_structures` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_structureelements` WRITE;
+/*!40000 ALTER TABLE `craft_structureelements` DISABLE KEYS */;
+
+INSERT INTO `craft_structureelements` (`id`, `structureId`, `elementId`, `root`, `lft`, `rgt`, `level`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1307,91,NULL,1307,1,74,0,'2017-04-20 15:55:00','2017-04-20 15:55:00','59a953db-fce9-40c8-8107-2db1fd87a3e3'),
+	(1308,91,9,1307,2,3,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','e2006f85-7472-4a66-a62f-eb65e9e0708e'),
+	(1309,91,20,1307,4,5,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','84670013-723d-4009-a03e-d0f398b8ffca'),
+	(1310,91,22,1307,6,7,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','3eb23426-1057-4d86-b383-dbe494b728dd'),
+	(1311,91,7,1307,8,9,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','309ce402-1c72-4afb-a97b-c0ef272784ad'),
+	(1312,91,15,1307,10,11,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','0d287c8c-ed07-451c-8bd3-66356d7d19e7'),
+	(1313,91,28,1307,12,21,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','56b0bc59-7e8d-4e3b-af82-128a3cb84804'),
+	(1314,91,29,1307,13,16,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','0b6db7e9-5934-467d-9d55-74ab977986e3'),
+	(1315,91,30,1307,14,15,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','9155c23f-d79c-4b41-8881-5a56ad9c6a2a'),
+	(1316,91,31,1307,17,20,2,'2017-04-20 15:55:00','2017-04-20 15:55:00','40664c05-1d7b-4010-af10-2571a7536a63'),
+	(1317,91,32,1307,18,19,3,'2017-04-20 15:55:00','2017-04-20 15:55:00','77bb189e-877d-40e4-ae36-dd848cbf1593'),
+	(1318,91,34,1307,22,23,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','dea62619-9805-41fa-8c20-1d90cef8dd0a'),
+	(1319,91,35,1307,24,25,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','6641791c-0a32-4f20-af62-cecc8a9eed49'),
+	(1320,91,37,1307,26,27,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','4b8e35c4-5eef-49a0-b00c-f5fbe2767ca8'),
+	(1321,91,39,1307,28,29,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','f0c0ecba-8060-4b5d-bd0f-3de98f9cdb97'),
+	(1322,91,49,1307,30,31,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','d4434dff-c942-446e-a70c-ed9a962a827f'),
+	(1323,91,51,1307,32,33,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','64d5490b-b768-4f6e-98df-aa881ce62629'),
+	(1324,91,52,1307,34,35,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','73ee13cc-b557-4e0d-baca-299b8cc959cc'),
+	(1325,91,54,1307,36,37,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','aa5871c2-0ad8-4047-b511-4f2619fc8015'),
+	(1326,91,80,1307,38,39,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','72fd9ed3-8a35-47f0-a336-235c5c3dceac'),
+	(1327,91,56,1307,40,41,1,'2017-04-20 15:55:00','2017-04-20 15:55:00','931fc4fa-38ee-4dcb-b9fc-cb94f61b9c64'),
+	(1328,91,61,1307,42,43,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','00db83cf-0453-41f2-aa77-68e7a77b5d12'),
+	(1329,91,65,1307,44,45,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','ff9045fd-bc3f-406c-a626-a0cc5a0cf0dc'),
+	(1330,91,71,1307,46,47,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','d64c4da4-cf11-4a9b-8ff5-101808fc1e1d'),
+	(1331,91,63,1307,48,49,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','8b4b37c0-2c3e-40dc-a1c4-3859ba4a6cb7'),
+	(1332,91,73,1307,50,61,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','1d5632ce-b2e0-4fe0-a928-36d3547550d8'),
+	(1333,91,74,1307,51,54,2,'2017-04-20 15:55:01','2017-04-20 15:55:01','5b259010-be5e-4ede-b989-4dc7f6d82085'),
+	(1334,91,75,1307,52,53,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','08f6464a-ce34-40c3-8983-f2e0a291bd66'),
+	(1335,91,76,1307,55,60,2,'2017-04-20 15:55:01','2017-04-20 15:55:01','272cf95e-0322-409d-a82e-c4db0ee17cda'),
+	(1336,91,77,1307,56,57,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','63363f76-4d74-4544-95f1-06ddfb8709c1'),
+	(1337,91,78,1307,58,59,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','a639eb3b-0205-4b6a-a70c-ed1f5d18677a'),
+	(1338,91,82,1307,62,73,1,'2017-04-20 15:55:01','2017-04-20 15:55:01','7606cc14-bed8-440d-84c5-af0ee3c8070b'),
+	(1339,91,84,1307,63,66,2,'2017-04-20 15:55:01','2017-04-20 15:55:01','85248459-cd23-46ee-aa61-f221fb303b1a'),
+	(1340,91,85,1307,64,65,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','2c880a8c-0011-4380-9bb8-0a103951c041'),
+	(1341,91,86,1307,67,72,2,'2017-04-20 15:55:01','2017-04-20 15:55:01','edc2e2db-758b-49f8-ae42-365523dc78f8'),
+	(1342,91,87,1307,68,69,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','b2ddb95d-2e7a-414d-ab5d-eba862137e31'),
+	(1343,91,88,1307,70,71,3,'2017-04-20 15:55:01','2017-04-20 15:55:01','a1dcc4de-f883-4823-928b-3d3e561ca6c9');
+
+/*!40000 ALTER TABLE `craft_structureelements` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_structures
@@ -1962,7 +2518,8 @@ LOCK TABLES `craft_structures` WRITE;
 INSERT INTO `craft_structures` (`id`, `maxLevels`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
 	(1,NULL,'2017-04-16 22:50:30','2017-04-16 22:50:30','1a4b9299-b069-4a7b-8c00-29504646e00f'),
-	(2,NULL,'2017-04-16 22:56:24','2017-04-16 22:56:24','b851dd62-a4ec-48ae-af65-c381d767cd41');
+	(2,NULL,'2017-04-16 22:56:24','2017-04-16 22:56:24','b851dd62-a4ec-48ae-af65-c381d767cd41'),
+	(91,NULL,'2017-04-20 15:55:00','2017-04-20 15:55:00','09407e1d-2e94-4c58-9559-9299204bf01b');
 
 /*!40000 ALTER TABLE `craft_structures` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1996,6 +2553,41 @@ CREATE TABLE `craft_supertableblocks` (
   CONSTRAINT `craft_supertableblocks_typeId_fk` FOREIGN KEY (`typeId`) REFERENCES `craft_supertableblocktypes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertableblocks` WRITE;
+/*!40000 ALTER TABLE `craft_supertableblocks` DISABLE KEYS */;
+
+INSERT INTO `craft_supertableblocks` (`id`, `ownerId`, `fieldId`, `typeId`, `sortOrder`, `ownerLocale`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(8,7,32,4,1,NULL,'2017-04-17 02:19:23','2017-04-20 15:55:00','027674bc-cd19-480f-976b-3762e477311e'),
+	(10,9,73,14,1,NULL,'2017-04-17 18:45:37','2017-04-20 15:55:00','716e0bae-0fe7-44a8-abae-40833cf09e14'),
+	(16,15,60,11,1,NULL,'2017-04-17 18:46:20','2017-04-20 15:55:00','b6ae3c4c-3e18-40b8-9d4e-028694eafb8e'),
+	(17,11,26,3,1,NULL,'2017-04-19 20:53:27','2017-04-20 20:46:13','9ff02bf2-4085-4b8f-8c1b-9adbe2121c68'),
+	(18,12,26,3,1,NULL,'2017-04-19 20:53:40','2017-04-20 20:46:27','64ddbaa9-4c4f-44ed-a50f-7e28cc608534'),
+	(19,13,26,3,1,NULL,'2017-04-19 20:54:05','2017-04-20 20:46:41','a194e57d-e587-4684-8d23-ebfce60eca14'),
+	(21,20,48,8,1,NULL,'2017-04-19 21:20:00','2017-04-20 15:55:00','f2090d3f-3f2d-40af-b0b6-5d29fa392fea'),
+	(27,14,26,3,1,NULL,'2017-04-19 21:54:58','2017-04-20 20:46:51','130a4be6-ae58-426d-92c3-ad2dbe6839b5'),
+	(33,32,64,12,1,NULL,'2017-04-19 23:18:28','2017-04-20 15:55:00','9b3fe3fc-4661-43cc-9f2e-3a209cb25194'),
+	(36,35,64,12,1,NULL,'2017-04-20 00:07:18','2017-04-20 15:55:00','ff3ba4bb-a419-414f-98da-2e859b33a8c7'),
+	(38,37,73,14,1,NULL,'2017-04-20 00:11:24','2017-04-20 15:55:00','e567e63f-aa4c-40a7-a0d9-435ef0cafab2'),
+	(40,39,52,9,1,NULL,'2017-04-20 00:11:24','2017-04-20 15:55:00','dafcd97e-d2bf-459b-b94a-3ba3c3d7cc63'),
+	(50,49,73,14,1,NULL,'2017-04-20 09:21:50','2017-04-20 15:55:00','d715e41e-890f-4c6a-8b0b-9e308acf449b'),
+	(53,52,56,10,1,NULL,'2017-04-20 09:25:22','2017-04-20 15:55:00','3e3ea3aa-a0c0-40ff-9c95-418114f64b26'),
+	(55,54,69,13,1,NULL,'2017-04-20 11:41:09','2017-04-20 15:55:00','055a010b-8c6b-4d53-a3da-a14496cb56ee'),
+	(57,56,85,17,1,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','8769045f-b540-44f0-b4df-61ee386c79dd'),
+	(58,56,85,17,2,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','ed3bd47e-4df8-4e8f-a082-a3c73e950007'),
+	(59,56,85,17,3,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','d7c8e26c-53c5-421c-809d-3c8bfb479739'),
+	(60,56,37,5,1,NULL,'2017-04-20 12:31:26','2017-04-20 15:55:00','4ef791f5-8b31-447b-834a-5e223c2ed487'),
+	(62,61,40,6,1,NULL,'2017-04-20 12:52:30','2017-04-20 15:55:01','d9d28d75-db9f-446c-ac84-59b8c5865bdb'),
+	(64,63,43,7,1,NULL,'2017-04-20 13:24:34','2017-04-20 15:55:01','d4de02a0-9d5c-4787-b168-e3bebc965f2b'),
+	(66,65,43,7,1,NULL,'2017-04-20 13:35:13','2017-04-20 15:55:01','a505e3dc-b417-47a8-b170-8f20a29b78fe'),
+	(72,71,77,15,1,NULL,'2017-04-20 13:52:06','2017-04-20 15:55:01','c3a933cf-8bab-41d0-b01f-eddca5c776d6'),
+	(79,78,64,12,1,NULL,'2017-04-20 14:09:24','2017-04-20 15:55:01','3c61dc3c-714a-4d50-8ce9-0b0fbb7d9b85'),
+	(81,80,69,13,1,NULL,'2017-04-20 14:46:34','2017-04-20 15:55:00','64bbe9a3-4dd2-45e9-99c2-024f509cb9f6'),
+	(83,82,81,16,1,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','d6160337-8554-49e8-ad77-3c2d47836577'),
+	(89,88,64,12,1,NULL,'2017-04-20 15:34:51','2017-04-20 15:55:01','4a88d0bd-5c64-4f31-805e-2dfcfceadb67');
+
+/*!40000 ALTER TABLE `craft_supertableblocks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertableblocktypes
@@ -2025,18 +2617,18 @@ VALUES
 	(1,4,13,'2017-04-16 22:48:52','2017-04-16 22:48:52','60bdee99-32b1-4e4b-850a-6708d326c322'),
 	(2,12,14,'2017-04-16 22:48:52','2017-04-16 22:48:53','bf03f528-fcb9-409f-8810-558a6cb5c950'),
 	(3,26,15,'2017-04-16 22:48:53','2017-04-16 22:48:54','98ceb5ec-625b-4040-b42a-64ca1806af25'),
-	(4,32,16,'2017-04-16 22:48:54','2017-04-16 22:48:55','3dd66ead-99ef-432f-84f7-d0e15ef8b4a6'),
+	(4,32,132,'2017-04-16 22:48:54','2017-04-18 23:47:03','3dd66ead-99ef-432f-84f7-d0e15ef8b4a6'),
 	(5,37,17,'2017-04-16 22:48:55','2017-04-16 22:48:55','6709c019-9bb8-4c24-a0f5-2ae0f5390eee'),
 	(6,40,18,'2017-04-16 22:48:55','2017-04-16 22:48:55','cd2d37bf-dcf2-41b4-b0af-63c411272c09'),
 	(7,43,19,'2017-04-16 22:48:56','2017-04-16 22:48:56','6ea0042c-9175-409d-8e9e-5653aac81b3d'),
-	(8,48,20,'2017-04-16 22:48:56','2017-04-16 22:48:57','d24e51f5-0e6e-452d-b8cd-08f1de33fb44'),
+	(8,48,142,'2017-04-16 22:48:56','2017-04-19 22:01:54','d24e51f5-0e6e-452d-b8cd-08f1de33fb44'),
 	(9,52,21,'2017-04-16 22:48:57','2017-04-16 22:48:57','1af0637f-91eb-490a-b106-970749c29d88'),
-	(10,56,22,'2017-04-16 22:48:57','2017-04-16 22:48:58','c2c345f5-b507-4b2f-b880-0d00c2d2528c'),
-	(11,60,23,'2017-04-16 22:48:58','2017-04-16 22:48:58','29078bf3-96e3-48fb-af00-9bb3fe011899'),
-	(12,64,24,'2017-04-16 22:48:58','2017-04-16 22:48:59','9ff59a2c-435b-49f6-b637-88b187d27e61'),
-	(13,69,25,'2017-04-16 22:48:59','2017-04-16 22:48:59','e5bb65e6-af3c-4894-86b3-0a3255563865'),
-	(14,73,26,'2017-04-16 22:49:00','2017-04-16 22:49:00','c2262ae1-52ac-47b8-a956-55ba97b2d301'),
-	(15,77,27,'2017-04-16 22:49:00','2017-04-16 22:49:00','4e35ee79-fc78-4e89-b876-0f4ead3020ce'),
+	(10,56,136,'2017-04-16 22:48:57','2017-04-18 23:57:22','c2c345f5-b507-4b2f-b880-0d00c2d2528c'),
+	(11,60,137,'2017-04-16 22:48:58','2017-04-18 23:58:19','29078bf3-96e3-48fb-af00-9bb3fe011899'),
+	(12,64,139,'2017-04-16 22:48:58','2017-04-19 00:06:27','9ff59a2c-435b-49f6-b637-88b187d27e61'),
+	(13,69,138,'2017-04-16 22:48:59','2017-04-19 00:02:41','e5bb65e6-af3c-4894-86b3-0a3255563865'),
+	(14,73,140,'2017-04-16 22:49:00','2017-04-19 00:06:43','c2262ae1-52ac-47b8-a956-55ba97b2d301'),
+	(15,77,144,'2017-04-16 22:49:00','2017-04-20 13:51:37','4e35ee79-fc78-4e89-b876-0f4ead3020ce'),
 	(16,81,28,'2017-04-16 22:49:01','2017-04-16 22:49:01','3c7280e4-a978-4ff4-9bb4-d538384284ed'),
 	(17,85,29,'2017-04-16 22:49:01','2017-04-16 22:49:01','90a4cf47-bc1f-453a-b62b-5b2bd78817df');
 
@@ -2129,6 +2721,18 @@ CREATE TABLE `craft_supertablecontent_groupedcaption` (
   CONSTRAINT `craft_supertablecontent_groupedcaption_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_groupedcaption` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_groupedcaption` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_groupedcaption` (`id`, `elementId`, `locale`, `field_captionTitle`, `field_caption`, `field_source`, `field_sourceUrl`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,17,'de','Caption Title','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.','Max Mustermann','{\"type\":\"custom\",\"custom\":\"http:\\/\\/google.com\"}','2017-04-19 20:53:27','2017-04-20 20:46:13','4e5d332c-6e74-4bf6-aa89-1f18562c719b'),
+	(2,18,'de','Caption Title','','','','2017-04-19 20:53:40','2017-04-20 20:46:27','a28bc77b-c920-4bcd-8905-0a83fcec52b5'),
+	(3,19,'de','','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.','','','2017-04-19 20:54:05','2017-04-20 20:46:41','ec7fcc8c-829b-4d5f-961f-ce70b99efb43'),
+	(4,27,'de','Caption','Ex vix dicat discere partiendo, at ignota corpora mei, posse percipitur mea ut. At doming commodo deseruisse sit, eu diceret fabulas eligendi vix, sea nostrum scriptorem ad! Quo cu eius tollit instructior. ','','','2017-04-19 21:54:58','2017-04-20 20:46:51','63c8e5e7-15e0-4ac8-b004-d4cdbb32255c');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_groupedcaption` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsbutton
@@ -2142,8 +2746,6 @@ CREATE TABLE `craft_supertablecontent_settingsbutton` (
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'primary',
   `field_alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'left',
-  `field_withIcon` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `field_icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'iconSample',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2154,6 +2756,15 @@ CREATE TABLE `craft_supertablecontent_settingsbutton` (
   CONSTRAINT `craft_supertablecontent_settingsbutton_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsbutton` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsbutton` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsbutton` (`id`, `elementId`, `locale`, `field_style`, `field_alignment`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,8,'de','primary','left','2017-04-17 02:19:23','2017-04-20 15:55:00','61d1ea0e-aa22-47d1-8f33-df17a9bd1677');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsbutton` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsbuttongroup
@@ -2177,6 +2788,15 @@ CREATE TABLE `craft_supertablecontent_settingsbuttongroup` (
   CONSTRAINT `craft_supertablecontent_settingsbuttongroup_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsbuttongroup` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsbuttongroup` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsbuttongroup` (`id`, `elementId`, `locale`, `field_style`, `field_alignment`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,60,'de','primary','left','2017-04-20 12:31:26','2017-04-20 15:55:00','1dcafaec-bf78-4b8e-ba82-3c2a722a4517');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsbuttongroup` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsdefinitionlist
@@ -2200,6 +2820,15 @@ CREATE TABLE `craft_supertablecontent_settingsdefinitionlist` (
   CONSTRAINT `craft_supertablecontent_settingsdefinitionlist_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsdefinitionlist` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsdefinitionlist` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsdefinitionlist` (`id`, `elementId`, `locale`, `field_columnsRatio`, `field_layout`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,62,'de','33-66','table','2017-04-20 12:52:30','2017-04-20 15:55:00','06c92c5b-7ef2-4e57-a65a-bb8f2c6b2d41');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsdefinitionlist` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsembed
@@ -2224,6 +2853,16 @@ CREATE TABLE `craft_supertablecontent_settingsembed` (
   CONSTRAINT `craft_supertablecontent_settingsembed_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsembed` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsembed` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsembed` (`id`, `elementId`, `locale`, `field_video`, `field_embedPosition`, `field_embedWidth`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,64,'de',1,'left','full','2017-04-20 13:24:34','2017-04-20 15:55:01','a409ee21-fccc-45c7-8890-f80d0b5d3bef'),
+	(2,66,'de',0,'center','threeQuarter','2017-04-20 13:35:13','2017-04-20 15:55:01','dd97d782-315a-40eb-a6b8-ba0aa5dfde38');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsembed` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsheadline
@@ -2235,9 +2874,7 @@ CREATE TABLE `craft_supertablecontent_settingsheadline` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `elementId` int(11) NOT NULL,
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
-  `field_indented` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `field_semanticSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
-  `field_visualSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_size` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'h2',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2248,6 +2885,15 @@ CREATE TABLE `craft_supertablecontent_settingsheadline` (
   CONSTRAINT `craft_supertablecontent_settingsheadline_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsheadline` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsheadline` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsheadline` (`id`, `elementId`, `locale`, `field_size`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,21,'de','h2','2017-04-19 21:20:00','2017-04-20 15:55:00','d13adbf8-351a-4238-930b-8a390af01aa2');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsheadline` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsimagecover
@@ -2272,6 +2918,15 @@ CREATE TABLE `craft_supertablecontent_settingsimagecover` (
   CONSTRAINT `craft_supertablecontent_settingsimagecover_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsimagecover` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagecover` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsimagecover` (`id`, `elementId`, `locale`, `field_backgroundPosition`, `field_textVerticalPosition`, `field_textAlignment`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,40,'de','focalpoint','bottom','center','2017-04-20 00:11:24','2017-04-20 15:55:00','1cd9941c-f762-45d0-b58b-afa93b0e048e');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagecover` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsimagegallery
@@ -2284,8 +2939,7 @@ CREATE TABLE `craft_supertablecontent_settingsimagegallery` (
   `elementId` int(11) NOT NULL,
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `field_columns` varchar(255) COLLATE utf8_unicode_ci DEFAULT '6',
-  `field_imagePosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'focalpoint',
-  `field_imageThumbsRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT '1:1',
+  `field_imageThumbsRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'square',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2296,6 +2950,15 @@ CREATE TABLE `craft_supertablecontent_settingsimagegallery` (
   CONSTRAINT `craft_supertablecontent_settingsimagegallery_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsimagegallery` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagegallery` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsimagegallery` (`id`, `elementId`, `locale`, `field_columns`, `field_imageThumbsRatio`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,53,'de','4','landscape','2017-04-20 09:25:22','2017-04-20 15:55:00','a7a8d121-8288-4439-9df9-a4e7918f645d');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagegallery` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsimagegrid
@@ -2309,7 +2972,7 @@ CREATE TABLE `craft_supertablecontent_settingsimagegrid` (
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `field_caption` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `field_columns` varchar(255) COLLATE utf8_unicode_ci DEFAULT '2',
-  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'square',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2320,6 +2983,15 @@ CREATE TABLE `craft_supertablecontent_settingsimagegrid` (
   CONSTRAINT `craft_supertablecontent_settingsimagegrid_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsimagegrid` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagegrid` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsimagegrid` (`id`, `elementId`, `locale`, `field_caption`, `field_columns`, `field_imageRatio`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,16,'de',1,'2','landscape','2017-04-17 18:46:20','2017-04-20 15:55:00','1e2b9bed-ba37-407b-b290-a2a159eff857');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagegrid` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsimagesingle
@@ -2333,7 +3005,7 @@ CREATE TABLE `craft_supertablecontent_settingsimagesingle` (
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `field_caption` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `field_imagePosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'center',
-  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
+  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'landscape',
   `field_imageWidth` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'full',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
@@ -2345,6 +3017,18 @@ CREATE TABLE `craft_supertablecontent_settingsimagesingle` (
   CONSTRAINT `craft_supertablecontent_settingsimagesingle_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsimagesingle` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagesingle` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsimagesingle` (`id`, `elementId`, `locale`, `field_caption`, `field_imagePosition`, `field_imageRatio`, `field_imageWidth`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,33,'de',1,'center','portrait','full','2017-04-19 23:18:28','2017-04-20 15:55:00','d9010369-5b70-4460-88e7-7264caf4963b'),
+	(2,36,'de',1,'center','landscape','full','2017-04-20 00:07:18','2017-04-20 15:55:00','240585a9-42ee-4c65-8ceb-2ae46506819e'),
+	(3,79,'de',0,'center','landscape','full','2017-04-20 14:09:24','2017-04-20 15:55:01','33e01805-6dfb-49f1-aa66-4b44a00022b6'),
+	(4,89,'de',0,'center','landscape','full','2017-04-20 15:34:51','2017-04-20 15:55:01','03bd1a0e-50a4-451a-a499-2c0249509ba3');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimagesingle` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsimageslider
@@ -2356,9 +3040,7 @@ CREATE TABLE `craft_supertablecontent_settingsimageslider` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `elementId` int(11) NOT NULL,
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
-  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT '16:10',
-  `field_navigation` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `field_pagination` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `field_imageRatio` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'landscape',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2369,6 +3051,16 @@ CREATE TABLE `craft_supertablecontent_settingsimageslider` (
   CONSTRAINT `craft_supertablecontent_settingsimageslider_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsimageslider` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimageslider` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsimageslider` (`id`, `elementId`, `locale`, `field_imageRatio`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,55,'de','square','2017-04-20 11:41:09','2017-04-20 15:55:00','d8bfc65b-a5ac-4d31-a7e7-b4ae444b27f5'),
+	(2,81,'de','square','2017-04-20 14:46:34','2017-04-20 15:55:00','c9d00b35-3a14-4f92-9112-7bf677c1bf86');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsimageslider` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingssection
@@ -2382,7 +3074,7 @@ CREATE TABLE `craft_supertablecontent_settingssection` (
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `field_backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
   `field_fullWidth` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'medium',
+  `field_paddingVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2393,6 +3085,17 @@ CREATE TABLE `craft_supertablecontent_settingssection` (
   CONSTRAINT `craft_supertablecontent_settingssection_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingssection` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingssection` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingssection` (`id`, `elementId`, `locale`, `field_backgroundColor`, `field_fullWidth`, `field_paddingVertical`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,10,'de','default',0,'default','2017-04-17 18:45:37','2017-04-20 15:55:00','9d1f7977-87a2-4b47-8c17-cb7bd432e41b'),
+	(2,38,'de','default',1,'none','2017-04-20 00:11:24','2017-04-20 15:55:00','571929b1-41e0-41e4-baee-464a86fb67dc'),
+	(3,50,'de','default',0,'default','2017-04-20 09:21:50','2017-04-20 15:55:00','2daa06a5-1848-4ea5-bc2d-e67b159e3431');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingssection` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingsseparator
@@ -2404,9 +3107,8 @@ CREATE TABLE `craft_supertablecontent_settingsseparator` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `elementId` int(11) NOT NULL,
   `locale` char(12) COLLATE utf8_unicode_ci NOT NULL,
-  `field_fullWidth` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `field_style` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
-  `field_marginVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'small',
+  `field_marginVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` datetime NOT NULL,
   `uid` char(36) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -2417,6 +3119,17 @@ CREATE TABLE `craft_supertablecontent_settingsseparator` (
   CONSTRAINT `craft_supertablecontent_settingsseparator_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingsseparator` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsseparator` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingsseparator` (`id`, `elementId`, `locale`, `field_style`, `field_marginVertical`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,68,'de','default','default','2017-04-20 13:44:03','2017-04-20 13:51:14','cb85d910-b474-4357-93de-72dad15da8f3'),
+	(2,70,'de','default','large','2017-04-20 13:48:14','2017-04-20 13:51:15','b73ff22e-98eb-4a08-942b-8fcb7b979b61'),
+	(3,72,'de','default','default','2017-04-20 13:52:06','2017-04-20 15:55:01','801b1bba-a43a-4c33-82de-a539dea96f25');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingsseparator` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_settingstwocolumns
@@ -2439,6 +3152,15 @@ CREATE TABLE `craft_supertablecontent_settingstwocolumns` (
   CONSTRAINT `craft_supertablecontent_settingstwocolumns_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_settingstwocolumns` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_settingstwocolumns` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_settingstwocolumns` (`id`, `elementId`, `locale`, `field_columnsRatio`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,83,'de','50-50','2017-04-20 15:34:51','2017-04-20 15:55:01','0a36ddf6-3579-427c-8782-cf6a23975381');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_settingstwocolumns` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_supertablecontent_singlebuttongroup
@@ -2461,6 +3183,17 @@ CREATE TABLE `craft_supertablecontent_singlebuttongroup` (
   CONSTRAINT `craft_supertablecontent_singlebuttongroup_locale_fk` FOREIGN KEY (`locale`) REFERENCES `craft_locales` (`locale`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `craft_supertablecontent_singlebuttongroup` WRITE;
+/*!40000 ALTER TABLE `craft_supertablecontent_singlebuttongroup` DISABLE KEYS */;
+
+INSERT INTO `craft_supertablecontent_singlebuttongroup` (`id`, `elementId`, `locale`, `field_button`, `dateCreated`, `dateUpdated`, `uid`)
+VALUES
+	(1,57,'de','{\"type\":\"entry\",\"email\":\"\",\"tel\":\"\",\"custom\":\"\",\"entry\":[\"4\"],\"asset\":\"\",\"category\":\"\",\"customText\":\"Home\",\"target\":\"\"}','2017-04-20 12:31:26','2017-04-20 15:55:00','b498187d-4824-4123-9181-035aa2bd5733'),
+	(2,58,'de','{\"type\":\"entry\",\"email\":\"\",\"tel\":\"\",\"custom\":\"\",\"entry\":[\"5\"],\"asset\":\"\",\"category\":\"\",\"customText\":\"Modules\",\"target\":\"\"}','2017-04-20 12:31:26','2017-04-20 15:55:00','969d7111-d597-4baa-b13c-1d0635055591'),
+	(3,59,'de','{\"type\":\"entry\",\"email\":\"\",\"tel\":\"\",\"custom\":\"\",\"entry\":[\"4\"],\"asset\":\"\",\"category\":\"\",\"customText\":\"Homepage\",\"target\":\"\"}','2017-04-20 12:31:26','2017-04-20 15:55:00','95c2238a-27d2-42ad-8e7c-cdf3036d49e5');
+
+/*!40000 ALTER TABLE `craft_supertablecontent_singlebuttongroup` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle craft_systemsettings
@@ -2785,7 +3518,7 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,NULL,NULL,'davidhellmann.com@gmail.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,0,1,0,0,0,0,0,'2017-04-16 22:06:52','::1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-04-16 22:06:52','df730679-fa87-4b60-991e-9e821fddf5f8');
+	(1,'superuser',NULL,NULL,NULL,'davidhellmann.com@gmail.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,0,1,0,0,0,0,0,'2017-04-20 20:45:08','::1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-04-20 20:45:08','df730679-fa87-4b60-991e-9e821fddf5f8');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;

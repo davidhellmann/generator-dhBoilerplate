@@ -5,7 +5,7 @@
 .o-section {
   @include make-section();
   @include f($dh-gutterWidthMin * 2, $dh-gutterWidthMax * 2, padding-bottom);
-  background-color: rgba(c('red'), 0.1);
+  // background-color: rgba(c('red'), 0.1);
 }
 
 // Width

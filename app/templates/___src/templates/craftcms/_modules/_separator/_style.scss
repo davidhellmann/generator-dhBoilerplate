@@ -2,17 +2,13 @@
 /*    Separator
 /* -------------------------------------------------- */
 
-.m-separator {
-  @include fb(true);
-  @include center();
-  @include f(s(2), s(4), margin-top margin-bottom);
-  position: relative;
-  border: none;
+.m-separatorWrapper {
+  /* empty */
 }
 
-// Full Width
-.m-separator--width-full {
-  @include fb();
+.m-separator {
+  position: relative;
+  border: none;
 }
 
 // Margin Vertical
@@ -36,9 +32,10 @@
     content: '';
     position: absolute;
     top: 0;
-    @include f(s(2), s(4), left right);
+    left: 0;
+    right: 0;
     height: 1px;
-    background-color: c('black-10');
+    background-color: c('black-50');
   }
 }
 

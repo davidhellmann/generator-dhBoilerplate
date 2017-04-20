@@ -1,4 +1,4 @@
-{#
+ {#
   Image Slider
   ============
 #}
@@ -28,30 +28,34 @@
 
 {# -- Modul -- #}
 <!-- Slider main container -->
-<figure class="{{ classname }}  js-imageSlider"
-        data-flickity='{
-          "cellAlign": "left",
-          "contain": true,
-          "draggable": true,
-          "friction": 0.9,
-          "selectedAttraction": 0.3,
-          "groupCells": true,
-          "imagesLoaded": true,
-          "prevNextButtons": true,
-          "pageDots": true,
-          "rightToLeft": false,
-          "watchCSS": true
-        }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
-  <!-- Slides -->
-  {% for image in images %}
-    <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
-
-      {# -- Res Image -- #}
-      {% set options = {
-        ratio: ratio
-      } %}
-
-      {{ macroImage.image(image, options) }}
-    </div>
-  {% endfor %}
-</figure>
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <figure class="{{ classname }}  js-imageSlider"
+          data-flickity='{
+            "cellAlign": "left",
+            "contain": true,
+            "draggable": true,
+            "friction": 1,
+            "selectedAttraction": 0.1,
+            "lazyLoad": 2,
+            "groupCells": true,
+            "imagesLoaded": true,
+            "prevNextButtons": true,
+            "pageDots": true,
+            "rightToLeft": false,
+            "watchCSS": false
+          }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+    <!-- Slides -->
+    {% for image in images %}
+      <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
+      
+        {# -- Res Image -- #}
+        {% set options = {
+          ratio: ratio,
+          flickity: true
+        } %}
+  
+        {{ macroImage.image(image, options) }}
+      </div>
+    {% endfor %}
+  </figure>
+</div>

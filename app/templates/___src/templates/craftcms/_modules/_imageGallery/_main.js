@@ -43,8 +43,6 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
                 h: parseInt(size[1], 10)
             };
 
-
-
             if(figureEl.children.length > 1) {
                 // <figcaption> content
                 item.title = figureEl.children[1].innerHTML;
@@ -69,6 +67,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
     // triggers when user clicks on thumbnail
     var onThumbnailsClick = function(e) {
+
         e = e || window.event;
         e.preventDefault ? e.preventDefault() : e.returnValue = false;
 

@@ -53,7 +53,7 @@
 
       {{ macroImage.image(image, options) }}
 
-      {% if caption %}
+      {% if (caption and captionTitle is not empty) or (caption and captionCaption is not empty) %}
         <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
           {% if captionTitle %}
             <span class="m-caption__headline  {{ classname ~ '__captionHeadline' }}">

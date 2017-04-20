@@ -4,5 +4,5 @@
 
 .o-col {
   @include make-col();
-  background-color: rgba(c('green'), 0.1);
+  // background-color: rgba(c('green'), 0.1);
 }

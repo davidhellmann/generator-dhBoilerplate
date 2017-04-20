@@ -149,10 +149,10 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
                 name: 'projectUsage',
                 message: chalk.magenta.underline.bold('Project Usage') + '\n\xb7 Which purpose does this Project have? Choose the appropriate option: ',
                 choices: [
-                    'Prototyping',
-                    'WordPress',
                     'Craft CMS',
-                    'Craft CMS Beta'
+                    'Craft CMS Beta',
+                    'WordPress',
+                    'Prototyping'
                 ]
             }, {
                 when(answers) {
@@ -429,6 +429,54 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
             this.destinationPath('package.json'),
             params
         )
+
+        // Setup package.json
+        /*const packageJson = this.fs.readJSON(this.templatePath('_package.json'));
+
+        Object.assign(packageJson, {
+            'title': params.projectName,
+            'name': params.projectName,
+            'description': params.projectDescription,
+            'version': params.projectVersion,
+            'license': "MIT",
+            'author': {
+                'name': params.projectAuthor,
+                'email': params.projectMail,
+                'url': params.projectUrl
+            }
+        });
+
+        if (params.projectVue) {
+            Object.assign(packageJson.devDependencies, {
+                'vue': '^2.0.2',
+                'vue-resource': '^0.9.3',
+                'vue-router': '^0.7.13',
+                'browserify-hmr': '^0.3.1',
+                'vue-hot-reload-api': '^2.0.8',
+                'vueify': '^9.4.0'
+            });
+
+            Object.assign(packageJson.dependencies, {
+                axios: '^0.15.3'
+            });
+
+            Object.assign(packageJson.browser, {
+                vue: 'vue/dist/vue.common'
+            });
+
+            packageJson.browserify.transform.unshift('vueify');
+        }
+
+        if (params.projectjQuery) {
+            Object.assign(packageJson.dependencies, {
+                jquery: '^3.0.0'
+            });
+            Object.assign(packageJson.browser, {
+                'jquery': './node_modules/jquery/dist/jquery.js',
+            });
+        }
+        this.fs.writeJSON(this.destinationPath('package.json'), packageJson);*/
+
 
         this.fs.copyTpl(
             this.templatePath('_config.json'),

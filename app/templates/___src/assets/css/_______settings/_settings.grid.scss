@@ -9,8 +9,8 @@ $dh-pixelGridSize:        8px; // Pixelgrid Size
 $dh-columns:              12; // Number of Columns
 $dh-columnWidth:          120px; // Column Width
 $dh-gutterWidth:          8px; // Gutter width on each side
-$dh-gutterWidthMin:       8px;
-$dh-gutterWidthMax:       16px;
+$dh-gutterWidthMin:       $dh-gutterWidth;
+$dh-gutterWidthMax:       $dh-gutterWidth * 2;
 
 /*--------------------------------------------------
     #DON'T EDIT BELOW HERE

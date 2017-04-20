@@ -2,33 +2,21 @@
 /*    Two Columns
 /* -------------------------------------------------- */
 
-.m-twoColumns {
-  @include fb();
+.m-twoColumnsWrapper {
+  /* empty */
 }
 
-.m-twoColumns__column {
-  @include fc(12);
+.m-twoColumns {
+  @include make-row();
 
-  @include media('>=m') {
-    @include fc(6);
-  }
-
-  .m-richText {
-    @include fc(12);
-  }
-
-  .m-headline {
-    @include fc(12);
-    @include f(s(2), s(4), padding-left padding-right);
+  &__column {
+    @include make-col(12);
 
     @include media('>=m') {
-      @include fc(12);
-      @include push(0);
+      @include make-col(6);
     }
   }
-}
 
-.m-twoColumns {
   @include media('>=m') {
 
     // 50-50
@@ -95,5 +83,16 @@
         }
       }
     }
+  }
+
+  // Rich Text
+  .m-richTextWrapper {
+    @include make-col(12);
+    @include offset(0);
+  }
+
+  // Headline
+  .m-headlineWrapper {
+    @include make-col(12);
   }
 }

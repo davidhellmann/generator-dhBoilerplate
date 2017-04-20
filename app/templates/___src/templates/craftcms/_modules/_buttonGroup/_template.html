@@ -13,14 +13,16 @@
 
 
 {# Modul #}
-<div class="{{ classname }}{{ alignment }}">
-  {% for button in buttons %}
-    <a itemprop="url"
-       role="button"
-       href="{{ button.button.url }}"
-      {{ target }}
-       class="m-button  {{ style }}">
-      {{ button.button.text }}
-    </a>
-  {% endfor %}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <div class="{{ classname }}{{ alignment }}">
+    {% for button in buttons %}
+      <a itemprop="url"
+         role="button"
+         href="{{ button.button.url }}"
+        {{ target }}
+         class="m-button  {{ style }}">
+        {{ button.button.text }}
+      </a>
+    {% endfor %}
+  </div>
 </div>

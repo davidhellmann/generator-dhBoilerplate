@@ -11,18 +11,20 @@
 {# Modul #}
 {% if data.children is not empty %}
   {% set columns = data.children %}
-  <div class="{{ classname }}{{ columnsRatio }}">
-    {% for columns in columns.children %}
-      {% set counter = loop.index %}
-      <div class="{{ classname ~ '__column' }}  {{ classname ~ '__column'~counter }}">
-        {% for content in columns.children %}
-          <!-- start: o-row -->
-          <div class="o-row  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
-            {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
-          </div>
-          <!-- end: o-row -->
-        {% endfor %}
-      </div>
-    {% endfor %}
+  <div class="o-col  {{ classname ~ 'Wrapper' }}">
+    <div class="{{ classname }}{{ columnsRatio }}">
+      {% for columns in columns.children %}
+        {% set counter = loop.index %}
+        <div class="{{ classname ~ '__column' }}  {{ classname ~ '__column'~counter }}">
+          {% for content in columns.children %}
+            <!-- start: o-row -->
+            <div class="o-row  m-contentBuilder__block  m-contentBuilder__block--{{ content.type }}">
+              {% include '_contentBuilders/_contentBuilderModules' with { data: content } %}
+            </div>
+            <!-- end: o-row -->
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 {% endif %}

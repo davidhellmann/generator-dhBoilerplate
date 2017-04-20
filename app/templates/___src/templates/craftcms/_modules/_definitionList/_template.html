@@ -11,9 +11,9 @@
 
 
 {# Modul #}
-<div class="{{ classname }}{{ columnsRatio }}{{ layout }}">
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
   {% if definitionList %}
-    <dl class="{{ classname ~ '__list' }}">
+    <dl class="{{ classname }}{{ columnsRatio }}{{ layout }}">
       {% for row in definitionList %}
         <dt class="{{ classname ~ '__listTerm' }}">{{ row.definitionTerm|raw }}:</dt>
         <dd class="{{ classname ~ '__listDescription' }}">{{ row.definitionDescription }}</dd>
