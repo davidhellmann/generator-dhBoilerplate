@@ -27,6 +27,10 @@
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
 ```
 
+```
+// Install dhBoilerplate Globally
+npm i generator-dhboilerplate
+```
 
 ## Intro
 That's my own YO Generator who fits for my own requirements.

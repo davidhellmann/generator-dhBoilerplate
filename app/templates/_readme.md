@@ -29,6 +29,10 @@
    Github   :   https://github.com/davidhellmann/generator-dhBoilerplate
 ```
 
+```
+// Install dhBoilerplate Globally
+npm i generator-dhboilerplate
+```
 
 ## Description
 <%= projectDescription %>
