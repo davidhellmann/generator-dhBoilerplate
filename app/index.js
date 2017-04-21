@@ -127,9 +127,9 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
                 default: process.cwd().split('/').pop(-1).toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
                 validate: function(input) {
                     // Do async stuff
-                    if (input.indexOf(' ') >= 0 || /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(input)) {
+                    if (input.indexOf(' ') >= 0 || /[~`!#$%\^&*+=\[\]\\';,/{}|\\":<>\?]/g.test(input)) {
                         // Pass the return value in the done callback
-                        console.log('' + chalk.styles.red.open + 'No whitespaces or special-chars allowed!' + chalk.styles.red.close);
+                        console.log(chalk.styles.magenta.open + '\n No whitespaces or special-chars allowed!' + chalk.styles.magenta.close);
                         return false;
                     }
                     return true;
