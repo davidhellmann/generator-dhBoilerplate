@@ -7,8 +7,9 @@ const chalk = require('chalk')
 const mkdirp = require('mkdirp')
 const commandExists = require('command-exists')
 const clear = require('clear-terminal')
+const extend = require('extend')
 
-const dhBoilerplateGenerator = yeoman.generators.Base.extend({
+const dhBoilerplateGenerator = yeoman.Base.extend({
 
     init() {
         this.pkg = require('../package.json')
@@ -424,60 +425,83 @@ const dhBoilerplateGenerator = yeoman.generators.Base.extend({
         }
 
 
-        this.fs.copyTpl(
+        /*this.fs.copyTpl(
             this.templatePath('_package.json'),
             this.destinationPath('package.json'),
             params
-        )
+        )*/
 
-        // Setup package.json
-        /*const packageJson = this.fs.readJSON(this.templatePath('_package.json'));
+        /* -------------------------------------------------- */
+        /*    Setup package.json
+        /* -------------------------------------------------- */
+        const packageJson = this.fs.readJSON(this.templatePath('_package.json'));
 
-        Object.assign(packageJson, {
-            'title': params.projectName,
-            'name': params.projectName,
-            'description': params.projectDescription,
-            'version': params.projectVersion,
-            'license': "MIT",
-            'author': {
-                'name': params.projectAuthor,
-                'email': params.projectMail,
-                'url': params.projectUrl
+        extend(true, packageJson, {
+            title: params.projectName,
+            name: params.projectName,
+            description: params.projectDescription,
+            version: params.projectVersion,
+            author: {
+                name: params.projectAuthor,
+                email: params.projectMail,
+                url: params.projectUrl
             }
         });
 
-        if (params.projectVue) {
-            Object.assign(packageJson.devDependencies, {
-                'vue': '^2.0.2',
-                'vue-resource': '^0.9.3',
-                'vue-router': '^0.7.13',
-                'browserify-hmr': '^0.3.1',
-                'vue-hot-reload-api': '^2.0.8',
-                'vueify': '^9.4.0'
-            });
-
-            Object.assign(packageJson.dependencies, {
-                axios: '^0.15.3'
-            });
-
-            Object.assign(packageJson.browser, {
-                vue: 'vue/dist/vue.common'
-            });
-
+        if (params.projectVue === true) {
+            extend(true, packageJson, this.fs.readJSON(this.templatePath('_package_vue.json')));
+            // Add browserify transformer
             packageJson.browserify.transform.unshift('vueify');
         }
 
-        if (params.projectjQuery) {
-            Object.assign(packageJson.dependencies, {
-                jquery: '^3.0.0'
-            });
-            Object.assign(packageJson.browser, {
-                'jquery': './node_modules/jquery/dist/jquery.js',
-            });
+        if (params.projectjQuery === true) {
+            extend(true, packageJson, this.fs.readJSON(this.templatePath('_package_jquery.json')));
         }
-        this.fs.writeJSON(this.destinationPath('package.json'), packageJson);*/
+
+        this.fs.writeJSON(this.destinationPath('package.json'), packageJson);
+        // End package.json
+
+        /* -------------------------------------------------- */
+        /*    Setup config.json
+        /* -------------------------------------------------- */
+        /*const configJson = this.fs.readJSON(this.templatePath('_config.json'));
+
+        extend(true, configJson, {
+            browsersync: {
+                proxy: params.proxyUrl
+            }
+        });
+
+        if (params.projectUsage === 'Prototyping') {
+            extend(true, configJson, this.fs.readJSON(this.templatePath('_config_prototyping.json')));
+        }
+
+        if (params.projectUsage === 'WordPress') {
+            extend(true, configJson, this.fs.readJSON(this.templatePath('_config_wordpress.json')));
+        }
+
+        if (params.projectUsage === 'Craft CMS') {
+            const configCraftCms = this.fs.readJSON(this.templatePath('_config_craftcms.json'));
+
+            if (params.craftHearty) {
+                extend(true, configCraftCms.dist, {
+                    markup: '___dist/templates/'
+                });
+            }
+
+            extend(true, configJson, configCraftCms);
+        }
+
+        if (params.projectUsage == 'Craft CMS Beta') {
+            extend(true, configJson, this.fs.readJSON(this.templatePath('_config_craftcms_beta.json')));
+        }
+
+        this.fs.writeJSON(this.destinationPath('config.json'), configJson);*/
 
 
+        /* -------------------------------------------------- */
+        /*    Copy Files
+        /* -------------------------------------------------- */
         this.fs.copyTpl(
             this.templatePath('_config.json'),
             this.destinationPath('config.json'),

@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "vue": "^2.0.2",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "browserify-hmr": "^0.3.1",
+    "vue-hot-reload-api": "^2.0.8",
+    "vueify": "^9.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3"
+  },
+  "browser": {
+    "vue": "vue/dist/vue.common"
+  }
+}

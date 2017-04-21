@@ -1,13 +1,13 @@
 {
-  "title": "My Project",
-  "name": "My Projectname",
-  "description": "My Description",
-  "version": "0.0.1",
+  "title": "<%= projectName %>",
+  "name": "<%= projectName %>",
+  "description": "<%= projectDescription %>",
+  "version": "<%= projectVersion %>",
   "license": "MIT",
   "author": {
-    "name": "My Name",
-    "email": "My Mail",
-    "url": "My URL"
+    "name": "<%= projectAuthor %>",
+    "email": "<%= projectMail %>",
+    "url": "<%= projectUrl %>"
   },
   "scripts": {
     "start": "gulp init",
@@ -106,6 +106,14 @@
     "utils-merge": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
+    <% if (projectVue == true ) { %>
+    "vue": "^2.0.2",
+    "vue-resource": "^0.9.3",
+    "vue-router": "^0.7.13",
+    "browserify-hmr": "^0.3.1",
+    "vue-hot-reload-api": "^2.0.8",
+    "vueify": "^9.4.0",
+    <% } %>
     "watchify": "^3.7.0",
     "yargs": "^6.0.0"
   },
@@ -116,13 +124,18 @@
   ],
   "dependencies": {
     "animejs": "^1.1.0",
+    <% if (projectVue == true ) { %>
+    "axios": "^0.15.3",
+    <% } %>
     "babel-polyfill": "^6.20.0",
-    "cookieconsent": "^3.0.4",
     "eqcss": "^1.5.0",
     "family.scss": "^1.0.4",
     "flickity": "^2.0.5",
     "fontfaceobserver": "^2.0.9",
     "include-media": "^1.4.4",
+    <% if (projectjQuery) { %>
+    "jquery": "^3.0.0",
+    <% } %>
     "js-cookie": "^2.1.0",
     "lazysizes": "^3.0.0",
     "lodash": "^4.16.6",
@@ -135,13 +148,24 @@
     "waypoints": "^4.0.0",
     "webfontloader": "^1.6.26"
   },
-  "browser": {},
+  "browser": {
+    <% if (projectjQuery) { %>
+    "jquery": "./node_modules/jquery/dist/jquery.js"
+    <% } %>
+    <% if (projectjQuery && projectVue == true) { %>
+      ,
+    <% } %>
+    <% if (projectVue == true ) { %>
+    "vue": "vue/dist/vue.common"
+    <% } %>
+  },
   "browserify": {
     "transform": [
+      <% if (projectVue == true ) { %>
+      "vueify"
+      <% } %>
       "browserify-shim"
     ]
   },
   "browserify-shim": {}
 }
-
-

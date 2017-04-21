@@ -106,7 +106,7 @@
     <% } %>
   },
   "critical": [
-    { "url": "/", "template": "index" },
+    { "url": "", "template": "index" },
     { "url": "/NEWS/ENTRY-SLUG", "template": "news/_entry" },
     { "url": "/NEWS", "template": "news/index" },
     { "url": "/404", "template": "404" }

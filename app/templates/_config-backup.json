@@ -1,0 +1,108 @@
+{
+  "src": {
+    "assets":               "___src/assets/",
+    "js":                   "___src/assets/js/",
+    "css":                  "___src/assets/css/",
+    "fonts":                "___src/assets/fonts/",
+    "images": {
+      "base":               "___src/assets/images/",
+      "bitmap": {
+        "base":             "___src/assets/images/bitmap/",
+        "favicon":          "___src/assets/images/bitmap/favicon/"
+      },
+      "svg": {
+        "base":             "___src/assets/images/svg/",
+        "single":           "___src/assets/images/svg/single/",
+        "sprite":           "___src/assets/images/svg/sprite/"
+      }
+    },
+    "templates":            "___src/templates/",
+    "system":               "___src/_system/",
+    "dataDir":              "___src/_data/",
+    "dataFile":             "___src/_data/global.json"
+  },
+
+  "dist": {},
+  "critical": [
+    { "url": "/", "template": "index" },
+    { "url": "/NEWS/ENTRY-SLUG", "template": "news/_entry" },
+    { "url": "/NEWS", "template": "news/index" },
+    { "url": "/404", "template": "404" }
+  ],
+  "inlineJS": [
+    "./node_modules/fg-loadcss/src/loadCSS.js",
+    "./node_modules/fg-loadcss/src/cssrelpreload.js"
+  ],
+  "css": {
+    "sourcemap": true,
+    "prefix": [
+      "last 2 version"
+    ]
+  },
+
+  "browsersync": {
+    "openbrowser": false
+  },
+
+  "files": {
+    "systemFiles": [
+      "___src/_system/.htaccess",
+      "___src/_system/humans.txt",
+      "___src/_system/robots.txt"
+    ],
+    "jsApp": {
+      "srcName": "app.js",
+      "distName": "app.min.js"
+    }
+  },
+
+  "modernizr": {
+    "excludeTests": [
+      "hidden"
+    ],
+    "options": [
+      "setClasses",
+      "addTest",
+      "fnBind"
+    ],
+    "tests": [
+      "backgroundblendmode",
+      "bgsizecover",
+      "touchevents",
+      "rgba"
+    ]
+  },
+
+  "minify": {
+    "images": {
+      "optimizationLevel": 3,
+      "jpegCompress": {
+        "loops": 6,
+        "min": 75,
+        "max": 95
+      },
+      "pngquant": {
+        "quality": "75-95",
+        "speed": 4
+      },
+      "svgoPlugins": [
+        {"cleanupIDs": false},
+        {"removeComments": true},
+        {"removeViewBox": false},
+        {"removeDesc": true},
+        {"removeTitle": true},
+        {"removeUselessDefs": false},
+        {"removeDoctype": true},
+        {"removeEmptyText": true},
+        {"removeUnknownsAndDefaults": true},
+        {"removeEmptyContainers": true},
+        {"collapseGroups": true},
+        {"sortAttrs": true},
+        {"removeUselessStrokeAndFill": true},
+        {"convertStyleToAttrs": true}
+      ],
+      "progressive": true,
+      "interlaced": true
+    }
+  }
+}
