@@ -12,6 +12,7 @@ window.addEventListener('load', () => {
             sliders.forEach((slider) => {
                 const flkty = Flickity.data(slider)
                 flkty.resize()
+                slider.classList.add('is-visible')
             })
         }
     }, 250)

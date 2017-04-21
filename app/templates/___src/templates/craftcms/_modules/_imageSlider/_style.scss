@@ -11,6 +11,12 @@
   @include make-row(1/8, 1/4);
   padding-bottom: s(4);
   margin-bottom: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease('out-cubic');
+
+  &.is-visible {
+    opacity: 1;
+  }
 
   &::after {
     content: 'flickity';
