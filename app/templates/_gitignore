@@ -52,12 +52,11 @@ ___dist/wp-content/themes/<%= projectName %>/*
 
 <% if (projectUsage == 'Craft CMS' ) { %>
 # Craft CMS
-___dist/config/config.local.php
-___dist/config/license.key
 ___dist/craft
 ___dist/templates
 #___dist/public/uploads
 ___dist/public/assets
+___dist/.env.php
 <% } %>
 
 <% if (projectUsage == 'Craft CMS Beta' ) { %>

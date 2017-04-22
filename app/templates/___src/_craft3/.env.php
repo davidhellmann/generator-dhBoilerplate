@@ -25,7 +25,7 @@ if (isset($_SERVER['HTTPS']) && (strcasecmp($_SERVER['HTTPS'], 'on') === 0 || $_
 // whatever you want here and access them via getenv() using the prefixed name
 $craftEnvVars = [
     // The Craft environment we're running in ('local', 'staging', 'live', etc.).
-    'CRAFT_ENVIRONMENT' => 'REPLACE_ME',
+    'CRAFT_ENVIRONMENT' => 'local',
 
     // The database driver that will used ('mysql' or 'pgsql')
     'DB_DRIVER' => 'mysql',

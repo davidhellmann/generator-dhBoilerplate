@@ -180,32 +180,6 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
                 message: chalk.magenta.underline.bold('Craft CMS Install') + '\n\xb7 Do you want to install the Craft 3 Beta version via Composer?',
                 default: true
             }, {
-                when(answers) {
-                    return answers.projectUsage === 'Craft CMS'
-                },
-                type: 'confirm',
-                name: 'craftHearty',
-                message: chalk.magenta.underline.bold('Craft CMS Hearty Config') + '\n\xb7 Do you want to use Hearty Config?',
-                default: true
-            }, {
-                when(answers) {
-                    if (answers.projectUsage === 'Craft CMS' || answers.projectUsage === 'Craft CMS Beta') {
-                        return true
-                    }
-                },
-                type: 'confirm',
-                name: 'craftImager',
-                message: chalk.magenta.underline.bold('Craft CMS Imager Config') + '\n\xb7 Do you want to use Imager?',
-                default: true
-            }, {
-                when(answers) {
-                    return answers.projectUsage === 'Craft CMS'
-                },
-                type: 'confirm',
-                name: 'craftMultilang',
-                message: chalk.magenta.underline.bold('Craft CMS Multilang Config') + '\n\xb7 Do you want to use Multilang Config?',
-                default: false
-            }, {
                 type: 'confirm',
                 name: 'projectjQuery',
                 message: chalk.magenta.underline.bold('jQuery') + '\n\xb7 Do you want to use jQuery (newest Version)?',
@@ -252,9 +226,6 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             this.wordpressInstall = checkAnswer(answers.wordpressInstall)
             this.craftInstall = checkAnswer(answers.craftInstall)
             this.craftBetaInstall = checkAnswer(answers.craftBetaInstall)
-            this.craftHearty = checkAnswer(answers.craftHearty)
-            this.craftImager = checkAnswer(answers.craftImager)
-            this.craftMultilang = checkAnswer(answers.craftMultilang)
             this.projectVersion = answers.projectVersion
             this.projectAuthor = answers.projectAuthor
             this.projectMail = answers.projectMail
@@ -309,7 +280,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
             // Copy Index Config
             this.fs.copyTpl(
-                this.templatePath('___src/_craft3/db.php'),
+                this.templatePath('___src/_craft3/web/index.php'),
                 this.destinationPath('___dist/web/index.php')
             );
 
@@ -340,7 +311,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             // Copy Pluginlist
             this.fs.copyTpl(
                 this.templatePath('___src/_craft3/plugins/craft3-plugins.sh'),
-                this.templatePath('___src/craft3-plugins.sh')
+                this.templatePath('___dist/craft3-plugins.sh')
             );
 
             // Copy Redactor
@@ -351,30 +322,49 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
         }
 
         if (this.projectUsage === `Craft CMS`) {
-            if (this.craftHearty) {
-                var craftPath = ''
-                var craftIndex = 'index.hearty.php'
-            } else {
-                var craftPath = 'craft/'
-                var craftIndex = 'index.php'
-            }
 
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
 
 
+            // Copy Plugins
+            this.directory('___src/_craft/public/uploads/', '___dist/public/uploads');
+
             // Copy Imager Config
             this.fs.copyTpl(
                 this.templatePath('___src/_craft/imager/imager.php'),
-                this.destinationPath('___dist/' + craftPath + '/config/imager.php')
+                this.destinationPath('___dist/craft/config/imager.php')
             );
 
-            // Copy Index File for Craft
+            // Copy DB Config
             this.fs.copyTpl(
-                this.templatePath('___src/_craft/public/' + craftIndex),
+                this.templatePath('___src/_craft/db.php'),
+                this.destinationPath('___dist/craft/config/db.php')
+            );
+
+            // Copy General Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/general.php'),
+                this.destinationPath('___dist/craft/config/general.php')
+            );
+
+            // Copy Index Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/public/index.php'),
                 this.destinationPath('___dist/public/index.php')
             );
 
+            // Copy .env.php Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/.env.php'),
+                this.destinationPath('___dist/.env.php')
+            );
+
+            // Copy example.env.php Config
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/example.env.php'),
+                this.destinationPath('___dist/example.env.php')
+            );
 
             // Copy Craft CLI
             this.fs.copyTpl(
@@ -382,24 +372,17 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
                 this.destinationPath('.craft-cli.php')
             );
 
-
-            // Copy Plugins
-            this.directory('___src/_craft/public/uploads/', '___dist/public/uploads');
-
+            // Copy Redactor
+            this.fs.copyTpl(
+                this.templatePath('___src/_craft/redactor/Standard.json'),
+                this.destinationPath('___dist/craft/config/redactor/' + this.projectName + '.json')
+            );
 
             // Copy Upload Dirs
-            this.directory('___src/_craft/plugins/', '___dist/' + craftPath + '/plugins');
-
+            this.directory('___src/_craft/plugins/', '___dist/craft/plugins');
 
             // Copy Translations
-            this.directory('___src/_craft/translations/', '___dist/' + craftPath + '/translations');
-
-
-
-            // Copy Hearty Config
-            if (this.craftHearty) {
-                this.directory('___src/_craft/hearty/config/', '___dist/config');
-            }
+            this.directory('___src/_craft/translations/', '___dist/craft/translations');
         }
     },
 
@@ -414,9 +397,6 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             wordpressInstall: this.wordpressInstall,
             craftInstall: this.craftInstall,
             craftBetaInstall: this.craftBetaInstall,
-            craftHearty: this.craftHearty,
-            craftImager: this.craftImager,
-            craftMultilang: this.craftMultilang,
             projectVersion: this.projectVersion,
             projectAuthor: this.projectAuthor,
             projectMail: this.projectMail,
@@ -582,6 +562,14 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
     installCraft() {
         if (this.craftInstall) {
+
+            clear()
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+            this.log('')
+            this.log(`${chalk.magenta('Download the latest Craft CMS Version…')}`)
+            this.log(`${chalk.yellow('Give me a moment to do that……')}`)
+            this.log('')
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
             const done = this.async()
             const self = this
 
@@ -589,7 +577,9 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
                 self.spawnCommand(`mkdir`, [`___dist`]).on('close', () => {
                     self.spawnCommand(`tar`, [`-zxvf`, `latest.tar.gz\?accept_license=yes`, `craft/`]).on('close', () => {
                         self.spawnCommand(`mv`, [`craft`, `___dist/`]).on('close', () => {
-                            self.spawnCommand(`rm`, [`-rf`, `latest.tar.gz\?accept_license=yes`]).on('close', done)
+                            self.spawnCommand(`rm`, [`-rf`, `latest.tar.gz\?accept_license=yes`]).on('close', done),
+                            self.spawnCommand(`rm`, [`-rf`, `___dist/craft/config/db.php`]).on('close', done),
+                            self.spawnCommand(`rm`, [`-rf`, `___dist/craft/config/general.php`]).on('close', done)
                         })
                     })
                 })
@@ -604,6 +594,15 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
     installCraftBeta() {
         if (this.craftBetaInstall) {
+
+            clear()
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+            this.log('')
+            this.log(`${chalk.magenta('Download the latest Craft CMS Beta…')}`)
+            this.log(`${chalk.yellow('Give me a moment to do that……')}`)
+            this.log('')
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+
             const done = this.async()
             this.spawnCommand(`composer`, [`create-project`, `craftcms/craft`, `___dist`, `-s`, `beta`]).on('close', done)
         }
@@ -615,7 +614,17 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
     //  --------------------------------------------------------
 
     installWordPress() {
+
         if (this.wordpressInstall) {
+
+            clear()
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+            this.log('')
+            this.log(`${chalk.magenta('Download the latest WordPress Version…')}`)
+            this.log(`${chalk.yellow('Give me a moment to do that……')}`)
+            this.log('')
+            this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+
             const done = this.async()
             this.spawnCommand(`wp`, [`core`, `download`, `--path=___dist`]).on('close', done)
         }
@@ -642,8 +651,13 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             }
         })
 
-        this.log('Install NPM Modules.')
-        this.log('Give me a moment to do that…')
+        clear()
+        this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
+        this.log('')
+        this.log(`${chalk.magenta('Download all the NPM Modules…')}`)
+        this.log(`${chalk.yellow('Give me a moment to do that……')}`)
+        this.log('')
+        this.log(`${chalk.magenta('---------------------------------------------------------------------')}`)
     }
 
 })

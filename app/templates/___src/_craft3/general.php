@@ -30,6 +30,7 @@ return [
             'subRight' => true,
         ],
         'siteUrl' => getenv('CRAFTENV_SITE_URL'),
+        'rootUrl' => getenv('CRAFTENV_SITE_URL'),
         'craftEnv' => CRAFT_ENVIRONMENT,
     ],
 

@@ -5,11 +5,7 @@
   This i the basic layout. Feel free to modify
 #}
 
-<% if (craftHearty) { %>
-  {% set rootUrl = craft.config.environmentVariables.rootUrl %}
-<% } else { %>
-  {% set rootUrl = siteUrl %}
-<% } %>
+{% set rootUrl = siteUrl %}
 
 {# Include Macros #}
 {% import '_macros/_macro-isActive.html' as macroIsActive %}
@@ -85,6 +81,11 @@
 
 {# -- SCRIPTS -- #}
 {% include '_partials/_footer/_scripts.html' %}
+
+{# -- Instant Analytics -- #}
+{% block analytics %}
+  {#{% hook 'iaSendPageView' %}#}
+{% endblock %}
 </body>
 {% endminify %}
 {% endcache %}

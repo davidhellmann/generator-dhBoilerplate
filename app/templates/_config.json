@@ -63,11 +63,7 @@
     }
     <% } if (projectUsage == 'Craft CMS' ) { %>
     "base":                 "___dist/public/",
-    <% if (craftHearty) { %>
-    "markup":               "___dist/templates/",
-    <% } else { %>
     "markup":               "___dist/craft/templates/",
-    <% } %>
     "browserSyncDir":       "___dist/public/",
     "assets":               "___dist/public/assets/",
     "js":                   "___dist/public/assets/js/",
