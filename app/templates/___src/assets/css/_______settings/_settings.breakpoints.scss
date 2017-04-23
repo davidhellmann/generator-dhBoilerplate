@@ -2,12 +2,15 @@
 /*    Breakpoints
 /* -------------------------------------------------- */
 
-$breakpoint-0:      0px;
-$breakpoint-xs:     480px;
-$breakpoint-s:      667px;
-$breakpoint-m:      1024px;
-$breakpoint-l:      1280px;
-$breakpoint-xl:     1680px;
+// Dependencies
+@import '../______tools/tools.function.calc-em';
+
+$breakpoint-0:      calc-em(0px);
+$breakpoint-xs:     calc-em(480px);
+$breakpoint-s:      calc-em(667px);
+$breakpoint-m:      calc-em(1024px);
+$breakpoint-l:      calc-em(1280px);
+$breakpoint-xl:     calc-em(1680px);
 
 $dh-breakpoints: (
   '0':      $breakpoint-0,

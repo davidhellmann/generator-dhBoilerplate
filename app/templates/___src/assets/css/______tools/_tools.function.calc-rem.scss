@@ -1,0 +1,17 @@
+/* -------------------------------------------------- */
+/*    Calc REM
+/* -------------------------------------------------- */
+
+$dh-browserContext: 10;
+
+@function calc-rem($pixels, $context: $dh-browserContext) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}

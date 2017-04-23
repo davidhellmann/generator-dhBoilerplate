@@ -3,11 +3,13 @@
 /* -------------------------------------------------- */
 
 html {
-  @include f($msFont-min, $msFont-max);
-  line-height: $lineHeight-base;
+  font-size: 62.5%;
 }
 
 body {
+  @include f($msFont-min, $msFont-max);
+  line-height: $lineHeight-base;
+
   /* stylelint-disable */
   .js &.is-navOpen {
     height: 100vh;

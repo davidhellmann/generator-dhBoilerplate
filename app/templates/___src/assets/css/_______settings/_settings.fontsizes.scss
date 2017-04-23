@@ -1,23 +1,25 @@
 /* -------------------------------------------------- */
 /*    Font Sizes
 /* -------------------------------------------------- */
+
 // Dependencies
+@import '../______tools/tools.function.calc-rem';
 @import '../______tools/tools.function.pow';
+@import 'settings.grid';
 
 // Settings
 $fontSize-min:          16px;
 $fontSize-max:          21px;
 $lineHeight-base:       1.5;
-$lineHeight-base-px:    $fontSize-min * $lineHeight-base + 0px;
 
 // Modular Scale Settings
 $msWidth-min:           320px;
-$msWidth-max:           1440px;
+$msWidth-max:           $dh-maxWidth;
 $msFactor:              1.2;
 
 // Nothing to change here
-$ms-2:                  12px;
-$ms-1:                  15px;
+$ms-2:                  11px;
+$ms-1:                  13px;
 $ms0:                   $fontSize-min;
 $ms1:                   $fontSize-min * pow($msFactor, 1);
 $ms2:                   $fontSize-min * pow($msFactor, 2);
@@ -28,21 +30,21 @@ $ms6:                   $fontSize-min * pow($msFactor, 6);
 $ms7:                   $fontSize-min * pow($msFactor, 7);
 $ms8:                   $fontSize-min * pow($msFactor, 8);
 $ms9:                   $fontSize-min * pow($msFactor, 9);
-$msFont-min:            $fontSize-min;
-$msFont-max:            $fontSize-max;
+$msFont-min:            calc-rem($fontSize-min);
+$msFont-max:            calc-rem($fontSize-max);
 
 // Font Map
 $dh-fontsizes: (
-  'ms-2':               $ms-2,
-  'ms-1':               $ms-1,
-  'ms0':                $ms0,
-  'ms1':                $ms1,
-  'ms2':                $ms2,
-  'ms3':                $ms3,
-  'ms4':                $ms4,
-  'ms5':                $ms5,
-  'ms6':                $ms6,
-  'ms7':                $ms7,
-  'ms8':                $ms8,
-  'ms9':                $ms9,
+  'ms-2':               calc-rem($ms-2),
+  'ms-1':               calc-rem($ms-1),
+  'ms0':                calc-rem($ms0),
+  'ms1':                calc-rem($ms1),
+  'ms2':                calc-rem($ms2),
+  'ms3':                calc-rem($ms3),
+  'ms4':                calc-rem($ms4),
+  'ms5':                calc-rem($ms5),
+  'ms6':                calc-rem($ms6),
+  'ms7':                calc-rem($ms7),
+  'ms8':                calc-rem($ms8),
+  'ms9':                calc-rem($ms9),
 );
