@@ -21,13 +21,13 @@
     "clean:css": "gulp clean:css",
     "copy:fonts": "gulp copy:fonts",
     "copy:images": "gulp images",
-    "copy:favicon": "gulp favicon",
     "copy:inlinejs": "gulp inlineJS",
     "copy:svg": "gulp svg",
     "copy:single": "gulp svg-single",
     "copy:sprite": "gulp svg-sprite",
     "copy:sysfiles": "gulp systemFiles",
-    "copy:templates": "gulp templates"
+    "copy:templates": "gulp templates",
+    "create:favicons": "gulp createFavicons"
   },
   "devDependencies": {
     "aliasify": "^2.0.0",
@@ -67,6 +67,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-data": "^1.2.1",
     "gulp-debug": "^3.0.0",
+    "gulp-favicons": "2.1.5",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.0.0",
     "gulp-load-plugins": "^1.2.0",

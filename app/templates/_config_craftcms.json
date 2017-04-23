@@ -10,7 +10,8 @@
     "images": {
       "base": "___dist/public/assets/images/",
       "bitmap": {
-        "base": "___dist/public/assets/images/bitmap/"
+        "base": "___dist/public/assets/images/bitmap/",
+        "favicons": "___dist/public/assets/images/bitmap/favicons/"
       },
       "svg": {
         "base": "___dist/public/assets/images/svg/",

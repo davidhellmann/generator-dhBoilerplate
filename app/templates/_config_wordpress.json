@@ -10,7 +10,8 @@
     "images": {
       "base": "___dist/wp-content/themes/<%= projectName %>/assets/images/",
       "bitmap": {
-        "base": "___dist/wp-content/themes/<%= projectName %>/assets/images/bitmap/"
+        "base": "___dist/wp-content/themes/<%= projectName %>/assets/images/bitmap/",
+        "favicons": "___dist/wp-content/themes/<%= projectName %>/assets/images/bitmap/favicons/"
       },
       "svg": {
         "base": "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/",

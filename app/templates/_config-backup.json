@@ -8,7 +8,7 @@
       "base":               "___src/assets/images/",
       "bitmap": {
         "base":             "___src/assets/images/bitmap/",
-        "favicon":          "___src/assets/images/bitmap/favicon/"
+        "favicons":          "___src/assets/images/bitmap/favicons/"
       },
       "svg": {
         "base":             "___src/assets/images/svg/",

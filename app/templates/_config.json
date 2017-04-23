@@ -8,7 +8,7 @@
       "base":               "___src/assets/images/",
       "bitmap": {
         "base":             "___src/assets/images/bitmap/",
-        "favicon":          "___src/assets/images/bitmap/favicon/"
+        "favicons":         "___src/assets/images/bitmap/favicons/"
       },
       "svg": {
         "base":             "___src/assets/images/svg/",
@@ -34,7 +34,9 @@
     "images": {
       "base":               "___dist/assets/images/",
       "bitmap": {
-        "base":             "___dist/assets/images/bitmap/"
+        "base":             "___dist/assets/images/bitmap/",
+        "favicons":         "___dist/assets/images/bitmap/favicons/",
+        "faviconPath":      "assets/images/bitmap/favicons/"
       },
       "svg": {
         "base":             "___dist/assets/images/svg/",
@@ -53,7 +55,9 @@
     "images": {
       "base":               "___dist/wp-content/themes/<%= projectName %>/assets/images/",
       "bitmap": {
-        "base":             "___dist/wp-content/themes/<%= projectName %>/assets/images/bitmap/"
+        "base":             "___dist/wp-content/themes/<%= projectName %>/assets/images/bitmap/",
+        "favicons":         "___dist/public/assets/images/bitmap/favicons/",
+        "faviconPath":      "<?php bloginfo('template_directory' ); ?>/assets/images/bitmap/favicons/"
       },
       "svg": {
         "base":             "___dist/wp-content/themes/<%= projectName %>/assets/images/svg/",
@@ -72,7 +76,9 @@
     "images": {
       "base":               "___dist/public/assets/images/",
       "bitmap": {
-        "base":             "___dist/public/assets/images/bitmap/"
+        "base":             "___dist/public/assets/images/bitmap/",
+        "favicons":         "___dist/public/assets/images/bitmap/favicons/",
+        "faviconPath":      "{{ rootUrl }}assets/images/bitmap/favicons/"
       },
       "svg": {
         "base":             "___dist/public/assets/images/svg/",
@@ -91,7 +97,9 @@
       "images": {
         "base":               "___dist/web/assets/images/",
         "bitmap": {
-          "base":             "___dist/web/assets/images/bitmap/"
+          "base":             "___dist/web/assets/images/bitmap/",
+          "favicons":         "___dist/web/assets/images/bitmap/favicons/",
+          "faviconPath":      "{{ rootUrl }}assets/images/bitmap/favicons/"
         },
         "svg": {
           "base":             "___dist/web/assets/images/svg/",
