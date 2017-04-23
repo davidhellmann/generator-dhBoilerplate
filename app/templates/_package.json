@@ -123,6 +123,7 @@
     "family.scss": "^1.0.4",
     "flickity": "^2.0.5",
     "fontfaceobserver": "^2.0.9",
+    "in-view": "^0.6.1",
     "include-media": "^1.4.4",
     "js-cookie": "^2.1.0",
     "lazysizes": "^3.0.0",
