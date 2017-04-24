@@ -84,6 +84,13 @@ You can find this stuff here: `___src/assets/css/_______settings`
 - `@include filter(filter-name, value%)` — to use CSS Filters
 - `@include fluid($properties, $min-vw, $max-vw, $min-value, $max-value)` or `@include f($properties, $min-vw, $max-vw, $min-value, $max-value)` — to use Fluid CSS Properties dependent to the current viewport. Next level shit!
 - `@include fontsize('base', 1)` or `@include fs('base', 1)` — to set a Font Family in Combination with Line Height. Default Line Height => **_settings.fontssizes.scss**
+- `@include make-section($behaviour: fixed)` — to create a section
+- `@include make-row($factorMin: 1, $factorMax: 1)` — to create a row
+- `@include make-col($columns: 12)` — to create a col
+- `@include make-vr($factor: 1)` — to create vertical rhythm (margin-top)
+- `@include make-padding($factor: 1)` — to create vertical rhythm (margin-top)
+- `@mixin make-section-float($behaviour: fixed)` — to create a non flexbox section
+- `@mixin make-col-float($columns: 12)` — to create a floating col
 - `@include offsett(i)` — to set an offset for a column. It use **margin-left** to do that.
 - `@include push(i)` — to push a column. It use **left** to do that.
 - `@include pull(i)` — to pull a column. It use **right** to do that.

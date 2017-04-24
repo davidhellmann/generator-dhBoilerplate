@@ -85,6 +85,20 @@
   @include f($dh-gutterWidthMin * $multi, $dh-gutterWidthMax * $multi, margin-top);
 }
 
+// Vertical Rhythmu Mixin
+@mixin make-padding($factor: 1) {
+  @if $factor <= 1 {
+    $factor: $factor * 2;
+    padding-top: 0;
+    @include f($dh-gutterWidthMin * $factor, $dh-gutterWidthMax * $factor, padding-bottom);
+
+  } @else {
+    $factor: $factor * 2;
+    @include f($dh-gutterWidthMin * ($factor - 2), $dh-gutterWidthMax * ($factor - 2), padding-top);
+    @include f($dh-gutterWidthMin * ($factor), $dh-gutterWidthMax * ($factor), padding-bottom);
+  }
+}
+
 
 /* -------------------------------------------------- */
 /*    Grid Float
