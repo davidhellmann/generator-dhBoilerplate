@@ -52,9 +52,9 @@ ___dist/wp-content/themes/<%= projectName %>/*
 
 <% if (projectUsage == 'Craft CMS' ) { %>
 # Craft CMS
-___dist/craft
-___dist/templates
-#___dist/public/uploads
+___dist/craft/*
+!___dist/craft/plugins
+!___dist/craft/translations
 ___dist/public/assets
 ___dist/.env.php
 <% } %>
