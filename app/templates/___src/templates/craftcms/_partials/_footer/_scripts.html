@@ -12,7 +12,7 @@
 </script>#}
 
 {# Activate Browser Sync only on the local dev server #}
-{% if craft.config.environment == 'local' %}
+{% if craft.config.craftEnv == 'local' %}
 
   {# If Livepreview active deactivate Browsersync #}
   {% if not craft.request.isLivePreview %}
