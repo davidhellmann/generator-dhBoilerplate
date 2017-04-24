@@ -14,7 +14,8 @@ if (craft()->request->isCpRequest())
             //'Globals' => 'I freak out!',
         );
 
-
         return array_merge($de, $custom);
     }
 }
+
+return [];
