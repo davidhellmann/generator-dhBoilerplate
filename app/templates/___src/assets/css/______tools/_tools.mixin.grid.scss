@@ -2,41 +2,29 @@
 /*    Grid Flex
 /* -------------------------------------------------- */
 
-// Container Flexbox Grid
-// @include container(); // full for 100%
-@mixin flexbox($maxWidth: false) {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
+// Vertical Rhythmu Mixin
+@mixin make-vr($factor: 1) {
+  $multi: $factor * 2;
+  @include f($dh-gutterWidthMin * $multi, $dh-gutterWidthMax * $multi, margin-top);
+}
 
-  @if $maxWidth {
-    max-width: $dh-maxWidth;
+// Vertical Rhythmu Mixin
+@mixin make-section-padding($factor: 1) {
+  @if $factor <= 1 {
+    $factor: $factor * 2;
+    padding-top: 0;
+    @include f($dh-gutterWidthMin * $factor, $dh-gutterWidthMax * $factor, padding-bottom);
+
   } @else {
-    max-width: none;
+    $factor: $factor * 2;
+    @include f($dh-gutterWidthMin * ($factor - 2), $dh-gutterWidthMax * ($factor - 2), padding-top);
+    @include f($dh-gutterWidthMin * ($factor), $dh-gutterWidthMax * ($factor), padding-bottom);
   }
 }
 
-// Shorthand Version
-@mixin fb($args...) {
-  @include flexbox($args...);
-}
-
-
-
-// Cols Flexbox Grid
-// Optional Setting to remove default gutter
-// @include flexcols(x)
-@mixin flexcols($i) {
-  @if $i > $dh-columns {
-    $i: $dh-columns;
-  }
-  flex: 0 1 auto;
-  width: ($i / $dh-columns * 100%);
-}
-
-// Shorthand Version
-@mixin fc($args...) {
-  @include flexcols($args...);
+// Col Padding
+@mixin make-col-padding() {
+  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
 }
 
 // Make Section Mixin
@@ -76,32 +64,7 @@
   flex: 1 1 $columns / 12 * 100%;
 
   // Set Padding
-  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
-}
-
-// Vertical Rhythmu Mixin
-@mixin make-vr($factor: 1) {
-  $multi: $factor * 2;
-  @include f($dh-gutterWidthMin * $multi, $dh-gutterWidthMax * $multi, margin-top);
-}
-
-// Vertical Rhythmu Mixin
-@mixin make-section-padding($factor: 1) {
-  @if $factor <= 1 {
-    $factor: $factor * 2;
-    padding-top: 0;
-    @include f($dh-gutterWidthMin * $factor, $dh-gutterWidthMax * $factor, padding-bottom);
-
-  } @else {
-    $factor: $factor * 2;
-    @include f($dh-gutterWidthMin * ($factor - 2), $dh-gutterWidthMax * ($factor - 2), padding-top);
-    @include f($dh-gutterWidthMin * ($factor), $dh-gutterWidthMax * ($factor), padding-bottom);
-  }
-}
-
-// Col Padding
-@mixin make-col-padding() {
-  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
+  @include make-col-padding();
 }
 
 
@@ -144,5 +107,5 @@
   max-width: $columns / 12 * 100%;
 
   // Set Padding
-  @include f($dh-gutterWidthMin, $dh-gutterWidthMax, padding-left padding-right);
+  @include make-col-padding();
 }

@@ -3,8 +3,5 @@
 /* -------------------------------------------------- */
 
 .m-pageTitle {
-  @include fb(true);
   @include center();
-  @include f(s(2), s(4), padding-left padding-right);
-  @include f(s(4), s(8), padding-top);
 }

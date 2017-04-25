@@ -38,7 +38,7 @@
 
 // Headline
 .o-section__headline {
-  @include fc(12);
+  @include make-col(12);
   @include f(s(2), s(4), padding-left padding-right);
   @include f(s(2), s(8), margin-top);
   text-align: center;
@@ -46,7 +46,7 @@
 
 // Subline
 .o-section__subline {
-  @include fc(12);
+  @include make-col(12);
   @include f(s(2), s(4), padding-left padding-right);
   @include f(s(2), s(8), margin-top);
   text-align: center;
