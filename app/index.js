@@ -316,8 +316,8 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
             // Copy Redactor
             this.fs.copyTpl(
-                this.templatePath('___src/_craft3/redactor/Standard.json'),
-                this.destinationPath('___dist/config/redactor/' + this.projectName + '.json')
+                this.templatePath('___src/_craft3/redactor/Custom.json'),
+                this.destinationPath('___dist/config/redactor/Custom.json')
             );
         }
 
@@ -374,8 +374,8 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
             // Copy Redactor
             this.fs.copyTpl(
-                this.templatePath('___src/_craft/redactor/Standard.json'),
-                this.destinationPath('___dist/craft/config/redactor/' + this.projectName + '.json')
+                this.templatePath('___src/_craft/redactor/Custom.json'),
+                this.destinationPath('___dist/craft/config/redactor/Custom.json')
             );
 
             // Copy Upload Dirs
