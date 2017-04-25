@@ -1,4 +1,4 @@
 {
-	'buttons': ['bold','italic','lists','link'],
+	'buttons': ['bold','italic','deleted','lists','link'],
 	'plugins': ['fullscreen','removeformat']
 }
