@@ -2,6 +2,7 @@
 
 import requireDir from 'require-dir';
 
-global.changedOverride = false;
+// Define Global Vars
+global.checkChanged = false
 
 requireDir('./gulp/tasks', { recurse: true });

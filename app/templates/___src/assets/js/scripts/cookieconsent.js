@@ -5,10 +5,10 @@ window.addEventListener("load", function() {
         "theme": "classic",
         "position": "top",
         "content": {
-            "message": "Tp3 verwendet Cookies. Weitere Informationen zu Cookies finden Sie unter ",
-            "dismiss": "Ich stimme zu",
+            "message": "Diese Website verwendet Cookies. Weitere Informationen zu Cookies finden Sie unter ",
+            "dismiss": "OK",
             "link": "Datenschutz",
-            "href": "https://tp3.at/datenschutz"
+            "href": "https://REPLACE_ME.REPLACE_ME/datenschutz"
         }
     })
 });

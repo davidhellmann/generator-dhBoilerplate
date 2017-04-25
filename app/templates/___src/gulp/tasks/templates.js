@@ -11,6 +11,9 @@ import path from 'path'
 
 const $ = gulpLoadPlugins()
 
+// Overwrite the Changed Check
+global.checkChanged = true
+
 <% if (projectUsage == 'Prototyping' ) { %>
 // Work with multiple Files
 var getDataMultiple = function(file) {
@@ -39,6 +42,8 @@ const templates = () => {
         .pipe(twig())
         .on('error', errorHandler)
         //.pipe($.changed(config.dist.markup))
+
+        .pipe(global.checkChanged === true ? $.changed(config.dist.markup) : gutil.noop())
         .pipe(gulp.dest(config.dist.markup));
 
   <% } else { %>
