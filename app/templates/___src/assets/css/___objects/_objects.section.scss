@@ -4,7 +4,7 @@
 
 .o-section {
   @include make-section();
-  @include make-section--padding(1);
+  @include make-section-padding(1);
   // background-color: rgba(c('red'), 0.1);
 }
 
@@ -29,11 +29,11 @@
 }
 
 .o-section--paddingVertical-medium {
-  @include make-section--padding(2);
+  @include make-section-padding(2);
 }
 
 .o-section--paddingVertical-large {
-  @include make-section--padding(3);
+  @include make-section-padding(3);
 }
 
 // Headline

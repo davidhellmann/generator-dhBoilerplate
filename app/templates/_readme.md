@@ -88,7 +88,7 @@ You can find this stuff here: `___src/assets/css/_______settings`
 - `@include make-row($factorMin: 1, $factorMax: 1)` — to create a row
 - `@include make-col($columns: 12)` — to create a col
 - `@include make-vr($factor: 1)` — to create vertical rhythm (margin-top)
-- `@include make-section--padding($factor: 1)` — to create vertical rhythm (margin-top)
+- `@include make-section-padding($factor: 1)` — to create vertical rhythm (margin-top)
 - `@include make-col--padding($factor: 1)` — to create col padding
 - `@mixin make-section-float($behaviour: fixed)` — to create a non flexbox section
 - `@mixin make-col-float($columns: 12)` — to create a floating col
