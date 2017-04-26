@@ -64,7 +64,7 @@
 </head>
 {% cache %}
 {% minify %}
-<body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}{{ craft.request.isLivePreview ? 'is-livePreview' : '  ' }}">
+<body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
 
 <div class="m-appWrapper">
   {# -- App Header -- #}
