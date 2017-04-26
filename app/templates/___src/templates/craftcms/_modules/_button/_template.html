@@ -21,7 +21,7 @@
 } %}
 
 {# -- Set Options -- #}
-{% if cbButton and options is not null %}
+{% if cbButton and options is not defined %}
   {% set options = defaults %}
 {% else %}
   {% set options = options ? defaults|merge(options) : defaults %}

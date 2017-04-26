@@ -14,7 +14,7 @@
 } %}
 
 {# -- Set Options -- #}
-{% if cbRichText and options is not null %}
+{% if cbRichText and options is not defined %}
   {% set options = defaults %}
 {% else %}
   {% set options = options ? defaults|merge(options) : defaults %}

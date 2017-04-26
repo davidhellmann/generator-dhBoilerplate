@@ -16,7 +16,7 @@
 } %}
 
 {# -- Set Options -- #}
-{% if cbHeadline and options is not null %}
+{% if cbHeadline and options is not defined %}
   {% set options = defaults %}
 {% else %}
   {% set options = options ? defaults|merge(options) : defaults %}
