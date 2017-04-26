@@ -6,7 +6,7 @@
   opacity: 1;
   transition: opacity 1s ease;
   background-color: c('white');
-  color: c('raven');
+  color: c('black');
   font-size: fs('ms-2');
   border-bottom: 1px solid c('black');
   display: flex;
@@ -35,8 +35,6 @@
   padding: s(1/2) s(1);
 
   a {
-    font-weight: 700;
-
     .wf-loaded & {
       font-family: ff('headline');
     }
