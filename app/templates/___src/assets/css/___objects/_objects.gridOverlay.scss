@@ -1,0 +1,71 @@
+/* -------------------------------------------------- */
+/*    Grid Overlay
+/* -------------------------------------------------- */
+
+.o-gridOverlay {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  z-index: 1111111;
+  transform: translateX(-50%);
+  height: 100vh;
+  border-left: 1px solid c('red');
+  border-right: 1px solid c('red');
+  opacity: 0.25;
+  pointer-events: none;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    @include f($dh-gutterWidthMin, $dh-gutterWidthMax, width);
+    background-color: c('green');
+    opacity: 0.25;
+    z-index: -1;
+  }
+
+  &::before {
+    @include f($dh-gutterWidthMin, $dh-gutterWidthMax, left);
+  }
+
+  &::after {
+    @include f($dh-gutterWidthMin, $dh-gutterWidthMax, right);
+  }
+
+  .o-row {
+    height: 100vh;
+  }
+
+  .o-col {
+    @include make-col(1);
+    height: 100vh;
+    border-right: 1px solid c('red');
+    position: relative;
+
+    &:first-child {
+      border-left: 1px solid c('red');
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      height: 100vh;
+      @include f($dh-gutterWidthMin, $dh-gutterWidthMax, width);
+      background-color: c('green');
+      opacity: 0.25;
+      top: 0;
+      z-index: -1;
+    }
+
+    &::before {
+      @include f(-$dh-gutterWidthMin, -$dh-gutterWidthMax, left);
+    }
+
+    &::after {
+      @include f(-$dh-gutterWidthMin, -$dh-gutterWidthMax, right);
+    }
+  }
+}
