@@ -1,6 +1,6 @@
- {#
-  Image Slider
-  ============
+{#
+ Image Slider
+ ============
 #}
 
 {# -- Set Vars -- #}
@@ -10,20 +10,29 @@
 
 {% if settings.imageRatio is defined %}
   {% switch settings.imageRatio %}
-
+  
   {% case "landscape" %}
   {% set ratio = '16:10' %}
-
+  
   {% case "square" %}
   {% set ratio = '1:1' %}
-
+  
   {% case "portrait" %}
   {% set ratio = '10:16' %}
-
+  
+  {% default %}
+  {% set ratio = '' %}
+  
   {% endswitch %}
 
 {% else %}
   {% set ratio = '' %}
+{% endif %}
+
+{# -- Ratio -- #}
+{% if ratio != '' %}
+  {% set ratio = ratio|split(':') %}
+  {% set ratio = ratio|first/ratio|last %}
 {% endif %}
 
 {# -- Modul -- #}
@@ -40,21 +49,41 @@
             "groupCells": true,
             "imagesLoaded": true,
             "prevNextButtons": true,
-            "pageDots": true,
+            "pageDots": false,
             "rightToLeft": false,
             "watchCSS": false
           }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
     <!-- Slides -->
     {% for image in images %}
       <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
-      
-        {# -- Res Image -- #}
-        {% set options = {
-          ratio: ratio,
-          flickity: true
+        
+        {# -- Set Position -- #}
+        {% if image.settingsFocalPoint %}
+          {% set position = image.settingsFocalPoint %}
+        {% else %}
+          {% set position = '50% 50%' %}
+        {% endif %}
+        
+        {% set imageSizes = [
+          { height: 800 },
+          { height: 30 }
+        ] %}
+        
+        {% set imageSettings = {
+        ratio: ratio,
+        position: position,
+        mode: 'crop'
         } %}
-  
-        {{ macroImage.image(image, options) }}
+        
+        {# -- BG Image -- #}
+        {% set images = craft.imager.transformImage(image, imageSizes, imageSettings) %}
+        
+        <img width="{{ image.width }}"
+             height="{{ image.height }}"
+             class="m-image"
+             src="{{ images|last.url }}"
+             data-flickity-lazyload="{{ images|first.url }}"
+             alt="{{ image.title }}"/>
       </div>
     {% endfor %}
   </figure>
