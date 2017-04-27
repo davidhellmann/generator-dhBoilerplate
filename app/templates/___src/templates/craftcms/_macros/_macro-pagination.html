@@ -23,18 +23,18 @@
 #}
 {% macro pagination(pages,craft,options) %}
   {% set defaults = {
-  classname: 'm-pagination',
-  searchquery: false,
-  pagenumber: 5,
-  fistPageSign: '&laquo;',
-  lastPageSign: '&raquo;',
-  prevSign: '&lsaquo;',
-  nextSign: '&rsaquo;',
-  firstPageText: 'Zur ersten Seite',
-  lastPageText: 'Zur letzten Seite',
-  prevText: 'Zurück zur vorhergehenden Seite',
-  nextText: 'Weiter zur nächsten Seite',
-  jumpText: 'Sprung zur Seite'
+    classname: 'm-pagination',
+    searchquery: false,
+    pagenumber: 5,
+    fistPageSign: '&laquo;',
+    lastPageSign: '&raquo;',
+    prevSign: '&lsaquo;',
+    nextSign: '&rsaquo;',
+    firstPageText: 'Zur ersten Seite',
+    lastPageText: 'Zur letzten Seite',
+    prevText: 'Zurück zur vorhergehenden Seite',
+    nextText: 'Weiter zur nächsten Seite',
+    jumpText: 'Sprung zur Seite'
   } %}
   
   {# Merge Options with Defaults #}

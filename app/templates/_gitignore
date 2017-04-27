@@ -55,6 +55,7 @@ ___dist/wp-content/themes/<%= projectName %>/*
 ___dist/craft/*
 !___dist/craft/plugins
 !___dist/craft/translations
+!___dist/craft/config
 ___dist/public/assets
 ___dist/.env.php
 <% } %>

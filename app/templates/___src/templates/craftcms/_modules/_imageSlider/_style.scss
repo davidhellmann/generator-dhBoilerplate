@@ -34,7 +34,11 @@
     padding-right: s(1/2) !important;
 
     .m-image {
-      height: 100%;
+      height: 100vh;
+      min-width: 200px;
+      max-height: 500px;
+      max-width: none;
+      width: auto;
       display: block;
     }
   }

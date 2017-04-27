@@ -12,7 +12,8 @@
     quality: 80,
     mode: 'crop',
     position: false,
-    ratio: false
+    ratio: false,
+    dominantColor: true
   } %}
 
   macroImage.bgImage(image, options)
@@ -33,18 +34,22 @@
   quality: 80,
   mode: 'crop',
   position: false,
-  ratio: false
+  ratio: false,
+  dominantColor: true
   } %}
 
   {% set options = options ? defaults|merge(options) : defaults %}
 
   {% if image %}
-
+  
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
+      {% set base64Ratio = options.ratio|split(':') %}
       {% set ratio = ratio|first/ratio|last %}
     {% else %}
+      {% set imageSize = image.width ~ ':' ~ image.height %}
+      {% set base64Ratio = imageSize|split(':') %}
       {% set ratio = '' %}
     {% endif %}
 
@@ -67,13 +72,22 @@
 
     {# -- BG Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
-
-    <figure class="{{ options.classname }}  lazyload"
-            style="background-image: url('{{ images|last.url }}');
-              background-position: {{ position|trim("'") }};"
-            data-bgset="{{ craft.imager.srcset(images) }}"
-            data-sizes="auto">
-    </figure>
+  
+    {# -- Dominatn Color -- #}
+    {% if options.dominantColor %}
+      {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+    {% else %}
+      {% set dominantColor = '' %}
+    {% endif %}
+    
+    <div style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%;">
+      <figure class="{{ options.classname }}  lazyload"
+              style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+                background-position: {{ position|trim("'") }};"
+              data-bgset="{{ craft.imager.srcset(images) }}"
+              data-sizes="auto">
+      </figure>
+    </div>
   {% endif %}
 {% endmacro %}
 
