@@ -9,9 +9,12 @@
 .m-accordion {
 
   &__item {
-    @include make-vr();
     position: relative;
     overflow: hidden;
+
+    &:first-child {
+      @include make-vr();
+    }
 
     &::before {
       content: '';
@@ -90,6 +93,7 @@
 
   &__content {
     display: none;
+    @include make-section(1);
     @include clearfix();
 
     .o-row {
