@@ -12,106 +12,106 @@
   <article>
     <div class="o-section">
       <div class="o-row">
-
+        
         {# -- Headline -- #}
-        {% set options = {
-          text: entry.title,
-          size: 'h1'
+        {% set headline1 = {
+        text: entry.title,
+        size: 'h1'
         } %}
-        {% include '_modules/_headline/_template.html' with { options: options } %}
-
+        {% include '_modules/_headline/_template.html' with { options: headline1 } %}
+      
       </div>
       <div class="o-row">
-
+        
         {# -- Headline -- #}
-        {% set options = {
-          text: 'Content Builder',
-          size: 'h2'
+        {% set headline2 = {
+        text: 'Content Builder',
+        size: 'h2'
         } %}
-        {% include '_modules/_headline/_template.html' with { options: options } %}
-
+        {% include '_modules/_headline/_template.html' with { options: headline2 } %}
+      
       </div>
     </div>
-
+    
     {# Content Builder #}
     {% include '_contentBuilders/_contentBuilderNeo' %}
-
-
+    
+    
     <div class="o-section">
       <div class="o-row">
-
+        
         {# -- Headline -- #}
-        {% set options = {
-          text: 'Include via Template',
-          size: 'h2'
+        {% set headline3 = {
+        text: 'Include via Template',
+        size: 'h2'
         } %}
-        {% include '_modules/_headline/_template.html' with { options: options } %}
-
+        {% include '_modules/_headline/_template.html' with { options: headline3 } %}
+      
       </div>
       <div class="o-row">
-
+        
         {# -- Headline -- #}
-        {% set options = {
-          text: 'Button',
-          size: 'h3'
+        {% set headline4 = {
+        text: 'Button',
+        size: 'h3'
         } %}
-        {% include '_modules/_headline/_template.html' with { options: options } %}
-
+        {% include '_modules/_headline/_template.html' with { options: headline4 } %}
+        
         {# -- Button -- #}
-        {% set options = {
-          classname: 'm-button',
-          url: 'http://www.google.com',
-          target: '',
-          style: 'm-button--primary',
-          alignment: '',
-          withIcon: false,
-          icon: '',
-          text: 'Text'
+        {% set button1 = {
+        classname: 'm-button',
+        url: 'http://www.google.com',
+        target: '',
+        style: 'm-button--primary',
+        alignment: '',
+        withIcon: false,
+        icon: '',
+        text: 'Text'
         } %}
-        {% include '_modules/_button/_template.html' with { options: options } %}
-
+        {% include '_modules/_button/_template.html' with { options: button1 } %}
+      
       </div>
     </div>
-
-
-
+    
+    
+    
     <div class="o-section  o-section--width-full">
       <div class="o-row">
-
+        
         {# -- Headline -- #}
-        {% set options = {
+        {% set headline5 = {
         text: 'Fluide Section',
         size: 'h1'
         } %}
-        {% include '_modules/_headline/_template.html' with { options: options } %}
-
+        {% include '_modules/_headline/_template.html' with { options: headline5 } %}
+      
       </div>
       <div class="o-row">
-
+        
         {# -- Rich Text -- #}
-        {% set options = {
-          text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>',
+        {% set richtext1 = {
+        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>',
         } %}
-        {% include '_modules/_richText/_template.html' with { options: options } %}
-
+        {% include '_modules/_richText/_template.html' with { options: richtext1} %}
+      
       </div>
       <div class="o-row">
-
+        
         {# -- Button -- #}
-        {% set options = {
-          classname: 'm-button',
-          url: 'http://www.google.com',
-          target: '',
-          style: 'm-button--primary',
-          alignment: '',
-          withIcon: false,
-          icon: '',
-          text: 'Text'
+        {% set button2 = {
+        classname: 'm-button',
+        url: 'http://www.google.com',
+        target: '',
+        style: 'm-button--primary',
+        alignment: '',
+        withIcon: false,
+        icon: '',
+        text: 'Text'
         } %}
-        {% include '_modules/_button/_template.html' with { options: options } %}
-
+        {% include '_modules/_button/_template.html' with { options: button2 } %}
+      
       </div>
     </div>
-
+  
   </article>
 {% endblock %}
