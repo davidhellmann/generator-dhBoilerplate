@@ -1,8 +1,10 @@
 /**
  * Bundle Scripts
  */
-
+<% if (projectVue) { %>
 // Vue Stuff
+// import './vue/vueExample'
+<% } %>
 
 // Polyfills
 import 'babel-polyfill'
