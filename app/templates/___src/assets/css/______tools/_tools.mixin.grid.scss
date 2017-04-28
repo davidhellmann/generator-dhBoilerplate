@@ -49,7 +49,7 @@
 }
 
 // Make Col Mixin
-@mixin make-col($columns: 12) {
+@mixin make-col($columns: 0) {
   // Force Columns to 12 if it > as 12
   @if $columns > $dh-columns {
     $columns: $dh-columns;
@@ -57,12 +57,16 @@
 
   // Basics
   position: relative;
-  width: 100%;
+  // width: 100%;
   min-height: 1px;
 
   // Col Width
-  max-width: $columns / 12 * 100%;
-  flex: 1 1 $columns / 12 * 100%;
+  @if $columns == 0 {
+    flex: 1 1 0;
+  } @else {
+    max-width: $columns / $dh-columns * 100%;
+    flex: 1 1 $columns / $dh-columns * 100%;
+  }
 
   // Set Padding
   @include make-col-padding();

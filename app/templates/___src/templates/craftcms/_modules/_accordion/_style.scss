@@ -93,7 +93,7 @@
 
   &__content {
     display: none;
-    @include make-section(1);
+    @include make-section-padding(1);
     @include clearfix();
 
     .o-row {

@@ -20,28 +20,27 @@
 #}
 
 {% macro image(image, options) %}
-
+  
   {% set defaults = {
-    classname: 'm-image',
-    sizes: [
-      { width: 1400 },
-      { width: 1100 },
-      { width: 800 },
-      { width: 500 },
-      { width: 300 },
-      { width: 30 }
-    ],
-    quality: 80,
-    mode: 'crop',
-    position: false,
-    ratio: false,
-    dominantColor: true
+  classname: 'm-image',
+  sizes: [
+  { width: 1400 },
+  { width: 1100 },
+  { width: 800 },
+  { width: 500 },
+  { width: 300 }
+  ],
+  quality: 80,
+  mode: 'crop',
+  position: false,
+  ratio: false,
+  dominantColor: true
   } %}
-
+  
   {% set options = options ? defaults|merge(options) : defaults %}
-
+  
   {% if image %}
-
+    
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
@@ -52,7 +51,7 @@
       {% set base64Ratio = imageSize|split(':') %}
       {% set ratio = '' %}
     {% endif %}
-
+    
     {# -- Set Position -- #}
     {% if options.position %}
       {% set position = options.position %}
@@ -61,15 +60,15 @@
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
-
+    
     {# -- Define global variables -- #}
     {% set imageSettings = {
-      jpegQuality: options.quality,
-      mode: options.mode,
-      position: position,
-      ratio: ratio
+    jpegQuality: options.quality,
+    mode: options.mode,
+    position: position,
+    ratio: ratio
     } %}
-
+    
     {# -- Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
     
@@ -80,14 +79,14 @@
       {% set dominantColor = '' %}
     {% endif %}
     
-    <div style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%">
+    <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%">
       <img class="{{ options.classname }}  lazyload"
-           {#src="{{ images|last.url }}"#}
+          {#src="{{ images|last.url }}"#}
            src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
            data-srcset="{{ craft.imager.srcset(images) }}"
            data-sizes="auto"
            alt="{{ image.title }}"/>
-      </div>
+    </div>
   {% endif %}
 {% endmacro %}
 
