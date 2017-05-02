@@ -2,6 +2,22 @@
 /*    Breakpoints
 /* -------------------------------------------------- */
 
+// Vendors
+// Include Media Breakpoint Mixin
+// URL: http://include-media.com/
+@import '../../../../node_modules/include-media/dist/include-media';
+
+@function im-to-em($breakpoints, $base-value: 16px) {
+  $new-breakpoints: ();
+
+  @each $name, $value in $breakpoints {
+    $em-value: ($value / $base-value) * 1em;
+    $new-breakpoints: map-merge($new-breakpoints, ($name: $em-value));
+  }
+
+  @return $new-breakpoints;
+}
+
 $breakpoint-0:      0px;
 $breakpoint-xs:     480px;
 $breakpoint-s:      667px;
@@ -10,12 +26,12 @@ $breakpoint-l:      1280px;
 $breakpoint-xl:     1680px;
 
 $dh-breakpoints: (
-  '0':      $breakpoint-0,
-  'xs':     $breakpoint-xs,
-  's':      $breakpoint-s,
-  'm':      $breakpoint-m,
-  'l':      $breakpoint-l,
-  'xl':     $breakpoint-xl,
+        '0':      $breakpoint-0,
+        'xs':     $breakpoint-xs,
+        's':      $breakpoint-s,
+        'm':      $breakpoint-m,
+        'l':      $breakpoint-l,
+        'xl':     $breakpoint-xl,
 );
 
-$breakpoints: $dh-breakpoints;
+$breakpoints: im-to-em($dh-breakpoints);

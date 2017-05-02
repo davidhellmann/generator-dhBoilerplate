@@ -18,6 +18,15 @@
 @import 'tools.function.calc-rem';
 
 @mixin fluid($min-value, $max-value, $properties: font-size, $min-vw: calc-rem($msWidth-min), $max-vw: calc-rem($msWidth-max)) {
+  // Check If Value is PX
+  @if is-px($min-value) {
+    $min-value: calc-rem($min-value)
+  }
+  // Check If Value is PX
+  @if is-px($max-value) {
+    $max-value: calc-rem($max-value)
+  }
+
   @each $property in $properties {
     #{$property}: $min-value;
   }
@@ -33,6 +42,10 @@
       #{$property}: $max-value;
     }
   }
+}
+
+@function is-px($value) {
+  @return is-number($value) and index('px', unit($value)) != null;
 }
 
 @function strip-unit($value) {

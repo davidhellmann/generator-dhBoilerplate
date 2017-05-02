@@ -2,7 +2,7 @@
 /*    Calc EM
 /* -------------------------------------------------- */
 
-$dh-browserContext: 10;
+$dh-browserContext: 16;
 
 @function calc-em($pixels, $context: $dh-browserContext) {
   @if (unitless($pixels)) {
