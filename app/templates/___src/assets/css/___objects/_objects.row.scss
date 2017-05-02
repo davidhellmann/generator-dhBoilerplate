@@ -7,7 +7,7 @@
   // background-color: rgba(c('blue'), 0.1);
 
   &--imageCover {
-    @include make-row(3);
+    @include make-row(3, 3);
   }
 
   // Different Alignments
