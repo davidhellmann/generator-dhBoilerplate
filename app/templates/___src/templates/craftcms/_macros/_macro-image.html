@@ -21,7 +21,7 @@
 #}
 
 {% macro image(image, options) %}
-
+  
   {% set defaults = {
   classname: 'm-image',
   sizes: [
@@ -38,31 +38,33 @@
   externalSource: false,
   dominantColor: true
   } %}
-
+  
   {% set options = options ? defaults|merge(options) : defaults %}
-
+  
   {% if image %}
-
+    
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
       {% set base64Ratio = options.ratio|split(':') %}
       {% set ratio = ratio|first/ratio|last %}
-    {% else %}
+    {% elseif not options.externalSource %}
       {% set imageSize = image.width ~ ':' ~ image.height %}
       {% set base64Ratio = imageSize|split(':') %}
       {% set ratio = '' %}
+    {% else %}
+      {% set ratio = '' %}
     {% endif %}
-
+    
     {# -- Set Position -- #}
     {% if options.position %}
       {% set position = options.position %}
-    {% elseif image.settingsFocalPoint %}
+    {% elseif image.settingsFocalPoint is defined and not options.externalSource %}
       {% set position = image.settingsFocalPoint %}
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
-
+    
     {# -- Define global variables -- #}
     {% set imageSettings = {
     jpegQuality: options.quality,
@@ -70,31 +72,31 @@
     position: position,
     ratio: ratio
     } %}
-
+    
     {# -- Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
-
+    
     {# -- External Source --#}
     {# Reset the Base64 Size to the First Image Dimensions  #}
     {% if options.externalSource %}
       {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
       {% set base64Ratio = base64Ratio|split(':') %}
     {% endif %}
-
+    
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
       {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
-
+    
     <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%">
       <img class="{{ options.classname }}  lazyload"
-        {#src="{{ images|last.url }}"#}
+          {#src="{{ images|last.url }}"#}
            src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
            data-srcset="{{ craft.imager.srcset(images) }}"
            data-sizes="auto"
-           alt="{{ image.title }}"/>
+           alt="{{ image.title is defined ? image.title }}"/>
     </div>
   {% endif %}
 {% endmacro %}
