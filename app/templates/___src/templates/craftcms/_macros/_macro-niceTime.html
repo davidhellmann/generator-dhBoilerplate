@@ -5,19 +5,18 @@
   {{ macroNiceTime.niceTime(options) }}
 #}
 
-{% set defaults = {
-  classname: 'm-niceTime',
-  date: entry.postDate,
-} %}
-
-{% set options = options ? defaults|merge(options) : defaults %}
-
 {% macro niceTime(options) %}
+  {% set defaults = {
+  classname: 'm-niceTime',
+  date: false
+  } %}
+
+  {% set options = options ? defaults|merge(options) : defaults %}
+
   {% set niceTime = date(options.date).diff(now) %}
   {% if niceTime %}
-    <span class="{{ options.classname ~ 'Wrapper' }}">
-      <span class="{{ options.classname }}">
-        {% endif %}
+    <span class="">
+      <span class="">
         {% if niceTime.y >= 2 %}
           {{ 'am' | t }} {{ date|date('F Y') }}
         {% elseif niceTime.y >= 1 %}
@@ -41,6 +40,7 @@
         {% endif %}
       </span>
     </span>
+  {% endif %}
 {% endmacro %}
 
 {# -- Reset Options -- #}
