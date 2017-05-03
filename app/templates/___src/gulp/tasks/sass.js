@@ -15,7 +15,7 @@ const compileCss = () => {
     const env = argv.env || 'development'
 
     return gulp
-        .src(config.src.css + '**/*.scss')
+        .src([config.src.css + '**/*.scss', config.src.templates + '**/*.scss'])
         .pipe(argv.source ? $.debug({verbose: true}) : $.util.noop())
         .pipe($.if(env === 'development', $.sourcemaps.init()))
         .pipe($.if(env === 'development', $.stylelint({
@@ -54,7 +54,8 @@ const compileCss = () => {
         .pipe($.sass({
             precision: 10,
             includePaths: [
-                config.src.css + '**/*.scss'
+                config.src.css + '**/*.scss',
+                config.src.templates + '**/*.scss'
             ]
         })
         .on('error', function(err) {
