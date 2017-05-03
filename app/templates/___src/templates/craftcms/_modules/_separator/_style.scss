@@ -8,7 +8,7 @@
 
 .m-separator {
   position: relative;
-  border: none;
+  border: 0;
 }
 
 // Margin Vertical
@@ -28,7 +28,7 @@
 
 // Styles
 .m-separator--style-default {
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;

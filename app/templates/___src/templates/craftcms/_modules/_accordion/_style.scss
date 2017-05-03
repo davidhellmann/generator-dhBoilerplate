@@ -64,8 +64,7 @@
       @include f(s(1), s(2), right);
       top: calc(50% - 2px);
       background-color: c('black-50');
-      transition-property: background-color, transform;
-      transition: 0.25s ease('out-cubic');
+      transition: all 0.25s ease('out-cubic');
     }
 
     &::after {

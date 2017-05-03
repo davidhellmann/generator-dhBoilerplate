@@ -1,6 +1,7 @@
 /* -------------------------------------------------- */
 /*    Image Slider
 /* -------------------------------------------------- */
+
 @import '../../../../assets/css/vendors/flickity/flickity';
 
 .m-imageSliderWrapper {
@@ -22,10 +23,12 @@
     content: 'flickity';
     display: none;
 
-    /*@include media('>=s') {
-      content: 'flickity';
-      display: none;
-    }*/
+    /*
+      @include media('>=s') {
+        content: 'flickity';
+        display: none;
+      }
+    */
   }
 
   &__slide {
@@ -44,6 +47,7 @@
   }
 
   // Flickity Styling
+  /* stylelint-disable */
   .flickity-viewport {
     overflow: visible;
     width: 100%;
@@ -122,4 +126,5 @@
       }
     }
   }
+  /* stylelint-enable */
 }

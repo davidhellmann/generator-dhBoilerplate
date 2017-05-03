@@ -3,6 +3,7 @@
 /* -------------------------------------------------- */
 
 .m-imageCoverWrapper {
+  // empty
 }
 
 .m-imageCover {
@@ -11,6 +12,7 @@
   height: 100vh;
   left: 50%;
   transform: translateX(-50%);
+  @include make-vr();
 
   .m-bgImage {
     position: absolute;
@@ -30,13 +32,9 @@
     left: 0;
     top: 0;
     text-align: center;
-    background-image: linear-gradient(to top, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+    background-image: linear-gradient(to top, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
     color: c('white');
     @include f(fs('ms2'), fs('ms8'));
-  }
-
-  .wf-loaded & {
-    font-family: ff('sans-serif');
   }
 
   &--text-left & {
@@ -52,40 +50,34 @@
   }
 
   &--vPosition-top & {
-    background-image: linear-gradient(to bottom, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+    background-image: linear-gradient(to bottom, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
+    bottom: auto;
+    top: 0;
   }
 
   &--vPosition-center & {
-    background: rgba(c('black'), .5);
+    background: rgba(c('black'), 0.5);
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &--vPosition-bottom & {
-    background-image: linear-gradient(to top, rgba(c('black'), .5) 0, rgba(c('black'), 0) 50%);
+    background-image: linear-gradient(to top, rgba(c('black'), 0.5) 0, rgba(c('black'), 0) 50%);
+    bottom: 0;
   }
 
   &__title {
     @include f(s(2), s(8), padding-top padding-bottom);
     @include f(s(1), s(2), padding-left padding-right);
     position: absolute;
-    font-weight: 700;
     z-index: 30;
     width: 100%;
     bottom: 0;
     left: 0;
-  }
 
-  .m-imageCover--vPosition-top & {
-    bottom: auto;
-    top: 0;
-  }
-
-  .m-imageCover--vPosition-center & {
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .m-imageCover--vPosition-bottom & {
-    bottom: 0;
+    .wf-loaded & {
+      font-family: ff('bold');
+    }
   }
 }

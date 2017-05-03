@@ -1,7 +1,6 @@
 /* -------------------------------------------------- */
 /*    Image Gallery
 /* -------------------------------------------------- */
-
 @import '../../../../node_modules/photoswipe/src/css/main';
 @import '../../../../node_modules/photoswipe/src/css/default-skin/default-skin';
 
@@ -108,23 +107,7 @@
 }
 
 .pswp__button,
-.pswp__button--arrow--left:before,
-.pswp__button--arrow--right:before {
-  background-image: url(/assets/images/bitmap/vendor/photoswipe/default-skin.png);
-}
-
-@media (-webkit-min-device-pixel-ratio: 1.1),
-(-webkit-min-device-pixel-ratio: 1.09375),
-(min-resolution: 105dpi), (min-resolution: 1.1dppx) {
-  /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
-  .pswp--svg .pswp__button,
-  .pswp--svg .pswp__button--arrow--left:before,
-  .pswp--svg .pswp__button--arrow--right:before {
-    background-image: url(/assets/images/svg/single/default-skin.svg);
-  }
-
-  .pswp--svg .pswp__button--arrow--left,
-  .pswp--svg .pswp__button--arrow--right {
-    background: none;
-  }
+.pswp__button--arrow--left::before,
+.pswp__button--arrow--right::before {
+  background-image: url('/assets/images/svg/single/default-skin.svg');
 }

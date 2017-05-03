@@ -106,7 +106,7 @@
     "keyframe-declaration-no-important": true,
     "length-zero-no-unit": true,
     "max-empty-lines": 2,
-    "max-nesting-depth": 3,
+    "max-nesting-depth": 5,
     "media-feature-colon-space-after": "always",
     "media-feature-colon-space-before": "never",
     "media-feature-name-case": "lower",
@@ -153,7 +153,7 @@
     "selector-combinator-space-before": "always",
     "selector-descendant-combinator-no-non-space": true,
     "selector-id-pattern": "^[a-zA-Z]+$",
-    "selector-max-compound-selectors": 3,
+    "selector-max-compound-selectors": 5,
     "selector-max-specificity": "0,4,0",
     "selector-no-id": true,
     "selector-no-qualifying-type": [

@@ -33,7 +33,8 @@ const compileCss = () => {
                           left: 0; 
                           width: 100%; 
                           background: rgba(0,0,0,.85); 
-                          height: 42vh; 
+                          height: 50vh;
+                          max-height: 200px;
                           overflow-y: scroll;
                           color: #e8e8e8; 
                           text-align: left; 
