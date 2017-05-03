@@ -10,29 +10,23 @@
 
 {% if settings.imageRatio is defined %}
   {% switch settings.imageRatio %}
-  
+
   {% case "landscape" %}
   {% set ratio = '16:10' %}
-  
+
   {% case "square" %}
   {% set ratio = '1:1' %}
-  
+
   {% case "portrait" %}
   {% set ratio = '10:16' %}
-  
+
   {% default %}
   {% set ratio = '' %}
-  
+
   {% endswitch %}
 
 {% else %}
   {% set ratio = '' %}
-{% endif %}
-
-{# -- Ratio -- #}
-{% if ratio != '' %}
-  {% set ratio = ratio|split(':') %}
-  {% set ratio = ratio|first/ratio|last %}
 {% endif %}
 
 {# -- Modul -- #}
@@ -56,41 +50,13 @@
     <!-- Slides -->
     {% for image in images %}
       <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
-  
+
         {# -- Res Image -- #}
         {% set options = {
-        ratio: ratio
+          ratio: ratio
         } %}
-  
+
         {{ macroImage.image(image, options) }}
-        
-        {# -- Set Position -- #}{#
-        {% if image.settingsFocalPoint %}
-          {% set position = image.settingsFocalPoint %}
-        {% else %}
-          {% set position = '50% 50%' %}
-        {% endif %}
-        
-        {% set imageSizes = [
-          { height: 500 },
-          { height: 30 }
-        ] %}
-        
-        {% set imageSettings = {
-          ratio: ratio,
-          position: position,
-          mode: 'crop'
-        } %}
-  
-        #}{# -- BG Image -- #}{#
-        {% set images = craft.imager.transformImage(image, imageSizes, imageSettings) %}
-  
-        <img width="{{ image.width }}"
-             height="{{ image.height }}"
-             class="m-image"
-             src="{{ images|last.url }}"
-             data-flickity-lazyload="{{ images|first.url }}"
-             alt="{{ image.title }}"/>#}
       </div>
     {% endfor %}
   </figure>
