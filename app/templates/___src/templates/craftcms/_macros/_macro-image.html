@@ -21,7 +21,7 @@
 #}
 
 {% macro image(image, options) %}
-
+  
   {% set defaults = {
   classname: 'm-image',
   sizes: [
@@ -38,10 +38,10 @@
   externalSource: false,
   dominantColor: true
   } %}
-
+  
   {% set options = options ? defaults|merge(options) : defaults %}
   {% if image %}
-
+    
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
@@ -54,7 +54,7 @@
     {% else %}
       {% set ratio = '' %}
     {% endif %}
-
+    
     {# -- Set Position -- #}
     {% if options.position %}
       {% set position = options.position %}
@@ -63,35 +63,36 @@
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
-
+    
     {# -- Define global variables -- #}
     {% set imageSettings = {
-      jpegQuality: options.quality,
-      mode: options.mode,
-      position: position,
-      ratio: ratio
+    jpegQuality: options.quality,
+    mode: options.mode,
+    position: position,
+    ratio: ratio
     } %}
-
+    
     {# -- Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
-
+    {% set dominantImages = craft.imager.transformImage(image, [{width: 30}], { ratio: ratio, position: position, jpegQuality: 10 }) %}
+    
     {# -- External Source --#}
     {# Reset the Base64 Size to the First Image Dimensions  #}
     {% if options.externalSource %}
       {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
       {% set base64Ratio = base64Ratio|split(':') %}
     {% endif %}
-
+    
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
-      {% set dominantColor = craft.imager.getDominantColor(images|last, 20) %}
+      {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 1000) %}
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
-
+    
     <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%">
       <img class="{{ options.classname }}  lazyload"
-        {#src="{{ images|last.url }}"#}
+          {#src="{{ images|last.url }}"#}
            src="{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}"
            data-srcset="{{ craft.imager.srcset(images) }}"
            data-sizes="auto"
