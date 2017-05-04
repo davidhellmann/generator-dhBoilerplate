@@ -85,7 +85,7 @@
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
       {% set dominantImages = craft.imager.transformImage(image, [{width: 30}], { ratio: ratio, position: position, jpegQuality: 10 }) %}
-      {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 1000) %}
+      {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 20) %}
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
