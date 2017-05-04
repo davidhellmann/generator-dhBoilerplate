@@ -44,7 +44,8 @@
   @media screen and (min-width: $min-vw) {
     @each $property in $properties {
       $min-vw-REM: strip-unit($min-vw) + 0rem;
-      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw-REM}) / #{strip-unit($max-vw - $min-vw)});
+      $max-vw-REM: strip-unit($max-vw) + 0rem;
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw-REM}) / (#{$max-vw-REM} - #{$min-vw-REM}));
     }
   }
 
