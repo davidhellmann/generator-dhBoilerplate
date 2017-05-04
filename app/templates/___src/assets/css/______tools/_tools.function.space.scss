@@ -2,8 +2,10 @@
     #SPACE
   --------------------------------------------------*/
 
+@import 'tools.function.calc-rem';
+
 @function space($key) {
-  @return round(($dh-gutterWidth * $key) + 0px);
+  @return (calc-rem($dh-gutterWidth) * $key);
 }
 
 // Shorthand Version
