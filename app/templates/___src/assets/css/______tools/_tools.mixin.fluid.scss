@@ -34,7 +34,7 @@
 
   // Check If Value is PX
   @if is-px($max-vw) {
-    $max-vw: calc-rem($max-vw);
+    $max-vw: calc-em($max-vw);
   }
 
   @each $property in $properties {
