@@ -29,12 +29,12 @@
   }
 
   @if is-px($min-vw) {
-    $min-vw: em($min-vw);
+    $min-vw: calc-em($min-vw);
   }
 
   // Check If Value is PX
   @if is-px($max-vw) {
-    $max-vw: em($max-vw);
+    $max-vw: calc-rem($max-vw);
   }
 
   @each $property in $properties {
