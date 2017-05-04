@@ -18,14 +18,23 @@
 @import 'tools.function.calc-rem';
 @import 'tools.function.calc-em';
 
-@mixin fluid($min-value, $max-value, $properties: font-size, $min-vw: calc-em($msWidth-min), $max-vw: calc-em($msWidth-max)) {
+@mixin fluid($min-value, $max-value, $properties: font-size, $min-vw: $msWidth-min, $max-vw: $msWidth-max) {
   // Check If Value is PX
   @if is-px($min-value) {
-    $min-value: calc-rem($min-value)
+    $min-value: calc-rem($min-value);
   }
   // Check If Value is PX
   @if is-px($max-value) {
-    $max-value: calc-rem($max-value)
+    $max-value: calc-rem($max-value);
+  }
+
+  @if is-px($min-vw) {
+    $min-vw: em($min-vw);
+  }
+
+  // Check If Value is PX
+  @if is-px($max-vw) {
+    $max-vw: em($max-vw);
   }
 
   @each $property in $properties {
