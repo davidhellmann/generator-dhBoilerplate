@@ -64,8 +64,8 @@
   @if $columns == 0 {
     flex: 1 1 0;
   } @else {
-    max-width: $columns / $context * 100%;
-    flex: 1 1 $columns / $context * 100%;
+    max-width: calc(#{$columns} / #{$context} * 100%);
+    flex: 1 1 calc(#{$columns} / #{$context} * 100%);
   }
 
   // Set Padding
@@ -109,7 +109,7 @@
   float: left;
 
   // Col Width
-  max-width: $columns / $context * 100%;
+  max-width: calc(#{$columns} / #{$context} * 100%);
 
   // Set Padding
   @include make-col-padding();

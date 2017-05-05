@@ -7,6 +7,6 @@
   @if $columns == 0 {
     right: auto;
   } @else {
-    right: $columns / $context * 100%;
+    right: calc(#{$columns} / #{$context} * 100%);
   }
 }
