@@ -2,11 +2,11 @@
 /*    Pull
 /* -------------------------------------------------- */
 
-@mixin pull($columns) {
+@mixin pull($columns, $context: $dh-columns) {
   position: relative;
-  @if $columns > 0 {
-    right: $columns / 12 * 100%;
-  } @else if $i < 1 {
+  @if $columns == 0 {
     right: auto;
+  } @else {
+    right: $columns / $context * 100%;
   }
 }
