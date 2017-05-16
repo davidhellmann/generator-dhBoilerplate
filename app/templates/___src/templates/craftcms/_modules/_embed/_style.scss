@@ -9,8 +9,7 @@
 .m-embed {
   @include make-row();
   @include make-vr();
-  display: flex;
-  flex-direction: column;
+  display: block;
 
   &__item {
     @include make-col(12);
@@ -26,19 +25,20 @@
   // Embed Position
   &--align-left {
     .m-embed__item {
-      align-self: flex-start;
+      float: left;
     }
   }
 
   &--align-center {
     .m-embed__item {
-      align-self: center;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
   &--align-right {
     .m-embed__item {
-      align-self: flex-end;
+      float: right;
     }
   }
 
