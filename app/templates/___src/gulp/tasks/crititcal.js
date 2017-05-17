@@ -31,7 +31,7 @@ function doSynchronousLoop(data, processData, done) {
 // Process the critical path CSS one at a time
 function processCriticalCSS(element, i, callback) {
     const criticalSrc = url + element.url
-    const criticalDest = element.template + '_critical.min.css'
+    const criticalDest = config.dist.markup + element.template + '_critical.min.css'
     const criticalWidth = 1440
     const criticalHeight = 1280
     log("-> Generating critical CSS: " + chalk.cyan(criticalSrc) + " -> " + chalk.magenta(criticalDest));
