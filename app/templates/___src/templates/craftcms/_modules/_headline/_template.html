@@ -13,6 +13,7 @@
   classname: cbHeadline ? cbClassname : 'm-headline',
   text: cbHeadline ? cbHeadline : 'Headline',
   size: cbHeadline and cbSettings.size is defined ? cbSettings.size : 'h2'
+  visualSize: false
 } %}
 
 {# -- Set Options -- #}
@@ -24,7 +25,7 @@
 
 {# -- Modul -- #}
 <div class="o-col  {{ options.classname ~ 'Wrapper' }}">
-  <{{ options.size }} class="{{ options.classname }}">
+  <{{ options.size }} class="{{ options.classname }}{{ options.visualSize and options.visualSize is not empty ? '  ' ~ options.classname ~ '--' ~ options.visualSize }}">
     {{ options.text }}
   </{{ options.size }}>
 </div>
