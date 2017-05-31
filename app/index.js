@@ -553,6 +553,12 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             this.destinationPath('.babelrc'),
             params
         )
+
+        this.fs.copyTpl(
+            this.templatePath('browserslistrc'),
+            this.destinationPath('.browserslistrc'),
+            params
+        )
     },
 
 

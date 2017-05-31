@@ -10,7 +10,7 @@ const postCssConfig = () => {
 
         // Prefixer
         require('autoprefixer')({
-            browsers: config.css.autoprefixer,
+            // browsers: config.css.autoprefixer,
             cascade: false
         }),
 

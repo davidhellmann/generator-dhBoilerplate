@@ -120,10 +120,7 @@
     "./node_modules/fg-loadcss/src/cssrelpreload.js"
   ],
   "css": {
-    "sourcemap": true,
-    "prefix": [
-      "last 2 version"
-    ]
+    "sourcemap": true
   },
 
   "browsersync": {
