@@ -98,6 +98,7 @@
     "imagemin-svgo": "^5.0.0",
     "postcss-assets": "^4.1.0",
     "postcss-flexbugs-fixes": "^2.0.0",
+    "postcss-normalize": "^3.0.0",
     "postcss-responsive-type": "^0.3.3",
     "postcss-selector-matches": "^2.0.1",
     "postcss-short-size": "^2.0.1",
