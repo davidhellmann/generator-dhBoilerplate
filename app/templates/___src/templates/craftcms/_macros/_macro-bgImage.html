@@ -31,7 +31,7 @@
   { width: 500 },
   { width: 300 }
   ],
-  quality: 80,
+  quality: 95,
   mode: 'crop',
   position: false,
   ratio: false,
@@ -85,8 +85,12 @@
     
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
-      {% set dominantImages = craft.imager.transformImage(image, [{width: 30}], { ratio: ratio, position: position, jpegQuality: 10 }) %}
-      {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 20) %}
+      {% if image.pluginPreparseDominantColor is defined and image.pluginPreparseDominantColor is not empty %}
+        {% set dominantColor = image.pluginPreparseDominantColor %}
+      {% else %}
+        {% set dominantImages = craft.imager.transformImage(image, [{width: 30}], { ratio: ratio, position: position, jpegQuality: 10 }) %}
+        {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 20) %}
+      {% endif %}
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
@@ -94,7 +98,7 @@
     <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%;">
       <figure class="{{ options.classname }}  lazyload"
               style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
-                  background-position: {{ position|trim("'") }};"
+                background-position: {{ position|trim("'") }};"
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
