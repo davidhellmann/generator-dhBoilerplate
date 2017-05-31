@@ -9,6 +9,11 @@
     "email": "My Mail",
     "url": "My URL"
   },
+  "browserslist": [
+    "> 5%",
+    "last 2 versions",
+    "IE 11"
+  ],
   "scripts": {
     "start": "gulp init",
     "dev": "gulp",
@@ -32,7 +37,7 @@
   "devDependencies": {
     "aliasify": "^2.0.0",
     "ansi-html": "^0.0.6",
-    "autoprefixer": "^6.3.3",
+    "autoprefixer": "^7.0.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.5.2",
     "babel-eslint": "^7.1.1",
