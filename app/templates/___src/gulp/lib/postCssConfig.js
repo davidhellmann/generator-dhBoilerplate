@@ -8,6 +8,8 @@ const postCssConfig = () => {
             loadPaths: [config.dist.images.base]
         }),
 
+        require('postcss-normalize')({ /* options */ }),
+
         // Prefixer
         require('autoprefixer')({
             // browsers: config.css.autoprefixer,
