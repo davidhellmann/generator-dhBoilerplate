@@ -49,7 +49,7 @@
           }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
     <!-- Slides -->
     {% for image in images %}
-      <div class="{{ classname ~ '__slide' }}" itemscope itemtype="http://schema.org/ImageObject">
+      <div class="{{ classname ~ '__slide' }}  {{ settings.imageRatio is defined ? classname ~ '__slide--' ~ settings.imageRatio.value }}" itemscope itemtype="http://schema.org/ImageObject">
 
         {# -- Res Image -- #}
         {% set options = {

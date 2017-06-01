@@ -32,16 +32,28 @@
   }
 
   &__slide {
-    @include make-col(5.5);
-    padding-left: s(1/2) !important;
-    padding-right: s(1/2) !important;
+    padding-left: s(1) !important;
+    padding-right: s(1) !important;
+    @include make-col-float(10);
+
+    @include media('>=s') {
+      &--portrait {
+        @include make-col-float(4, 10);
+      }
+
+      &--square {
+        @include make-col-float(5, 10);
+      }
+    }
+
+    @include media('>=m') {
+      &--landscape {
+        @include make-col-float(8, 10);
+      }
+    }
 
     .m-image {
-      height: 100vh;
-      min-width: 200px;
-      max-height: 500px;
-      max-width: none;
-      width: auto;
+      width: 100%;
       display: block;
     }
   }
