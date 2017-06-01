@@ -1,0 +1,30 @@
+/* -------------------------------------------------- */
+/*    .t-editLink
+/* -------------------------------------------------- */
+
+.t-editLink {
+  position: fixed;
+  left: s(2);
+  bottom: s(2);
+  z-index: 21412124;
+
+  a {
+    background-color: c('black-80');
+    color: c('white');
+    display: block;
+    padding: s(2);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: c('black-90');
+    }
+
+    .wf-loaded & {
+      font-family: ff('base');
+    }
+  }
+}
