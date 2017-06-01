@@ -67,11 +67,13 @@
 {% minify %}
 <body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
 
-{#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
-{% if currentUser.admin %}
-  <div class="t-editLink">
-    <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
-  </div>
+{% if currentUser %}
+  {#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
+  {% if currentUser.admin %}
+    <div class="t-editLink">
+      <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
+    </div>
+  {% endif %}
 {% endif %}
 
 <div class="m-appWrapper">
