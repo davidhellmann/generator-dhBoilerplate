@@ -37,7 +37,7 @@ npm i generator-dhboilerplate -g
 ## Start Generator
 ```
 // Go to your project directory and do that
-yo
+yo generator-dhboilerplate
 ```
 
 ## Description
