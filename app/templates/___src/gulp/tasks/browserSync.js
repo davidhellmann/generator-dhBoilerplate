@@ -10,9 +10,13 @@ const browserSyncTask = () => {
     config.dist.markup          + '**/*.{html,php,twig,rss}',
     config.dist.images.base     + '**/*.{jpg,jpeg,webp,gif,png,svg,ico}',
     config.dist.css             + '**/*.css',
+    config.dist.js              + '**/*.js',
+    config.dist.js              + '**/*.vue'
+    /*
     <% if (projectVue == false ) { %>
-    config.dist.js         + '**/*.js'
+    config.dist.js         + '**!/!*.js'
     <% } %>
+    */
   ];
 
   // Build a condition when Proxy is active
