@@ -1,6 +1,6 @@
 {
   "name": "generator-dhboilerplate",
-  "version": "4.4.25",
+  "version": "4.4.26",
   "description": "Boilerplate made by David Hellmann #gulp #npm #craftcms #wordpress #vue #twig",
   "license": "MIT",
   "main": "app/index.js",
