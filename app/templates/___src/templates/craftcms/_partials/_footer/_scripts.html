@@ -1,5 +1,9 @@
 <!-- JS Scripts & Plugins -->
-<script src="{{ rootUrl }}assets/js/app.min.js" async></script>
+{% if craft.cacheBuster is defined %}
+  <script src="{{ cacheBuster( '/assets/js/app.min.js') }}" async></script>
+{% else %}
+  <script src="{{ rootUrl }}assets/js/app.min.js" async></script>
+{% endif %}
 
 <!-- Google Analytics -->
 {#<script>
