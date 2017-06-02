@@ -101,6 +101,7 @@
            data-srcset="{{ craft.imager.srcset(images) }}"
            data-sizes="auto"
            alt="{{ image.title is defined ? image.title }}"/>
+      <noscript><img src="{{ image.url }}" alt="{{ image.title }}"></noscript>
     </div>
   {% endif %}
 {% endmacro %}

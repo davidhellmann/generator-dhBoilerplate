@@ -102,6 +102,7 @@
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
+      <noscript><img src="{{ image.url }}" alt="{{ image.title }}"></noscript>
     </div>
   {% endif %}
 {% endmacro %}
