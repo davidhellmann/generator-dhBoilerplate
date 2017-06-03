@@ -34,7 +34,7 @@ describe('dh-boilerplate', () => {
             })
     })
     // Test for Basic Files
-    /*describe('Basic Files and Infos', () => {
+    describe('Basic Files and Infos', () => {
         // Test package.json content
         it('fill package.json with correct Information', () => {
             assert.JSONFileContent('package.json', {
@@ -45,35 +45,14 @@ describe('dh-boilerplate', () => {
             })
         })
 
-        // Fills config.json
-        it('fills config.json with information', () => {
-            assert.JSONFileContent('config.json', {
-                proxy: project.proxy,
-                favicon: {
-                    developerURL: author.homepage,
-                    developerName: author.name
-                }
-            })
-        })
-
-        it('fills config.json with project type information', async () => {
-            await run()
-                .withPrompts({
-                    projectUsage: 'craft'
-                });
-            assert.JSONFileContent('config.json', {
-                projectType: 'craft'
-            })
-        })
-
-        it('adds javascript', () => {
+        /*it('adds javascript', () => {
             assert.file([
                 'src/js/'
             ])
-        })
+        })*/
     })
 
-    describe('It is a Craft Project 🎉', () => {
+    /*describe('It is a Craft Project 🎉', () => {
         it('fills config.json with project type craft', async () => {
             await run()
                 .withPrompts({
