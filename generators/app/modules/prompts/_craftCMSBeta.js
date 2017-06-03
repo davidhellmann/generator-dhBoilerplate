@@ -22,8 +22,7 @@ const promptsCraftCMSBeta = [
             headline: 'Craft CMS Beta Installation',
             description: 'Do you want to install the Craft 3 Beta version via Composer?'
         }),
-        default: true,
-        store: true
+        default: true
     }
 ]
 

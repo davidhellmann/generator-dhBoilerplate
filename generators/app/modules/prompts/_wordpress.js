@@ -22,8 +22,7 @@ const promptsWordpress = [
             headline: 'WordPress Installation',
             description: 'Do you want to download the latest WordPress Version via WP-CLI?'
         }),
-        default: true,
-        store: true
+        default: true
     }
 ]
 

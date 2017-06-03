@@ -22,12 +22,10 @@ const promptsProject = [
             // Do async stuff
             if (input.indexOf(' ') >= 0 || /[~`!#$%^&*+=[\]\\';,/{}|\\":<>?]/g.test(input)) {
                 // Pass the return value in the done callback
-                console.log(`\n${chalk.styles.red.open}No whitespaces or special-chars allowed!${chalk.styles.red.close}`)
-                return false
+                return `${chalk.styles.red.open}No whitespaces or special-chars allowed!${chalk.styles.red.close}`
             }
             return true
-        },
-        store: true
+        }
     },
     {
         type: 'input',
@@ -37,7 +35,7 @@ const promptsProject = [
             description: 'Please provide a description for your project:',
             defaultValue: 'Current Description:'
         }),
-        store: true
+        default: 'My Awesome Project'
     },
     {
         type: 'input',
@@ -46,8 +44,7 @@ const promptsProject = [
             headline: 'Project Version',
             description: 'Define a Project Version:'
         }),
-        default: '0.0.1',
-        store: true
+        default: '0.0.1'
     },
     {
         type: 'input',
@@ -61,13 +58,18 @@ const promptsProject = [
             if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
                 return answers.projectName
             }
-            // If false
-            if (answers.projectName === false) {
-                return false
-            }
             return `${answers.projectName}.dev`
         },
-        store: true
+        validate(input) {
+            if (!input.match(false)) {
+                if (input.match(/(http|https):\/\//g) || !input.match(/^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
+                    // Pass the return value in the done callback
+                    return `${chalk.styles.red.open}Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
+                }
+            }
+            // Pass the return value in the done callback
+            return true
+        }
     },
     {
         type: 'list',
@@ -100,8 +102,7 @@ const promptsProject = [
                 value: 'vueApp'
             }
             */
-        ],
-        store: true
+        ]
     },
     {
         type: 'confirm',
@@ -110,8 +111,7 @@ const promptsProject = [
             headline: 'Project jQuery',
             description: 'Do you want to use jQuery (newest Version)?'
         }),
-        default: false,
-        store: true
+        default: false
     },
     {
         type: 'confirm',
@@ -120,8 +120,7 @@ const promptsProject = [
             headline: 'Project VueJS',
             description: 'Do you want to use Vue.js?'
         }),
-        default: false,
-        store: true
+        default: false
     }
 ]
 

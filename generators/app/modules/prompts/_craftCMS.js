@@ -22,8 +22,7 @@ const promptsCraftCMS = [
             headline: 'Craft CMS Installation',
             description: 'Do you want to download the newest Craft Version via WGET?'
         }),
-        default: true,
-        store: true
+        default: true
     }
 ]
 

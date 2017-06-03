@@ -19,7 +19,7 @@ const browserSyncTask = () => {
     const url = argv.url || pkg.browsersync.proxy
 
     // Condition for Proxy
-    if (pkg.browsersync.proxy) {
+    if (pkg.browsersync.proxy !== 'false') {
         bsProxy = url
         bsServer = false
     } else {
