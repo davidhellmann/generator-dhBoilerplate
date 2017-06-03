@@ -54,20 +54,24 @@ const promptsProject = [
         name: 'projectProxy',
         message: message({
             headline: 'Project Proxy Domain',
-            description: 'Define a Project Proxy Domain. Default is your Project Name:'
+            description: 'Define a Project Proxy Domain or set it to "false". Default is your Project Name:'
         }),
         default(answers) {
-            // If the
+            // If the Answer includes .dev or .local
             if (answers.projectName.includes('.dev') || answers.projectName.includes('.local')) {
-                return answers.projectName;
+                return answers.projectName
             }
-            return `${answers.projectName}.dev`;
+            // If false
+            if (answers.projectName === false) {
+                return false
+            }
+            return `${answers.projectName}.dev`
         },
         store: true
     },
     {
         type: 'list',
-        name: 'projectUsage',
+        name: 'projectType',
         message: message({
             headline: 'Project Type',
             description: 'Choose your Project Type:',
@@ -97,6 +101,26 @@ const promptsProject = [
             }
             */
         ],
+        store: true
+    },
+    {
+        type: 'confirm',
+        name: 'projectjQuery',
+        message: message({
+            headline: 'Project jQuery',
+            description: 'Do you want to use jQuery (newest Version)?'
+        }),
+        default: false,
+        store: true
+    },
+    {
+        type: 'confirm',
+        name: 'projectVue',
+        message: message({
+            headline: 'Project VueJS',
+            description: 'Do you want to use Vue.js?'
+        }),
+        default: false,
         store: true
     }
 ]

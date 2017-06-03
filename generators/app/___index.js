@@ -119,32 +119,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
         })
 
         return this.prompt([
-            {
-                type: 'confirm',
-                name: 'projectjQuery',
-                message: chalk.magenta.underline.bold('jQuery') + '\n\xb7 Do you want to use jQuery (newest Version)?',
-                default: false
-            }, {
-                type: 'confirm',
-                name: 'projectVue',
-                message: chalk.magenta.underline.bold('Vue.js') + '\n\xb7 Do you want to use Vue.js?',
-                default: false
-            },{
-                type: 'input',
-                name: 'projectAuthor',
-                message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
-                default: gitInfo.name
-            }, {
-                type: 'input',
-                name: 'projectMail',
-                message: chalk.magenta.underline.bold('Project Mail') + '\n\xb7 Mailadress of the author: ',
-                default: gitInfo.email
-            }, {
-                type: 'input',
-                name: 'projectUrl',
-                message: chalk.magenta.underline.bold('Author URL') + '\n\xb7 URL of the author: ',
-                default: 'http://...'
-            }
+
         ]).then(function(answers) {
             const checkAnswer = (answer) => {
                 if (answer) {
@@ -157,7 +132,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             this.proxyUrl = answers.proxyUrl
             this.projectjQuery = answers.projectjQuery
             this.projectVue = answers.projectVue
-            this.projectUsage = answers.projectUsage
+            this.projectType = answers.projectType
             this.wordpressInstall = checkAnswer(answers.wordpressInstall)
             this.craftInstall = checkAnswer(answers.craftInstall)
             this.craftBetaInstall = checkAnswer(answers.craftBetaInstall)
@@ -178,15 +153,15 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
         this.directory('___src/assets/', '___src/assets/')
         this.directory('___src/gulp/', './gulp/')
 
-        if (this.projectUsage === `prototyping`) {
+        if (this.projectType === `prototyping`) {
             this.directory('___src/templates/prototyping/', '___src/templates/')
         }
 
-        if (this.projectUsage === `wordpress`) {
+        if (this.projectType === `wordpress`) {
             this.directory('___src/templates/wordpress/', '___src/templates/')
         }
 
-        if (this.projectUsage === `craftCMSBeta`) {
+        if (this.projectType === `craftCMSBeta`) {
 
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
@@ -256,7 +231,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             );
         }
 
-        if (this.projectUsage === `craftCMS`) {
+        if (this.projectType === `craftCMS`) {
 
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
@@ -328,7 +303,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             proxyUrl: this.proxyUrl,
             projectjQuery: this.projectjQuery,
             projectVue: this.projectVue,
-            projectUsage: this.projectUsage,
+            projectType: this.projectType,
             wordpressInstall: this.wordpressInstall,
             craftInstall: this.craftInstall,
             craftBetaInstall: this.craftBetaInstall,
@@ -387,15 +362,15 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             }
         });
 
-        if (params.projectUsage === 'Prototyping') {
+        if (params.projectType === 'Prototyping') {
             extend(true, configJson, this.fs.readJSON(this.templatePath('_config_prototyping.json')));
         }
 
-        if (params.projectUsage === 'WordPress') {
+        if (params.projectType === 'WordPress') {
             extend(true, configJson, this.fs.readJSON(this.templatePath('_config_wordpress.json')));
         }
 
-        if (params.projectUsage === 'Craft CMS') {
+        if (params.projectType === 'Craft CMS') {
             const configCraftCms = this.fs.readJSON(this.templatePath('_config_craftcms.json'));
 
             if (params.craftHearty) {
@@ -407,7 +382,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             extend(true, configJson, configCraftCms);
         }
 
-        if (params.projectUsage == 'Craft CMS Beta') {
+        if (params.projectType == 'Craft CMS Beta') {
             extend(true, configJson, this.fs.readJSON(this.templatePath('_config_craftcms_beta.json')));
         }
 

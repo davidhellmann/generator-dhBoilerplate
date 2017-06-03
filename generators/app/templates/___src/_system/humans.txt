@@ -10,7 +10,7 @@ Contributions:       Design, HTML, Sass (CSS), JS, Twig
 Language:            English
 Standards:           HTML5, CSS3, ES6
 Components:          Modernizr, Flickity, Photoswipe, AnimeJS, Macy.
-CMS:                 <%= projectUsage %>
+CMS:                 <%= projectType %>
 Tools:               Gulp, NPM, Yeoman, Babel, Browserify
 IDE:                 PHPStorm
 Built on:            macOS

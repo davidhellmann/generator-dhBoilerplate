@@ -21,7 +21,6 @@ const progress = new Pleasent()
 const promptsFunction = require('./modules/_prompts')
 const branding = require('./helpers/prompts/_branding')
 const basePackageJson = require('./modules/writing/_package.json')
-const baseConfigJson = require('./modules/writing/_config.json')
 
 // Src Paths
 const srcPathsJson = require('./modules/writing/_srcPaths.json')
@@ -32,11 +31,21 @@ const distPathsCraftCMSBetaJson = require('./modules/writing/_distPathsCraftCMSB
 const distPathsPrototypingJson = require('./modules/writing/_distPathsPrototyping.json')
 const distPathsWordpressJson = require('./modules/writing/_distPathsWordpress.json')
 
-// Browserlist
+// Settings
 const browserlistJson = require('./modules/writing/_browserslist.json')
-
-// Scripts
+const browserSyncJson = require('./modules/writing/_browserSync.json')
+const criticalCSSJson = require('./modules/writing/_criticalCSS.json')
+const cssJson = require('./modules/writing/_css.json')
+const dependenciesJson = require('./modules/writing/_dependencies.json')
+const devDependenciesJson = require('./modules/writing/_devDependencies.json')
+const faviconsJson = require('./modules/writing/_favicons.json')
+const filesJson = require('./modules/writing/_files.json')
+const inlineJSJson = require('./modules/writing/_inlineJS.json')
+const jqueryJson = require('./modules/writing/_jquery.json')
+const minifyJson = require('./modules/writing/_minify.json')
+const modernizrJson = require('./modules/writing/_modernizr.json')
 const scriptsJson = require('./modules/writing/_scripts.json')
+const vueJSJson = require('./modules/writing/_vueJS.json')
 
 // Generator
 module.exports = class extends Generator {
@@ -47,7 +56,6 @@ module.exports = class extends Generator {
         this.promptsFunction = promptsFunction.bind(this)
         this.branding = branding.bind(this)
         this.basePackageJson = basePackageJson.bind(this)
-        this.baseConfigJson = baseConfigJson.bind(this)
 
         // Src Paths
         this.srcPathsJson = srcPathsJson.bind(this)
@@ -58,11 +66,21 @@ module.exports = class extends Generator {
         this.distPathsPrototypingJson = distPathsPrototypingJson.bind(this)
         this.distPathsWordpressJson = distPathsWordpressJson.bind(this)
 
-        // Browserlist
+        // Settings
         this.browserlistJson = browserlistJson.bind(this)
-
-        // SCripts
+        this.browserSyncJson = browserSyncJson.bind(this)
+        this.criticalCSSJson = criticalCSSJson.bind(this)
+        this.cssJson = cssJson.bind(this)
+        this.dependenciesJson = dependenciesJson.bind(this)
+        this.devDependenciesJson = devDependenciesJson.bind(this)
+        this.faviconsJson = faviconsJson.bind(this)
+        this.filesJson = filesJson.bind(this)
+        this.inlineJSJson = inlineJSJson.bind(this)
+        this.jqueryJson = jqueryJson.bind(this)
+        this.minifyJson = minifyJson.bind(this)
+        this.modernizrJson = modernizrJson.bind(this)
         this.scriptsJson = scriptsJson.bind(this)
+        this.vueJSJson = vueJSJson.bind(this)
 
         // Package Json
         this.pkg = require('../../package.json')
@@ -93,30 +111,45 @@ module.exports = class extends Generator {
 
         // Getting the template files
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
-        const config = this.fs.readJSON(this.templatePath('_config.json'), {})
 
-        // Write Stuff into package.json
+        // Write Settings into packackge.json
         this.basePackageJson({pkg})
-        this.srcPathsJson({pkg})
         this.browserlistJson({pkg})
+        this.browserSyncJson({pkg})
+        this.criticalCSSJson({pkg})
+        this.cssJson({pkg})
+        this.dependenciesJson({pkg})
+        this.devDependenciesJson({pkg})
+        this.faviconsJson({pkg})
+        this.filesJson({pkg})
+        this.inlineJSJson({pkg})
+        this.minifyJson({pkg})
+        this.modernizrJson({pkg})
         this.scriptsJson({pkg})
+        this.srcPathsJson({pkg})
+
+        // If jQuery True
+        if (this.props.projectJquery === true) {
+            this.jqueryJson({pkg})
+        }
+
+        // If VueJS True
+        if (this.props.projectVue === true) {
+            this.vueJSJson({pkg})
+        }
 
         // Write Dist Paths
-        if (this.props.projectUsage === 'craftCMS') {
+        if (this.props.projectType === 'craftCMS') {
             this.distPathsCraftCMSJson({pkg})
-        } else if (this.props.projectUsage === 'craftCMSBeta') {
+        } else if (this.props.projectType === 'craftCMSBeta') {
             this.distPathsCraftCMSBetaJson({pkg})
-        } else if (this.props.projectUsage === 'prototyping') {
+        } else if (this.props.projectType === 'prototyping') {
             this.distPathsPrototypingJson({pkg})
-        } else if (this.props.projectUsage === 'wordpress') {
+        } else if (this.props.projectType === 'wordpress') {
             this.distPathsWordpressJson({pkg})
         }
 
-        // Write Stuff into config json
-        this.baseConfigJson({config})
-
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
-        this.fs.writeJSON(this.destinationPath('config.json'), config)
     }
 
     install() {

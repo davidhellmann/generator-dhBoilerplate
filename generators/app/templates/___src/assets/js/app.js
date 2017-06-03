@@ -23,7 +23,7 @@ import './scripts/cookieconsent'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 
-<% if (projectUsage === 'craftCMS' ) { %>
+<% if (projectType === 'craftCMS' ) { %>
 // Content Builder Modules
 import '../../templates/_modules/_accordion/_main'
 import '../../templates/_modules/_imageSlider/_main'

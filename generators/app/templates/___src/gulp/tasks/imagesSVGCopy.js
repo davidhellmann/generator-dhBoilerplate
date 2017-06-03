@@ -23,7 +23,7 @@ const copyVectors = () => {
     .pipe(gulp.dest(vectorDist))
     .pipe($.size())
     .pipe($.rename({
-      <% if (projectUsage === 'wordpress' ) { %>
+      <% if (projectType === 'wordpress' ) { %>
       extname: ".svg.php"
       <% } else { %>
       extname: ".svg.html"

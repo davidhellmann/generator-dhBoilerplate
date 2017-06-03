@@ -34,11 +34,11 @@ bower/
 node_modules/
 .tmp
 
-<% if (projectUsage === 'prototyping' ) { %>
+<% if (projectType === 'prototyping' ) { %>
 ___dist/
 <% } %>
 
-<% if (projectUsage === 'wordpress' ) { %>
+<% if (projectType === 'wordpress' ) { %>
 ___dist/*
 !___dist/wp-content/
 ___dist/wp-content/*
@@ -50,7 +50,7 @@ ___dist/wp-content/themes/<%= projectName %>/*
 !___dist/wp-content/themes/<%= projectName %>/acf-json/
 <% } %>
 
-<% if (projectUsage === 'craftCMS' ) { %>
+<% if (projectType === 'craftCMS' ) { %>
 # Craft CMS
 ___dist/craft/*
 !___dist/craft/plugins
@@ -60,7 +60,7 @@ ___dist/public/assets
 ___dist/.env.php
 <% } %>
 
-<% if (projectUsage === 'craftCMSBeta' ) { %>
+<% if (projectType === 'craftCMSBeta' ) { %>
 # Craft CMS Beta
 ___dist/config/license.key
 ___dist/storage

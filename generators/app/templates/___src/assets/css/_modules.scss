@@ -2,7 +2,7 @@
 /*    Modules
 /* -------------------------------------------------- */
 
-<% if (projectUsage === 'craftCMS' || projectUsage === 'craftCMSBeta' ) { %>
+<% if (projectType === 'craftCMS' || projectType === 'craftCMSBeta' ) { %>
 // Modules
 @import '../../templates/_modules/_accordion/style';
   @import '../../templates/_modules/_appContent/style';

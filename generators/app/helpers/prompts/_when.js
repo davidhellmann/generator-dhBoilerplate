@@ -12,7 +12,7 @@
 const when = (type) => {
     // Return actual when function provided by inquirer
     return (promptAnswers) => {
-        return promptAnswers.projectUsage === type
+        return promptAnswers.projectType === type
     }
 }
 

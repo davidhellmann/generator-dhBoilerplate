@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import twig from 'gulp-twig'
 import gulpLoadPlugins from 'gulp-load-plugins'
-<% if (projectUsage === 'prototyping' ) { %>
+<% if (projectType === 'prototyping' ) { %>
 import data from 'gulp-data'
 import fs from 'fs'
 import path from 'path'
@@ -14,7 +14,7 @@ const $ = gulpLoadPlugins()
 // Overwrite the Changed Check
 global.checkChanged = true
 
-<% if (projectUsage === 'prototyping' ) { %>
+<% if (projectType === 'prototyping' ) { %>
 // Work with multiple Files
 var getDataMultiple = function(file) {
     const _dataFile = pkg.src.dataDir + path.basename(file.path, '.html') + '.json'
@@ -29,11 +29,11 @@ var getDataSingle = function(file) {
 <% } %>
 
 const templates = () => {
-  <% if (projectUsage === 'prototyping' ) { %>
+  <% if (projectType === 'prototyping' ) { %>
 
       return gulp
         .src(`${pkg.src.templates}**/[^_]*.{html,twig,rss}`)
-        <% if (projectUsage === 'prototyping' ) { %>
+        <% if (projectType === 'prototyping' ) { %>
         .pipe(data(getDataSingle()))
         <% } %>
         .pipe($.plumber())

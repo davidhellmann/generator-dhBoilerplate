@@ -54,7 +54,7 @@ function processCriticalCSS(element, i, callback) {
 
 // critical css task
 const criticalcss = (callback) => {
-    doSynchronousLoop(pkg.critical, processCriticalCSS, () => {
+    doSynchronousLoop(pkg.criticalCSS, processCriticalCSS, () => {
         // all done
         callback()
     })

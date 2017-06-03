@@ -3,7 +3,7 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 import pkg from '../../package.json'
 
 const $ = gulpLoadPlugins()
-const extension = <% if (projectUsage === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
+const extension = <% if (projectType === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
 
 const createFavicons = () => {
     return gulp

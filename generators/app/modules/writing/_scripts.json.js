@@ -23,7 +23,7 @@ function scriptsJson(files = {}) {
             "create:criticalcss": "gulp create:criticalcss",
             "create:favicons": "gulp create:favicons",
             "create:inlineJS": "gulp create:inlineJS"
-        },
+        }
     })
 }
 
