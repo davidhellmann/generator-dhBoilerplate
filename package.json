@@ -14,9 +14,19 @@
     "email": "davidhellmann.com@gmail.com",
     "url": "https://davidhellmann.com"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    }
+  },
   "scripts": {
-    "prepublish": "nsp check",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "nsp check"
   },
   "files": [
     "generators"

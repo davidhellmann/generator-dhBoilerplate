@@ -1,25 +1,18 @@
 // Importing message & when helper function
-const commandExists = require('command-exists')
+const commandExists = require('command-exists').sync
 const message = require('../../helpers/prompts/_message')
 const when = require('../../helpers/prompts/_when')
 
-// Check if Wget is installed
-let composer = false
-commandExists('composer')
-    .then((command) => {
-        composer = true
-    })
-    .catch(() => {
-        composer = false
-    })
+// Check if Composer is installed
+const isComposer = commandExists('composer')
 
 const promptsCraftCMS3 = [
     {
-        when: when('CraftCMS3' && composer),
+        when: when('craftCMS3', isComposer),
         type: 'confirm',
-        name: 'CraftCMS3Install',
+        name: 'craftCMS3Install',
         message: message({
-            headline: 'Craft CMS Beta Installation',
+            headline: 'Craft CMS 3 Installation',
             description: 'Do you want to install the Craft 3 Beta version via Composer?'
         }),
         default: true

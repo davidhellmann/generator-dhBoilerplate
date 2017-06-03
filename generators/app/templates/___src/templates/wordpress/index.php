@@ -2,7 +2,7 @@
 
 <div class="m-appContent">
 
-    <% if (projectVue == true ) { %>
+    <% if (projectVue) { %>
     <div id="app" class="vue">
         <hello></hello>
     </div>

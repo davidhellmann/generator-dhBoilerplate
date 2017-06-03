@@ -39,10 +39,10 @@
 
 
 
-<% if (proxyUrl != false) { %>
+<% if (projectProxy !== 'false') { %>
 <?php
 $host = $_SERVER['HTTP_HOST'];
-if($host == "localhost" or $host == "<%= proxyUrl %>") :
+if($host === "localhost" or $host == "<%= projectProxy %>") :
     ?>
     <!-- BrowserSync -->
     <script type='text/javascript' id="__bs_script__">//<![CDATA[

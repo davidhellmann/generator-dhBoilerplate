@@ -1,21 +1,14 @@
 // Importing message & when helper function
-const commandExists = require('command-exists')
+const commandExists = require('command-exists').sync
 const message = require('../../helpers/prompts/_message')
 const when = require('../../helpers/prompts/_when')
 
-// Check if Wget is installed
-let wp_cli = false
-commandExists('wp')
-    .then((command) => {
-        wp_cli = true
-    })
-    .catch(() => {
-        wp_cli = false
-    })
+// Check if wp is installed
+const isWp = commandExists('wp')
 
 const promptsWordpress = [
     {
-        when: when('wordpress' && wp_cli),
+        when: when('wordpress', isWp),
         type: 'confirm',
         name: 'wordpressInstall',
         message: message({

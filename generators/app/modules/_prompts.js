@@ -7,11 +7,11 @@ const promptsWordPress = require('./prompts/_wordpress')
 
 function prompts() {
     return [
-        ...promptsAuthor,
         ...promptsProject,
         ...promptsCraftCMS,
         ...promptsCraftCMS3,
-        ...promptsWordPress
+        ...promptsWordPress,
+        ...promptsAuthor
     ]
 }
 
