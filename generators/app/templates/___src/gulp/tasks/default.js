@@ -1,5 +1,5 @@
-import gulp from 'gulp';
-import runSequence from 'run-sequence';
+import gulp from 'gulp'
+import runSequence from 'run-sequence'
 
 const defaultTask = (cb) => {
   runSequence(
@@ -11,5 +11,5 @@ const defaultTask = (cb) => {
   )
 }
 
-gulp.task('default', defaultTask);
-module.exports = defaultTask;
+gulp.task('default', defaultTask)
+module.exports = defaultTask

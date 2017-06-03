@@ -1,14 +1,14 @@
-import config from '../../config.json'
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
+import pkg from '../../package.json'
 
 const $ = gulpLoadPlugins()
 
 const minifyJsTask = () => {
   return gulp
-    .src(config.dist.js + '*.js')
+    .src(`${pkg.dist.js}*.js`)
     .pipe($.uglify())
-    .pipe(gulp.dest(config.dist.js))
+    .pipe(gulp.dest(pkg.dist.js))
 }
 
 gulp.task('minify:js', minifyJsTask)

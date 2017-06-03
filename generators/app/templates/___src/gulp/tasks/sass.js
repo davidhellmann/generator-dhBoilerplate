@@ -1,21 +1,21 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import browserSync from 'browser-sync';
-import errorHandler from '../lib/errorHandler';
-import postCssConfig from '../lib/postCssConfig';
-import api from 'stylelint';
-import ansiHTML from 'ansi-html';
-import yargs from 'yargs';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import browserSync from 'browser-sync'
+import api from 'stylelint'
+import ansiHTML from 'ansi-html'
+import yargs from 'yargs'
+import pkg from '../../package.json'
+import errorHandler from '../lib/errorHandler'
+import postCssConfig from '../lib/postCssConfig'
 
-const argv = yargs.argv;
-const $ = gulpLoadPlugins();
+const argv = yargs.argv
+const $ = gulpLoadPlugins()
 
 const compileCss = () => {
     const env = argv.env || 'development'
 
     return gulp
-        .src([config.src.css + '**/*.scss', config.src.templates + '**/*.scss'])
+        .src([`${pkg.src.css}**/*.scss`, `${pkg.src.templates}**/*.scss`])
         .pipe(argv.source ? $.debug({verbose: true}) : $.util.noop())
         .pipe($.if(env === 'development', $.sourcemaps.init()))
         .pipe($.if(env === 'development', $.stylelint({
@@ -25,7 +25,7 @@ const compileCss = () => {
                 {formatter: 'string', console: true},
                 {
                     formatter(results) {
-                        if (!api.formatters.string(results).length) return;
+                        if (!api.formatters.string(results).length) return
                         const warning = `
                         <div class="bs-fullscreen" 
                           style="position: fixed; 
@@ -46,7 +46,7 @@ const compileCss = () => {
                           ${ansiHTML(api.formatters.string(results))}
                         </div>
 `;
-                        browserSync.notify(warning, 100000);
+                        browserSync.notify(warning, 100000)
                     }
                 },
             ],
@@ -55,8 +55,8 @@ const compileCss = () => {
         .pipe($.sass({
             precision: 10,
             includePaths: [
-                config.src.css + '**/*.scss',
-                config.src.templates + '**/*.scss'
+                `${pkg.src.css}**/*.scss`,
+                `${pkg.src.templates}**/*.scss`
             ]
         })
         .on('error', function(err) {
@@ -88,20 +88,20 @@ const compileCss = () => {
                 </p>
                 <p>${err.messageOriginal}</p>
               </div>`;
-            browserSync.notify(error, 100000);
-            this.emit('end');
+            browserSync.notify(error, 100000)
+            this.emit('end')
         })
         .on('error', errorHandler))
         .pipe($.postcss(postCssConfig()))
         .pipe(env == 'development' ? $.sourcemaps.write('./maps/') : $.util.noop())
-        .pipe(gulp.dest(config.dist.css))
+        .pipe(gulp.dest(pkg.dist.css))
         .pipe($.size({
             title: '>>> CSS File Size: '
         }))
         .pipe(browserSync.stream({
             match: '**/*.css'
-        }));
+        }))
 }
 
-gulp.task('sass', compileCss);
-module.exports = compileCss;
+gulp.task('compile.css', compileCss)
+module.exports = compileCss

@@ -4,12 +4,12 @@ import runSequence from 'run-sequence';
 const svgTask = (cb) => {
   runSequence(
     [
-      'svg-single',
-      'svg-sprite',
+      'copy:svg-single',
+      'create:svg-sprite',
     ],
     cb
-  );
+  )
 }
 
-gulp.task('svg', svgTask);
-module.exports = svgTask;
+gulp.task('copy:svg', svgTask)
+module.exports = svgTask

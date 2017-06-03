@@ -1,13 +1,10 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import copyImagesLib from '../lib/imagesCopy';
-
-const $ = gulpLoadPlugins();
+import gulp from 'gulp'
+import pkg from '../../package.json'
+import copyImagesLib from '../lib/imagesCopy'
 
 const copyImages = () => {
-  copyImagesLib(config.src.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp,ico,xml,json,webapp}', config.dist.images.bitmap.base);
+  copyImagesLib(`${pkg.src.images.bitmap.base}**/*.{png,jpeg,jpg,gif,webp,ico,xml,json,webapp}`, pkg.dist.images.bitmap.base)
 }
 
-gulp.task('images', copyImages);
-module.exports = copyImages;
+gulp.task('copy:images', copyImages)
+module.exports = copyImages

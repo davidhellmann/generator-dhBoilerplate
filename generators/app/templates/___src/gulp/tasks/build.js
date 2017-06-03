@@ -1,5 +1,5 @@
-import gulp from 'gulp';
-import runSequence from 'run-sequence';
+import gulp from 'gulp'
+import runSequence from 'run-sequence'
 
 const buildTask = (cb) => {
     runSequence(
@@ -10,16 +10,16 @@ const buildTask = (cb) => {
             'clean:images',
         ],
         [
-            'templates',
-            'systemFiles',
+            'compile:templates',
+            'copy:systemFiles',
             'modernizr',
             'compile:js',
-            'sass',
+            'compile:css',
             'copy:fonts',
-            'inlineJS',
-            'images',
-            'svg-single',
-            'svg-sprite',
+            'create:inlineJS',
+            'copy:images',
+            'copy:svg-single',
+            'copy:svg-sprite',
         ],
         [
             'minify:js',
@@ -30,5 +30,5 @@ const buildTask = (cb) => {
     );
 }
 
-gulp.task('build', buildTask);
-module.exports = buildTask;
+gulp.task('build', buildTask)
+module.exports = buildTask

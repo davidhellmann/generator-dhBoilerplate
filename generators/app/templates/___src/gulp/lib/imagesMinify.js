@@ -1,26 +1,26 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import pngquant from 'imagemin-pngquant';
-import jpegCompress from 'imagemin-jpeg-recompress';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import pngquant from 'imagemin-pngquant'
+import jpegCompress from 'imagemin-jpeg-recompress'
+import pkg from '../../package.json'
 
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins()
 
 const minifyImages = (srcFiles, distFiles) => {
   return gulp
     .src(srcFiles)
     .pipe($.imagemin({
-      optimizationLevel: config.minify.images.optimizationLxevel,
+      optimizationLevel: pkg.minify.images.optimizationLxevel,
       use: [
-        pngquant(config.minify.images.pngquant),
+        pngquant(pkg.minify.images.pngquant),
         jpegCompress({
-          loops: config.minify.images.jpegCompress.loops,
-          min: config.minify.images.jpegCompress.min,
-          max: config.minify.images.jpegCompress.max
+          loops: pkg.minify.images.jpegCompress.loops,
+          min: pkg.minify.images.jpegCompress.min,
+          max: pkg.minify.images.jpegCompress.max
         })
       ],
-      progressive: config.minify.images.progressive,
-      interlaced: config.minify.images.interlaced
+      progressive: pkg.minify.images.progressive,
+      interlaced: pkg.minify.images.interlaced
     }))
     .pipe(gulp.dest(distFiles))
     .pipe($.size({
@@ -28,4 +28,4 @@ const minifyImages = (srcFiles, distFiles) => {
     }));
 }
 
-module.exports = minifyImages;
+module.exports = minifyImages

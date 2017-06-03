@@ -1,25 +1,24 @@
-import config from '../../config.json';
+import pkg from '../../package.json'
 
 const postCssConfig = () => {
     return [
         // Include Assets
         require('postcss-assets')({
-            basePath: config.dist.markup,
-            loadPaths: [config.dist.images.base]
+            basePath: pkg.dist.markup,
+            loadPaths: [pkg.dist.images.base]
         }),
 
         require('postcss-normalize')({ /* options */ }),
 
         // Prefixer
         require('autoprefixer')({
-            // browsers: config.css.autoprefixer,
             cascade: false
         }),
 
         // Inline SVG Images
         require('postcss-svg')({
             defaults: '[fill]:#f00',
-            paths: [config.dist.images.svg.single]
+            paths: [pkg.dist.images.svg.single]
         }),
 
         // Include Size Short hands
@@ -31,4 +30,4 @@ const postCssConfig = () => {
     ]
 }
 
-module.exports = postCssConfig;
+module.exports = postCssConfig

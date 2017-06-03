@@ -1,16 +1,16 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import postCssNano from '../lib/postCssNano';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import pkg from '../../package.json'
+import postCssNano from '../lib/postCssNano'
 
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins()
 
 const minifyCss = () => {
   return gulp
-    .src(config.dist.css + '*.css')
+    .src(`${pkg.dist.css}*.css`)
     .pipe($.postcss(postCssNano()))
-    .pipe(gulp.dest(config.dist.css));
+    .pipe(gulp.dest(pkg.dist.css))
 }
 
-gulp.task('minify:sass', minifyCss);
-module.exports = minifyCss;
+gulp.task('minify:sass', minifyCss)
+module.exports = minifyCss

@@ -178,15 +178,15 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
         this.directory('___src/assets/', '___src/assets/')
         this.directory('___src/gulp/', './gulp/')
 
-        if (this.projectUsage === `Prototyping`) {
+        if (this.projectUsage === `prototyping`) {
             this.directory('___src/templates/prototyping/', '___src/templates/')
         }
 
-        if (this.projectUsage === `WordPress`) {
+        if (this.projectUsage === `wordpress`) {
             this.directory('___src/templates/wordpress/', '___src/templates/')
         }
 
-        if (this.projectUsage === `Craft CMS Beta`) {
+        if (this.projectUsage === `craftCMSBeta`) {
 
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');
@@ -256,7 +256,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
             );
         }
 
-        if (this.projectUsage === `Craft CMS`) {
+        if (this.projectUsage === `craftCMS`) {
 
             // Copy Templates
             this.directory('___src/templates/craftcms/', '___src/templates/');

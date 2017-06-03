@@ -1,13 +1,10 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import minifyImages from '../lib/imagesMinify';
-
-const $ = gulpLoadPlugins();
+import gulp from 'gulp'
+import pkg from '../../package.json'
+import minifyImages from '../lib/imagesMinify'
 
 const minifyImagesTask = () => {
-  minifyImages(config.dist.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp,ico}', config.dist.images.bitmap.base);
+  minifyImages(`${pkg.dist.images.bitmap.base}**/*.{png,jpeg,jpg,gif,webp,ico}`, pkg.dist.images.bitmap.base)
 }
 
-gulp.task('minify:images', minifyImagesTask);
-module.exports = minifyImagesTask;
+gulp.task('minify:images', minifyImagesTask)
+module.exports = minifyImagesTask

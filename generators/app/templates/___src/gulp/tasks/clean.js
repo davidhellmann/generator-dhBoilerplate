@@ -1,46 +1,48 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import del from 'del';
+import gulp from 'gulp'
+import del from 'del'
+import pkg from '../../package.json'
 
-var directoryToClean;
-
-gulp.task('clean:dist', function(cb) {
+// Clean Dist
+gulp.task('clean:dist', (cb) => {
     return del([
-        config.dist.markup + '**/*'
+        `${pkg.dist.markup}**/*`
     ], {
         force: true
-    }, cb);
-});
+    }, cb)
+})
 
-gulp.task('clean:templates', function(cb) {
+// Clean Templates
+gulp.task('clean:templates', (cb) => {
     return del([
-        config.dist.markup + '**/*'
-        //config.dist.markup + '**/*.{php,html,twig,rss}'
+        `${pkg.dist.markup}**/*`
     ], {
         force: true
-    }, cb);
-});
+    }, cb)
+})
 
-gulp.task('clean:images', function(cb) {
+// Clean Images
+gulp.task('clean:images', (cb) => {
     return del([
-        config.dist.images.base + '**/*.{jpeg,jpg,gif,png,webp,svg,ico}'
+        `${pkg.dist.images.base}**/*.{jpeg,jpg,gif,png,webp,svg,ico}`
     ], {
         force: true
-    }, cb);
-});
+    }, cb)
+})
 
-gulp.task('clean:js', function(cb) {
+// Clean JS
+gulp.task('clean:js', (cb) => {
     return del([
-        config.dist.js + '**/*'
+        `${pkg.dist.js}**/*`
     ], {
         force: true
-    }, cb);
-});
+    }, cb)
+})
 
-gulp.task('clean:css', function(cb) {
+// Clean CSS
+gulp.task('clean:css', (cb) => {
     return del([
-        config.dist.css + '**/*'
+        `${pkg.dist.css}**/*`
     ], {
         force: true
-    }, cb);
-});
+    }, cb)
+})

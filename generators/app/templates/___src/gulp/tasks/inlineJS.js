@@ -1,15 +1,15 @@
-import config from '../../config.json';
-import gulp from 'gulp';
+import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
+import pgk from '../../package.json'
 const $ = gulpLoadPlugins()
 
 const inlineJS = () => {
     return gulp
-        .src(config.inlineJS)
+        .src(pgk.inlineJS)
         .pipe($.uglify())
         .pipe($.rename({ suffix: '.min'}))
-        .pipe(gulp.dest(config.dist.markup + '_inlineJS/'));
+        .pipe(gulp.dest(`${pgk.dist.markup}_inlineJS/`))
 }
 
-gulp.task('inlineJS', inlineJS);
-module.exports = { inlineJS }
+gulp.task('create:inlineJS', inlineJS)
+module.exports = inlineJS

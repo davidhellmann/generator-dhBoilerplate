@@ -8,6 +8,7 @@ function prototypingDistPathsJson(files = {}) {
             browserSyncDir: "___dist/",
             assets: "___dist/assets/",
             js: "___dist/assets/js/",
+            vue: "___dist/assets/vue/",
             css: "___dist/assets/css/",
             fonts: "___dist/assets/fonts/",
             images: {

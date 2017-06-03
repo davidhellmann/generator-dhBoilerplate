@@ -5,6 +5,7 @@ function srcPathsJson(files = {}) {
         src: {
             assets: "___src/assets/",
             js: "___src/assets/js/",
+            vue: "___src/assets/vue/",
             css: "___src/assets/css/",
             fonts: "___src/assets/fonts/",
             images: {

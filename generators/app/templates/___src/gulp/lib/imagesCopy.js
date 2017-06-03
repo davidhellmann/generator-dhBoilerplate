@@ -1,9 +1,8 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import errorHandler from '../lib/errorHandler';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import errorHandler from '../lib/errorHandler'
 
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins()
 
 // Overwrite the Changed Check
 global.checkChanged = true
@@ -13,7 +12,7 @@ const copyImagesLib = (srcFiles, distFiles) => {
     .src(srcFiles)
     .on('error', errorHandler)
     .pipe(global.checkChanged === true ? $.changed(distFiles) : gutil.noop())
-    .pipe(gulp.dest(distFiles));
+    .pipe(gulp.dest(distFiles))
 }
 
-module.exports = copyImagesLib;
+module.exports = copyImagesLib

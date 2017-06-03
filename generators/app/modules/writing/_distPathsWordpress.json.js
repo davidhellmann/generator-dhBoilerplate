@@ -8,6 +8,7 @@ function wordpressDistPathsJson(files = {}) {
             browserSyncDir: "___dist/wp-content/themes/<%= projectName %>/",
             assets: "___dist/wp-content/themes/<%= projectName %>/assets/",
             js: "___dist/wp-content/themes/<%= projectName %>/assets/js/",
+            vue: "___dist/wp-content/themes/<%= projectName %>/assets/vue/",
             css: "___dist/wp-content/themes/<%= projectName %>/assets/css/",
             fonts: "___dist/wp-content/themes/<%= projectName %>/assets/fonts/",
             images: {

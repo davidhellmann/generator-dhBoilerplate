@@ -1,6 +1,6 @@
-import config from '../../config.json';
 import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import gulpLoadPlugins from 'gulp-load-plugins'
+import pkg from '../../package.json';
 
 const $ = gulpLoadPlugins()
 
@@ -9,11 +9,10 @@ global.checkChanged = true
 
 const copyFonts = () => {
   return gulp
-    .src(config.src.fonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
-    .pipe(global.checkChanged === true ? $.changed(config.dist.fonts) : gutil.noop())
-    .pipe(gulp.dest(config.dist.fonts));
+    .src(`${pkg.src.fonts}**/*.{ttf,woff,eof,svg,eot,woff2}`)
+    .pipe(global.checkChanged === true ? $.changed(pkg.dist.fonts) : gutil.noop())
+    .pipe(gulp.dest(pkg.dist.fonts))
 }
 
-gulp.task('copy:fonts', copyFonts);
-
-module.exports = { copyFonts }
+gulp.task('copy:fonts', copyFonts)
+module.exports = copyFonts

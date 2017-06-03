@@ -8,6 +8,7 @@ function craftCMSBetaDistPathsJson(files = {}) {
             browserSyncDir: "___dist/web/",
             assets: "___dist/web/assets/",
             js: "___dist/web/assets/js/",
+            vue: "___dist/web/assets/vue/",
             css: "___dist/web/assets/css/",
             fonts: "___dist/web/assets/fonts/",
             images: {

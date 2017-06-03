@@ -1,27 +1,27 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import pkg from '../../package.json'
 
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins()
 
 const buildModernizr = () => {
   return gulp
     .src([
-      config.src.css  + '**/*.scss',
-      config.src.js   + '**/*.js'
+      `${pkg.src.css}**/*.scss`,
+      `${pkg.src.js}**/*.js`
     ])
     .pipe($.modernizr({
       crawl: true,
-      excludeTests: config.modernizr.excludeTests,
-      options: config.modernizr.options,
-      tests: config.modernizr.tests
+      excludeTests: pkg.modernizr.excludeTests,
+      options: pkg.modernizr.options,
+      tests: pkg.modernizr.tests
     }))
     .pipe($.uglify())
     .pipe($.rename({
-      suffix: '-custom.min'
+      suffix: `-custom.min`
     }))
-    .pipe(gulp.dest(config.dist.js + 'vendor/'));
+    .pipe(gulp.dest(`${pkg.dist.js}vendor/`))
 }
 
-gulp.task('modernizr', buildModernizr);
-module.exports = buildModernizr;
+gulp.task('modernizr', buildModernizr)
+module.exports = buildModernizr

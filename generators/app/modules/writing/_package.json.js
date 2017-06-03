@@ -11,7 +11,8 @@ function basePackageJson(files = {}) {
                 email: this.props.authorEmail,
                 homepage: this.props.authorHomepage
             }
-        ]
+        ],
+        repository: "",
     })
 }
 

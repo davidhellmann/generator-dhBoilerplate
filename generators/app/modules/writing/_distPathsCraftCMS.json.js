@@ -8,6 +8,7 @@ function craftCMSDistPathsJson(files = {}) {
             browserSyncDir: "___dist/public/",
             assets: "___dist/public/assets/",
             js: "___dist/public/assets/js/",
+            vue: "___dist/public/assets/vue/",
             css: "___dist/public/assets/css/",
             fonts: "___dist/public/assets/fonts/",
             images: {

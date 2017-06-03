@@ -17,29 +17,54 @@ const Pleasent = require('pleasant-progress')
 const progress = new Pleasent()
 
 // Importing Modules
+// Default
 const promptsFunction = require('./modules/_prompts')
 const branding = require('./helpers/prompts/_branding')
 const basePackageJson = require('./modules/writing/_package.json')
 const baseConfigJson = require('./modules/writing/_config.json')
+
+// Src Paths
 const srcPathsJson = require('./modules/writing/_srcPaths.json')
-const craftCMSDistPathsJson = require('./modules/writing/_craftCMSDistPaths.json')
-const craftCMSBetaDistPathsJson = require('./modules/writing/_craftCMSBetaDistPaths.json')
-const prototypingDistPathsJson = require('./modules/writing/_prototypingDistPaths.json')
-const wordpressDistPathsJson = require('./modules/writing/_wordpressDistPaths.json')
+
+// Dist Paths
+const distPathsCraftCMSJson = require('./modules/writing/_distPathsCraftCMS.json')
+const distPathsCraftCMSBetaJson = require('./modules/writing/_distPathsCraftCMSBeta.json')
+const distPathsPrototypingJson = require('./modules/writing/_distPathsPrototyping.json')
+const distPathsWordpressJson = require('./modules/writing/_distPathsWordpress.json')
+
+// Browserlist
+const browserlistJson = require('./modules/writing/_browserslist.json')
+
+// Scripts
+const scriptsJson = require('./modules/writing/_scripts.json')
 
 // Generator
 module.exports = class extends Generator {
     constructor(args, opts) {
-        super(args, opts);
+        super(args, opts)
+
+        // Default
         this.promptsFunction = promptsFunction.bind(this)
+        this.branding = branding.bind(this)
         this.basePackageJson = basePackageJson.bind(this)
         this.baseConfigJson = baseConfigJson.bind(this)
-        this.srcPathsJson = srcPathsJson.bind(this)
-        this.craftCMSDistPathsJson = craftCMSDistPathsJson.bind(this)
-        this.craftCMSBetaDistPathsJson = craftCMSBetaDistPathsJson.bind(this)
-        this.prototypingDistPathsJson = prototypingDistPathsJson.bind(this)
-        this.wordpressDistPathsJson = wordpressDistPathsJson.bind(this)
 
+        // Src Paths
+        this.srcPathsJson = srcPathsJson.bind(this)
+
+        // Dist Paths
+        this.distPathsCraftCMSJson = distPathsCraftCMSJson.bind(this)
+        this.distPathsCraftCMSBetaJson = distPathsCraftCMSBetaJson.bind(this)
+        this.distPathsPrototypingJson = distPathsPrototypingJson.bind(this)
+        this.distPathsWordpressJson = distPathsWordpressJson.bind(this)
+
+        // Browserlist
+        this.browserlistJson = browserlistJson.bind(this)
+
+        // SCripts
+        this.scriptsJson = scriptsJson.bind(this)
+
+        // Package Json
         this.pkg = require('../../package.json')
     }
 
@@ -51,12 +76,12 @@ module.exports = class extends Generator {
 
         // Branding
         clear()
-        console.log(branding(this.pkg.version, this.pkg.author.name, this.pkg.author.email, this.pkg.repository.url))
+        console.log(this.branding(this.pkg.version, this.pkg.author.name, this.pkg.author.email, this.pkg.repository.url))
 
         this.log(`\n\n${chalk.magenta.bold(`  Prompting`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
 
         // Execute function so we get its returned array;
-        const prompts = promptsFunction()
+        const prompts = this.promptsFunction()
         return this.prompt(prompts).then(props => {
             // To access props later use this.props.someAnswer;
             this.props = props
@@ -71,22 +96,24 @@ module.exports = class extends Generator {
         const config = this.fs.readJSON(this.templatePath('_config.json'), {})
 
         // Write Stuff into package.json
-        this.basePackageJson({ pkg })
-        this.srcPathsJson({ pkg })
+        this.basePackageJson({pkg})
+        this.srcPathsJson({pkg})
+        this.browserlistJson({pkg})
+        this.scriptsJson({pkg})
 
         // Write Dist Paths
         if (this.props.projectUsage === 'craftCMS') {
-            this.craftCMSDistPathsJson({ pkg })
+            this.distPathsCraftCMSJson({pkg})
         } else if (this.props.projectUsage === 'craftCMSBeta') {
-            this.craftCMSBetaDistPathsJson({ pkg })
+            this.distPathsCraftCMSBetaJson({pkg})
         } else if (this.props.projectUsage === 'prototyping') {
-            this.prototypingDistPathsJson({ pkg })
+            this.distPathsPrototypingJson({pkg})
         } else if (this.props.projectUsage === 'wordpress') {
-            this.wordpressDistPathsJson({pkg})
+            this.distPathsWordpressJson({pkg})
         }
 
         // Write Stuff into config json
-        this.baseConfigJson({ config })
+        this.baseConfigJson({config})
 
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
         this.fs.writeJSON(this.destinationPath('config.json'), config)

@@ -1,31 +1,29 @@
-import config from '../../config.json';
-import gulp from 'gulp';
-import watch from 'gulp-watch';
-import gulpLoadPlugins from 'gulp-load-plugins';
+import gulp from 'gulp'
+import pkg from '../../package.json'
 
 const watchTask = () => {
 
   // watch templates
-  gulp.watch(config.src.templates + '**/*.{php,html,twig,rss}', ['templates'])
+  gulp.watch(`${pkg.src.templates}**/*.{php,html,twig,rss}`, ['compile:templates'])
 
 
-  <% if (projectUsage == 'Prototyping' ) { %>
+  <% if (projectUsage === 'prototyping' ) { %>
   // watch JSON
-  gulp.watch(config.src.dataDir + '**/*.json', ['templates'])
+  gulp.watch(`${pkg.src.dataDir}**/*.json`, ['compile:templates'])
   <% } %>
 
   // watch sass
-  gulp.watch(config.src.css + '**/*.scss', ['sass']);
-  gulp.watch(config.src.templates + '**/*.scss', ['sass']);
+  gulp.watch(`${pkg.src.css}**/*.scss`, ['compile:css'])
+  gulp.watch(`${pkg.src.templates}**/*.scss`, ['compile:css'])
 
   // watch images
-  gulp.watch(config.src.images.bitmap.base + '**/*.{png,jpeg,jpg,gif,webp}', ['images'])
+  gulp.watch(`${pkg.src.images.bitmap.base}**/*.{png,jpeg,jpg,gif,webp}`, ['copy:images'])
 
   // watch SVG Stuff
-  gulp.watch(config.src.images.svg.single + '**/*', ['svg-single']);
+  gulp.watch(`${pkg.src.images.svg.single}**/*`, ['copy:svg-single'])
 
-  gulp.watch(config.src.images.svg.sprite + '**/*', ['svg-sprite']);
+  gulp.watch(`${pkg.src.images.svg.sprite}**/*`, ['create:svg-sprite'])
 }
 
-gulp.task('watch', ['browser-sync'], watchTask);
-module.exports = watchTask;
+gulp.task('watch', ['browser-sync'], watchTask)
+module.exports = watchTask

@@ -1,12 +1,12 @@
 import gulp from 'gulp'
 import critical from 'critical'
 import yargs from 'yargs'
-import config from '../../config.json'
 import log from 'fancy-log'
 import chalk from 'chalk'
+import pkg from '../../package.json'
 
 const argv = yargs.argv
-const localURL = 'http://' + config.browsersync.proxy
+const localURL = 'http://' + pkg.browsersync.proxy
 const url = argv.url || localURL
 
 
@@ -20,8 +20,8 @@ function doSynchronousLoop(data, processData, done) {
             } else {
                 done()
             }
-        });
-        };
+        })
+    }
         loop(data, 0, processData, done)
     } else {
         done()
@@ -31,34 +31,34 @@ function doSynchronousLoop(data, processData, done) {
 // Process the critical path CSS one at a time
 function processCriticalCSS(element, i, callback) {
     const criticalSrc = url + element.url
-    const criticalDest = config.dist.markup + element.template + '_critical.min.css'
+    const criticalDest = pkg.dist.markup + element.template + '_critical.min.css'
     const criticalWidth = 1440
     const criticalHeight = 1280
-    log("-> Generating critical CSS: " + chalk.cyan(criticalSrc) + " -> " + chalk.magenta(criticalDest));
+    log(`-> Generating critical CSS: ${chalk.cyan(criticalSrc)} -> ${chalk.magenta(criticalDest)}`)
     critical.generate({
         src: criticalSrc,
         dest: criticalDest,
         inline: false,
         ignore: ['font-family'],
-        base: config.dist.markup,
+        base: pkg.dist.markup,
         css: [
-            config.dist.css + 'app.min.css',
+            pkg.dist.css + 'app.min.css',
         ],
         minify: true,
         width: criticalWidth,
         height: criticalHeight
     }, (err, output) => {
         callback()
-    });
+    })
 }
 
 // critical css task
 const criticalcss = (callback) => {
-    doSynchronousLoop(config.critical, processCriticalCSS, () => {
+    doSynchronousLoop(pkg.critical, processCriticalCSS, () => {
         // all done
         callback()
-    });
+    })
 }
 
-gulp.task('criticalcss', criticalcss)
-module.exports = {criticalcss}
+gulp.task('create:criticalcss', criticalcss)
+module.exports = criticalcss

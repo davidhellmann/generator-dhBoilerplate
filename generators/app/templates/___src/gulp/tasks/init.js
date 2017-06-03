@@ -1,23 +1,24 @@
-import gulp from 'gulp';
-import runSequence from 'run-sequence';
+import gulp from 'gulp'
+import runSequence from 'run-sequence'
 
 const initTask = (cb) => {
     runSequence(
         [
-            'templates',
-            'systemFiles',
+            'compile:templates',
+            'copy:systemFiles',
             'modernizr',
             'compile:js',
-            'sass',
+            'compile:css',
             'copy:fonts',
-            'inlineJS',
-            'images',
-            'svg-single',
-            'svg-sprite',
+            'create:inlineJS',
+            'copy:images',
+            'copy:svg-single',
+            'create:svg-sprite',
+            'create:favicons'
         ],
         cb
     )
 }
 
-gulp.task('init', initTask);
-module.exports = initTask;
+gulp.task('init', initTask)
+module.exports = initTask

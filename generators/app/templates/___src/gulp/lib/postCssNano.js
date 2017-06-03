@@ -1,5 +1,3 @@
-import config from '../../config.json';
-
 const postCSSNano = () => {
   return [
     require('cssnano')({
@@ -11,4 +9,4 @@ const postCSSNano = () => {
   ]
 }
 
-module.exports = postCSSNano;
+module.exports = postCSSNano
