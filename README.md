@@ -1,5 +1,7 @@
 # YO Generator dhBoilerplate
 
+[![Build Status](https://travis-ci.org/davidhellmann/generator-dhBoilerplate.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-dhBoilerplate)
+
 ```
               dddddddd
               d::::::dhhhhhhh
