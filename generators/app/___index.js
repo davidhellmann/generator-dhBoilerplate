@@ -120,66 +120,6 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
 
         return this.prompt([
             {
-                type: 'input',
-                name: 'projectName',
-                message: chalk.magenta.underline.bold('Project Name') + '\n\xb7 Please give the project a name (without Spaces): ',
-                // default: 'dhBoilerplate',
-                default: process.cwd().split('/').pop(-1).toLowerCase().replace(/[^a-zA-Z0-9]/g, ''),
-                validate: function(input) {
-                    // Do async stuff
-                    if (input.indexOf(' ') >= 0 || /[~`!#$%\^&*+=\[\]\\';,/{}|\\":<>\?]/g.test(input)) {
-                        // Pass the return value in the done callback
-                        console.log(chalk.styles.magenta.open + '\n No whitespaces or special-chars allowed!' + chalk.styles.magenta.close);
-                        return false;
-                    }
-                    return true;
-                }
-            }, {
-                type: 'input',
-                name: 'projectDescription',
-                message: chalk.magenta.underline.bold('Project Description') + '\n\xb7 Short description of the Project: ',
-                default: 'This is my super awesome project build with dh-Boilerplate.'
-            }, {
-                type: 'input',
-                name: 'proxyUrl',
-                message: 'Proxy URL',
-                message: chalk.magenta.underline.bold('Proxy URL') + '\n\xb7 The URL for local decelopment. Leave blank if you prefer localhost or something else.',
-                default: false
-            }, {
-                type: 'list',
-                name: 'projectUsage',
-                message: chalk.magenta.underline.bold('Project Usage') + '\n\xb7 Which purpose does this Project have? Choose the appropriate option: ',
-                choices: [
-                    'Craft CMS',
-                    'Craft CMS Beta',
-                    'WordPress',
-                    'Prototyping'
-                ]
-            }, {
-                when(answers) {
-                    return answers.projectUsage === 'WordPress' && wp_cli
-                },
-                type: 'confirm',
-                name: 'wordpressInstall',
-                message: chalk.magenta.underline.bold('WordPress Install') + '\n\xb7 Do you want to download the latest WordPress Version via WP-CLI?',
-                default: true
-            }, {
-                when(answers) {
-                    return answers.projectUsage === 'Craft CMS' && wget
-                },
-                type: 'confirm',
-                name: 'craftInstall',
-                message: chalk.magenta.underline.bold('Craft CMS Install') + '\n\xb7 Do you want to download the newest Craft Version via WGET?',
-                default: true
-            }, {
-                when(answers) {
-                    return answers.projectUsage === 'Craft CMS Beta' && composer
-                },
-                type: 'confirm',
-                name: 'craftBetaInstall',
-                message: chalk.magenta.underline.bold('Craft CMS Install') + '\n\xb7 Do you want to install the Craft 3 Beta version via Composer?',
-                default: true
-            }, {
                 type: 'confirm',
                 name: 'projectjQuery',
                 message: chalk.magenta.underline.bold('jQuery') + '\n\xb7 Do you want to use jQuery (newest Version)?',
@@ -189,12 +129,7 @@ const dhBoilerplateGenerator = yeoman.Base.extend({
                 name: 'projectVue',
                 message: chalk.magenta.underline.bold('Vue.js') + '\n\xb7 Do you want to use Vue.js?',
                 default: false
-            }, {
-                type: 'input',
-                name: 'projectVersion',
-                message: chalk.magenta.underline.bold('Project Version') + '\n\xb7 The Version Number: ',
-                default: '0.0.1'
-            }, {
+            },{
                 type: 'input',
                 name: 'projectAuthor',
                 message: chalk.magenta.underline.bold('Project Author') + '\n\xb7 Project Author or company: ',
