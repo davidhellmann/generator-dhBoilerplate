@@ -1,6 +1,6 @@
 # YO Generator dhBoilerplate
 
-[![Build Status](https://travis-ci.org/davidhellmann/generator-dhBoilerplate.svg?branch=master)](https://travis-ci.org/davidhellmann/generator-dhBoilerplate)
+[![Build Status](https://travis-ci.org/davidhellmann/generator-dhBoilerplate.svg?branch=feature/rewrite)](https://travis-ci.org/davidhellmann/generator-dhBoilerplate)
 
 ```
               dddddddd
