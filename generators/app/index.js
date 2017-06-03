@@ -1,13 +1,3 @@
-/*
- const util = require('util')
- const path = require('path')
- const mkdirp = require('mkdirp')
- const commandExists = require('command-exists')
- const clear = require('clear-terminal')
- const extend = require('extend')
- */
-
-
 const Generator = require('yeoman-generator')
 const chalk = require('chalk')
 const yosay = require('yosay')
@@ -27,7 +17,7 @@ const srcPathsJson = require('./modules/writing/_srcPaths.json')
 
 // Dist Paths
 const distPathsCraftCMSJson = require('./modules/writing/_distPathsCraftCMS.json')
-const distPathsCraftCMSBetaJson = require('./modules/writing/_distPathsCraftCMSBeta.json')
+const distPathsCraftCMS3Json = require('./modules/writing/_distPathsCraftCMS3.json')
 const distPathsPrototypingJson = require('./modules/writing/_distPathsPrototyping.json')
 const distPathsWordpressJson = require('./modules/writing/_distPathsWordpress.json')
 
@@ -62,7 +52,7 @@ module.exports = class extends Generator {
 
         // Dist Paths
         this.distPathsCraftCMSJson = distPathsCraftCMSJson.bind(this)
-        this.distPathsCraftCMSBetaJson = distPathsCraftCMSBetaJson.bind(this)
+        this.distPathsCraftCMS3Json = distPathsCraftCMS3Json.bind(this)
         this.distPathsPrototypingJson = distPathsPrototypingJson.bind(this)
         this.distPathsWordpressJson = distPathsWordpressJson.bind(this)
 
@@ -104,9 +94,12 @@ module.exports = class extends Generator {
             // To access props later use this.props.someAnswer;
             this.props = props
         })
+
+        console.log(this.props)
     }
 
     writing() {
+
         this.log(`\n\n${chalk.magenta.bold(`  Writing`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
 
         // Getting the template files
@@ -141,18 +134,166 @@ module.exports = class extends Generator {
         // Write Dist Paths
         if (this.props.projectType === 'craftCMS') {
             this.distPathsCraftCMSJson({pkg})
-        } else if (this.props.projectType === 'craftCMSBeta') {
-            this.distPathsCraftCMSBetaJson({pkg})
+        } else if (this.props.projectType === 'CraftCMS3') {
+            this.distPathsCraftCMS3Json({pkg})
         } else if (this.props.projectType === 'prototyping') {
             this.distPathsPrototypingJson({pkg})
         } else if (this.props.projectType === 'wordpress') {
             this.distPathsWordpressJson({pkg})
         }
 
+        // Wirte package.json
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+
+
+
+        /* -------------------------------------------------- */
+        /*    Moving Project Folders
+        /* -------------------------------------------------- */
+
+        this.log(`${chalk.cyan.bold(`  Moving Project Folders`)}`)
+        progress.start('Moving Project Folders')
+
+        // Folders with Yeoman Logic
+        const foldersTpl = [
+            // All
+            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/_system/', dest: '___src/_system/'},
+            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/gulp/', dest: './gulp/'},
+
+            // Craft CMS
+            { projectContext: ['craftCMS', 'craftCMS3'], src: '___src/templates/craftcms/', dest: '___src/templates/'},
+
+            // Prototyping
+            { projectContext: ['prototyping'], src: '___src/templates/prototyping/', dest: '___src/templates/'},
+
+            // WordPress
+            { projectContext: ['wordpress'], src: '___src/templates/wordpress/', dest: '___src/templates/'}
+        ]
+
+        for (let i = 0; i < foldersTpl.length; i += 1) {
+            if (foldersTpl[i].projectContext.includes(this.props.projectType)) {
+                this.fs.copyTpl(
+                    this.templatePath(foldersTpl[i].src),
+                    this.destinationPath(foldersTpl[i].dest),
+                    this.props
+                )
+            }
+        }
+
+        // Folders without Yeoman Logic
+        const folders = [
+            // All
+            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/assets/', dest: '___src/assets/'},
+
+            // Craft CMS
+            { projectContext: ['craftCMS', 'craftCMS3'], src: '___src/_imports/', dest: '___src/_imports/'},
+
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/public/uploads/', dest: '___dist/public/uploads'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/plugins/', dest: '___dist/craft/plugins'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/translations/', dest: '___dist/craft/translations'},
+
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/web/uploads/', dest: '___dist/web/uploads'},
+
+            // Prototyping
+            { projectContext: ['prototyping'], src: '___src/_data/', dest: '___src/_data/'}
+        ]
+
+        for (let i = 0; i < folders.length; i += 1) {
+            if (folders[i].projectContext.includes(this.props.projectType)) {
+                this.fs.copy(
+                    this.templatePath(folders[i].src),
+                    this.destinationPath(folders[i].dest)
+                )
+            }
+        }
+        progress.stop()
+
+
+
+        /* -------------------------------------------------- */
+        /*    Moving Project Files
+        /* -------------------------------------------------- */
+
+        this.log(`${chalk.cyan.bold(`  Moving Project Files`)}`)
+        progress.start('Moving Project Files')
+
+        const filesProject = [
+
+            // Craft CMS
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/imager/imager.php', dest: '___dist/craft/config/imager.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/db.php', dest: '___dist/craft/config/db.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/general.php', dest: '___dist/craft/config/general.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/public/index.php', dest: '___dist/public/index.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/.env.php', dest: '___dist/.env.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/example.env.php', dest: '___dist/example.env.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/.craft-cli.php', dest: '.craft-cli.php'},
+            { projectContext: ['craftCMS'], src: '___src/_craftCMS/redactor/custom.json', dest: '___dist/craft/config/redactor/custom.json'},
+
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/imager/imager.php', dest: '___dist/config/imager.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/db.php', dest: '___dist/config/db.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/general.php', dest: '___dist/config/general.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/web/index.php', dest: '___dist/web/index.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/volumes.php', dest: '___dist/config/volumes.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/craft', dest: '___dist/craft'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/.env.php', dest: '___dist/.env.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/example.env.php', dest: '___dist/example.env.php'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/plugins/craft3-plugins.sh', dest: '___dist/craft3-plugins.sh'},
+            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/redactor/custom.json', dest: '___dist/config/redactor/custom.json'}
+        ]
+
+        for (let i = 0; i < filesProject.length; i += 1) {
+            if (filesProject[i].projectContext.includes(this.props.projectType)) {
+                this.fs.copy(
+                    this.templatePath(filesProject[i].src),
+                    this.destinationPath(filesProject[i].dest)
+                )
+            }
+        }
+
+        progress.stop()
+
+
+
+        /* -------------------------------------------------- */
+        /*    Moving Enviroment Files
+        /* -------------------------------------------------- */
+
+        this.log(`${chalk.cyan.bold(`  Moving Enviroment Files`)}`)
+        progress.start('Moving Enviroment Files')
+
+        const filesEnviroment = [
+            { src: '_gulpfile.babel.js', dest: 'gulpfile.babel.js' },
+            { src: '_readme.md', dest: 'readme.md' },
+            { src: '_gitignore', dest: '.gitignore' },
+            { src: '_labels.json', dest: 'labels.json' },
+            { src: 'editorconfig', dest: '.editorconfig' },
+            { src: 'jshintrc', dest: '.jshintrc' },
+            { src: 'eslintrc', dest: '.eslintrc' },
+            { src: 'eslintignore', dest: '.eslintignore' },
+            { src: 'stylelintrc', dest: '.stylelintrc' },
+            { src: 'stylelintignore', dest: '.stylelintignore' },
+            { src: 'babelrc', dest: '.babelrc' }
+        ]
+
+        for (let i = 0; i < filesEnviroment.length; i += 1) {
+            this.fs.copyTpl(
+                this.templatePath(filesEnviroment[i].src),
+                this.destinationPath(filesEnviroment[i].dest),
+                this.props
+            )
+        }
+
+        progress.stop()
     }
 
     install() {
         this.log(`\n\n${chalk.magenta.bold(`  Install`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
+
+        // Install Craft CMS
+        if (this.props.craftCMSInstall) {
+            clear()
+            const intallCraftCMS = require('./modules/install/_instsallCraftCMS')
+            intallCraftCMS(this)
+        }
     }
 }

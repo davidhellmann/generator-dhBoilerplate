@@ -13,11 +13,11 @@ commandExists('composer')
         composer = false
     })
 
-const promptsCraftCMSBeta = [
+const promptsCraftCMS3 = [
     {
-        when: when('craftCMSBeta' && composer),
+        when: when('CraftCMS3' && composer),
         type: 'confirm',
-        name: 'craftCMSBetaInstall',
+        name: 'CraftCMS3Install',
         message: message({
             headline: 'Craft CMS Beta Installation',
             description: 'Do you want to install the Craft 3 Beta version via Composer?'
@@ -26,4 +26,4 @@ const promptsCraftCMSBeta = [
     }
 ]
 
-module.exports = promptsCraftCMSBeta
+module.exports = promptsCraftCMS3

@@ -1,7 +1,7 @@
 /* TEAM */
-Author:              <%= projectAuthor %>
-Contact:             <%= projectMail %>
-Website:             <%= projectUrl %>
+Author:              <%= authorName %>
+Contact:             <%= authorEmail %>
+Website:             <%= authorHomepage %>
 Twitter:             @davidhellmann
 Location:            Linz, Austria
 Contributions:       Design, HTML, Sass (CSS), JS, Twig

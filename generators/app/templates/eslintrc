@@ -1,18 +1,15 @@
 {
-
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-
   "extends" : [
     "airbnb",
     "vue",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
-
   "rules": {
     "arrow-body-style": 0,
     "block-scoped-var": 0,
@@ -66,11 +63,11 @@
     "spaced-comment": [2, "always"],
     "use-isnan": 2,
     "valid-jsdoc": [2, {
-      "prefer": { "returns": "return" },
-      "requireParamDescription": false,
-      "requireReturn": false,
-      "requireReturnDescription": false
-    }
+        "prefer": { "returns": "return" },
+        "requireParamDescription": false,
+        "requireReturn": false,
+        "requireReturnDescription": false
+      }
     ],
     "valid-typeof": 2,
     "vars-on-top": 1,

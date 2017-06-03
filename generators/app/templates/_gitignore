@@ -60,7 +60,7 @@ ___dist/public/assets
 ___dist/.env.php
 <% } %>
 
-<% if (projectType === 'craftCMSBeta' ) { %>
+<% if (projectType === 'craftCMS3' ) { %>
 # Craft CMS Beta
 ___dist/config/license.key
 ___dist/storage

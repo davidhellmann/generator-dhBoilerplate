@@ -1,6 +1,7 @@
 # <%= projectName %>
+## Version <%= projectVersion %>
 
-# Runs with YO Generator dhBoilerplate
+## Runs with YO Generator dhBoilerplate
 
 ```
               dddddddd
@@ -37,7 +38,7 @@ npm i generator-dhboilerplate -g
 ## Start Generator
 ```
 // Go to your project directory and do that
-yo
+yo dhboilerplate
 ```
 
 ## Description

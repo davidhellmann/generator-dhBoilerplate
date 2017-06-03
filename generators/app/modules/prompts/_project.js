@@ -86,7 +86,7 @@ const promptsProject = [
             },
             {
                 name: 'Craft CMS Beta',
-                value: 'craftCMSBeta'
+                value: 'craftCMS3'
             },
             {
                 name: 'Prototyping',
@@ -111,7 +111,8 @@ const promptsProject = [
             headline: 'Project jQuery',
             description: 'Do you want to use jQuery (newest Version)?'
         }),
-        default: false
+        default: false,
+        store: true
     },
     {
         type: 'confirm',

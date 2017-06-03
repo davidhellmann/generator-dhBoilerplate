@@ -1,4 +1,4 @@
-<% if (projectType === 'craftCMS' || 'craftCMSBeta' ) { %>
+<% if (projectType === 'craftCMS' || 'craftCMS3' ) { %>
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 

@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function craftCMSBetaDistPathsJson(files = {}) {
+function CraftCMS3DistPathsJson(files = {}) {
     extend(files.pkg, {
         dist: {
             base: "___dist/web/",
@@ -28,4 +28,4 @@ function craftCMSBetaDistPathsJson(files = {}) {
     })
 }
 
-module.exports = craftCMSBetaDistPathsJson
+module.exports = CraftCMS3DistPathsJson
