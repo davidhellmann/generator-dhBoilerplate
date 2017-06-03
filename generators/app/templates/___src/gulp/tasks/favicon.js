@@ -1,40 +1,39 @@
 import config from '../../config.json'
-import pkg from '../../package.json'
 import gulp from 'gulp'
 import gulpLoadPlugins from 'gulp-load-plugins'
 
 const $ = gulpLoadPlugins()
-const extension = <% if (projectUsage == 'WordPress' ) { %> 'php' <% } else { %> 'html' <% } %>
+const extension = <% if (projectUsage === 'wordpress' ) { %> '.php' <% } else { %> '.html' <% } %>
 
 const createFavicons = () => {
     return gulp
-        .src(config.src.images.bitmap.favicons + '_favicon.png')
+        .src(config.src.images.bitmap.favicons + config.favicons.srcImage)
         .pipe($.favicons({
-            appName: pkg.name,
-            appDescription: pkg.description,
-            developerName: pkg.author.name,
-            developerURL: pkg.author.url,
-            background: '#fff',
+            appName: config.favicons.appName,
+            appDescription: config.favicons.appDescription,
+            developerName: config.favicons.developerName,
+            developerURL: config.favicons.developerURL,
+            background: config.favicons.background,
             path: config.dist.images.bitmap.faviconPath,
-            url: '',
-            display: 'standalone',
-            orientation: 'any',
-            version: pkg.version,
-            logging: true,
-            online: false,
+            url: config.favicons.url,
+            display: config.favicons.display,
+            orientation: config.favicons.orientation,
+            version: config.favicons.version,
+            logging: config.favicons.logging,
+            online: config.favicons.online,
             icons: {
-                android: true,
-                appleIcon: true,
-                appleStartup: true,
-                coast: true,
-                favicons: true,
-                firefox: true,
-                opengraph: false,
-                twitter: false,
-                windows: true,
-                yandex: false
+                android: config.favicons.icons.android,
+                appleIcon: config.favicons.icons.appleIcon,
+                appleStartup: config.favicons.icons.appleStartup,
+                coast: config.favicons.icons.coast,
+                favicons: config.favicons.icons.favicons,
+                firefox: config.favicons.icons.firefox,
+                opengraph: config.favicons.icons.opengraph,
+                twitter: config.favicons.icons.twitter,
+                windows: config.favicons.icons.windows,
+                yandex: config.favicons.icons.yandex
             },
-            html: config.src.templates + '_partials/_header/_favicons.' + extension
+            html: config.src.templates + '_partials/_header/_favicons' + extension
         }))
         .pipe(gulp.dest(config.src.images.bitmap.favicons))
 }

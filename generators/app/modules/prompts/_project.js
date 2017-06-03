@@ -8,8 +8,8 @@ const promptsProject = [
         name: 'projectName',
         message: message({
             headline: 'Project Name',
-            description: 'Please provide a Project Name (without-spaces)',
-            defaultValue: 'my-aweseome-project'
+            description: 'Please provide a Project Name (without-spaces):',
+            defaultValue: 'Current Name:'
         }),
         default() {
             return process.cwd()
@@ -26,32 +26,35 @@ const promptsProject = [
                 return false
             }
             return true
-        }
+        },
+        store: true
     },
     {
         type: 'input',
         name: 'projectDescription',
         message: message({
             headline: 'Project Description',
-            description: 'Please provide a description for your project.',
-            defaultValue: 'This is my super awesome project build with dhBoilerplate.'
-        })
+            description: 'Please provide a description for your project:',
+            defaultValue: 'Current Description:'
+        }),
+        store: true
     },
     {
         type: 'input',
         name: 'projectVersion',
         message: message({
             headline: 'Project Version',
-            description: 'Define a Project Version.'
+            description: 'Define a Project Version:'
         }),
-        default: '0.0.1'
+        default: '0.0.1',
+        store: true
     },
     {
         type: 'input',
         name: 'projectProxy',
         message: message({
             headline: 'Project Proxy Domain',
-            description: 'Define a Project Proxy Domain. Default is your Project Name.'
+            description: 'Define a Project Proxy Domain. Default is your Project Name:'
         }),
         default(answers) {
             // If the
@@ -59,14 +62,15 @@ const promptsProject = [
                 return answers.projectName;
             }
             return `${answers.projectName}.dev`;
-        }
+        },
+        store: true
     },
     {
         type: 'list',
         name: 'projectUsage',
         message: message({
             headline: 'Project Type',
-            description: 'Choose your Project Type',
+            description: 'Choose your Project Type:',
             defaultValue: false
         }),
         choices: [
@@ -92,7 +96,8 @@ const promptsProject = [
                 value: 'vueApp'
             }
             */
-        ]
+        ],
+        store: true
     }
 ]
 

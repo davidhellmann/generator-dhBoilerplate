@@ -7,7 +7,7 @@ const promptsAuthor = [
         name: 'authorName',
         message: message({
             headline: 'Author Name',
-            description: 'Please provide your name',
+            description: 'Please provide your name:',
             defaultValue: false
         }),
         store: true
@@ -17,7 +17,7 @@ const promptsAuthor = [
         name: 'authorEmail',
         message: message({
             headline: 'Author E-Mail',
-            description: 'Please provide your e-mail',
+            description: 'Please provide your E-Mail:',
             defaultValue: false
         }),
         store: true
@@ -27,10 +27,10 @@ const promptsAuthor = [
         name: 'authorHomepage',
         message: message({
             headline: 'Author Homepage',
-            description: 'Note the Author Homepage',
+            description: 'Note the Author Homepage:',
             defaultValue: false,
-            store: true
-        })
+        }),
+        store: true
     }
 ]
 

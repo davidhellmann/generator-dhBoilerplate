@@ -1,14 +1,9 @@
 {
-  "title": "My Project",
-  "name": "My Projectname",
-  "description": "My Description",
-  "version": "0.0.1",
-  "license": "MIT",
-  "author": {
-    "name": "My Name",
-    "email": "My Mail",
-    "url": "My URL"
-  },
+  "name": "",
+  "version": "",
+  "description": "",
+  "authors": [],
+  "repository": "",
   "browserslist": [
     "> 5%",
     "last 2 versions",
@@ -116,11 +111,6 @@
     "watchify": "^3.7.0",
     "yargs": "^8.0.1"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
   "dependencies": {
     "animejs": "^2.0.0",
     "babel-polyfill": "^6.20.0",
@@ -142,14 +132,7 @@
     "velocity-animate": "^1.3.1",
     "waypoints": "^4.0.0",
     "webfontloader": "^1.6.26"
-  },
-  "browser": {},
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browserify-shim": {}
+  }
 }
 
 

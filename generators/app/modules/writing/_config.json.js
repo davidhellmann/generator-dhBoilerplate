@@ -4,7 +4,11 @@ function basePackageJson(files = {}) {
     extend(files.config, {
         proxy: this.props.projectProxy,
         projectType: this.props.projectUsage,
-        favicon: {
+        favicons: {
+            appName: this.props.projectName,
+            appDescription: this.props.projectDescription,
+            version: this.props.projectVersion,
+            url: this.props.projectProxy,
             developerName: this.props.authorName,
             developerURL: this.props.authorHomepage
         }
