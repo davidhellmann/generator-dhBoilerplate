@@ -12,7 +12,7 @@ function basePackageJson(files = {}) {
                 homepage: this.props.authorHomepage
             }
         ],
-        repository: ""
+        repository: ''
     })
 }
 

@@ -95,7 +95,7 @@ const promptsProject = [
             {
                 name: 'WordPress',
                 value: 'wordpress'
-            },
+            }
             /*
             {
                 name: 'Vue Application',

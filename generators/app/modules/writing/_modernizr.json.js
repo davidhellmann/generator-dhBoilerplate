@@ -2,20 +2,20 @@ const extend = require('deep-extend')
 
 function modernizrJson(files = {}) {
     extend(files.pkg, {
-        "modernizr": {
-            "excludeTests": [
-                "hidden"
+        modernizr: {
+            excludeTests: [
+                'hidden'
             ],
-            "options": [
-                "setClasses",
-                "addTest",
-                "fnBind"
+            options: [
+                'setClasses',
+                'addTest',
+                'fnBind'
             ],
-            "tests": [
-                "backgroundblendmode",
-                "bgsizecover",
-                "touchevents",
-                "rgba"
+            tests: [
+                'backgroundblendmode',
+                'bgsizecover',
+                'touchevents',
+                'rgba'
             ]
         }
     })

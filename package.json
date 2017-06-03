@@ -4,7 +4,7 @@
   "description": "Boilerplate made by David Hellmann #gulp #npm #craftcms #wordpress #vue #twig",
   "homepage": "https://davidhellmann.com",
   "license": "MIT",
-  "main": "generators/index.js",
+  "main": "generators/app/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/davidhellmann/generator-dhBoilerplate"
@@ -18,7 +18,7 @@
     "testEnvironment": "node"
   },
   "eslintConfig": {
-    "extends": "xo-space",
+    "extends": "airbnb",
     "env": {
       "jest": true,
       "node": true
@@ -26,6 +26,7 @@
   },
   "scripts": {
     "test": "jest",
+    "pretest": "eslint . --fix",
     "prepublish": "nsp check"
   },
   "files": [
@@ -59,7 +60,15 @@
   "devDependencies": {
     "eslint": "^3.18.0",
     "eslint-config-xo-space": "^0.16.0",
-    "jest": "^19.0.2",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-vue": "^2.0.1",
+    "jest": "^20.0.2",
     "jest-cli": "^20.0.0",
     "nsp": "^2.6.3",
     "yeoman-assert": "^3.0.0",

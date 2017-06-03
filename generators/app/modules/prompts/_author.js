@@ -28,7 +28,7 @@ const promptsAuthor = [
         message: message({
             headline: 'Author Homepage',
             description: 'Note the Author Homepage:',
-            defaultValue: false,
+            defaultValue: false
         }),
         store: true
     }

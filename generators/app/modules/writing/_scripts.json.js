@@ -3,26 +3,26 @@ const extend = require('deep-extend')
 function scriptsJson(files = {}) {
     extend(files.pkg, {
         scripts: {
-            "start": "gulp init",
-            "dev": "gulp",
-            "build": "gulp build",
-            "clean:dist": "gulp clean:dist",
-            "clean:templates": "gulp clean:templates",
-            "clean:images": "gulp clean:images",
-            "clean:js": "gulp clean:js",
-            "clean:css": "gulp clean:css",
-            "copy:fonts": "gulp copy:fonts",
-            "copy:images": "gulp 'copy:images",
-            "copy:svg": "gulp copy:svg",
-            "copy:svg-single": "gulp copy:svg-single",
-            "copy:svg-sprite": "gulp copy:svg-sprite",
-            "copy:systemFiles": "gulp copy:systemFiles",
-            "compile:css": "gulp compile:css",
-            "compile:js": "gulp compile:js",
-            "compile:templates": "gulp compile:templates",
-            "create:criticalcss": "gulp create:criticalcss",
-            "create:favicons": "gulp create:favicons",
-            "create:inlineJS": "gulp create:inlineJS"
+            start: 'gulp init',
+            dev: 'gulp',
+            build: 'gulp build',
+            'clean:dist': 'gulp clean:dist',
+            'clean:templates': 'gulp clean:templates',
+            'clean:images': 'gulp clean:images',
+            'clean:js': 'gulp clean:js',
+            'clean:css': 'gulp clean:css',
+            'copy:fonts': 'gulp copy:fonts',
+            'copy:images': 'gulp \'copy:images',
+            'copy:svg': 'gulp copy:svg',
+            'copy:svg-single': 'gulp copy:svg-single',
+            'copy:svg-sprite': 'gulp copy:svg-sprite',
+            'copy:systemFiles': 'gulp copy:systemFiles',
+            'compile:css': 'gulp compile:css',
+            'compile:js': 'gulp compile:js',
+            'compile:templates': 'gulp compile:templates',
+            'create:criticalcss': 'gulp create:criticalcss',
+            'create:favicons': 'gulp create:favicons',
+            'create:inlineJS': 'gulp create:inlineJS'
         }
     })
 }

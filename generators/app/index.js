@@ -4,6 +4,10 @@ const chalk = require('chalk')
 const yosay = require('yosay')
 const clear = require('clear-terminal')
 const Pleasent = require('pleasant-progress')
+const intallCraftCMS = require('./modules/install/_instsallCraftCMS')
+const intallCraftCMS3 = require('./modules/install/_instsallCraftCMS3')
+const installWordpress = require('./modules/install/_instsallWordpress')
+const _pkg = require('../../package.json')
 
 const progress = new Pleasent()
 
@@ -72,102 +76,112 @@ module.exports = class extends Generator {
         this.modernizrJson = modernizrJson.bind(this)
         this.scriptsJson = scriptsJson.bind(this)
         this.vueJSJson = vueJSJson.bind(this)
-
-        // Package Json
-        this.pkg = require('../../package.json')
     }
 
     prompting() {
         // Have Yeoman greet the user.
-        this.log(yosay(
-            `Welcome to the impressive ${chalk.magenta('dhBoilerplate')} generator!`
-        ))
+        this.log(yosay(`Welcome to the impressive ${chalk.magenta('dhBoilerplate')} generator!`))
 
         // Branding
-        clear()
-        console.log(this.branding(this.pkg.version, this.pkg.author.name, this.pkg.author.email, this.pkg.repository.url))
+        this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
 
-        this.log(`\n\n${chalk.magenta.bold(`  Prompting`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Prompting')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
 
         // Execute function so we get its returned array;
         const prompts = this.promptsFunction()
-        return this.prompt(prompts).then(props => {
+        return this.prompt(prompts).then((props) => {
             // To access props later use this.props.someAnswer;
             this.props = props
         })
-
-        console.log(this.props)
     }
 
     writing() {
-
-        this.log(`\n\n${chalk.magenta.bold(`  Writing`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Writing')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
 
         // Getting the template files
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
 
         // Write Settings into packackge.json
-        this.basePackageJson({pkg})
-        this.browserlistJson({pkg})
-        this.browserSyncJson({pkg})
-        this.criticalCSSJson({pkg})
-        this.cssJson({pkg})
-        this.dependenciesJson({pkg})
-        this.devDependenciesJson({pkg})
-        this.faviconsJson({pkg})
-        this.filesJson({pkg})
-        this.inlineJSJson({pkg})
-        this.minifyJson({pkg})
-        this.modernizrJson({pkg})
-        this.scriptsJson({pkg})
-        this.srcPathsJson({pkg})
+        this.basePackageJson({ pkg })
+        this.browserlistJson({ pkg })
+        this.browserSyncJson({ pkg })
+        this.criticalCSSJson({ pkg })
+        this.cssJson({ pkg })
+        this.dependenciesJson({ pkg })
+        this.devDependenciesJson({ pkg })
+        this.faviconsJson({ pkg })
+        this.filesJson({ pkg })
+        this.inlineJSJson({ pkg })
+        this.minifyJson({ pkg })
+        this.modernizrJson({ pkg })
+        this.scriptsJson({ pkg })
+        this.srcPathsJson({ pkg })
 
         // If jQuery True
         if (this.props.projectJquery === true) {
-            this.jqueryJson({pkg})
+            this.jqueryJson({ pkg })
         }
 
         // If VueJS True
         if (this.props.projectVue === true) {
-            this.vueJSJson({pkg})
+            this.vueJSJson({ pkg })
         }
 
         // Write Dist Paths
         if (this.props.projectType === 'craftCMS') {
-            this.distPathsCraftCMSJson({pkg})
+            this.distPathsCraftCMSJson({ pkg })
         } else if (this.props.projectType === 'craftCMS3') {
-            this.distPathsCraftCMS3Json({pkg})
+            this.distPathsCraftCMS3Json({ pkg })
         } else if (this.props.projectType === 'prototyping') {
-            this.distPathsPrototypingJson({pkg})
+            this.distPathsPrototypingJson({ pkg })
         } else if (this.props.projectType === 'wordpress') {
-            this.distPathsWordpressJson({pkg})
+            this.distPathsWordpressJson({ pkg })
         }
 
         // Wirte package.json
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
 
-
         /* -------------------------------------------------- */
         /*    Moving Project Folders
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold(`  Moving Project Folders`)}`)
+        this.log(`${chalk.cyan.bold('  Moving Project Folders')}`)
         progress.start('Moving Project Folders')
 
         // Folders with Yeoman Logic
         const foldersTpl = [
             // All
-            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/_system/', dest: '___src/_system/' },
-            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/gulp/', dest: './gulp/' },
+            {
+                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
+                src: '___src/_system/',
+                dest: '___src/_system/'
+            },
+            {
+                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
+                src: '___src/gulp/',
+                dest: './gulp/'
+            },
 
             // Craft CMS
-            {projectContext: ['craftCMS', 'craftCMS3'], src: '___src/templates/craftcms/', dest: '___src/templates/'},
+            {
+                projectContext: ['craftCMS', 'craftCMS3'],
+                src: '___src/templates/craftcms/',
+                dest: '___src/templates/'
+            },
 
             // Prototyping
-            {projectContext: ['prototyping'], src: '___src/templates/prototyping/', dest: '___src/templates/'},
+            {
+                projectContext: ['prototyping'],
+                src: '___src/templates/prototyping/',
+                dest: '___src/templates/'
+            },
 
             // WordPress
-            { projectContext: ['wordpress'], src: '___src/templates/wordpress/', dest: '___src/templates/' }
+            {
+                projectContext: ['wordpress'],
+                src: '___src/templates/wordpress/',
+                dest: '___src/templates/'
+            }
         ]
 
         for (let i = 0; i < foldersTpl.length; i += 1) {
@@ -183,19 +197,47 @@ module.exports = class extends Generator {
         // Folders without Yeoman Logic
         const folders = [
             // All
-            { projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'], src: '___src/assets/', dest: '___src/assets/' },
+            {
+                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
+                src: '___src/assets/',
+                dest: '___src/assets/'
+            },
 
             // Craft CMS
-            {projectContext: ['craftCMS', 'craftCMS3'], src: '___src/_imports/', dest: '___src/_imports/'},
+            {
+                projectContext: ['craftCMS', 'craftCMS3'],
+                src: '___src/_imports/',
+                dest: '___src/_imports/'
+            },
 
-            {projectContext: ['craftCMS'], src: '___src/_craftCMS/public/uploads/', dest: '___dist/public/uploads'},
-            {projectContext: ['craftCMS'], src: '___src/_craftCMS/plugins/', dest: '___dist/craft/plugins'},
-            {projectContext: ['craftCMS'], src: '___src/_craftCMS/translations/', dest: '___dist/craft/translations'},
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/public/uploads/',
+                dest: '___dist/public/uploads'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/plugins/',
+                dest: '___dist/craft/plugins'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/translations/',
+                dest: '___dist/craft/translations'
+            },
 
-            {projectContext: ['craftCMS3'], src: '___src/_craftCMS3/web/uploads/', dest: '___dist/web/uploads'},
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/web/uploads/',
+                dest: '___dist/web/uploads'
+            },
 
             // Prototyping
-            {projectContext: ['prototyping'], src: '___src/_data/', dest: '___src/_data/'}
+            {
+                projectContext: ['prototyping'],
+                src: '___src/_data/',
+                dest: '___src/_data/'
+            }
         ]
 
         for (let i = 0; i < folders.length; i += 1) {
@@ -208,36 +250,107 @@ module.exports = class extends Generator {
         }
         progress.stop()
 
-
         /* -------------------------------------------------- */
         /*    Moving Project Files
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold(`  Moving Project Files`)}`)
+        this.log(`${chalk.cyan.bold('  Moving Project Files')}`)
         progress.start('Moving Project Files')
 
         const filesProject = [
 
             // Craft CMS
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/imager/imager.php', dest: '___dist/craft/config/imager.php' },
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/db.php', dest: '___dist/craft/config/db.php'},
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/general.php', dest: '___dist/craft/config/general.php' },
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/public/index.php', dest: '___dist/public/index.php'},
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/.env.php', dest: '___dist/.env.php'},
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/example.env.php', dest: '___dist/example.env.php'},
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/.craft-cli.php', dest: '.craft-cli.php'},
-            { projectContext: ['craftCMS'], src: '___src/_craftCMS/redactor/custom.json', dest: '___dist/craft/config/redactor/custom.json' },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/imager/imager.php',
+                dest: '___dist/craft/config/imager.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/db.php',
+                dest: '___dist/craft/config/db.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/general.php',
+                dest: '___dist/craft/config/general.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/public/index.php',
+                dest: '___dist/public/index.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/.env.php',
+                dest: '___dist/.env.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/example.env.php',
+                dest: '___dist/example.env.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/.craft-cli.php',
+                dest: '.craft-cli.php'
+            },
+            {
+                projectContext: ['craftCMS'],
+                src: '___src/_craftCMS/redactor/custom.json',
+                dest: '___dist/craft/config/redactor/custom.json'
+            },
 
-            { projectContext: ['craftCMS3'],src: '___src/_craftCMS3/imager/imager.php', dest: '___dist/config/imager.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/db.php', dest: '___dist/config/db.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/general.php', dest: '___dist/config/general.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/web/index.php', dest: '___dist/web/index.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/volumes.php', dest: '___dist/config/volumes.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/craft', dest: '___dist/craft' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/.env.php', dest: '___dist/.env.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/example.env.php', dest: '___dist/example.env.php' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/plugins/craft3-plugins.sh', dest: '___dist/craft3-plugins.sh' },
-            { projectContext: ['craftCMS3'], src: '___src/_craftCMS3/redactor/custom.json', dest: '___dist/config/redactor/custom.json' }
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/imager/imager.php',
+                dest: '___dist/config/imager.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/db.php',
+                dest: '___dist/config/db.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/general.php',
+                dest: '___dist/config/general.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/web/index.php',
+                dest: '___dist/web/index.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/volumes.php',
+                dest: '___dist/config/volumes.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/craft',
+                dest: '___dist/craft'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/.env.php',
+                dest: '___dist/.env.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/example.env.php',
+                dest: '___dist/example.env.php'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/plugins/craft3-plugins.sh',
+                dest: '___dist/craft3-plugins.sh'
+            },
+            {
+                projectContext: ['craftCMS3'],
+                src: '___src/_craftCMS3/redactor/custom.json',
+                dest: '___dist/config/redactor/custom.json'
+            }
         ]
 
         for (let i = 0; i < filesProject.length; i += 1) {
@@ -251,26 +364,58 @@ module.exports = class extends Generator {
 
         progress.stop()
 
-
         /* -------------------------------------------------- */
         /*    Moving Enviroment Files
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold(`  Moving Enviroment Files`)}`)
+        this.log(`${chalk.cyan.bold('  Moving Enviroment Files')}`)
         progress.start('Moving Enviroment Files')
 
         const filesEnviroment = [
-            {src: '_gulpfile.babel.js', dest: 'gulpfile.babel.js'},
-            {src: '_readme.md', dest: 'readme.md'},
-            {src: '_gitignore', dest: '.gitignore'},
-            {src: '_labels.json', dest: 'labels.json'},
-            {src: 'editorconfig', dest: '.editorconfig'},
-            {src: 'jshintrc', dest: '.jshintrc'},
-            {src: 'eslintrc', dest: '.eslintrc'},
-            {src: 'eslintignore', dest: '.eslintignore'},
-            {src: 'stylelintrc', dest: '.stylelintrc'},
-            {src: 'stylelintignore', dest: '.stylelintignore'},
-            {src: 'babelrc', dest: '.babelrc'}
+            {
+                src: '_gulpfile.babel.js',
+                dest: 'gulpfile.babel.js'
+            },
+            {
+                src: '_readme.md',
+                dest: 'readme.md'
+            },
+            {
+                src: '_gitignore',
+                dest: '.gitignore'
+            },
+            {
+                src: '_labels.json',
+                dest: 'labels.json'
+            },
+            {
+                src: 'editorconfig',
+                dest: '.editorconfig'
+            },
+            {
+                src: 'jshintrc',
+                dest: '.jshintrc'
+            },
+            {
+                src: 'eslintrc',
+                dest: '.eslintrc'
+            },
+            {
+                src: 'eslintignore',
+                dest: '.eslintignore'
+            },
+            {
+                src: 'stylelintrc',
+                dest: '.stylelintrc'
+            },
+            {
+                src: 'stylelintignore',
+                dest: '.stylelintignore'
+            },
+            {
+                src: 'babelrc',
+                dest: '.babelrc'
+            }
         ]
 
         for (let i = 0; i < filesEnviroment.length; i += 1) {
@@ -288,40 +433,35 @@ module.exports = class extends Generator {
         // Install Craft CMS
         if (this.props.craftCMSInstall) {
             clear()
-            const intallCraftCMS = require('./modules/install/_instsallCraftCMS')
             intallCraftCMS(this)
         }
 
         // Install Craft CMS 3
         if (this.props.craftCMS3Install) {
             clear()
-            const intallCraftCMS3 = require('./modules/install/_instsallCraftCMS3')
             intallCraftCMS3(this)
         }
 
         // Install WordPress
         if (this.props.wordpressInstall) {
             clear()
-            const installWordpress = require('./modules/install/_instsallWordpress')
             installWordpress(this)
         }
     }
 
     install() {
         clear()
-        this.log(`\n\n${chalk.magenta.bold(`  Install`)}\n  ${chalk.magenta.bold(`-----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Install')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
 
         const isYarn = commandExists('yarn')
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
         this.log(`${chalk.magenta('  Download all the NPM Modules…')}`)
         this.log(`${chalk.yellow('  Give me a moment to do that……')}`)
-        this.log(`${chalk.magenta(`\n  -----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(`${chalk.magenta('\n  -----------------------------------------------------------------------------------------------')}\n`)
         this.installDependencies({
             yarn: isYarn,
             npm: !isYarn,
-            bower: false,
-            //skipInstall: this.options['skip-install']
+            bower: false
+            // SkipInstall: this.options['skip-install']
         })
-
     }
 }

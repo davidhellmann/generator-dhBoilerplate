@@ -1,9 +1,7 @@
-'use strict';
 /* eslint-disable new-cap */
-var path = require('path')
-var assert = require('yeoman-assert')
-var helpers = require('yeoman-test')
-const fs = require('fs')
+const path = require('path')
+const assert = require('yeoman-assert')
+const helpers = require('yeoman-test')
 
 // Define some variables
 const project = {
@@ -11,18 +9,19 @@ const project = {
     description: 'A small Test Driven Generator',
     version: '0.0.1',
     proxy: 'boilerplate-test.dev'
-};
+}
 const author = {
     name: 'David Hellmann',
     email: 'davidhellmann.com@gmail.com',
     homepage: 'https://davidhellmann.com'
-};
+}
 
 const run = () => helpers.run(path.join(__dirname, '../generators/app'))
-
+/* eslint-disable */
 describe('dh-boilerplate', () => {
     beforeAll(() => {
         return run()
+
             .withPrompts({
                 projectName: project.name,
                 projectVersion: project.version,
@@ -41,7 +40,7 @@ describe('dh-boilerplate', () => {
                 name: project.name,
                 description: project.description,
                 version: project.version,
-                authors: [{name: author.name, email: author.email, homepage: author.homepage}]
+                authors: [{ name: author.name, email: author.email, homepage: author.homepage }]
             })
         })
 
@@ -52,7 +51,7 @@ describe('dh-boilerplate', () => {
         })*/
     })
 
-    /*describe('It is a Craft Project 🎉', () => {
+    /* Describe('It is a Craft Project 🎉', () => {
         it('fills config.json with project type craft', async () => {
             await run()
                 .withPrompts({
@@ -71,5 +70,6 @@ describe('dh-boilerplate', () => {
                 'src/views/parts/site-scripts.html'
             ])
         })
-    })*/
+    }) */
+    /* eslint-enable */
 })
