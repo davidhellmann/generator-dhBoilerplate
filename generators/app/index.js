@@ -1,21 +1,35 @@
+// Dependencies
 const Generator = require('yeoman-generator')
 const commandExists = require('command-exists').sync
 const chalk = require('chalk')
 const yosay = require('yosay')
 const clear = require('clear-terminal')
 const Pleasent = require('pleasant-progress')
-const intallCraftCMS = require('./modules/install/_instsallCraftCMS')
-const intallCraftCMS3 = require('./modules/install/_instsallCraftCMS3')
-const installWordpress = require('./modules/install/_instsallWordpress')
+
+// Installs
+const intallCraftCMS = require('./modules/installs/_instsallCraftCMS')
+const intallCraftCMS3 = require('./modules/installs/_instsallCraftCMS3')
+const installWordpress = require('./modules/installs/_instsallWordpress')
+
+// Package
 const _pkg = require('../../package.json')
+
+// Files
+const filesEnviroment = require('./config/_files-enviroment.json')
+const filesProject = require('./config/_files-project.json')
+const foldersProject = require('./config/_folders-project.json')
+const foldersProjectTpl = require('./config/_folders-project-tpl.json')
 
 const progress = new Pleasent()
 
 // Importing Modules
 // Default
 const promptsFunction = require('./modules/_prompts')
-const branding = require('./helpers/prompts/_branding')
 const basePackageJson = require('./modules/writings/_package.json')
+
+// Messages
+const branding = require('./helpers/messages/_branding')
+const line = require('./helpers/messages/_line')
 
 // Src Paths
 const srcPathsJson = require('./modules/writings/_srcPaths.json')
@@ -49,8 +63,11 @@ module.exports = class extends Generator {
 
         // Default
         this.promptsFunction = promptsFunction.bind(this)
-        this.branding = branding.bind(this)
         this.basePackageJson = basePackageJson.bind(this)
+
+        // Messages
+        this.branding = branding.bind(this)
+        this.line = line.bind(this)
 
         // Src Paths
         this.srcPathsJson = srcPathsJson.bind(this)
@@ -83,10 +100,12 @@ module.exports = class extends Generator {
         this.log(yosay(`Welcome to the impressive ${chalk.magenta('dhBoilerplate')} generator!`))
 
         // Branding
+        clear()
         this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
 
-        this.log(`\n\n${chalk.magenta('  Prompting')}\n`)
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(`${chalk.magenta('  Prompting')}`)
+        this.log(this.line())
+
 
         // Execute function so we get its returned array;
         const prompts = this.promptsFunction()
@@ -98,7 +117,7 @@ module.exports = class extends Generator {
 
     writing() {
         this.log(`\n\n${chalk.magenta('  Writing')}\n`)
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(this.line())
 
         // Getting the template files
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
@@ -151,118 +170,22 @@ module.exports = class extends Generator {
         progress.start('Moving Project Folders')
 
         // Folders with Yeoman Logic
-        const foldersTpl = [
-            // All
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/assets/css/',
-                dest: '___src/assets/css/'
-            },
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/assets/js/',
-                dest: '___src/assets/js/'
-            },
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/_system/',
-                dest: '___src/_system/'
-            },
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/gulp/',
-                dest: './gulp/'
-            },
-
-            // Craft CMS
-            {
-                projectContext: ['craftCMS', 'craftCMS3'],
-                src: '___src/templates/craftcms/',
-                dest: '___src/templates/'
-            },
-
-            // Prototyping
-            {
-                projectContext: ['prototyping'],
-                src: '___src/templates/prototyping/',
-                dest: '___src/templates/'
-            },
-
-            // WordPress
-            {
-                projectContext: ['wordpress'],
-                src: '___src/templates/wordpress/',
-                dest: '___src/templates/'
-            }
-        ]
-
-        for (let i = 0; i < foldersTpl.length; i += 1) {
-            if (foldersTpl[i].projectContext.includes(this.props.projectType)) {
+        for (let i = 0; i < foldersProjectTpl.files.length; i += 1) {
+            if (foldersProjectTpl.files[i].projectContext.includes(this.props.projectType)) {
                 this.fs.copyTpl(
-                    this.templatePath(foldersTpl[i].src),
-                    this.destinationPath(foldersTpl[i].dest),
+                    this.templatePath(foldersProjectTpl.files[i].src),
+                    this.destinationPath(foldersProjectTpl.files[i].dest),
                     this.props
                 )
             }
         }
 
         // Folders without Yeoman Logic
-        const folders = [
-            // All
-
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/assets/fonts/',
-                dest: '___src/assets/fonts/'
-            },
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/assets/images/',
-                dest: '___src/assets/images/'
-            },
-
-            // Craft CMS
-            {
-                projectContext: ['craftCMS', 'craftCMS3'],
-                src: '___src/_imports/',
-                dest: '___src/_imports/'
-            },
-
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/public/uploads/',
-                dest: '___dist/public/uploads'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/plugins/',
-                dest: '___dist/craft/plugins'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/translations/',
-                dest: '___dist/craft/translations'
-            },
-
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/web/uploads/',
-                dest: '___dist/web/uploads'
-            },
-
-            // Prototyping
-            {
-                projectContext: ['prototyping'],
-                src: '___src/_data/',
-                dest: '___src/_data/'
-            }
-        ]
-
-        for (let i = 0; i < folders.length; i += 1) {
-            if (folders[i].projectContext.includes(this.props.projectType)) {
+        for (let i = 0; i < foldersProject.files.length; i += 1) {
+            if (foldersProject.files[i].projectContext.includes(this.props.projectType)) {
                 this.fs.copy(
-                    this.templatePath(folders[i].src),
-                    this.destinationPath(folders[i].dest)
+                    this.templatePath(foldersProject.files[i].src),
+                    this.destinationPath(foldersProject.files[i].dest)
                 )
             }
         }
@@ -275,107 +198,11 @@ module.exports = class extends Generator {
         this.log(`${chalk.cyan('  Moving Project Files')}`)
         progress.start('Moving Project Files')
 
-        const filesProject = [
-
-            // Craft CMS
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/imager/imager.php',
-                dest: '___dist/craft/config/imager.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/db.php',
-                dest: '___dist/craft/config/db.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/general.php',
-                dest: '___dist/craft/config/general.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/public/index.php',
-                dest: '___dist/public/index.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/.env.php',
-                dest: '___dist/.env.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/example.env.php',
-                dest: '___dist/example.env.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/.craft-cli.php',
-                dest: '.craft-cli.php'
-            },
-            {
-                projectContext: ['craftCMS'],
-                src: '___src/_craftCMS/redactor/custom.json',
-                dest: '___dist/craft/config/redactor/custom.json'
-            },
-
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/imager/imager.php',
-                dest: '___dist/config/imager.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/db.php',
-                dest: '___dist/config/db.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/general.php',
-                dest: '___dist/config/general.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/web/index.php',
-                dest: '___dist/web/index.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/volumes.php',
-                dest: '___dist/config/volumes.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/craft',
-                dest: '___dist/craft'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/.env.php',
-                dest: '___dist/.env.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/example.env.php',
-                dest: '___dist/example.env.php'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/plugins/craft3-plugins.sh',
-                dest: '___dist/craft3-plugins.sh'
-            },
-            {
-                projectContext: ['craftCMS3'],
-                src: '___src/_craftCMS3/redactor/custom.json',
-                dest: '___dist/config/redactor/custom.json'
-            }
-        ]
-
-        for (let i = 0; i < filesProject.length; i += 1) {
-            if (filesProject[i].projectContext.includes(this.props.projectType)) {
+        for (let i = 0; i < filesProject.files.length; i += 1) {
+            if (filesProject.files[i].projectContext.includes(this.props.projectType)) {
                 this.fs.copy(
-                    this.templatePath(filesProject[i].src),
-                    this.destinationPath(filesProject[i].dest)
+                    this.templatePath(filesProject.files[i].src),
+                    this.destinationPath(filesProject.files[i].dest)
                 )
             }
         }
@@ -389,57 +216,10 @@ module.exports = class extends Generator {
         this.log(`${chalk.cyan(`  Moving Enviroment Files`)}`)
         progress.start(`Moving Enviroment Files`)
 
-        const filesEnviroment = [
-            {
-                src: '_gulpfile.babel.js',
-                dest: 'gulpfile.babel.js'
-            },
-            {
-                src: '_readme.md',
-                dest: 'readme.md'
-            },
-            {
-                src: '_gitignore',
-                dest: '.gitignore'
-            },
-            {
-                src: '_labels.json',
-                dest: 'labels.json'
-            },
-            {
-                src: 'editorconfig',
-                dest: '.editorconfig'
-            },
-            {
-                src: 'jshintrc',
-                dest: '.jshintrc'
-            },
-            {
-                src: 'eslintrc',
-                dest: '.eslintrc'
-            },
-            {
-                src: 'eslintignore',
-                dest: '.eslintignore'
-            },
-            {
-                src: 'stylelintrc',
-                dest: '.stylelintrc'
-            },
-            {
-                src: 'stylelintignore',
-                dest: '.stylelintignore'
-            },
-            {
-                src: 'babelrc',
-                dest: '.babelrc'
-            }
-        ]
-
-        for (let i = 0; i < filesEnviroment.length; i += 1) {
+        for (let i = 0; i < filesEnviroment.files.length; i += 1) {
             this.fs.copyTpl(
-                this.templatePath(filesEnviroment[i].src),
-                this.destinationPath(filesEnviroment[i].dest),
+                this.templatePath(filesEnviroment.files[i].src),
+                this.destinationPath(filesEnviroment.files[i].dest),
                 this.props
             )
         }
@@ -470,12 +250,12 @@ module.exports = class extends Generator {
     install() {
         clear()
         this.log(`\n\n${chalk.magenta('  Install')}\n`)
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(this.line())
 
         const isYarn = commandExists('yarn')
         this.log(`${chalk.magenta(`  Download all the NPM Modules…`)}`)
         this.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
+        this.log(this.line())
         this.installDependencies({
             yarn: isYarn,
             npm: !isYarn,
