@@ -20,8 +20,7 @@ function dependenciesJson(files = {}) {
             'svg-injector-2': '^2.0.0',
             svgxuse: '^1.1.23',
             'velocity-animate': '^1.3.1',
-            waypoints: '^4.0.0',
-            webfontloader: '^1.6.26'
+            waypoints: '^4.0.0'
         }
     })
 }
