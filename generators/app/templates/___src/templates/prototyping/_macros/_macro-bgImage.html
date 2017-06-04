@@ -1,0 +1,111 @@
+{# Set Attributes
+  {% set options = {
+    classname: 'm-bgImage',
+    sizes: [
+      { width: 1400 },
+      { width: 1100 },
+      { width: 800 },
+      { width: 500 },
+      { width: 300 },
+      { width: 30 }
+    ],
+    quality: 80,
+    mode: 'crop',
+    position: false,
+    ratio: false,
+    externalSource: false,
+    dominantColor: true
+  } %}
+
+  macroImage.bgImage(image, options)
+#}
+
+{% macro bgImage(image, options) %}
+  
+  {% set defaults = {
+  classname: 'm-bgImage',
+  sizes: [
+  { width: 1400 },
+  { width: 1100 },
+  { width: 800 },
+  { width: 500 },
+  { width: 300 }
+  ],
+  quality: 95,
+  mode: 'crop',
+  position: false,
+  ratio: false,
+  externalSource: false,
+  dominantColor: true
+  } %}
+  
+  {% set options = options ? defaults|merge(options) : defaults %}
+  
+  {% if image %}
+    
+    {# -- Ratio -- #}
+    {% if options.ratio %}
+      {% set ratio = options.ratio|split(':') %}
+      {% set base64Ratio = options.ratio|split(':') %}
+      {% set ratio = ratio|first/ratio|last %}
+    {% elseif options.ratio == false and options.externalSource == false %}
+      {% set imageSize = image.width ~ ':' ~ image.height %}
+      {% set base64Ratio = imageSize|split(':') %}
+      {% set ratio = '' %}
+    {% else %}
+      {% set ratio = '' %}
+    {% endif %}
+    
+    {# -- Set Position -- #}
+    {% if options.position %}
+      {% set position = options.position %}
+    {% elseif image.settingsFocalPoint %}
+      {% set position = image.settingsFocalPoint %}
+    {% else %}
+      {% set position = '50% 50%' %}
+    {% endif %}
+    
+    {# -- Define global variables -- #}
+    {% set imageSettings = {
+    jpegQuality: options.quality,
+    mode: options.mode,
+    position: position,
+    ratio: ratio
+    } %}
+    
+    {# -- BG Image -- #}
+    {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
+    
+    {# -- External Source --#}
+    {# Reset the Base64 Size to the First Image Dimensions  #}
+    {% if options.externalSource %}
+      {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
+      {% set base64Ratio = base64Ratio|split(':') %}
+    {% endif %}
+    
+    {# -- Dominatn Color -- #}
+    {% if options.dominantColor %}
+      {% if image.pluginPreparseDominantColor is defined and image.pluginPreparseDominantColor is not empty %}
+        {% set dominantColor = image.pluginPreparseDominantColor %}
+      {% else %}
+        {% set dominantImages = craft.imager.transformImage(image, [{width: 30}], { ratio: ratio, position: position, jpegQuality: 10 }) %}
+        {% set dominantColor = craft.imager.getDominantColor(dominantImages|last, 20) %}
+      {% endif %}
+    {% else %}
+      {% set dominantColor = '' %}
+    {% endif %}
+    
+    <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%;">
+      <figure class="{{ options.classname }}  lazyload"
+              style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
+                background-position: {{ position|trim("'") }};"
+              data-bgset="{{ craft.imager.srcset(images) }}"
+              data-sizes="auto">
+      </figure>
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}
+

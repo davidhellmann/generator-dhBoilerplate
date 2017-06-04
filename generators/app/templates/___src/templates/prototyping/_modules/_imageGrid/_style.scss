@@ -1,0 +1,49 @@
+/* -------------------------------------------------- */
+/*    Image Grid
+/* -------------------------------------------------- */
+
+.m-imageGridWrapper {
+  /* No Style until now */
+}
+
+.m-imageGrid {
+  @include make-row();
+
+  &__figure {
+    @include make-col();
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__caption {
+    margin-top: s(1);
+  }
+
+  @include media('>=s') {
+    &--3columns {
+      .m-imageGrid__figure {
+        @include make-col(4);
+      }
+    }
+
+    &--2columns {
+      .m-imageGrid__figure {
+        @include make-col(6);
+      }
+    }
+
+    &--1columns {
+      .m-imageGrid__figure {
+        @include make-col(12);
+      }
+    }
+  }
+}

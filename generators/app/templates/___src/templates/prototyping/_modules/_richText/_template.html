@@ -1,0 +1,32 @@
+{#
+  Rich Text
+  =========
+#}
+
+{# -- Set Vars -- #}
+{% set cbClassname = name is defined and name is not empty ? name : 'm-richText' %}
+{% set cbRichText = data.singleRichText is defined ? data.singleRichText %}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: cbRichText ? cbClassname : 'm-richText',
+  text: cbRichText ? cbRichText : 'Rich Text Field',
+} %}
+
+{# -- Set Options -- #}
+{% if cbRichText and options is not defined %}
+  {% set options = defaults %}
+{% else %}
+  {% set options = options ? defaults|merge(options) : defaults %}
+{% endif %}
+
+{# -- Modul -- #}
+<div class="o-col  {{ options.classname ~ 'Wrapper' }}">
+  <div class="{{ options.classname }}">
+    {{ options.text | raw }}
+  </div>
+</div>
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}
+

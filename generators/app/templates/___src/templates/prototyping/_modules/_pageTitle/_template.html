@@ -1,0 +1,36 @@
+{#
+  Page Title
+  ==========
+#}
+
+{# Set Vars #}
+{% set defaults = {
+  classname: 'm-pageTitle',
+  object: object is defined ? object : entry,
+  size: 'h1',
+  link: false
+} %}
+
+{% set options = options is defined ? defaults|merge(options) : defaults %}
+
+{# Modul #}
+{% if options.object.singleSeoTitle is defined and options.object.singleSeoTitle != '' %}
+  {% set headline = options.object.singleSeoTitle %}
+{% else %}
+  {% set headline = options.object.title %}
+{% endif %}
+
+<div class="o-col  {{ options.classname ~ 'Wrapper' }}">
+  <{{ options.size }} class="{{ options.classname }}">
+  {% if options.link %}
+  <a class="{{ options.classname ~ '__link' }}" href="{{ options.link }}">
+    {% endif %}
+    {{ headline|nl2br }}
+    {% if options.link %}
+  </a>
+  {% endif %}
+</{{ options.size }}>
+</div>
+
+{# -- Reset Options Variable -- #}
+{% set options = null %}

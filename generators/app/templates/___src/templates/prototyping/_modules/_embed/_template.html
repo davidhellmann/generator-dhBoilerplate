@@ -1,0 +1,29 @@
+{#
+  Embed
+  =====
+#}
+
+{# Set Vars #}
+{% set classname = name is defined and name != '' ? name : 'm-embed' %}
+{% set embedCode = data.singleEmbedCode is defined ? data.singleEmbedCode %}
+{% set settings = data.settingsEmbed is defined ? data.settingsEmbed %}
+{% set video = settings.video is defined ? settings.video %}
+{% set embedPosition = settings.embedPosition is defined ? '  ' ~ classname ~ '--align-' ~ settings.embedPosition %}
+{% set embedWidth = settings.embedWidth is defined ? '  ' ~ classname ~ '--width-' ~ settings.embedWidth %}
+
+{# Modul #}
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <div class="{{ classname }}{{ embedPosition }}{{ embedWidth }}" role="presentation">
+    {% if video %}
+      <div class="{{ classname ~ '__item' }}">
+        <div class="{{ classname ~ '__video' }}  o-ratio  o-ratio--16-9">
+          {{ embedCode|raw }}
+        </div>
+      </div>
+    {% else %}
+      <div class="{{ classname ~ '__item' }}">
+        {{ embedCode|raw }}
+      </div>
+    {% endif %}
+  </div>
+</div>

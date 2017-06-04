@@ -1,0 +1,69 @@
+/* -------------------------------------------------- */
+/*    Embed
+/* -------------------------------------------------- */
+
+.m-embedWrapper {
+  /* empty */
+}
+
+.m-embed {
+  @include make-row();
+  @include make-vr();
+  display: block;
+
+  &__item {
+    @include make-col(12);
+  }
+
+  &__video {
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Embed Position
+  &--align-left {
+    .m-embed__item {
+      float: left;
+    }
+  }
+
+  &--align-center {
+    .m-embed__item {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &--align-right {
+    .m-embed__item {
+      float: right;
+    }
+  }
+
+  // Embed Width
+  &--width-full {
+    @include media('>=m') {
+      .m-embed__item {
+        @include make-col(12);
+      }
+    }
+  }
+
+  &--width-threeQuarter {
+    @include media('>=m') {
+      .m-embed__item {
+        @include make-col(8);
+      }
+    }
+  }
+
+  &--width-half {
+    @include media('>=m') {
+      .m-embed__item {
+        @include make-col(6);
+      }
+    }
+  }
+}
