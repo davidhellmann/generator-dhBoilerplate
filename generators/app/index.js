@@ -475,7 +475,7 @@ module.exports = class extends Generator {
         const isYarn = commandExists('yarn')
         this.log(`${chalk.magenta(`  Download all the NPM Modules…`)}`)
         this.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
-        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`}\n`)
+        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
         this.installDependencies({
             yarn: isYarn,
             npm: !isYarn,
