@@ -2,8 +2,8 @@
 //  GoToUrl
 //  --------------------------------------------------------
 
-function goToUrl(newLocation) {
-  window.location = newLocation
+const goToUrl = (newLocation) => {
+    window.location = newLocation
 }
 
-export default goToUrl
+module.exports = goToUrl

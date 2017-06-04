@@ -16,7 +16,7 @@ const createCookie = (name, value, days) => {
     document.cookie = `${name} = ${value} ${expires} ; path=/`
 }
 
-export { createCookie as createCookie }
+module.exports = createCookie()
 
 
 // Read cookie
@@ -35,7 +35,7 @@ const readCookie = (name) => {
     return null
 }
 
-export { readCookie as readCookie }
+module.exports = readCookie()
 
 
 // Delete Cookie
@@ -43,4 +43,4 @@ const deleteCookie = (name) => {
     createCookie(name, '', -1)
 }
 
-export { deleteCookie as deleteCookie }
+module.exports = deleteCookie

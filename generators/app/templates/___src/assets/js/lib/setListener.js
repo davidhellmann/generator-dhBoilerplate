@@ -14,4 +14,4 @@ const setListener = (listener) => {
   return newEvent
 }
 
-export { setListener as setListener }
+module.exports = setListener

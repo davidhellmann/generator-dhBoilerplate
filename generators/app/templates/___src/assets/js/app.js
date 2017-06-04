@@ -17,14 +17,14 @@ import './scripts/example'
 import './scripts/bodyclass'
 import './scripts/lazyloading'
 import './scripts/fontfaceobserver'
-import './scripts/cookieconsent'
 // import './scripts/smoothScroll'
-// import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 
 <% if (projectType !== 'wordpress' ) { %>
-// Content Builder Modules
+// Modules
 import '../../templates/_modules/_accordion/_main'
+import '../../templates/_modules/_cookiebar/_main'
+import '../../templates/_modules/_contentToggle/_main'
 import '../../templates/_modules/_imageSlider/_main'
 import '../../templates/_modules/_imageGallery/_main'
 <% } %>
