@@ -85,7 +85,8 @@ module.exports = class extends Generator {
         // Branding
         this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
 
-        this.log(`\n\n${chalk.magenta.bold('  Prompting')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Prompting')}\n`)
+        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
 
         // Execute function so we get its returned array;
         const prompts = this.promptsFunction()
@@ -96,46 +97,47 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        this.log(`\n\n${chalk.magenta.bold('  Writing')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Writing')}\n`)
+        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
 
         // Getting the template files
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
 
         // Write Settings into packackge.json
-        this.basePackageJson({ pkg })
-        this.browserlistJson({ pkg })
-        this.browserSyncJson({ pkg })
-        this.criticalCSSJson({ pkg })
-        this.cssJson({ pkg })
-        this.dependenciesJson({ pkg })
-        this.devDependenciesJson({ pkg })
-        this.faviconsJson({ pkg })
-        this.filesJson({ pkg })
-        this.inlineJSJson({ pkg })
-        this.minifyJson({ pkg })
-        this.modernizrJson({ pkg })
-        this.scriptsJson({ pkg })
-        this.srcPathsJson({ pkg })
+        this.basePackageJson({pkg})
+        this.browserlistJson({pkg})
+        this.browserSyncJson({pkg})
+        this.criticalCSSJson({pkg})
+        this.cssJson({pkg})
+        this.dependenciesJson({pkg})
+        this.devDependenciesJson({pkg})
+        this.faviconsJson({pkg})
+        this.filesJson({pkg})
+        this.inlineJSJson({pkg})
+        this.minifyJson({pkg})
+        this.modernizrJson({pkg})
+        this.scriptsJson({pkg})
+        this.srcPathsJson({pkg})
 
         // If jQuery True
         if (this.props.projectJquery === true) {
-            this.jqueryJson({ pkg })
+            this.jqueryJson({pkg})
         }
 
         // If VueJS True
         if (this.props.projectVue === true) {
-            this.vueJSJson({ pkg })
+            this.vueJSJson({pkg})
         }
 
         // Write Dist Paths
         if (this.props.projectType === 'craftCMS') {
-            this.distPathsCraftCMSJson({ pkg })
+            this.distPathsCraftCMSJson({pkg})
         } else if (this.props.projectType === 'craftCMS3') {
-            this.distPathsCraftCMS3Json({ pkg })
+            this.distPathsCraftCMS3Json({pkg})
         } else if (this.props.projectType === 'prototyping') {
-            this.distPathsPrototypingJson({ pkg })
+            this.distPathsPrototypingJson({pkg})
         } else if (this.props.projectType === 'wordpress') {
-            this.distPathsWordpressJson({ pkg })
+            this.distPathsWordpressJson({pkg})
         }
 
         // Wirte package.json
@@ -467,7 +469,8 @@ module.exports = class extends Generator {
 
     install() {
         clear()
-        this.log(`\n\n${chalk.magenta.bold('  Install')}\n  ${chalk.magenta.bold('-----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta.bold('  Install')}\n`)
+        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
 
         const isYarn = commandExists('yarn')
         this.log(`${chalk.magenta('  Download all the NPM Modules…')}`)
