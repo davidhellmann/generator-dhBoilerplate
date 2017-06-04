@@ -103,5 +103,5 @@ const compileCss = () => {
         }))
 }
 
-gulp.task('compile.css', compileCss)
+gulp.task('compile:css', compileCss)
 module.exports = compileCss

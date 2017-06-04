@@ -18,7 +18,7 @@ const bundleVar = () => {
         debug: true
       }
     )
-        .transform(babelify.pkgure({ presets: ["es2015"]}))
+        .transform(babelify.configure({ presets: ["es2015"]}))
 
         <% if (projectVue === true ) { %>
         .transform(aliasify,{
@@ -34,7 +34,7 @@ const bundleVar = () => {
     return browserify(
         pkg.src.js + pkg.files.jsApp.srcName
     )
-        .transform(babelify.pkgure({ presets: ["es2015"]}))
+        .transform(babelify.configure({ presets: ["es2015"]}))
 
         <% if (projectVue === true ) { %>
         .transform(aliasify,{

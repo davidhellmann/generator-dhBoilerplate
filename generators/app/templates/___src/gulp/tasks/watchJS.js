@@ -20,7 +20,7 @@ const watchJs = () => {
   .plugin(hmr)
   <% } %>
   .transform(
-    babelify.pkgure({presets: ['es2015']})
+    babelify.configure({presets: ['es2015']})
   )
   <% if (projectVue === true ) { %>
   .transform(aliasify,{

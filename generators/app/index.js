@@ -153,6 +153,11 @@ module.exports = class extends Generator {
             // All
             {
                 projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
+                src: '___src/assets/',
+                dest: '___src/assets/'
+            },
+            {
+                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
                 src: '___src/_system/',
                 dest: '___src/_system/'
             },
@@ -196,13 +201,6 @@ module.exports = class extends Generator {
 
         // Folders without Yeoman Logic
         const folders = [
-            // All
-            {
-                projectContext: ['craftCMS', 'craftCMS3', 'prototyping', 'wordpress'],
-                src: '___src/assets/',
-                dest: '___src/assets/'
-            },
-
             // Craft CMS
             {
                 projectContext: ['craftCMS', 'craftCMS3'],
