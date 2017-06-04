@@ -1,5 +1,5 @@
 <template>
-  <div class="vue__inner">
+  <div class="vue">
     <h2>Hello World</h2>
     <p>
       {{ message }}
