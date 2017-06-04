@@ -15,32 +15,32 @@ const progress = new Pleasent()
 // Default
 const promptsFunction = require('./modules/_prompts')
 const branding = require('./helpers/prompts/_branding')
-const basePackageJson = require('./modules/writing/_package.json')
+const basePackageJson = require('./modules/writings/_package.json')
 
 // Src Paths
-const srcPathsJson = require('./modules/writing/_srcPaths.json')
+const srcPathsJson = require('./modules/writings/_srcPaths.json')
 
 // Dist Paths
-const distPathsCraftCMSJson = require('./modules/writing/_distPathsCraftCMS.json')
-const distPathsCraftCMS3Json = require('./modules/writing/_distPathsCraftCMS3.json')
-const distPathsPrototypingJson = require('./modules/writing/_distPathsPrototyping.json')
-const distPathsWordpressJson = require('./modules/writing/_distPathsWordpress.json')
+const distPathsCraftCMSJson = require('./modules/writings/_distPathsCraftCMS.json')
+const distPathsCraftCMS3Json = require('./modules/writings/_distPathsCraftCMS3.json')
+const distPathsPrototypingJson = require('./modules/writings/_distPathsPrototyping.json')
+const distPathsWordpressJson = require('./modules/writings/_distPathsWordpress.json')
 
 // Settings
-const browserlistJson = require('./modules/writing/_browserslist.json')
-const browserSyncJson = require('./modules/writing/_browserSync.json')
-const criticalCSSJson = require('./modules/writing/_criticalCSS.json')
-const cssJson = require('./modules/writing/_css.json')
-const dependenciesJson = require('./modules/writing/_dependencies.json')
-const devDependenciesJson = require('./modules/writing/_devDependencies.json')
-const faviconsJson = require('./modules/writing/_favicons.json')
-const filesJson = require('./modules/writing/_files.json')
-const inlineJSJson = require('./modules/writing/_inlineJS.json')
-const jqueryJson = require('./modules/writing/_jquery.json')
-const minifyJson = require('./modules/writing/_minify.json')
-const modernizrJson = require('./modules/writing/_modernizr.json')
-const scriptsJson = require('./modules/writing/_scripts.json')
-const vueJSJson = require('./modules/writing/_vueJS.json')
+const browserlistJson = require('./modules/writings/_browserslist.json')
+const browserSyncJson = require('./modules/writings/_browserSync.json')
+const criticalCSSJson = require('./modules/writings/_criticalCSS.json')
+const cssJson = require('./modules/writings/_css.json')
+const dependenciesJson = require('./modules/writings/_dependencies.json')
+const devDependenciesJson = require('./modules/writings/_devDependencies.json')
+const faviconsJson = require('./modules/writings/_favicons.json')
+const filesJson = require('./modules/writings/_files.json')
+const inlineJSJson = require('./modules/writings/_inlineJS.json')
+const jqueryJson = require('./modules/writings/_jquery.json')
+const minifyJson = require('./modules/writings/_minify.json')
+const modernizrJson = require('./modules/writings/_modernizr.json')
+const scriptsJson = require('./modules/writings/_scripts.json')
+const vueJSJson = require('./modules/writings/_vueJS.json')
 
 // Generator
 module.exports = class extends Generator {
@@ -85,8 +85,8 @@ module.exports = class extends Generator {
         // Branding
         this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
 
-        this.log(`\n\n${chalk.magenta.bold('  Prompting')}\n`)
-        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta('  Prompting')}\n`)
+        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
 
         // Execute function so we get its returned array;
         const prompts = this.promptsFunction()
@@ -97,8 +97,8 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        this.log(`\n\n${chalk.magenta.bold('  Writing')}\n`)
-        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta('  Writing')}\n`)
+        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
 
         // Getting the template files
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
@@ -147,7 +147,7 @@ module.exports = class extends Generator {
         /*    Moving Project Folders
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold('  Moving Project Folders')}`)
+        this.log(`${chalk.cyan('  Moving Project Folders')}`)
         progress.start('Moving Project Folders')
 
         // Folders with Yeoman Logic
@@ -270,9 +270,9 @@ module.exports = class extends Generator {
 
         /* -------------------------------------------------- */
         /*    Moving Project Files
-         /* -------------------------------------------------- */
+        /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold('  Moving Project Files')}`)
+        this.log(`${chalk.cyan('  Moving Project Files')}`)
         progress.start('Moving Project Files')
 
         const filesProject = [
@@ -386,8 +386,8 @@ module.exports = class extends Generator {
         /*    Moving Enviroment Files
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan.bold('  Moving Enviroment Files')}`)
-        progress.start('Moving Enviroment Files')
+        this.log(`${chalk.cyan(`  Moving Enviroment Files`)}`)
+        progress.start(`Moving Enviroment Files`)
 
         const filesEnviroment = [
             {
@@ -469,13 +469,13 @@ module.exports = class extends Generator {
 
     install() {
         clear()
-        this.log(`\n\n${chalk.magenta.bold('  Install')}\n`)
-        this.log(`${chalk.magenta.bold('  -----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`\n\n${chalk.magenta('  Install')}\n`)
+        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
 
         const isYarn = commandExists('yarn')
-        this.log(`${chalk.magenta('  Download all the NPM Modules…')}`)
-        this.log(`${chalk.yellow('  Give me a moment to do that……')}`)
-        this.log(`${chalk.magenta('\n  -----------------------------------------------------------------------------------------------')}\n`)
+        this.log(`${chalk.magenta(`  Download all the NPM Modules…`)}`)
+        this.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
+        this.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`}\n`)
         this.installDependencies({
             yarn: isYarn,
             npm: !isYarn,

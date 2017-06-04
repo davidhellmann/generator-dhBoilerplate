@@ -4,10 +4,10 @@
 const chalk = require('chalk')
 
 const installCraftCMS = (context) => {
-    context.log(`${chalk.magenta('  -----------------------------------------------------------------------------------------------')}\n`)
-    context.log(`${chalk.magenta('  Download the latest Craft CMS Version…')}`)
-    context.log(`${chalk.yellow('  Give me a moment to do that……')}\n`)
-    context.log(`${chalk.magenta('  -----------------------------------------------------------------------------------------------')}\n`)
+    context.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
+    context.log(`${chalk.magenta(`  Download the latest Craft CMS Version…`)}`)
+    context.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
+    context.log(`${chalk.magenta(`  -----------------------------------------------------------------------------------------------`)}\n`)
 
     const done = context.async()
     const self = context
