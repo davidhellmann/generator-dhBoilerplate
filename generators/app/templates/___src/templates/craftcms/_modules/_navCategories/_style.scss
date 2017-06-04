@@ -20,6 +20,7 @@
     opacity: 1;
   }
 
+  /* stylelint-disable */
   .flickity-viewport {
     @extend .t-overflowTouch;
 
@@ -27,8 +28,9 @@
       display: none;
     }
   }
+  /* stylelint-enable */
 
-  #{$root}__slide {
+  &__slide {
     @include make-vr();
     display: inline-block;
     margin-right: s(4);
@@ -46,7 +48,7 @@
     }
   }
 
-  #{$root}__link {
+  &__link {
     display: inline-block;
 
     &::before {

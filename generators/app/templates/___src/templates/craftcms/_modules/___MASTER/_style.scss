@@ -2,20 +2,11 @@
 /*    MASTER
 /* -------------------------------------------------- */
 
-// Wrapper for Layout
-.m-masterWrapper {
-  $root: &;
-
-  #{$root}__XXX {
-    // empty
-  }
-}
-
 // Modul
 .m-master {
   $root: &;
 
-  #{$root}__XXX {
+  &__inner {
     // empty
   }
 }

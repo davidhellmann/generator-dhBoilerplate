@@ -3,5 +3,10 @@
 /* -------------------------------------------------- */
 
 .m-appFooter {
+  $root: &;
   background-color: c('black-10');
+
+  &__inner {
+    // empty
+  }
 }
