@@ -22,7 +22,8 @@ const promptsProject = [
             // Do async stuff
             if (input.indexOf(' ') >= 0 || /[~`!#$%^&*+=[\]\\';,/{}|\\":<>?]/g.test(input)) {
                 // Pass the return value in the done callback
-                return `${chalk.styles.red.open}No whitespaces or special-chars allowed!${chalk.styles.red.close}`
+                return `${chalk.styles.red.open}
+No whitespaces or special-chars allowed!${chalk.styles.red.close}`
             }
             return true
         }
@@ -62,9 +63,11 @@ const promptsProject = [
         },
         validate(input) {
             if (!input.match(false)) {
-                if (input.match(/(http|https):\/\//g) || !input.match(/^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
+                if (input.match(/(http|https):\/\//g) ||
+                    !input.match(/^([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$/g)) {
                     // Pass the return value in the done callback
-                    return `${chalk.styles.red.open}Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
+                    return `${chalk.styles.red.open}
+Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
                 }
             }
             // Pass the return value in the done callback

@@ -6,8 +6,8 @@ const line = require('../../helpers/messages/_line')
 
 const installCraftCMS = (context) => {
     context.log(line())
-    context.log(`${chalk.magenta(`  Download the latest Craft CMS Version…`)}`)
-    context.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
+    context.log(`${chalk.magenta('  Download the latest Craft CMS Version…')}`)
+    context.log(`${chalk.yellow('  Give me a moment to do that……')}\n`)
     context.log(line())
 
     const done = context.async()

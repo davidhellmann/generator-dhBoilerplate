@@ -9,7 +9,6 @@
 // Polyfills
 import 'babel-polyfill'
 import 'svgxuse'
-// import 'eqcss'
 
 // Scripts
 import './scripts/example'
@@ -23,7 +22,7 @@ import './scripts/cookieconsent'
 // import './scripts/photoswipe'
 // import './scripts/waypoints.anime'
 
-<% if (projectType === 'craftCMS' ) { %>
+<% if (projectType !== 'wordpress' ) { %>
 // Content Builder Modules
 import '../../templates/_modules/_accordion/_main'
 import '../../templates/_modules/_imageSlider/_main'

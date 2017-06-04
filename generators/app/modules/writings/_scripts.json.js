@@ -15,7 +15,7 @@ function scriptsJson(files = {}) {
             'copy:images': 'gulp \'copy:images',
             'copy:svg': 'gulp copy:svg',
             'copy:svg-single': 'gulp copy:svg-single',
-            'copy:svg-sprite': 'gulp copy:svg-sprite',
+            'create:svg-sprite': 'gulp create:svg-sprite',
             'copy:systemFiles': 'gulp copy:systemFiles',
             'compile:css': 'gulp compile:css',
             'compile:js': 'gulp compile:js',

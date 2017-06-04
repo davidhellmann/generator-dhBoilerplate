@@ -11,7 +11,8 @@ const installCraftCMS3 = (context) => {
     context.log(line())
 
     const done = context.async()
-    context.spawnCommand('composer', ['create-project', 'craftcms/craft', '___dist', '-s', 'beta']).on('close', done)
+    context.spawnCommand('composer', ['create-project', 'craftcms/craft', '___dist', '-s', 'beta'])
+        .on('close', done)
 }
 
 module.exports = installCraftCMS3

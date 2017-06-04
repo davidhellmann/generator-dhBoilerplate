@@ -115,7 +115,7 @@ module.exports = class extends Generator {
         })
     }
 
-    writing() {
+    writePackageJson() {
         this.log(`\n\n${chalk.magenta('  Writing')}\n`)
         this.log(this.line())
 
@@ -123,45 +123,47 @@ module.exports = class extends Generator {
         const pkg = this.fs.readJSON(this.templatePath('_package.json'), {})
 
         // Write Settings into packackge.json
-        this.basePackageJson({pkg})
-        this.browserlistJson({pkg})
-        this.browserSyncJson({pkg})
-        this.criticalCSSJson({pkg})
-        this.cssJson({pkg})
-        this.dependenciesJson({pkg})
-        this.devDependenciesJson({pkg})
-        this.faviconsJson({pkg})
-        this.filesJson({pkg})
-        this.inlineJSJson({pkg})
-        this.minifyJson({pkg})
-        this.modernizrJson({pkg})
-        this.scriptsJson({pkg})
-        this.srcPathsJson({pkg})
+        this.basePackageJson({ pkg })
+        this.browserlistJson({ pkg })
+        this.browserSyncJson({ pkg })
+        this.criticalCSSJson({ pkg })
+        this.cssJson({ pkg })
+        this.dependenciesJson({ pkg })
+        this.devDependenciesJson({ pkg })
+        this.faviconsJson({ pkg })
+        this.filesJson({ pkg })
+        this.inlineJSJson({ pkg })
+        this.minifyJson({ pkg })
+        this.modernizrJson({ pkg })
+        this.scriptsJson({ pkg })
+        this.srcPathsJson({ pkg })
 
         // If jQuery True
         if (this.props.projectJquery === true) {
-            this.jqueryJson({pkg})
+            this.jqueryJson({ pkg })
         }
 
         // If VueJS True
         if (this.props.projectVue === true) {
-            this.vueJSJson({pkg})
+            this.vueJSJson({ pkg })
         }
 
         // Write Dist Paths
         if (this.props.projectType === 'craftCMS') {
-            this.distPathsCraftCMSJson({pkg})
+            this.distPathsCraftCMSJson({ pkg })
         } else if (this.props.projectType === 'craftCMS3') {
-            this.distPathsCraftCMS3Json({pkg})
+            this.distPathsCraftCMS3Json({ pkg })
         } else if (this.props.projectType === 'prototyping') {
-            this.distPathsPrototypingJson({pkg})
+            this.distPathsPrototypingJson({ pkg })
         } else if (this.props.projectType === 'wordpress') {
-            this.distPathsWordpressJson({pkg})
+            this.distPathsWordpressJson({ pkg })
         }
 
         // Wirte package.json
         this.fs.writeJSON(this.destinationPath('package.json'), pkg)
+    }
 
+    movingProjectFolders() {
         /* -------------------------------------------------- */
         /*    Moving Project Folders
          /* -------------------------------------------------- */
@@ -190,10 +192,12 @@ module.exports = class extends Generator {
             }
         }
         progress.stop()
+    }
 
+    movingProjectFiles() {
         /* -------------------------------------------------- */
         /*    Moving Project Files
-        /* -------------------------------------------------- */
+         /* -------------------------------------------------- */
 
         this.log(`${chalk.cyan('  Moving Project Files')}`)
         progress.start('Moving Project Files')
@@ -208,13 +212,15 @@ module.exports = class extends Generator {
         }
 
         progress.stop()
+    }
 
+    movingEnviromentFiles() {
         /* -------------------------------------------------- */
         /*    Moving Enviroment Files
          /* -------------------------------------------------- */
 
-        this.log(`${chalk.cyan(`  Moving Enviroment Files`)}`)
-        progress.start(`Moving Enviroment Files`)
+        this.log(`${chalk.cyan('  Moving Enviroment Files')}`)
+        progress.start('Moving Enviroment Files')
 
         for (let i = 0; i < filesEnviroment.files.length; i += 1) {
             this.fs.copyTpl(
@@ -225,6 +231,20 @@ module.exports = class extends Generator {
         }
 
         progress.stop()
+    }
+
+    writing() {
+        // Write Package JSON
+        this.writePackageJson()
+
+        // Moving Project Folders
+        this.movingProjectFolders()
+
+        // Moving Project Files
+        this.movingProjectFiles()
+
+        // Moving Enviroment Fikes
+        this.movingEnviromentFiles()
     }
 
     download() {
@@ -253,8 +273,8 @@ module.exports = class extends Generator {
         this.log(this.line())
 
         const isYarn = commandExists('yarn')
-        this.log(`${chalk.magenta(`  Download all the NPM Modules…`)}`)
-        this.log(`${chalk.yellow(`  Give me a moment to do that……`)}\n`)
+        this.log(`${chalk.magenta('  Download all the NPM Modules…')}`)
+        this.log(`${chalk.yellow('  Give me a moment to do that……')}\n`)
         this.log(this.line())
         this.installDependencies({
             yarn: isYarn,

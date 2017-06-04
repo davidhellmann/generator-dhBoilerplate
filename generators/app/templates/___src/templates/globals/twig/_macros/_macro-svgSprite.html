@@ -6,7 +6,7 @@
 #}
 
 {% macro svgSprite(spriteName) %}
-  <svg class="m-svgSprite m-svgSprite--{{ spriteName }}" viewbox="0 0 100 100">
+  <svg class="m-svgSprite  m-svgSprite--{{ spriteName }}">
     <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ spriteName }}"></use>
   </svg>
 {% endmacro %}

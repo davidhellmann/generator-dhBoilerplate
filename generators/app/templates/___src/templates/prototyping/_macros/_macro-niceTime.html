@@ -7,16 +7,15 @@
 
 {% macro niceTime(options) %}
   {% set defaults = {
-  classname: 'm-niceTime',
-  date: false
+    classname: 'm-niceTime',
+    date: false
   } %}
 
   {% set options = options ? defaults|merge(options) : defaults %}
 
   {% set niceTime = date(options.date).diff(now) %}
   {% if niceTime %}
-    <span class="">
-      <span class="">
+    <div class="{{ options.classname }}">
         {% if niceTime.y >= 2 %}
           {{ 'am' | t }} {{ date|date('F Y') }}
         {% elseif niceTime.y >= 1 %}
@@ -38,11 +37,7 @@
         {% else %}
           {{ 'gerade eben' | t }}
         {% endif %}
-      </span>
-    </span>
+    </div>
   {% endif %}
 {% endmacro %}
-
-{# -- Reset Options -- #}
-{% set options = null %}
 

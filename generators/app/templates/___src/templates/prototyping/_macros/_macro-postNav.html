@@ -27,36 +27,38 @@
 
 
     <nav class="m-postNav">
-      {% if prevEntry %}
-        <div class="m-postNav__item  m-postNav__item--prev">
-          <a class="m-postNav__link  m-postNav__link--prev" href="{{ prevEntry.url }}">
-            {% if prevIcon != false %}
-              {% include '_svg/' ~ prevIcon ~ '.svg.html' %}
-            {% endif %}
+      <div class="m-postNav__inner">
+        {% if prevEntry %}
+          <div class="m-postNav__item  m-postNav__item--prev">
+            <a class="m-postNav__link  m-postNav__link--prev" href="{{ prevEntry.url }}">
+              {% if prevIcon != false %}
+                {% include '_svg/' ~ prevIcon ~ '.svg.html' %}
+              {% endif %}
 
-            {% if prevLabel != false %}
-              <span class="m-postNav__label">{{ prevLabel }}</span>
-            {% endif %}
+              {% if prevLabel != false %}
+                <span class="m-postNav__label">{{ prevLabel }}</span>
+              {% endif %}
 
-            <span class="m-postNav__title">{{ prevEntry.title }}</span>
-          </a>
-        </div>
-      {% endif %}
-      {% if nextEntry %}
-        <div class="m-postNav__item  m-postNav__item--next">
-          <a class="m-postNav__link  m-postNav__link--next" href="{{ nextEntry.url }}">
-            {% if nextLabel != false %}
-              <span class="m-postNav__label">{{ nextLabel }}</span>
-            {% endif %}
+              <span class="m-postNav__title">{{ prevEntry.title }}</span>
+            </a>
+          </div>
+        {% endif %}
+        {% if nextEntry %}
+          <div class="m-postNav__item  m-postNav__item--next">
+            <a class="m-postNav__link  m-postNav__link--next" href="{{ nextEntry.url }}">
+              {% if nextLabel != false %}
+                <span class="m-postNav__label">{{ nextLabel }}</span>
+              {% endif %}
 
-            <span class="m-postNav__title">{{ nextEntry.title }}</span>
+              <span class="m-postNav__title">{{ nextEntry.title }}</span>
 
-            {% if nextIcon != false %}
-              {% include '_svg/' ~ nextIcon ~ '.svg.html' %}
-            {% endif %}
-          </a>
-        </div>
-      {% endif %}
+              {% if nextIcon != false %}
+                {% include '_svg/' ~ nextIcon ~ '.svg.html' %}
+              {% endif %}
+            </a>
+          </div>
+        {% endif %}
+      </div>
     </nav>
   {% endif %}
 

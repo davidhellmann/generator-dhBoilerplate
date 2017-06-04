@@ -21,7 +21,7 @@
 #}
 
 {% macro bgImage(image, options) %}
-  
+
   {% set defaults = {
   classname: 'm-bgImage',
   sizes: [
@@ -38,11 +38,11 @@
   externalSource: false,
   dominantColor: true
   } %}
-  
+
   {% set options = options ? defaults|merge(options) : defaults %}
-  
+
   {% if image %}
-    
+
     {# -- Ratio -- #}
     {% if options.ratio %}
       {% set ratio = options.ratio|split(':') %}
@@ -55,7 +55,7 @@
     {% else %}
       {% set ratio = '' %}
     {% endif %}
-    
+
     {# -- Set Position -- #}
     {% if options.position %}
       {% set position = options.position %}
@@ -64,7 +64,7 @@
     {% else %}
       {% set position = '50% 50%' %}
     {% endif %}
-    
+
     {# -- Define global variables -- #}
     {% set imageSettings = {
     jpegQuality: options.quality,
@@ -72,17 +72,17 @@
     position: position,
     ratio: ratio
     } %}
-    
+
     {# -- BG Image -- #}
     {% set images = craft.imager.transformImage(image, options.sizes, imageSettings) %}
-    
+
     {# -- External Source --#}
     {# Reset the Base64 Size to the First Image Dimensions  #}
     {% if options.externalSource %}
       {% set base64Ratio = images|first.width ~ ':' ~ images|first.height %}
       {% set base64Ratio = base64Ratio|split(':') %}
     {% endif %}
-    
+
     {# -- Dominatn Color -- #}
     {% if options.dominantColor %}
       {% if image.pluginPreparseDominantColor is defined and image.pluginPreparseDominantColor is not empty %}
@@ -94,7 +94,7 @@
     {% else %}
       {% set dominantColor = '' %}
     {% endif %}
-    
+
     <div class="{{ options.classname ~ 'Wrapper' }}" style="background-color: {{ dominantColor != '' ? dominantColor }}; width: 100%; height: 100%;">
       <figure class="{{ options.classname }}  lazyload"
               style="background-image: url('{{ craft.imager.base64Pixel(base64Ratio|first, base64Ratio|last) }}');
@@ -102,10 +102,10 @@
               data-bgset="{{ craft.imager.srcset(images) }}"
               data-sizes="auto">
       </figure>
+      <noscript><img src="{{ image.url }}" alt="{{ image.title }}"></noscript>
     </div>
   {% endif %}
 {% endmacro %}
 
 {# -- Reset Options Variable -- #}
 {% set options = null %}
-
