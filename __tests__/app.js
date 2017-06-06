@@ -106,5 +106,11 @@ describe('dh-boilerplate', () => {
                 '___src/_system/'
             ])
         })
+
+        it('initializes a git repository', () => {
+            assert.file([
+                '.git/'
+            ])
+        })
     })
 })
