@@ -23,6 +23,7 @@
   /* stylelint-disable */
   .flickity-viewport {
     @extend .t-overflowTouch;
+    touch-action: pan-y !important;
 
     &::-webkit-scrollbar {
       display: none;

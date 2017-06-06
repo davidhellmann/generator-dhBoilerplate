@@ -63,6 +63,7 @@
   .flickity-viewport {
     overflow: visible;
     width: 100%;
+    touch-action: pan-y !important;
   }
 
   .flickity-page-dots {
