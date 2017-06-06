@@ -110,8 +110,10 @@ module.exports = class extends Generator {
             `Welcome to the impressive ${chalk.magenta('dhBoilerplate')} generator!`
         ))
 
+        if (process.env.NODE_ENV !== 'test') {
+            clear()
+        }
         // Branding
-        clear()
         this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
         this.logMessage({message: 'Prompting', short: false})
 

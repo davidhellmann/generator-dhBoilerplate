@@ -1,7 +1,9 @@
+process.env.NODE_ENV = 'test'
 /* eslint-disable new-cap */
 const path = require('path')
 const assert = require('yeoman-assert')
 const helpers = require('yeoman-test')
+const fs = require('fs-extra')
 
 // Define some variables
 const project = {
@@ -21,7 +23,6 @@ const run = () => helpers.run(path.join(__dirname, '../generators/app'))
 describe('dh-boilerplate', () => {
     beforeAll(() => {
         return run()
-
             .withPrompts({
                 projectName: project.name,
                 projectVersion: project.version,
@@ -32,6 +33,7 @@ describe('dh-boilerplate', () => {
                 authorHomepage: author.homepage
             })
     })
+
     // Test for Basic Files
     describe('Basic Files and Infos', () => {
         // Test package.json content
@@ -40,36 +42,69 @@ describe('dh-boilerplate', () => {
                 name: project.name,
                 description: project.description,
                 version: project.version,
-                authors: [{ name: author.name, email: author.email, homepage: author.homepage }]
+                authors: [{name: author.name, email: author.email, homepage: author.homepage}]
             })
         })
 
-        /*it('adds javascript', () => {
+        it('adds files for all projects', () => {
             assert.file([
-                'src/js/'
+                '.babelrc',
+                '.editorconfig',
+                '.eslintignore',
+                '.eslintrc',
+                '.jshintrc',
+                '.gitignore',
+                'gulpfile.babel.js',
+                'package.json',
+                'readme.md',
+                '.stylelintrc',
+                '.stylelintignore'
             ])
-        })*/
+        })
+
+        it('copy javascript files', () => {
+            assert.file([
+                '___src/assets/js/'
+            ])
+        })
+
+        it('copies gulp tasks', () => {
+            assert.file([
+                'gulpfile.babel.js',
+                '___src/gulp/lib/',
+                '___src/gulp/tasks/',
+                '___src/gulp/tasks/browserSync.js'
+            ])
+        })
+
+        it('copies image files', () => {
+            assert.file([
+                '___src/assets/images/'
+            ])
+        })
+
+        it('copies font files', () => {
+            assert.file([
+                '___src/assets/fonts/'
+            ])
+        })
+
+        it('copies data files', () => {
+            assert.file([
+                '___src/_data/'
+            ])
+        })
+
+        it('copies import files', () => {
+            assert.file([
+                '___src/_imports/'
+            ])
+        })
+
+        it('copies system files', () => {
+            assert.file([
+                '___src/_system/'
+            ])
+        })
     })
-
-    /* Describe('It is a Craft Project 🎉', () => {
-        it('fills config.json with project type craft', async () => {
-            await run()
-                .withPrompts({
-                    projectUsage: 'craft'
-                });
-            assert.JSONFileContent('config.json', {
-                projectType: 'craft'
-            })
-        })
-
-        it('adds craft templates to the src folder', () => {
-            assert.file([
-                'src/views/index.html',
-                'src/views/layout/_layout.html',
-                'src/views/parts/site-header.html',
-                'src/views/parts/site-scripts.html'
-            ])
-        })
-    }) */
-    /* eslint-enable */
 })

@@ -26,7 +26,7 @@
   },
   "scripts": {
     "test": "jest",
-    "pretest": "eslint . --fix",
+    "eslint": "eslint ./generators/app/index.js, ./generators/app/**/*.js",
     "prepublish": "nsp check"
   },
   "files": [
