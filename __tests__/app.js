@@ -62,48 +62,12 @@ describe('dh-boilerplate', () => {
             ])
         })
 
-        it('copy javascript files', () => {
-            assert.file([
-                '___src/assets/js/'
-            ])
-        })
-
         it('copies gulp tasks', () => {
             assert.file([
                 'gulpfile.babel.js',
-                '___src/gulp/lib/',
-                '___src/gulp/tasks/',
-                '___src/gulp/tasks/browserSync.js'
-            ])
-        })
-
-        it('copies image files', () => {
-            assert.file([
-                '___src/assets/images/'
-            ])
-        })
-
-        it('copies font files', () => {
-            assert.file([
-                '___src/assets/fonts/'
-            ])
-        })
-
-        it('copies data files', () => {
-            assert.file([
-                '___src/_data/'
-            ])
-        })
-
-        it('copies import files', () => {
-            assert.file([
-                '___src/_imports/'
-            ])
-        })
-
-        it('copies system files', () => {
-            assert.file([
-                '___src/_system/'
+                'gulp/lib/',
+                'gulp/tasks/',
+                'gulp/tasks/browserSync.js'
             ])
         })
 
