@@ -18,7 +18,7 @@ const installCraftCMS3 = require('./modules/writings/craftCMS3')
 const installWordpress = require('./modules/writings/wordpress')
 
 // Package JSON
-const writePackageJson = require('./modules/writings/packageJson')
+const writePackageJSON = require('./modules/writings/package')
 
 // Config Files for moving Files & Folders
 const filesEnvironment = require('./config/_filesEnvironment')
@@ -28,16 +28,6 @@ const foldersProjectTpl = require('./config/_foldersProjectTpl')
 
 // Importing Modules
 const promptsFunction = require('./modules/_prompts')
-const basePackageJson = require('./modules/writings/_package.json')
-
-// Src Paths
-const srcPathsJson = require('./modules/writings/_srcPaths.json')
-
-// Dist Paths
-const distPathsCraftCMSJson = require('./modules/writings/_distPathsCraftCMS.json')
-const distPathsCraftCMS3Json = require('./modules/writings/_distPathsCraftCMS3.json')
-const distPathsPrototypingJson = require('./modules/writings/_distPathsPrototyping.json')
-const distPathsWordpressJson = require('./modules/writings/_distPathsWordpress.json')
 
 // Generator
 module.exports = class extends Generator {
@@ -48,7 +38,6 @@ module.exports = class extends Generator {
 
         // Default
         this.promptsFunction = promptsFunction.bind(this)
-        this.basePackageJson = basePackageJson.bind(this)
 
         // Messages
         this.branding = branding.bind(this)
@@ -60,22 +49,13 @@ module.exports = class extends Generator {
         this.foldersProject = foldersProject
         this.foldersProjectTpl = foldersProjectTpl
 
-        // Src Paths
-        this.srcPathsJson = srcPathsJson.bind(this)
-
-        // Dist Paths
-        this.distPathsCraftCMSJson = distPathsCraftCMSJson.bind(this)
-        this.distPathsCraftCMS3Json = distPathsCraftCMS3Json.bind(this)
-        this.distPathsPrototypingJson = distPathsPrototypingJson.bind(this)
-        this.distPathsWordpressJson = distPathsWordpressJson.bind(this)
-
         // CMS Stuff
         this.installCraftCMS = installCraftCMS.bind(this)
         this.installCraftCMS3 = installCraftCMS3.bind(this)
         this.installWordpress = installWordpress.bind(this)
 
         // Package JSON
-        this.writePackageJson = writePackageJson.bind(this)
+        this.writePackageJSON = writePackageJSON.bind(this)
 
         this.commands = {
             composer: false,
@@ -162,7 +142,7 @@ module.exports = class extends Generator {
         this.logMessage({message: 'Writing files', short: false})
 
         // Package JSON
-        this.writePackageJson().writing(this)
+        this.writePackageJSON().writing(this)
 
         // Craft CMS
         if (this.props.projectType === 'craftCMS') {

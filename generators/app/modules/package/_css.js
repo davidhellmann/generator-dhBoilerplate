@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function cssJson(files = {}) {
+function addCSSSettings(files = {}) {
     extend(files.pkg, {
         css: {
             sourcemap: true
@@ -8,4 +8,4 @@ function cssJson(files = {}) {
     })
 }
 
-module.exports = cssJson
+module.exports = addCSSSettings

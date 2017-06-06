@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function inlineJSJson(files = {}) {
+function addInlineJSFiles(files = {}) {
     extend(files.pkg, {
         inlineJS: [
             './node_modules/fg-loadcss/src/loadCSS.js',
@@ -9,4 +9,4 @@ function inlineJSJson(files = {}) {
     })
 }
 
-module.exports = inlineJSJson
+module.exports = addInlineJSFiles

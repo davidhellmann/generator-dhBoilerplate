@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function vueJSJson(files = {}) {
+function addVueJS(files = {}) {
     extend(files.pkg, {
         devDependencies: {
             vue: '^2.0.2',
@@ -19,4 +19,4 @@ function vueJSJson(files = {}) {
     })
 }
 
-module.exports = vueJSJson
+module.exports = addVueJS

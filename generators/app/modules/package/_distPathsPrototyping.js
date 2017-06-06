@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function prototypingDistPathsJson(files = {}) {
+function addDistPathsPrototyping(files = {}) {
     extend(files.pkg, {
         dist: {
             base: '___dist/',
@@ -28,5 +28,5 @@ function prototypingDistPathsJson(files = {}) {
     })
 }
 
-module.exports = prototypingDistPathsJson
+module.exports = addDistPathsPrototyping
 

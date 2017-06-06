@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function wordpressDistPathsJson(files = {}) {
+function addDistPathsWordpress(files = {}) {
     extend(files.pkg, {
         dist: {
             base: '___dist/',
@@ -28,4 +28,4 @@ function wordpressDistPathsJson(files = {}) {
     })
 }
 
-module.exports = wordpressDistPathsJson
+module.exports = addDistPathsWordpress

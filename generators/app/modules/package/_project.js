@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function projectJson(files = {}) {
+function addProjectSettings(files = {}) {
     extend(files.pkg, {
         projectName: this.props.projectName,
         projectDescription: this.props.projectDescription,
@@ -10,4 +10,4 @@ function projectJson(files = {}) {
     })
 }
 
-module.exports = projectJson
+module.exports = addProjectSettings

@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function crititalCSSJson(files = {}) {
+function addCriticalCSSSettings(files = {}) {
     extend(files.pkg, {
         criticalCSS: [
             { url: '', template: 'index' },
@@ -11,4 +11,4 @@ function crititalCSSJson(files = {}) {
     })
 }
 
-module.exports = crititalCSSJson
+module.exports = addCriticalCSSSettings

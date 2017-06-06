@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function devDependenciesJson(files = {}) {
+function addDevDependencies(files = {}) {
     extend(files.pkg, {
         devDependencies: {
             aliasify: '^2.0.0',
@@ -87,4 +87,4 @@ function devDependenciesJson(files = {}) {
     })
 }
 
-module.exports = devDependenciesJson
+module.exports = addDevDependencies

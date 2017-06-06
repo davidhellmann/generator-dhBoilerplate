@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function modernizrJson(files = {}) {
+function addModernizrSettings(files = {}) {
     extend(files.pkg, {
         modernizr: {
             excludeTests: [
@@ -21,4 +21,4 @@ function modernizrJson(files = {}) {
     })
 }
 
-module.exports = modernizrJson
+module.exports = addModernizrSettings

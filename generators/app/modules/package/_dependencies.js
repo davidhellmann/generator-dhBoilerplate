@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function dependenciesJson(files = {}) {
+function addDependencies(files = {}) {
     extend(files.pkg, {
         dependencies: {
             animejs: '^2.0.0',
@@ -25,4 +25,4 @@ function dependenciesJson(files = {}) {
     })
 }
 
-module.exports = dependenciesJson
+module.exports = addDependencies

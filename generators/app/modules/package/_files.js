@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function filesJson(files = {}) {
+function addSystemFiles(files = {}) {
     extend(files.pkg, {
         files: {
             systemFiles: [
@@ -16,4 +16,4 @@ function filesJson(files = {}) {
     })
 }
 
-module.exports = filesJson
+module.exports = addSystemFiles

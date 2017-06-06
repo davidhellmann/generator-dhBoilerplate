@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function basePackageJson(files = {}) {
+function addBaseData(files = {}) {
     extend(files.pkg, {
         name: this.props.projectName,
         description: this.props.projectDescription,
@@ -16,4 +16,4 @@ function basePackageJson(files = {}) {
     })
 }
 
-module.exports = basePackageJson
+module.exports = addBaseData

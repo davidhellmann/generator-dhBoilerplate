@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function faviconsJson(files = {}) {
+function addFaviconsSettings(files = {}) {
     extend(files.pkg, {
         favicons: {
             appName: this.props.projectName,
@@ -31,4 +31,4 @@ function faviconsJson(files = {}) {
     })
 }
 
-module.exports = faviconsJson
+module.exports = addFaviconsSettings

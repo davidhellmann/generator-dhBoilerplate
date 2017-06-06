@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function browserlistJson(files = {}) {
+function addBrowserlistSettings(files = {}) {
     extend(files.pkg, {
         browserslist: [
             '> 5%',
@@ -10,4 +10,4 @@ function browserlistJson(files = {}) {
     })
 }
 
-module.exports = browserlistJson
+module.exports = addBrowserlistSettings

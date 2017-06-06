@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function srcPathsJson(files = {}) {
+function addSrcPaths(files = {}) {
     extend(files.pkg, {
         src: {
             assets: '___src/assets/',
@@ -28,4 +28,4 @@ function srcPathsJson(files = {}) {
     })
 }
 
-module.exports = srcPathsJson
+module.exports = addSrcPaths

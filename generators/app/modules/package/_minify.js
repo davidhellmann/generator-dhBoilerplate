@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function minifyJson(files = {}) {
+function addMinifyImagesSettings(files = {}) {
     extend(files.pkg, {
         minify: {
             images: {
@@ -37,4 +37,4 @@ function minifyJson(files = {}) {
     })
 }
 
-module.exports = minifyJson
+module.exports = addMinifyImagesSettings

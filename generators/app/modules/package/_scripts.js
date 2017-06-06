@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function scriptsJson(files = {}) {
+function addNPMScripts(files = {}) {
     extend(files.pkg, {
         scripts: {
             start: 'gulp init',
@@ -27,4 +27,4 @@ function scriptsJson(files = {}) {
     })
 }
 
-module.exports = scriptsJson
+module.exports = addNPMScripts

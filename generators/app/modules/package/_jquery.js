@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function jqueryJson(files = {}) {
+function addJquerySettings(files = {}) {
     extend(files.pkg, {
         dependencies: {
             jquery: '^3.0.0'
@@ -11,4 +11,4 @@ function jqueryJson(files = {}) {
     })
 }
 
-module.exports = jqueryJson
+module.exports = addJquerySettings

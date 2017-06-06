@@ -1,6 +1,6 @@
 const extend = require('deep-extend')
 
-function browserSyncJson(files = {}) {
+function addBrowserSyncSettings(files = {}) {
     extend(files.pkg, {
         browsersync: {
             openbrowser: false,
@@ -9,4 +9,4 @@ function browserSyncJson(files = {}) {
     })
 }
 
-module.exports = browserSyncJson
+module.exports = addBrowserSyncSettings
