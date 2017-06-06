@@ -7,10 +7,10 @@ const fs = require('fs-extra')
 
 // Define some variables
 const project = {
-    name: 'boilerplate-test',
+    name: 'awesome',
     description: 'A small Test Driven Generator',
     version: '0.0.1',
-    proxy: 'boilerplate-test.dev'
+    proxy: 'awesome.dev'
 }
 const author = {
     name: 'David Hellmann',
@@ -62,14 +62,14 @@ describe('dh-boilerplate', () => {
             ])
         })
 
-        it('copies gulp tasks', () => {
+        /*it('copies gulp tasks', () => {
             assert.file([
                 'gulpfile.babel.js',
                 'gulp/lib/',
                 'gulp/tasks/',
                 'gulp/tasks/browserSync.js'
             ])
-        })
+        })*/
 
         it('initializes a git repository', () => {
             assert.file([

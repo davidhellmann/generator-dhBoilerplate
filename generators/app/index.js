@@ -89,7 +89,6 @@ module.exports = class extends Generator {
     async initializing() {
         this.logMessage({message: 'Initializing the Generator', short: false})
         try {
-            await commandExists('yehhh')
             await commandExists('composer')
             this.commands.composer = true
             await commandExists('yarn')
@@ -99,7 +98,7 @@ module.exports = class extends Generator {
             await commandExists('wp')
             this.commands.wp = true
         } catch(e) {
-            if (e) console.error(e);
+            if (e) console.error(e)
         }
     }
 
@@ -113,6 +112,7 @@ module.exports = class extends Generator {
         if (process.env.NODE_ENV !== 'test') {
             clear()
         }
+
         // Branding
         this.log(this.branding(_pkg.version, _pkg.author.name, _pkg.author.email, _pkg.repository.url))
         this.logMessage({message: 'Prompting', short: false})
@@ -228,6 +228,27 @@ module.exports = class extends Generator {
                 )
             }
         })
+
+        // Git
+        this.logMessage({
+            message: '> Initializing git and make first commit',
+            short: true,
+            color: 'green'
+        })
+
+        if (this.commands.git) {
+            try {
+                await this.spawnCommandSync('git', ['init'])
+                if (process.env.NODE_ENV === 'test') {
+                    return
+                }
+                await this.spawnCommandSync('git', ['add', '-A'])
+                await this.spawnCommandSync('git', ['commit', '-m "initial commit"'])
+
+            } catch (e) {
+                console.error(e)
+            }
+        }
     }
 
     // Install
@@ -240,21 +261,6 @@ module.exports = class extends Generator {
             this.yarnInstall()
         } else {
             this.npmInstall()
-        }
-
-        this.logMessage({
-            message: '> Initializing git and make first commit',
-            short: true,
-            color: 'green'
-        });
-
-        if (this.commands.git) {
-            this.spawnCommandSync('git', ['init'])
-            if (process.env.NODE_ENV === 'test') {
-                return
-            }
-            this.spawnCommandSync('git', ['add', '-A'])
-            this.spawnCommandSync('git', ['commit', '-m "initial commit"'])
         }
     }
 }
