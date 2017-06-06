@@ -44,7 +44,7 @@
     "prototyping"
   ],
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=7.6.0"
   },
   "dependencies": {
     "chalk": "^1.1.3",
