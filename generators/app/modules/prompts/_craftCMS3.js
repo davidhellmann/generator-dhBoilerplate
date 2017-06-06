@@ -1,14 +1,10 @@
 // Importing message & when helper function
-const commandExists = require('command-exists').sync
 const message = require('../../helpers/prompts/_message')
 const when = require('../../helpers/prompts/_when')
 
-// Check if Composer is installed
-const isComposer = commandExists('composer')
-
 const promptsCraftCMS3 = [
     {
-        when: when('craftCMS3', isComposer),
+        when: when('craftCMS3'),
         type: 'confirm',
         name: 'craftCMS3Install',
         message: message({

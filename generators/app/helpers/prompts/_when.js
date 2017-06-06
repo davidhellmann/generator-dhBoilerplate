@@ -9,10 +9,10 @@
  * @returns {function(*)}
  */
 
-const when = (type, spawny = true) => {
+const when = (type) => {
     // Return actual when function provided by inquirer
     return (promptAnswers) => {
-        return promptAnswers.projectType === type && spawny === true
+        return promptAnswers.projectType === type
     }
 }
 

@@ -88,7 +88,7 @@ Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
                 value: 'craftCMS'
             },
             {
-                name: 'Craft CMS Beta',
+                name: 'Craft CMS 3',
                 value: 'craftCMS3'
             },
             {
