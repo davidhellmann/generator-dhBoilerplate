@@ -7,7 +7,7 @@ function dependenciesJson(files = {}) {
             'babel-polyfill': '^6.20.0',
             cookieconsent: '^3.0.4',
             'family.scss': '^1.0.4',
-            flickity: '^2.0.5',
+            flickity: '^2.0.8',
             fontfaceobserver: '^2.0.9',
             'in-view': '^0.6.1',
             'include-media': '^1.4.4',
