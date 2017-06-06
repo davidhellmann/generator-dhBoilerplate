@@ -65,7 +65,7 @@ module.exports = {
                 'wordpress'
             ],
             src: '___src/gulp/',
-            dest: './gulp/'
+            dest: 'gulp/'
         },
         {
             projectContext: [

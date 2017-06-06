@@ -15,7 +15,8 @@
     "url": "https://davidhellmann.com"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "setupTestFrameworkScriptFile": "./jestSetup.js"
   },
   "eslintConfig": {
     "extends": "airbnb",

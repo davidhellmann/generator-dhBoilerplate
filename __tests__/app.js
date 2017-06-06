@@ -10,7 +10,8 @@ const project = {
     name: 'awesome',
     description: 'A small Test Driven Generator',
     version: '0.0.1',
-    proxy: 'awesome.dev'
+    proxy: 'awesome.dev',
+    type: 'craftCMS'
 }
 const author = {
     name: 'David Hellmann',
@@ -28,6 +29,7 @@ describe('dh-boilerplate', () => {
                 projectVersion: project.version,
                 projectDescription: project.description,
                 projectProxy: project.proxy,
+                projectType: project.type,
                 authorName: author.name,
                 authorEmail: author.email,
                 authorHomepage: author.homepage
@@ -62,14 +64,14 @@ describe('dh-boilerplate', () => {
             ])
         })
 
-        /*it('copies gulp tasks', () => {
+        it('copies gulp tasks', () => {
             assert.file([
                 'gulpfile.babel.js',
                 'gulp/lib/',
                 'gulp/tasks/',
                 'gulp/tasks/browserSync.js'
             ])
-        })*/
+        })
 
         it('initializes a git repository', () => {
             assert.file([

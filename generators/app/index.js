@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 const clear = require('clear-terminal')
 const commandExists = require('command-exists')
-const filesystem = require('fs-extra')
+const fs = require('fs-extra')
 const Generator = require('yeoman-generator')
 const yosay = require('yosay')
 
