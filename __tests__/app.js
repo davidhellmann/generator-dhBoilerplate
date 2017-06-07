@@ -55,7 +55,7 @@ describe('dh-boilerplate', () => {
                 '.eslintignore',
                 '.eslintrc',
                 '.jshintrc',
-                '.gitignore',
+                //'.gitignore',
                 'gulpfile.babel.js',
                 'package.json',
                 'readme.md',
