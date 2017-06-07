@@ -33,6 +33,7 @@ describe('It is a WordPress Project, Yay!', () => {
 })
 
 
+/*
 describe('it downloads WordPress', () => {
     beforeAll(async () => {__
         await run()
@@ -48,3 +49,4 @@ describe('it downloads WordPress', () => {
         ])
     })
 })
+*/
