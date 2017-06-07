@@ -16,20 +16,19 @@
   $root: &;
   @include make-row();
 
-  #{$root}__head {
+  &__head {
     @include make-col(12);
 
     span {
       cursor: pointer;
-      @extend %t-line1;
       transition: all 0.25s ease('out-cubic');
     }
 
     &:hover {
-      color: c('martini');
+      color: c('black');
 
       strong {
-        color: c('martini');
+        color: c('black');
       }
     }
 
@@ -38,7 +37,7 @@
     }
   }
 
-  #{$root}__content {
+  &__content {
     position: relative;
     padding-top: s(2);
     display: none;
@@ -73,7 +72,6 @@
   }
 
   &__aside {
-    color: c('martini');
     font-size: fs('ms-2');
     width: 100%;
     @include make-vr();
@@ -95,11 +93,10 @@
       width: 100%;
       @include make-vr(1);
       font-size: fs('ms-2');
-      color: c('cabbage-pont');
       text-transform: uppercase;
 
       .wf-loaded & {
-        font-family: ff('medium') !important;
+        font-family: ff('bold');
       }
     }
 
@@ -116,14 +113,6 @@
 
     ul {
       list-style: none;
-    }
-
-    a {
-      color: c('martini');
-
-      &:hover {
-        color: c('cabbage-pont');
-      }
     }
   }
 }
