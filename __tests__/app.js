@@ -73,10 +73,10 @@ describe('dh-boilerplate', () => {
             ])
         })
 
-        it('initializes a git repository', () => {
+        /*it('initializes a git repository', () => {
             assert.file([
                 '.git/'
             ])
-        })
+        })*/
     })
 })

@@ -34,7 +34,7 @@ describe('It is a WordPress Project, Yay!', () => {
 
 
 describe('it downloads WordPress', () => {
-    beforeAll(async () => {
+    beforeAll(async () => {__
         await run()
             .withPrompts({
                 projectType: 'wordpress',
@@ -42,9 +42,9 @@ describe('it downloads WordPress', () => {
             })
     })
 
-    it('If the user wants to it downloads WordPress', async () => {
+    it('If the user wants to it downloads WordPress', () => {
         assert.file([
-            '___dist/index.php'
+            '___dist/'
         ])
     })
 })
