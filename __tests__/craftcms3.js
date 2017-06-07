@@ -31,27 +31,19 @@ describe('It is a Craft CMS 3 Project, Yay!', () => {
     })
 })
 
-describe('it downloads craft', () => {
-    it('If the user wants to it downloads Craft CMS 3', async () => {
-        await run()
-            .withPrompts({
-                projectType: 'craftCMS3',
-                craftCMS3Install: true
-            })
-
-        assert.file([
-            '___dist/web/'
-        ])
-    })
-})
-
-describe('it moves craft config files', () => {
+describe('it downloads craft & moves file', () => {
     beforeAll(async () => {
         await run()
             .withPrompts({
                 projectType: 'craftCMS3',
                 craftCMS3Install: true
             })
+    })
+
+    it('CMS Files', () => {
+        assert.file([
+            '___dist/web/'
+        ])
     })
 
     it('adds environment file', () => {

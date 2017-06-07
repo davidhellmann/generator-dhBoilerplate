@@ -32,6 +32,7 @@ describe('It is a WordPress Project, Yay!', () => {
     })
 })
 
+
 describe('it downloads WordPress', () => {
     beforeAll(async () => {
         await run()
@@ -43,7 +44,7 @@ describe('it downloads WordPress', () => {
 
     it('If the user wants to it downloads WordPress', async () => {
         assert.file([
-            '___dist/'
+            '___dist/index.php'
         ])
     })
 })
