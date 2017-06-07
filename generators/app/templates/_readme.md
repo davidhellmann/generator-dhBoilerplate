@@ -166,16 +166,16 @@ gulp clean:images
 // Main Tasks
 // All this are triggered within "gulp init" & "gulp build" task.
 // Some of this are triggered within the "gulp" task.
-gulp templates
-gulp inlineJS,
-gulp systemFiles
+gulp compile:templates
+gulp create:inlineJS,
+gulp copy:systemFiles
 gulp modernizr
 gulp compile:js
-gulp sass
+gulp compile:css
 gulp copy:fonts
-gulp images
-gulp svg-single
-gulp svg-sprite
+gulp copy:images
+gulp copy:svg-single
+gulp create:svg-sprite
 ```
 
 ```
