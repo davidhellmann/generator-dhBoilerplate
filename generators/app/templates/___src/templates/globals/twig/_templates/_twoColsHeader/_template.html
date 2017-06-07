@@ -1,0 +1,56 @@
+{#
+    {% embed '_layouts/_twoCols.html' with { modifier: 'projectDetail' } %}
+    {% block head %}
+      {% include '_modules/_pageTitle/_pageTitle.template.html' with { name: 'm-headline'} %}
+    {% endblock %}
+
+    {% block main %}
+      {% if entry.singleIntroText is defined and entry.singleIntroText %}
+        <div class="o-block">
+          <div class="m-introText">
+            {{ entry.singleIntroText }}
+          </div>
+        </div>
+      {% endif %}
+      {% include '_contentBuilders/_contentBuilderNeo' %}
+    {% endblock %}
+
+    {% block aside %}
+      {% include '_modules/_projectData/_projectData.template' %}
+    {% endblock %}
+  {% endembed %}
+#}
+
+{% set classname = name is defined and name is not empty ? name : 'o-twoColsHeader' %}
+{% set modifier = modifier is defined and modifier != '' ? classname ~ '--' ~ modifier %}
+{% set showHead = showHead is defined ? showHead : true %}
+{% set showMain = showMain is defined ? showMain : true %}
+{% set showAside = showAside is defined ? showAside : true %}
+
+<div class="{{ classname }}  {{ modifier }}">
+  <div class="{{ classname ~ '__inner' }}">
+    {% if showHead %}
+      <div class="{{ classname ~ '__head' }}">
+        {% block head %}
+
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% if showMain %}
+      <div class="{{ classname ~ '__main' }}">
+        {% block main %}
+
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% if showAside %}
+      <aside class="{{ classname ~ '__aside' }}">
+        {% block aside %}
+
+        {% endblock %}
+      </aside>
+    {% endif %}
+  </div>
+</div>

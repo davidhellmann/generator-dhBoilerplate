@@ -1,0 +1,129 @@
+/* -------------------------------------------------- */
+/*    Content Toggle
+/* -------------------------------------------------- */
+
+.m-contentToggleWrapper {
+  .p-about &--benefits,
+  .p-workDetail &--projectInfo {
+    @include media('>=m') {
+      @include make-col(10);
+      @include offset(2);
+    }
+  }
+}
+
+.m-contentToggle {
+  $root: &;
+  @include make-row();
+
+  #{$root}__head {
+    @include make-col(12);
+
+    span {
+      cursor: pointer;
+      @extend %t-line1;
+      transition: all 0.25s ease('out-cubic');
+    }
+
+    &:hover {
+      color: c('martini');
+
+      strong {
+        color: c('martini');
+      }
+    }
+
+    .wf-loaded & {
+      font-family: ff('bold');
+    }
+  }
+
+  #{$root}__content {
+    position: relative;
+    padding-top: s(2);
+    display: none;
+    opacity: 0;
+
+    .m-richTextWrapper {
+      @include make-col(6, 6);
+      @include offset(0);
+    }
+
+    @include media('>=m') {
+      @include make-col(6, 10);
+    }
+
+    .p-workDetail & {
+      padding-bottom: s(4);
+    }
+
+    &.fadeIn {
+      opacity: 1;
+      transition: opacity 0.5s ease('out-cubic');
+    }
+
+    .m-headlineWrapper {
+      margin: 0;
+    }
+
+    h4 {
+      @include f(fs('ms0'), fs('ms1'));
+      margin-top: s(4);
+    }
+  }
+
+  &__aside {
+    color: c('martini');
+    font-size: fs('ms-2');
+    width: 100%;
+    @include make-vr();
+
+    @include media('>=m') {
+      @include make-col(2, 6);
+      @include pull(-3, 6);
+      @include make-vr(0.5);
+      position: absolute;
+      top: 0;
+    }
+
+    .m-headlineWrapper {
+      margin: 0;
+    }
+
+    h3 {
+      padding: 0;
+      width: 100%;
+      @include make-vr(1);
+      font-size: fs('ms-2');
+      color: c('cabbage-pont');
+      text-transform: uppercase;
+
+      .wf-loaded & {
+        font-family: ff('medium') !important;
+      }
+    }
+
+    p,
+    ul {
+      @include make-vr(2/3);
+      width: 100%;
+    }
+
+    p,
+    ul li {
+      @include make-col(12);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      color: c('martini');
+
+      &:hover {
+        color: c('cabbage-pont');
+      }
+    }
+  }
+}

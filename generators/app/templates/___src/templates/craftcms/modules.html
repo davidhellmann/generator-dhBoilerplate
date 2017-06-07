@@ -1,0 +1,113 @@
+{#
+  News Entry Template
+  --------------------------------------------------
+
+  When you view a single news on the website, this template gets loaded.
+#}
+
+{% extends "_layouts/_master.html" %}
+{% set bodyClass = "p-modules" %}
+
+{% block appContent %}
+  <article>
+    <div class="o-section">
+      <div class="o-row">
+        {# -- Headline -- #}
+        {% include '_modules/_headline/_template.html' with {
+          options: {
+            text: entry.title,
+            size: 'h1'
+          }
+        } only %}
+
+      </div>
+      <div class="o-row">
+        {# -- Headline -- #}
+        {% include '_modules/_headline/_template.html' with {
+          options: {
+            text: 'Content Builder',
+            size: 'h2'
+          }
+        } only %}
+
+      </div>
+    </div>
+
+    {# Content Builder #}
+    {% include '_contentBuilders/_contentBuilderNeo' %}
+
+    <div class="o-section">
+      <div class="o-row">
+        {# -- Headline -- #}
+        {% include '_modules/_headline/_template.html' with {
+          options: {
+            text: 'Include via Template',
+            size: 'h2'
+          }
+        } only %}
+
+      </div>
+      <div class="o-row">
+        {# -- Headline -- #}
+        {% include '_modules/_headline/_template.html' with {
+          options: {
+            text: 'Button',
+            size: 'h3'
+          }
+        } only %}
+
+        {# -- Button -- #}
+        {% include '_modules/_button/_template.html' with {
+          options: {
+            classname: 'm-button',
+            url: 'http://www.google.com',
+            target: '',
+            style: 'm-button--primary',
+            alignment: '',
+            hasIcon: false,
+            iconName: '',
+            text: 'Text'
+          }
+        } only %}
+      </div>
+    </div>
+
+    <div class="o-section  o-section--width-full">
+      <div class="o-row">
+        {# -- Headline -- #}
+        {% include '_modules/_headline/_template.html' with {
+          options: {
+            text: 'Fluide Section',
+            size: 'h1'
+          }
+        } only %}
+
+      </div>
+      <div class="o-row">
+        {# -- Rich Text -- #}
+        {% include '_modules/_richText/_template.html' with {
+          options: {
+            text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>',
+            }
+        } only %}
+
+      </div>
+      <div class="o-row">
+        {# -- Button -- #}
+        {% include '_modules/_button/_template.html' with {
+          options: {
+            classname: 'm-button',
+            url: 'http://www.google.com',
+            target: '',
+            style: 'm-button--primary',
+            alignment: '',
+            hasIcon: false,
+            iconName: '',
+            text: 'Text'
+          }
+        } only %}
+
+      </div>
+    </div>
+  </article>
+{% endblock %}

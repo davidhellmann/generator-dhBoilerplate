@@ -1,0 +1,143 @@
+/* -------------------------------------------------- */
+/*    Image Slider
+/* -------------------------------------------------- */
+
+@import '../../../../assets/css/vendors/flickity/flickity';
+
+.m-imageSliderWrapper {
+  /* empty */
+}
+
+.m-imageSlider {
+  @include make-row(1/8, 1/4);
+  padding-bottom: s(4);
+  margin-bottom: 0;
+  opacity: 0;
+  transition: opacity 0.25s ease('out-cubic');
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  &::after {
+    content: 'flickity';
+    display: none;
+
+    /*
+      @include media('>=s') {
+        content: 'flickity';
+        display: none;
+      }
+    */
+  }
+
+  &__slide {
+    padding-left: s(1) !important;
+    padding-right: s(1) !important;
+    @include make-col-float(10);
+
+    @include media('>=s') {
+      &--portrait {
+        @include make-col-float(4, 10);
+      }
+
+      &--square {
+        @include make-col-float(5, 10);
+      }
+    }
+
+    @include media('>=m') {
+      &--landscape {
+        @include make-col-float(8, 10);
+      }
+    }
+
+    .m-image {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  // Flickity Styling
+  /* stylelint-disable */
+  .flickity-viewport {
+    overflow: visible;
+    width: 100%;
+    touch-action: pan-y !important;
+  }
+
+  .flickity-page-dots {
+    list-style: none;
+    height: 50px;
+    bottom: 0;
+    height: s(4);
+    display: flex;
+    flex: row wrap;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    @include media('>=s') {
+      display: flex;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  // Arrows
+  .flickity-prev-next-button {
+    background: none;
+    border-radius: 0;
+    width: 80px;
+    height: s(4);
+    margin: 0;
+    top: auto;
+    bottom: 0;
+    cursor: pointer;
+    padding: 0;
+    z-index: 50;
+    transform: none;
+    background-size: auto 24px;
+    background-repeat: no-repeat;
+    transition: background-position 0.25s ease('out-cubic');
+
+    &:disabled {
+      opacity: 0;
+    }
+
+    svg {
+      display: none;
+    }
+
+    &.previous {
+      background: url('../images/svg/single/iconArrowLeft.svg');
+      background-repeat: no-repeat;
+      background-position: center left s(2);
+      @include f(s(2), s(4), left);
+
+      &:hover {
+        background-position: center left;
+      }
+    }
+
+    &.next {
+      background: url('../images/svg/single/iconArrowRight.svg');
+      background-repeat: no-repeat;
+      background-position: center right s(2);
+      @include f(s(2), s(4), right);
+
+      &:hover {
+        background-position: center right;
+      }
+    }
+  }
+  /* stylelint-enable */
+}

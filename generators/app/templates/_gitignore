@@ -1,0 +1,73 @@
+# Ignore hidden folders #
+# This takes care of .tmp, .sass-cache, and many others #
+.*/
+
+# Ignore OS generated files #
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+
+# Always-ignore files and folders #
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swn
+*.swo
+*.swp
+._*
+*~
+
+# Ignore packages #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Ignore project specifics #
+bower/
+node_modules/
+.tmp
+
+<% if (projectType === 'prototyping' ) { %>
+___dist/
+<% } %>
+
+<% if (projectType === 'wordpress' ) { %>
+___dist/*
+!___dist/wp-content/
+___dist/wp-content/*
+!___dist/wp-content/plugins/
+!___dist/wp-content/themes/
+___dist/wp-content/themes/*
+!___dist/wp-content/themes/<%= projectName %>/
+___dist/wp-content/themes/<%= projectName %>/*
+!___dist/wp-content/themes/<%= projectName %>/acf-json/
+<% } %>
+
+<% if (projectType === 'craftCMS' ) { %>
+# Craft CMS
+___dist/craft/*
+!___dist/craft/plugins
+!___dist/craft/translations
+!___dist/craft/config
+___dist/public/assets
+___dist/.env.php
+<% } %>
+
+<% if (projectType === 'craftCMS3' ) { %>
+# Craft CMS Beta
+___dist/config/license.key
+___dist/storage
+___dist/templates
+___dist/vendor
+___dist/web/assets
+___dist/web/cpresources
+#___dist/web/uploads
+___dist/.env.php
+<% } %>

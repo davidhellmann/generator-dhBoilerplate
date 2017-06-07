@@ -1,0 +1,12 @@
+{#
+  Use SVG
+  --------------------------------------------------
+
+  {{ macroSvgSprite.svgSprite(icon_twitter) }}
+#}
+
+{% macro svgSprite(spriteName) %}
+  <svg class="m-svgSprite  m-svgSprite--{{ spriteName }}">
+    <use xlink:href="/assets/images/svg/sprite/sprite.svg#{{ spriteName }}"></use>
+  </svg>
+{% endmacro %}

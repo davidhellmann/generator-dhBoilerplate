@@ -1,0 +1,53 @@
+/* -------------------------------------------------- */
+/*    .o-twoColsHeader
+/* -------------------------------------------------- */
+
+.o-twoColsHeader {
+  $root: &;
+  @include make-col(12);
+  @include center();
+
+  &__inner {
+    @include make-row();
+  }
+
+  &__head {
+    @include make-col(12);
+    order: 1;
+
+    @include media('>=m') {
+      @include make-col(8);
+    }
+  }
+
+  &__main {
+    @include make-col(12);
+    order: 3;
+
+    @include media('>=m') {
+      @include make-col(8);
+      order: 2;
+    }
+
+    .m-introText {
+      font-size: fs('ms2');
+      padding-left: s(1);
+      padding-right: s(1);
+
+      @include media('>=m') {
+        padding-left: s(4);
+        padding-right: s(4);
+      }
+    }
+  }
+
+  &__aside {
+    @include make-col(12);
+    order: 2;
+
+    @include media('>=m') {
+      @include make-col(4);
+      order: 3;
+    }
+  }
+}

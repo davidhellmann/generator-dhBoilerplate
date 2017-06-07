@@ -1,0 +1,112 @@
+{#
+  Content Builder Modules
+  =======================
+#}
+
+{% switch data.type %}
+  {# Accordion Modul #}
+  {% case 'accordion' %}
+    {% include '_modules/_accordion/_template' with {
+      data: data
+    } only %}
+
+  {# Button Modul #}
+  {% case 'button' %}
+    {% include '_modules/_button/_template' with {
+      data: data
+    } only %}
+
+  {# Button Group Modul #}
+  {% case 'buttonGroup' %}
+    {% include '_modules/_buttonGroup/_template' with {
+      data: data
+    } only %}
+
+  {# Content Section Modul #}
+  {% case 'contentSection' %}
+    {% include '_modules/_contentSection/_template' with {
+      data: data
+    } only %}
+
+  {# Definiton List Modul #}
+  {% case 'definitionList' %}
+    {% include '_modules/_definitionList/_template' with {
+      data: data
+    } only %}
+
+  {# Embed Modul #}
+  {% case 'embed' %}
+    {% include '_modules/_embed/_template' with {
+      data: data
+    } only %}
+
+  {# Headline Modul #}
+  {% case 'headline' %}
+    {% include '_modules/_headline/_template' with {
+      data: data
+    } only %}
+
+  {# Image Cover Modul #}
+  {% case 'imageCover' %}
+    {% include '_modules/_imageCover/_template' with {
+      data: data
+    } only %}
+
+  {# Image Gallery Modul #}
+  {% case 'imageGallery' %}
+    {% include '_modules/_imageGallery/_template' with {
+      data: data
+    } only %}
+
+  {# Image Grid Modul #}
+  {% case 'imageGrid' %}
+    {% include '_modules/_imageGrid/_template' with {
+      data: data
+    } only %}
+
+  {# Image Single Modul #}
+  {% case 'imageSingle' %}
+    {% include '_modules/_imageSingle/_template' with {
+      data: data
+    } only %}
+
+  {# Image Slider Modul #}
+  {% case 'imageSlider' %}
+    {% include '_modules/_imageSlider/_template' with {
+      data: data
+    } only %}
+
+  {# Quote Modul #}
+  {% case 'quote' %}
+    {% include '_modules/_quote/_template' with {
+      data: data
+    } only %}
+
+  {# Rich Text Modul #}
+  {% case 'richText' %}
+    {% include '_modules/_richText/_template' with {
+      data: data
+    } only %}
+
+  {# Rich Text Modul #}
+  {% case 'richTextMarginals' %}
+    {% include '_modules/_richTextMarginals/_template' with {
+      data: data
+    } only %}
+
+  {# Separator Modul #}
+  {% case 'separator' %}
+    {% include '_modules/_separator/_template' with {
+      data: data
+    } only %}
+
+  {# Rich Text Modul #}
+  {% case 'twoColumns' %}
+    {% include '_modules/_twoColumns/_template' with {
+      data: data
+    } only %}
+
+{% endswitch %}
+
+
+

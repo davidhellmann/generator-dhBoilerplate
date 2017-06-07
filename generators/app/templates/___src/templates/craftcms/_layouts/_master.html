@@ -1,0 +1,129 @@
+{#
+  Master Layout
+  --------------------------------------------------
+
+  This i the basic layout. Feel free to modify
+#}
+
+{% set rootUrl = siteUrl %}
+
+{# Include Macros #}
+{% import '_macros/_macro-amNav.html' as macroAmNav %}
+{% import '_macros/_macro-bgImage.html' as macroBgImage %}
+{% import '_macros/_macro-image.html' as macroImage %}
+{% import '_macros/_macro-isActive.html' as macroIsActive %}
+{% import '_macros/_macro-niceTime.html' as macroNiceTime %}
+{% import '_macros/_macro-pagination.html' as macroPagination %}
+{% import '_macros/_macro-paginationSimple.html' as macroPaginationSimple %}
+{% import '_macros/_macro-postNav.html' as macroPostNav %}
+{% import '_macros/_macro-socialLinks.html' as macroSocialLinks %}
+{% import '_macros/_macro-srcset.html' as macroSrcset %}
+{% import '_macros/_macro-svgSprite.html' as macroSvgSprite %}
+
+<!DOCTYPE html>
+<html class="" lang="de">
+<head>
+
+  {# -- LOADS CSS -- #}
+  <script>
+    {{ source('_inlineJS/loadCSS.min.js') }}
+    {{ source('_inlineJS/cssrelpreload.min.js') }}
+  </script>
+
+  {# -- WEBFONTS HERE -- #}
+
+  {# -- CRITICAL CSS -- #}
+  {% set cacheVal = getCookie('critical-css') %}
+  {% if not cacheVal or craft.config.devMode %}
+    {{ setCookie('critical-css', now | date_modify("+7 days").timestamp ) }}
+    {% block appInlineCSS %}
+    {% endblock %}
+
+  {% if craft.cacheBuster is defined %}
+  <link rel="preload" href="{{ cacheBuster( '/assets/css/app.min.css') }}" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
+    </noscript>
+  {% else %}
+  <link rel="preload" href="{{ rootUrl }}assets/css/app.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css"></noscript>
+  {% endif %}
+
+  {% else %}
+    <script>
+      document.documentElement.className += " wf-loaded"
+    </script>
+
+  {% if craft.cacheBuster is defined %}
+  <link rel="stylesheet" href="{{ cacheBuster( '/assets/css/app.min.css') }}">
+  {% else %}
+  <link rel="stylesheet" href="{{ rootUrl }}assets/css/app.min.css">
+  {% endif %}
+  {% endif %}
+
+  {# -- CHECK JS -- #}
+  {% include '_partials/_global/_checkJS.html' %}
+
+  {# -- META -- #}
+  {% include '_partials/_header/_meta.html' %}
+
+  {# -- SCRIPTS -- #}
+  {% include '_partials/_header/_scripts.html' %}
+
+  {# -- SEO & TITLE TAG -- #}
+  {% include '_partials/_header/_seo.html' %}
+
+  {# -- FAV ICON -- #}
+  {% include '_partials/_header/_favicons.html' %}
+
+  {% block siteHeader %}{% endblock %}
+</head>
+{% cache %}
+{% minify %}
+<body id="home" class="{{ bodyClass is defined ? bodyClass }}  {{ craft.request.isLivePreview ? 'is-livePreview' }}  {{ craft.config.devMode ? 't-devMode' }}">
+
+{% if currentUser %}
+  {#{% if currentUser.isInGroup('redakteur') or currentUser.admin %}#}
+  {% if currentUser.admin %}
+    <div class="t-editLink">
+      <a href="{{ entry.cpEditUrl }}">Edit this Page</a>
+    </div>
+  {% endif %}
+{% endif %}
+
+<div class="m-appWrapper">
+  {# -- App Header -- #}
+  {% include '_modules/_appHeader/_template.html' %}
+
+  <div class="m-appContent">
+  {% block appContent %}
+    Content
+  {% endblock %}
+  </div>
+
+  {# -- App Footer -- #}
+  {% include '_modules/_appFooter/_template.html' %}
+</div>
+
+{# -- Grid Overlay -- #}
+{% if craft.config.devMode %}
+  <div class="o-gridOverlay  o-section">
+    <div class="o-row">
+      {% for i in 1..12 %}
+        <div class="o-col"></div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{# -- SCRIPTS -- #}
+{% include '_partials/_footer/_scripts.html' %}
+
+{# -- Instant Analytics -- #}
+{% block analytics %}
+  {#{% hook 'iaSendPageView' %}#}
+{% endblock %}
+</body>
+{% endminify %}
+{% endcache %}
+</html>

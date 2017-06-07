@@ -1,0 +1,64 @@
+{#
+ Image Slider
+ ============
+#}
+
+{# -- Set Vars -- #}
+{% set classname = name is defined and name is not empty ? name : 'm-imageSlider' %}
+{% set images = data.singleImages is defined ? data.singleImages %}
+{% set settings = data.settingsImageSlider is defined ? data.settingsImageSlider %}
+
+{% if settings.imageRatio is defined %}
+  {% switch settings.imageRatio %}
+
+  {% case "landscape" %}
+  {% set ratio = '16:10' %}
+
+  {% case "square" %}
+  {% set ratio = '1:1' %}
+
+  {% case "portrait" %}
+  {% set ratio = '10:16' %}
+
+  {% default %}
+  {% set ratio = '' %}
+
+  {% endswitch %}
+
+{% else %}
+  {% set ratio = '' %}
+{% endif %}
+
+{# -- Modul -- #}
+<!-- Slider main container -->
+<div class="o-col  {{ classname ~ 'Wrapper' }}">
+  <figure class="{{ classname }}  js-imageSlider"
+          data-flickity='{
+            "cellAlign": "left",
+            "contain": true,
+            "draggable": true,
+            "friction": 1,
+            "selectedAttraction": 0.1,
+            "lazyLoad": 2,
+            "groupCells": true,
+            "imagesLoaded": true,
+            "prevNextButtons": true,
+            "pageDots": false,
+            "rightToLeft": false,
+            "watchCSS": false,
+            "dragThreshold": 30
+          }' itemscope itemtype="http://schema.org/ImageGallery" role="presentation">
+    <!-- Slides -->
+    {% for image in images %}
+      <div class="{{ classname ~ '__slide' }}  {{ settings.imageRatio is defined ? classname ~ '__slide--' ~ settings.imageRatio.value }}" itemscope itemtype="http://schema.org/ImageObject">
+
+        {# -- Res Image -- #}
+        {% set options = {
+          ratio: ratio
+        } %}
+
+        {{ macroImage.image(image, options) }}
+      </div>
+    {% endfor %}
+  </figure>
+</div>

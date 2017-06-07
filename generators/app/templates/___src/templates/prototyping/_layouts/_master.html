@@ -1,0 +1,55 @@
+{#
+  Master Layout
+  --------------------------------------------------
+
+  This i the basic layout. Feel free to modify
+#}
+
+{# Include Macros #}
+{% import '../_macros/_macro-bgImage.html' as macroBgImage %}
+{% import '../_macros/_macro-image.html' as macroImage %}
+{% import '../_macros/_macro-niceTime.html' as macroNiceTime %}
+{% import '../_macros/_macro-socialLinks.html' as macroSocialLinks %}
+{% import '../_macros/_macro-srcset.html' as macroSrcset %}
+{% import '../_macros/_macro-svgSprite.html' as macroSvgSprite %}
+
+<!DOCTYPE html>
+<html class="" lang="de">
+<head>
+  <title>{% block appTitle %}DEVELOPMENT &mdash; dhBoilerplate{% endblock %}</title>
+
+  {# -- Check JS -- #}
+  {% include '../_partials/_global/_checkJS.html' %}
+
+  {# -- Meta -- #}
+  {% include '../_partials/_header/_meta.html' %}
+
+  {# -- Scripts -- #}
+  {% include '../_partials/_header/_scripts.html' %}
+
+  {# -- Favicon -- #}
+  {% include '../_partials/_header/_favicons.html' %}
+
+</head>
+<body id="home" class="{{ bodyClass is defined ? bodyClass ~ '  ' : '' }}">
+
+<div class="m-appWrapper">
+
+  {# -- App Header -- #}
+  {% include '../_modules/_appHeader/_appHeader.template.html' %}
+
+  <div class="m-appContent">
+    {% block appContent %}
+      Content
+    {% endblock %}
+  </div>
+
+  {# -- App Footer -- #}
+  {% include '../_modules/_appFooter/_appFooter.template.html' %}
+
+</div>
+
+{# -- Scripts -- #}
+{% include '../_partials/_footer/_scripts.html' %}
+</body>
+</html>

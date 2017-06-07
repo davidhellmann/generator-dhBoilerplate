@@ -1,0 +1,38 @@
+/* -------------------------------------------------- */
+/*    Modules
+/* -------------------------------------------------- */
+<% if (projectType !== 'wordpress' ) { %>
+// Modules
+@import '../../templates/_modules/_accordion/style';
+@import '../../templates/_modules/_appContent/style';
+@import '../../templates/_modules/_appFooter/style';
+@import '../../templates/_modules/_appHeader/style';
+@import '../../templates/_modules/_appWrapper/style';
+@import '../../templates/_modules/_button/style';
+@import '../../templates/_modules/_buttonGroup/style';
+@import '../../templates/_modules/_caption/style';
+@import '../../templates/_modules/_cookiebar/style';
+@import '../../templates/_modules/_contentToggle/style';
+@import '../../templates/_modules/_checkbox/style';
+@import '../../templates/_modules/_contentSection/style';
+@import '../../templates/_modules/_definitionList/style';
+@import '../../templates/_modules/_embed/style';
+@import '../../templates/_modules/_figure/style';
+@import '../../templates/_modules/_headline/style';
+@import '../../templates/_modules/_imageCover/style';
+@import '../../templates/_modules/_imageGallery/style';
+@import '../../templates/_modules/_imageGrid/style';
+@import '../../templates/_modules/_imageSingle/style';
+@import '../../templates/_modules/_imageSlider/style';
+@import '../../templates/_modules/_input/style';
+@import '../../templates/_modules/_pageTitle/style';
+@import '../../templates/_modules/_quote/style';
+@import '../../templates/_modules/_radio/style';
+@import '../../templates/_modules/_richText/style';
+@import '../../templates/_modules/_richTextMarginals/style';
+@import '../../templates/_modules/_svgSprite/style';
+@import '../../templates/_modules/_separator/style';
+@import '../../templates/_modules/_twoColumns/style';
+@import '__modules/module.pagination';
+@import '__modules/module.paginationSimple';
+<% } %>
