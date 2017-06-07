@@ -5,7 +5,8 @@ const craftFolders = {
         '___dist/templates',
         '___dist/config/db.php',
         '___dist/config/general.php',
-        '___dist/web/index.php'
+        '___dist/web/index.php',
+        '___dist/craft'
     ]
 }
 

@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 const clear = require('clear-terminal')
 const commandExists = require('command-exists')
-const fs = require('fs-extra')
+const filesystem = require('fs-extra')
 const Generator = require('yeoman-generator')
 const yosay = require('yosay')
 
@@ -77,7 +77,7 @@ module.exports = class extends Generator {
             this.commands.git = true
             await commandExists('wp')
             this.commands.wp = true
-        } catch(e) {
+        } catch (e) {
             if (e) console.error(e)
         }
     }
@@ -189,7 +189,7 @@ module.exports = class extends Generator {
         })
 
         // Without Yeoman Logic
-        this.foldersProjectTpl.files.forEach(file => {
+        this.foldersProject.files.forEach(file => {
             if (file.projectContext.includes(this.props.projectType)) {
                 this.fs.copy(
                     this.templatePath(file.src),
@@ -241,6 +241,23 @@ module.exports = class extends Generator {
             this.yarnInstall()
         } else {
             this.npmInstall()
+        }
+    }
+
+    end() {
+        clear()
+        this.log(yosay(
+            `It was an honor to me to setup this project with you ${chalk.red('<3')}!`
+        ))
+        this.logMessage({message: 'Init Project', short: false})
+
+        if (process.env.NODE_ENV === 'test') {
+            return
+        }
+        if (this.commands.yarn) {
+            this.spawnCommandSync('yarn', ['start'])
+        } else {
+            this.spawnCommandSync('gulp', ['init'])
         }
     }
 }

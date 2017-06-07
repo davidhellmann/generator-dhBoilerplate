@@ -28,27 +28,29 @@
 {% set showAside = showAside is defined ? showAside : true %}
 
 <div class="{{ classname }}  {{ modifier }}">
-  {% if showHead %}
-    <div class="{{ classname ~ '__head' }}">
-      {% block head %}
+  <div class="{{ classname ~ '__inner' }}">
+    {% if showHead %}
+      <div class="{{ classname ~ '__head' }}">
+        {% block head %}
 
-      {% endblock %}
-    </div>
-  {% endif %}
+        {% endblock %}
+      </div>
+    {% endif %}
 
-  {% if showMain %}
-    <div class="{{ classname ~ '__main' }}">
-      {% block main %}
+    {% if showMain %}
+      <div class="{{ classname ~ '__main' }}">
+        {% block main %}
 
-      {% endblock %}
-    </div>
-  {% endif %}
+        {% endblock %}
+      </div>
+    {% endif %}
 
-  {% if showAside %}
-    <aside class="{{ classname ~ '__aside' }}">
-      {% block aside %}
+    {% if showAside %}
+      <aside class="{{ classname ~ '__aside' }}">
+        {% block aside %}
 
-      {% endblock %}
-    </aside>
-  {% endif %}
+        {% endblock %}
+      </aside>
+    {% endif %}
+  </div>
 </div>

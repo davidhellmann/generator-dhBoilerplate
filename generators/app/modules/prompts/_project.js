@@ -114,8 +114,7 @@ Not a valid URL! Example: foobar.dev (HOSTNAME.TLD)${chalk.styles.red.close}`
             headline: 'Project jQuery',
             description: 'Do you want to use jQuery (newest Version)?'
         }),
-        default: false,
-        store: true
+        default: false
     },
     {
         type: 'confirm',
