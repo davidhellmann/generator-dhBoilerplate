@@ -25,10 +25,7 @@
     background-color: c('black-5');
     border-right: 0;
     @include make-col(6);
-
-    .wf-loaded & {
-      font-family: ff('bold');
-    }
+    font-weight: 700;
 
     @include media('>=m') {
       border-right: 1px dotted c('black-25');

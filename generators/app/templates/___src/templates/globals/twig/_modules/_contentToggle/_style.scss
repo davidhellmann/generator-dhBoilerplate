@@ -29,11 +29,8 @@
 
       strong {
         color: c('black');
+        font-weight: 700;
       }
-    }
-
-    .wf-loaded & {
-      font-family: ff('bold');
     }
   }
 
@@ -94,10 +91,6 @@
       @include make-vr(1);
       font-size: fs('ms-2');
       text-transform: uppercase;
-
-      .wf-loaded & {
-        font-family: ff('bold');
-      }
     }
 
     p,
