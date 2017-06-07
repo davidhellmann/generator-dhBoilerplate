@@ -1,12 +1,12 @@
 const extend = require('deep-extend')
 
-function addProjectSettings(files = {}) {
+function addProjectSettings(files = {}, context) {
     extend(files.pkg, {
-        projectName: this.props.projectName,
-        projectDescription: this.props.projectDescription,
-        proxy: this.props.projectProxy,
-        projectType: this.props.projectType,
-        projectVresion: this.props.projectVersion
+        projectName: context.props.projectName,
+        projectDescription: context.props.projectDescription,
+        proxy: context.props.projectProxy,
+        projectType: context.props.projectType,
+        projectVresion: context.props.projectVersion
     })
 }
 

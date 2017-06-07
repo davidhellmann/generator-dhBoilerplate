@@ -1,10 +1,10 @@
 const extend = require('deep-extend')
 
-function addBrowserSyncSettings(files = {}) {
+function addBrowserSyncSettings(files = {}, context) {
     extend(files.pkg, {
         browsersync: {
             openbrowser: false,
-            proxy: this.props.projectProxy
+            proxy: context.props.projectProxy
         }
     })
 }

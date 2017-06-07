@@ -10,7 +10,7 @@ const addCSSSettings = require('../../package/_css')
 const addDependencies = require('../../package/_dependencies')
 const addDevDependencies = require('../../package/_devDependencies')
 const addFaviconsSettings = require('../../package/_favicons')
-const addSystemFiles = require('../../package/_files')
+const addSystemFiles = require('../../package/_sytemFiles')
 const addInlineJSFiles = require('../../package/_inlineJS')
 const addJquerySettings = require('../../package/_jquery')
 const addMinifyImagesSettings = require('../../package/_minify')
@@ -35,81 +35,52 @@ const writePackageJSON = () => {
 
                 // Getting the template files
                 const pkg = context.fs.readJSON(context.templatePath('_package.json'), {})
-
-                // Settings
-                context.addBaseData = addBaseData.bind(context)
-                context.addProjectSettings = addProjectSettings.bind(context)
-                context.addBrowserlistSettings = addBrowserlistSettings.bind(context)
-                context.addBrowserSyncSettings = addBrowserSyncSettings.bind(context)
-                context.addCriticalCSSSettings = addCriticalCSSSettings.bind(context)
-                context.addCSSSettings = addCSSSettings.bind(context)
-                context.addDependencies = addDependencies.bind(context)
-                context.addDevDependencies = addDevDependencies.bind(context)
-                context.addFaviconsSettings = addFaviconsSettings.bind(context)
-                context.addSystemFiles = addSystemFiles.bind(context)
-                context.addInlineJSFiles = addInlineJSFiles.bind(context)
-                context.addJquerySettings = addJquerySettings.bind(context)
-                context.addMinifyImagesSettings = addMinifyImagesSettings.bind(context)
-                context.addModernizrSettings = addModernizrSettings.bind(context)
-                context.addNPMScripts = addNPMScripts.bind(context)
-                context.addVueJS = addVueJS.bind(context)
-
-                // Src Paths
-                context.addSrcPaths = addSrcPaths.bind(context)
-
-                // Dist Paths
-                context.addDistPathsCraftCMS = addDistPathsCraftCMS.bind(context)
-                context.addDistPathsCraftCMS3 = addDistPathsCraftCMS3.bind(context)
-                context.addDistPathsPrototyping = addDistPathsPrototyping.bind(context)
-                context.addDistPathsWordpress = addDistPathsWordpress.bind(context)
-
                 // Write Settings into packackge.json
-
                 // Base Stuff
-                context.addBaseData({pkg})
-                context.addProjectSettings({pkg})
+                addBaseData({pkg}, context)
+                addProjectSettings({pkg}, context)
 
                 // NPM Scripts
-                context.addNPMScripts({pkg})
+                addNPMScripts({pkg})
 
                 // Paths
-                context.addSrcPaths({pkg})
+                addSrcPaths({pkg})
                 if (context.props.projectType === 'craftCMS') {
-                    context.addDistPathsCraftCMS({pkg})
+                    addDistPathsCraftCMS({pkg})
                 } else if (context.props.projectType === 'craftCMS3') {
-                    context.addDistPathsCraftCMS3({pkg})
+                    addDistPathsCraftCMS3({pkg})
                 } else if (context.props.projectType === 'prototyping') {
-                    context.addDistPathsPrototyping({pkg})
+                    addDistPathsPrototyping({pkg})
                 } else if (context.props.projectType === 'wordpress') {
-                    context.addDistPathsWordpress({pkg})
+                    addDistPathsWordpress({pkg})
                 }
 
                 // Files
-                context.addSystemFiles({pkg})
-                context.addInlineJSFiles({pkg})
+                addSystemFiles({pkg})
+                addInlineJSFiles({pkg})
 
                 // Dependencies
-                context.addDependencies({pkg})
-                context.addDevDependencies({pkg})
+                addDependencies({pkg})
+                addDevDependencies({pkg})
 
                 // If jQuery True
                 if (context.props.projectJquery === true) {
-                    context.addJquerySettings({pkg})
+                    addJquerySettings({pkg})
                 }
 
                 // If VueJS True
                 if (context.props.projectVue === true) {
-                    context.addVueJS({pkg})
+                    addVueJS({pkg})
                 }
 
                 // Project Settings
-                context.addFaviconsSettings({pkg})
-                context.addMinifyImagesSettings({pkg})
-                context.addModernizrSettings({pkg})
-                context.addCriticalCSSSettings({pkg})
-                context.addCSSSettings({pkg})
-                context.addBrowserlistSettings({pkg})
-                context.addBrowserSyncSettings({pkg})
+                addFaviconsSettings({pkg}, context)
+                addMinifyImagesSettings({pkg})
+                addModernizrSettings({pkg})
+                addCriticalCSSSettings({pkg})
+                addCSSSettings({pkg})
+                addBrowserlistSettings({pkg})
+                addBrowserSyncSettings({pkg}, context)
 
                 // Write package.json
                 context.fs.writeJSON(context.destinationPath('package.json'), pkg)

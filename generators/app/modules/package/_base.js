@@ -1,15 +1,15 @@
 const extend = require('deep-extend')
 
-function addBaseData(files = {}) {
+function addBaseData(files = {}, context) {
     extend(files.pkg, {
-        name: this.props.projectName,
-        description: this.props.projectDescription,
-        version: this.props.projectVersion,
+        name: context.props.projectName,
+        description: context.props.projectDescription,
+        version: context.props.projectVersion,
         authors: [
             {
-                name: this.props.authorName,
-                email: this.props.authorEmail,
-                homepage: this.props.authorHomepage
+                name: context.props.authorName,
+                email: context.props.authorEmail,
+                homepage: context.props.authorHomepage
             }
         ],
         repository: ''

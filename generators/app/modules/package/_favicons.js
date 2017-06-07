@@ -1,14 +1,14 @@
 const extend = require('deep-extend')
 
-function addFaviconsSettings(files = {}) {
+function addFaviconsSettings(files = {}, context) {
     extend(files.pkg, {
         favicons: {
-            appName: this.props.projectName,
-            appDescription: this.props.projectDescription,
-            version: this.props.projectVersion,
-            url: this.props.projectProxy,
-            developerName: this.props.authorName,
-            developerURL: this.props.authorHomepage,
+            appName: context.props.projectName,
+            appDescription: context.props.projectDescription,
+            version: context.props.projectVersion,
+            url: context.props.projectProxy,
+            developerName: context.props.authorName,
+            developerURL: context.props.authorHomepage,
             srcImage: '_favicon.png',
             background: '#000000',
             display: 'standalone',
