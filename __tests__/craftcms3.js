@@ -7,17 +7,17 @@ const fs = require('fs-extra')
 
 const run = () => helpers.run(path.join(__dirname, '../generators/app'))
 
-describe('It is a Craft CMS Project, Yay!', () => {
+describe('It is a Craft CMS 3 Project, Yay!', () => {
     beforeAll(async () => {
         await run()
             .withPrompts({
-                projectType: 'craftCMS'
+                projectType: 'craftCMS3'
             })
     })
 
-    it('fills package.json with project type craft', async () => {
+    it('fills package.json with project type Craft CMS 3', async () => {
         assert.JSONFileContent('package.json', {
-            projectType: 'craftCMS'
+            projectType: 'craftCMS3'
         })
     })
 
@@ -32,25 +32,25 @@ describe('It is a Craft CMS Project, Yay!', () => {
 })
 
 describe('it downloads craft', () => {
-    it('If the user wants to it downloads Craft', async () => {
+    it('If the user wants to it downloads Craft CMS 3', async () => {
         await run()
             .withPrompts({
-                projectType: 'craftCMS',
-                craftCMSInstall: true
-            });
+                projectType: 'craftCMS3',
+                craftCMS3Install: true
+            })
 
         assert.file([
-            '___dist/craft/'
+            '___dist/web/'
         ])
     })
 })
 
-describe('it is a craft project with NY Studio Environment', () => {
+describe('it moves craft config files', () => {
     beforeAll(async () => {
         await run()
             .withPrompts({
-                projectType: 'craftCMS',
-                craftCMSInstall: true
+                projectType: 'craftCMS3',
+                craftCMS3Install: true
             })
     })
 
@@ -58,7 +58,7 @@ describe('it is a craft project with NY Studio Environment', () => {
         assert.file([
             '___dist/.env.php',
             '___dist/example.env.php',
-            '___dist/craft/config/general.php'
+            '___dist/config/general.php'
         ])
     })
 })
