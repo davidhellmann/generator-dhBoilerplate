@@ -257,7 +257,7 @@ module.exports = class extends Generator {
         if (this.commands.yarn) {
             this.spawnCommandSync('yarn', ['start'])
         } else {
-            this.spawnCommandSync('gulp', ['init'])
+            this.spawnCommandSync('npm', ['run'], ['start'])
         }
     }
 }
