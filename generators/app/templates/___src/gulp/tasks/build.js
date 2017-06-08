@@ -19,7 +19,7 @@ const buildTask = (cb) => {
             'create:inlineJS',
             'copy:images',
             'copy:svg-single',
-            'copy:svg-sprite',
+            'create:svg-sprite',
         ],
         [
             'minify:js',
