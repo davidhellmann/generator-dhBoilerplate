@@ -208,26 +208,8 @@ module.exports = class extends Generator {
                 )
             }
         })
-    }
 
-    // Install
-    install() {
-        this.logMessage({message: 'Install', short: false})
-        this.logMessage({message: 'Download all the NPM Modules…'})
-        this.logMessage({message: 'Give me a moment to do that…'})
 
-        if (this.commands.yarn) {
-            this.yarnInstall()
-        } else {
-            this.npmInstall()
-        }
-    }
-
-    end() {
-        clear()
-        this.log(yosay(
-            `It was an honor to me to setup this project with you ${chalk.red('<3')}!`
-        ))
 
 
 
@@ -251,6 +233,26 @@ module.exports = class extends Generator {
                 console.error(e)
             }
         }
+    }
+
+    // Install
+    install() {
+        this.logMessage({message: 'Install', short: false})
+        this.logMessage({message: 'Download all the NPM Modules…'})
+        this.logMessage({message: 'Give me a moment to do that…'})
+
+        if (this.commands.yarn) {
+            this.yarnInstall()
+        } else {
+            this.npmInstall()
+        }
+    }
+
+    end() {
+        clear()
+        this.log(yosay(
+            `It was an honor to me to setup this project with you ${chalk.red('<3')}!`
+        ))
 
         this.logMessage({message: 'Init Project', short: false})
 
