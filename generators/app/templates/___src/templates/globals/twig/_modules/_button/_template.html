@@ -10,17 +10,21 @@
 
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: classname,
-  url: button ? button.url : '#',
-  target: button and button.target is defined and button.target ? ' target=_blank' : '',
-  style: button and settings.style is defined ? classname ~ '__inner--' ~ settings.style : '',
-  alignment: button and settings.alignment is defined ? classname ~ '__inner--' ~ settings.alignment : '',
-  text: button and button.text is defined and button.text | length ? button.text : 'Button',
-  hasIcon: false,
-  iconName: '',
+classname: classname,
+url: button ? button.url : '#',
+target: button and button.target is defined and button.target ? ' target=_blank' : '',
+style: button and settings.style is defined ? classname ~ '__inner--' ~ settings.style : '',
+alignment: button and settings.alignment is defined ? classname ~ '__inner--' ~ settings.alignment : '',
+text: button and button.text is defined and button.text | length ? button.text : 'Button',
+hasIcon: false,
+iconName: '',
 } %}
 
-{% set options = options ? defaults|merge(options) : defaults %}
+{% if button and options is not defined %}
+  {% set options = defaults %}
+{% else %}
+  {% set options = options ? defaults|merge(options) : defaults %}
+{% endif %}
 
 {# -- Modul -- #}
 <div class="o-col  {{ options.classname }}">
@@ -34,4 +38,3 @@
     {% endif %}
   </a>
 </div>
-
