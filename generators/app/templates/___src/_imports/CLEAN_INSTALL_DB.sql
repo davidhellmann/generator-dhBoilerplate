@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: localhost (MySQL 5.6.34)
-# Datenbank: db58503077_cbmodules
-# Erstellt am: 2017-04-20 20:50:03 +0000
+# Host: localhost (MySQL 5.6.33)
+# Datenbank: db93018492_bab
+# Erstellt am: 2017-06-08 08:15:51 +0000
 # ************************************************************
 
 
@@ -1320,7 +1320,7 @@ LOCK TABLES `craft_info` WRITE;
 
 INSERT INTO `craft_info` (`id`, `version`, `schemaVersion`, `edition`, `siteName`, `siteUrl`, `timezone`, `on`, `maintenance`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'2.6.2973','2.6.9',2,'CB Modules','http://cbmodules.dev','UTC',1,0,'2017-04-16 21:53:40','2017-04-20 09:21:24','66d3ce2a-d695-463f-af51-9364c16014bf');
+	(1,'2.6.2982','2.6.9',2,'CB Modules','http://cbmodules.dev','UTC',1,0,'2017-04-16 21:53:40','2017-06-08 08:12:46','66d3ce2a-d695-463f-af51-9364c16014bf');
 
 /*!40000 ALTER TABLE `craft_info` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1740,12 +1740,13 @@ VALUES
 	(4,'Imager','1.5.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:50','2017-04-16 22:11:50','2017-04-20 14:00:59','0cff012d-6717-4a58-aa39-51268d2dbe80'),
 	(5,'Kint','1.1.0','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:55','2017-04-16 22:11:55','2017-04-20 14:00:59','f101513d-d2bd-4990-a866-6ad089964b4a'),
 	(6,'FruitLinkIt','2.3.4','2.3.0',NULL,'unknown',1,NULL,'2017-04-16 22:11:59','2017-04-16 22:11:59','2017-04-20 14:00:59','47ace0df-f9d6-49c2-9647-788d50e2e275'),
-	(7,'Minify','1.1.1','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-04-20 14:00:59','16bd2799-b641-4981-a41c-0e3392a48d5a'),
+	(7,'Minify','1.1.2','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:23','2017-04-16 22:42:23','2017-06-08 08:12:46','16bd2799-b641-4981-a41c-0e3392a48d5a'),
 	(8,'Neo','1.4.1','1.4.1',NULL,'unknown',1,NULL,'2017-04-16 22:42:26','2017-04-16 22:42:26','2017-04-20 14:00:59','70d7e5dd-2268-40a4-85f3-a7ab5dcf34cc'),
 	(9,'SidebarEnhancer','1.0.6','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:33','2017-04-16 22:42:33','2017-04-20 14:00:59','217a761d-a45d-4d67-8ee2-7cbd11ac91c4'),
 	(10,'SuperTable','1.0.3','1.0.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:40','2017-04-16 22:42:40','2017-04-20 14:00:59','196c672e-f9cb-444f-b32c-f399bca73a78'),
 	(11,'TheArchitect','1.6.0','1.6.0',NULL,'unknown',1,NULL,'2017-04-16 22:42:43','2017-04-16 22:42:43','2017-04-20 14:00:59','fb4f3140-f2f7-4c99-9257-087a3f99f655'),
-	(12,'Seomatic','1.1.43','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-04-20 14:00:59','7dcd03d0-54c8-47ed-b618-e93935503345');
+	(12,'Seomatic','1.1.43','1.1.25',NULL,'unknown',1,NULL,'2017-04-16 22:43:59','2017-04-16 22:43:59','2017-04-20 14:00:59','7dcd03d0-54c8-47ed-b618-e93935503345'),
+	(13,'CacheBuster','1.2.2',NULL,NULL,'unknown',1,NULL,'2017-06-08 08:14:49','2017-06-08 08:14:49','2017-06-08 08:14:49','923ab75d-46b6-4888-9d7e-932211f83267');
 
 /*!40000 ALTER TABLE `craft_plugins` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2398,7 +2399,8 @@ INSERT INTO `craft_sessions` (`id`, `userId`, `token`, `dateCreated`, `dateUpdat
 VALUES
 	(2,1,'3be99f73365e1e42df8113004e408a2405de5011czozMjoiZ2RfZ0xYZXVrZENkNTBoNXJvOHNjZmFtMkltMExaS3kiOw==','2017-04-16 22:06:52','2017-04-17 15:04:03','19036233-290c-41cc-b605-c1fdf1a3761f'),
 	(3,1,'7658c0e254ae030491cff7f33b86209c69cdd5c5czozMjoiY3VIZ1Z5cF9uY2xZelRvRnM0X3haY35YfnZXanVuUX4iOw==','2017-04-20 08:59:17','2017-04-20 08:59:17','df086c6e-caf9-423f-aefb-3cfc97d767e7'),
-	(4,1,'2a72da73a8f0f02f4fa8dda82f0574e82bed65a8czozMjoifmZEYUtxbVNRNEthemlyU28yb2tSNmszNzJsQm9ybEQiOw==','2017-04-20 20:45:08','2017-04-20 20:45:08','1d08f149-54fa-45d7-948e-03aff0cb2505');
+	(4,1,'2a72da73a8f0f02f4fa8dda82f0574e82bed65a8czozMjoifmZEYUtxbVNRNEthemlyU28yb2tSNmszNzJsQm9ybEQiOw==','2017-04-20 20:45:08','2017-04-20 20:45:08','1d08f149-54fa-45d7-948e-03aff0cb2505'),
+	(5,1,'91dd50a4ae7c537c47104cac4ebfb5f2becd6cc9czozMjoiSkpPa1I3Y1o3ZWE4Y1IxVEhnN2VxX0xRSXZ4cVZnZVgiOw==','2017-06-08 08:14:24','2017-06-08 08:14:24','f8516d8d-4d2f-42aa-bbfc-acac967df969');
 
 /*!40000 ALTER TABLE `craft_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3518,7 +3520,7 @@ LOCK TABLES `craft_users` WRITE;
 
 INSERT INTO `craft_users` (`id`, `username`, `photo`, `firstName`, `lastName`, `email`, `password`, `preferredLocale`, `weekStartDay`, `admin`, `client`, `locked`, `suspended`, `pending`, `archived`, `lastLoginDate`, `lastLoginAttemptIPAddress`, `invalidLoginWindowStart`, `invalidLoginCount`, `lastInvalidLoginDate`, `lockoutDate`, `verificationCode`, `verificationCodeIssuedDate`, `unverifiedEmail`, `passwordResetRequired`, `lastPasswordChangeDate`, `dateCreated`, `dateUpdated`, `uid`)
 VALUES
-	(1,'superuser',NULL,NULL,NULL,'davidhellmann.com@gmail.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,0,1,0,0,0,0,0,'2017-04-20 20:45:08','::1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-04-20 20:45:08','df730679-fa87-4b60-991e-9e821fddf5f8');
+	(1,'superuser',NULL,NULL,NULL,'davidhellmann.com@gmail.com','$2y$13$XiQ7RMMV2PbU.93SnT4rv.AFs4ahr0H3kEH1D6iMq86GjfyoOUA86',NULL,0,1,0,0,0,0,0,'2017-06-08 08:14:24','::1',NULL,NULL,'2017-06-08 08:14:14',NULL,NULL,NULL,NULL,0,'2017-04-16 21:53:42','2017-04-16 21:53:42','2017-06-08 08:14:24','df730679-fa87-4b60-991e-9e821fddf5f8');
 
 /*!40000 ALTER TABLE `craft_users` ENABLE KEYS */;
 UNLOCK TABLES;
