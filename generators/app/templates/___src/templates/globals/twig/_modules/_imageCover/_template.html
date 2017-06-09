@@ -3,6 +3,9 @@
   ===========
 #}
 
+{# -- Macros -- #}
+{% import '_macros/_macro-bgImage.html' as macroBgImage %}
+
 {# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-imageCover' %}
 {% set image = data.singleImage.first() is defined ? data.singleImage.first() %}

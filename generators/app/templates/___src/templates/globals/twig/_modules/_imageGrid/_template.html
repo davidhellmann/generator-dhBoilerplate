@@ -3,7 +3,10 @@
   ==========
 #}
 
-{# Set Vars #}
+{# -- Macros -- #}
+{% import '_macros/_macro-image.html' as macroImage %}
+
+{# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-imageGrid' %}
 {% set images = data.singleImages is defined ? data.singleImages %}
 {% set settings = data.settingsImageGrid is defined ? data.settingsImageGrid %}
@@ -46,7 +49,7 @@
         } %}
 
         {{ macroImage.image(image, options) }}
-  
+
         {% if (caption and captionTitle is not empty) or (caption and captionCaption is not empty) %}
           <figcaption class="m-caption  {{ classname ~ '__caption' }}" itemprop="caption description">
             {% if captionTitle %}

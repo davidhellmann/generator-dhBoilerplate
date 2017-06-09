@@ -3,6 +3,9 @@
   ==============
 #}
 
+{# -- Macros -- #}
+{% import '_macros/_macro-isActive.html' as macroIsActive %}
+
 {# Set Vars #}
 {% set defaults = {
   classname: 'm-navCategories',
@@ -41,12 +44,12 @@
             "watchCSS": false,
             "dragThreshold": 30
           }'>
-      
+
         <div class="{{ options.classname ~ '__slide' }}  {{ macroIsActive.isActive(options.contextSlug, options.urlSegment) }}">
           <a class="{{ options.classname ~ '__link' }}"
              href="{{ siteUrl }}{{ options.entryTypeSelector }}/{{ options.contextSlug }}">{{ options.showAllText }}</a>
         </div>
-      
+
         {% nav category in craft.categories.group(options.categoryGroup).relatedTo({ sourceElement: entryIds }) %}
         <div class="{{ options.classname ~ '__slide' }}  {{ macroIsActive.isActive(category.slug, options.urlSegment) }}">
           <a class="{{ options.classname ~ '__link' }}"

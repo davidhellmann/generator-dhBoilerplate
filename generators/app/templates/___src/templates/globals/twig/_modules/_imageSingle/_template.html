@@ -3,6 +3,9 @@
   ===========
 #}
 
+{# -- Macros -- #}
+{% import '_macros/_macro-image.html' as macroImage %}
+
 {# -- Set Vars -- #}
 {% set classname = name is defined and name is not empty ? name : 'm-imageSingle' %}
 {% set image = data.singleImage.first() is defined ? data.singleImage.first() %}
