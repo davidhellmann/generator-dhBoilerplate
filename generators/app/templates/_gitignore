@@ -56,6 +56,7 @@ ___dist/craft/*
 !___dist/craft/plugins
 !___dist/craft/translations
 !___dist/craft/config
+___dist/public/uploads
 ___dist/public/assets
 ___dist/.env.php
 <% } %>
@@ -68,6 +69,6 @@ ___dist/templates
 ___dist/vendor
 ___dist/web/assets
 ___dist/web/cpresources
-#___dist/web/uploads
+___dist/web/uploads
 ___dist/.env.php
 <% } %>
