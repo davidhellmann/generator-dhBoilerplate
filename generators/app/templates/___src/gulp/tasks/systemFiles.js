@@ -7,10 +7,10 @@ const argv = yargs.argv
 const $ = gulpLoadPlugins()
 
 const systemFiles = () => {
-  return gulp
-    .src(pkg.files.systemFiles)
-    .pipe(argv.source ? $.debug({ verbose: true }) : $.util.noop())
-    .pipe(gulp.dest(pkg.dist.base))
+    return gulp
+        .src(pkg.files.systemFiles)
+        .pipe(argv.source ? $.debug({verbose: true}) : $.util.noop())
+        .pipe(gulp.dest(pkg.dist.base))
 }
 
 gulp.task('copy:systemFiles', systemFiles)
