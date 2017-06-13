@@ -23,6 +23,7 @@ const writePackageJSON = require('./modules/writings/package')
 // Config Files for moving Files & Folders
 const filesEnvironment = require('./config/_filesEnvironment')
 const filesProject = require('./config/_filesProject')
+const filesProjectTpl = require('./config/_filesProjectTpl')
 const foldersProject = require('./config/_foldersProject')
 const foldersProjectTpl = require('./config/_foldersProjectTpl')
 
@@ -46,6 +47,7 @@ module.exports = class extends Generator {
         // Files & Folders
         this.filesEnvironment = filesEnvironment
         this.filesProject = filesProject
+        this.filesProjectTpl = filesProjectTpl
         this.foldersProject = foldersProject
         this.foldersProjectTpl = foldersProjectTpl
 
@@ -209,9 +211,14 @@ module.exports = class extends Generator {
             }
         })
 
-
-
-
+        // Project Files Tpl
+        this.filesProjectTpl.files.forEach(file => {
+            this.fs.copyTpl(
+                this.templatePath(file.src),
+                this.destinationPath(file.dest),
+                this.props
+            )
+        })
 
         // Git
         this.logMessage({
