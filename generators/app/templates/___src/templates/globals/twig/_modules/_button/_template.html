@@ -8,9 +8,14 @@
 {% set button = data.singleButton is defined ? data.singleButton %}
 {% set settings = data.settingsButton is defined ? data.settingsButton %}
 
+
+
+
 {# -- Set Defaults -- #}
 {% set defaults = {
   classname: classname,
+  button: false,
+  disabled: false,
   url: button ? button.url : '#',
   target: button and button.target is defined and button.target ? ' target=_blank' : '',
   style: button and settings.style is defined ? classname ~ '__inner--' ~ settings.style : '',
@@ -28,13 +33,25 @@
 
 {# -- Modul -- #}
 <div class="o-col  {{ options.classname }}  {{ options.style }}  {{ options.alignment }}">
-  <a itemprop="url"
-     role="button"
-     href="{{ options.url }}" {{ options.target }}
-     class="{{ options.classname ~ '__inner' }}">
-    {{ options.text }}
-    {% if options.hasIcon %}
-      {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
-    {% endif %}
-  </a>
+  {% if options.button %}
+    <button itemprop="url"
+            role="button"
+            class="{{ options.classname ~ '__inner' }}" {{ options.disabled ? 'disabled' }}>
+      {{ options.text }}
+      {% if options.hasIcon %}
+        {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+      {% endif %}
+    </button>
+  {% else %}
+    <a itemprop="url"
+       role="button"
+       href="{{ options.url }}" {{ options.target }}
+       class="{{ options.classname ~ '__inner' }}">
+      {{ options.text }}
+      {% if options.hasIcon %}
+        {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+      {% endif %}
+    </a>
+  {% endif %}
+  
 </div>
