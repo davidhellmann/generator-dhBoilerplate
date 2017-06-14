@@ -7,23 +7,23 @@
   display: flex;
   flex-direction: column;
 
-  @include media('>=m') {
-    @include make-col(8);
-    @include offset(2);
-  }
-
   &__inner {
+    cursor: pointer;
+    -webkit-appearance: none;
+    border: none;
     @include make-vr();
     align-self: flex-start;
     font-size: fs('ms0');
     color: c('white');
+    line-height: 1;
     background-color: c('black-50');
     text-decoration: none;
-    border-radius: 2px;
+    border-radius: 3px;
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
-    padding: s(1) s(2);
+    padding: s(2) s(4);
+    transition: all 0.25s ease('out-cubic');
 
     &:hover {
       color: c('white');
@@ -33,43 +33,33 @@
     svg {
       fill: c('white');
     }
-  }
 
-  &__inner--primary {
-    color: c('white');
-    background-color: c('black-90');
-  }
+    #{$root}--full & {
+      width: 100%;
+    }
 
-  &__inner--primary:hover {
-    color: c('white');
-    background-color: c('black');
-  }
+    #{$root}--left & {
+      align-self: flex-start;
+    }
 
-  &__inner--secondary {
-    color: c('black-60');
-    font-size: fs('ms-1');
-    background-color: c('black-20');
-  }
+    #{$root}--center & {
+      align-self: center;
+    }
 
-  &__inner--secondary:hover {
-    color: c('black-70');
-    background-color: c('black-30');
-  }
+    #{$root}--right & {
+      align-self: flex-end;
+    }
 
-  &__inner--left {
-    align-self: flex-start;
-  }
+    #{$root}--secondary & {
+      color: c('black-60');
+      font-size: fs('ms-1');
+      background-color: c('black-20');
 
-  &__inner--center {
-    align-self: center;
-  }
-
-  &__inner--right {
-    align-self: flex-end;
-  }
-
-  &__inner--full {
-    width: 100%;
+      &:hover {
+        color: c('black-70');
+        background-color: c('black-30');
+      }
+    }
   }
 }
 
