@@ -10,6 +10,7 @@ const yosay = require('yosay')
 const _pkg = require('../../package.json')
 const branding = require('./helpers/messages/_branding')
 const logMessage = require('./helpers/messages/_logMessage')
+let destPath = '___src/templates/_modules/'
 
 // Config Files for moving Files & Folders
 const filesModuleTpl = require('./config/_filesModuleTpl')
@@ -48,10 +49,31 @@ module.exports = class extends Generator {
         })
     }
 
+    async configuration() {
+        this.logMessage({message: 'Check if package.json file exists…'})
+        const _package = 'package.json'
+        if (filesystem.existsSync(_package)) {
+            const json = JSON.parse(filesystem.readFileSync(_package, 'utf8'))
+            this.log(`  package.json exists…`)
+            if (json.src.templates !== undefined) {
+                destPath = json.src.templates
+                this.log(`  Modules Folder: ${destPath}`)
+            }
+        } else {
+            const content = JSON.stringify({ src: { templates: '___src/templates/modules/' } }, null, 4)
+            this.log(`  There is no package.json… We create one!`)
+            this.log(`  package.json created!`)
+            this.log(`  Modules Folder: ${destPath}`)
+            filesystem.writeFile('package.json', content, (err) => {
+                if (err) return console.log(err)
+            })
+        }
+    }
+
     // Writing
     async writing() {
         this.logMessage({message: 'Creating Module…'})
-        this.filesModuleTpl(this).files.forEach(file => {
+        this.filesModuleTpl(this, destPath).files.forEach(file => {
             if (this.props.moduleFiles.includes(file.type)) {
                 this.fs.copyTpl(
                     this.templatePath(file.src),
