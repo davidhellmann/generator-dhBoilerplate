@@ -5,7 +5,7 @@
 .m-caption {
   width: 100%;
   font-size: fs('ms-2');
-  color: c('black-50');
+  color: c(black, 50);
   margin-top: s(1);
 
   .wf-loaded & {
@@ -19,7 +19,7 @@
 
 .m-caption__headline {
   font-weight: 700;
-  color: c('black-90');
+  color: c(black, 90);
 }
 
 .m-caption__body {
