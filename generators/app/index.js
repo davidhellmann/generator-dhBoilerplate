@@ -70,25 +70,14 @@ module.exports = class extends Generator {
     // Initializing
     async initializing() {
         this.logMessage({message: 'Initializing the Generator', short: false})
-        await commandExists('composer')
-            .then((command) => {
-                this.commands.composer = true
-            }).catch((e) => {})
-
-        await commandExists('yarn')
-            .then((command) => {
-                this.commands.yarn = true
-            }).catch((e) => {})
-
-        await commandExists('git')
-            .then((command) => {
-                this.commands.git = true
-            }).catch((e) => {})
-
-        await commandExists('wp')
-            .then((command) => {
-                this.commands.wp = true
-            }).catch((e) => {})
+        await Promise.all(Object.keys(this.commands)
+            .map(command => {
+                return commandExists(command)
+                    .then(commandResult => {
+                        this.commands[commandResult] = true
+                    })
+                    .catch(error => console.warn(error))
+            }))
     }
 
     // Prompting
