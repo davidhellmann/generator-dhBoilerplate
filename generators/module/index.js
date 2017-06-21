@@ -60,7 +60,7 @@ module.exports = class extends Generator {
                 this.log(`  Modules Folder: ${destPath}`)
             }
         } else {
-            const content = JSON.stringify({ src: { templates: '___src/templates/modules/' } }, null, 4)
+            const content = JSON.stringify({ src: { templates: '___src/templates/_modules/' } }, null, 4)
             this.log(`  There is no package.json… We create one!`)
             this.log(`  package.json created!`)
             this.log(`  Modules Folder: ${destPath}`)
