@@ -10,7 +10,7 @@ const yosay = require('yosay')
 const _pkg = require('../../package.json')
 const branding = require('./helpers/messages/_branding')
 const logMessage = require('./helpers/messages/_logMessage')
-let destPath = '___src/templates/_modules/'
+let destPath = './'
 
 // Config Files for moving Files & Folders
 const filesModuleTpl = require('./config/_filesModuleTpl')
@@ -51,15 +51,18 @@ module.exports = class extends Generator {
 
     async configuration() {
         this.logMessage({message: 'Check if package.json file exists…'})
-        const _package = 'package.json'
+        const _package = './package.json'
         if (filesystem.existsSync(_package)) {
             const json = JSON.parse(filesystem.readFileSync(_package, 'utf8'))
             this.log(`  package.json exists…`)
-            if (json.src.templates !== undefined) {
-                destPath = json.src.templates
+            if (json.src.modules.base !== undefined) {
+                destPath = json.src.modules.base
+                this.log(`  Modules Folder: ${destPath}`)
+            } else {
+                destPath = './'
                 this.log(`  Modules Folder: ${destPath}`)
             }
-        } else {
+        } /*else {
             const content = JSON.stringify({ src: { templates: '___src/templates/_modules/' } }, null, 4)
             this.log(`  There is no package.json… We create one!`)
             this.log(`  package.json created!`)
@@ -67,7 +70,7 @@ module.exports = class extends Generator {
             filesystem.writeFile('package.json', content, (err) => {
                 if (err) return console.log(err)
             })
-        }
+        }*/
     }
 
     // Writing

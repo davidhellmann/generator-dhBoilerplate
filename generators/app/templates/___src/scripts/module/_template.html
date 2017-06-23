@@ -1,0 +1,20 @@
+{#
+  <%= moduleName %>
+  ======================================================================================================================
+#}
+
+{# -- Set Defaults -- #}
+{% set defaults = {
+  classname: 'm-<%= moduleName %>',
+  foo: 'bar'
+} %}
+
+{% set options = options ? defaults|merge(options) : defaults %}
+
+{# -- Modul -- #}
+<div class="o-col  {{ options.classname }}">
+  <div class="{{ options.classname ~ '__inner' }}">
+    <%= moduleName %>  {{ options.foo == 'bar' ? 'foo' : 'bar' }}
+  </div>
+</div>
+

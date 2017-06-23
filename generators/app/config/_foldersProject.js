@@ -62,6 +62,15 @@ module.exports = {
             ],
             src: '___src/_data/',
             dest: '___src/_data/'
-        }
+        },
+        {
+            projectContext: [
+                'craftCMS',
+                'craftCMS3',
+                'prototyping',
+            ],
+            src: '___src/scripts/',
+            dest: '___src/'
+        },
     ]
 }
