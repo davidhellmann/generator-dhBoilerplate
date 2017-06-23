@@ -42,11 +42,46 @@ No whitespaces allowed!${chalk.styles.red.close}`
             }]
     },
     {
-        type: 'list',
-        name: "templateExtension",
-        message: "Do you prefer HTML or Twig?",
-        choices: ['.html', '.twig'],
-        default: '.html'
+        when(props) {
+            const _isInArray = props.moduleFiles.includes('js')
+            return _isInArray
+        },
+        type: 'input',
+        name: 'jsFileName',
+        message: message({
+            headline: 'JavaScript Filename',
+            description: 'Choose a JavaScript File Name or go with the default one:',
+            defaultValue: false
+        }),
+        default: '_main.js',
+    },
+    {
+        when(props) {
+            const _isInArray = props.moduleFiles.includes('js')
+            return _isInArray
+        },
+        type: 'input',
+        name: 'cssFileName',
+        message: message({
+            headline: 'JavaScript Filename',
+            description: 'Choose a CSS File Name or go with the default one:',
+            defaultValue: false
+        }),
+        default: '_style.scss',
+    },
+    {
+        when(props) {
+            const _isInArray = props.moduleFiles.includes('template')
+            return _isInArray
+        },
+        type: 'input',
+        name: 'templateFileName',
+        message: message({
+            headline: 'JavaScript Filename',
+            description: 'Choose a Template File Name or go with the default one:',
+            defaultValue: false
+        }),
+        default: '_template.html',
     }
 ]
 
