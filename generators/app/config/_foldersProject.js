@@ -70,7 +70,7 @@ module.exports = {
                 'prototyping',
             ],
             src: '___src/scripts/',
-            dest: '___src/'
+            dest: 'scripts/'
         },
     ]
 }
