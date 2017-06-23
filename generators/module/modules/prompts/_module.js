@@ -63,7 +63,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
         type: 'input',
         name: 'cssFileName',
         message: message({
-            headline: 'JavaScript Filename',
+            headline: 'CSS Filename',
             description: 'Choose a CSS File Name or go with the default one:',
             defaultValue: false
         }),
@@ -77,7 +77,7 @@ No whitespaces allowed!${chalk.styles.red.close}`
         type: 'input',
         name: 'templateFileName',
         message: message({
-            headline: 'JavaScript Filename',
+            headline: 'Template Filename',
             description: 'Choose a Template File Name or go with the default one:',
             defaultValue: false
         }),
