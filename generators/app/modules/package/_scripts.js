@@ -6,7 +6,7 @@ function addNPMScripts(files = {}) {
             start: 'gulp init',
             dev: 'gulp',
             build: 'gulp build',
-            module: 'scripts/module.js',
+            module: 'node scripts/module.js',
             'clean:dist': 'gulp clean:dist',
             'clean:templates': 'gulp clean:templates',
             'clean:images': 'gulp clean:images',
