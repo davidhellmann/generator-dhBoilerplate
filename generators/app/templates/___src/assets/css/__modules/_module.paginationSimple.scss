@@ -17,7 +17,7 @@
 
   &__link {
     background-color: transparent;
-    color: color('black-80');
+    color: color('black', '80');
     line-height: 38px;
     width: 40px;
     height: 40px;
@@ -27,12 +27,12 @@
     flex: 0 0 40px;
 
     &:hover {
-      background: c('black-80');
+      background: c('black', '80');
       color: c('white');
     }
 
     &--current {
-      background: c('black-80');
+      background: c('black', '80');
       color: c('white');
     }
   }

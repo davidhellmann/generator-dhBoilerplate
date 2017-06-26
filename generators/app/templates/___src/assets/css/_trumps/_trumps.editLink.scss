@@ -9,7 +9,7 @@
   z-index: 21412124;
 
   a {
-    background-color: c('black-80');
+    background-color: c('black', '80');
     color: c('white');
     display: block;
     padding: s(2);
@@ -20,7 +20,7 @@
     border-radius: 3px;
 
     &:hover {
-      background-color: c('black-90');
+      background-color: c('black', '90');
     }
 
     .wf-loaded & {

@@ -9,14 +9,14 @@
 
   &__inner {
     cursor: pointer;
-    -webkit-appearance: none;
-    border: none;
+    -webkit-appearance: none; // stylelint-disable
+    border: 0;
     @include make-vr();
     align-self: flex-start;
     font-size: fs('ms0');
     color: c('white');
     line-height: 1;
-    background-color: c('black-50');
+    background-color: c('black', '50');
     text-decoration: none;
     border-radius: 3px;
     text-transform: uppercase;
@@ -51,13 +51,13 @@
     }
 
     #{$root}--secondary & {
-      color: c('black-60');
+      color: c('black', '60');
       font-size: fs('ms-1');
-      background-color: c('black-20');
+      background-color: c('black', '20');
 
       &:hover {
-        color: c('black-70');
-        background-color: c('black-30');
+        color: c('black', '70');
+        background-color: c('black', '30');
       }
     }
   }

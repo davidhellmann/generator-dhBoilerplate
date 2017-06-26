@@ -30,15 +30,15 @@ select {
   width: 100%;
   padding: s(1/2) s(1);
   background: c('white');
-  border: 1px solid c('black-40');
-  color: c('black-90');
+  border: 1px solid c('black', '40');
+  color: c('black', '90');
   margin-bottom: s(1);
   border-radius: 3px;
   transition: all 0.5s ease('out-cubic');
 
   &:focus {
     background-color: c('white');
-    border-color: c('black-80');
+    border-color: c('black', '80');
   }
 }
 
@@ -62,5 +62,5 @@ select {
 
 // Placeholder Color
 ::placeholder {
-  color: c('black-40');
+  color: c('black', '40');
 }

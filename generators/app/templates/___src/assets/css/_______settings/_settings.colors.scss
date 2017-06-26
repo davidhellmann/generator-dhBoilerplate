@@ -5,64 +5,67 @@
 /* -------------------------------------------------- */
 
 // Shades of Gray
-$color-white:                         #fff;
-$color-black:                         #000;
-$color-black-5:                       darken($color-white, 5%);
-$color-black-10:                      darken($color-white, 10%);
-$color-black-15:                      darken($color-white, 15%);
-$color-black-20:                      darken($color-white, 20%);
-$color-black-25:                      darken($color-white, 25%);
-$color-black-30:                      darken($color-white, 30%);
-$color-black-35:                      darken($color-white, 35%);
-$color-black-40:                      darken($color-white, 40%);
-$color-black-45:                      darken($color-white, 45%);
-$color-black-50:                      darken($color-white, 50%);
-$color-black-55:                      darken($color-white, 55%);
-$color-black-60:                      darken($color-white, 60%);
-$color-black-65:                      darken($color-white, 65%);
-$color-black-70:                      darken($color-white, 70%);
-$color-black-75:                      darken($color-white, 75%);
-$color-black-80:                      darken($color-white, 80%);
-$color-black-85:                      darken($color-white, 85%);
-$color-black-90:                      darken($color-white, 90%);
-$color-black-95:                      darken($color-white, 95%);
+$color__white:                         #fff;
+$color__black:                         #000;
 
 // Colored
-$color-red:                           #F44336;
-$color-green:                         #4CAF50;
-$color-blue:                          #2196F3;
+$color__red:                           #F44336;
+$color__green:                         #4CAF50;
+$color__blue:                          #2196F3;
 
 $dh-grayShades: (
-  // Shades of Gray
-  'white':                            $color-white,
-  'black':                            $color-black,
-  'black-5':                          $color-black-5,
-  'black-10':                         $color-black-10,
-  'black-15':                         $color-black-15,
-  'black-20':                         $color-black-20,
-  'black-25':                         $color-black-25,
-  'black-30':                         $color-black-30,
-  'black-35':                         $color-black-35,
-  'black-40':                         $color-black-40,
-  'black-45':                         $color-black-45,
-  'black-50':                         $color-black-50,
-  'black-55':                         $color-black-55,
-  'black-60':                         $color-black-60,
-  'black-65':                         $color-black-65,
-  'black-70':                         $color-black-70,
-  'black-75':                         $color-black-75,
-  'black-80':                         $color-black-80,
-  'black-85':                         $color-black-85,
-  'black-90':                         $color-black-90,
-  'black-95':                         $color-black-95,
+  'white': (
+    'base': $color__white,
+    'dark': darken($color__white, 10%),
+    'light': lighten($color__white, 10%),
+    'trans': rgba($color__white, 0.5),
+  ),
+  'black': (
+    'base': $color__black,
+    '05': darken($color__white, 5%),
+    '10': darken($color__white, 10%),
+    '15': darken($color__white, 15%),
+    '20': darken($color__white, 20%),
+    '25': darken($color__white, 25%),
+    '30': darken($color__white, 30%),
+    '35': darken($color__white, 35%),
+    '40': darken($color__white, 40%),
+    '45': darken($color__white, 45%),
+    '50': darken($color__white, 50%),
+    '55': darken($color__white, 55%),
+    '60': darken($color__white, 60%),
+    '65': darken($color__white, 65%),
+    '70': darken($color__white, 70%),
+    '75': darken($color__white, 75%),
+    '80': darken($color__white, 80%),
+    '85': darken($color__white, 85%),
+    '90': darken($color__white, 90%),
+    '95': darken($color__white, 95%),
+    'trans': rgba($color__black, 0.5),
+  )
 );
 
 $dh-colored: (
-  // Colored
-  'red':                              $color-red,
-  'green':                            $color-green,
-  'blue':                             $color-blue,
+  'red': (
+    'base': $color__red,
+    'dark': darken($color__red, 10%),
+    'light': lighten($color__red, 10%),
+    'trans': rgba($color__red, 0.5),
+  ),
+  'green': (
+    'base': $color__green,
+    'dark': darken($color__green, 10%),
+    'light': lighten($color__green, 10%),
+    'trans': rgba($color__green, 0.5),
+  ),
+  'blue': (
+    'base': $color__blue,
+    'dark': darken($color__blue, 10%),
+    'light': lighten($color__blue, 10%),
+    'trans': rgba($color__blue, 0.5),
+  ),
 );
+
 
 // Merge Gray Shades and Colored Map
 $dh-colors: map-merge($dh-colored, $dh-grayShades);

@@ -22,7 +22,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background-color: c('black-50');
+      background-color: c('black', '50');
     }
 
     &:last-child {
@@ -33,7 +33,7 @@
         left: 0;
         right: 0;
         height: 1px;
-        background-color: c('black-50');
+        background-color: c('black', '50');
       }
     }
   }
@@ -62,7 +62,7 @@
       position: absolute;
       @include f(s(1), s(2), right);
       top: calc(50% - 2px);
-      background-color: c('black-50');
+      background-color: c('black', '50');
       transition: all 0.25s ease('out-cubic');
     }
 

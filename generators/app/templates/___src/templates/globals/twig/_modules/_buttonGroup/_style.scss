@@ -40,7 +40,7 @@
     float: left;
     width: auto !important;
     border-radius: 0 !important;
-    border-right: 1px solid c('black-60');
+    border-right: 1px solid c('black', '60');
     text-align: center;
 
     &--primary {
@@ -48,7 +48,7 @@
     }
 
     &--secondary {
-      border-right: 1px solid c('black-30');
+      border-right: 1px solid c('black', '30');
     }
 
     &:first-child {
