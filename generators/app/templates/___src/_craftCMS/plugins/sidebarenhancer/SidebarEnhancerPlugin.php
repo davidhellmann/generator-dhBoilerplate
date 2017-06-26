@@ -3,7 +3,6 @@ namespace Craft;
 
 class SidebarEnhancerPlugin extends BasePlugin
 {
-
     public function getName()
     {
         return 'Sidebar enhancer';
@@ -21,7 +20,7 @@ class SidebarEnhancerPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0.6';
+        return '1.0.9';
     }
 
     public function getReleaseFeedUrl()
@@ -47,7 +46,7 @@ class SidebarEnhancerPlugin extends BasePlugin
     public function init()
     {
         parent::init();
-        if (craft()->request->isCpRequest() && craft()->userSession->isAdmin()) {
+        if (craft()->sidebarEnhancer->shouldShowEnhancedSidebar()) {
             $this->_renderCSS();
             $this->_renderJS();
         }
@@ -63,4 +62,26 @@ class SidebarEnhancerPlugin extends BasePlugin
         craft()->templates->includeJsFile(UrlHelper::getResourceUrl('sidebarenhancer/sidebarEnhancer_script.js'));
     }
 
+    public function hasCpSection()
+    {
+        return false;
+    }
+
+    protected function defineSettings()
+    {
+        return [
+            'enabledFor' => [
+                AttributeType::Mixed,
+                'default' => '*'
+            ]
+        ];
+    }
+
+    public function getSettingsHtml()
+    {
+        return craft()->templates->render('sidebarenhancer/SidebarEnhancer_Settings', [
+           'settings' => $this->getSettings(),
+           'admins' => craft()->sidebarEnhancer->getAdmins()
+        ]);
+    }
 }

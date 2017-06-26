@@ -443,6 +443,11 @@ class ImagerService extends BaseApplicationComponent
                 $this->imageInstance->strip();
             }
 
+            // Convert the image to RGB before converting to webp/saving
+            if ($this->getSetting('convertToRGB', $transform)) {
+                $this->imageInstance->usePalette(new \Imagine\Image\Palette\RGB());
+            }
+
             // save the transform
             if ($targetExtension === 'webp') {
                 if ($this->hasSupportForWebP()) {
@@ -1551,12 +1556,12 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runJpegoptim($file)
     {
-        if (file_exists($this->getSetting('jpegoptimPath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('jpegoptimPath'))) {
             $cmd = $this->getSetting('jpegoptimPath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('jpegoptimOptionString');
             $cmd .= ' ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
     
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1572,14 +1577,14 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runJpegtran($file)
     {
-        if (file_exists($this->getSetting('jpegtranPath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('jpegtranPath'))) {
             $cmd = $this->getSetting('jpegtranPath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('jpegtranOptionString');
             $cmd .= ' -outfile ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
             $cmd .= ' ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
     
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1595,14 +1600,14 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runMozjpeg($file)
     {
-        if (file_exists($this->getSetting('mozjpegPath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('mozjpegPath'))) {
             $cmd = $this->getSetting('mozjpegPath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('mozjpegOptionString');
             $cmd .= ' -outfile ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
             $cmd .= ' ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
     
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1618,12 +1623,12 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runOptipng($file)
     {
-        if (file_exists($this->getSetting('optipngPath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('optipngPath'))) {
             $cmd = $this->getSetting('optipngPath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('optipngOptionString');
             $cmd .= ' ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
     
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1639,15 +1644,15 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runPngquant($file)
     {
-        if (file_exists($this->getSetting('pngquantPath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('pngquantPath'))) {
             $cmd = $this->getSetting('pngquantPath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('pngquantOptionString');
             $cmd .= ' ';
             $cmd .= '-f -o ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
             $cmd .= ' ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
     
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1663,13 +1668,13 @@ class ImagerService extends BaseApplicationComponent
      */
     public function runGifsicle($file)
     {
-        if (file_exists($this->getSetting('gifsiclePath'))) {
+        if ($this->getSetting('skipExecutableExistCheck') || file_exists($this->getSetting('gifsiclePath'))) {
             $cmd = $this->getSetting('gifsiclePath');
             $cmd .= ' ';
             $cmd .= $this->getSetting('gifsicleOptionString');
             $cmd .= ' ';
             $cmd .= '-b ';
-            $cmd .= $file;
+            $cmd .= '"'.$file.'"';
             
             $this->executeOptimize($cmd, $file);
         } else {
@@ -1706,10 +1711,49 @@ class ImagerService extends BaseApplicationComponent
 
         if ($this->getSetting('logOptimizations')) {
             ImagerPlugin::log("Optimized image $file \n\n" . $r, LogLevel::Info, true);
+			ImagerPlugin::log($command, LogLevel::Info, true);
         }
     }
 
+    /**
+     * Checks if asset is animated.
+     * 
+     * An animated gif contains multiple "frames", with each frame having a header made up of:
+     *  - a static 4-byte sequence (\x00\x21\xF9\x04)
+     *  - 4 variable bytes
+     *  - a static 2-byte sequence (\x00\x2C)
+     *
+     * We read through the file til we reach the end of the file, or we've found at least 2 frame headers
+     * 
+     * @param $asset
+     * @return bool
+     */
+    public function isAnimated($asset)
+    {
+        $paths = new Imager_ImagePathsModel($asset);
+        $pathParts = pathinfo($paths->sourceFilename);
+        $extension  = $pathParts['extension'];
+        
+        if ($extension!=='gif') {
+            return false;
+        }
 
+        if(!($fh = @fopen($paths->sourcePath . $paths->sourceFilename, 'rb'))) {
+            return false;
+        }
+        
+        $count = 0;
+        
+        while(!feof($fh) && $count < 2) {
+            $chunk = fread($fh, 1024 * 100); //read 100kb at a time
+            $count += preg_match_all('#\x00\x21\xF9\x04.{4}\x00[\x2C\x21]#s', $chunk, $matches);
+        }
+    
+        fclose($fh);
+        
+        return $count > 1; 
+    }
+    
     /**
      * Registers a Task with Craft, taking into account if there is already one pending
      *

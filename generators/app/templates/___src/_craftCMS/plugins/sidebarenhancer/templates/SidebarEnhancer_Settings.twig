@@ -1,0 +1,27 @@
+{% import '_includes/forms' as forms %}
+
+{% set options = [] %}
+{% for admin in admins %}
+    {% set options = [{
+        label: admin.username,
+        value: admin.username
+    }]|merge(options) %}
+{% endfor %}
+
+<div class="sidebarenhancer-settings">
+
+    <div class="sidebarenhancer-settings__field field">
+        <div class="heading">
+            <label id="settings-enabledFor-label" for="settings-enabledFor">Enabled For</label>
+            <div class="instructions"><p>Specify which admin(s) have the enhanced sidebar.</p></div>
+        </div>
+
+        {{ forms.checkboxSelect({
+            id: 'enabledFor',
+            name: 'enabledFor',
+            options: options,
+            values: settings.enabledFor
+        }) }}
+    </div>
+
+</div>
