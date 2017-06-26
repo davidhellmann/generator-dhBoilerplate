@@ -20,7 +20,7 @@
 {% if cbHeadline and options is not defined %}
   {% set options = defaults %}
 {% else %}
-  {% set options = options ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
 {% endif %}
 
 {# -- Modul -- #}

@@ -38,7 +38,7 @@
   } %}
   
   {# Merge Options with Defaults #}
-  {% set options = options ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
   
   {# Add Pagination only if the Page Number is higher than 1#}
   {% if pages.totalPages > 1 %}

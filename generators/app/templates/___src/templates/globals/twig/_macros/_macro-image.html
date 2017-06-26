@@ -39,7 +39,7 @@
   dominantColor: true
   } %}
   
-  {% set options = options ? defaults|merge(options) : defaults %}
+  {% set options = options is defined ? defaults|merge(options) : defaults %}
   {% if image %}
     
     {# -- Ratio -- #}
