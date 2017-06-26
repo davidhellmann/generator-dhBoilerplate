@@ -3,55 +3,49 @@
   ======
 #}
 
-{# -- CB Stuff -- #}
-{% set classname = 'm-button' %}
-{% set button = data.singleButton is defined ? data.singleButton %}
-{% set settings = data.settingsButton is defined ? data.settingsButton %}
-
-
-
-
 {# -- Set Defaults -- #}
 {% set defaults = {
-  classname: classname,
+  classname: 'm-button',
   button: false,
   disabled: false,
-  url: button ? button.url : '#',
-  target: button and button.target is defined and button.target ? ' target=_blank' : '',
-  style: button and settings.style is defined ? classname ~ '__inner--' ~ settings.style : '',
-  alignment: button and settings.alignment is defined ? classname ~ '__inner--' ~ settings.alignment : '',
-  text: button and button.text is defined and button.text | length ? button.text : 'Button',
+  url: '#',
+  target: false,
+  modifiers: [],
+  text: 'Button',
   hasIcon: false,
   iconName: '',
 } %}
 
-{% if button and options is not defined %}
-  {% set options = defaults %}
-{% else %}
-  {% set options = options is defined ? defaults|merge(options) : defaults %}
-{% endif %}
+{% set options = options is defined ? defaults|merge(options) : defaults %}
 
 {# -- Modul -- #}
-<div class="o-col  {{ options.classname }}  {{ options.style }}  {{ options.alignment }}">
+<div class="o-col  {{ options.classname }}{% for modifier in options.modifiers %}{{ '  ' ~ options.classname ~ '--' ~ modifier }}{% endfor %}">
   {% if options.button %}
     <button itemprop="url"
             role="button"
             class="{{ options.classname ~ '__inner' }}" {{ options.disabled ? 'disabled' }}>
-      {{ options.text }}
+      <span class="{{ options.classname ~ '__text' }}">
+        {{ options.text }}
+      </span>
       {% if options.hasIcon %}
-        {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+        <span class="{{ options.classname ~ '__icon' }}">
+          {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+        </span>
       {% endif %}
     </button>
   {% else %}
     <a itemprop="url"
        role="button"
-       href="{{ options.url }}" {{ options.target }}
+       href="{{ options.url }}" {{ options.target ? 'target="_blank"'}}
        class="{{ options.classname ~ '__inner' }}">
-      {{ options.text }}
+      <span class="{{ options.classname ~ '__text' }}">
+        {{ options.text }}
+      </span>
       {% if options.hasIcon %}
-        {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+        <span class="{{ options.classname ~ '__icon' }}">
+          {% include '_svg/' ~ options.iconName ~ '.svg.html' %}
+        </span>
       {% endif %}
     </a>
   {% endif %}
-  
 </div>
