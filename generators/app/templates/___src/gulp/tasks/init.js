@@ -14,7 +14,7 @@ const initTask = (cb) => {
             'copy:images',
             'copy:svg-single',
             'create:svg-sprite',
-            'create:favicons'
+            // 'create:favicons'
         ],
         cb
     )
