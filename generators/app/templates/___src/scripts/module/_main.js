@@ -4,6 +4,6 @@
  |--------------------------------------------------------------------------
  */
 
-export default function() {
+export default () => {
     console.log('Initialize: <%= moduleName %>')
 }
