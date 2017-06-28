@@ -8,6 +8,7 @@
 
 {% extends "_layouts/_master.html" %}
 {% set bodyClass = "p-neuigkeiten" %}
+{% set seomaticMeta = seomaticMeta | merge({'seoTitle': category }) %}
 
 {# Set Query #}
 {% set data = craft.entries({
